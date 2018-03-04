@@ -1,4 +1,4 @@
-=== Zigaform - Form Builder lite ===
+# Zigaform - Wordpress Form Builder Lite
 Contributors: softdiscover
 Donate link: https://codecanyon.net/item/zigaform-wordpress-form-builder/11057544?ref=Softdiscover
 License: GPLv3
