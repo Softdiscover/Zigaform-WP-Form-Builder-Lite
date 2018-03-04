@@ -1,0 +1,182 @@
+/**
+ * CSS styles used Admin notice
+ */
+
+.wrap .zgfm-ext-notice.notice {
+    padding: 0;
+    margin: 5px 0 10px;
+    border: 1px solid #E5E5E5;
+    background: #FFF;
+    overflow: hidden;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 1;
+    min-height: 80px;
+    display: table; /* The magic ingredient! */
+    font: 13px "Open Sans", sans-serif;
+}
+
+.wrap .zgfm-ext-notice.notice.loading:before {
+    content: attr(data-message);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 5;
+    text-align: center;
+    line-height: 80px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.zgfm-ext-notice > div {
+    display: table-cell; /* The magic ingredient! */
+    vertical-align: middle;
+    cursor: default;
+    line-height: 1.5;
+}
+
+.zgfm-ext-notice.notice.loading > div {
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
+}
+
+.zgfm-ext-notice-logo {
+    background-color: #2B4C7E;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADkAAAAmCAYAAAB+mDPLAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAADH1JREFUeNqsWQl4FOUZfufaK5vs5iAXAaqEQzEgCAgFFKQiiIBcj4AWrNaiKPrYWqmCPKUUfXjEi4qtxipQRctRJWq1KHhRDhFBgtwUSGLCkmOz986xM/1mJiGE3c3pD38mmf33n+/9zvf7h0FbBsfrP3m8W/F3us5NuIRjkJnpQGfH6BQOfaxMa8u+p3nvioGp36mKorW2mG31qSkuYGt9N5rHkgHUh8NhwU8xsvk2LRtAc/eyE/INtlS30DmQmfnAlgu9EQnuotkz2TKGFG+3c50GqNsvg2uyokZ3NBJRSyymIIWiXyw94n0sLbfA2jGQBb1B7nktAt6v9b9a2sRuFxpE7NxwcYwBTAUHjWVhFQJIhQdpTGXS/SP10acXHyhfkNWzL9+S8hKP7VoR6jxf6MptTbj0dDsEge00yHyLBZNcKlyogMtfiULpc+RXHIYtx4u1OVugaMkNlpptm/vi2CH/qDz8bdxnidH3vyGTABa3BSDHsbBYyKW0joOLaRxUnsHVthMoqj2MQRXvoGB3KbRSAYrPAXZABN2e3Isz0RuS7hG4EF3/6I59536fzXwVJ2Pc6mG3sXh22/OIhKa0RcCUFIGs2PF4jMKGLs5qTPB/ht8eW4XRH6yDdXMMkicNCmuHauMQC9gQnOhCWWx4i3uJIWVC9akjG2v+d8zfMsj1x2eg1rOyrUI6nVawbPvjUY+9EJwYYdmF+8+sw1PbV8O1WUa4PguqkzV9rHFblZQxLAXHbbe0Ks6wuXd2rz59duP5o98nSTw3/TID5ytWGbszDbOFwfMsWbFjAEXGgmmO97Bq53L86s2t8O/NhuiwGp9CZuIyR1qoqk17+z3R6XP+unZ88ux6z7MPIxDsjmCQ0laUgiVGK9ikYK1WvkOxqLAcHkh7Dc9uX4HC9y+gPpwBVSOF9YrAOiwIvjAKLdJcNJXl27w/xefLNy5YYokHOWORG/6ahVAUIByGATRAMxgizcq0Mt66Fkv7YzGopWC67T38YevfkPoBuSFvymIdX4/AUAmVLh6RG8MQRgQIWYfLUs/xTy6fGg9y0kPzjGzaCEQ3kSgCoZAJ1kexHImQGUzrspRVdXdtz5A1AePSP8WizcXgPrVB5jkzMrrICA4ScfzjPJz8KA9HP8qHOq2e6oLS5LHtdJmwN/pEPMiQ78GEVMaQTjbdV7eqn8D6fOA1AktANabt2s5MqcXTe55B3i4fYhx7MbGwXSXUnkiD/1AqlDoB3j1u1J93gOshNbk4L7TXmgNmPL9hWBPIh4sH089CtMTbGq3bAJj3B+GoD8ASEQ0t6wxFI5dOBjpEbvrH2mfQo8QLWSf8lyzTzluQObweKrmnHOBhyxPh7B6GWtYQVjEGdV27t9tnB0yePa+JDBSNvhWy2DaTNICwEjAdoCBK0EIsYuR6isBDEqzw86mIsWZ9YsngFkbC5NQSTHhjD6SANY5MqjU87J84MPKd71Bf4UC6OwphaxrVxwZ3zpVwXugHSO0DKUWiE5tAyuLY9mrJbjG/yqhUENQYWIpVNhpDmqMej2U/jyypHpV8Ls7nZWFfYAiWHHwBXBlZmk1YUxDb44TlnBWZVD5YxoFYdZO1hSJ/i2wnEVdlTHsULNx64MrGvDy8vSAFPt7wmdZarI09iKw/q2ApZlWGMywsd1sHV0WYsLSQjcklY7p7Mkbtb3JnUoCnT1+EYjlxRJtJkD70S4A2CJPyQyqYULerbubx3O4RusztBWlh403yAPcG8v9CMSrq1tDgk3ijp7BUx6BxXDOBNLkBjb4NryXtiRibim+unYRAgmgSCYjY8FW/qnNgjcAZejHSh3FFrJCCITWr3a6ahKvOrPg3FDEdCiWQw7UZCMmmo3RxRNHL7b+o6QtBG7LnVcHaPwRlrxPKB+6kTZ80MYaN/skIqmoS9tTquE7fetBP0dEX2H4Ezpvgj3jdCBJArUGITJsImYB7wjZ848lE8IYIuDCD6BJqUylpWe6rThpcWwfPIfdzXdzr8tmWEGXbvvaSow4hnmIVOCqgeQREFR4+sbn3ByQB+zxdcMLros44hj63VUEpSTesp+xIA9tDTMyObufwvnBPZ/XPs/iJRjd7BVQCeSFiNRMCqY5tiLWyQIoRI3qcXjn3R8TWZZpxSP+5AWHESuMPwNQcYPMv5lHc2Tsr2sgOgWQSFPyufCXVOwJJLqkLb3HKyLmlxswnjAnI3jWKvNwgYqfMNQxZlb/FD3lzfG9+9v5cbA7MN055Ojmq2Dad2MUlnviv5J+vQTjGk7tyxGtV2GYpSLsv0qQYTkPhXRVQNqebVhQ0CLNrIW/IbKgZzUuCVO1AvuUcfdRpZ/tB36Gu3f1gAuX2kMvJVXULMXBQN1E8dD7O7epGQUe3CET6YD+yYxJUKvhQGPCjAtDqePrbrI26tb0Uy2HZTF79XzqGByqXIVWoNxqguNlgHab1IzQqdnbnrs6qSu8Fr/BWoDpspYoUQencgfjcM4YMpsD5swgsVhmFs8sR3URWI4uyRLy5oUHI72YaFtW9X09Ox+rcqI3aTEtSCzZyzW7cLhajTtaaTZ+iF3pziqqhRwO4zk+4S5TQAL6Cx/b1lfj5tE6BzLDUQTxNFhCJ2t0lYH30btjZMFb2fAzDZ32FoRf2wXlMoM6NHm1VIcyphbSeyjOrGT1jRORwIuAy6utFLyEJQ0EXph1ei/u6P9yciNBn1oYjF/13C/1up6kDtNHVwur3G6/Yx+OtpRUE0kPrc9p7EGyQZ/qXZ6vGST4P3tvTsHnQVJyuSSVhJZw90xcfO/pi26jvIC53gyEruKZVInKAsq3utrpQKVFU5ToQPMAbLitwWrNKH4QTcqx5fMh6V3N5QmrQDk8tnJ01wdoJtT09dX9jwftPS68AEhFEPVdIikqJBtgv5uCVwVNQyhTicHkRPTBkSkj8dUT6AVyzgYp9hIXtGj82Db0ek945ihRQp3FlAN8MvwIp9bVgD5pCuixmq8FQ6UzLr8OqHncTX2t7d6QQ2ADJFDCVEEXxH0pNkK7sEvguzG2xlzQChXQYU1BHGuesVkgx/QBfxPKi1cRqgjh7Ks/QcaOZrZyE5dF15KrEX10S3hw/Ek+dvgcl1+/D3X0+w7eOQviKeIxbvN/Y3m2VSPsKeGLWjv4+bJwwAq8Ic9oGMjFz/wobVgZNkGvu34a7/qTne3tCYHqjLEnmwRbNsOE+5le7Ubf/u6Jis7SQ+nfXFF18Qo6tFmOOfw/F3wUnZzmxJHovaoNZeIuZim+7F+KYvyfe3r8EgZMpRgLq4QghVRXhmwIs7rcQm7JvhtdHscsoHUsWWe7ipnPX8qMSJi4YQMm2nwHu0uMO/VwnGjXv6SANfPQ1u83QmF9OhYWyqy+SgZdPzcLZUH4TnVMcEDMsqL3OgmUZd+KorxclGxKYkVHjLcCCLhsw9NVjkMI8eghh9C6oxI6phXjoikex0TWFHp/ecYCUBrH4jl+j7LjcRELdOctQdXYmoqIJRmf9jcz/8jPYxvtUE8fk7MPB+t5Yc2omKr19TF+xBOgSQ09nOXKuqsLrnnH4smxIM4H7ZBzB7J3b4C13IYeJ4qpby7Ccktab/Hicqeupu4WhjE6Ml7CzJNy8g3vyph8QCH5pnNAZFtOSHzCL4kXnf3XwCnJfK6oiXfDc9UvxzzG/QWHaaeQ6PCgZ9SjmFXyI1VevgpMPNtvitvydCJY4kWUNIvuRWkwf9ARWYhbOBIhAqJFLntHBkeleE//C52wpkOJ+HEHvroSvDy5P16SHpygWTwe7YYdnCGZ234b5PbdAIHfkGBWLDi1E34wfKN3Z4Rb8Jgcl1wZHwrMSbHQt6OfBvslXY466FOekXErGrOEBZgtCQG0dfLGb7l6GGX3LE78L2fuvKoy9NweyOKRVAkDM5v0bF+GOPc/gx0iu8WZqQeEmWIUQ9tRci7VnpuBcoAcRhQAeP/QIsZRULBuwGj7ZgfJIDg6Qa1cMzMYr4gx4lCwz1i91Gv1812k36Uv7xjnMLJyNqjNy8veTNqcNi0oO0W+9kluSwYtjXkduZgSz96wgwxJfJcuMyDpoWOhTzzAMzzxEPaYHWyrGEhES8PawJZic/zW8shNdSz4xNczGEFNbcJo0yrpuZzu7B+cojBZ2tvymORqkVIrZNOuT7dPd5cH8oo/xROmDBkB9vDDwOYzL3YMPK0cR25AI1GKUhfIQVmyGld8tG0/Z1o7XTk9vOrtSW3nNEAzrxLg9EJdjrP2/l9/8vwADAIXk+GgR4aF3AAAAAElFTkSuQmCC');
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.zgfm-ext-notice-logo span {
+    display: block;
+    width: 80px;
+}
+
+.zgfm-ext-notice-message {
+    color: #23282D;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 20px;
+    padding: 10px 20px;
+    -webkit-font-smoothing: antialiased;
+    width: 100%;
+}
+
+.zgfm-ext-notice-cta {
+    border-left: 1px solid #E5E5E5;
+    background: #F8F8F8;
+    padding: 0 30px;
+    position: relative;
+    white-space: nowrap;
+}
+
+.wp-core-ui .zgfm-ext-notice-cta button,
+.wp-core-ui .zgfm-ext-notice-cta .button-primary:active {
+    vertical-align: middle;
+}
+
+.wp-core-ui .zgfm-ext-notice-cta input[type="email"] {
+    vertical-align: middle;
+    line-height: 20px;
+    margin: 0;
+    min-width: 50px;
+    max-width: 320px;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.zgfm-ext-notice-dismiss {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    color: #C5C5C5;
+    -webkit-font-smoothing: antialiased;
+}
+
+.zgfm-ext-notice-dismiss:hover {
+    color: #666;
+}
+
+@media only all and (max-width: 1200px) {
+    .zgfm-ext-notice-dismiss {
+        display: block;
+        margin: 0 auto;
+        line-height: 18px;
+        padding-top: 8px;
+        padding-bottom: 2px;
+    }
+}
+
+@media only all and (max-width: 1000px) {
+    .wrap .zgfm-ext-notice.notice {
+        display: block;
+        font-size: 13px;
+    }
+
+    .zgfm-ext-notice > .zgfm-ext-notice-logo {
+        float: left;
+        display: inline-block;
+        height: 80px;
+        margin: 10px;
+        border-radius: 4px;
+    }
+
+    .zgfm-ext-notice > .zgfm-ext-notice-message {
+        width: auto;
+        display: block;
+        padding: 10px;
+        min-height: 80px;
+    }
+
+    .zgfm-ext-notice > .zgfm-ext-notice-cta {
+        display: block;
+        border-top: 1px solid #E5E5E5;
+        border-left: 0;
+        text-align: center;
+        white-space: normal;
+        line-height: 30px;
+        padding: 10px 20px;
+    }
+
+    .wp-core-ui .zgfm-ext-notice > .zgfm-ext-notice-cta > input[type="email"],
+    .zgfm-ext-notice > .zgfm-ext-notice-cta > button {
+        font-size: 14px;
+    }
+
+    .zgfm-ext-notice > .zgfm-ext-notice-cta > .zgfm-ext-notice-dismiss {
+        display: inline-block;
+        float: none;
+        line-height: 26px;
+        padding-top: 0;
+        padding-bottom: 0;
+        font-size: 13px;
+    }
+}
+
+@media only all and (max-width: 500px) {
+    .wp-core-ui .zgfm-ext-notice > .zgfm-ext-notice-cta > input[type="email"],
+    .zgfm-ext-notice > .zgfm-ext-notice-cta > button {
+        display: block;
+        width: 100% !important;
+        max-width: none;
+        margin-bottom: 4px;
+        font-size: 16px;
+        height: 34px;
+    }
+
+    .zgfm-ext-notice > .zgfm-ext-notice-cta > .zgfm-ext-notice-dismiss {
+        margin-top: 5px;
+        font-size: 14px;
+        height: 23px;
+    }
+}

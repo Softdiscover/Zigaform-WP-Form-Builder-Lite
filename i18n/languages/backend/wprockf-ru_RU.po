@@ -1,0 +1,1223 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rocket form\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: softdiscover <info@softdiscover.com>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.7.5\n"
+
+msgid "List by form"
+msgstr "Список по форме"
+
+msgid "Records"
+msgstr "Записей"
+
+msgid "Import"
+msgstr "Импортировать"
+
+msgid "Export"
+msgstr "Экспорт"
+
+msgid "Charts"
+msgstr "Диаграммы"
+
+msgid "Settings"
+msgstr "Settings"
+
+msgid "Styles Font Menu requires WordPress 3.4 or newer."
+msgstr "Стили шрифта меню требует WordPress 3.4 или новее."
+
+msgid "Please update."
+msgstr "Пожалуйста, исправьте."
+
+msgid "Success! your form was submitted"
+msgstr "Успех! формы был представлен"
+
+msgid "warning! Form was not submitted"
+msgstr "предупреждение! Форма не отправлена"
+
+msgid "New form request"
+msgstr "Новый запрос форма"
+
+msgid "warning! data not submitted"
+msgstr "предупреждение! данные не представлены"
+
+msgid "english"
+msgstr "английский"
+
+msgid "spanish"
+msgstr "spanish"
+
+msgid "french"
+msgstr "французский"
+
+msgid "german"
+msgstr "Немецкий"
+
+msgid "italian"
+msgstr "ITALIAN"
+
+msgid "portuguese"
+msgstr "Португальский."
+
+msgid "russian"
+msgstr "pycckar"
+
+msgid "chinese"
+msgstr "китайский"
+
+msgid "Required only letters"
+msgstr "Требуется только буквы"
+
+msgid "Required only Letters and Numbers"
+msgstr "Требуется только буквы и цифры"
+
+msgid "Required only numbers"
+msgstr "Требуется только числа"
+
+msgid "Required a valid mail"
+msgstr "Требуется действительный почты"
+
+msgid "this is required"
+msgstr "это необходимо"
+
+msgid "CAPTCHA Code"
+msgstr "Защитный код:"
+
+msgid "Select file"
+msgstr "Выбрать файл"
+
+msgid "Change"
+msgstr "Изменить"
+
+msgid "Remove"
+msgstr "Удалить этот товар"
+
+msgid "Select image"
+msgstr "Выбрать изображение"
+
+msgid "Sending"
+msgstr "Идет отправка"
+
+msgid ""
+"Fields section. Drag and Drop or just click to add to the preview section"
+msgstr ""
+"В разделе поля. Перетащите и Drop или просто нажмите кнопку Добавить в "
+"разделе предварительного просмотра"
+
+msgid ""
+"preview section. you can view how the fields will look like and you can "
+"change the settings on live mode  "
+msgstr ""
+"Просмотр раздела. Вы можете просматривать как поля будет выглядеть, и вы "
+"можете изменить настройки в режиме реального времени"
+
+msgid "Tab title"
+msgstr "Заголовок вкладки."
+
+msgid "Previous"
+msgstr "Предыдущий"
+
+msgid "Next"
+msgstr "Следующий"
+
+msgid "Form"
+msgstr "Форма"
+
+msgid "Selected Field"
+msgstr "Выбранное поле"
+
+msgid "Form settings. you can set all options related to the form"
+msgstr "Параметры формы. можно задать все параметры, относящиеся к форме"
+
+msgid "Form name"
+msgstr "Название формы"
+
+msgid "Options"
+msgstr "Options"
+
+msgid "preview"
+msgstr "Предпросмотр:"
+
+msgid "setting section. you can change the submit mode between ajax and post"
+msgstr "настройки раздела. Вы можете изменить режим отправки между ajax и пост"
+
+msgid "skin section. you can change skin options of your form"
+msgstr "Секция кожи. Вы можете изменить параметры кожи вашей формы"
+
+msgid "Skin"
+msgstr "Скин"
+
+msgid "wizard section. you can enable the wizard form and add many forms"
+msgstr "раздел мастера. Вы можете включить форму мастера и добавить много форм"
+
+msgid "Wizard"
+msgstr "Помощник"
+
+msgid "email section. you can set mail options. e.g. the recipient mail"
+msgstr ""
+"разделе электронной почты. можно задать параметры почты. например "
+"получателей почты"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid ""
+"submission section. you can modify the success message and other messages"
+msgstr ""
+"Представление секции. можно изменить сообщение об успешной и другие сообщения"
+
+msgid "On Submission"
+msgstr "По представлению"
+
+msgid "Field name"
+msgstr "Имя поля"
+
+msgid ""
+"This is important to identify the field on reports and conditional logic"
+msgstr ""
+"Это имеет важное значение для идентификации поля по докладам и условной "
+"логики"
+
+msgid "Type field name"
+msgstr "Имя поля Тип"
+
+msgid "Delete field selected"
+msgstr "Удаление выбранного поля"
+
+msgid "Are you sure?"
+msgstr "Вы уверены?"
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "Yes"
+msgstr "Да"
+
+msgid "Label"
+msgstr "Подпись (Label)"
+
+msgid "Input"
+msgstr "Вход"
+
+msgid "Help Block"
+msgstr "Справка блок"
+
+msgid "Validators"
+msgstr "Проверяющие элементы управления"
+
+msgid "Images"
+msgstr "Изображения"
+
+msgid "C.Logic"
+msgstr "C.Logic"
+
+msgid "Misc"
+msgstr "Разное"
+
+msgid "Save form"
+msgstr "Сохранить форму"
+
+msgid "You need to save the form before seeing the preview"
+msgstr "Вам нужно сохранить форму до видя предварительного просмотра"
+
+msgid "Preview for desktops"
+msgstr "Предварительный просмотр для настольных компьютеров"
+
+msgid "Preview for tablets"
+msgstr "Предварительный просмотр для планшетов"
+
+msgid "Preview for smartphone"
+msgstr "Предварительный просмотр для смартфонов"
+
+msgid "Import form"
+msgstr "Импорт формы"
+
+msgid "The import has failed. press the accept button"
+msgstr "Ошибка импорта. Нажмите на кнопку accept"
+
+msgid "Close"
+msgstr "Закрыть"
+
+msgid "Desktop"
+msgstr "ПК  (комп)"
+
+msgid "Tablet"
+msgstr "Планшет"
+
+msgid "Smartphone"
+msgstr "Смартфон"
+
+msgid "Load form"
+msgstr "Загрузить форму"
+
+msgid "Accept"
+msgstr "Принять"
+
+msgid "Set Form name"
+msgstr "Задать имя формы"
+
+msgid "e.g. My custom form"
+msgstr "например Моя настраиваемой формы"
+
+msgid "Drag and Drop the fields to this area "
+msgstr "Перетащить поля в этой области"
+
+msgid "or just click the button fields to add it here "
+msgstr "или просто нажмите кнопку поля, чтобы добавить его здесь"
+
+msgid "Code to export"
+msgstr "Код для экспорта"
+
+msgid "the exporting code is used for backuping your custom form"
+msgstr ""
+"экспортирующие код используется для резервирования пользовательской формы"
+
+msgid "Main fields"
+msgstr "Основные направления"
+
+msgid "More fields"
+msgstr "Дополнительные поля"
+
+msgid "Standard Fields"
+msgstr "Стандартные поля"
+
+msgid "Text Box"
+msgstr "Текстовое поле"
+
+msgid "Text Area"
+msgstr "Текстовая Область"
+
+msgid "Radio Button"
+msgstr "Кнопка радио"
+
+msgid "Check Box"
+msgstr "Флажок"
+
+msgid "Select List"
+msgstr "Выберите список"
+
+msgid "Select Multiple "
+msgstr "множественный выбор"
+
+msgid "Submit Button"
+msgstr "Кнорка Подтвердить"
+
+msgid "Spinner"
+msgstr "Паук"
+
+msgid "Slider"
+msgstr "Слайдер"
+
+msgid "Range"
+msgstr "Диапазон"
+
+msgid "Grid System"
+msgstr "Гипподамова система"
+
+msgid "1 Col"
+msgstr "1 Col"
+
+msgid "2 Cols"
+msgstr "2 cols"
+
+msgid "3 Cols"
+msgstr "3 cols"
+
+msgid "4 Cols"
+msgstr "4 cols"
+
+msgid "6 Cols"
+msgstr "6 cols"
+
+msgid "Additional Fields"
+msgstr "Дополнительные поля"
+
+msgid "Star rating"
+msgstr "Классу"
+
+msgid "ReCaptcha"
+msgstr "reCAPTCHA"
+
+msgid "Custom Html"
+msgstr "Пользовательские Html"
+
+msgid "Hidden Input"
+msgstr "Скрытый вход"
+
+msgid "Password"
+msgstr "Ваш Пароль"
+
+msgid "Captcha"
+msgstr "Captcha"
+
+msgid "Date Picker"
+msgstr "Средство выбора даты"
+
+msgid "Prepend"
+msgstr "Добавить в начало"
+
+msgid "Layout Elements"
+msgstr "Элементы макета"
+
+msgid "Divider"
+msgstr "Разделитель"
+
+msgid "Heading H1"
+msgstr "Заголовок H1"
+
+msgid "Upload Fields"
+msgstr "Добавлено поля"
+
+msgid "File Upload"
+msgstr "Загрузка файла"
+
+msgid "Image Upload"
+msgstr "Загрузить изображение"
+
+msgid "Picker Fields"
+msgstr "Выбор поля"
+
+msgid "Color Picker"
+msgstr "Пипетка"
+
+msgid "Time Picker"
+msgstr "Выбрать время"
+
+msgid "Date and Time"
+msgstr "Дата и время"
+
+msgid "Prepend/Append Fields - Text Box"
+msgstr "Вставьте/Добавление поля - поле"
+
+msgid "Append"
+msgstr "Добавить"
+
+msgid "Prepend/Append"
+msgstr "Добавить/добавить"
+
+msgid "Headings"
+msgstr "ЗАГОЛОВКИ"
+
+msgid "Heading H2"
+msgstr "Заголовок h2"
+
+msgid "Heading H3"
+msgstr "Заголовок H3"
+
+msgid "Heading H4"
+msgstr "Заголовок H4"
+
+msgid "Heading H5"
+msgstr "Заголовок H5"
+
+msgid "Heading H6"
+msgstr "Заголовок H6"
+
+msgid "List forms."
+msgstr "Формы списка."
+
+msgid "Add new form"
+msgstr "Добавить новую форму"
+
+msgid "Disable"
+msgstr "Выкл."
+
+msgid "Enable"
+msgstr "Вкл."
+
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "Duplicate"
+msgstr "Дублировать"
+
+msgid "Name Form"
+msgstr "Имя формы"
+
+msgid "Copy and paste the shortcode to your desired page"
+msgstr "Скопировать и вставить короткий номер для требуемой страницы"
+
+msgid "Shortcode"
+msgstr "Shortcode"
+
+msgid "Created"
+msgstr "Создано"
+
+msgid "Status"
+msgstr "Статус"
+
+msgid "Active"
+msgstr "Активировать"
+
+msgid "Inactive"
+msgstr "Неактивно"
+
+msgid "Edit and load your custom form"
+msgstr "Редактировать и загрузить пользовательские формы"
+
+msgid "Edit"
+msgstr "Редактировать"
+
+msgid "Delete form"
+msgstr "Удалить форму"
+
+msgid "there is not forms. Add new one"
+msgstr "не существует формы. Добавить новый"
+
+msgid "List form information"
+msgstr "Данные формы списка"
+
+msgid "there is no forms selected. select one at least"
+msgstr "нет ни формы выбран. Выберите один, по крайней мере"
+
+msgid "Textbox label"
+msgstr "Текстовое поле Метка"
+
+msgid "Textbox sublabel"
+msgstr "Текстовое поле sublabel"
+
+msgid "Help block text"
+msgstr "Блок текста справки"
+
+msgid "Show help block"
+msgstr "Показать справки блок"
+
+msgid "Text Font"
+msgstr "Шрифт текста"
+
+msgid "Help block position"
+msgstr "Помочь блок позиции"
+
+msgid "At bottom"
+msgstr "снизу"
+
+msgid "At Top"
+msgstr "сверху"
+
+msgid "Tooltip"
+msgstr "Подсказка"
+
+msgid "Pop up"
+msgstr "Неожиданно возникнуть"
+
+msgid "Add"
+msgstr "Добавить"
+
+msgid "Clean"
+msgstr "Прозрачный"
+
+msgid "Text"
+msgstr "Текст"
+
+msgid "Place holder"
+msgstr "Place holder"
+
+msgid "Color"
+msgstr "Цвет"
+
+msgid "Font family"
+msgstr "Семейство шрифтов"
+
+msgid "Input value alignment"
+msgstr "Входное значение выравнивания"
+
+msgid "Left"
+msgstr "Слева"
+
+msgid "Center"
+msgstr "По центру"
+
+msgid "Right"
+msgstr "Право"
+
+msgid "Button alignment"
+msgstr "Выравнивание кнопки"
+
+msgid "Background"
+msgstr "Фон"
+
+msgid "Background color"
+msgstr "Фоновый цвет"
+
+msgid "Type"
+msgstr "Тип"
+
+msgid "Solid"
+msgstr "Сплошная"
+
+msgid "Gradient"
+msgstr "Градиент"
+
+msgid "Pick the color"
+msgstr "Выбрать цвет"
+
+msgid "Start color"
+msgstr "Начальный цвет"
+
+msgid "End color"
+msgstr "Конечный цвет"
+
+msgid "Border"
+msgstr "Граница (рамка)"
+
+msgid "Border radius"
+msgstr "Радиус обводки"
+
+msgid "Color (focus)"
+msgstr "Цвет (фокус)"
+
+msgid "border style"
+msgstr "Стиль рамки"
+
+msgid "Dotted"
+msgstr "Точки"
+
+msgid "Border width"
+msgstr "Ширина границы"
+
+msgid "Divider bar Color"
+msgstr "Цвет разделителя"
+
+msgid "Settings label option"
+msgstr "Параметр настройки метки"
+
+msgid "Add new option"
+msgstr "Добавьте новый параметр"
+
+msgid "Remove all options"
+msgstr "Удалите все параметры"
+
+msgid "Selected"
+msgstr "Выбрано"
+
+msgid "Block alignment"
+msgstr "Выравнивание блока"
+
+msgid "Block"
+msgstr "Блок"
+
+msgid "Inline"
+msgstr "Для встраивания в технологическую линию"
+
+msgid "Type label"
+msgstr "Этикетка"
+
+msgid "option"
+msgstr "альтернатива"
+
+msgid "Custom html content"
+msgstr "Свой контент"
+
+msgid "Minimum"
+msgstr "Минимум"
+
+msgid "Maximum"
+msgstr "Максимум"
+
+msgid "Default value"
+msgstr "Значение по умолчанию"
+
+msgid "Step"
+msgstr "Этап"
+
+msgid "Range 1"
+msgstr "Диапазон 1"
+
+msgid "Range 2"
+msgstr "Диапазон 2"
+
+msgid "Public key"
+msgstr "Открытый ключ"
+
+msgid "Secret key"
+msgstr "Секретный ключ"
+
+msgid "Theme"
+msgstr "Тема"
+
+msgid "Light"
+msgstr "Светлый"
+
+msgid "Dark"
+msgstr "Темный"
+
+msgid "Custom text color"
+msgstr "﻿Пользовательский цвет текста"
+
+msgid "Custom Background color"
+msgstr "Индивидуальный цвет фона"
+
+msgid "Custom Behind lines"
+msgstr "Пользовательские позади линии"
+
+msgid "Lines"
+msgstr "Строки"
+
+msgid "Custom front lines"
+msgstr "Пользовательские линии фронта"
+
+msgid "Distortion"
+msgstr "Искажения сигнала"
+
+msgid "Language"
+msgstr "Язык"
+
+msgid "English"
+msgstr "Английский"
+
+msgid "Spanish"
+msgstr "Испанский"
+
+msgid "French"
+msgstr "Французский"
+
+msgid "Italian"
+msgstr "Итальянское"
+
+msgid "Japanese"
+msgstr "Японский"
+
+msgid "Portuguese"
+msgstr "Португальский"
+
+msgid "Russian"
+msgstr "Русский"
+
+msgid "Chinese"
+msgstr "Китайский"
+
+msgid "Format"
+msgstr "Формат"
+
+msgid "Default"
+msgstr "По умолчанию"
+
+msgid "Text star 1"
+msgstr "Текст звезда 1"
+
+msgid "Text star 2"
+msgstr "Текст звезда 2"
+
+msgid "Text star 3"
+msgstr "Текст звезда 3"
+
+msgid "Text star 4"
+msgstr "Текст звезда 4"
+
+msgid "Text star 5"
+msgstr "Текст звезда 5"
+
+msgid "Not rated text"
+msgstr "Не оценили текст"
+
+msgid "Label text"
+msgstr "Надпись текстовая"
+
+msgid "Text Color"
+msgstr "Цвет текста"
+
+msgid "Text Shadow"
+msgstr "Текст Shadow"
+
+msgid "horizontal"
+msgstr "горизонтально"
+
+msgid "vertical"
+msgstr "вертикальное"
+
+msgid "blur"
+msgstr "Размытие"
+
+msgid "Sub label"
+msgstr "Подзаголовок:"
+
+msgid "Sublabel text"
+msgstr "Sublabel текст"
+
+msgid "Text font"
+msgstr "Шрифт текста"
+
+msgid "Text shadow"
+msgstr "Тени текста"
+
+msgid "x"
+msgstr "X"
+
+msgid "y"
+msgstr "y"
+
+msgid "Text Block"
+msgstr "Текствой блок"
+
+msgid "Block position"
+msgstr "Блок позиции"
+
+msgid "Top"
+msgstr "Верх"
+
+msgid "Bottom"
+msgstr "Низ"
+
+msgid "Show Block"
+msgstr "Показать блок"
+
+msgid "Help block"
+msgstr "Справка блок"
+
+msgid "Help block alignment (temp - delete)"
+msgstr "Помогите выравнивания блока (темп - удалить)"
+
+msgid "Required"
+msgstr "Обязательное поле"
+
+msgid "Allow whitespace"
+msgstr "Разрешить пробелы"
+
+msgid "Add validator"
+msgstr "Добавление проверки"
+
+msgid "Validator configuration: "
+msgstr "Проверки конфигурации:"
+
+msgid "Less than"
+msgstr "Менее"
+
+msgid "Default Message"
+msgstr "Сообщение по умолчанию"
+
+msgid "Custom Error Message"
+msgstr "Настраиваемое сообщение об ошибке"
+
+msgid "Alert position"
+msgstr "Оповещения позиция"
+
+msgid "Set required icon"
+msgstr "Установить требуемый значок"
+
+msgid "Choose required icon"
+msgstr "Выберите требуемый значок"
+
+msgid "Required icon position"
+msgstr "Требуемый значок позиция"
+
+msgid "Before label"
+msgstr "До метки"
+
+msgid "After label"
+msgstr "После подписи"
+
+msgid "Letters"
+msgstr "Буквы"
+
+msgid "Letter & Numbers"
+msgstr "Письмо & чисел"
+
+msgid "Only numbers"
+msgstr "(только цифры)"
+
+msgid "Greater than"
+msgstr "Больше"
+
+msgid "Identical"
+msgstr "Идентичные"
+
+msgid "Length"
+msgstr "Длина"
+
+msgid "Validator: "
+msgstr "Валидатор формата"
+
+msgid "Translate error message "
+msgstr "Перевести сообщение об ошибке"
+
+msgid "Letters and Numbers"
+msgstr "Буквы и цифры"
+
+msgid "Background Color"
+msgstr "Цвет фона"
+
+msgid "Required icon"
+msgstr "Требуемый значок"
+
+msgid "Enable Conditional logic"
+msgstr "Включить условную логику"
+
+msgid "Show"
+msgstr "Показать"
+
+msgid "Hide"
+msgstr "Скрыть"
+
+msgid "this field if"
+msgstr "это поле, если"
+
+msgid "All"
+msgstr "Все"
+
+msgid "Any"
+msgstr "Не важно"
+
+msgid "of the following rule match"
+msgstr "следующие значения:"
+
+msgid "Add new conditional Logic"
+msgstr "Добавление новой условной логики"
+
+msgid "Remove all"
+msgstr "Удалить все"
+
+msgid "is"
+msgstr "равно"
+
+msgid "is not"
+msgstr "не равно"
+
+msgid "greater than"
+msgstr "больше чем"
+
+msgid "less than"
+msgstr "меньше чем"
+
+msgid "You are receiving a new form request"
+msgstr "Вы получаете новую форму запроса"
+
+msgid "Form information"
+msgstr "Данные формы списка"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Subject mail"
+msgstr "Тема почты"
+
+msgid "it is the title of the message. do not leave blank"
+msgstr "Это название сообщения. не оставляйте пустым"
+
+msgid "Here goes your subject mail"
+msgstr "Здесь идет тема почты"
+
+msgid "Type subject"
+msgstr "Тип субъекта"
+
+msgid "Recipient mail"
+msgstr "Почта получателя"
+
+msgid ""
+"This is the recipient mail. if you leave it blank, admin mail will be taken"
+msgstr ""
+"Это получателей почты. Если оставить его пустым, будет приниматься "
+"администратора почты"
+
+msgid "Type email address"
+msgstr "E-mail"
+
+msgid "this mail will receive a copy of the email"
+msgstr "Это письмо будет получать копию по электронной почте"
+
+msgid "Type CC mail"
+msgstr "Тип CC почта"
+
+msgid ""
+"this mail will receive a copy of the email without letting the others notice "
+"it"
+msgstr ""
+"Это письмо будет получать копию электронной почты не позволяя другим "
+"заметить его"
+
+msgid "Type BCC mail"
+msgstr "Тип СК почта"
+
+msgid "Email Template"
+msgstr "Тип Шаблона Электронной Почты"
+
+msgid "Submit mode"
+msgstr "Представить режим"
+
+msgid "Ajax mode when submitting form"
+msgstr "Режим AJAX при представлении формы"
+
+msgid "You can switch the submit mode between POST and AJAX"
+msgstr "Вы можете переключить режим отправки между ПОСТОМ и AJAX"
+
+msgid "Import the backuped form"
+msgstr "Импорт резервной копии формы"
+
+msgid "Custom css"
+msgstr "Custom CSS"
+
+msgid "Additional css"
+msgstr "Дополнительный CSS"
+
+msgid ""
+"This is not required. You can add extra css to your form. this will be added "
+"to css file "
+msgstr ""
+"Это не требуется. В форму можно добавить дополнительные css. Это будет "
+"добавлено в css-файл"
+
+msgid "Additional javascript"
+msgstr "Дополнительные javascript"
+
+msgid ""
+"This is not required. You can add extra javascript code or some script to "
+"your form."
+msgstr ""
+"Это не требуется. В форму можно добавить дополнительные javascript код или "
+"сценарий."
+
+msgid ""
+"proceed with caution. if you put a wrong javascript code, the form will not "
+"work properly e.g. "
+msgstr ""
+"Продолжайте с осторожностью. Если вы кладете неправильный javascript-кода, "
+"форма не будет работать должным образом например"
+
+msgid "Text font size"
+msgstr "Текст шрифта, Размер"
+
+msgid "Select font size"
+msgstr "Выберите размер шрифта"
+
+msgid "Custom width"
+msgstr "Пользовательская ширина"
+
+msgid "Max width"
+msgstr "Макс. ширина"
+
+msgid "Custom padding"
+msgstr "Пользовательские поля"
+
+msgid "Padding top"
+msgstr "Верхний отступ"
+
+msgid "Padding right"
+msgstr "Заполнение справа"
+
+msgid "Padding bottom"
+msgstr "Нижний отступ"
+
+msgid "Padding left"
+msgstr "Заполнение слева"
+
+msgid "Background image"
+msgstr "Фоновое изображение"
+
+msgid "Update Image"
+msgstr "Обновить изображение"
+
+msgid "Box Shadow"
+msgstr "Тень Блока"
+
+msgid "Success! Form was sent successfully."
+msgstr "Успех! Форма была отправлена успешно."
+
+msgid "Success Message"
+msgstr "Сообщение об успешном действии"
+
+msgid "Enable wizard forms"
+msgstr "Включите Мастер форм"
+
+msgid "Tabs management"
+msgstr "Управление вкладками"
+
+msgid "Add new"
+msgstr "Добавить новый"
+
+msgid "Type tab title"
+msgstr "Тип заголовка вкладки"
+
+msgid "Skin tab"
+msgstr "Вкладка кожи"
+
+msgid "Active Mode"
+msgstr "Активный режим"
+
+msgid "Title color"
+msgstr "Цвет заголовка"
+
+msgid "Number text color"
+msgstr "Номер цвета"
+
+msgid "Inactive mode"
+msgstr "Неактивный режим"
+
+msgid "Text color"
+msgstr "Цвет текста"
+
+msgid "Tab container "
+msgstr "Вкладка контейнер"
+
+msgid "Textarea label"
+msgstr "Этикетка для текстовой области"
+
+msgid "Textarea sublabel"
+msgstr "Textarea sublabel"
+
+msgid "Type your heading H1 here"
+msgstr "Введите ваш заголовок H1"
+
+msgid "Type your heading H2 here"
+msgstr "Введите ваш заголовок H2"
+
+msgid "Type your heading H3 here"
+msgstr "Введите ваш заголовок Н3"
+
+msgid "Type your heading H4 here"
+msgstr "Введите ваш заголовок Н4"
+
+msgid "Type your heading H5 here"
+msgstr "Введите ваш заголовок H5"
+
+msgid "Type your heading H6 here"
+msgstr "Введите ваш заголовок H6"
+
+msgid "Custom report"
+msgstr "Пользовательский отчет"
+
+msgid "Select your custom fields to be shown on list report"
+msgstr "Выберите настраиваемые поля будет показан на отчет по списку"
+
+msgid "Save Changes"
+msgstr "Сохранить Изменения"
+
+msgid "Entry information"
+msgstr "Входная информация"
+
+msgid "Submitted form data"
+msgstr "Представленные формы данных"
+
+msgid "Additional info"
+msgstr "Коментар"
+
+msgid "Date"
+msgstr "Дата"
+
+msgid "IP"
+msgstr "IP"
+
+msgid "Client PC info"
+msgstr "Информация о клиенте ПК"
+
+msgid "Form URL"
+msgstr "URL-адрес формы"
+
+msgid "Export to PDF"
+msgstr "Экспорт в PDF"
+
+msgid "List Records."
+msgstr "Список записей."
+
+msgid "Export to csv"
+msgstr "Экспорт в csv"
+
+msgid "Show detail"
+msgstr "Показать детали"
+
+msgid "View chart"
+msgstr "Просмотр диаграммы"
+
+msgid "Global Settings"
+msgstr "Глобальные настройки"
+
+msgid "Save changes"
+msgstr "Сохранить"
+
+msgid "Loading"
+msgstr "Загрузка"
+
+msgid "Tour guide info"
+msgstr "Информация о руководстве тур"
+
+msgid "there is not tour guide for this page. press the accept button"
+msgstr "гид для этой страницы не существует. Нажмите на кнопку accept"
+
+msgid "Success! Updated successfully"
+msgstr "Успех! Успешно обновлен"
+
+msgid "Toggle navigation"
+msgstr "Переключить навигацию"
+
+msgid "Forms"
+msgstr "Формы"
+
+msgid "New"
+msgstr "Новинка"
+
+msgid "Save"
+msgstr "Сохранить"
+
+msgid "List forms"
+msgstr "Формы списка."
+
+msgid "Templates"
+msgstr "Шаблоны"
+
+msgid "Contact us"
+msgstr "Обратная связь"
+
+msgid "Newsletter"
+msgstr "Новостная рассылка"
+
+msgid "Survey Questionnaire"
+msgstr "Анкета обследования"
+
+msgid "Online event registration"
+msgstr "Онлайн регистрация на события"
+
+msgid "Reservation Request"
+msgstr "Запрос бронирования"
+
+msgid "Purchase Order - Point Of Sale"
+msgstr "Закупка - точки продажи"
+
+msgid "Website Design Request"
+msgstr "Запрос дизайн веб-сайта"
+
+msgid "Job Application"
+msgstr "Заявка на вакансию"
+
+msgid "CV Submission"
+msgstr "Представление резюме"
+
+msgid "Order form"
+msgstr "Форма заказа"
+
+msgid "wizard form"
+msgstr "Форма мастера"
+
+msgid "All fields"
+msgstr "Все поля"
+
+msgid "Conditional Logic"
+msgstr "Условной логики"
+
+msgid "Custom skin"
+msgstr "Скина"
+
+msgid "Preview"
+msgstr "Предпросмотр"
+
+msgid "desktop"
+msgstr "ПК  (комп)"
+
+msgid "smartphone"
+msgstr "Смартфон"
+
+msgid "List all Forms"
+msgstr "Список всех форм"
+
+msgid "List by Form"
+msgstr "Данные формы списка"
+
+msgid "Custom Report"
+msgstr "Пользовательский отчет"
+
+msgid "Guided tour"
+msgstr "Экскурсовод"

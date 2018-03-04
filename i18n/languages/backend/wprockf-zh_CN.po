@@ -1,0 +1,1203 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rocket form\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: softdiscover <info@softdiscover.com>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.7.5\n"
+
+msgid "List by form"
+msgstr "列表的窗体"
+
+msgid "Records"
+msgstr "记录"
+
+msgid "Import"
+msgstr "导入"
+
+msgid "Export"
+msgstr "导出"
+
+msgid "Charts"
+msgstr "統計圖表"
+
+msgid "Settings"
+msgstr "设置"
+
+msgid "Styles Font Menu requires WordPress 3.4 or newer."
+msgstr "字体样式菜单需要 WordPress 3.4 或更高版本。"
+
+msgid "Please update."
+msgstr "请更新。"
+
+msgid "Success! your form was submitted"
+msgstr "成功 ！提交您的窗体"
+
+msgid "warning! Form was not submitted"
+msgstr "警告 ！不提交表单"
+
+msgid "New form request"
+msgstr "新的形式要求"
+
+msgid "warning! data not submitted"
+msgstr "警告 ！未提交的数据"
+
+msgid "english"
+msgstr "编号"
+
+msgid "spanish"
+msgstr "西班牙语"
+
+msgid "french"
+msgstr "法语"
+
+msgid "german"
+msgstr "德语"
+
+msgid "italian"
+msgstr "意大利语"
+
+msgid "portuguese"
+msgstr "葡萄牙"
+
+msgid "russian"
+msgstr "俄文"
+
+msgid "chinese"
+msgstr "潮州"
+
+msgid "Required only letters"
+msgstr "要求只有字母"
+
+msgid "Required only Letters and Numbers"
+msgstr "要求只有字母和数字"
+
+msgid "Required only numbers"
+msgstr "要求只有其中的数字"
+
+msgid "Required a valid mail"
+msgstr "需要一个有效的邮件"
+
+msgid "this is required"
+msgstr "这是必须的"
+
+msgid "CAPTCHA Code"
+msgstr "验证码代码"
+
+msgid "Select file"
+msgstr "选择文件"
+
+msgid "Change"
+msgstr "变更"
+
+msgid "Remove"
+msgstr "删除"
+
+msgid "Select image"
+msgstr "选择图像"
+
+msgid "Sending"
+msgstr "正在发送"
+
+msgid ""
+"Fields section. Drag and Drop or just click to add to the preview section"
+msgstr "字段一节。拖放或只需单击要添加到预览部分"
+
+msgid ""
+"preview section. you can view how the fields will look like and you can "
+"change the settings on live mode  "
+msgstr "预览部分。您可以查看如何字段将会看起来像和您可以更改在实时模式设置"
+
+msgid "Tab title"
+msgstr "选项卡标题"
+
+msgid "Previous"
+msgstr "上一页"
+
+msgid "Next"
+msgstr "下一页"
+
+msgid "Form"
+msgstr "表单"
+
+msgid "Selected Field"
+msgstr "选定字段"
+
+msgid "Form settings. you can set all options related to the form"
+msgstr "窗体设置。您可以设置到窗体相关的所有选项"
+
+msgid "Form name"
+msgstr "Form Name"
+
+msgid "Options"
+msgstr "选项"
+
+msgid "preview"
+msgstr "预览...."
+
+msgid "setting section. you can change the submit mode between ajax and post"
+msgstr "设置部分。您可以更改 ajax 和职位之间的提交模式"
+
+msgid "skin section. you can change skin options of your form"
+msgstr "皮肤一节。您可以更改您的窗体的外观选项"
+
+msgid "Skin"
+msgstr "皮肤"
+
+msgid "wizard section. you can enable the wizard form and add many forms"
+msgstr "向导第一节。您可以启用向导窗体并添加多种形式"
+
+msgid "Wizard"
+msgstr "向导"
+
+msgid "email section. you can set mail options. e.g. the recipient mail"
+msgstr "通过电子邮件发送一节。您可以设置邮件选项。如收件人的邮件"
+
+msgid "Email"
+msgstr "电子邮件"
+
+msgid ""
+"submission section. you can modify the success message and other messages"
+msgstr "提交第一节。您可以修改成功消息和其它消息"
+
+msgid "On Submission"
+msgstr "在提交"
+
+msgid "Field name"
+msgstr "字段名"
+
+msgid ""
+"This is important to identify the field on reports and conditional logic"
+msgstr "这是重要的是确定字段在报告和条件逻辑"
+
+msgid "Type field name"
+msgstr "类型字段名称"
+
+msgid "Delete field selected"
+msgstr "删除所选字段"
+
+msgid "Are you sure?"
+msgstr "您确定吗？"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Yes"
+msgstr "好的"
+
+msgid "Label"
+msgstr "标签"
+
+msgid "Input"
+msgstr "输入"
+
+msgid "Help Block"
+msgstr "帮助块"
+
+msgid "Validators"
+msgstr "验证程序"
+
+msgid "Images"
+msgstr "图片"
+
+msgid "C.Logic"
+msgstr "C.Logic"
+
+msgid "Misc"
+msgstr "杂项"
+
+msgid "Save form"
+msgstr "保存窗体"
+
+msgid "You need to save the form before seeing the preview"
+msgstr "你需要在没有看到预览之前保存窗体"
+
+msgid "Preview for desktops"
+msgstr "预览桌面"
+
+msgid "Preview for tablets"
+msgstr "预览片"
+
+msgid "Preview for smartphone"
+msgstr "智能手机的预览"
+
+msgid "Import form"
+msgstr "导入窗体"
+
+msgid "The import has failed. press the accept button"
+msgstr "导入已失败。按接受按钮"
+
+msgid "Close"
+msgstr "关闭"
+
+msgid "Desktop"
+msgstr "桌面"
+
+msgid "Tablet"
+msgstr "平板"
+
+msgid "Smartphone"
+msgstr "智能手机"
+
+msgid "Load form"
+msgstr "加载窗体"
+
+msgid "Accept"
+msgstr "接受"
+
+msgid "Set Form name"
+msgstr "设置窗体名称"
+
+msgid "e.g. My custom form"
+msgstr "例如我自定义的窗体"
+
+msgid "Drag and Drop the fields to this area "
+msgstr "拖动并将字段放置到此区域"
+
+msgid "or just click the button fields to add it here "
+msgstr "或只需单击按钮字段以将其添加在这里"
+
+msgid "Code to export"
+msgstr "若要导出的代码"
+
+msgid "the exporting code is used for backuping your custom form"
+msgstr "出口的代码用于备份自定义窗体"
+
+msgid "Main fields"
+msgstr "主要领域"
+
+msgid "More fields"
+msgstr "更多的字段"
+
+msgid "Standard Fields"
+msgstr "标准字段"
+
+msgid "Text Box"
+msgstr "文本框"
+
+msgid "Text Area"
+msgstr "文本区域"
+
+msgid "Radio Button"
+msgstr "单选按钮"
+
+msgid "Check Box"
+msgstr "复选框"
+
+msgid "Select List"
+msgstr "选择列表"
+
+msgid "Select Multiple "
+msgstr "选择多个"
+
+msgid "Submit Button"
+msgstr "送出按鈕"
+
+msgid "Spinner"
+msgstr "Spinner"
+
+msgid "Slider"
+msgstr "幻灯片"
+
+msgid "Range"
+msgstr "范围"
+
+msgid "Grid System"
+msgstr "网格系统"
+
+msgid "1 Col"
+msgstr "1 上校"
+
+msgid "2 Cols"
+msgstr "2列"
+
+msgid "3 Cols"
+msgstr "3列"
+
+msgid "4 Cols"
+msgstr "4列"
+
+msgid "6 Cols"
+msgstr "6 cols"
+
+msgid "Additional Fields"
+msgstr "附加字段"
+
+msgid "Star rating"
+msgstr "星級"
+
+msgid "ReCaptcha"
+msgstr "验证码"
+
+msgid "Custom Html"
+msgstr "自定义HTML"
+
+msgid "Hidden Input"
+msgstr "隐藏的输入"
+
+msgid "Password"
+msgstr "密    码"
+
+msgid "Captcha"
+msgstr "驗證碼"
+
+msgid "Date Picker"
+msgstr "日期选择器"
+
+msgid "Prepend"
+msgstr "前置"
+
+msgid "Layout Elements"
+msgstr "布局元素"
+
+msgid "Divider"
+msgstr "分割线"
+
+msgid "Heading H1"
+msgstr "页眉 H1"
+
+msgid "Upload Fields"
+msgstr "上传字段"
+
+msgid "File Upload"
+msgstr "文件上传"
+
+msgid "Image Upload"
+msgstr "上传图片"
+
+msgid "Picker Fields"
+msgstr "选择器字段"
+
+msgid "Color Picker"
+msgstr "选色器"
+
+msgid "Time Picker"
+msgstr "时间选取器"
+
+msgid "Date and Time"
+msgstr "日期和时间"
+
+msgid "Prepend/Append Fields - Text Box"
+msgstr "前置/追加字段的文本框"
+
+msgid "Append"
+msgstr "附加"
+
+msgid "Prepend/Append"
+msgstr "预置将追加"
+
+msgid "Headings"
+msgstr "ཁ་བྱང་།"
+
+msgid "Heading H2"
+msgstr "页眉 H2"
+
+msgid "Heading H3"
+msgstr "页眉 H3"
+
+msgid "Heading H4"
+msgstr "页眉 H4"
+
+msgid "Heading H5"
+msgstr "页眉 H5"
+
+msgid "Heading H6"
+msgstr "页眉 H6"
+
+msgid "List forms."
+msgstr "列表窗体。"
+
+msgid "Add new form"
+msgstr "添加新窗体"
+
+msgid "Disable"
+msgstr "禁用"
+
+msgid "Enable"
+msgstr "启用"
+
+msgid "Delete"
+msgstr "删除"
+
+msgid "Duplicate"
+msgstr "复制"
+
+msgid "Name Form"
+msgstr "名称窗体"
+
+msgid "Copy and paste the shortcode to your desired page"
+msgstr "复制并粘贴到您所需的页面简码"
+
+msgid "Shortcode"
+msgstr "简码"
+
+msgid "Created"
+msgstr "创建"
+
+msgid "Status"
+msgstr "状态"
+
+msgid "Active"
+msgstr "有效"
+
+msgid "Inactive"
+msgstr "暂停"
+
+msgid "Edit and load your custom form"
+msgstr ""
+
+msgid "Edit"
+msgstr "编辑"
+
+msgid "Delete form"
+msgstr "删除表单"
+
+msgid "there is not forms. Add new one"
+msgstr "不是形式。添加新"
+
+msgid "List form information"
+msgstr "列表表单中的信息"
+
+msgid "there is no forms selected. select one at least"
+msgstr "那里是没有选择的形式。至少选择一个"
+
+msgid "Textbox label"
+msgstr "文本框标签"
+
+msgid "Textbox sublabel"
+msgstr "文本框 sublabel"
+
+msgid "Help block text"
+msgstr "帮助块文本"
+
+msgid "Show help block"
+msgstr "显示帮助区块"
+
+msgid "Text Font"
+msgstr "文本字体"
+
+msgid "Help block position"
+msgstr "帮助块位置"
+
+msgid "At bottom"
+msgstr "在底部"
+
+msgid "At Top"
+msgstr "顶部"
+
+msgid "Tooltip"
+msgstr "提示"
+
+msgid "Pop up"
+msgstr "弹出"
+
+msgid "Add"
+msgstr "添加"
+
+msgid "Clean"
+msgstr "简洁"
+
+msgid "Text"
+msgstr "文本"
+
+msgid "Place holder"
+msgstr "占位符"
+
+msgid "Color"
+msgstr "颜色"
+
+msgid "Font family"
+msgstr "字体族"
+
+msgid "Input value alignment"
+msgstr "输入的值的对齐方式"
+
+msgid "Left"
+msgstr "左"
+
+msgid "Center"
+msgstr "对中"
+
+msgid "Right"
+msgstr "右"
+
+msgid "Button alignment"
+msgstr "按钮对齐"
+
+msgid "Background"
+msgstr "背景"
+
+msgid "Background color"
+msgstr "背景颜色"
+
+msgid "Type"
+msgstr "商品数据"
+
+msgid "Solid"
+msgstr "实线"
+
+msgid "Gradient"
+msgstr "渐变色"
+
+msgid "Pick the color"
+msgstr "选取这种颜色"
+
+msgid "Start color"
+msgstr "起始颜色"
+
+msgid "End color"
+msgstr "结束颜色"
+
+msgid "Border"
+msgstr "边框"
+
+msgid "Border radius"
+msgstr "边框半径"
+
+msgid "Color (focus)"
+msgstr "颜色 （焦点）"
+
+msgid "border style"
+msgstr "边框样式"
+
+msgid "Dotted"
+msgstr "点线"
+
+msgid "Border width"
+msgstr "边框宽度"
+
+msgid "Divider bar Color"
+msgstr "分割线颜色"
+
+msgid "Settings label option"
+msgstr ""
+
+msgid "Add new option"
+msgstr "添加新的选项"
+
+msgid "Remove all options"
+msgstr "删除所有选项"
+
+msgid "Selected"
+msgstr "已选择"
+
+msgid "Block alignment"
+msgstr "块对齐"
+
+msgid "Block"
+msgstr "模块"
+
+msgid "Inline"
+msgstr "内嵌"
+
+msgid "Type label"
+msgstr "类型标签"
+
+msgid "option"
+msgstr "选项"
+
+msgid "Custom html content"
+msgstr "自定义内容"
+
+msgid "Minimum"
+msgstr "最低"
+
+msgid "Maximum"
+msgstr "最大"
+
+msgid "Default value"
+msgstr "默认值"
+
+msgid "Step"
+msgstr "步骤"
+
+msgid "Range 1"
+msgstr "1 范围"
+
+msgid "Range 2"
+msgstr "范围 2"
+
+msgid "Public key"
+msgstr "公开密钥加密"
+
+msgid "Secret key"
+msgstr "秘匙"
+
+msgid "Theme"
+msgstr "主题"
+
+msgid "Light"
+msgstr "加亮"
+
+msgid "Dark"
+msgstr "暗"
+
+msgid "Custom text color"
+msgstr "自定义的文本颜色"
+
+msgid "Custom Background color"
+msgstr "自定义背景图片颜色"
+
+msgid "Custom Behind lines"
+msgstr "自定义后面的行"
+
+msgid "Lines"
+msgstr "明细"
+
+msgid "Custom front lines"
+msgstr "自定义的前线"
+
+msgid "Distortion"
+msgstr "失真"
+
+msgid "Language"
+msgstr "语言"
+
+msgid "English"
+msgstr "英语"
+
+msgid "Spanish"
+msgstr "西班牙语"
+
+msgid "French"
+msgstr "法语"
+
+msgid "Italian"
+msgstr "意大利语"
+
+msgid "Japanese"
+msgstr ""
+
+msgid "Portuguese"
+msgstr "葡萄牙"
+
+msgid "Russian"
+msgstr "俄文"
+
+msgid "Chinese"
+msgstr "中文"
+
+msgid "Format"
+msgstr "རྣམ་པ།"
+
+msgid "Default"
+msgstr "默认"
+
+msgid "Text star 1"
+msgstr "文本星 1"
+
+msgid "Text star 2"
+msgstr "文本之星 2 号"
+
+msgid "Text star 3"
+msgstr "文本星 3"
+
+msgid "Text star 4"
+msgstr "文本星级 4"
+
+msgid "Text star 5"
+msgstr "文本星 5"
+
+msgid "Not rated text"
+msgstr "未分级的文本"
+
+msgid "Label text"
+msgstr "标签"
+
+msgid "Text Color"
+msgstr "文本颜色"
+
+msgid "Text Shadow"
+msgstr "文本阴影"
+
+msgid "horizontal"
+msgstr "水平的"
+
+msgid "vertical"
+msgstr "垂直的"
+
+msgid "blur"
+msgstr "蓝"
+
+msgid "Sub label"
+msgstr "子标签"
+
+msgid "Sublabel text"
+msgstr "Sublabel 文本"
+
+msgid "Text font"
+msgstr "文本字体"
+
+msgid "Text shadow"
+msgstr "文本阴影"
+
+msgid "x"
+msgstr "x"
+
+msgid "y"
+msgstr "y"
+
+msgid "Text Block"
+msgstr "文本块"
+
+msgid "Block position"
+msgstr "块位置"
+
+msgid "Top"
+msgstr "上"
+
+msgid "Bottom"
+msgstr "下"
+
+msgid "Show Block"
+msgstr "显示块"
+
+msgid "Help block"
+msgstr "帮助块"
+
+msgid "Help block alignment (temp - delete)"
+msgstr "帮助块对齐 （temp-删除）"
+
+msgid "Required"
+msgstr "必须的"
+
+msgid "Allow whitespace"
+msgstr "允许空格"
+
+msgid "Add validator"
+msgstr "添加验证程序"
+
+msgid "Validator configuration: "
+msgstr "验证配置："
+
+msgid "Less than"
+msgstr "文件小于"
+
+msgid "Default Message"
+msgstr "默认消息"
+
+msgid "Custom Error Message"
+msgstr "自定义错误消息"
+
+msgid "Alert position"
+msgstr "显示报警位置"
+
+msgid "Set required icon"
+msgstr "设置所需的图标"
+
+msgid "Choose required icon"
+msgstr "选择所需的图标"
+
+msgid "Required icon position"
+msgstr "所需的图标的位置"
+
+msgid "Before label"
+msgstr "之前的标签"
+
+msgid "After label"
+msgstr "之后的标签"
+
+msgid "Letters"
+msgstr "信件"
+
+msgid "Letter & Numbers"
+msgstr "字母 & 数"
+
+msgid "Only numbers"
+msgstr "请只使用数字"
+
+msgid "Greater than"
+msgstr "不等"
+
+msgid "Identical"
+msgstr "相同"
+
+msgid "Length"
+msgstr "长度"
+
+msgid "Validator: "
+msgstr "验证器："
+
+msgid "Translate error message "
+msgstr "翻译错误消息"
+
+msgid "Letters and Numbers"
+msgstr "字母和数字"
+
+msgid "Background Color"
+msgstr "背景颜色"
+
+msgid "Required icon"
+msgstr "必填的图标"
+
+msgid "Enable Conditional logic"
+msgstr "开启逻辑条件"
+
+msgid "Show"
+msgstr "显示"
+
+msgid "Hide"
+msgstr "隠藏"
+
+msgid "this field if"
+msgstr "显示此字段值"
+
+msgid "All"
+msgstr "全部"
+
+msgid "Any"
+msgstr "任意"
+
+msgid "of the following rule match"
+msgstr "下面的规则匹配的"
+
+msgid "Add new conditional Logic"
+msgstr "添加新的条件逻辑"
+
+msgid "Remove all"
+msgstr "全部移除"
+
+msgid "is"
+msgstr "IS"
+
+msgid "is not"
+msgstr "不是"
+
+msgid "greater than"
+msgstr "大於"
+
+msgid "less than"
+msgstr "小於"
+
+msgid "You are receiving a new form request"
+msgstr "您收到一个新的窗体请求"
+
+msgid "Form information"
+msgstr "表单中的信息"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Subject mail"
+msgstr "邮件主题"
+
+msgid "it is the title of the message. do not leave blank"
+msgstr "它是邮件的标题。不会留下空白"
+
+msgid "Here goes your subject mail"
+msgstr "在这里去你主题的邮件"
+
+msgid "Type subject"
+msgstr "键入主题"
+
+msgid "Recipient mail"
+msgstr "收件人的邮件"
+
+msgid ""
+"This is the recipient mail. if you leave it blank, admin mail will be taken"
+msgstr "这是收件人的邮件。如果你将它保留为空，将采取管理邮件"
+
+msgid "Type email address"
+msgstr "邮箱地址"
+
+msgid "this mail will receive a copy of the email"
+msgstr "这封邮件将接收的电子邮件的副本"
+
+msgid "Type CC mail"
+msgstr "CC 型邮件"
+
+msgid ""
+"this mail will receive a copy of the email without letting the others notice "
+"it"
+msgstr "这封邮件将接收的电子邮件的副本，不让其他人注意到它"
+
+msgid "Type BCC mail"
+msgstr "类型密件抄送邮件"
+
+msgid "Email Template"
+msgstr "邮件模板"
+
+msgid "Submit mode"
+msgstr "提交模式"
+
+msgid "Ajax mode when submitting form"
+msgstr "Ajax 模式时提交表单"
+
+msgid "You can switch the submit mode between POST and AJAX"
+msgstr "您可以切换后与 AJAX 提交模式"
+
+msgid "Import the backuped form"
+msgstr "导入备份窗体"
+
+msgid "Custom css"
+msgstr "自定义css"
+
+msgid "Additional css"
+msgstr "Additional CSS"
+
+msgid ""
+"This is not required. You can add extra css to your form. this will be added "
+"to css file "
+msgstr ""
+
+msgid "Additional javascript"
+msgstr "额外 JavaScript"
+
+msgid ""
+"This is not required. You can add extra javascript code or some script to "
+"your form."
+msgstr "这不是必需的。您可以将额外的 javascript 代码或一些脚本添加到表单中。"
+
+msgid ""
+"proceed with caution. if you put a wrong javascript code, the form will not "
+"work properly e.g. "
+msgstr "谨慎行事。如果你把错误的 javascript 代码，窗体将无法正常工作如"
+
+msgid "Text font size"
+msgstr "文本字体大小"
+
+msgid "Select font size"
+msgstr "选择字体大小"
+
+msgid "Custom width"
+msgstr "自定义 Logo 宽度"
+
+msgid "Max width"
+msgstr "最大宽度"
+
+msgid "Custom padding"
+msgstr "自定义填充"
+
+msgid "Padding top"
+msgstr "顶部填充"
+
+msgid "Padding right"
+msgstr "右填充"
+
+msgid "Padding bottom"
+msgstr "下填充"
+
+msgid "Padding left"
+msgstr "左填充"
+
+msgid "Background image"
+msgstr "背景图片"
+
+msgid "Update Image"
+msgstr "上传图片"
+
+msgid "Box Shadow"
+msgstr "盒阴影"
+
+msgid "Success! Form was sent successfully."
+msgstr "成功 ！表单已成功发送。"
+
+msgid "Success Message"
+msgstr "成功提示信息"
+
+msgid "Enable wizard forms"
+msgstr "启用向导窗体"
+
+msgid "Tabs management"
+msgstr "选项卡管理"
+
+msgid "Add new"
+msgstr "添加新的"
+
+msgid "Type tab title"
+msgstr "类型选项卡标题"
+
+msgid "Skin tab"
+msgstr "皮肤选项卡"
+
+msgid "Active Mode"
+msgstr "激活模式"
+
+msgid "Title color"
+msgstr "标题颜色"
+
+msgid "Number text color"
+msgstr "号码颜色"
+
+msgid "Inactive mode"
+msgstr "非活动模式"
+
+msgid "Text color"
+msgstr "文字颜色"
+
+msgid "Tab container "
+msgstr "选项卡上的容器"
+
+msgid "Textarea label"
+msgstr "文本标签"
+
+msgid "Textarea sublabel"
+msgstr ""
+
+msgid "Type your heading H1 here"
+msgstr "键入您的标题 H1 在这里"
+
+msgid "Type your heading H2 here"
+msgstr "键入您的标题 H2 在这里"
+
+msgid "Type your heading H3 here"
+msgstr "键入您的标题 H3 在这里"
+
+msgid "Type your heading H4 here"
+msgstr "键入您的标题 H4 在这里"
+
+msgid "Type your heading H5 here"
+msgstr "键入您的标题 H5 在这里"
+
+msgid "Type your heading H6 here"
+msgstr "键入您的标题 H6 在这里"
+
+msgid "Custom report"
+msgstr "自定义报表"
+
+msgid "Select your custom fields to be shown on list report"
+msgstr "选择要显示在列表报告您自定义字段"
+
+msgid "Save Changes"
+msgstr "保存更改"
+
+msgid "Entry information"
+msgstr "输入信息"
+
+msgid "Submitted form data"
+msgstr "提交的表单数据"
+
+msgid "Additional info"
+msgstr "附加信息"
+
+msgid "Date"
+msgstr "日期"
+
+msgid "IP"
+msgstr "IP"
+
+msgid "Client PC info"
+msgstr "客户端 PC 信息"
+
+msgid "Form URL"
+msgstr "URL形式"
+
+msgid "Export to PDF"
+msgstr "导出到PDF"
+
+msgid "List Records."
+msgstr ""
+
+msgid "Export to csv"
+msgstr "导出至 csv"
+
+msgid "Show detail"
+msgstr "显示明细数据"
+
+msgid "View chart"
+msgstr ""
+
+msgid "Global Settings"
+msgstr "全局设置"
+
+msgid "Save changes"
+msgstr "保存更改"
+
+msgid "Loading"
+msgstr "加载中"
+
+msgid "Tour guide info"
+msgstr "旅游指南信息"
+
+msgid "there is not tour guide for this page. press the accept button"
+msgstr "不是此页面的导游。按接受按钮"
+
+msgid "Success! Updated successfully"
+msgstr ""
+
+msgid "Toggle navigation"
+msgstr "切换导航"
+
+msgid "Forms"
+msgstr "表格"
+
+msgid "New"
+msgstr "新建"
+
+msgid "Save"
+msgstr "保存"
+
+msgid "List forms"
+msgstr "列表窗体"
+
+msgid "Templates"
+msgstr "模板"
+
+msgid "Contact us"
+msgstr "بىز بىلەن ئالاقىلىشىڭ"
+
+msgid "Newsletter"
+msgstr "新闻简报"
+
+msgid "Survey Questionnaire"
+msgstr "调查问卷"
+
+msgid "Online event registration"
+msgstr "在线事件注册"
+
+msgid "Reservation Request"
+msgstr ""
+
+msgid "Purchase Order - Point Of Sale"
+msgstr "采购订单-销售点"
+
+msgid "Website Design Request"
+msgstr "网站设计要求"
+
+msgid "Job Application"
+msgstr "求职申请"
+
+msgid "CV Submission"
+msgstr "简历提交"
+
+msgid "Order form"
+msgstr ""
+
+msgid "wizard form"
+msgstr "向导窗体"
+
+msgid "All fields"
+msgstr "全部字段"
+
+msgid "Conditional Logic"
+msgstr "开启逻辑条件"
+
+msgid "Custom skin"
+msgstr "自定义外观"
+
+msgid "Preview"
+msgstr "预览"
+
+msgid "desktop"
+msgstr "桌面"
+
+msgid "smartphone"
+msgstr "智能手机"
+
+msgid "List all Forms"
+msgstr "请列出所有形式"
+
+msgid "List by Form"
+msgstr "按窗体的列表"
+
+msgid "Custom Report"
+msgstr "自定义报告"
+
+msgid "Guided tour"
+msgstr "使用指南"

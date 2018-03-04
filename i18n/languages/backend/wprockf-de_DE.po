@@ -1,0 +1,1237 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rocket form\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: softdiscover <info@softdiscover.com>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.7.5\n"
+
+msgid "List by form"
+msgstr "Liste nach Form"
+
+msgid "Records"
+msgstr "Aufzeichnungen"
+
+msgid "Import"
+msgstr "Importieren"
+
+msgid "Export"
+msgstr "Exportieren"
+
+msgid "Charts"
+msgstr "Charts"
+
+msgid "Settings"
+msgstr "Einstellungen"
+
+msgid "Styles Font Menu requires WordPress 3.4 or newer."
+msgstr "Schriftart im Menü Stile ist WordPress 3.4 oder höher erforderlich."
+
+msgid "Please update."
+msgstr "Bitte aktualisieren."
+
+msgid "Success! your form was submitted"
+msgstr "Erfolg! das Formular wurde vorgelegt"
+
+msgid "warning! Form was not submitted"
+msgstr "Warnung! Form wurde nicht gesendet,"
+
+msgid "New form request"
+msgstr "Neue Formularanfrage"
+
+msgid "warning! data not submitted"
+msgstr "Warnung! nicht übermittelten Daten"
+
+msgid "english"
+msgstr "Englisch"
+
+msgid "spanish"
+msgstr "Spanisch"
+
+msgid "french"
+msgstr "Französisch"
+
+msgid "german"
+msgstr "Deutsch"
+
+msgid "italian"
+msgstr "Italienisch"
+
+msgid "portuguese"
+msgstr "Portugiesisch"
+
+msgid "russian"
+msgstr "RUSSISCH"
+
+msgid "chinese"
+msgstr "Chinesisch"
+
+msgid "Required only letters"
+msgstr "Benötigt nur Buchstaben"
+
+msgid "Required only Letters and Numbers"
+msgstr "Benötigt nur Buchstaben und Zahlen"
+
+msgid "Required only numbers"
+msgstr "Benötigt nur Zahlen"
+
+msgid "Required a valid mail"
+msgstr "Benötigte eine gültige E-Mail"
+
+msgid "this is required"
+msgstr "Dies ist erforderlich,"
+
+msgid "CAPTCHA Code"
+msgstr "CAPTCHA Code"
+
+msgid "Select file"
+msgstr "Datei selektieren"
+
+msgid "Change"
+msgstr "Ändern"
+
+msgid "Remove"
+msgstr "Entfernen"
+
+msgid "Select image"
+msgstr "Bild auswählen"
+
+msgid "Sending"
+msgstr "sende"
+
+msgid ""
+"Fields section. Drag and Drop or just click to add to the preview section"
+msgstr ""
+"Abschnitt \"Fields\". Drag und Drop oder klicken Sie einfach auf die "
+"Vorschau-Abschnitt hinzu"
+
+msgid ""
+"preview section. you can view how the fields will look like and you can "
+"change the settings on live mode  "
+msgstr ""
+"Vorschau-Abschnitt. Sie können anzeigen, wie die Felder aussehen werden und "
+"Sie können die Einstellungen auf live-Modus"
+
+msgid "Tab title"
+msgstr "Titel Reiter"
+
+msgid "Previous"
+msgstr "Zurück"
+
+msgid "Next"
+msgstr "Weiter"
+
+msgid "Form"
+msgstr "Formular"
+
+msgid "Selected Field"
+msgstr "Ausgewählter Bereich"
+
+msgid "Form settings. you can set all options related to the form"
+msgstr ""
+"Formulareinstellungen. Sie können alle Optionen in Bezug auf die Form "
+"festlegen."
+
+msgid "Form name"
+msgstr "Formularname"
+
+msgid "Options"
+msgstr "Optionen"
+
+msgid "preview"
+msgstr "Vorschau"
+
+msgid "setting section. you can change the submit mode between ajax and post"
+msgstr ""
+"Abschnitt festlegen. Sie können den Senden-Modus zwischen Ajax und Post "
+"ändern."
+
+msgid "skin section. you can change skin options of your form"
+msgstr "Haut-Abschnitt. Sie können Haut-Optionen des Formulars ändern."
+
+msgid "Skin"
+msgstr "Haut"
+
+msgid "wizard section. you can enable the wizard form and add many forms"
+msgstr ""
+"Assistenten-Abschnitt. Sie können ermöglichen dem Assistentenformular und "
+"viele Formen hinzufügen"
+
+msgid "Wizard"
+msgstr "Zauberer"
+
+msgid "email section. you can set mail options. e.g. the recipient mail"
+msgstr ""
+"Email-Abschnitt. Sie können e-Mail-Optionen festlegen. z.B. den empfangenden "
+"e-Mail"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid ""
+"submission section. you can modify the success message and other messages"
+msgstr ""
+"Einreichung Abschnitt. können Sie die Erfolgsmeldung und andere Nachrichten "
+"ändern"
+
+msgid "On Submission"
+msgstr "Gegen Vorlage"
+
+msgid "Field name"
+msgstr "Feldname"
+
+msgid ""
+"This is important to identify the field on reports and conditional logic"
+msgstr ""
+"Dies ist wichtig, um das Feld zu berichten und bedingte Logik zu "
+"identifizieren"
+
+msgid "Type field name"
+msgstr "Feldname Typ"
+
+msgid "Delete field selected"
+msgstr "Ausgewählte Feld löschen"
+
+msgid "Are you sure?"
+msgstr "Sind Sie sicher?"
+
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "Label"
+msgstr "Label"
+
+msgid "Input"
+msgstr "Eingang"
+
+msgid "Help Block"
+msgstr "Help Block"
+
+msgid "Validators"
+msgstr "Validatoren"
+
+msgid "Images"
+msgstr "Bilder"
+
+msgid "C.Logic"
+msgstr "C.Logic"
+
+msgid "Misc"
+msgstr "Verschiedenes"
+
+msgid "Save form"
+msgstr "Form speichern"
+
+msgid "You need to save the form before seeing the preview"
+msgstr "Sie müssen das Formular zu speichern, bevor man die Vorschau"
+
+msgid "Preview for desktops"
+msgstr "Vorschau für desktops"
+
+msgid "Preview for tablets"
+msgstr "Vorschau für Tabletten"
+
+msgid "Preview for smartphone"
+msgstr "Vorschau für smartphone"
+
+msgid "Import form"
+msgstr "Formular importieren"
+
+msgid "The import has failed. press the accept button"
+msgstr ""
+"Der Import ist fehlgeschlagen. Drücken Sie die Schaltfläche \"akzeptieren\""
+
+msgid "Close"
+msgstr "Schliessen"
+
+msgid "Desktop"
+msgstr "Desktop"
+
+msgid "Tablet"
+msgstr "Tablet"
+
+msgid "Smartphone"
+msgstr "Smartphone"
+
+msgid "Load form"
+msgstr "Formular zu laden"
+
+msgid "Accept"
+msgstr "Annehmen"
+
+msgid "Set Form name"
+msgstr "Set Formularname"
+
+msgid "e.g. My custom form"
+msgstr "z.B. Mein benutzerdefiniertes Formular"
+
+msgid "Drag and Drop the fields to this area "
+msgstr "Drag & Drop die Felder zu diesem Bereich"
+
+msgid "or just click the button fields to add it here "
+msgstr ""
+"oder klicken Sie einfach auf die Schaltfläche Felder, um diese hier "
+"hinzufügen"
+
+msgid "Code to export"
+msgstr "Code exportieren"
+
+msgid "the exporting code is used for backuping your custom form"
+msgstr ""
+"der ausführende Code wird verwendet für Backup Ihres benutzerdefinierten "
+"Formulars"
+
+msgid "Main fields"
+msgstr "Hauptbereiche"
+
+msgid "More fields"
+msgstr "Weitere Felder"
+
+msgid "Standard Fields"
+msgstr "Standardfelder"
+
+msgid "Text Box"
+msgstr "Textfeld"
+
+msgid "Text Area"
+msgstr "Text mehrzeilig"
+
+msgid "Radio Button"
+msgstr "Radio-Button"
+
+msgid "Check Box"
+msgstr "Check Box"
+
+msgid "Select List"
+msgstr "Liste auswählen"
+
+msgid "Select Multiple "
+msgstr "Wählen Sie mehrere"
+
+msgid "Submit Button"
+msgstr "Submit-Button"
+
+msgid "Spinner"
+msgstr "Spinner"
+
+msgid "Slider"
+msgstr "Slider"
+
+msgid "Range"
+msgstr "Bereich"
+
+msgid "Grid System"
+msgstr "Grid-System"
+
+msgid "1 Col"
+msgstr "1 Spalte"
+
+msgid "2 Cols"
+msgstr "2 Cols"
+
+msgid "3 Cols"
+msgstr "3 Cols"
+
+msgid "4 Cols"
+msgstr "4 Cols"
+
+msgid "6 Cols"
+msgstr "6 Cols"
+
+msgid "Additional Fields"
+msgstr "Zusätzliche Felder"
+
+msgid "Star rating"
+msgstr "'<g id=\"20\">Sternbewertung'</g>,"
+
+msgid "ReCaptcha"
+msgstr "reCaptcha"
+
+msgid "Custom Html"
+msgstr "Benutzerdefinierte Html"
+
+msgid "Hidden Input"
+msgstr "Verborgene Eingabe"
+
+msgid "Password"
+msgstr "Passwort"
+
+msgid "Captcha"
+msgstr "Captcha"
+
+msgid "Date Picker"
+msgstr "Datum Wähler"
+
+msgid "Prepend"
+msgstr "Voranstellen"
+
+msgid "Layout Elements"
+msgstr "Layout-Elemente"
+
+msgid "Divider"
+msgstr "Trennlinie"
+
+msgid "Heading H1"
+msgstr "Überschrift H1"
+
+msgid "Upload Fields"
+msgstr "Upload Felder"
+
+msgid "File Upload"
+msgstr "Datei-Upload"
+
+msgid "Image Upload"
+msgstr "Bilder-Upload-Pfad"
+
+msgid "Picker Fields"
+msgstr "Picker Felder"
+
+msgid "Color Picker"
+msgstr "Farbauswahl"
+
+msgid "Time Picker"
+msgstr "Zeit Picker"
+
+msgid "Date and Time"
+msgstr "Datum und Uhrzeit"
+
+msgid "Prepend/Append Fields - Text Box"
+msgstr "Voranstellen/hängen Sie Felder an - Textfeld"
+
+msgid "Append"
+msgstr "Anhängen"
+
+msgid "Prepend/Append"
+msgstr "Voranstellen/Anhängen"
+
+msgid "Headings"
+msgstr "Überschriften"
+
+msgid "Heading H2"
+msgstr "Überschrift H2"
+
+msgid "Heading H3"
+msgstr "Überschrift H3"
+
+msgid "Heading H4"
+msgstr "Überschrift H4"
+
+msgid "Heading H5"
+msgstr "Überschrift H5"
+
+msgid "Heading H6"
+msgstr "Überschrift H6"
+
+msgid "List forms."
+msgstr "Liste Formen."
+
+msgid "Add new form"
+msgstr "Neues Formular erstellen"
+
+msgid "Disable"
+msgstr "Deaktivieren"
+
+msgid "Enable"
+msgstr "Aktivieren"
+
+msgid "Delete"
+msgstr "Löschen"
+
+msgid "Duplicate"
+msgstr "Duplizieren"
+
+msgid "Name Form"
+msgstr "Namensform"
+
+msgid "Copy and paste the shortcode to your desired page"
+msgstr ""
+"Kopieren Sie und fügen Sie die Kurzwahlnummer zu Ihrer gewünschten Seite"
+
+msgid "Shortcode"
+msgstr "Shortcode"
+
+msgid "Created"
+msgstr "Veröffentlicht am"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Active"
+msgstr "Aktiv"
+
+msgid "Inactive"
+msgstr "Inaktive"
+
+msgid "Edit and load your custom form"
+msgstr "Bearbeiten Sie und laden Sie Ihres benutzerdefinierten Formulars"
+
+msgid "Edit"
+msgstr "Bearbeiten"
+
+msgid "Delete form"
+msgstr "Formular löschen"
+
+msgid "there is not forms. Add new one"
+msgstr "Es gibt keine Formulare. Neue hinzufügen"
+
+msgid "List form information"
+msgstr "Liste Formularinformationen"
+
+msgid "there is no forms selected. select one at least"
+msgstr "Es gibt keine Formulare ausgewählt. Wählen Sie eine mindestens"
+
+msgid "Textbox label"
+msgstr "TextBox-Etikett"
+
+msgid "Textbox sublabel"
+msgstr "TextBox-sublabel"
+
+msgid "Help block text"
+msgstr "Block Hilfetext"
+
+msgid "Show help block"
+msgstr "Hilfe Block"
+
+msgid "Text Font"
+msgstr "Text Schriftart"
+
+msgid "Help block position"
+msgstr "Hilfe Blockposition"
+
+msgid "At bottom"
+msgstr "Im Grunde"
+
+msgid "At Top"
+msgstr "Oben"
+
+msgid "Tooltip"
+msgstr "Tooltip"
+
+msgid "Pop up"
+msgstr "Pop-up"
+
+msgid "Add"
+msgstr "Hinzufügen"
+
+msgid "Clean"
+msgstr "Glatt"
+
+msgid "Text"
+msgstr "Text"
+
+msgid "Place holder"
+msgstr "Sitzkartenhalter"
+
+msgid "Color"
+msgstr "Farbe"
+
+msgid "Font family"
+msgstr "Schriftfamilie"
+
+msgid "Input value alignment"
+msgstr "Eingabewert Ausrichtung"
+
+msgid "Left"
+msgstr "Links"
+
+msgid "Center"
+msgstr "Mitte"
+
+msgid "Right"
+msgstr "Rechts"
+
+msgid "Button alignment"
+msgstr "Button Ausrichtung"
+
+msgid "Background"
+msgstr "Hintergrund"
+
+msgid "Background color"
+msgstr "Hintergrundfarbe"
+
+msgid "Type"
+msgstr "Typ"
+
+msgid "Solid"
+msgstr "Durchgehend"
+
+msgid "Gradient"
+msgstr "Gradient"
+
+msgid "Pick the color"
+msgstr "Wählen Sie die Farbe"
+
+msgid "Start color"
+msgstr "Startfarbe"
+
+msgid "End color"
+msgstr "Endfarbe"
+
+msgid "Border"
+msgstr "Rahmen"
+
+msgid "Border radius"
+msgstr "Border Radius"
+
+msgid "Color (focus)"
+msgstr "Farbe (Focus)"
+
+msgid "border style"
+msgstr "Rahmenstil"
+
+msgid "Dotted"
+msgstr "Gepunktet"
+
+msgid "Border width"
+msgstr "Randbreite"
+
+msgid "Divider bar Color"
+msgstr "Farbe Trennbalken"
+
+msgid "Settings label option"
+msgstr "Bezeichnung Einstellungswahl"
+
+msgid "Add new option"
+msgstr "Option hinzufügen"
+
+msgid "Remove all options"
+msgstr "Entfernen Sie alle Optionen"
+
+msgid "Selected"
+msgstr "Ausgewählt"
+
+msgid "Block alignment"
+msgstr "Block-Ausrichtung"
+
+msgid "Block"
+msgstr "Abweisen"
+
+msgid "Inline"
+msgstr "Aufzählung"
+
+msgid "Type label"
+msgstr "Typenschild"
+
+msgid "option"
+msgstr "Option:"
+
+msgid "Custom html content"
+msgstr "Benutzerdefinierte html-Inhalt"
+
+msgid "Minimum"
+msgstr "Min. Anzahl an Bildern bei einem neuen Eintrag"
+
+msgid "Maximum"
+msgstr "Maximal"
+
+msgid "Default value"
+msgstr "Standardwert"
+
+msgid "Step"
+msgstr "Schritt"
+
+msgid "Range 1"
+msgstr "Bereich 1"
+
+msgid "Range 2"
+msgstr "Bereich 2"
+
+msgid "Public key"
+msgstr "Öffentlicher Schlüssel"
+
+msgid "Secret key"
+msgstr "geheimer Schlüssel"
+
+msgid "Theme"
+msgstr "Motiv"
+
+msgid "Light"
+msgstr "Hell"
+
+msgid "Dark"
+msgstr "Dunkel"
+
+msgid "Custom text color"
+msgstr "Benutzerdefinierte Farbe"
+
+msgid "Custom Background color"
+msgstr "Benutzerdefinierte Hintergrundfarbe"
+
+msgid "Custom Behind lines"
+msgstr "Custom hinter Linie"
+
+msgid "Lines"
+msgstr "Linien"
+
+msgid "Custom front lines"
+msgstr "Benutzerdefinierte Frontlinien"
+
+msgid "Distortion"
+msgstr "Verzerrung"
+
+msgid "Language"
+msgstr "Sprache"
+
+msgid "English"
+msgstr "Englisch"
+
+msgid "Spanish"
+msgstr "Spanisch"
+
+msgid "French"
+msgstr "Französisch"
+
+msgid "Italian"
+msgstr "Italienisch"
+
+msgid "Japanese"
+msgstr "Japanisch"
+
+msgid "Portuguese"
+msgstr "Portugiesisch"
+
+msgid "Russian"
+msgstr "Russisch"
+
+msgid "Chinese"
+msgstr "Chinesisch"
+
+msgid "Format"
+msgstr "Format"
+
+msgid "Default"
+msgstr "Standard"
+
+msgid "Text star 1"
+msgstr "Text-Star 1"
+
+msgid "Text star 2"
+msgstr "Text-Star 2"
+
+msgid "Text star 3"
+msgstr "Text 3 Sterne"
+
+msgid "Text star 4"
+msgstr "Text-Star 4"
+
+msgid "Text star 5"
+msgstr "Text-Star 5"
+
+msgid "Not rated text"
+msgstr "Nicht bewertet text"
+
+msgid "Label text"
+msgstr "Bezeichnungstext"
+
+msgid "Text Color"
+msgstr "Textfarbe"
+
+msgid "Text Shadow"
+msgstr "Textschatten"
+
+msgid "horizontal"
+msgstr "Horizontale"
+
+msgid "vertical"
+msgstr "V"
+
+msgid "blur"
+msgstr "verwischen"
+
+msgid "Sub label"
+msgstr "Sub-label"
+
+msgid "Sublabel text"
+msgstr "Englisch text"
+
+msgid "Text font"
+msgstr "Text Schriftart"
+
+msgid "Text shadow"
+msgstr "Textschatten"
+
+msgid "x"
+msgstr "x"
+
+msgid "y"
+msgstr "Y"
+
+msgid "Text Block"
+msgstr "Textblock"
+
+msgid "Block position"
+msgstr "Block-position"
+
+msgid "Top"
+msgstr "Oben"
+
+msgid "Bottom"
+msgstr "Unten"
+
+msgid "Show Block"
+msgstr "Show-Block"
+
+msgid "Help block"
+msgstr "Hilfe-block"
+
+msgid "Help block alignment (temp - delete)"
+msgstr "Helfen Block Ausrichtung (temp - löschen)"
+
+msgid "Required"
+msgstr "Erforderlich"
+
+msgid "Allow whitespace"
+msgstr "Leerzeichen zulassen"
+
+msgid "Add validator"
+msgstr "Hinzufügen von validator"
+
+msgid "Validator configuration: "
+msgstr "Validator-Konfiguration:"
+
+msgid "Less than"
+msgstr "weniger als"
+
+msgid "Default Message"
+msgstr "Standardmeldung"
+
+msgid "Custom Error Message"
+msgstr "Benutzerdefinierte Fehlermeldung"
+
+msgid "Alert position"
+msgstr "Alert position"
+
+msgid "Set required icon"
+msgstr "Erforderliche Icon set"
+
+msgid "Choose required icon"
+msgstr "Wählen Sie erforderliche Symbol"
+
+msgid "Required icon position"
+msgstr "Position erforderlichen icon"
+
+msgid "Before label"
+msgstr "Vor label"
+
+msgid "After label"
+msgstr "Nach Label"
+
+msgid "Letters"
+msgstr "Buchstaben"
+
+msgid "Letter & Numbers"
+msgstr "Brief & Zahlen"
+
+msgid "Only numbers"
+msgstr "Nur Zahlen"
+
+msgid "Greater than"
+msgstr "Größer als"
+
+msgid "Identical"
+msgstr "Identische"
+
+msgid "Length"
+msgstr "Länge"
+
+msgid "Validator: "
+msgstr "Validator:"
+
+msgid "Translate error message "
+msgstr "Fehlermeldung zu übersetzen"
+
+msgid "Letters and Numbers"
+msgstr "Buchstaben und Zahlen"
+
+msgid "Background Color"
+msgstr "Hintergrundfarbe"
+
+msgid "Required icon"
+msgstr "Erforderliche Symbol"
+
+msgid "Enable Conditional logic"
+msgstr "Bedingten Logik zu aktivieren"
+
+msgid "Show"
+msgstr "Anzeigen"
+
+msgid "Hide"
+msgstr "Ausblenden"
+
+msgid "this field if"
+msgstr "Dieses Feld, wenn"
+
+msgid "All"
+msgstr "Alle"
+
+msgid "Any"
+msgstr "Alle"
+
+msgid "of the following rule match"
+msgstr "die folgende Regel-Match"
+
+msgid "Add new conditional Logic"
+msgstr "Neuen bedingten Logik hinzufügen"
+
+msgid "Remove all"
+msgstr "Alle entfernen"
+
+msgid "is"
+msgstr "is"
+
+msgid "is not"
+msgstr "ist nicht"
+
+msgid "greater than"
+msgstr "größer als"
+
+msgid "less than"
+msgstr "weniger als"
+
+msgid "You are receiving a new form request"
+msgstr "Sie erhalten eine neue Form-Anforderung"
+
+msgid "Form information"
+msgstr "Formularinformationen"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Subject mail"
+msgstr "Thema e-Mail"
+
+msgid "it is the title of the message. do not leave blank"
+msgstr "Es ist der Titel der Nachricht. lassen Sie sich nicht leer"
+
+msgid "Here goes your subject mail"
+msgstr "Hier kommt Ihre e-Mail Betreff"
+
+msgid "Type subject"
+msgstr "Typ Thema"
+
+msgid "Recipient mail"
+msgstr "Empfänger E-Mail"
+
+msgid ""
+"This is the recipient mail. if you leave it blank, admin mail will be taken"
+msgstr ""
+"Dies ist die Empfänger-e-Mail. Wenn Sie es leer lassen, wird Admin e-Mail "
+"durchgeführt"
+
+msgid "Type email address"
+msgstr "E-Mail Adresse"
+
+msgid "this mail will receive a copy of the email"
+msgstr "Diese Mail wird eine Kopie der e-Mail erhalten."
+
+msgid "Type CC mail"
+msgstr "Typ CC Mail"
+
+msgid ""
+"this mail will receive a copy of the email without letting the others notice "
+"it"
+msgstr ""
+"Diese Mail wird eine Kopie der e-Mail erhalten, ohne dass die anderen es "
+"merken"
+
+msgid "Type BCC mail"
+msgstr "Typ BCC-e-mail"
+
+msgid "Email Template"
+msgstr "E-Mail-Vorlage"
+
+msgid "Submit mode"
+msgstr "Modus senden"
+
+msgid "Ajax mode when submitting form"
+msgstr "Ajax-Modus bei der Einreichung von Form"
+
+msgid "You can switch the submit mode between POST and AJAX"
+msgstr "Sie können den Senden-Modus zwischen der POST und AJAX wechseln."
+
+msgid "Import the backuped form"
+msgstr "Das gebackupten Formular importieren"
+
+msgid "Custom css"
+msgstr "Benutzerdefinierte CSS"
+
+msgid "Additional css"
+msgstr "Zusätzliches CSS"
+
+msgid ""
+"This is not required. You can add extra css to your form. this will be added "
+"to css file "
+msgstr ""
+"Dies ist nicht erforderlich. Sie können zusätzliche CSS zum Formular "
+"hinzufügen. dies wird zu CSS-Datei hinzugefügt werden"
+
+msgid "Additional javascript"
+msgstr "Zusätzliche javascript"
+
+msgid ""
+"This is not required. You can add extra javascript code or some script to "
+"your form."
+msgstr ""
+"Dies ist nicht erforderlich. Sie können zusätzliche Javascript-Code oder ein "
+"Skript zu Ihrem Formular hinzufügen."
+
+msgid ""
+"proceed with caution. if you put a wrong javascript code, the form will not "
+"work properly e.g. "
+msgstr ""
+"gehen Sie mit Vorsicht. Wenn Sie einen falsche Javascript-Code einfügen, "
+"wird das Formular nicht z.B. korrekt"
+
+msgid "Text font size"
+msgstr "Textschriftgröße"
+
+msgid "Select font size"
+msgstr "Wählen Sie die Schriftgrößen"
+
+msgid "Custom width"
+msgstr "Benutzerdefinierte Breite"
+
+msgid "Max width"
+msgstr "Maximale Breite"
+
+msgid "Custom padding"
+msgstr "Benutzerdefinierte Polsterung"
+
+msgid "Padding top"
+msgstr "Innenabstand Oben"
+
+msgid "Padding right"
+msgstr "Innenabstand Rechts"
+
+msgid "Padding bottom"
+msgstr "Innenabstand Unten"
+
+msgid "Padding left"
+msgstr "Innenabstand Rechts"
+
+msgid "Background image"
+msgstr "Hintergrundbild"
+
+msgid "Update Image"
+msgstr "Bild aktualisieren"
+
+msgid "Box Shadow"
+msgstr "Box Schatten"
+
+msgid "Success! Form was sent successfully."
+msgstr "Erfolg! Formular wurde erfolgreich gesendet."
+
+msgid "Success Message"
+msgstr "Erfolgsmeldung"
+
+msgid "Enable wizard forms"
+msgstr "Assistentenformularen aktivieren"
+
+msgid "Tabs management"
+msgstr "Tabs-Verwaltung"
+
+msgid "Add new"
+msgstr "Neu hinzufügen"
+
+msgid "Type tab title"
+msgstr "Type Tab-Reiter"
+
+msgid "Skin tab"
+msgstr "Registerkarte \"Haut\""
+
+msgid "Active Mode"
+msgstr "Aktiv-Modus"
+
+msgid "Title color"
+msgstr "Titel Schriftart"
+
+msgid "Number text color"
+msgstr "Anzahl Textfarbe"
+
+msgid "Inactive mode"
+msgstr "Inaktiven Modus"
+
+msgid "Text color"
+msgstr "Text Farbe"
+
+msgid "Tab container "
+msgstr "Tab Container"
+
+msgid "Textarea label"
+msgstr "Textarea-Etikett"
+
+msgid "Textarea sublabel"
+msgstr "Textarea Sublabel"
+
+msgid "Type your heading H1 here"
+msgstr "Geben Sie Ihre Überschrift H1 hier"
+
+msgid "Type your heading H2 here"
+msgstr "Geben Sie Ihre Überschrift H2"
+
+msgid "Type your heading H3 here"
+msgstr "Geben Sie Ihre Überschrift H3"
+
+msgid "Type your heading H4 here"
+msgstr "Geben Sie Ihre Überschrift H4"
+
+msgid "Type your heading H5 here"
+msgstr "Geben Sie Ihre Überschrift H5"
+
+msgid "Type your heading H6 here"
+msgstr "Geben Sie Ihre Überschrift H6"
+
+msgid "Custom report"
+msgstr "Benutzerdefinierte Berichte"
+
+msgid "Select your custom fields to be shown on list report"
+msgstr "Wählen Sie Ihre benutzerdefinierte Felder im Bericht gezeigt werden"
+
+msgid "Save Changes"
+msgstr "Speichern"
+
+msgid "Entry information"
+msgstr "Einreiseinformationen"
+
+msgid "Submitted form data"
+msgstr "Formulardaten"
+
+msgid "Additional info"
+msgstr "Weitere Informationen"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "IP"
+msgstr "IP"
+
+msgid "Client PC info"
+msgstr "Client-PC info"
+
+msgid "Form URL"
+msgstr "Formular-URL"
+
+msgid "Export to PDF"
+msgstr "In PDF exportieren"
+
+msgid "List Records."
+msgstr "Liste von Datensätzen."
+
+msgid "Export to csv"
+msgstr "Export in csv"
+
+msgid "Show detail"
+msgstr "Details anzeigen"
+
+msgid "View chart"
+msgstr "Chart anzeigen"
+
+msgid "Global Settings"
+msgstr "Globale Einstellungen"
+
+msgid "Save changes"
+msgstr "Änderungen speichern"
+
+msgid "Loading"
+msgstr "Lade..."
+
+msgid "Tour guide info"
+msgstr "Tour-Guide-Infos"
+
+msgid "there is not tour guide for this page. press the accept button"
+msgstr ""
+"Reiseleiter für diese Seite gibt es nicht. Drücken Sie die Schaltfläche "
+"\"akzeptieren\""
+
+msgid "Success! Updated successfully"
+msgstr "Erfolg! Erfolgreich aktualisiert"
+
+msgid "Toggle navigation"
+msgstr "Navigation umschalten"
+
+msgid "Forms"
+msgstr "Formulare"
+
+msgid "New"
+msgstr "Neu"
+
+msgid "Save"
+msgstr "Speichern"
+
+msgid "List forms"
+msgstr "Listenformulare"
+
+msgid "Templates"
+msgstr "Vorlagen"
+
+msgid "Contact us"
+msgstr "Sprechen Sie uns an!"
+
+msgid "Newsletter"
+msgstr "Newsletter"
+
+msgid "Survey Questionnaire"
+msgstr "Erhebungsfragebogen"
+
+msgid "Online event registration"
+msgstr "Online Event-Registrierung"
+
+msgid "Reservation Request"
+msgstr "Reservierungsanfrage"
+
+msgid "Purchase Order - Point Of Sale"
+msgstr "Bestellung - Point Of Sale"
+
+msgid "Website Design Request"
+msgstr "Website Design Anfrage"
+
+msgid "Job Application"
+msgstr "akzeptiert!"
+
+msgid "CV Submission"
+msgstr "CV Submission"
+
+msgid "Order form"
+msgstr "Bestellformular"
+
+msgid "wizard form"
+msgstr "Assistentenformular"
+
+msgid "All fields"
+msgstr "Alle Felder"
+
+msgid "Conditional Logic"
+msgstr "Bedingungen für die Anzeige"
+
+msgid "Custom skin"
+msgstr "Schaltflächenoberfläche benutzerdefiniert"
+
+msgid "Preview"
+msgstr "Vorschau"
+
+msgid "desktop"
+msgstr "Desktop"
+
+msgid "smartphone"
+msgstr "Smartphone"
+
+msgid "List all Forms"
+msgstr "Liste aller Formen"
+
+msgid "List by Form"
+msgstr "Liste von Form"
+
+msgid "Custom Report"
+msgstr "Benutzerdefinierte Berichte"
+
+msgid "Guided tour"
+msgstr "Führung"
