@@ -1,0 +1,20 @@
+{
+    "name": "Softdiscover/Zigaform-WP-Form-Builder-Lite",
+    "type": "plugin",
+    "description": "Zigaform - Wordpress Form Builder Lite",
+    "homepage": "https://github.com/Softdiscover/Zigaform-WP-Form-Builder-Lite",
+    "license": "LGPL-2.1",
+    "authors": [
+        {
+            "name": "Softdiscover",
+            "email": "info@softdiscover.com"
+        }
+    ],
+    "autoload": {
+      
+    },
+    "require": {
+        "php": ">=5.3.0",
+       
+    }
+}
