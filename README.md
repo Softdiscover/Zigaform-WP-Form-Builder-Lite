@@ -12,6 +12,8 @@ Ultimate Wordpress Form Builder plugin . See more at https://softdiscover.github
 **Requires PHP:** 5.3  
 **Stable tag:** 3.9.4.2 
 
+[![Build Status](https://img.shields.io/travis/Turbo87/webpack-notifier.svg)](https://travis-ci.org/Turbo87/webpack-notifier)
+
 Create forms with total control using this powerful drag and drop form builder which makes you to build contact forms or any form on few minutes.
 
 ## Description ## 
