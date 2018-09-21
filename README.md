@@ -7,8 +7,8 @@ Ultimate Wordpress Form Builder plugin . See more at https://softdiscover.github
 **License:** GPLv3  
 **License URI:** http://www.gnu.org/licenses/gpl.html  
 **Tags:** form, forms, contact form, custom form, form builder, form creator, form manager, form creation, contact forms, custom forms, forms builder, forms creator, forms manager, forms creation, form administration  
-**Requires at least:** 3.6  
-**Tested up to:** 4.9  
+**Requires at least:** Wordpress 3.6  
+**Tested up to:** Wordpress 4.9  
 **Requires PHP:** 5.3  
 **Stable tag:** 3.9.4.2 
 
