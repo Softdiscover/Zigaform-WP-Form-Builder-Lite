@@ -1,17 +1,20 @@
 # Zigaform - Wordpress Form Builder Lite
-Contributors: softdiscover
-Donate link: https://codecanyon.net/item/zigaform-wordpress-form-builder/11057544?ref=Softdiscover
-License: GPLv3
-License URI: http://www.gnu.org/licenses/gpl.html
-Tags: form, forms, contact form, custom form, form builder, form creator, form manager, form creation, contact forms, custom forms, forms builder, forms creator, forms manager, forms creation, form administration,
-Requires at least: 3.6
-Tested up to: 4.9
-Requires PHP: 5.3
-Stable tag: 3.7.6.5
+
+Ultimate Wordpress Form Builder plugin . See more at https://softdiscover.github.io/Zigaform-WP-Form-Builder-Lite/
+
+**Contributors:** softdiscover
+**Donate link:** https://codecanyon.net/item/zigaform-wordpress-form-builder/11057544?ref=Softdiscover
+**License:** GPLv3
+**License URI:** http://www.gnu.org/licenses/gpl.html
+**Tags:** form, forms, contact form, custom form, form builder, form creator, form manager, form creation, contact forms, custom forms, forms builder, forms creator, forms manager, forms creation, form administration,
+**Requires at least:** 3.6
+**Tested up to:** 4.9
+**Requires PHP:** 5.3
+**Stable tag:** 3.7.6.5
 
 Create forms with total control using this powerful drag and drop form builder which makes you to build contact forms or any form on few minutes.
 
-== Description ==
+** Description **
 
 **Zigaform** is a flexible and Ultimate free WordPress form plugin which allows you to build responsive forms on few minutes using a simple yet powerful drag-and-drop form creator. Also it provides amazing form elements and skin live customizer that makes you to build professional forms. Also it provides an administration section where site admins manage tons of form options. It's really easy to customize and you don't need programming skills. 
 
@@ -19,7 +22,37 @@ Zigaform is a 100% mobile responsive contact form solution, so your contact form
 
 https://www.youtube.com/watch?v=AfXxAIk3D1w&w=532&rel=0
 
-### Features (Lite version):
+
+** Installation **
+
+The latest version of the Zigaform plugin ZIP file can be [**downloaded**](https://downloads.wordpress.org/plugin/zigaform-form-builder-lite.zip) from https://softdiscover.github.io/Zigaform-WP-Form-Builder-Lite/
+
+There are 2 ways to install. Please follow the steps below: 
+
+= Via backend of WordPress =
+1. After your download, log into backend of your WordPress 
+2. Go to Plugins > Add New
+3. Click the Upload link
+4. Click Browse and locate the file that you downloaded and click *Install Now*
+5. After Wordpress has finished unpacking the file click on *Activate Plugin*
+6. After the plugin has been activated you will notice a new menu item on the left hand navigation labelled Zigaform Lite
+
+= Via FTP =
+1. After your download unzip `Zigaform Form Builder Lite` from your download .zip
+2. Open your FTP client
+3. Upload the `Zigaform Form Builder Lite` folder to /wp-content/plugins/ directory on your hosting server
+4. Activate the Zigaform Form Builder plugin through the 'Plugins' menu in WordPress
+5. Configure the plugin by going to the `Zigaform Form Builder` menu that appears in your admin menu
+
+if you have problems with installation, check here the documentation: 
+https://kb.softdiscover.com/docs/zigaform-wordpress-form-builder/installation/via-wordpress-panel/
+
+
+## Support ##
+
+Please see https://wordpress-form-builder.zigaform.com/#contact for more details.
+
+## Features (Lite version):## 
 * drag and drop or click to add fields to form
 * Drag-and-drop reordering
 * Full skin customizer with live preview
@@ -362,28 +395,7 @@ Their support is immaculate and the zigaform is one of the best you’ll find fo
 
 == Tags ==
 ajax forms, responsive, form generator, form creator, form, forms, simple forms, professional forms, quick forms, form builder, form designs, contact form, validation, form builder, contact form builder, form manager, form creator, form generator, contact us, contact forms plugin, contact form plugin, bootstrap forms, jquery forms, ajax, confirmation mail, template,captcha,redirect,mailchimp,recaptcha,html,avada,bootstrap,builder,design,database,divi,email,embed,email template,elementor,conditional email,layout,marketing,validation,visual composer,bootstrap layout,magento,bootstrap with validation,bootstrap example,laravel,drupal,codeigniter,codecanyon,drag and drop,commerce,for word,in salesforce,oracle,salesforce,with conditional logic,builder form,news,maps
-
-
-
-== Installation ==
-
-There are 2 ways to install. Please follow the steps below: 
-
-= Via FTP =
-1. After your download unzip `Zigaform Form Builder Lite` from your download .zip
-2. Open your FTP client
-3. Upload the `Zigaform Form Builder` folder to /wp-content/plugins/ directory on your hosting server
-4. Activate the Zigaform Form Builder plugin through the 'Plugins' menu in WordPress
-5. Configure the plugin by going to the `Zigaform Form Builder` menu that appears in your admin menu
-
-= Via backend of WordPress =
-1. After your download, log into backend of your WordPress 
-2. Go to Plugins > Add New
-3. Click the Upload link
-4. Click Browse and locate the file that you downloaded and click *Install Now*
-5. After Wordpress has finished unpacking the file click on *Activate Plugin*
-6. After the plugin has been activated you will notice a new menu item on the left hand navigation labelled Zigaform Lite
-
+ 
 == Frequently Asked Questions ==
 
 = How do I create a form? =
@@ -410,47 +422,8 @@ https://www.youtube.com/watch?v=W3yTkaDD4Mk&w=532&rel=0
 10. smartphone preview of the form
 
 
-== Changelog ==
+## Change Log ##
 
-= 2.6 =
-* First release
-= 2.9.6 =
-* issue when refresh preview
-= 2.9.6.7 =
-* issue when color picker
-= 2.9.8 =
-* added more features
-= 3 =
-* new admin panel skin
-* custom radio button and checkbox
-= 3.1.3 =
-* issue related to bootstrap conflict
-= 3.2 =
-* new features
-= 3.4 =
-* variables in modal
-= 3.7.6.5 =
-* minor changes
-
-== Upgrade Notice ==
-
-= 2.6 =
-* First release
-= 2.6 =
-* issue when refresh preview
-= 2.9.6.7 =
-* issue when color picker
-= 2.9.8 =
-* added more features
-= 3 =
-* new admin panel skin
-* custom radio button and checkbox
-= 3.1.3 =
-* issue related to bootstrap conflict
-= 3.2 =
-* new features
-= 3.4 =
-* variables in modal
-= 3.7.6.5 =
-* minor changes
+### 3.9.4.2
+- first release of lite version
 
