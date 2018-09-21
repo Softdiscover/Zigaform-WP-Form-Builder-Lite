@@ -14,7 +14,7 @@ Ultimate Wordpress Form Builder plugin . See more at https://softdiscover.github
 
 Create forms with total control using this powerful drag and drop form builder which makes you to build contact forms or any form on few minutes.
 
-## Description## 
+## Description ## 
 
 **Zigaform** is a flexible and Ultimate free WordPress form plugin which allows you to build responsive forms on few minutes using a simple yet powerful drag-and-drop form creator. Also it provides amazing form elements and skin live customizer that makes you to build professional forms. Also it provides an administration section where site admins manage tons of form options. It's really easy to customize and you don't need programming skills. 
 
@@ -52,7 +52,7 @@ https://kb.softdiscover.com/docs/zigaform-wordpress-form-builder/installation/vi
 
 Please see https://wordpress-form-builder.zigaform.com/#contact for more details.
 
-## Features (Lite version):## 
+## Features (Lite version): ## 
 * drag and drop or click to add fields to form
 * Drag-and-drop reordering
 * Full skin customizer with live preview
