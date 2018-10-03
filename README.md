@@ -1,31 +1,16 @@
 # Zigaform - Wordpress Form Builder Lite
 
-Ultimate Wordpress Form Builder plugin . See more at https://softdiscover.github.io/Zigaform-WP-Form-Builder-Lite/
-
-**Contributors:** softdiscover  
-**Donate link:** https://codecanyon.net/item/zigaform-wordpress-form-builder/11057544?ref=Softdiscover  
-**License:** GPLv3  
-**License URI:** http://www.gnu.org/licenses/gpl.html  
-**Tags:** form, forms, contact form, custom form, form builder, form creator, form manager, form creation, contact forms, custom forms, forms builder, forms creator, forms manager, forms creation, form administration  
-**Requires at least:** Wordpress 3.6  
-**Tested up to:** Wordpress 4.9  
-**Requires PHP:** 5.3  
-**Stable tag:** 3.9.4.2 
-
-Create forms with total control using this powerful drag and drop form builder which makes you to build contact forms or any form on few minutes.
-
-## Description ## 
-
 **Zigaform** is a flexible and Ultimate free WordPress form plugin which allows you to build responsive forms on few minutes using a simple yet powerful drag-and-drop form creator. Also it provides amazing form elements and skin live customizer that makes you to build professional forms. Also it provides an administration section where site admins manage tons of form options. It's really easy to customize and you don't need programming skills. 
 
 Zigaform is a 100% mobile responsive contact form solution, so your contact forms will always look great on all devices (mobile, tablet, laptop, and desktop).
 
 https://www.youtube.com/watch?v=AfXxAIk3D1w&w=532&rel=0
 
+See more at https://softdiscover.github.io/Zigaform-WP-Form-Builder-Lite/
 
 ## Installation ## 
 
-The latest version of the Zigaform plugin ZIP file can be [**downloaded**](https://downloads.wordpress.org/plugin/zigaform-form-builder-lite.zip) from https://softdiscover.github.io/Zigaform-WP-Form-Builder-Lite/
+The latest version of the Zigaform plugin ZIP file can be [**downloaded**](https://github.com/Softdiscover/Zigaform-WP-Form-Builder-Lite/zipball/master) from https://softdiscover.github.io/Zigaform-WP-Form-Builder-Lite/
 
 There are 2 ways to install. Please follow the steps below: 
 
@@ -52,7 +37,7 @@ https://kb.softdiscover.com/docs/zigaform-wordpress-form-builder/installation/vi
 
 Please see https://wordpress-form-builder.zigaform.com/#contact for more details.
 
-## Features (Lite version): ## 
+## Features : ## 
 * drag and drop or click to add fields to form
 * Drag-and-drop reordering
 * Full skin customizer with live preview
@@ -342,7 +327,7 @@ Our system can easily handle many form elements with conditional logic.
 Zigaform is quickly becoming a popular choice among users and developers. It allows you to quickly create beautiful contact forms and comes with all the goodies you would need from a premium form builder.
 
  
-** FREE SUPPORT AND UPGRADES. [PRO VERSION]
+** FREE SUPPORT AND UPGRADES.  
 ------------------------------------------------------------
 
 Their support is immaculate and the zigaform is one of the best you’ll find for WordPress. Highly recommended for WP users of all backgrounds & experience levels.
