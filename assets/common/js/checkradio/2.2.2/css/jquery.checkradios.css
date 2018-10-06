@@ -71,7 +71,7 @@
 	
 	position:relative;
 	display:inline-block;
-	vertical-align:middle;
+        vertical-align:middle;
 	text-align:center;
 	
 	border:2px solid #333;
@@ -85,7 +85,7 @@
 	-webkit-box-sizing: content-box;
 	box-sizing: content-box!important;
 	
-	overflow:hidden;
+	 overflow:hidden; 
 	
 
 

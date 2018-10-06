@@ -1,11 +1,11 @@
 <?php
 /*
  * Plugin Name: Zigaform Form Builder Lite
- * Plugin URI: http://wordpress-form-builder.zigaform.com/
- * Description: The ZigaForm Wordpress form builder makes you build forms in few steps.
- * Version: 3.7.6.5
+ * Plugin URI: https://wordpress-form-builder.zigaform.com/
+ * Description: The ZigaForm Wordpress form builder is the ultimate form creation solution for Wordpress.
+ * Version: 3.9.4.8
  * Author: ZigaForm.Com
- * Author URI: http://wordpress-form-builder.zigaform.com/
+ * Author URI: https://wordpress-form-builder.zigaform.com/
  */
 
 if (!defined('ABSPATH')) {
@@ -29,7 +29,7 @@ if (!class_exists('UiformFormbuilder')) {
          * @var string
          * @since 1.0
          */
-        public $version = '3.7.6.5';
+        public $version = '3.9.4.8';
 
         /**
          * The minimal required version of WordPress for this plug-in to function correctly.
@@ -157,15 +157,16 @@ if (!class_exists('UiformFormbuilder')) {
             $this->define('UIFORM_FORMS_DIR', dirname(__FILE__));
             $this->define('UIFORM_FORMS_URL', plugins_url() . '/'.UIFORM_FOLDER);
             $this->define('UIFORM_FORMS_LIBS', UIFORM_FORMS_DIR . '/libraries');
-            $this->define('UIFORM_DEBUG', 0);
             $this->define('UIFORM_DEMO', 0);
             $this->define('UIFORM_DEV', 0);
+            
+             
+            $this->define('ZIGAFORM_F_LITE', 1);
+            $this->define('UIFORM_DEBUG', 0);
             if (UIFORM_DEBUG == 1) {
                 error_reporting(E_ALL);
                 ini_set('display_errors', 1);
             }
-             
-            $this->define('ZIGAFORM_F_LITE', 1);
             
         }
 
@@ -356,8 +357,8 @@ if (!class_exists('UiformFormbuilder')) {
                                 `flag_status` smallint(5) DEFAULT 1,
                                 `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
                                 `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                                `created_ip` varchar(20) DEFAULT NULL,
-                                `updated_ip` varchar(20) DEFAULT NULL,
+                                `created_ip` varchar(50) DEFAULT NULL,
+                                `updated_ip` varchar(50) DEFAULT NULL,
                                 `created_by` int(6) DEFAULT NULL,
                                 `updated_by` int(6) DEFAULT NULL,
                                 PRIMARY KEY (`add_name`, `fmb_id`) 
@@ -380,8 +381,8 @@ if (!class_exists('UiformFormbuilder')) {
                             `flag_status` smallint(5) DEFAULT 1,
                             `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
                             `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                            `created_ip` varchar(20) DEFAULT NULL,
-                            `updated_ip` varchar(20) DEFAULT NULL,
+                            `created_ip` varchar(50) DEFAULT NULL,
+                            `updated_ip` varchar(50) DEFAULT NULL,
                             `created_by` int(6) DEFAULT NULL,
                             `updated_by` int(6) DEFAULT NULL,
                             `log_id` int(5) NOT NULL,
@@ -400,14 +401,72 @@ if (!class_exists('UiformFormbuilder')) {
                    
                     if ((string)$wpdb->get_var("SHOW TABLES LIKE '$tbname'") === $tbname) {
                         
-                        $row= @$wpdb->get_var("SHOW COLUMNS FROM " . $tbname . " LIKE `add_id`");
+                        try {
+                            $row= $wpdb->get_var("SHOW COLUMNS FROM " . $tbname . " LIKE 'add_id'");
+                        } catch (Exception $e) {
+                            $row = array();
+                        }
                         if (!empty($row)) {
-                            $sql = "ALTER TABLE " . $tbname . " DROP COLUMN `add_id`;";
+                            $sql = "ALTER TABLE " . $tbname . " DROP COLUMN 'add_id';";
                             $wpdb->query($sql);
                         }
                     }
                     
                 }
+                //below 3.7
+                if (!$install_ver || version_compare($install_ver,"3.7.7", '<')) {
+                    
+                        $charset = '';
+                        if( $wpdb->has_cap( 'collation' ) ){
+                            if( !empty($wpdb->charset) )
+                                $charset = "DEFAULT CHARACTER SET $wpdb->charset";
+                            if( !empty($wpdb->collate) )
+                                $charset .= " COLLATE $wpdb->collate";
+                        }
+
+
+                        $tbname = $wpdb->prefix . "uiform_addon";
+
+                        if ((string)$wpdb->get_var("SHOW TABLES LIKE '$tbname'") != $tbname) {
+
+                             //addon
+                            $sql="CREATE  TABLE IF NOT EXISTS $tbname (
+                                `add_name` varchar(45) NOT NULL DEFAULT '',
+                                `add_title` text ,
+                                `add_info` text ,
+                                `add_system` smallint(5) DEFAULT NULL,
+                                `add_hasconfig` smallint(5) DEFAULT NULL,
+                                `add_version` varchar(45)  DEFAULT NULL,
+                                `add_icon` text ,
+                                `add_installed` smallint(5) DEFAULT NULL,
+                                `add_order` int(5) DEFAULT NULL,
+                                `add_params` text ,
+                                `add_log` text ,
+                                `addonscol` varchar(45) DEFAULT NULL,
+                                `flag_status` smallint(5)  DEFAULT 1,
+                                `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+                                `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                                `created_ip` varchar(50)  DEFAULT NULL,
+                                `updated_ip` varchar(50)  DEFAULT NULL,
+                                `created_by` int(6) DEFAULT NULL,
+                                `updated_by` int(6) DEFAULT NULL,
+                                `add_xml` text ,
+                                `add_load_back` smallint(5) DEFAULT NULL,
+                                `add_load_front` smallint(5) DEFAULT NULL,
+                                `is_field` smallint(5) DEFAULT NULL,
+                                PRIMARY KEY (`add_name`) 
+                            ) " . $charset . ";";
+
+                             $wpdb->query($sql);
+
+                              if(ZIGAFORM_F_LITE!=1){
+                             $sql="INSERT INTO $tbname VALUES ('func_anim', 'Animation effect', 'Animation effects to fields', 1, 1, NULL, NULL, NULL, 1, NULL, NULL, NULL, 1, '0000-00-00 00:00:00', '2018-01-31 10:35:14', NULL, NULL, NULL, NULL, NULL, 1, 1, 1);";
+                             $wpdb->query($sql);
+                              }
+
+
+                        }   
+                    }
                 
                  update_option("uifmfbuild_version", $version);
             }

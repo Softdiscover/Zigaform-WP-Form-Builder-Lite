@@ -25,7 +25,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                                         <h4><?php echo __('Online documentation', 'FRocket_admin');?></h4>
                                         <p>
                                            <a target="_blank"
-                                               href="http://support.softdiscover.com/documentation/zigaform-wp-form-builder/"
+                                               href="https://kb.softdiscover.com/docs/zigaform-wordpress-form-builder/"
                                                class="btn btn-info btn-lg">
                                               <?php echo __('User guide', 'FRocket_admin');?>
                                             </a>
@@ -49,7 +49,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                                         <h4><?php echo __('Get help from professionals', 'FRocket_admin');?></h4>
                                         <p>
                                            <a target="_blank"
-                                               href="http://wordpress-form-builder.zigaform.com/#contact"
+                                               href="https://wordpress-form-builder.zigaform.com/#contact"
                                                class="btn btn-info btn-lg">
                                               <?php echo __('Get support', 'FRocket_admin');?>
                                             </a>

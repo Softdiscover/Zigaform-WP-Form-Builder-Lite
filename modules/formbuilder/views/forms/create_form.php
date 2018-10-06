@@ -99,54 +99,64 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
     </div>
 <div id="uiform-editing-mbuttons">
         <?php if(UIFORM_DEBUG===1){?>
-            <a 
-            class="sfdc-btn  sfdc-btn-primary"
-            id="uiform-set-button-checkData2"
-            onclick="javascript:rocketform.testing_summbox();"
-            href="javascript:void(0);">
-                <?php echo __('test','FRocket_admin'); ?> 
-            </a> 
-            <a 
-                class="sfdc-btn  sfdc-btn-primary"
-                id="uiform-set-button-checkData"
-                onclick="javascript:rocketform.printmaindata();"
-                href="javascript:void(0);">
-                    <?php echo __('Show data','FRocket_admin'); ?> 
-        </a> 
+     <div class="zgfm-mbuttons-single">
+        <div class="sfdc-dropdown">
+            <button class="sfdc-btn sfdc-btn-primary sfdc-dropdown-toggle" type="button" id="about-us" data-toggle="sfdc-dropdown" aria-haspopup="true" aria-expanded="false">
+            <?php echo __('Dev Options','FRocket_admin'); ?> 
+            <span class="sfdc-caret"></span>
+            </button>
+            <ul class="sfdc-dropdown-menu" aria-labelledby="about-us">
+            <li><a onclick="javascript:rocketform.testing_summbox();"
+            href="javascript:void(0);"><?php echo __('test','FRocket_admin'); ?> </a></li>
+            <li><a onclick="javascript:rocketform.printmaindata();"
+                href="javascript:void(0);"><?php echo __('Show data','FRocket_admin'); ?> </a></li>
+           <li><a onclick="javascript:zgfm_back_fld_options.generate_field_htmldata();"
+                href="javascript:void(0);"><?php echo __('Generate field static data','FRocket_admin'); ?> </a></li>
+            
+            </ul>
+            </div>
+    </div>
+     
         <?php }?>
-        <a 
-            class="sfdc-btn sfdc-btn-primary"
-            onclick="javascript:rocketform.rollback_openModal();"
-            href="javascript:void(0);">
-          <i class="fa fa-retweet" aria-hidden="true"></i> <?php echo __('Rollback','FRocket_admin');?>
-            </a>
-        <a 
-            class="sfdc-btn sfdc-btn-primary"
-            onclick="javascript:rocketform.variables_openModal();"
-            href="javascript:void(0);">
-          <i class="fa fa-table" aria-hidden="true"></i> <?php echo __('Variables','FRocket_admin');?>
-            </a>
-       <?php if(ZIGAFORM_F_LITE===0){?>     
-        <a 
-            class="sfdc-btn sfdc-btn-primary"
-            onclick="javascript:rocketform.clogicgraph_popup();"
-            href="javascript:void(0);">
-           <span class="fa fa fa-map"></span> <?php echo __('C.Logic Graph','FRocket_admin');?>
-            </a>
-        <?php }?>
+    <div class="zgfm-mbuttons-single">
+            <div class="sfdc-dropdown">
+            <button class="sfdc-btn sfdc-btn-primary sfdc-dropdown-toggle" type="button" id="about-us" data-toggle="sfdc-dropdown" aria-haspopup="true" aria-expanded="false">
+            <?php echo __('Options','FRocket_admin'); ?> 
+            <span class="sfdc-caret"></span>
+            </button>
+            <ul class="sfdc-dropdown-menu" aria-labelledby="about-us">
+            <li><a onclick="javascript:rocketform.rollback_openModal();"
+            href="javascript:void(0);"><i class="fa fa-retweet" aria-hidden="true"></i> <?php echo __('Rollback','FRocket_admin');?></a></li>
+            <li><a onclick="javascript:rocketform.variables_openModal();"
+            href="javascript:void(0);"><i class="fa fa-table" aria-hidden="true"></i> <?php echo __('Variables','FRocket_admin');?></a></li>
+            <?php if(ZIGAFORM_F_LITE===0){?>     
+            <li><a onclick="javascript:rocketform.clogicgraph_popup();"
+            href="javascript:void(0);"><span class="fa fa fa-map"></span> <?php echo __('C.Logic Graph','FRocket_admin');?></a></li>
+            <?php }?>
+            
+            </ul>
+            </div>
+    </div>
+    <div class="zgfm-mbuttons-single">
         <a 
             class="sfdc-btn sfdc-btn-primary"
             onclick="javascript:rocketform.previewform_showForm(1);"
             href="javascript:void(0);">
            <span class="fa fa-desktop"></span> <?php echo __('preview','FRocket_admin');?>
         </a> 
-        <a 
+    </div>
+    <div class="zgfm-mbuttons-single">
+         <a 
             class="sfdc-btn sfdc-btn-success"
             id="uiform-set-button-save"
             onclick="javascript:rocketform.saveForm();"
             href="javascript:void(0);">
             <i class="fa fa-floppy-o"></i> <?php echo __('Save form','FRocket_admin'); ?> 
         </a> 
+    </div>
+     
+        
+       
     </div>
     </div>
    
@@ -157,3 +167,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
 <!-- modals -->    
     <?php include('create_form_modals.php');?>
 <!--\ modals -->
+<!-- modals -->    
+    <?php include('fieldoptions_data.php');?>
+<!--\ modals -->
+

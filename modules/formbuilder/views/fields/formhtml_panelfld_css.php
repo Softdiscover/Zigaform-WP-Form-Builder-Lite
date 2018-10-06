@@ -113,8 +113,8 @@ ob_start();
 }
 
 
-<?php include('formhtml_common_css1.php');?>
-<?php include('formhtml_addon_css.php');?>
+<?php //include('formhtml_common_css1.php');?>
+<?php //include('formhtml_addon_css.php');?>
 <?php
 $cntACmp = ob_get_contents();
  /* remove comments */

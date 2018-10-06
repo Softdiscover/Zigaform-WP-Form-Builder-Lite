@@ -9,7 +9,7 @@
  * @author    Softdiscover <info@softdiscover.com>
  * @copyright 2015 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
- * @link      http://wordpress-form-builder.zigaform.com/
+ * @link      https://wordpress-form-builder.zigaform.com/
  */
 if (!defined('ABSPATH')) {exit('No direct script access allowed');}
 ?>
@@ -403,8 +403,8 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
     </div>
     </div>
 </div>
-<div id="uifm_frm_wiz_templates" style="display:none;">
-    <div data-tab-nro="" class="uifm_frm_skin_tab_content">
+ <script type="text/html" id="tmpl-zgfm-frm-wiz-templates">
+	 <div data-tab-nro="" class="uifm_frm_skin_tab_content">
                            <div class="sfdc-row">
                                <div class="sfdc-col-sm-8">
                                    <div class="sfdc-form-group">
@@ -425,4 +425,5 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                                </div>
                            </div>
                        </div>
-</div>
+</script>
+ 

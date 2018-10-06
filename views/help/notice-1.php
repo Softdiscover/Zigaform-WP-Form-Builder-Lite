@@ -5,11 +5,26 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
             <p><?php echo __( 'Hey, I noticed you created a contact form with Zigaform - that’s awesome! Could you please do me a BIG favor and give it a 5-star rating on WordPress to help us spread the word and boost our motivation?', 'FRocket_admin' ); ?></p>
             <p><strong>&#8594;<?php echo __( 'Laranginha<br>Zigaform team', 'FRocket_admin' ); ?></strong></p>
             <p>
-                    <a href="https://wordpress.org/support/plugin/zigaform-form-builder-lite/reviews/?filter=5#new-post"
+                
+                <?php if(ZIGAFORM_F_LITE){
+                    ?>
+                      <a href="https://wordpress.org/support/plugin/zigaform-form-builder-lite/reviews/?filter=5#new-post"
                        class="zgfm-notice-1-dismiss-opt zgfm-notice-1-rate-trigger"
                        target="_blank"
                        rel="noopener"
-                        >
+                        >   
+                <?php
+                }else{
+                    ?>
+                      <a href="https://codecanyon.net/item/zigaform-wordpress-form-builder/reviews/11057544"
+                       class="zgfm-notice-1-dismiss-opt zgfm-notice-1-rate-trigger"
+                       target="_blank"
+                       rel="noopener"
+                        >  
+                <?php
+                }?>
+                
+                   
                            <?php echo __( 'Ok, you deserve it', 'FRocket_admin' ); ?></a><br>
                     <a href="#" 
                        class="zgfm-notice-1-dismiss-opt" 

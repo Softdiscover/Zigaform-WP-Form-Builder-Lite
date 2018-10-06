@@ -9,7 +9,7 @@
  * @author    Softdiscover <info@softdiscover.com>
  * @copyright 2015 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
- * @link      http://wordpress-form-builder.zigaform.com/
+ * @link      https://wordpress-form-builder.zigaform.com/
  */
 if (!defined('ABSPATH')) {exit('No direct script access allowed');}
 $default_template='';
@@ -196,7 +196,26 @@ $default_template = ob_get_clean();
             </div>
         </div>
     </div>
-            
+    <div class="sfdc-row">
+                    <div class="sfdc-col-sm-12">
+                        <div class="sfdc-form-group">
+                                <label for="uifm_frm_email_replyto"><?php echo __('Reply To','FRocket_admin'); ?> <i>(<?php echo __('Choose field to put as reply in mail message','FRocket_admin'); ?>)</i>
+                                <a href="javascript:void(0);"
+                                data-toggle="tooltip" data-placement="right" data-original-title="<?php echo __('if you leave it blank, reply option will not be taken it','FRocket_admin'); ?>"
+                                ><span class="fa fa-question-circle"></span></a>
+                                </label>
+                                <select 
+                                    class="sfdc-form-control"
+                                    data-uifm-firstoption="<?php echo __('Select Field','FRocket_admin'); ?>"
+                                    placeholder="Choose mail"
+                                    id="uifm_frm_email_replyto"
+                                        name="uifm_frm_email_replyto" >
+                                         <option value="" selected><?php echo __('Select Field or leave it blank','FRocket_admin'); ?></option>
+                                </select>
+
+                        </div>
+                    </div>
+                </div>        
     <div class="sfdc-row">
             <div class="sfdc-col-sm-12">
                 <div class="sfdc-form-group">
@@ -306,6 +325,22 @@ $default_template = ob_get_clean();
                                         id="uifm_frm_email_usr_bcc"
                                         name="uifm_frm_email_usr_bcc" 
                                         placeholder="<?php echo __('user1@testmail.com,user2@testmail.com','FRocket_admin'); ?>"  class="sfdc-form-control">   
+                        </div>
+                    </div>
+                </div>
+                 
+                  <div class="sfdc-row">
+                    <div class="sfdc-col-sm-12">
+                        <div class="sfdc-form-group">
+                                <label for="uifm_frm_email_usr_replyto"><?php echo __('Reply To','FRocket_admin'); ?>
+                                <a href="javascript:void(0);"
+                                data-toggle="tooltip" data-placement="right" data-original-title="<?php echo __('if you leave it blank, reply option will not be taken it','FRocket_admin'); ?>"
+                                ><span class="fa fa-question-circle"></span></a>
+                                </label>
+                                <input type="text" 
+                                        id="uifm_frm_email_usr_replyto"
+                                        name="uifm_frm_email_usr_replyto" 
+                                        placeholder=""  class="sfdc-form-control">   
                         </div>
                     </div>
                 </div>

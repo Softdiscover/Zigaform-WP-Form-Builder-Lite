@@ -113,14 +113,28 @@ class Zigaform_b_notice {
             update_option('zgfm_b_activated', $activated);
             return;
         } 
- 
-        // after 7 days, add the message
-        $notice_url = 'https://wordpress.org/support/plugin/zigaform-form-builder-lite/reviews/?filter=5#new-post';
+        
+        
+         if(ZIGAFORM_F_LITE){
+                // after 7 days, add the message
+                $notice_url = 'https://wordpress.org/support/plugin/zigaform-form-builder-lite/reviews/?filter=5#new-post';
                 $notice_heading = esc_html__( "Thanks for using Zigaform!", "FRocket_admin" );
                 $notice_content = __( 'Hey, I noticed you created forms with Zigaform - that’s awesome! Could you please do me a BIG favor and give it a 5-star rating on WordPress to help us spread the word and boost our motivation?', 'FRocket_admin' );
                 $button_content1 = esc_html__( "Ok. you deserve it", "FRocket_admin" );
                 $button_content2 = esc_html__( "Nope, maybe later", "FRocket_admin" );
                 $button_content3 = esc_html__( "I already did", "FRocket_admin" );
+            }else{
+                // after 7 days, add the message
+                $notice_url = 'https://codecanyon.net/item/zigaform-wordpress-form-builder/reviews/11057544';
+                $notice_heading = esc_html__( "Thanks for using Zigaform!", "FRocket_admin" );
+                $notice_content = __( 'Hey, I noticed you created forms with Zigaform - that’s awesome! Could you please do me a BIG favor and give it a 5-star rating on Codencayon to help us spread the word and boost our motivation?', 'FRocket_admin' );
+                $button_content1 = esc_html__( "Ok. you deserve it", "FRocket_admin" );
+                $button_content2 = esc_html__( "Nope, maybe later", "FRocket_admin" );
+                $button_content3 = esc_html__( "I already did", "FRocket_admin" );
+            }
+        
+        
+        
             
         
         ?>

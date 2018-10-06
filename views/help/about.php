@@ -42,7 +42,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                                     </div>
                                     <?php }else{ ?>
                                     <div class="form-group">
-                                            <a href="https://codecanyon.net/item/zigaform-wordpress-form-builder/11057544?ref=Softdiscover"
+                                            <a href="https://codecanyon.net/item/zigaform-wordpress-form-builder/reviews/11057544"
                                                target="_blank">
                                                 <img id="zgfm-page-about-rate-icon" 
                                                src="<?php echo UIFORM_FORMS_URL;?>/assets/backend/image/about/zigaform-rate-icon.png">
@@ -74,7 +74,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                                             <?php
                                         $title = __("Create amazing WordPress forms with Zigaform", 'FRocket_admin');
                                         $summary = __("Ultimate wordpress form builder by zigaform.com", 'FRocket_admin');
-                                        $share_this_data = "st_url='http://wordpress-form-builder.zigaform.com/' st_title='{$title}' st_summary='{$summary}'";
+                                        $share_this_data = "st_url='https://wordpress-form-builder.zigaform.com/' st_title='{$title}' st_summary='{$summary}'";
                                         ?>
                                         <div id="zgfm-page-about-shbuttons" align="center">
                                             <span class='st_facebook_vcount' displayText='Facebook' <?php echo $share_this_data; ?> ></span>

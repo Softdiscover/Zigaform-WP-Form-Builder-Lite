@@ -9,7 +9,7 @@
  * @author    Softdiscover <info@softdiscover.com>
  * @copyright 2015 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
- * @link      http://wordpress-form-builder.zigaform.com/
+ * @link      https://wordpress-form-builder.zigaform.com/
  */
 if (!defined('ABSPATH')) {exit('No direct script access allowed');}
 ?>
@@ -66,7 +66,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                                     <ul class="unstyled">
                                     <li><a 
                                             class="sfdc-btn sfdc-btn-default"
-                                            href="<?php echo admin_url().'?page=zgfm_form_builder&mod=formbuilder&controller=records&action=info_record&id_rec='.$row->fbh_id;?>">
+                                            href="<?php echo admin_url().'?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=info_record&id_rec='.$row->fbh_id;?>">
                                             <i class="fa fa-pencil-square-o"></i> <?php echo __('Show','FRocket_admin')?></a></li>
                                     <li><a href="javascript:void(0);" 
                                            class="sfdc-btn sfdc-btn-danger uiform-confirmation-func-action"

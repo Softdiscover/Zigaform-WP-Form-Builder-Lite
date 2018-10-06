@@ -9,7 +9,7 @@
  * @author    Softdiscover <info@softdiscover.com>
  * @copyright 2015 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
- * @link      http://wordpress-form-builder.zigaform.com/
+ * @link      https://wordpress-form-builder.zigaform.com/
  */
 if (!defined('ABSPATH')) {exit('No direct script access allowed');}
 ?>
@@ -41,7 +41,8 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                             data-field-store="input7-format"
                             class="sfdc-form-control input-sm uifm-f-setoption">
                     <option value="" selected=""><?php echo __('Default','FRocket_admin'); ?></option>
-                    <option value="dddd, d MMM, YYYY">Full - dddd, d MMM, YYYY</option>
+                    <option value="dddd ,D MMM, YYYY">dddd ,D MMM, YYYY</option>
+                    <option value="dddd ,MMM D, YYYY">dddd ,MMM D, YYYY</option>
                     <option value="DD/MM/YYYY">DD/MM/YYYY</option>
                     <option value="MM/DD/YYYY">MM/DD/YYYY</option>
                     </select>

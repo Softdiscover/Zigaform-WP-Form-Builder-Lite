@@ -9,7 +9,7 @@
  * @author    Softdiscover <info@softdiscover.com>
  * @copyright 2015 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
- * @link      http://wordpress-form-builder.zigaform.com/
+ * @link      https://wordpress-form-builder.zigaform.com/
  */
 if (!defined('ABSPATH')) {exit('No direct script access allowed');}
 if(class_exists('Uiform_InstallDB')){return;}
@@ -63,9 +63,9 @@ class Uiform_InstallDB {
             `fmb_html_css` longtext NULL ,
             `fmb_default` TINYINT(1) NULL DEFAULT 0 ,
             `fmb_skin_status` TINYINT(1) NULL DEFAULT 0 ,
-            `fmb_skin_data` TEXT NULL ,
+            `fmb_skin_data` longtext NULL ,
             `fmb_skin_type` SMALLINT(5) NULL DEFAULT 1 ,
-            `fmb_data2` TEXT NULL ,    
+            `fmb_data2` longtext NULL , 
             PRIMARY KEY (`fmb_id`) ) " . $charset . ";";
         $wpdb->query($sql);
         //form request statitistics
@@ -80,7 +80,7 @@ class Uiform_InstallDB {
                 `fbh_data_user` MEDIUMTEXT NULL ,
                 `form_fmb_id` INT(6) NOT NULL ,
                 `fbh_data_rec_xml` longtext,
-                `fbh_user_agent` varchar(200) DEFAULT NULL,
+                `fbh_user_agent` TEXT NULL , 
                 `fbh_page` text,
                 `fbh_referer` text,
                 `fbh_params` text,
@@ -95,7 +95,7 @@ class Uiform_InstallDB {
         `created_date` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00' ,
         `updated_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
         `created_ip` VARCHAR(50) NULL ,
-        `updated_ip` VARCHAR(20) NULL ,
+        `updated_ip` VARCHAR(50) NULL ,
         `created_by` INT(6) NULL ,
         `updated_by` INT(6) NULL ,
         PRIMARY KEY (`fby_id`) )" . $charset . ";";
@@ -188,7 +188,7 @@ class Uiform_InstallDB {
         //insert data
         $uifm_settings = $wpdb->get_row("SELECT COUNT(*) AS total FROM ".$this->settings, ARRAY_A );
         if( isset($uifm_settings['total']) && intval($uifm_settings['total'])===0  ){
-           $sql="INSERT INTO $this->settings VALUES ('3.7.6', null, null, null, null, null, null, '', '1');";
+           $sql="INSERT INTO $this->settings VALUES ('3.9.1.9', null, null, null, null, null, null, '', '1');";
             $wpdb->query($sql);
         }
         
@@ -242,7 +242,7 @@ class Uiform_InstallDB {
             `add_load_back` smallint(5) DEFAULT NULL,
             `add_load_front` smallint(5) DEFAULT NULL,
             `is_field` smallint(5) DEFAULT NULL,
-            PRIMARY KEY (`add_id`, `add_name`) 
+            PRIMARY KEY (`add_name`) 
         ) " . $charset . ";";
         
          $wpdb->query($sql);
@@ -264,8 +264,8 @@ class Uiform_InstallDB {
             `flag_status` smallint(5) DEFAULT 1,
             `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
             `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            `created_ip` varchar(20) DEFAULT NULL,
-            `updated_ip` varchar(20) DEFAULT NULL,
+            `created_ip` varchar(50) DEFAULT NULL,
+            `updated_ip` varchar(50) DEFAULT NULL,
             `created_by` int(6) DEFAULT NULL,
             `updated_by` int(6) DEFAULT NULL,
             PRIMARY KEY (`add_name`, `fmb_id`) 
@@ -285,8 +285,8 @@ class Uiform_InstallDB {
             `flag_status` smallint(5) DEFAULT 1,
             `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
             `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            `created_ip` varchar(20) DEFAULT NULL,
-            `updated_ip` varchar(20) DEFAULT NULL,
+            `created_ip` varchar(50) DEFAULT NULL,
+            `updated_ip` varchar(50) DEFAULT NULL,
             `created_by` int(6) DEFAULT NULL,
             `updated_by` int(6) DEFAULT NULL,
             `log_id` int(5) NOT NULL,

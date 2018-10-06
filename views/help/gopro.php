@@ -71,7 +71,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
 </tr>
 <tr>
 <td class="tabco1" ><?php echo __('Export & Import forms', 'FRocket_admin');?></td>
-<td class="tabco2" ><i class="fa fa-times crossSign" aria-hidden="true"></i></td>
+<td class="tabco2" ><i class="fa fa-check rightSign" aria-hidden="true"></i></td>
 <td class="tabco3" ><i class="fa fa-check rightSign" aria-hidden="true"></i></td>
 </tr>
 <tr>

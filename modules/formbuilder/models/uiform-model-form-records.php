@@ -10,7 +10,7 @@
  * @author    Softdiscover <info@softdiscover.com>
  * @copyright 2015 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
- * @link      http://wordpress-form-builder.zigaform.com/
+ * @link      https://wordpress-form-builder.zigaform.com/
  */
 if (!defined('ABSPATH')) {
     exit('No direct script access allowed');
@@ -28,7 +28,7 @@ if (class_exists('Uiform_Model_Form_Records')) {
  * @copyright 2013 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
  * @version   Release: 1.00
- * @link      http://wordpress-form-builder.zigaform.com/
+ * @link      https://wordpress-form-builder.zigaform.com/
  */
 class Uiform_Model_Form_Records {
 
@@ -103,25 +103,88 @@ class Uiform_Model_Form_Records {
     }
     
     
-    function getFieldOptRecord($option,$form_id) {
-        if(intval($form_id)>0){
+    function getFieldOptRecord($rec_id,$f_type=null,$f_id=null,$f_atr1=null,$f_atr2=null) {
+        if(intval($rec_id)>0){
+            $result='';
             
-            $sql = 'select ';
-            $temp = array();
-            $temp[] = "extractvalue(fbh_data_rec_xml,'/params/child::" . $option . "') AS uifmoptvalue";
-            $temp[] = "r.fbh_id";
-            $temp[] = "r.created_date";
-            $sql.=implode(',', $temp) . ' from %1$s r';
-            $sql.=' join %2$s frm on frm.fmb_id=r.form_fmb_id
-                where r.flag_status>0 and r.fbh_id=%3$s'; 
-            $query = sprintf($sql,$this->table,$this->tbform,(int)$form_id);
-            
-            $row = $this->wpdb->get_row($query);
-            if (isset($row->uifmoptvalue)) {
-                return $row->uifmoptvalue;
-            } else {
-                return '';
+            switch (intval($f_type)) {
+                case 8:
+                case 10:
+                    /*radio button, select*/
+                    $sql = "select extractvalue(fbh_data_rec_xml,'/params/child::".$f_id."_chosen') AS uifmoptvalue,";
+                    $sql.='r.fbh_id,r.created_date';
+                    $sql.=' from %1$s r';
+                    $sql.=' join %2$s frm on frm.fmb_id=r.form_fmb_id
+                        where r.flag_status>0 and r.fbh_id=%3$s'; 
+                    $query = sprintf($sql,$this->table,$this->tbform,(int)$rec_id);
+                    $row = $this->wpdb->get_row($query);
+                    
+                    $chosen = $row->uifmoptvalue;
+                    //get value or label
+                    $sql = 'select ';
+                    $temp = array();
+                    $temp[] = "extractvalue(fbh_data_rec_xml,'/params/child::" . $f_id."_input_".$chosen. "_".$f_atr1."') AS uifmoptvalue";
+                    $temp[] = "r.fbh_id";
+                    $temp[] = "r.created_date";
+                    $sql.=implode(',', $temp) . ' from %1$s r';
+                    $sql.=' join %2$s frm on frm.fmb_id=r.form_fmb_id
+                        where r.flag_status>0 and r.fbh_id=%3$s'; 
+                    $query = sprintf($sql,$this->table,$this->tbform,(int)$rec_id); 
+                   
+                    $row = $this->wpdb->get_row($query);
+                    if (isset($row->uifmoptvalue)) {
+                        return $row->uifmoptvalue;
+                    } else {
+                        return '';
+                    }
+                    
+                    
+                    break;
+                case 9:
+                case 11:
+                    /*checkbox , Multiple select*/
+                    $sql = "select extractvalue(fbh_data_rec_xml,'/params/child::".$f_id."_input_".$f_atr1."') AS uifmoptvalue,";
+                    $sql.='r.fbh_id,r.created_date';
+                    $sql.=' from %1$s r';
+                    $sql.=' join %2$s frm on frm.fmb_id=r.form_fmb_id
+                        where r.flag_status>0 and r.fbh_id=%3$s'; 
+                    $query = sprintf($sql,$this->table,$this->tbform,(int)$rec_id);
+                   
+                    $row = $this->wpdb->get_row($query);
+                    if (isset($row->uifmoptvalue)) {
+                        return $row->uifmoptvalue;
+                    } else {
+                        return '';
+                    }
+                    
+                    
+                    break;    
+                default:
+                   $option = $f_id.'_'.$f_atr1; 
+                    
+                    
+                   $sql = 'select ';
+                    $temp = array();
+                    $temp[] = "extractvalue(fbh_data_rec_xml,'/params/child::" . $option . "') AS uifmoptvalue";
+                    $temp[] = "r.fbh_id";
+                    $temp[] = "r.created_date";
+                    $sql.=implode(',', $temp) . ' from %1$s r';
+                    $sql.=' join %2$s frm on frm.fmb_id=r.form_fmb_id
+                        where r.flag_status>0 and r.fbh_id=%3$s'; 
+                    $query = sprintf($sql,$this->table,$this->tbform,(int)$rec_id); 
+                    
+                    $row = $this->wpdb->get_row($query);
+                    if (isset($row->uifmoptvalue)) {
+                        return $row->uifmoptvalue;
+                    } else {
+                        return '';
+                    }
+                    break;
             }
+            
+            
+            
+           
             
         }else{
             return '';
@@ -129,17 +192,23 @@ class Uiform_Model_Form_Records {
         
     }
     
-    function getNameFieldEnabledByForm($id_field) {
+    function getNameFieldEnabledByForm($id_form,$filter=false) {
         
-        if(intval($id_field)>0){
-            $query = sprintf('select f.fmf_uniqueid, coalesce(NULLIF(f.fmf_fieldname,""),CONCAT(t.fby_name,f.fmf_id)) as fieldname 
-        from %s f 
-        join %s t on f.type_fby_id=t.fby_id 
-        join %s fm on fm.fmb_id=f.form_fmb_id
-        where f.type_fby_id in (6,7,8,9,10,11,12,13,15,16,17,18,21,22,23,24,25,26,28,29,30,39,40,41,42) and 
-        f.fmf_status_qu=1 and
-        fm.fmb_id=%s  order by f.order_rec asc', $this->tbformfields, $this->tbformtype, $this->tbform, (int)$id_field);
-
+        if(intval($id_form)>0){
+            $tmp_qu='select t.fby_id,f.fmf_uniqueid, coalesce(NULLIF(f.fmf_fieldname,""),CONCAT(t.fby_name,f.fmf_id)) as fieldname 
+                from %s f 
+                join %s t on f.type_fby_id=t.fby_id 
+                join %s fm on fm.fmb_id=f.form_fmb_id
+                where f.type_fby_id in (6,7,8,9,10,11,12,13,15,16,17,18,21,22,23,24,25,26,28,29,30,39,40,41,42) and';
+            
+            if($filter===true){
+                $tmp_qu.=' f.fmf_status_qu=1 and';
+            }
+                        
+            $tmp_qu.=' fm.fmb_id=%s order by f.order_rec asc';
+            
+            $query = sprintf($tmp_qu, $this->tbformfields, $this->tbformtype, $this->tbform, (int)$id_form);
+                
         return $this->wpdb->get_results($query);
         }else{
             return array();
@@ -242,6 +311,22 @@ class Uiform_Model_Form_Records {
             return $row->counted;
         } else {
             return 0;
+        }
+    }
+    
+    function getFieldDataById($id_rec,$ui_field){
+        $query = sprintf('select f.type_fby_id as type,f.fmf_data
+            from %s f
+            join %s t on f.type_fby_id=t.fby_id 
+            join %s frm on f.form_fmb_id=frm.fmb_id
+	    join %s frc on frc.form_fmb_id=frm.fmb_id
+            where frc.fbh_id = %s and f.fmf_uniqueid="%s"', $this->tbformfields,$this->tbformtype,$this->tbform,$this->table,$id_rec,$ui_field);
+        
+        $row = $this->wpdb->get_row($query);
+        if (!empty($row)) {
+            return $row;
+        } else {
+            return '';
         }
     }
 

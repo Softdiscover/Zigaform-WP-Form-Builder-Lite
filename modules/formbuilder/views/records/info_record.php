@@ -21,7 +21,8 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
     <div class="sfdc-row">
         <div class="sfdc-col-md-6">
             <div class="uifm-inforecord-box-info clearfix">
-                <h3><?php echo __('Submitted form data','FRocket_admin');?></h3>
+                <h1><?php echo $form_name;?></h1>
+                <h4 class="zgfm-no-margin zgfm-margin-bottom-20"><?php echo __('Submitted form data','FRocket_admin');?></h4>
                 <ul>
               <?php foreach ($record_info as $value) {
                ?>

@@ -106,7 +106,7 @@ ob_start();
      <?php if(isset($price['enable_st']) && intval($price['enable_st'])===1){?>
      rockfm-costest-field
      <?php } ?>
-     <?php echo $addon_extraclass;?>
+     <?php echo (!empty($addon_extraclass))?$addon_extraclass:'';?>
      "
     <?php if(isset($clogic) && intval($clogic['show_st'])===1&& intval($clogic['f_show'])===1){?>
       style="display:none;"

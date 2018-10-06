@@ -157,11 +157,9 @@
 						e.preventDefault();
 
 					});
-
-
-					//On button click
-					$holder.click(function () {
-
+                                        
+                                        $holder.on('click touch', function () {
+                                           
 						//Add check
 						if ($item.is(':checked')) {
 
@@ -180,8 +178,13 @@
 						}
 
 						return false;
+                                        });
 
-					});
+					//On button click
+					/*$holder.click(function () {
+                                               
+
+					});*/
 
 				}
 
@@ -275,21 +278,57 @@
 							
 						}
 					});
+                                        
+                                        $holder.on('click touch', function (e) {
+                                            e.stopPropagation();
+						e.preventDefault();
+                                                
+                                            
+                                            //Add focus
+					   //$radio.focus();
+                                           
+                                           THIS.radioEnable($item);
 
-					$holder.click(function () {
-						
-						//Add focus
-						$radio.focus();
-						
-					});
+							//Get group Name
+							var radio_name = $item.attr('name');
+
+							var $group = $('input[name="' + radio_name + '"]');
+
+							//Set checked/unchecked for each element in group
+							$group.each(function () {
+								
+								if ($(this).is(':checked')) {
+									
+									THIS.radioEnable($(this));
+									//Callback
+									settings.onChange(true, $(this).parent(), $(this));
+									
+								} else {
+									
+									THIS.radioDisable($(this));
+									//Callback
+									settings.onChange(false, $(this).parent(), $(this));
+									
+								}
+
+							});
+                                            
+                                          
+                                            
+                                            
+                                        });
+                                        
+                                        
+					/*$holder.click(function () {	
+					});*/
 
 					//Disable usual click functionality
-					$radio.click(function (e) {
+					/*$radio.click(function (e) {
 						
 						e.stopPropagation();
 						e.preventDefault();
 						
-					});
+					});*/
 
 				}
 			},
@@ -309,7 +348,7 @@
 			},
 
 			checkboxDisable: function ($checkbox) {
-				
+				$checkbox.parent().removeClass('checked');
 				$checkbox.parent().removeClass(settings.checkbox.iconClass);
 				$checkbox.parent().addClass('unchecked');
 				$checkbox.prop('checked', false).trigger('change');
@@ -325,8 +364,6 @@
 				$radio.parent().addClass(settings.radio.iconClass);
 				$radio.parent().addClass('checked');
 				$radio.prop('checked', true).trigger('change');
-				
-				
 					
 			},
 

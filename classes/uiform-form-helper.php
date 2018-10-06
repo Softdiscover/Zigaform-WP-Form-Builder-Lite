@@ -10,7 +10,7 @@
  * @author    Softdiscover <info@softdiscover.com>
  * @copyright 2015 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
- * @link      http://wordpress-form-builder.zigaform.com/
+ * @link      https://wordpress-form-builder.zigaform.com/
  */
 if (!defined('ABSPATH')) {
     exit('No direct script access allowed');
@@ -31,19 +31,19 @@ class Uiform_Form_Helper {
         $return = array();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             //post
-            $return['module'] = isset($_POST['mod']) ? Uiform_Form_Helper::sanitizeInput($_POST['mod']) : '';
-            $return['controller'] = isset($_POST['controller']) ? Uiform_Form_Helper::sanitizeInput($_POST['controller']) : '';
-            $return['action'] = isset($_POST['action']) ? Uiform_Form_Helper::sanitizeInput($_POST['action']) : '';
+            $return['module'] = isset($_POST['zgfm_mod']) ? Uiform_Form_Helper::sanitizeInput($_POST['zgfm_mod']) : '';
+            $return['controller'] = isset($_POST['zgfm_contr']) ? Uiform_Form_Helper::sanitizeInput($_POST['zgfm_contr']) : '';
+            $return['action'] = isset($_POST['zgfm_action']) ? Uiform_Form_Helper::sanitizeInput($_POST['zgfm_action']) : '';
         } elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
             //get
-            $return['module'] = isset($_GET['mod']) ? Uiform_Form_Helper::sanitizeInput($_GET['mod']) : '';
-            $return['controller'] = isset($_GET['controller']) ? Uiform_Form_Helper::sanitizeInput($_GET['controller']) : '';
-            $return['action'] = isset($_GET['action']) ? Uiform_Form_Helper::sanitizeInput($_GET['action']) : '';
+            $return['module'] = isset($_GET['zgfm_mod']) ? Uiform_Form_Helper::sanitizeInput($_GET['zgfm_mod']) : '';
+            $return['controller'] = isset($_GET['zgfm_contr']) ? Uiform_Form_Helper::sanitizeInput($_GET['zgfm_contr']) : '';
+            $return['action'] = isset($_GET['zgfm_action']) ? Uiform_Form_Helper::sanitizeInput($_GET['zgfm_action']) : '';
         } else {
             //request
-            $return['module'] = isset($_REQUEST['mod']) ? Uiform_Form_Helper::sanitizeInput($_REQUEST['mod']) : '';
-            $return['controller'] = isset($_REQUEST['controller']) ? Uiform_Form_Helper::sanitizeInput($_REQUEST['controller']) : '';
-            $return['action'] = isset($_REQUEST['action']) ? Uiform_Form_Helper::sanitizeInput($_REQUEST['action']) : '';
+            $return['module'] = isset($_REQUEST['zgfm_mod']) ? Uiform_Form_Helper::sanitizeInput($_REQUEST['zgfm_mod']) : '';
+            $return['controller'] = isset($_REQUEST['zgfm_contr']) ? Uiform_Form_Helper::sanitizeInput($_REQUEST['zgfm_contr']) : '';
+            $return['action'] = isset($_REQUEST['zgfm_action']) ? Uiform_Form_Helper::sanitizeInput($_REQUEST['zgfm_action']) : '';
         }
         return $return;
     }
@@ -380,7 +380,7 @@ class Uiform_Form_Helper {
         }
     }
     
-    public function sanitize_output($buffer) {
+    public static function sanitize_output($buffer) {
 
     $search = array(
         '/\>[^\S ]+/s',  // strip whitespaces after tags, except space
@@ -656,6 +656,11 @@ class Uiform_Form_Helper {
             if (array() === $arr) return false;
             return array_keys($arr) !== range(0, count($arr) - 1);
         }
+        
+        public static function zigaform_user_is_on_admin_page($page_name = 'admin.php') {
+            global $pagenow;
+            return ($pagenow == $page_name);
+        }
     
 }
 
@@ -665,14 +670,19 @@ function uifm_generate_pdf($html, $filename, $stream = TRUE) {
     if(ZIGAFORM_F_LITE == 1){
 
     }else{
+        
    require_once(UIFORM_FORMS_DIR . '/helpers/dompdf/autoload.inc.php');
     $dompdf = new Dompdf();
+            
     $dompdf->loadHtml($html);
-    $dompdf->setPaper('b4', 'portrait');
+    $dompdf->setPaper('A4', 'landscape');
     $dompdf->set_option('isHtml5ParserEnabled', true);
     $dompdf->set_option('isRemoteEnabled', true);
     $dompdf->render();
+    
+    
     if ($stream) {
+        
         $dompdf->stream($filename);
     } else {
         $output = $dompdf->output();

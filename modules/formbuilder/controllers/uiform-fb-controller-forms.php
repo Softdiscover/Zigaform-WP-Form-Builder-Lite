@@ -9,7 +9,7 @@
  * @author    Softdiscover <info@softdiscover.com>
  * @copyright 2015 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
- * @link      http://wordpress-form-builder.zigaform.com/
+ * @link      https://wordpress-form-builder.zigaform.com/
  */
 if (!defined('ABSPATH')) {
     exit('No direct script access allowed');
@@ -27,7 +27,7 @@ if (class_exists('Uiform_Fb_Controller_Forms')) {
  * @copyright 2013 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
  * @version   Release: 1.00
- * @link      http://wordpress-form-builder.zigaform.com/
+ * @link      https://wordpress-form-builder.zigaform.com/
  */
 class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 
@@ -133,6 +133,14 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
         
         //pdf show sample
         add_action('wp_ajax_rocket_fbuilder_pdf_showsample', array(&$this, 'ajax_pdf_showsample'));
+        
+        //handle form list 
+        add_action('wp_ajax_zgfm_fbuilder_formlist_filter', array(&$this, 'ajax_formlist_sendfilter'));
+      
+        //refresh list form table
+        add_action('wp_ajax_zgfm_fbuilder_formlist_refresh', array(&$this, 'ajax_formlist_sendfilter'));
+        
+        
     }
     
     
@@ -563,7 +571,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
               id="<?php echo 'rockfm_form' . $form_id ?>"
               rel="stylesheet">
         
-        <iframe src="<?php echo site_url();?>/?uifm_fbuilder_api_handler&action=uifm_fb_api_handler&uifm_action=1&uifm_mode=lmode&id=<?php echo $form_id;?>" 
+        <iframe src="<?php echo site_url();?>/?uifm_fbuilder_api_handler&zgfm_action=uifm_fb_api_handler&uifm_action=1&uifm_mode=lmode&id=<?php echo $form_id;?>" 
         scrolling="no" 
         id="zgfm-iframe-<?php echo $form_id;?>"
         frameborder="0" 
@@ -682,7 +690,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
             
         $data = array();
         $fmb_data = (isset($_POST['form_data']))?urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['form_data'])):'';
-        $fmb_data = str_replace("\'", "'",$fmb_data);
+        //$fmb_data = str_replace("\'", "'",$fmb_data);
         $fmb_data = (isset($fmb_data) && $fmb_data) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive_html'), json_decode($fmb_data, true)) : array();
         $data['fmb_data'] = json_encode($fmb_data);
             
@@ -1528,7 +1536,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
                     $count_str = 0;
                     if(isset($child_field['inner'])){
                        foreach ($child_field['inner'] as $key => $value) {
-                            $str_output .= '<div data-zgpb-blocknum="' . $value['num_tab'] . '" class="zgpb-fl-gs-block-style sfdc-col-md-' . $value['cols'] . '">';
+                            $str_output .= '<div data-zgpb-blocknum="' . $value['num_tab'] . '" class="zgpb-fl-gs-block-style sfdc-col-sm-' . $value['cols'] . '">';
                             if ($count_str === $key) {
                                 $str_output .= '<div class="zgpb-fl-gs-block-inner">';
                             } else {
@@ -1655,7 +1663,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
                                 $tmp_col = $tmp_col_rest;
                             }
 
-                            $str_output .= '<div class="zgpb-fl-gs-block-style sfdc-col-md-' . $tmp_col . '" data-zgpb-blocknum="' . $value['num_tab'] . '" data-zgpb-width="" data-zgpb-blockcol="' . $tmp_col . '">';
+                            $str_output .= '<div class="zgpb-fl-gs-block-style sfdc-col-sm-' . $tmp_col . '" data-zgpb-blocknum="' . $value['num_tab'] . '" data-zgpb-width="" data-zgpb-blockcol="' . $tmp_col . '">';
                             $str_output .= '<div class="uiform-items-container zgpb-fl-gs-block-inner">';
 
 
@@ -2250,15 +2258,77 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
     }
 
     public function list_uiforms() {
-
+        $filter_data= get_option('zgfm_listform_searchfilter',true);
+        $data2=array();
+        if(empty($filter_data)){
+            $data2['per_page'] = intval($this->per_page);
+            $data2['search_txt']='';
+            $data2['orderby']='asc';
+        }else{
+            $data2['per_page']=intval($filter_data['per_page']);
+            $data2['search_txt']=$filter_data['search_txt'];
+            $data2['orderby']=$filter_data['orderby'];
+        }
+        
+        $offset = (isset($_GET['offset'])) ? Uiform_Form_Helper::sanitizeInput($_GET['offset']) : 0;
+        $data2['offset']=$offset;
+        
+        echo self::loadPartial('layout.php', 'formbuilder/views/forms/list_forms.php', $data2);
+    }
+    
+     function ajax_formlist_sendfilter() {
+       check_ajax_referer( 'zgfm_ajax_nonce', 'zgfm_security' );
+       
+        $data_filter = (isset($_POST['data_filter']) && $_POST['data_filter']) ? $_POST['data_filter'] : '';
+        
+        $opt_save = (isset($_POST['opt_save']) && $_POST['opt_save']) ? Uiform_Form_Helper::sanitizeInput($_POST['opt_save']) : 0;
+        $opt_offset = (isset($_POST['opt_offset']) && $_POST['opt_offset']) ? Uiform_Form_Helper::sanitizeInput($_POST['opt_offset']) : 0;
+        
+        
+        parse_str($data_filter, $data_filter_arr);
+        
+        $per_page=$data_filter_arr['zgfm-listform-pref-perpage'];
+        $search_txt=$data_filter_arr['zgfm-listform-pref-search'];
+        $orderby=$data_filter_arr['zgfm-listform-pref-orderby'];
+        
+        
+        $data=array();
+        $data['per_page']=$per_page;
+        $data['search_txt']=$search_txt;
+        $data['orderby']=$orderby;
+        
+        if(intval($opt_save)===1){
+            update_option( 'zgfm_listform_searchfilter', $data);
+        }
+        
+        
+        $data['segment']=0;
+        $data['offset']=$opt_offset;
+        
+        //self::$_models['formbuilder']['form']->getListFormsFiltered($data);
+        
+        $result=$this->ajax_formlist_refresh($data);
+        
+        $json = array();
+        $json['content']=$result;
+        
+        header('Content-Type: application/json');
+        echo json_encode($json);
+        wp_die();
+    }
+    
+    function ajax_formlist_refresh($data){
+        
         require_once( UIFORM_FORMS_DIR . '/classes/Pagination.php');
         $this->pagination = new CI_Pagination();
-        $offset = (isset($_GET['offset'])) ? Uiform_Form_Helper::sanitizeInput($_GET['offset']) : 0;
+         
+        $offset = $data['offset'];
+         
         //list all forms
-        $data = $config = array();
-        $config['base_url'] = admin_url() . '?page=zgfm_form_builder&mod=formbuilder&controller=forms&action=list_uiforms';
+        $config = array();
+        $config['base_url'] = admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=list_uiforms';
         $config['total_rows'] = $this->formsmodel->CountForms();
-        $config['per_page'] = $this->per_page;
+        $config['per_page'] = $data['per_page'];
         $config['first_link'] = 'First';
         $config['last_link'] = 'Last';
         $config['full_tag_open'] = '<ul class="pagination pagination-sm">';
@@ -2267,7 +2337,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
         $config['first_tag_close'] = '</li>';
         $config['last_tag_open'] = '<li>';
         $config['last_tag_close'] = '</li>';
-        $config['cur_tag_open'] = '<li><span>';
+        $config['cur_tag_open'] = '<li class="zgfm-pagination-active"><span>';
         $config['cur_tag_close'] = '</span></li>';
         $config['next_tag_open'] = '<li>';
         $config['next_tag_close'] = '</li>';
@@ -2281,11 +2351,24 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
         $this->pagination->initialize($config);
         // If the pagination library doesn't recognize the current page add:
         $this->pagination->cur_page = $offset;
-        $data['query'] = $this->formsmodel->getListForms($this->per_page, $offset);
-        $data['pagination'] = $this->pagination->create_links();
-
-        echo self::loadPartial('layout.php', 'formbuilder/views/forms/list_forms.php', $data);
+        
+        
+        $data2=array();
+        $data2['per_page']=$data['per_page'];
+        $data2['segment']=$offset;
+        $data2['search_txt']=$data['search_txt'];
+        $data2['orderby']=$data['orderby'];
+        
+        $data3=array();
+        $data3['query'] = $this->formsmodel->getListFormsFiltered($data2);
+        $data3['pagination'] = $this->pagination->create_links();
+        
+        
+        return self::render_template('formbuilder/views/forms/list_forms_table.php', $data3);
+        
+        //echo self::loadPartial('layout.php', 'formbuilder/views/forms/list_forms.php', $data);
     }
+    
 
     public function edit_uiform() {
         $data = array();

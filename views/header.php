@@ -20,15 +20,15 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="fa fa-file"></span> <?php echo __('Forms','FRocket_admin'); ?><span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="<?php echo admin_url().'?page=zgfm_form_builder&mod=formbuilder&controller=forms&action=create_uiform';?>"><?php echo __('New','FRocket_admin'); ?></a></li>
-            <?php if(isset($_GET['action']) && Uiform_Form_Helper::sanitizeInput($_GET['action'])==='create_uiform'){?>
+            <li><a href="<?php echo admin_url().'?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=create_uiform';?>"><?php echo __('New','FRocket_admin'); ?></a></li>
+            <?php if(isset($_GET['zgfm_action']) && Uiform_Form_Helper::sanitizeInput($_GET['zgfm_action'])==='create_uiform'){?>
             <li><a href="javascript:void(0);" onclick="javascript:rocketform.saveForm();"><?php echo __('Save','FRocket_admin'); ?></a></li>
             <?php } ?>
             <li class="divider"></li>
-            <li><a href="<?php echo admin_url().'?page=zgfm_form_builder&mod=formbuilder&controller=forms&action=list_uiforms';?>"><?php echo __('List forms','FRocket_admin'); ?></a></li>
+            <li><a href="<?php echo admin_url().'?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=list_uiforms';?>"><?php echo __('List forms','FRocket_admin'); ?></a></li>
           </ul>
         </li>
-        <?php if(isset($_GET['action']) && Uiform_Form_Helper::sanitizeInput($_GET['action'])==='create_uiform'){?>
+        <?php if(isset($_GET['zgfm_action']) && Uiform_Form_Helper::sanitizeInput($_GET['zgfm_action'])==='create_uiform'){?>
         <li class="divider-menu"></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-file-text-o"></span> <?php echo __('Templates','FRocket_admin'); ?> <span class="caret"></span></a>
@@ -111,7 +111,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <span class="fa fa-question-circle"></span> <?php echo __('Records','FRocket_admin'); ?><span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="<?php echo admin_url().'?page=zgfm_form_builder&mod=formbuilder&controller=records&action=list_records';?>">
+            <li><a href="<?php echo admin_url().'?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=list_records';?>">
                 <?php echo __('List all Forms','FRocket_admin'); ?>
                 </a>
             </li>
@@ -124,7 +124,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                          ><i class="fa fa-lock"></i></span></a>
                </li>
            <?php }else{ ?>
-                <li><a href="<?php echo admin_url().'?page=zgfm_form_builder&mod=formbuilder&controller=records&action=info_records_byforms';?>">
+                <li><a href="<?php echo admin_url().'?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=info_records_byforms';?>">
                    <?php echo __('Filter records','FRocket_admin'); ?></a>
                </li>
            <?php } ?>
@@ -138,7 +138,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                 </li>
         <?php }else{ ?>
            
-            <li><a href="<?php echo admin_url().'?page=zgfm_form_builder&mod=formbuilder&controller=records&action=custom_report';?>">
+            <li><a href="<?php echo admin_url().'?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=custom_report';?>">
                 <?php echo __('Custom Report','FRocket_admin'); ?></a>
             </li>
         <?php } ?>
@@ -146,59 +146,32 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
           </ul>
         </li>
         <li class="divider-menu"></li>
-        
-          <?php if(ZIGAFORM_F_LITE == 1){ ?>
+      
              <li >
-            <a onclick="javascript:rocketform.showFeatureLocked(this);"
-               data-blocked-feature="Import form"
-                href="javascript:void(0);"
-               >
-                <i class="fa fa-reply"></i> <?php echo __('Import','FRocket_admin'); ?> 
-                <span class="rkfm-express-lock-wrap" 
-                      data-toggle="tooltip" 
-                      data-placement="right" 
-                      data-original-title="feature locked"><i class="fa fa-lock"></i></span></a></li>
-        <?php }else{ ?>
-             <li >
-            <a href="<?php echo admin_url().'?page=zgfm_form_builder&mod=formbuilder&controller=forms&action=create_uiform&opt=import';?>">
+            <a href="<?php echo admin_url().'?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=create_uiform&opt=import';?>">
                 <i class="fa fa-reply"></i> <?php echo __('Import','FRocket_admin'); ?></a></li>
-        <?php } ?>
         
-       
-                
                 
         <li class="divider-menu"></li>
-        <?php if(ZIGAFORM_F_LITE == 1){ ?>
+     
             <li>
-                <a 
-                    onclick="javascript:rocketform.showFeatureLocked(this);"
-                    data-blocked-feature="Export form"
-                    href="javascript:void(0);">
-                <i class="fa fa-share"></i> <?php echo __('Export','FRocket_admin'); ?> <span class="rkfm-express-lock-wrap" 
-                      data-toggle="tooltip" 
-                      data-placement="right" 
-                      data-original-title="feature locked"><i class="fa fa-lock"></i></span></a>
-            </li>
-        <?php }else{ ?>
-            <li>
-                <a href="<?php echo admin_url().'?page=zgfm_form_builder&mod=formbuilder&controller=forms&action=export_form';?>">
+                <a href="<?php echo admin_url().'?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=export_form';?>">
                 <i class="fa fa-share"></i> <?php echo __('Export','FRocket_admin'); ?></a>
             </li>
-            
-        <?php } ?>
+        
          
         <li class="divider-menu"></li>
-        <li ><a href="<?php echo admin_url().'?page=zgfm_form_builder&mod=formbuilder&controller=records&action=view_charts';?>">
+        <li ><a href="<?php echo admin_url().'?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=view_charts';?>">
             <span class="fa fa-area-chart"></span> <?php echo __('Charts','FRocket_admin'); ?> 
             </a>
         </li>
         <li class="divider-menu"></li>
-        <li ><a href="<?php echo admin_url().'?page=zgfm_form_builder&mod=formbuilder&controller=settings&action=view_settings';?>">
+        <li ><a href="<?php echo admin_url().'?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=settings&zgfm_action=view_settings';?>">
             <i class="fa fa-cog"></i> <?php echo __('Settings','FRocket_admin'); ?>
             </a>
         </li>
         <li class="divider-menu"></li>
-        <li ><a href="<?php echo admin_url().'?page=zgfm_form_builder&mod=formbuilder&controller=settings&action=backup_settings';?>">
+        <li ><a href="<?php echo admin_url().'?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=settings&zgfm_action=backup_settings';?>">
             <i class="fa fa-cloud-download"></i> <?php echo __('Backup','FRocket_admin'); ?>
             </a>
         </li>
@@ -208,7 +181,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
             </a>
         </li>
         <li class="divider-menu"></li> 
-        <li ><a href="<?php echo admin_url().'?page=zgfm_form_builder&mod=formbuilder&controller=settings&action=system_check';?>">
+        <li ><a href="<?php echo admin_url().'?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=settings&zgfm_action=system_check';?>">
             <i class="fa fa-cog"></i> <?php echo __('System Check','FRocket_admin'); ?>
             </a>
         </li>

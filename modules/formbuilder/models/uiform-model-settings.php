@@ -10,7 +10,7 @@
  * @author    Softdiscover <info@softdiscover.com>
  * @copyright 2015 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
- * @link      http://wordpress-form-builder.zigaform.com/
+ * @link      https://wordpress-form-builder.zigaform.com/
  */
 if (!defined('ABSPATH')) {
     exit('No direct script access allowed');
@@ -28,7 +28,7 @@ if (class_exists('Uiform_Model_Settings')) {
  * @copyright 2013 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
  * @version   Release: 1.00
- * @link      http://wordpress-form-builder.zigaform.com/
+ * @link      https://wordpress-form-builder.zigaform.com/
  */
 class Uiform_Model_Settings {
 
@@ -65,6 +65,9 @@ class Uiform_Model_Settings {
        return $this->wpdb->get_results("SHOW TABLES", ARRAY_N);
     }
     
+    function getColsFromTable($table) {
+       return $this->wpdb->get_results("SHOW COLUMNS FROM ".$table);
+    }
 
 }
 

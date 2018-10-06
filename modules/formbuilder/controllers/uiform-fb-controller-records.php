@@ -10,7 +10,7 @@
  * @author    Softdiscover <info@softdiscover.com>
  * @copyright 2015 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
- * @link      http://wordpress-form-builder.zigaform.com/
+ * @link      https://wordpress-form-builder.zigaform.com/
  */
 if (!defined('ABSPATH')) {
     exit('No direct script access allowed');
@@ -28,7 +28,7 @@ if (class_exists('Uiform_Fb_Controller_Records')) {
  * @copyright 2013 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
  * @version   Release: 1.00
- * @link      http://wordpress-form-builder.zigaform.com/
+ * @link      https://wordpress-form-builder.zigaform.com/
  */
 class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
 
@@ -153,11 +153,47 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
         $form_id = (isset($_POST['form_id']) && $_POST['form_id']) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : 0;
         
         //records to show
-        $name_fields = $this->model_record->getNameFieldEnabledByForm($form_id);
+        $name_fields = $this->model_record->getNameFieldEnabledByForm($form_id,true);
         $data = array();
         $data['datatable_head'] = $name_fields;
-        $data['datatable_body'] = $this->model_record->getDetailRecord($name_fields,$form_id);
         
+        //process record
+        $flag_types=array();
+        foreach ($name_fields as $key=>$value) {
+            
+            $flag_types[$key] = $value->fby_id;
+           
+        }
+       
+        $pre_datatable_body= (array) $this->model_record->getDetailRecord($name_fields,$form_id);
+        $new_record=array();
+        foreach ($pre_datatable_body as $key => $value) {
+            $count1=0;
+            foreach ($value as $key2 => $value2) {
+                
+                 $new_record[$key][$key2]=$value2;
+                 
+                if(isset($flag_types[$count1])){
+                    switch (intval($flag_types[$count1])) {
+                        case 12:
+                        case 13:    
+                            //checking if image exists
+                            if(@is_array(getimagesize($value2))){
+                                 $new_record[$key][$key2]='<img width="100px" src="'.$value2.'"/>';
+                            }  
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                $count1++;
+               
+            }
+            
+        }
+                        
+        $data['datatable_body'] = $new_record;
+                        
         $textfield_tmp = self::render_template('formbuilder/views/records/list_records_getdatatable.php', $data);
         echo $textfield_tmp;
         wp_die();
@@ -200,8 +236,24 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
                 $key = $name_fields_check[$key];
             }
             
-                $new_record_user[] = array('field' => $value['label'], 'value' => $value['input']);
-            
+            switch (intval($value['type'])) {
+                case 9:case 11:
+                      $new_record_user[] = array('field' => $value['label'], 'value' => $value['input_value']);
+                    break;
+                case 12:case 13:
+                    
+                    $value_new=$value['input'];
+                    //checking if image exists
+                            if(@is_array(getimagesize($value_new))){
+                                 $value_new='<img width="100px" src="'.$value_new.'"/>';
+                            }
+                    
+                      $new_record_user[] = array('field' => $value['label'], 'value' => $value_new);
+                    break;
+                default:
+                      $new_record_user[] = array('field' => $value['label'], 'value' => $value['input']);
+                    break;
+            }
             
         }
         $data = array();
@@ -236,7 +288,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
         $offset = (isset($_GET['offset']) && $_GET['offset']) ? Uiform_Form_Helper::sanitizeInput($_GET['offset']) : 0;
         //list all forms
         $data = $config = array();
-        $config['base_url'] = admin_url() . '?page=zgfm_form_builder&mod=formbuilder&controller=records&action=list_records';
+        $config['base_url'] = admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=list_records';
         $config['total_rows'] = $this->model_record->CountRecords();
         $config['per_page'] = $this->per_page;
         $config['first_link'] = 'First';
@@ -270,7 +322,11 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
     
     public function csv_showAllForms($form_id){
         require_once(UIFORM_FORMS_DIR . '/helpers/exporttocsv.php');
-        $name_fields = $this->model_record->getNameFieldEnabledByForm($form_id);
+        if(false){
+            $name_fields = $this->model_record->getNameFieldEnabledByForm($form_id,true);
+        }else{
+            $name_fields = $this->model_record->getNameFieldEnabledByForm($form_id,false);
+        }
         $tmp_data = array();
         $tmp_data['datatable_head'] = $name_fields;
         $tmp_data['datatable_body'] = $this->model_record->getDetailRecord($name_fields,$form_id);

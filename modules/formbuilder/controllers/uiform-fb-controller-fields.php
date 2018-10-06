@@ -10,7 +10,7 @@
  * @author    Softdiscover <info@softdiscover.com>
  * @copyright 2015 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
- * @link      http://wordpress-form-builder.zigaform.com/
+ * @link      https://wordpress-form-builder.zigaform.com/
  */
 if (!defined('ABSPATH')) {
     exit('No direct script access allowed');
@@ -28,7 +28,7 @@ if (class_exists('Uiform_Fb_Controller_Fields')) {
  * @copyright 2013 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
  * @version   Release: 1.00
- * @link      http://wordpress-form-builder.zigaform.com/
+ * @link      https://wordpress-form-builder.zigaform.com/
  */
 class Uiform_Fb_Controller_Fields extends Uiform_Base_Module {
 
@@ -51,7 +51,7 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module {
     protected function __construct() {
         global $wpdb;
         $this->wpdb = $wpdb;
-        if (isset($_GET['action']) && Uiform_Form_Helper::sanitizeInput($_GET['action']) === 'formhtml_preview_textbox') {
+        if (isset($_GET['zgfm_action']) && Uiform_Form_Helper::sanitizeInput($_GET['zgfm_action']) === 'formhtml_preview_textbox') {
             add_action('admin_enqueue_scripts', array(&$this, 'load_css_textbox'));
         }
         // refresh captcha
@@ -63,7 +63,116 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module {
         //load field options
         add_action('wp_ajax_rocket_fbuilder_field_sel_impbulkdata', array(&$this, 'ajax_field_sel_impbulkdata'));
         
+        //refresh list form table
+        add_action('wp_ajax_rocket_fbuilder_dev_generate_fieldopt', array(&$this, 'ajax_dev_genfieldopts'));
+    }
+    
+    
+     /**
+     * Forms::ajax_dev generation field options
+     * 
+     * @return 
+     */
+    public function ajax_dev_genfieldopts() {
+        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
         
+        $data_render=array();
+        
+        
+        $array = array(1, 2, 3, 4,5,6,8,9,10,11);
+        foreach ($array as $type) {
+            switch (intval($type)) {
+                case 1:
+                    //1 col
+                    $field_block = 0;
+                    $data_render[$type]=$this->load_field_options($type, "", $field_block);
+                    break;
+                case 2:
+                    //2 cols
+                    $field_block = 0;
+                    $data_render[$type]=$this->load_field_options($type, "", $field_block);
+                    break;
+                case 3:
+                    //3 cols
+                    $field_block = 0;
+                    $data_render[$type]=$this->load_field_options($type, "", $field_block);
+                    break;
+                case 4:
+                    //4 cols
+                    $field_block = 0;
+                    $data_render[$type]=$this->load_field_options($type, "", $field_block);
+                    break;
+                case 5:
+                    // 6 cols
+                    $field_block = 0;
+                    $data_render[$type]=$this->load_field_options($type, "", $field_block);
+                    break;
+                case 6:
+
+                    //textbox
+                    $data_render[$type]=$this->load_field_options($type, "", null);
+                    break;
+
+                case 8:
+                    //radio button
+                    $data_render[$type]=$this->load_field_options($type, "", null);
+                    break;
+                case 9:
+                    //checkbox
+                    $data_render[$type]=$this->load_field_options($type, "", null);
+                    break;
+                case 10:
+                    //select
+                    $data_render[$type]=$this->load_field_options($type, "", null);
+                    break;
+                case 11:
+                    //multiple select
+                    $data_render[$type]=$this->load_field_options($type, "", null);
+                    break;
+                }
+        }
+        
+        $html_output='';
+        ob_start();
+        ?>&lt;?php
+        /**
+         * Intranet
+         *
+         * PHP version 5
+         *
+         * @category  PHP
+         * @package   Rocket_form
+         * @author    Softdiscover &lt;info@softdiscover.com&gt;
+         * @copyright 2015 Softdiscover
+         * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
+         * @link      http://wordpress-form-builder.uiform.com/
+         */
+        if (!defined('ABSPATH')) {exit('No direct script access allowed');}
+        ?&gt;
+        &lt;!-- options --&gt;<?php
+        $html_output_head= ob_get_contents();
+        ob_end_clean();
+        
+        $html_output.=html_entity_decode($html_output_head);
+        
+        
+        foreach ($data_render as $key => $value) {
+            $html_output.='<script type="text/html" id="tmpl-zgfm-field-opt-type-'.$key.'">';
+            $html_output.= htmlentities($value);
+            $html_output.='</script>';
+            $html_output.='';
+        }
+        
+        
+        $fname=UIFORM_FORMS_DIR."/modules/formbuilder/views/forms/fieldoptions_data.php";
+        
+        $fhandle = fopen($fname,"w");
+        fwrite($fhandle,$html_output);
+        fclose($fhandle);
+        
+                
+         //echo json_encode($data_render);  
+         die();
     }
     
      /**
@@ -225,356 +334,710 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module {
         echo self::render_template('formbuilder/views/forms/edit_form.php', $data);
     }
 
+    
     public function formhtml_textbox($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_textbox.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_textbox_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_textbox_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
 
     public function formhtml_textarea($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_textarea.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_textarea_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_textarea_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
 
     public function formhtml_radiobtn($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_radiobtn.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_radiobtn_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_checkbox_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
 
     public function formhtml_checkbox($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_checkbox.php', $data, 'always');
+        
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_checkbox_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_checkbox_css.php', $data, 'always');
+        
+        return $this->formhtml_renderCssField($data);
+
     }
 
     public function formhtml_select($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_select.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_select_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_select_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
 
     public function formhtml_multiselect($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_multiselect.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_multiselect_css($data) {
         //using select css because it's the same
-        return self::render_template('formbuilder/views/fields/formhtml_select_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
 
     public function formhtml_fileupload($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_fileupload.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_fileupload_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_fileupload_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
 
     public function formhtml_imageupload($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_imageupload.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_imageupload_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_imageupload_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
 
     public function formhtml_customhtml($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_customhtml.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_customhtml_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_customhtml_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
 
     public function formhtml_password($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_password.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_password_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_password_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
 
     public function formhtml_preptext($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_preptext.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_preptext_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_textbox_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
 
     public function formhtml_appetext($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_appetext.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_appetext_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_textbox_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
 
     public function formhtml_prepapptext($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_prepapptext.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_prepapptext_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_textbox_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
     
     public function formhtml_panelfld($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_panelfld.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_panelfld_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_panelfld_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
     
     public function formhtml_slider($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_slider.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_slider_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_slider_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
 
     public function formhtml_range($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_range.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_range_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_range_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
 
     public function formhtml_spinner($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_spinner.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_spinner_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_spinner_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
 
     public function formhtml_captcha($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_captcha.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_captcha_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_captcha_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
 
     public function formhtml_recaptcha($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_recaptcha.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_recaptcha_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_recaptcha_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
 
     public function formhtml_datepicker($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_datepicker.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_datepicker_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_datepicker_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
 
     public function formhtml_timepicker($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_timepicker.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_timepicker_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_timepicker_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
 
     public function formhtml_datetime($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_datetime.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_datetime_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_datetime_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
 
     public function formhtml_submitbtn($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_submitbtn.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_submitbtn_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_submitbtn_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
 
     public function formhtml_hiddeninput($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_hiddeninput.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_hiddeninput_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_hiddeninput_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
 
     public function formhtml_ratingstar($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_ratingstar.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_ratingstar_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_ratingstar_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
 
     public function formhtml_colorpicker($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_colorpicker.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_colorpicker_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_colorpicker_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
 
     public function formhtml_divider($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_divider.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_divider_css($data) {
 
-        return self::render_template('formbuilder/views/fields/formhtml_divider_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
     
     public function formhtml_wizardbtn($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_wizardbtn.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_wizardbtn_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_wizardbtn_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
     public function formhtml_switch($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_switch.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_switch_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_switch_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
     
     public function formhtml_dyncheckbox($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_dyncheckbox.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_dyncheckbox_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_dyncheckbox_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
     public function formhtml_dynradiobtn($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_dynradiobtn.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_dynradiobtn_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_dynradiobtn_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
     public function formhtml_heading($value, $num_tab) {
         $data = array();
         $data['tab_num'] = $num_tab;
         $data = array_merge($data, $value);
-        return self::render_template('formbuilder/views/fields/formhtml_heading.php', $data, 'always');
+        return $this->formhtml_renderField($data);
     }
 
     public function formhtml_heading_css($data) {
-        return self::render_template('formbuilder/views/fields/formhtml_heading_css.php', $data, 'always');
+        return $this->formhtml_renderCssField($data);
     }
+    
+    public function formhtml_renderCssField($data){
+        
+        $tmp_type=intval($data['type']);
+        
+        $output='';
+        
+        switch ($tmp_type) { 
+            case 6:
+               /*textbox*/
+            case 7: case 8: case 9: case 10: case 11: case 12: case 13: case 14: case 15: case 16: case 17:
+            case 18: case 19: case 20: case 21: case 22: case 23: case 24: case 25: case 26: case 27: case 28:case 29: case 30:
+             case 32: case 33: case 34: case 35: case 36: case 37: case 38: case 39: case 40: case 41: case 42:
+                
+               $data['render_common_css'] = self::render_template('formbuilder/views/fields/render_css_front/common_css.php', $data, 'always');
+               $data['render_common_css2'] = self::render_template('formbuilder/views/fields/render_css_front/common_css2.php', $data, 'always');
+               $data['render_addon_css'] = self::render_template('formbuilder/views/fields/render_css_front/addon_css.php', $data, 'always');
+               
+               switch ($tmp_type) {
+                   case 6:
+                    /*textbox*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_textbox.php', $data, 'always');
+                        break;
+                   case 7:
+                    /*textarea*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_textarea.php', $data, 'always');
+                        break;
+                   case 8:
+                    /*radio button*/  
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_radiobutton.php', $data, 'always');
+                        break;
+                    case 9:
+                    /*checkbox*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_checkbox.php', $data, 'always');
+                        break;
+                    case 10:
+                    /*select*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_select.php', $data, 'always');
+                        break;
+                    case 11:
+                    /*multiselect*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_multiselect.php', $data, 'always');
+                        break;
+                    case 12:
+                    /*file upload*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_fileupload.php', $data, 'always');
+                        break;
+                    case 13:
+                    /*image upload*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_imageupload.php', $data, 'always');
+                        break;
+                    case 14:
+                    /*custom html*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_customhtml.php', $data, 'always');
+                        break;
+                    case 15:
+                    /*password*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_password.php', $data, 'always');
+                        break;
+                    case 16:
+                    /*Slider*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_slider.php', $data, 'always');
+                        break;
+                    case 17:
+                    /*range*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_range.php', $data, 'always');
+                        break;
+                    case 18:
+                    /*spinner*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_spinner.php', $data, 'always');
+                        break;
+                    case 19:
+                    /*captcha*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_captcha.php', $data, 'always');
+                        break;
+                    case 20:
+                    /*submit button*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_submitbutton.php', $data, 'always');
+                        break;
+                    case 21:
+                    /*hidden field*/
+                    $data['render_block_type'] =  '';
+                        break;
+                    case 22:
+                    /*star rating*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_starrating.php', $data, 'always');
+                        break;
+                    case 23:
+                    /*color picker*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_colorpicker.php', $data, 'always');
+                        break;
+                    case 24:
+                    /* date picker*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_datepicker.php', $data, 'always');
+                        break;
+                    case 25:
+                    /* time picker*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_timepicker.php', $data, 'always');
+                        break;
+                    case 26:
+                    /* date and time*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_datetime.php', $data, 'always');
+                        break;
+                    case 27:
+                    /* recaptcha*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_recaptcha.php', $data, 'always');
+                        break;
+                    case 28:
+                    /* prependtext*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_textbox.php', $data, 'always');
+                        break;
+                    case 29:
+                    /* app text*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_textbox.php', $data, 'always');
+                        break;
+                    case 30:
+                    /* app prep*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_textbox.php', $data, 'always');
+                        break;
+                    case 32:
+                    /* divider*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_divider.php', $data, 'always');
+                        break;
+                    case 33:case 34:case 35:case 36:case 37:case 38:
+                    /* heading 1*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_heading.php', $data, 'always');
+                        break;
+                    case 39:
+                    /* wizard buttons*/
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_wizardbtn.php', $data, 'always');
+                        break;
+                    case 40:
+                    /* switch */
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_switch.php', $data, 'always');
+                        break;
+                    case 41:
+                    /* dyn checkbox */
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_dyncheckbox.php', $data, 'always');
+                        break;
+                    case 42:
+                    /* dyn radio button */
+                    $data['render_block_type'] =  self::render_template('formbuilder/views/fields/render_css_front/type_dynradiobtn.php', $data, 'always');
+                        break;
+                    
+               }
+               
+               $output = self::render_template('formbuilder/views/fields/render_css_front/block_main.php', $data, 'always');
+               
+                break;
+            default:
+               
+            break;
+        }
+        
+        return $output;
+    }
+    
+    public function formhtml_renderField($data){
+        
+        $tmp_type=intval($data['type']);
+        
+        $output='';
+        
+        switch ($tmp_type) { 
+            case 6:
+               /*textbox*/
+            case 7: case 8: case 9: case 10: case 11: case 12: case 13: case 14: case 15: case 16: case 17:
+            case 18: case 19: case 20: case 21: case 22: case 23: case 24: case 25: case 26: case 27: case 28:case 29: case 30:
+              case 33: case 34: case 35: case 36: case 37: case 38: case 39: case 40: case 41: case 42:
+            
+            
+              
+                
+               $data['render_block_label'] =  self::render_template('formbuilder/views/fields/render_front/block_label.php', $data, 'always');
+                
+               switch ($tmp_type) {
+                   case 6:
+                       /*textbox*/
+                       $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_textbox.php', $data, 'always');
+                       $data['render_extraclass1'] = 'rockfm-textbox ';
+                       break;
+                   
+                   case 7:
+                       /*textarea*/
+                       $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_textarea.php', $data, 'always');
+                       $data['render_extraclass1'] = 'rockfm-textarea ';
+                       break;                    
+                   case 8:
+                    /*radio button*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_radiobutton.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-radiobtn ';
+                     break;
+                    case 9:
+                    /*checkbox*/   
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_checkbox.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-checkbox ';
+                     break;
+                     case 10:
+                    /*select*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_select.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-select ';
+                        break; 
+                    case 11:
+                    /*multi select*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_multiselect.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-multiselect ';
+                        break; 
+                    case 12:
+                    /*file upload*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_fileupload.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-fileupload ';
+                        break; 
+                    case 13:
+                    /*Image upload*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_imageupload.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-imageupload';
+                        break; 
+                    case 14:
+                    /*custom html*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_customhtml.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-customhtml';
+                        break;
+                    case 15:
+                    /*password*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_password.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-password ';
+                        break;
+                    case 16:
+                    /*slider*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_slider.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-slider ';
+                        break;
+                    case 17:
+                    /*range*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_range.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-range ';
+                        break;
+                    case 18:
+                    /*spinner*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_spinner.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-spinner ';
+                        break;
+                    case 19:
+                    /*catpcha*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_captcha.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-captcha ';
+                        break;
+                    case 20:
+                    /*submit button*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_subbtn.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-submitbtn ';
+                        break;
+                    case 21:
+                    /*hidden field*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_hiddenfield.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-hiddeninput ';
+                        break;
+                    case 22:
+                    /*star rating*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_starrating.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-ratingstar ';
+                        break;
+                    case 23:
+                    /*color picker*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_colorpicker.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-colorpicker ';
+                        break;
+                    case 24:
+                    /*Date picker*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_datepicker.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-datepicker ';
+                        break;
+                    case 25:
+                    /*time picker*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_timepicker.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-timepicker ';
+                        break;
+                    case 26:
+                    /*date time*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_datetime.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-datetime ';
+                        break;
+                    case 27:
+                    /*recaptcha*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_recaptcha.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-recaptcha ';
+                        break;
+                    case 28:
+                    /*prep text*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_preptext.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-preptext ';
+                        break;
+                    case 29:
+                    /*app text*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_apptext.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-appetext ';
+                        break;
+                    case 30:
+                    /*app prep*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_appprep.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-prepapptext ';
+                        break;
+                   
+                   case 33:case 34:case 35:case 36:case 37:case 38:
+                    /*heading*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_heading.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-heading ';
+                        break;
+                    case 39:
+                    /*wizard button*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_wizardbtn.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-wizardbtn ';
+                        break;
+                    case 40:
+                    /*switch*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_switch.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-switch ';
+                        break;
+                    case 41:
+                    /*dyn checkbox*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_dyncheckbox.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-dyncheckbox ';
+                        break;
+                    case 42:
+                    /*dyn radio button*/
+                        $data['render_block_input'] =  self::render_template('formbuilder/views/fields/render_front/type_dynradiobtn.php', $data, 'always');
+                        $data['render_extraclass1'] = 'rockfm-dynradiobtn ';
+                        break;
+               }
+               
+               $data['render_block_input_cont'] =  self::render_template('formbuilder/views/fields/render_front/block_input_cont.php', $data, 'always');
+               $data['render_block_container'] =  self::render_template('formbuilder/views/fields/render_front/block_container.php', $data, 'always');
+               
+               $output = self::render_template('formbuilder/views/fields/render_front/block_main.php', $data, 'always');
+                break;
+           case 32:
+           /*divider*/
+                $data['render_block_container'] =  self::render_template('formbuilder/views/fields/render_front/type_divider.php', $data, 'always');
+                $data['render_extraclass1'] = 'rockfm-divider ';
+                 
+                 $output = self::render_template('formbuilder/views/fields/render_front/block_main.php', $data, 'always');
+               break;
+            default:
+               
+            break;
+        }
+        
+        return $output;
+    }
+    
 
     public function preview_fields() {
         $data = array();

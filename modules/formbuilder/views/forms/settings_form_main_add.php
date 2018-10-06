@@ -61,19 +61,37 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                                style="width:100%;"
                                class="sfdc-form-control autogrow"></textarea>
                          <p class="help-block"><?php echo __('proceed with caution. if you put a wrong javascript code, the form will not work properly e.g. ','FRocket_admin'); ?>
+                             <br>
                          <code>
                              <?php ob_start();?>
-                        <script type="text/javascript">
-                        window.onload = function () {
-                            document.getElementsByClassName('uiform-step-content')[0].style.background = "red";
-                        };
-                        </script>
+                       
+                             (function ($) {
+                                document.body.style.backgroundColor = "red";
+                                alert("Added red to background");
+                            })();
+                       
                             <?php 
                             $cntACmp = ob_get_contents();
                         ob_end_clean();
                         echo htmlentities($cntACmp);
                             ?>
                          </code>
+                             
+                             or 
+                             <br>
+                            <code>
+                             <?php ob_start();?>
+                       
+                       $uifm( document ).ready(function($) {
+                          $('body').css('background','red');
+                          alert('Added red to background');
+                       });
+                            <?php 
+                            $cntACmp = ob_get_contents();
+                        ob_end_clean();
+                        echo htmlentities($cntACmp);
+                            ?>
+                         </code>   
                          </p> 
                     </div>
                 </div>

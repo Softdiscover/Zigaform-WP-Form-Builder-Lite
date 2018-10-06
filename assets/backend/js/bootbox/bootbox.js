@@ -99,17 +99,26 @@
   function processCallback(e, dialog, callback) {
     e.stopPropagation();
     e.preventDefault();
-
+    
     // by default we assume a callback will get rid of the dialog,
     // although it is given the opportunity to override this
 
     // so, if the callback can be invoked and it *explicitly returns false*
     // then we'll set a flag to keep the dialog active...
     var preserveDialog = $.isFunction(callback) && callback.call(dialog, e) === false;
-
+    
     // ... otherwise we'll bin it
     if (!preserveDialog) {
-      dialog.modal("hide");
+      
+      dialog.sfdc_modal("hide");
+      
+      /*it doesnt close on chrome*/
+      if($('.bootbox').is(':visible'))
+        {  
+            dialog.remove();
+            $('.sfdc-modal-backdrop').remove();
+        }
+      
     }
   }
 
@@ -546,23 +555,23 @@
       e.stopPropagation();
       // @TODO can we actually click *the* button object instead?
       // e.g. buttons.confirm.click() or similar
-      dialog.find(".btn-primary").click();
+      dialog.find(".sfdc-btn-primary").click();
     });
 
     dialog = exports.dialog(options);
 
     // clear the existing handler focusing the submit button...
-    dialog.off("shown.bs.modal");
+    dialog.off("shown.bs.sfdc-modal");
 
     // ...and replace it with one focusing our input, if possible
-    dialog.on("shown.bs.modal", function() {
+    dialog.on("shown.bs.sfdc-modal", function() {
       // need the closure here since input isn't
       // an object otherwise
       input.focus();
     });
 
     if (shouldShow === true) {
-      dialog.modal("show");
+      dialog.sfdc_modal("show");
     }
 
     return dialog;
@@ -643,7 +652,7 @@
      * modal has performed certain actions
      */
 
-    dialog.on("hidden.bs.modal", function(e) {
+    dialog.on("hidden.bs.sfdc-modal", function(e) {
       // ensure we don't accidentally intercept hidden events triggered
       // by children of the current dialog. We shouldn't anymore now BS
       // namespaces its events; but still worth doing
@@ -653,7 +662,7 @@
     });
 
     /*
-    dialog.on("show.bs.modal", function() {
+    dialog.on("show.bs.sfdc-modal", function() {
       // sadly this doesn't work; show is called *just* before
       // the backdrop is added so we'd need a setTimeout hack or
       // otherwise... leaving in as would be nice
@@ -663,7 +672,7 @@
     });
     */
 
-    dialog.on("shown.bs.modal", function() {
+    dialog.on("shown.bs.sfdc-modal", function() {
       dialog.find(".sfdc-btn-primary:first").focus();
     });
 
@@ -682,7 +691,7 @@
       // this event (the .modal-backdrop swallows it)
       // However, we still want to sort of respect true
       // and invoke the escape mechanism instead
-      dialog.on("click.dismiss.bs.modal", function(e) {
+      dialog.on("click.dismiss.bs.sfdc-modal", function(e) {
         // @NOTE: the target varies in >= 3.3.x releases since the modal backdrop
         // moved *inside* the outer dialog rather than *alongside* it
         if (dialog.children(".sfdc-modal-backdrop").length) {
@@ -734,20 +743,20 @@
 
     $(options.container).append(dialog);
 
-    dialog.modal({
+    dialog.sfdc_modal({
       backdrop: options.backdrop ? "static": false,
       keyboard: false,
       show: false
     });
 
     if (options.show) {
-      dialog.modal("show");
+      dialog.sfdc_modal("show");
     }
 
     // @TODO should we return the raw element here or should
     // we wrap it in an object on which we can expose some neater
     // methods, e.g. var d = bootbox.alert(); d.hide(); instead
-    // of d.modal("hide");
+    // of d.sfdc_modal("hide");
 
    /*
     function BBDialog(elem) {
@@ -756,10 +765,10 @@
 
     BBDialog.prototype = {
       hide: function() {
-        return this.elem.modal("hide");
+        return this.elem.sfdc_modal("hide");
       },
       show: function() {
-        return this.elem.modal("show");
+        return this.elem.sfdc_modal("show");
       }
     };
     */
@@ -783,7 +792,7 @@
   };
 
   exports.hideAll = function() {
-    $(".bootbox").modal("hide");
+    $(".bootbox").sfdc_modal("hide");
 
     return exports;
   };

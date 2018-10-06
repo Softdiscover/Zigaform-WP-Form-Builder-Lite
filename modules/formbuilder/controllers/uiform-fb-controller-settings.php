@@ -10,7 +10,7 @@
  * @author    Softdiscover <info@softdiscover.com>
  * @copyright 2015 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
- * @link      http://wordpress-form-builder.zigaform.com/
+ * @link      https://wordpress-form-builder.zigaform.com/
  */
 if (!defined('ABSPATH')) {
     exit('No direct script access allowed');
@@ -28,7 +28,7 @@ if (class_exists('Uiform_Fb_Controller_Settings')) {
  * @copyright 2013 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
  * @version   Release: 1.00
- * @link      http://wordpress-form-builder.zigaform.com/
+ * @link      https://wordpress-form-builder.zigaform.com/
  */
 class Uiform_Fb_Controller_Settings extends Uiform_Base_Module {
 
@@ -197,6 +197,10 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module {
         $uiform_tbs[] = $this->wpdb->prefix . "uiform_fields";
         $uiform_tbs[] = $this->wpdb->prefix . "uiform_fields_type";
         $uiform_tbs[] = $this->wpdb->prefix . "uiform_settings";
+        $uiform_tbs[] = $this->wpdb->prefix . "uiform_form_log";
+        $uiform_tbs[] = $this->wpdb->prefix . "uiform_addon";
+        $uiform_tbs[] = $this->wpdb->prefix . "uiform_addon_details";
+        $uiform_tbs[] = $this->wpdb->prefix . "uiform_addon_details_log";
         
         
         //tables
@@ -206,15 +210,41 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module {
         $name_tb[$this->wpdb->prefix . "uiform_fields"]="Fields";
         $name_tb[$this->wpdb->prefix . "uiform_fields_type"]="Types";
         $name_tb[$this->wpdb->prefix . "uiform_settings"]="Settings";
+        $name_tb[$this->wpdb->prefix . "uiform_settings"]="Settings";
+        $name_tb[$this->wpdb->prefix . "uiform_form_log"]="Form Log";
+        $name_tb[$this->wpdb->prefix . "uiform_addon"]="Addon";
+        $name_tb[$this->wpdb->prefix . "uiform_addon_details"]="Addon detail";
+        $name_tb[$this->wpdb->prefix . "uiform_addon_details_log"]="Addon log";
 
         
         
         $uiform_tbs_tmp=array();
+        $count_err=0;
         foreach ($uiform_tbs as $value) {
            $tmp_tb=array();
             $tmp_tb['table']=$name_tb[$value];
+            $tmp_tb['message'] = "";
+            //check database
             (in_array($value, $all_tables_tmp))?$tmp_tb['status']=1:$tmp_tb['status']=0;
+            
+            //check columns
+            $tmp_check=$this->check_Database_Column($value);
+            
+            if(!empty($tmp_check['err_msgs'])){
+                $tmp_tb['status']=0;
+                $tmp_tb['message'] = '<ul><li>'.implode("</li><li>", $tmp_check['err_msgs']).'</li></ul>';
+            }
+            
+            if($tmp_tb['status']===0){
+                $count_err++;
+            }
+            
             $uiform_tbs_tmp[]=$tmp_tb; 
+        }
+        
+        $data['database_success']=1;
+        if($count_err>0){
+        $data['database_success']=0;    
         }
         
         $data['database_int']=$uiform_tbs_tmp;
@@ -222,6 +252,97 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module {
         echo self::loadPartial('layout.php', 'formbuilder/views/settings/system_check.php', $data);
     }
     
+    public function system_gendb_column(){
+        global $wpdb;
+        
+        
+        $uiform_tbs=array();
+        $uiform_tbs[] = $this->wpdb->prefix . "uiform_form";
+        $uiform_tbs[] = $this->wpdb->prefix . "uiform_form_records";
+        $uiform_tbs[] = $this->wpdb->prefix . "uiform_fields";
+        $uiform_tbs[] = $this->wpdb->prefix . "uiform_fields_type";
+        $uiform_tbs[] = $this->wpdb->prefix . "uiform_settings";
+        $uiform_tbs[] = $this->wpdb->prefix . "uiform_form_log";
+        $uiform_tbs[] = $this->wpdb->prefix . "uiform_addon";
+        $uiform_tbs[] = $this->wpdb->prefix . "uiform_addon_details";
+        $uiform_tbs[] = $this->wpdb->prefix . "uiform_addon_details_log";
+        
+        
+        $tmp_all_db=array();
+        
+         foreach ($uiform_tbs as $value) {
+            
+            $row=$this->model_settings->getColsFromTable($value);
+            
+            //tables
+            $resultado=array();
+            
+            $tmp_arr=array();
+            if(!empty($row)){
+                 foreach ($row as $key => $value2) {
+                      $tmp_arr[]=$value2->Field;
+                 }
+            }
+            
+            $tmp_all_db[str_replace($this->wpdb->prefix,'',$value)]=$tmp_arr;
+        }
+        
+         
+
+        //Encode the array into a JSON string.
+        $encodedString = json_encode($tmp_all_db);
+
+        //Save the JSON string to a text file.
+        file_put_contents(UIFORM_FORMS_DIR.'/modules/formbuilder/views/settings/system_db.txt', $encodedString);
+        
+        die('database structure generated');
+    }
+    
+    public function check_Database_Column($table){
+        
+        //Retrieve the data from our text file.
+        $fileContents = file_get_contents(UIFORM_FORMS_DIR.'/modules/formbuilder/views/settings/system_db.txt');
+
+        //Convert the JSON string back into an array.
+        $tmp_all_db = json_decode($fileContents, true);
+        
+        global $wpdb;
+        //$row= $wpdb->get_results("SHOW COLUMNS FROM " . $table );
+        $row=$this->model_settings->getColsFromTable($table);
+        //tables
+        $resultado=array();
+        
+        $err_msgs= array();
+        
+        $table = str_replace($this->wpdb->prefix,'',$table);
+        
+        $col_st=false;
+        if(!empty($row)){
+            $tmp_arr=array();
+             foreach ($row as $key => $value) {
+                  if(isset($tmp_all_db[$table]) && in_array($value->Field, $tmp_all_db[$table])){
+                 
+                    if (($key2 = array_search($value->Field, $tmp_all_db[$table])) !== false) {
+                            unset($tmp_all_db[$table][$key2]);
+                        }
+                    
+                  }
+             }
+        }
+        
+        foreach ($tmp_all_db[$table] as $value) {
+           $err_msgs[]=$value.' column is missing';
+        }
+        
+       
+        
+        $resultado['err_msgs'] = $err_msgs;
+        
+        
+        return $resultado;
+        
+        
+    }
     
     public function backup_settings() {
         $data = array();

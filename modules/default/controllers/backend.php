@@ -34,9 +34,11 @@ class Uiform_Fb_Default_Controller_Back extends Uiform_Base_Module {
     const VERSION = '1.2';
 
     private $wpdb = "";
-
-    
+ 
+    private $pagination = "";
+    private $formsmodel = "";
     protected $modules;
+    var $per_page = 10;
 
     const PREFIX = 'wprofmr_';
 
@@ -46,9 +48,15 @@ class Uiform_Fb_Default_Controller_Back extends Uiform_Base_Module {
      * @mvc Controller
      */
     protected function __construct() {
+        
+      $this->formsmodel = self::$_models['formbuilder']['form'];    
+        
       //Handle the smush pro dismiss features notice ajax
       add_action( 'wp_ajax_zgfm_dismiss_upgrade_notice', array( $this, 'dismiss_upgrade_notice' ) );  
+      
+    
     }
+    
     
     /**
      * Hide upgrade notice

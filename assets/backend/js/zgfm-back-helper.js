@@ -262,7 +262,6 @@ var zgfm_back_helper = function(){
                 delete mainarr[name][index][key][section][option][option2];
             }; 
     
-    
 };
 window.zgfm_back_helper = zgfm_back_helper = $.zgfm_back_helper = new zgfm_back_helper();
 

@@ -20,33 +20,81 @@ ob_start();
      
      <?php if(!empty($data)){
      foreach ($data as $key => $value) {
+         
+         switch (intval($value['type'])) {
+             case 8:
+             case 9:
+             case 10:
+             case 11:    
+                 ?>
+                   <tr>
+                        <td width="50%" >
+                          <div  > <?php echo $value['label'];?></div>
+                        </td>
+                        <td width="50%" >
+                            <?php if(is_array($value['input'])){
+                                ?>
+                                <ul> 
+                                    <?php foreach ($value['input'] as $key2 => $value2) { ?>
+                                     <li> <?php echo $value2['value'];?></li>
+                                    <?php                     
+                                    }?>
+                                </ul>
+                          <?php
+                            }else{
+                                ?>
+                               <ul> 
+                                   <li> <?php echo $value['input'];?></li>
+                               </ul>
+                            <?php
+                            }?>
+
+
+                        </td>
+                    </tr>
+        
+               <?php
+
+                 break;
+
+             default:
+                 
+                 ?>
+                     <tr>
+                        <td width="50%" >
+                          <div  > <?php echo $value['label'];?></div>
+                        </td>
+                        <td width="50%" >
+                            <?php if(is_array($value['input'])){
+                                ?>
+                                <ul> 
+                                    <?php foreach ($value['input'] as $key2 => $value2) { ?>
+                                     <li> <?php echo $value2['label'];?></li>
+                                    <?php                     
+                                    }?>
+                                </ul>
+                          <?php
+                            }else{
+                                ?>
+                               <ul> 
+                                   <li> <?php echo $value['input'];?></li>
+                               </ul>
+                            <?php
+                            }?>
+
+
+                        </td>
+                    </tr>    
+                     
+                 <?php
+                 
+                 break;
+         }
+         
+         
          ?>
      
-        <tr>
-            <td width="50%" >
-              <div  > <?php echo $value['label'];?></div>
-            </td>
-            <td width="50%" >
-                <?php if(is_array($value['input'])){
-                    ?>
-                    <ul> 
-                        <?php foreach ($value['input'] as $key2 => $value2) { ?>
-                         <li> <?php echo $value2['label'];?></li>
-                        <?php                     
-                        }?>
-                    </ul>
-              <?php
-                }else{
-                    ?>
-                   <ul> 
-                       <li> <?php echo $value['input'];?></li>
-                   </ul>
-                <?php
-                }?>
-               
-
-            </td>
-        </tr>
+    
      
      <?php
      }

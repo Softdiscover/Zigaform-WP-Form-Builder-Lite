@@ -43,15 +43,15 @@ jQuery(function () {
         
     btn_act2.click(function (ev) {
         zgfm_remove_notice();
-        zgfm_notify_wordpress(btn_act2.data("msg"),'zgfm_c_notice_dismiss');
+        zgfm_notify_wordpress(btn_act2.data("msg"),'zgfm_f_notice_dismiss');
     });
     btn_dismiss2.click(function (ev) {
         zgfm_remove_notice();
-        zgfm_notify_wordpress(btn_act2.data("msg"),'zgfm_c_notice_dismiss');
+        zgfm_notify_wordpress(btn_act2.data("msg"),'zgfm_f_notice_dismiss');
     });   
      btn_dismiss3.click(function (ev) {
         zgfm_remove_notice();
-        zgfm_notify_wordpress(btn_act2.data("msg"),'zgfm_c_notice_rated');
+        zgfm_notify_wordpress(btn_act2.data("msg"),'zgfm_f_notice_rated');
     }); 
     
 

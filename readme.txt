@@ -5,9 +5,9 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: form, forms, contact form, custom form, form builder, form creator, form manager, form creation, contact forms, custom forms, forms builder, forms creator, forms manager, forms creation, form administration,
 Requires at least: 3.6
-Tested up to: 4.9
+Tested up to: 4.9.6
 Requires PHP: 5.3
-Stable tag: 3.7.6.5
+Stable tag: 3.9.4.8
 
 Create forms with total control using this powerful drag and drop form builder which makes you to build contact forms or any form on few minutes.
 
@@ -359,11 +359,8 @@ Their support is immaculate and the zigaform is one of the best you’ll find fo
 * It saves your time and increases form completions by preloading data in your forms. 	
 * Build complex forms with conditional logic. You can automatically hide or show fields or entire pages in your form based on selections your users make. [PRO VERSION]
 
-
 == Tags ==
-ajax forms, responsive, form generator, form creator, form, forms, simple forms, professional forms, quick forms, form builder, form designs, contact form, validation, form builder, contact form builder, form manager, form creator, form generator, contact us, contact forms plugin, contact form plugin, bootstrap forms, jquery forms, ajax, confirmation mail, template,captcha,redirect,mailchimp,recaptcha,html,avada,bootstrap,builder,design,database,divi,email,embed,email template,elementor,conditional email,layout,marketing,validation,visual composer,bootstrap layout,magento,bootstrap with validation,bootstrap example,laravel,drupal,codeigniter,codecanyon,drag and drop,commerce,for word,in salesforce,oracle,salesforce,with conditional logic,builder form,news,maps
-
-
+ajax forms, responsive, form generator, form creator, form, forms, simple forms, professional forms, quick forms, form builder, form designs, contact form, validation, form builder, contact form builder, form manager, form creator, form generator, contact us, contact forms plugin, contact form plugin, bootstrap forms, jquery forms, ajax, confirmation mail, template, captcha, redirect, mailchimp, recaptcha, html, avada, bootstrap, builder, design, database, divi, email, embed, email template, elementor, conditional email, layout, marketing, validation, visual composer, bootstrap layout, magento, bootstrap with validation, bootstrap example, laravel, drupal, codeigniter, codecanyon, drag and drop, commerce, for word, in salesforce, oracle, salesforce, with conditional logic, builder form, news, maps
 
 == Installation ==
 
@@ -431,6 +428,30 @@ https://www.youtube.com/watch?v=W3yTkaDD4Mk&w=532&rel=0
 * variables in modal
 = 3.7.6.5 =
 * minor changes
+= 3.7.9.9 =
+* minor changes
+= 3.8 =
+* minor changes
+= 3.8.4 =
+* ip issue when it has more than 20 character
+= 3.8.9.7 = 
+* minor changes
+= 3.8.9.9 = 
+* minor changes
+= 3.9.1 =
+* fast load of field options
+= 3.9.1.2 = 
+* minor changes
+= 3.9.1.3 = 
+* minor changes
+= 3.9.1.7 = 
+* minor changes
+= 3.9.1.9 = 
+* minor changes
+= 3.9.2.4 = 
+ *added custom reply to mail messages
+= 3.9.4.8 = 
+ * minor changes
 
 == Upgrade Notice ==
 
@@ -453,3 +474,27 @@ https://www.youtube.com/watch?v=W3yTkaDD4Mk&w=532&rel=0
 * variables in modal
 = 3.7.6.5 =
 * minor changes
+= 3.7.9.9 =
+* minor changes
+= 3.8 =
+* minor changes
+= 3.8.4 =
+* ip issue when it has more than 20 character
+= 3.8.9.7 = 
+* minor changes
+= 3.8.9.9 = 
+* minor changes
+= 3.9.1 =
+* fast load of field options
+= 3.9.1.2 = 
+* minor changes
+= 3.9.1.3 = 
+* minor changes
+= 3.9.1.7 = 
+* minor changes
+= 3.9.1.9 = 
+* minor changes
+= 3.9.2.4 = 
+ *added custom reply to mail messages
+= 3.9.4.8 = 
+ * minor changes

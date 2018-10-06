@@ -42,7 +42,10 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                             <label class="sfdc-col-sm-2 control-label"><?php echo __('Database Integrity','FRocket_admin');?></label>
                             <div class="sfdc-col-sm-10">
                                 <div class="span4">
-                                    <table class="systemcheck-db-table table table-bordered table-hover">
+                                    <?php 
+                                    if($database_success===0){
+                                        ?>
+                                          <table class="systemcheck-db-table table table-bordered table-hover">
                                         <thead>
                                             <tr>
                                                 <th><?php echo __('Tables','FRocket_admin');?></th>
@@ -63,7 +66,11 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                                                 }else{
                                                     ?>
                                                       <i class="fa fa-exclamation-triangle"></i>  
+                                                      
+                                                      
                                                         <?php
+                                                        echo $value['message'];
+                                                        
                                                 }
                                                 
                                                 ?></td>
@@ -75,10 +82,24 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <td colspan="5" class="text-center"> <?php echo __('if you see a red status for any table, it means the plugin installation have failed', 'FRocket_admin'); ?></td>
+                                                <td colspan="5" class="text-center"> <?php echo __('if you see a red status for any table, it means the plugin installation have failed. try enabling and disabling the plugin or make a fresh install or contact developer for support', 'FRocket_admin'); ?></td>
                                             </tr>
                                         </tfoot>
-                                    </table>
+                                    </table>   
+                                            
+                                    <?php
+                                    }else{
+                                    ?>
+                                    <div class="sfdc-alert sfdc-alert-success">
+                                       <?php echo __('Database is fine','FRocket_admin');?> <i class="fa fa-thumbs-up"></i>
+                                      </div>
+
+                                    <?php
+                                    }
+                                    ?>
+                                    
+                                    
+                                   
                                    
                                 </div>
                             </div>

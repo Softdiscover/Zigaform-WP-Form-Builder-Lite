@@ -54,6 +54,12 @@ class zgfm_mod_addon_controller_front extends Uiform_Base_Module {
     
     public function load_addonsByFront(){
         
+        global $wpdb;
+        $table_name = $wpdb->prefix . "uiform_addon";
+        if($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
+            //table not in database
+            return;
+        }
       //get addons
       $tmp_addons=$this->model_addon->getListAddonsByFront();
      

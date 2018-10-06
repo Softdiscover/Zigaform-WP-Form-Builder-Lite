@@ -9,7 +9,7 @@
  * @author    Softdiscover <info@softdiscover.com>
  * @copyright 2015 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
- * @link      http://wordpress-form-builder.zigaform.com/
+ * @link      https://wordpress-form-builder.zigaform.com/
  */
 if (!defined('ABSPATH')) {exit('No direct script access allowed');}
 ?>
@@ -114,7 +114,7 @@ endforeach;
                        
                      
                    </div> 
-                    <form  action="<?php echo UIFORM_ADMINPATH;?>?page=zgfm_form_builder&mod=formbuilder&controller=settings&action=backup_settings" method="post" enctype="multipart/form-data">
+                    <form  action="<?php echo UIFORM_ADMINPATH;?>?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=settings&zgfm_action=backup_settings" method="post" enctype="multipart/form-data">
                    <div class="sfdc-row">
                        <div class="sfdc-col-md-6">
                            <div class="fileinput fileinput-new sfdc-input-group" data-provides="fileinput">

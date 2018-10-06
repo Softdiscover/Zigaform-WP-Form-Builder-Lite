@@ -555,8 +555,8 @@ if (typeof $uifm === 'undefined') {
   var Collapse = function (element, options) {
     this.$element      = $(element)
     this.options       = $.extend({}, Collapse.DEFAULTS, options)
-    this.$trigger      = $('[data-toggle="collapse"][href="#' + element.id + '"],' +
-                           '[data-toggle="collapse"][data-target="#' + element.id + '"]')
+    this.$trigger      = $('[data-toggle="sfdc-collapse"][href="#' + element.id + '"],' +
+                           '[data-toggle="sfdc-collapse"][data-target="#' + element.id + '"]')
     this.transitioning = null
 
     if (this.options.parent) {
@@ -588,7 +588,7 @@ if (typeof $uifm === 'undefined') {
     var actives = this.$parent && this.$parent.children('.sfdc-panel').children('.sfdc-in, .sfdc-collapsing')
 
     if (actives && actives.length) {
-      activesData = actives.data('bs.collapse')
+      activesData = actives.data('bs.sfdc-collapse')
       if (activesData && activesData.transitioning) return
     }
 
@@ -598,26 +598,26 @@ if (typeof $uifm === 'undefined') {
 
     if (actives && actives.length) {
       Plugin.call(actives, 'hide')
-      activesData || actives.data('bs.collapse', null)
+      activesData || actives.data('bs.sfdc-collapse', null)
     }
 
     var dimension = this.dimension()
 
     this.$element
-      .removeClass('collapse')
+      .removeClass('sfdc-collapse')
       .addClass('collapsing')[dimension](0)
       .attr('aria-expanded', true)
 
     this.$trigger
-      .removeClass('collapsed')
+      .removeClass('sfdc-collapsed')
       .attr('aria-expanded', true)
 
     this.transitioning = 1
 
     var complete = function () {
       this.$element
-        .removeClass('collapsing')
-        .addClass('collapse in')[dimension]('')
+        .removeClass('sfdc-collapsing')
+        .addClass('sfdc-collapse in')[dimension]('')
       this.transitioning = 0
       this.$element
         .trigger('shown.bs.sfdc-collapse')
@@ -676,7 +676,7 @@ if (typeof $uifm === 'undefined') {
 
   Collapse.prototype.getParent = function () {
     return $(this.options.parent)
-      .find('[data-toggle="collapse"][data-parent="' + this.options.parent + '"]')
+      .find('[data-toggle="sfdc-collapse"][data-parent="' + this.options.parent + '"]')
       .each($.proxy(function (i, element) {
         var $element = $(element)
         this.addAriaAndCollapsedClass(getTargetFromTrigger($element), $element)
@@ -708,26 +708,26 @@ if (typeof $uifm === 'undefined') {
   function Plugin(option) {
     return this.each(function () {
       var $this   = $(this)
-      var data    = $this.data('bs.collapse')
+      var data    = $this.data('bs.sfdc-collapse')
       var options = $.extend({}, Collapse.DEFAULTS, $this.data(), typeof option == 'object' && option)
 
       if (!data && options.toggle && /show|hide/.test(option)) options.toggle = false
-      if (!data) $this.data('bs.collapse', (data = new Collapse(this, options)))
+      if (!data) $this.data('bs.sfdc-collapse', (data = new Collapse(this, options)))
       if (typeof option == 'string') data[option]()
     })
   }
 
-  var old = $.fn.collapse
+  var old = $.fn.sfdc_collapse
 
-  $.fn.collapse             = Plugin
-  $.fn.collapse.Constructor = Collapse
+  $.fn.sfdc_collapse             = Plugin
+  $.fn.sfdc_collapse.Constructor = Collapse
 
 
   // COLLAPSE NO CONFLICT
   // ====================
 
-  $.fn.collapse.noConflict = function () {
-    $.fn.collapse = old
+  $.fn.sfdc_collapse.noConflict = function () {
+    $.fn.sfdc_collapse = old
     return this
   }
 
@@ -735,13 +735,13 @@ if (typeof $uifm === 'undefined') {
   // COLLAPSE DATA-API
   // =================
 
-  $(document).on('click.bs.sfdc-collapse.data-api', '[data-toggle="collapse"]', function (e) {
+  $(document).on('click.bs.sfdc-collapse.data-api', '[data-toggle="sfdc-collapse"]', function (e) {
     var $this   = $(this)
 
     if (!$this.attr('data-target')) e.preventDefault()
 
     var $target = getTargetFromTrigger($this)
-    var data    = $target.data('bs.collapse')
+    var data    = $target.data('bs.sfdc-collapse')
     var option  = data ? 'toggle' : $this.data()
 
     Plugin.call($target, option)
@@ -1238,7 +1238,7 @@ if (typeof $uifm === 'undefined') {
   // MODAL DATA-API
   // ==============
 
-  $(document).on('click.bs.sfdc-modal.data-api', '[data-toggle="modal"]', function (e) {
+  $(document).on('click.bs.sfdc-modal.data-api', '[data-toggle="sfdc-modal"]', function (e) {
     var $this   = $(this)
     var href    = $this.attr('href')
     var $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) // strip for ie7
