@@ -1451,6 +1451,10 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         wp_enqueue_style('rockfm-bootstrap-touchspin', UIFORM_FORMS_URL . '/assets/backend/js/btouchspin/jquery.bootstrap-touchspin.css');
         // bootstrap datetimepicker
         wp_enqueue_style('rockfm-bootstrap-datetimepicker', UIFORM_FORMS_URL . '/assets/backend/js/bdatetime/bootstrap-datetimepicker.css');
+        
+        // bootstrap datetimepicker2
+        wp_enqueue_style('rockfm-bootstrap-datetimepicker2', UIFORM_FORMS_URL . '/assets/common/js/flatpickr/4.5.2/flatpickr.min.css');
+        
         //color picker
         wp_enqueue_style('rockfm-bootstrap-colorpicker', UIFORM_FORMS_URL . '/assets/backend/js/colorpicker/2.5/css/bootstrap-colorpicker.css');
         // bootstrap select
@@ -1510,6 +1514,11 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         //bootstrap datetimepicker
         wp_enqueue_script('rockfm-bootstrap-dtpicker-locales', UIFORM_FORMS_URL . '/assets/backend/js/bdatetime/moment-with-locales.js', array('jquery', 'rockfm-bootstrap'), '1.0', true);
         wp_enqueue_script('rockfm-bootstrap-datetimepicker', UIFORM_FORMS_URL . '/assets/backend/js/bdatetime/bootstrap-datetimepicker.js', array('jquery', 'rockfm-bootstrap'), '1.0', true);
+        
+         //bootstrap datetimepicker
+        wp_enqueue_script('rockfm-bootstrap-dtpicker-locales2', UIFORM_FORMS_URL . '/assets/common/js/flatpickr/4.5.2/flatpickr.js', array('jquery', 'rockfm-bootstrap'), '1.0', true);
+        wp_enqueue_script('rockfm-bootstrap-datetimepicker2', UIFORM_FORMS_URL . '/assets/common/js/flatpickr/4.5.2/l10n/all-lang.js', array('jquery', 'rockfm-bootstrap'), '1.0', true);
+        
         //star rating
         wp_enqueue_script('rockfm-star-rating', UIFORM_FORMS_URL . '/assets/backend/js/bratestar/star-rating.js', array('jquery', 'rockfm-bootstrap'), '1.0', true);
         //color picker

@@ -3,7 +3,7 @@
  * Plugin Name: Zigaform Form Builder Lite
  * Plugin URI: https://wordpress-form-builder.zigaform.com/
  * Description: The ZigaForm Wordpress form builder is the ultimate form creation solution for Wordpress.
- * Version: 3.9.4.8
+ * Version: 3.9.6.4
  * Author: ZigaForm.Com
  * Author URI: https://wordpress-form-builder.zigaform.com/
  */
@@ -29,7 +29,7 @@ if (!class_exists('UiformFormbuilder')) {
          * @var string
          * @since 1.0
          */
-        public $version = '3.9.4.8';
+        public $version = '3.9.6.4';
 
         /**
          * The minimal required version of WordPress for this plug-in to function correctly.
@@ -276,7 +276,7 @@ if (!class_exists('UiformFormbuilder')) {
                                 `log_frm_id` int(6) NOT NULL,
                                 `log_frm_hash` varchar(255) NOT NULL,
                                 `flag_status` smallint(5) DEFAULT '1',
-                                `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+                                `created_date` timestamp NULL,
                                 `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
                                 `created_ip` varchar(50) DEFAULT NULL,
                                 `updated_ip` varchar(50) DEFAULT NULL,
@@ -323,7 +323,7 @@ if (!class_exists('UiformFormbuilder')) {
                             `add_log` text ,
                             `addonscol` varchar(45) DEFAULT NULL,
                             `flag_status` smallint(5)  DEFAULT 1,
-                            `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+                            `created_date` timestamp NULL,
                             `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
                             `created_ip` varchar(50)  DEFAULT NULL,
                             `updated_ip` varchar(50)  DEFAULT NULL,
@@ -339,7 +339,7 @@ if (!class_exists('UiformFormbuilder')) {
                          $wpdb->query($sql);
                          
                           if(ZIGAFORM_F_LITE!=1){
-                         $sql="INSERT INTO $tbname VALUES ('func_anim', 'Animation effect', 'Animation effects to fields', 1, 1, NULL, NULL, NULL, 1, NULL, NULL, NULL, 1, '0000-00-00 00:00:00', '2018-01-31 10:35:14', NULL, NULL, NULL, NULL, NULL, 1, 1, 1);";
+                         $sql="INSERT INTO $tbname VALUES ('func_anim', 'Animation effect', 'Animation effects to fields', 1, 1, NULL, NULL, NULL, 1, NULL, NULL, NULL, 1, '1980-01-01 00:00:01', '2018-01-31 10:35:14', NULL, NULL, NULL, NULL, NULL, 1, 1, 1);";
                          $wpdb->query($sql);
                           }
                          
@@ -355,7 +355,7 @@ if (!class_exists('UiformFormbuilder')) {
                                 `fmb_id` int(5) NOT NULL,
                                 `adet_data` longtext ,
                                 `flag_status` smallint(5) DEFAULT 1,
-                                `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+                                `created_date` timestamp NULL,
                                 `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
                                 `created_ip` varchar(50) DEFAULT NULL,
                                 `updated_ip` varchar(50) DEFAULT NULL,
@@ -379,7 +379,7 @@ if (!class_exists('UiformFormbuilder')) {
                             `fmb_id` int(5) NOT NULL,
                             `adet_data` longtext  NULL,
                             `flag_status` smallint(5) DEFAULT 1,
-                            `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+                            `created_date` timestamp NULL,
                             `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
                             `created_ip` varchar(50) DEFAULT NULL,
                             `updated_ip` varchar(50) DEFAULT NULL,
@@ -444,7 +444,7 @@ if (!class_exists('UiformFormbuilder')) {
                                 `add_log` text ,
                                 `addonscol` varchar(45) DEFAULT NULL,
                                 `flag_status` smallint(5)  DEFAULT 1,
-                                `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+                                `created_date` timestamp NULL,
                                 `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
                                 `created_ip` varchar(50)  DEFAULT NULL,
                                 `updated_ip` varchar(50)  DEFAULT NULL,
@@ -460,13 +460,27 @@ if (!class_exists('UiformFormbuilder')) {
                              $wpdb->query($sql);
 
                               if(ZIGAFORM_F_LITE!=1){
-                             $sql="INSERT INTO $tbname VALUES ('func_anim', 'Animation effect', 'Animation effects to fields', 1, 1, NULL, NULL, NULL, 1, NULL, NULL, NULL, 1, '0000-00-00 00:00:00', '2018-01-31 10:35:14', NULL, NULL, NULL, NULL, NULL, 1, 1, 1);";
+                             $sql="INSERT INTO $tbname VALUES ('func_anim', 'Animation effect', 'Animation effects to fields', 1, 1, NULL, NULL, NULL, 1, NULL, NULL, NULL, 1, '1980-01-01 00:00:01', '2018-01-31 10:35:14', NULL, NULL, NULL, NULL, NULL, 1, 1, 1);";
                              $wpdb->query($sql);
                               }
 
 
                         }   
                     }
+                    
+                        //below 3.7
+                if (!$install_ver || version_compare($install_ver,"3.9.5", '<')) {
+                   
+                    
+                    $tbname = $wpdb->prefix . "uiform_fields_type";
+                   
+                    if ((string)$wpdb->get_var("SHOW TABLES LIKE '$tbname'") == $tbname) {
+                        
+                         $sql="INSERT INTO $tbname VALUES ('43', 'Date 2', '1', '1980-01-01 00:00:01', '2018-10-11 14:10:35', NULL, NULL, NULL, NULL) ON DUPLICATE KEY UPDATE flag_status = 1;";
+                         $wpdb->query($sql);
+                         
+                    }
+                }  
                 
                  update_option("uifmfbuild_version", $version);
             }

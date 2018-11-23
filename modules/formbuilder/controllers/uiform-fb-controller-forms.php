@@ -490,7 +490,6 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
     }
     
     public function ajax_listform_duplicate() {
-        
         check_ajax_referer( 'zgfm_ajax_nonce', 'zgfm_security' );
         
         $list_ids = (isset($_POST['id']) && $_POST['id']) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive'), $_POST['id']) : array();
@@ -1106,6 +1105,13 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
                 $str_output.=self::$_modules['formbuilder']['fields']->formhtml_dynradiobtn($data, $child_field['num_tab']);
                 $str_output_3.=self::$_modules['formbuilder']['fields']->formhtml_dynradiobtn_css($data);
                 break;
+            case 43:
+                //date 2
+                $data['main'] = $this->current_data_main;
+                $data['form_id'] = $this->saved_form_id;
+                $str_output.=self::$_modules['formbuilder']['fields']->formhtml_date2($data, $child_field['num_tab']);
+                $str_output_3.=self::$_modules['formbuilder']['fields']->formhtml_date2_css($data);
+                break;
             default:
                 break;
         }
@@ -1268,6 +1274,10 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
             case 42:
                 //dyn radiobtn
                 $str_output.=self::render_template('formbuilder/views/fields/templates/prevpanel_dynradiobtn.php', $data, 'always');
+                break;
+            case 43:
+                //date
+                $str_output.=self::render_template('formbuilder/views/fields/templates/prevpanel_datetime_2.php', $data, 'always');
                 break;
             default:
                 break;

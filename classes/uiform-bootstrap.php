@@ -884,6 +884,10 @@ JS;
             wp_enqueue_style('rockefform-bootstrap-iconpicker', UIFORM_FORMS_URL . '/assets/backend/js/biconpicker/1.9.0/css/bootstrap-iconpicker.css');
             // bootstrap datetimepicker
             wp_enqueue_style('rockefform-bootstrap-datetimepicker', UIFORM_FORMS_URL . '/assets/backend/js/bdatetime/bootstrap-datetimepicker.css');
+            
+            // bootstrap datetimepicker2
+            wp_enqueue_style('rockefform-bootstrap-datetimepicker2', UIFORM_FORMS_URL . '/assets/common/js/flatpickr/4.5.2/flatpickr.min.css');
+            
             // star rating
             wp_enqueue_style('rockefform-star-rating', UIFORM_FORMS_URL . '/assets/backend/js/bratestar/star-rating.css');
             //datatable
@@ -963,6 +967,11 @@ JS;
             //bootstrap datetimepicker
             wp_enqueue_script('rockefform-bootstrap-dtpicker-locales', UIFORM_FORMS_URL . '/assets/backend/js/bdatetime/moment-with-locales.js', array('jquery', 'rockefform-bootstrap'), '1.0', true);
             wp_enqueue_script('rockefform-bootstrap-datetimepicker', UIFORM_FORMS_URL . '/assets/backend/js/bdatetime/bootstrap-datetimepicker.js', array('jquery', 'rockefform-bootstrap'), '1.0', true);
+            
+            //bootstrap datetimepicker2
+            wp_enqueue_script('rockefform-bootstrap-dtpicker-locales2', UIFORM_FORMS_URL . '/assets/common/js/flatpickr/4.5.2/flatpickr.js', array('jquery', 'rockefform-bootstrap'), '1.0', true);
+            wp_enqueue_script('rockefform-bootstrap-datetimepicker2', UIFORM_FORMS_URL . '/assets/common/js/flatpickr/4.5.2/l10n/all-lang.js', array('jquery', 'rockefform-bootstrap'), '1.0', true);
+            
             //autogrow
             wp_enqueue_script('rockefform-autogrow-textarea', UIFORM_FORMS_URL . '/assets/backend/js/jquery.autogrow-textarea.js');
             //bootstrap iconpicker
@@ -1020,6 +1029,7 @@ JS;
            wp_enqueue_script('rockefform-dev-24', UIFORM_FORMS_URL . '/assets/backend/js/uiform_captcha.js', array(),UIFORM_VERSION,true);
            wp_enqueue_script('rockefform-dev-25', UIFORM_FORMS_URL . '/assets/backend/js/uiform_recaptcha.js', array(),UIFORM_VERSION,true);
            wp_enqueue_script('rockefform-dev-26', UIFORM_FORMS_URL . '/assets/backend/js/uiform_datepicker.js', array(),UIFORM_VERSION,true);
+           wp_enqueue_script('rockefform-dev-26-1', UIFORM_FORMS_URL . '/assets/backend/js/uiform_datepicker2.js',array(), UIFORM_VERSION, true);
            wp_enqueue_script('rockefform-dev-27', UIFORM_FORMS_URL . '/assets/backend/js/uiform_timepicker.js', array(),UIFORM_VERSION,true);
            wp_enqueue_script('rockefform-dev-28', UIFORM_FORMS_URL . '/assets/backend/js/uiform_datetime.js', array(),UIFORM_VERSION,true);
            wp_enqueue_script('rockefform-dev-29', UIFORM_FORMS_URL . '/assets/backend/js/uiform_divider.js', array(),UIFORM_VERSION,true);
