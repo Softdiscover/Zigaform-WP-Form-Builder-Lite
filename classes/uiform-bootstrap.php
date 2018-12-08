@@ -725,14 +725,14 @@ JS;
         
           if ($pos_coincidencia !== false) {
                 $plugin_page = admin_url('admin.php?page=zgfm_form_builder');
-                $meta[] = "<a href='https://wordpress-form-builder.zigaform.com/#contact' target='_blank'>" . __('Support', 'FRocket_admin') . "</a>";
+                $meta[] = "<a href='https://wordpress-form-builder.zigaform.com/#contact' target='_blank'><span class='dashicons  dashicons-admin-users'></span>" . __('Support', 'FRocket_admin') . "</a>";
             if (ZIGAFORM_F_LITE===1) {
-                $meta[] = "<a href='https://codecanyon.net/item/zigaform-wordpress-form-builder/11057544?ref=Softdiscover' target='_blank'>" . __('Get Premium', 'FRocket_admin') . "</a>";
+                $meta[] = "<a href='https://codecanyon.net/item/zigaform-wordpress-form-builder/11057544?ref=Softdiscover' target='_blank'><span class='dashicons  dashicons-cart'></span>" . __('Get Premium', 'FRocket_admin') . "</a>";
                // $meta[] = "<a href='https://wordpress.org/support/plugin/zigaform-form-builder-lite/' target='_blank'>" . __('Support', 'FRocket_admin') . "</a>";
             }
             
-            
-            $meta[] = "<a href='https://kb.softdiscover.com/docs/zigaform-wordpress-form-builder/' target='_blank'>" . __('Documentation', 'FRocket_admin') . "</a>";
+            $meta[] = "<a href='https://wordpress-form-builder.zigaform.com/#demo-samples' target='_blank'><span class='dashicons  dashicons-laptop'></span>" . __('Live Demo', 'FRocket_admin') . "</a>";
+            $meta[] = "<a href='https://kb.softdiscover.com/docs/zigaform-wordpress-form-builder/' target='_blank'><span class='dashicons  dashicons-search'></span>" . __('Documentation', 'FRocket_admin') . "</a>";
             
             if (ZIGAFORM_F_LITE===1) {
                 $meta[] = "<a href='https://wordpress.org/support/plugin/zigaform-form-builder-lite/reviews#new-post' target='_blank' title='" . __('Leave a review', 'FRocket_admin') . "'><i class='ml-stars'><svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg><svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg><svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg><svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg><svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg></i></a>";
