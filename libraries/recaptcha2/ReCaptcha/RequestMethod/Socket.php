@@ -1,14 +1,9 @@
 <?php
-namespace ReCaptcha\RequestMethod;
-if (!defined('ABSPATH')) {
-    exit('No direct script access allowed');
-}
-
 /**
  * This is a PHP library that handles calling reCAPTCHA.
  *
  * @copyright Copyright (c) 2015, Google Inc.
- * @link      http://www.google.com/recaptcha
+ * @link      https://www.google.com/recaptcha
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,10 +24,8 @@ if (!defined('ABSPATH')) {
  * THE SOFTWARE.
  */
 
+namespace ReCaptcha\RequestMethod;
 
-if (class_exists('\ReCaptcha\RequestMethod\Socket')) {
-    return;
-}
 /**
  * Convenience wrapper around native socket and file functions to allow for
  * mocking.
@@ -43,7 +36,7 @@ class Socket
 
     /**
      * fsockopen
-     * 
+     *
      * @see http://php.net/fsockopen
      * @param string $hostname
      * @param int $port
@@ -64,7 +57,7 @@ class Socket
 
     /**
      * fwrite
-     * 
+     *
      * @see http://php.net/fwrite
      * @param string $string
      * @param int $length
@@ -77,7 +70,7 @@ class Socket
 
     /**
      * fgets
-     * 
+     *
      * @see http://php.net/fgets
      * @param int $length
      * @return string
@@ -89,7 +82,7 @@ class Socket
 
     /**
      * feof
-     * 
+     *
      * @see http://php.net/feof
      * @return bool
      */
@@ -100,7 +93,7 @@ class Socket
 
     /**
      * fclose
-     * 
+     *
      * @see http://php.net/fclose
      * @return bool
      */

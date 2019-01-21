@@ -1,15 +1,9 @@
 <?php
-namespace ReCaptcha;
-
-if (!defined('ABSPATH')) {
-    exit('No direct script access allowed');
-}
-
 /**
  * This is a PHP library that handles calling reCAPTCHA.
  *
  * @copyright Copyright (c) 2015, Google Inc.
- * @link      http://www.google.com/recaptcha
+ * @link      https://www.google.com/recaptcha
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,23 +24,21 @@ if (!defined('ABSPATH')) {
  * THE SOFTWARE.
  */
 
+namespace ReCaptcha;
 
-if (class_exists('\ReCaptcha\RequestParameters')) {
-    return;
-}
 /**
  * Stores and formats the parameters for the request to the reCAPTCHA service.
  */
 class RequestParameters
 {
     /**
-     * Site secret.
+     * The shared key between your site and reCAPTCHA.
      * @var string
      */
     private $secret;
 
     /**
-     * Form response.
+     * The user response token provided by reCAPTCHA, verifying the user on your site.
      * @var string
      */
     private $response;

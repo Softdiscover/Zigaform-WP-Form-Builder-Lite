@@ -58,6 +58,7 @@ class Uiform_Fb_Controller_Recaptcha extends Uiform_Base_Module {
      */
     public function front_verify_recaptcha() {
         
+        require_once(UIFORM_FORMS_LIBS . '/recaptcha2/appengine-https.php');
         require_once(UIFORM_FORMS_LIBS . '/recaptcha2/autoload.php');
         
         $uid_field = (isset($_POST['rockfm-uid-field'])) ? Uiform_Form_Helper::sanitizeInput($_POST['rockfm-uid-field']) : '';
@@ -74,24 +75,43 @@ class Uiform_Fb_Controller_Recaptcha extends Uiform_Base_Module {
             if ($siteKey === '' || $secret === ''){
             
             }elseif (isset($_POST["rockfm-code-recaptcha"])){
+               
+                $recaptcha = new \ReCaptcha\ReCaptcha($secret);
                 
-                if(is_callable('curl_init')){
-                    $recaptcha = new \ReCaptcha\ReCaptcha($secret, new \ReCaptcha\RequestMethod\CurlPost());
-                }else{
-                    $recaptcha = new \ReCaptcha\ReCaptcha($secret);
-                }
+                // If file_get_contents() is locked down on your PHP installation to disallow
+                // its use with URLs, then you can use the alternative request method instead.
+                // This makes use of fsockopen() instead.
+                //  $recaptcha = new \ReCaptcha\ReCaptcha($secret, new \ReCaptcha\RequestMethod\SocketPost());
+                // Make the call to verify the response and also pass the user's IP address
+                $resp = $recaptcha->setExpectedHostname($_SERVER['SERVER_NAME'])
+                                  ->verify($_POST["rockfm-code-recaptcha"], $_SERVER['REMOTE_ADDR']);
                 
-               $resp = $recaptcha->verify($_POST["rockfm-code-recaptcha"], $_SERVER['REMOTE_ADDR']);
-
+               
                 if ($resp->isSuccess()):
                     $success=true;
                 else:
                     $success=false;
                 endif; 
+                
+                //in case false, using method 2 to get validation
+                if($success===false){
+                    if(is_callable('curl_init')){
+                    $recaptcha = new \ReCaptcha\ReCaptcha($secret, new \ReCaptcha\RequestMethod\CurlPost());
+                    
+                     $resp = $recaptcha->setExpectedHostname($_SERVER['SERVER_NAME'])
+                                  ->verify($_POST["rockfm-code-recaptcha"], $_SERVER['REMOTE_ADDR']);
+                     if ($resp->isSuccess()):
+                            $success=true;
+                        else:
+                            $success=false;
+                        endif; 
+                    
+                    } 
+                }
+                
             }else{
 
             }
-            
         }
         
         
