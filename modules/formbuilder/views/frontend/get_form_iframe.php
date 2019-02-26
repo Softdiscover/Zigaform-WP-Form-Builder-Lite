@@ -39,7 +39,7 @@ if (!empty($script_head)) {
         }
     }
     ?>
-    <link rel='stylesheet' id='ebor-fonts-css'  href='<?php echo UIFORM_FORMS_URL; ?>/assets/frontend/css/rockfm_form<?php echo $form_id;?>.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='ebor-fonts-css'  href='<?php echo UIFORM_FORMS_URL; ?>/assets/frontend/css/rockfm_form<?php echo $form_id;?>.css?<?php echo date("Ymdgis");?>' type='text/css' media='all' />
      <script>
     window.iFrameResizer = {
         readyCallback: function(){
