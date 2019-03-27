@@ -1154,7 +1154,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
      private function get_enqueue_files($id_form) {
         
         //iframeResizer
-        wp_enqueue_script('rockfm-iframeResizer', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/3.5.11/iframeResizer.contentWindow.min.js');
+        wp_enqueue_script('rockfm-iframeResizer', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/4.0.1/iframeResizer.contentWindow.min.js');
        // wp_enqueue_script('jquery-core'); 
        // wp_enqueue_script('jquery-ui-core'); 
         

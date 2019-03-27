@@ -660,7 +660,14 @@ class Uiform_Form_Helper {
             global $pagenow;
             return ($pagenow == $page_name);
         }
-    
+        
+        public static function get_font_library(){
+            require_once( UIFORM_FORMS_DIR . '/libraries/styles-font-menu/plugin.php');
+            $objsfm = new SFM_Plugin();
+            
+            return $objsfm;
+        }
+        
 }
 
 use Dompdf\Dompdf;

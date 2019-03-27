@@ -1,11 +1,4 @@
 <?php
-if (!defined('ABSPATH')) {
-    exit('No direct script access allowed');
-}
-
-if (class_exists('Markdown_Parser') || function_exists('Markdown')) {
-    return;
-}
 #
 # Markdown  -  A text-to-HTML conversion tool for web writers
 #
@@ -47,7 +40,6 @@ define( 'MARKDOWN_VERSION',  "1.0.1q" ); # 11 Apr 2013
 
 @define( 'MARKDOWN_PARSER_CLASS',  'Markdown_Parser' );
 
-
 function Markdown($text) {
 #
 # Initialize the parser and return the result of its transform method.
@@ -64,8 +56,17 @@ function Markdown($text) {
 }
 
 
-### third party WordPress Plugin Interface by Markdown http://michelf.ca/projects/php-markdown/ ###
-                        
+### WordPress Plugin Interface ###
+
+/*
+Plugin Name: Markdown
+Plugin URI: http://michelf.ca/projects/php-markdown/
+Description: <a href="http://daringfireball.net/projects/markdown/syntax">Markdown syntax</a> allows you to write using an easy-to-read, easy-to-write plain text format. Based on the original Perl version by <a href="http://daringfireball.net/">John Gruber</a>. <a href="http://michelf.ca/projects/php-markdown/">More...</a>
+Version: 1.0.1q
+Author: Michel Fortin
+Author URI: http://michelf.ca/
+*/
+
 if (isset($wp_version)) {
 	# More details about how it works here:
 	# <http://michelf.ca/weblog/2005/wordpress-text-flow-vs-markdown/>

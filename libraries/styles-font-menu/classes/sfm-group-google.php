@@ -1,10 +1,5 @@
 <?php
-if (!defined('ABSPATH')) {
-    exit('No direct script access allowed');
-}
-if (class_exists('SFM_Group_Google')) {
-    return;
-}
+
 class SFM_Group_Google extends SFM_Group {
 
 	const font_api_url = 'https://www.googleapis.com/webfonts/v1/webfonts';
@@ -42,7 +37,7 @@ class SFM_Group_Google extends SFM_Group {
 	protected $api_fallback_file;
 
 	public function __construct() {
-		$this->cache_interval = apply_filters( 'styles_google_fonts_cache_interval', 60*60*24*15 ); // 15 days
+		//$this->cache_interval = apply_filters( 'styles_google_fonts_cache_interval', 60*60*24*15 ); // 15 days
 		$this->api_fallback_file = dirname( dirname( __FILE__ ) ) . '/js/google-fonts-api-fallback.json';
 	}
 
@@ -78,7 +73,7 @@ class SFM_Group_Google extends SFM_Group {
 
 		// API returned some good data. Cache it to the transient
 		// and update the fallback file.
-		set_transient( 'styles_google_font_data', $this->font_data, $this->cache_interval );
+		//set_transient( 'styles_google_font_data', $this->font_data, $this->cache_interval );
 		$this->set_api_fallback();
 
 		return $this->font_data;

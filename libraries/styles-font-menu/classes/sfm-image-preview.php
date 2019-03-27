@@ -1,10 +1,5 @@
 <?php
-if (!defined('ABSPATH')) {
-    exit('No direct script access allowed');
-}
-if (class_exists('SFM_Image_Preview')) {
-    return;
-}
+
 class SFM_Image_Preview {
 
 	/**

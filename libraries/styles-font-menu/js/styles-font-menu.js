@@ -1,7 +1,7 @@
-jQuery( document ).ready( function( $ ){
+$uifm( document ).ready( function( $ ){
 
 	// Add Google Fonts and Chosen to select elements
-	 //$('select.sfm').stylesFontMenu();
+	// $('select.sfm').stylesFontMenu();
 
 });
 
@@ -27,7 +27,7 @@ jQuery( document ).ready( function( $ ){
 
 		google_options += "<option class='gf " + google_fonts.fonts[i].classname + "' value='" + JSON.stringify( google_fonts.fonts[i] ) + "'>" + google_fonts.fonts[i].name + "</option>";
 
-		google_styles += ".sfm ." + google_fonts.fonts[i].classname + " { background-image: url(" + google_fonts.fonts[i].png_url + "); }\r";
+		google_styles += ".sfm ." + google_fonts.fonts[i].classname + " { background-image: url(" + rockfm_vars.uifm_sfm_baseurl+google_fonts.fonts[i].png_url + "); }\r";
 	}
 
 	standard_options += "</optgroup>";
@@ -64,7 +64,7 @@ jQuery( document ).ready( function( $ ){
 			plugin.populate_google_fonts();
 
 			plugin.set_selected_option();
-                         
+
 			$element.chosen( plugin.settings.chosen_settings );
 		};
 
@@ -141,7 +141,7 @@ jQuery( document ).ready( function( $ ){
 			// Add @import to <head> if needed 
 			if ( undefined !== font.import_family ) {
 				var atImport = google_fonts.import_template.replace( '@import_family@', font.import_family );
-				//$( '<style>' ).append( atImport ).appendTo( 'head' );
+				$( '<style>' ).append( atImport ).appendTo( 'head' );
 			}
 		};
 
@@ -162,4 +162,4 @@ jQuery( document ).ready( function( $ ){
 		});
 	};
 
-})( jQuery, styles_google_options, styles_standard_fonts );
+})( $uifm, styles_google_options, styles_standard_fonts );

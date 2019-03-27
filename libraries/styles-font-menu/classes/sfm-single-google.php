@@ -1,10 +1,5 @@
 <?php
-if (!defined('ABSPATH')) {
-    exit('No direct script access allowed');
-}
-if (class_exists('SFM_Single_Google')) {
-    return;
-}
+
 class SFM_Single_Google extends SFM_Single_Standard {
 
 	/**

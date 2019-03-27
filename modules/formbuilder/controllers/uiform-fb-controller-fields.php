@@ -285,7 +285,7 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module {
                 }
                 
                 $data['modules_field_more']= self::$_modules['addon']['backend']->get_modulesBySection('back_field_opt_more');
-                
+                $data['obj_sfm'] = Uiform_Form_Helper::get_font_library();
                 $output .= self::render_template('formbuilder/views/fields/modal/field_opt_text.php', $data, 'always');
                 break;
             

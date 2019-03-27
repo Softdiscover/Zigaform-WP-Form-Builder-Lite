@@ -1,10 +1,5 @@
 <?php
-if (!defined('ABSPATH')) {
-    exit('No direct script access allowed');
-}
-if (class_exists('SFM_Group')) {
-    return;
-}
+
 abstract class SFM_Group {
 
 	/**
@@ -30,17 +25,15 @@ abstract class SFM_Group {
 	}
 
 	public function get_menu_css() {
-		/*if ( isset($this->menu_css) && !empty( $this->menu_css ) ) {
-			
-                    return $this->menu_css;
-		}*/
+		if ( !empty( $this->menu_css ) ) {
+			return $this->menu_css;
+		}
 
-		/*foreach( $this->get_fonts() as $font ) {
+		foreach( $this->get_fonts() as $font ) {
 			$this->menu_css .= $font->get_menu_css();
 		}
 
-		return $this->menu_css;*/
-                return '';
+		return $this->menu_css;
 	}
 
 }

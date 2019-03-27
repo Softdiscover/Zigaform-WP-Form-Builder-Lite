@@ -56,7 +56,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                     <label ><?php echo __('Text Font','FRocket_admin'); ?></label>
                     <div class="sfdc-input-group uifm-custom-font">
                         <input type="hidden" value="" name="uifm_fld_lbl_font">
-                        <?php do_action( 'styles_font_menu' ); ?>
+                        <?php //do_action( 'styles_font_menu' ); ?>
                         <span class="sfdc-input-group-addon">
                         <input type="checkbox">
                         </span>

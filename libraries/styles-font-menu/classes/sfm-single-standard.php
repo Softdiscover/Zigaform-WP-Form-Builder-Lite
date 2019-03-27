@@ -1,10 +1,5 @@
 <?php
-if (!defined('ABSPATH')) {
-    exit('No direct script access allowed');
-}
-if (class_exists('SFM_Single_Standard')) {
-    return;
-}
+
 class SFM_Single_Standard {
 
 	/**
@@ -86,7 +81,7 @@ class SFM_Single_Standard {
 		foreach ( $this->option_value_whitelist as $key ) {
 			$value = $this->get( $key );
 			if ( !empty( $value ) ) {
-				$option_values[ $key ] = esc_attr( $value );
+				$option_values[ $key ] = htmlentities( $value );
 			}
 		}
 

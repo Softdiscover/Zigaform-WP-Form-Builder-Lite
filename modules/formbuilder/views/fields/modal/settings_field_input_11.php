@@ -97,7 +97,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                             );
                         $default_value = '{"family":"Arial, Helvetica, sans-serif","name":"Arial","classname":"arial"}';
                         ?>
-                        <?php do_action( 'styles_font_menu',$attributes,$default_value); ?>
+                        <?php $obj_sfm->get_view_menu($attributes,$default_value); ?>
                         <span class="sfdc-input-group-addon">
                         <input 
                             data-field-store="input11-font_st"
