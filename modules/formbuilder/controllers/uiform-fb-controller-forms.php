@@ -683,8 +683,13 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
     public function ajax_save_form() {
         
         check_ajax_referer( 'zgfm_ajax_nonce', 'zgfm_security' );
-        
+                                    
         try{
+            
+          if(!Uiform_Form_Helper::check_User_Access()){
+                throw new Exception(__('Error! User has no permission to edit this form','FRocket_admin'));
+            } 
+            
             ob_start();
             
         $data = array();
@@ -891,6 +896,8 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
             
             $json=array();
             $json['status'] = 'failed';
+            $json['modal_header'] = __('Error on saving form','FRocket_admin');
+            $json['modal_footer'] = '';
             $json['Message'] = $e->getMessage();
         }
         
@@ -2238,6 +2245,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
     public function ajax_load_form() {
         
         check_ajax_referer( 'zgfm_ajax_nonce', 'zgfm_security' );
+        
         
         $json = array();
         $form_id = (isset($_POST['form_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';

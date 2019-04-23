@@ -2151,6 +2151,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                                         data-inp17-opt-index="0"
                                         data-toggle="tooltip" data-placement="bottom" data-html="true" title="Checkbox content"
                                         class="uifm-dcheckbox-item">
+                                        <div class="uifm-dcheckbox-label uifm-dcheckbox-label-up"></div>
                                         <div class="uifm-dcheckbox-item-wrap">
                                             
                                             <div class="uifm-dcheckbox-item-chkst sfdc-btn-default">
@@ -2197,6 +2198,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                                                 data-uifm-nro="0"
                                                 width="100" height="100" class="uifm-dcheckbox-item-viewport"></canvas>
                                         </div>
+                                        <div class="uifm-dcheckbox-label uifm-dcheckbox-label-below"></div>
                                     </div>
     <div 
                                         data-gal-id="blueimp-gallery" 
@@ -2210,6 +2212,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                                         data-inp17-opt-index="0"
                                         data-toggle="tooltip" data-placement="bottom" data-html="true" title="Checkbox content"
                                         class="uifm-dradiobtn-item">
+                                        <div class="uifm-dcheckbox-label uifm-dcheckbox-label-up"></div>
                                         <div class="uifm-dcheckbox-item-wrap">
                                             
                                             <div class="uifm-dcheckbox-item-chkst sfdc-btn-default">
@@ -2256,6 +2259,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                                                 data-uifm-nro="0"
                                                 width="100" height="100" class="uifm-dcheckbox-item-viewport"></canvas>
                                         </div>
+                                        <div class="uifm-dcheckbox-label uifm-dcheckbox-label-below"></div>
                                     </div>
                                     <!--/ end item --->
     <a 

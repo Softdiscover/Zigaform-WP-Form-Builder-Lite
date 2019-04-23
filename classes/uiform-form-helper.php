@@ -668,6 +668,23 @@ class Uiform_Form_Helper {
             return $objsfm;
         }
         
+        public static function check_User_Access(){
+            $form_id = null;
+            // for logged users
+            if (!is_user_logged_in()) {
+                return false;
+            }
+            
+            //check form id
+
+            // make sure the user have manage options
+            if (!current_user_can( 'manage_options' ) ) {
+                return false;
+            }
+
+            return true;
+        }
+        
 }
 
 use Dompdf\Dompdf;

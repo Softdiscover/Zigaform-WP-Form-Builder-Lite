@@ -154,7 +154,7 @@ class Uiform_InstallDB {
         $sql="CREATE  TABLE IF NOT EXISTS $this->form_fields (
         `fmf_id` int(6) NOT NULL AUTO_INCREMENT,
         `fmf_uniqueid` varchar(255) DEFAULT NULL,
-        `fmf_data` MEDIUMTEXT NULL ,
+        `fmf_data` longtext NULL ,
         `fmf_fieldname` varchar(255) DEFAULT NULL,
         `flag_status` smallint(5) DEFAULT NULL,
         `created_date` timestamp NULL,

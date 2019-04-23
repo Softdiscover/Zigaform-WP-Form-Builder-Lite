@@ -59,9 +59,9 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
         add_filter('plugin_locale', array(&$this, 'rockfm_lang_locale_filter'));
         
        
-        
+            
         //load admin
-        if (is_admin() && Uiform_Form_Helper::is_uiform_page()) {
+        if (is_admin() && Uiform_Form_Helper::is_uiform_page() ) {
             
             //add class to body
              add_filter( 'body_class', array(&$this, 'filter_body_class') ); 
