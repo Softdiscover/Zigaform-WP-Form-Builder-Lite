@@ -255,7 +255,7 @@ class Uiform_Backup {
 			$row = $result[$i];
 			$output .= 'INSERT INTO '.$table.' VALUES(';
 			for($j=0; $j<count($result[0]); $j++) {
-				$row[$j] = Uiform_Form_Helper::escape_str($row[$j]);
+				$row[$j] = $this->wpdb->_real_escape($row[$j]);
 				$output .= (isset($row[$j])) ? '"'.$row[$j].'"'	: '""'; 
 				if ($j < (count($result[0])-1)) {
 					$output .= ',';

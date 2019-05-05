@@ -565,11 +565,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
         header('Content-type: text/html');
         ob_start();
         ?>
-
-        <link media="all" type="text/css" href="<?php echo UIFORM_FORMS_URL . '/assets/frontend/css/rockfm_form' . $form_id . '.css?' . date("Ymdgis"); ?>"
-              id="<?php echo 'rockfm_form' . $form_id ?>"
-              rel="stylesheet">
-        
+ 
         <iframe src="<?php echo site_url();?>/?uifm_fbuilder_api_handler&zgfm_action=uifm_fb_api_handler&uifm_action=1&uifm_mode=lmode&id=<?php echo $form_id;?>" 
         scrolling="no" 
         id="zgfm-iframe-<?php echo $form_id;?>"
