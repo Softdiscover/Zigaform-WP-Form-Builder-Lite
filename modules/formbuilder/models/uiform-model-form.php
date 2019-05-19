@@ -58,17 +58,18 @@ class Uiform_Model_Form {
         $orderby = $data['orderby'];
         
         $query = sprintf('
-            select c.*
-            from %s c
-            where c.flag_status>0 ', $this->table);
+            select uf.fmb_id,uf.fmb_data,uf.fmb_name,uf.fmb_html,uf.fmb_html_backend,uf.flag_status,uf.created_date,uf.updated_date,
+                uf.fmb_html_css,uf.fmb_default,uf.fmb_skin_status,uf.fmb_skin_data,uf.fmb_skin_type,uf.fmb_data2
+            from %s uf
+            where uf.flag_status>0 ', $this->table);
 
         if(!empty($search_txt)){
-            $query.=" and  c.fmb_name like '%".$search_txt."%' ";
+            $query.=" and  uf.fmb_name like '%".$search_txt."%' ";
         }
         
         $orderby=($orderby==='asc')?'asc':'desc';
         
-        $query.=sprintf(" ORDER BY c.updated_date %s ",$orderby);
+        $query.=sprintf(" ORDER BY uf.updated_date %s ",$orderby);
         
         if ($per_page != '' || $segment != '') {
             $segment=(!empty($segment))?$segment:0;
@@ -89,10 +90,11 @@ class Uiform_Model_Form {
      */
     function getListForms($per_page = '', $segment = '') {
         $query = sprintf('
-            select c.*
-            from %s c
-            where c.flag_status>0 
-            ORDER BY c.updated_date desc
+            select uf.fmb_id,uf.fmb_data,uf.fmb_name,uf.fmb_html,uf.fmb_html_backend,uf.flag_status,uf.created_date,uf.updated_date,
+                uf.fmb_html_css,uf.fmb_default,uf.fmb_skin_status,uf.fmb_skin_data,uf.fmb_skin_type,uf.fmb_data2
+            from %s uf
+            where uf.flag_status>0 
+            ORDER BY uf.updated_date desc
             ', $this->table);
 
         if ($per_page != '' || $segment != '') {
@@ -105,7 +107,8 @@ class Uiform_Model_Form {
 
     function getFormById($id) {
         $query = sprintf('
-            select uf.*
+            select uf.fmb_id,uf.fmb_data,uf.fmb_name,uf.fmb_html,uf.fmb_html_backend,uf.flag_status,uf.created_date,uf.updated_date,
+                uf.fmb_html_css,uf.fmb_default,uf.fmb_skin_status,uf.fmb_skin_data,uf.fmb_skin_type,uf.fmb_data2
             from %s uf
             where uf.fmb_id=%s
             ', $this->table, $id);
@@ -125,7 +128,8 @@ class Uiform_Model_Form {
     
     function getAvailableFormById($id) {
         $query = sprintf('
-            select uf.*
+            select uf.fmb_id,uf.fmb_data,uf.fmb_name,uf.fmb_html,uf.fmb_html_backend,uf.flag_status,uf.created_date,uf.updated_date,
+                uf.fmb_html_css,uf.fmb_default,uf.fmb_skin_status,uf.fmb_skin_data,uf.fmb_skin_type,uf.fmb_data2
             from %s uf
             where 
             uf.flag_status=1 and

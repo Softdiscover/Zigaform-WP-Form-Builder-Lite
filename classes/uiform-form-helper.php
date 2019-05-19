@@ -311,6 +311,7 @@ class Uiform_Form_Helper {
     
     public static function is_uiform_page()
     {
+            
         $vget_page=(isset($_GET['page']))?Uiform_Form_Helper::sanitizeInput($_GET['page']):'';
         $vpost_page=(isset($_POST['page']))?Uiform_Form_Helper::sanitizeInput($_POST['page']):'';
         

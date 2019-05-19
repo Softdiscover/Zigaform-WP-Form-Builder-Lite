@@ -43,7 +43,7 @@ class Uiform_Model_Settings {
 
     function getOptions() {
         $query = sprintf('
-            select uf.*
+            select uf.version,uf.type_email,uf.smtp_host,uf.smtp_port,uf.smtp_user,uf.smtp_pass,uf.sendmail_path,uf.language
             from %s uf
             where uf.id=%s
             ', $this->table, 1);

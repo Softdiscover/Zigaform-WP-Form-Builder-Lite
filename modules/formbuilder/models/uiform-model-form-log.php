@@ -52,10 +52,10 @@ class Uiform_Model_Form_Log {
      */
     function getListForms($per_page = '', $segment = '') {
         $query = sprintf('
-            select c.*
-            from %s c
-            where c.flag_status>0 
-            ORDER BY c.updated_date desc
+            select uf.log_id,uf.log_frm_data,uf.log_frm_name,uf.log_frm_html,uf.log_frm_html_backend,uf.log_frm_html_css,uf.log_frm_id,uf.log_frm_hash,uf.flag_status,uf.created_date,uf.updated_date
+            from %s uf
+            where uf.flag_status>0 
+            ORDER BY uf.updated_date desc
             ', $this->table);
 
         if ($per_page != '' || $segment != '') {
@@ -68,11 +68,11 @@ class Uiform_Model_Form_Log {
     
     function getLogById($id) {
         $query = sprintf('
-            select uf.*
+            select uf.log_id,uf.log_frm_data,uf.log_frm_name,uf.log_frm_html,uf.log_frm_html_backend,uf.log_frm_html_css,uf.log_frm_id,uf.log_frm_hash,uf.flag_status,uf.created_date,uf.updated_date
             from %s uf
             where 
             uf.flag_status=1 and
-            uf.log_id=%s   
+            uf.log_id=%s  
             ', $this->table, $id);
 
         return $this->wpdb->get_row($query);
@@ -81,7 +81,7 @@ class Uiform_Model_Form_Log {
 
     function getAvailableLogById($id) {
         $query = sprintf('
-            select uf.*
+            select uf.log_id,uf.log_frm_data,uf.log_frm_name,uf.log_frm_html,uf.log_frm_html_backend,uf.log_frm_html_css,uf.log_frm_id,uf.log_frm_hash,uf.flag_status,uf.created_date,uf.updated_date
             from %s uf
             where 
             uf.flag_status=1 and
@@ -94,7 +94,7 @@ class Uiform_Model_Form_Log {
 
     function getLastLogById($id) {
         $query = sprintf('
-            select uf.*
+            select uf.log_id,uf.log_frm_data,uf.log_frm_name,uf.log_frm_html,uf.log_frm_html_backend,uf.log_frm_html_css,uf.log_frm_id,uf.log_frm_hash,uf.flag_status,uf.created_date,uf.updated_date
             from %s uf
             where uf.log_frm_id=%s
             ORDER BY uf.log_id desc
@@ -106,7 +106,7 @@ class Uiform_Model_Form_Log {
     
     function getOldLogById($id) {
         $query = sprintf('
-            select uf.*
+            select uf.log_id,uf.log_frm_data,uf.log_frm_name,uf.log_frm_html,uf.log_frm_html_backend,uf.log_frm_html_css,uf.log_frm_id,uf.log_frm_hash,uf.flag_status,uf.created_date,uf.updated_date
             from %s uf
             where uf.log_frm_id=%s
             ORDER BY uf.log_id asc

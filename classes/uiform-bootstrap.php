@@ -904,9 +904,13 @@ JS;
             //checkradio
             wp_enqueue_style('rockefform-checkradio', UIFORM_FORMS_URL . '/assets/common/js/checkradio/2.2.2/css/jquery.checkradios.css');
             
+            //codemirror 
+            wp_enqueue_style('rockefform-codemirror', UIFORM_FORMS_URL . '/assets/common/js/codemirror/codemirror.css');
+            wp_enqueue_style('rockefform-codemirror-foldgutter', UIFORM_FORMS_URL . '/assets/common/js/codemirror/addon/fold/foldgutter.css');
+            wp_enqueue_style('rockefform-codemirror-monokai', UIFORM_FORMS_URL . '/assets/common/js/codemirror/theme/monokai.css');
+            
             //load rocketform
             wp_enqueue_style(self::PREFIX . 'admin');
-
 
             /* load js */
             //load jquery
@@ -997,6 +1001,21 @@ JS;
             
             //iframe
             wp_enqueue_script('rockefform-iframe', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/3.5.5/iframeResizer.min.js', array(),UIFORM_VERSION,true);
+            
+            //codemirror
+            wp_enqueue_script('rockefform-codemirror', UIFORM_FORMS_URL . '/assets/common/js/codemirror/codemirror.js', array(), '1.0', true);
+            wp_enqueue_script('rockefform-codemirror-foldcode', UIFORM_FORMS_URL . '/assets/common/js/codemirror/addon/fold/foldcode.js', array(), '1.0', true);
+            wp_enqueue_script('rockefform-codemirror-foldgutter', UIFORM_FORMS_URL . '/assets/common/js/codemirror/addon/fold/foldgutter.js', array(), '1.0', true);
+
+            wp_enqueue_script('rockefform-codemirror-javascript', UIFORM_FORMS_URL . '/assets/common/js/codemirror/mode/javascript/javascript.js', array(), '1.0', true);
+            wp_enqueue_script('rockefform-codemirror-xml', UIFORM_FORMS_URL . '/assets/common/js/codemirror/mode/xml/xml.js', array(), '1.0', true);
+            wp_enqueue_script('rockefform-codemirror-css', UIFORM_FORMS_URL . '/assets/common/js/codemirror/mode/css/css.js', array(), '1.0', true);
+            
+            
+            wp_enqueue_script('rockefform-codemirror-sublime', UIFORM_FORMS_URL . '/assets/common/js/codemirror/keymap/sublime.js', array(), '1.0', true);
+            wp_enqueue_script('rockefform-codemirror-closebrackets', UIFORM_FORMS_URL . '/assets/common/js/codemirror/addon/edit/closebrackets.js', array(), '1.0', true);
+            wp_enqueue_script('rockefform-codemirror-matchbrackets', UIFORM_FORMS_URL . '/assets/common/js/codemirror/addon/edit/matchbrackets.js', array(), '1.0', true);
+            wp_enqueue_script('rockefform-codemirror-autorefresh', UIFORM_FORMS_URL . '/assets/common/js/codemirror/addon/display/autorefresh.js', array(), '1.0', true);
             
             
               if(UIFORM_DEV===1){
