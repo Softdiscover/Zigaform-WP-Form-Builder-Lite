@@ -683,8 +683,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                                     case 18:
                                     /*spinner*/    
                                    $tmp_fdata= json_decode($tmp_field_name->data,true);
-                                    
-                                    $tmp_options = array();
+                                
                                     $tmp_field_label=(!empty($tmp_fdata['label']['text']))?$tmp_fdata['label']['text']:$tmp_field_name->fieldname;
                                     $form_f_tmp[$key]['type']=$tmp_field_name->type;
                                     $form_f_tmp[$key]['fieldname']=$tmp_field_name->fieldname;
@@ -698,17 +697,15 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                                            //for records
                                            $form_f_rec_tmp[$key] = $value;
                                 
-                                        $tmp_options[] = $tmp_options_row;
                                    // }
                                     /*saving data to field array*/
-                                    $form_f_tmp[$key]['input'] = $tmp_options;
+                                    $form_f_tmp[$key]['input'] = $tmp_options_row;
                                 
                                    break;
                                     case 40:
                                     /*switch*/
                                     $tmp_fdata= json_decode($tmp_field_name->data,true);
-                                    
-                                    $tmp_options = array();
+                                
                                     $tmp_field_label=(!empty($tmp_fdata['label']['text']))?$tmp_fdata['label']['text']:$tmp_field_name->fieldname;
                                     $form_f_tmp[$key]['type']=$tmp_field_name->type;
                                     $form_f_tmp[$key]['fieldname']=$tmp_field_name->fieldname;
@@ -724,10 +721,9 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                                          $form_f_rec_tmp[$key] = 0; 
                                         }
                                 
-                                        $tmp_options[] = $tmp_options_row;
                                     //}
                                     /*saving data to field array*/
-                                    $form_f_tmp[$key]['input'] = $tmp_options;
+                                    $form_f_tmp[$key]['input'] = $tmp_options_row;
                                 
                                    break;
                                     case 41;
@@ -1597,7 +1593,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
     
     public function shortcode_show_version(){
           $output='<noscript>';
-          $output.='Powered by <a href="http://zigaform.com/?uifm_v='.UIFORM_VERSION.'" title="Wordpress Form Builder" >ZigaForm version '.UIFORM_VERSION.'</a>';
+          $output.='Powered by <a href="https://www.zigaform.com/?uifm_v='.UIFORM_VERSION.'" title="Wordpress Form Builder" >ZigaForm version '.UIFORM_VERSION.'</a>';
           $output.='</noscript>';
           echo $output;
     }
