@@ -38,7 +38,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
     private $model_fields = "";
     private $formsmodel = "";
     private $pagination = "";
-    var $per_page = 5;
+    var $per_page = 10;
     private $wpdb = "";
     protected $modules;
 

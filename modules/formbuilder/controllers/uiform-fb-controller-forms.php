@@ -576,7 +576,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
         <script type="text/javascript">
                     iFrameResize({
                                                     log                     : false,
-                                                    scrollCallback: function (coords) {
+                                                    onScroll: function (coords) {
                                                         /*console.log("[OVERRIDE] overrode scrollCallback x: " + coords.x + " y: " + coords.y);*/
                                                     }
                                             },'#zgfm-iframe-<?php echo $form_id;?>');

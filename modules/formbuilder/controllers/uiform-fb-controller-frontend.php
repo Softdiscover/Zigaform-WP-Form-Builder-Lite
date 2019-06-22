@@ -1188,8 +1188,6 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
     
      private function get_enqueue_files($id_form) {
         
-        //iframeResizer
-        wp_enqueue_script('rockfm-iframeResizer', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/4.0.1/iframeResizer.contentWindow.min.js');
        
          wp_register_script('rockefform-prev-jquery', UIFORM_FORMS_URL . '/assets/common/js/init.js', array('jquery'));
         wp_enqueue_script('rockefform-prev-jquery'); 
@@ -1315,6 +1313,9 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         switch (intval($lmode)) { 
                         case 1:
                             /*iframe*/
+                            //script
+                            wp_enqueue_script('rockefform-iframe', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/4.1.1/iframeResizer.min.js', array(),UIFORM_VERSION,false);
+                            
                             $tmp_vars=array();
                             $tmp_vars['base_url']=UIFORM_FORMS_URL.'/';
                             $tmp_vars['form_id']=$id;

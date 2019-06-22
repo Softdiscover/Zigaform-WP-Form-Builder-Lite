@@ -42,13 +42,13 @@ if (!empty($script_head)) {
     <link rel='stylesheet' id='ebor-fonts-css'  href='<?php echo UIFORM_FORMS_URL; ?>/assets/frontend/css/rockfm_form<?php echo $form_id;?>.css?<?php echo date("Ymdgis");?>' type='text/css' media='all' />
      <script>
     window.iFrameResizer = {
-        readyCallback: function(){
+        onReady: function(){
             /*var iframe_Id = window.parentIFrame.getId();*/
         }
     }
     </script>
     
-    <script type="text/javascript" src="<?php echo UIFORM_FORMS_URL; ?>/assets/frontend/js/iframe/4.0.1/iframeResizer.contentWindow.min.js"></script>
+    <script type="text/javascript" src="<?php echo UIFORM_FORMS_URL; ?>/assets/frontend/js/iframe/4.1.1/iframeResizer.contentWindow.min.js"></script>
      
    
     <script type="text/javascript">
