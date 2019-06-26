@@ -1307,7 +1307,9 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                     'id' => 1,
                     'ajax' => false,
                     'lmode'=>0,
-                    'is_demo'=>'0'
+                    'is_demo'=>'0',
+                    'min_width'=>'',
+                    'min_height'=>''
                         ), $attributes));
         
         switch (intval($lmode)) { 
@@ -1329,9 +1331,20 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                            wp_enqueue_script('rockefform-iframe-script', UIFORM_FORMS_URL . '/assets/frontend/js/loader-iframe.js', array('jquery',self::PREFIX . 'rockefform-iframe'), '1', false);
                            
                             
+                           $style='border:none;width:100%;';
+                           if(!empty($min_width) && floatval($min_width)>0){
+                               $style.='min-width:'.$min_width.'px';
+                           }
+                           
+                           
+                           if(!empty($min_height) && floatval($min_height)>0){
+                               $style.='min-height:'.$min_height.'px';
+                           }
+                           
                             $tmp_vars=array();
                             $tmp_vars['base_url']=UIFORM_FORMS_URL.'/';
                             $tmp_vars['form_id']=$id;
+                            $tmp_vars['style']=$style;
                             $tmp_vars['url_form']=site_url().'/?uifm_fbuilder_api_handler&zgfm_action=uifm_fb_api_handler&uifm_action=1&uifm_mode=lmode&id='.$id;
                         $output=self::render_template('formbuilder/views/frontend/get_code_iframe.php',$tmp_vars, 'always');
                             break;

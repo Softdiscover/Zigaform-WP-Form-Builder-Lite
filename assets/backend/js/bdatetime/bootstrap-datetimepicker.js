@@ -42,13 +42,13 @@
         factory(require('jquery'), require('moment'));
     } else {
         // Neither AMD nor CommonJS used. Use global variables.
-        if (typeof jQuery === 'undefined') {
+        if (typeof $uifm === 'undefined') {
             throw 'bootstrap-datetimepicker requires jQuery to be loaded first';
         }
         if (typeof moment === 'undefined') {
             throw 'bootstrap-datetimepicker requires Moment.js to be loaded first';
         }
-        factory(jQuery, moment);
+        factory($uifm, moment);
     }
 }(function ($, moment) {
     'use strict';
@@ -1266,7 +1266,7 @@
                 if (picker[key] !== undefined) {
                     picker[key](value);
                 } else {
-                    throw new TypeError('option ' + key + ' is not recognized!');
+                    //throw new TypeError('option ' + key + ' is not recognized!');
                 }
             });
             return picker;

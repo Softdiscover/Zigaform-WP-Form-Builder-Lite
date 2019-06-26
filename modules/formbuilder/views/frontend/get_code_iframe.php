@@ -8,7 +8,7 @@ ob_start();
         scrolling="no" 
         id="zgfm-iframe-<?php echo $form_id;?>"
         frameborder="0" 
-        style="border:none;width:100%;" 
+        style="<?php echo $style;?>" 
         allowTransparency="true"></iframe>
 <?php
 $cntACmp = ob_get_contents();
