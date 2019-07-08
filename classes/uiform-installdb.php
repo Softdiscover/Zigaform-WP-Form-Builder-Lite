@@ -66,6 +66,8 @@ class Uiform_InstallDB {
             `fmb_skin_data` longtext NULL ,
             `fmb_skin_type` SMALLINT(5) NULL DEFAULT 1 ,
             `fmb_data2` longtext NULL , 
+            `fmb_rec_tpl_html` longtext NULL ,
+            `fmb_rec_tpl_st` TINYINT(1) NULL DEFAULT 0 ,
             PRIMARY KEY (`fmb_id`) ) " . $charset . ";";
         $wpdb->query($sql);
         //form request statitistics
@@ -189,7 +191,7 @@ class Uiform_InstallDB {
         //insert data
         $uifm_settings = $wpdb->get_row("SELECT COUNT(*) AS total FROM ".$this->settings, ARRAY_A );
         if( isset($uifm_settings['total']) && intval($uifm_settings['total'])===0  ){
-           $sql="INSERT INTO $this->settings VALUES ('3.9.1.9', null, null, null, null, null, null, '', '1');";
+           $sql="INSERT INTO $this->settings VALUES ('3.9.9.6.1', null, null, null, null, null, null, '', '1');";
             $wpdb->query($sql);
         }
         

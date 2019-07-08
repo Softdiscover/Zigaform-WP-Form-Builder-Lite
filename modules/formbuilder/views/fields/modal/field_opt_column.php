@@ -915,8 +915,9 @@ ob_start();
                                                 </div>
                                                 <div class="sfdc-col-md-6">
                                                   <input type="text" 
-                                                          data-field-store="skin-custom_css-ctm_id"
-                                                         id="zgpb_fld_col_ctmid" name="zgpb_fld_col_ctmid" placeholder="" class="zgpb-field-col-event-txt sfdc-form-control">
+                                                         id="zgpb_fld_col_ctmid"
+                                                         readonly="readonly"
+                                                         class="sfdc-form-control">
 
                                                 </div>    
 
@@ -934,7 +935,9 @@ ob_start();
                                                 <div class="sfdc-col-md-6">
                                                   <input type="text" 
                                                          data-field-store="skin-custom_css-ctm_class"
-                                                         id="zgpb_fld_col_ctmclass" name="zgpb_fld_col_ctmclass" placeholder="" class="zgpb-field-col-event-txt sfdc-form-control">
+                                                         id="zgpb_fld_col_ctmclass"
+                                                         name="zgpb_fld_col_ctmclass"
+                                                         placeholder="" class="zgpb-f-setoption sfdc-form-control">
 
                                                 </div>    
 
@@ -942,7 +945,7 @@ ob_start();
                                         </div>
                                     </div>
                                      <div class="zgpb-opt-divider-stl1"></div>
-                                    <div class="sfdc-row ">
+                                    <div style="display:none;" class="sfdc-row ">
                                         <div class="sfdc-col-md-12">
                                             <div class="sfdc-form-group">
                                                 <div class="sfdc-col-md-6">
@@ -998,6 +1001,15 @@ $uifm(function($)
                  }
             });
      
+	});
+</script>
+ <script type="text/javascript">
+ 
+jQuery(function($) 
+	{     
+         /*add id to more tab*/
+         $('#zgpb_fld_col_ctmid').val('rockfm_'+$('#uifm-field-selected-id').val()); 
+        
 	});
 </script>
 <?php

@@ -14,6 +14,9 @@ var zgfm_back_tools = function(){
     this.initialize = function() {
         
     }
+    /**
+     * generate pdf for email pdf attachement
+     */
     
     this.pdf_showsample = function(type){
         var editor,email_template_pdf_msg;
@@ -30,10 +33,31 @@ var zgfm_back_tools = function(){
                         }
                     } 
                 break;
+            case 'pdf_invoice_gen':
+                if( typeof tinymce != "undefined" ) {
+                        editor = tinymce.get("uifm_frm_invoice_tpl_content");
+                        if( editor && editor instanceof tinymce.Editor ) {
+                            email_template_pdf_msg = tinymce.get("uifm_frm_invoice_tpl_content").getContent();
+                        }else{
+                            email_template_pdf_msg=($('#uifm_frm_invoice_tpl_content').val())?$('#uifm_frm_invoice_tpl_content').val():'';
+                        }
+                    } 
+                break;
+            case 'pdf_record_gen':
+                if( typeof tinymce != "undefined" ) {
+                        editor = tinymce.get("uifm_frm_record_tpl_content");
+                        if( editor && editor instanceof tinymce.Editor ) {
+                            email_template_pdf_msg = tinymce.get("uifm_frm_record_tpl_content").getContent();
+                        }else{
+                            email_template_pdf_msg=($('#uifm_frm_record_tpl_content').val())?$('#uifm_frm_record_tpl_content').val():'';
+                        }
+                    } 
+                break;
         }
         this.pdf_processSample(email_template_pdf_msg,pdf_fullpage);
         
     };
+    
     
    this.pdf_processSample = function(message,whole_control){
        

@@ -222,7 +222,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
     public function info_record() {
         $id_rec = (isset($_GET['id_rec']) && $_GET['id_rec']) ? Uiform_Form_Helper::sanitizeInput($_GET['id_rec']) : 0;
         $name_fields = $this->model_record->getNameField($id_rec);
-        $form_data = $this->model_record->getFormDataById($id_rec);
+        $form_rec_data = $this->model_record->getFormDataById($id_rec);
         
         $name_fields_check = array();
         foreach ($name_fields as $value) {
@@ -265,7 +265,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
         require_once( UIFORM_FORMS_DIR . '/helpers/clientsniffer.php' );
         $data['info_useragent'] = $data2['info_useragent'] = zgfm_clientSniffer::test(array($data_record->fbh_user_agent));
         $data['info_referer'] = $data2['info_referer'] = $data_record->fbh_referer;
-        $data['form_name'] = $data2['form_name'] = $form_data->fmb_name;
+        $data['form_name'] = $data2['form_name'] = $form_rec_data->fmb_name;
         $data2['info_labels']=array(
             'title'=>__('Entry information','FRocket_admin'),
             'info_submitted'=>__('Submitted form data','FRocket_admin'),
@@ -278,6 +278,13 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
         );
         $data['info_export']= Uiform_Form_Helper::base64url_encode(json_encode($data2));
         
+        $data['fmb_rec_tpl_st'] = $form_rec_data->fmb_rec_tpl_st;
+            $data['base_url']=UIFORM_FORMS_URL.'/';
+            $data['form_id']=$form_rec_data->form_fmb_id;
+            $data['url_form']=site_url().'/?uifm_fbuilder_api_handler&zgfm_action=uifm_fb_api_handler&uifm_action=show_record&uifm_mode=pdf&is_html=1&id='.$id_rec;
+            $data['custom_template'] = self::render_template('formbuilder/views/frontend/form_summary_custom.php',$data);
+
+         
         echo self::loadPartial('layout.php', 'formbuilder/views/records/info_record.php', $data);
     }
     

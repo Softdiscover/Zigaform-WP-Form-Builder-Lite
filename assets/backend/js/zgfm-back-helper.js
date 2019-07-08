@@ -21,10 +21,10 @@ var zgfm_back_helper = function(){
               obj.hasOwnProperty(p) && count++;
             }
             return count;
-    }
+    };
      
     this.generateUniqueID = function (nrodec) {
-                var number = Math.random() // 0.9394456857981651
+                var number = Math.random(); // 0.9394456857981651
                 number.toString(36); // '0.xtis06h6'
                 var id = number.toString(36).substr(2, nrodec); // 'xtis06h6'
                 return id;
@@ -260,7 +260,9 @@ var zgfm_back_helper = function(){
     
     this.delData6 = function(mainarr,name,index,key,section,option,option2) {
                 delete mainarr[name][index][key][section][option][option2];
-            }; 
+    };
+    
+    
     
 };
 window.zgfm_back_helper = zgfm_back_helper = $.zgfm_back_helper = new zgfm_back_helper();
@@ -268,3 +270,4 @@ window.zgfm_back_helper = zgfm_back_helper = $.zgfm_back_helper = new zgfm_back_
 
 })($uifm,window);
 } 
+

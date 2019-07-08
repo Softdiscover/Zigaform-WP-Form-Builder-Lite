@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
 ?>
 <div id="uiform-container" class="uiform-wrap uiform-page_records">
     <input type="hidden" id="rec_id" value="<?php echo $record_id;?>">
-    
+     <?php if(isset($fmb_rec_tpl_st) && intval($fmb_rec_tpl_st)===0){?>   
     <div id="uiform-inforecord-container">
          <div class="space20"></div>
     <div class="sfdc-row">
@@ -90,6 +90,11 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
         </div>
     </div>
     </div>
+    <?php }else{
+        
+        echo $custom_template;
+        
+    }?>
     <div class="space10"></div>
    <div class="sfdc-row">
        <div class="sfdc-col-md-12">

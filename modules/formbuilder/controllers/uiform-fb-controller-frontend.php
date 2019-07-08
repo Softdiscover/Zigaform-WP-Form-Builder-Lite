@@ -359,7 +359,11 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         if(!empty($vars['opt'])){
              switch ((string)$vars['opt']) {
                case "rec_summ":
-                     $output=$this->form_rec_msg_summ;
+                    $tmp_data=json_decode($data->fbh_data, true);
+                    $form_data_onsubm = json_decode($data->fmb_data2, true);
+                    $data2=array();
+                    $data2['data']=$tmp_data;
+                    $output = self::render_template('formbuilder/views/frontend/mail_generate_fields.php',$data2, 'always');
                     break;
                 case "rec_url_fm":
                      $output= isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"] : '';
@@ -1012,31 +1016,68 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
     
     public function pdf_show_record() {
          $rec_id=isset($_GET['id']) ? Uiform_Form_Helper::sanitizeInput($_GET['id']) :'';
+         $is_html=isset($_GET['is_html']) ? Uiform_Form_Helper::sanitizeInput($_GET['is_html']) :0;
          
+
          $form_data = $this->model_formrecords->getFormDataById($rec_id);
+                                
          if(intval($rec_id)>0){
              ob_start();
         ?>
-        <div style="width:600px;margin: 0 100px;">
+        
                     <!-- if p tag is removed, title will dissapear, idk -->
                     <h1><?php echo $form_data->fmb_name;?></h1>
                     <h4><?php echo __('Order summary','FRocket_admin');?></h4>
                   
                    <?php
-                      echo self::$_modules['formbuilder']['frontend']->get_summaryRecord($rec_id);
+                        echo self::$_modules['formbuilder']['frontend']->get_summaryRecord($rec_id);
                 ?>
-                </div>
-
+                
         <?php
         $content = ob_get_contents();
         ob_end_clean();
+        
+        //update form id
+        $this->flag_submitted = $rec_id;
+        
+        //custom template
+        if(intval($form_data->fmb_rec_tpl_st)===1){
+             
+            $template_msg =do_shortcode($form_data->fmb_rec_tpl_html);
+            $template_msg = html_entity_decode($template_msg, ENT_QUOTES, 'UTF-8');
+            $content=$template_msg;
+         }
+        
+         
+        $pos = strpos($content,'</body>');
+        $pos2 = strpos($content,'</html>');
+        
+        if($pos === false && $pos2 === false){
+            $full_page=0;
+        }else{
+            $full_page=1;
+            if(intval($is_html)===1){
+                $content = str_replace("</head>", '<script type="text/javascript" src="'.UIFORM_FORMS_URL.'/assets/frontend/js/iframe/4.1.1/iframeResizer.contentWindow.min.js"></script></head>', $content);        
+            }
+            
+        }
+        
         $output = '';
         $data2=array();
         $data2['rec_id']=$rec_id;
-        //$data2['pdf_font']=$data['pdf_font'];
+        $data2['html_wholecont']=$full_page; 
         $data2['content']=$content;
+        $data2['is_html']=$is_html;
         $tmp_html = self::$_modules['formbuilder']['frontend']->pdf_global_template($data2);
-         uifm_generate_pdf($tmp_html,'record_'.$rec_id, true);
+        
+        if(intval($is_html)===1){
+            header('Content-type: text/html');
+            
+            echo $tmp_html;
+        }else{
+            uifm_generate_pdf($tmp_html,'record_'.$rec_id, true);
+        }
+        
         die();
         
          }
@@ -1059,6 +1100,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         $data2['head_extra']=isset($data['head_extra'])?$data['head_extra']:'';
         $data2['content']=$data['content'];
         $data2['html_wholecont']=isset($data['html_wholecont'])?$data['html_wholecont']:'0';
+        $data2['is_html']=isset($data['is_html'])?$data['is_html']:'0';
         $content= self::render_template('formbuilder/views/forms/pdf_global_template.php', $data2);
         return $content; 
    }

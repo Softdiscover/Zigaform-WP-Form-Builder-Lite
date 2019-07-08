@@ -159,6 +159,16 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
         $data2['charset']='UTF-8';
         $data2['head_extra']='';
         $data2['content']=$message;
+        
+        $pos = strpos($message,'</body>');
+        $pos2 = strpos($message,'</html>');
+        
+        if($pos === false && $pos2 === false){
+            $full_page=0;
+        }else{
+            $full_page=1;
+        }
+        
         $data2['html_wholecont']=$full_page;
         $content= self::render_template('formbuilder/views/forms/pdf_global_template.php', $data2);
         
@@ -565,7 +575,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
         header('Content-type: text/html');
         ob_start();
         ?>
- 
+        <div id="uifm_frm_modal_html_loader"><img src="<?php echo UIFORM_FORMS_URL.'/assets/backend/image/ajax-loader-black.gif';?>"></div>
         <iframe src="<?php echo site_url();?>/?uifm_fbuilder_api_handler&zgfm_action=uifm_fb_api_handler&uifm_action=1&uifm_mode=lmode&id=<?php echo $form_id;?>" 
         scrolling="no" 
         id="zgfm-iframe-<?php echo $form_id;?>"
@@ -574,13 +584,16 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
         allowTransparency="true"></iframe>
         
         <script type="text/javascript">
+                 document.getElementById('zgfm-iframe-<?php echo $form_id;?>').onload = function() {
+         document.getElementById("uifm_frm_modal_html_loader").style.display = 'none';
                     iFrameResize({
-                                                    log                     : false,
-                                                    onScroll: function (coords) {
-                                                        /*console.log("[OVERRIDE] overrode scrollCallback x: " + coords.x + " y: " + coords.y);*/
-                                                    }
-                                            },'#zgfm-iframe-<?php echo $form_id;?>');
-                    
+                                                                log                     : false,
+                                                                onScroll: function (coords) {
+                                                                    /*console.log("[OVERRIDE] overrode scrollCallback x: " + coords.x + " y: " + coords.y);*/
+                                                                }
+                                                        },'#zgfm-iframe-<?php echo $form_id;?>');
+                };   
+ 
           </script> 
         <?php
         $output = ob_get_clean();
@@ -698,8 +711,11 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
         $fmb_addon_data = (isset($_POST['addon_data']))?urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['addon_data'])):'';
         $fmb_addon_data = str_replace("\'", "'",$fmb_addon_data);
         $fmb_addon_data = (isset($fmb_addon_data) && $fmb_addon_data) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive_html'), json_decode($fmb_addon_data, true)) : array();
-            
         
+            //more options
+        $data['fmb_rec_tpl_html'] = (isset($_POST['uifm_frm_rec_tpl_html']))?urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['uifm_frm_rec_tpl_html'])):'';
+        $data['fmb_rec_tpl_st'] = (isset($_POST['uifm_frm_rec_tpl_st']))?urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['uifm_frm_rec_tpl_st'])):'';
+
         $tmp_data2=array();
         $tmp_data2['onsubm']=isset($fmb_data['onsubm']) ? $fmb_data['onsubm'] : '';
         $tmp_data2['main']=isset($fmb_data['main']) ? $fmb_data['main'] : '';
@@ -1542,19 +1558,41 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
             case 4:
             case 5:
                 
+                //generating css
+                $data = array();
+                $data = $this->gen_post_src[$child_field['num_tab']][$child_field['id']];
+                $str_output_2 .= self::$_modules['formbuilder']['fields']->posthtml_gridsystem_css($data);
+                
+                //generating html
                 if (intval($child_field['count_children']) >= 0) {
-                    $str_output .= '<div id="zgfb_' . $child_field['id'] . '" class="zgpbf-gridsystem-cont">';
+                    
+                    //generate class
+                    $tmp_class="zgpbf-gridsystem-cont ";
+                    if(isset($data['main']['skin']['custom_css']['ctm_class'])){
+                        $tmp_class.=$data['main']['skin']['custom_css']['ctm_class'];
+                    }  
+                    
+                    $str_output .= '<div id="zgfb_' . $child_field['id'] . '" class="'.$tmp_class.'">';
                     $str_output .= '<div class="sfdc-container-fluid">';
                     $str_output .= '<div class="sfdc-row">';
                     $count_str = 0;
                     if(isset($child_field['inner'])){
                        foreach ($child_field['inner'] as $key => $value) {
                             $str_output .= '<div data-zgpb-blocknum="' . $value['num_tab'] . '" class="zgpb-fl-gs-block-style sfdc-col-sm-' . $value['cols'] . '">';
+                            
+                            //generate class
+                            $tmp_class="zgpb-fl-gs-block-inner ";
+                            if(isset($data['blocks'][$value['num_tab']]['skin']['custom_css']['ctm_class'])){
+                                $tmp_class.=$data['blocks'][$value['num_tab']]['skin']['custom_css']['ctm_class'];
+                            } 
+                            
                             if ($count_str === $key) {
-                                $str_output .= '<div class="zgpb-fl-gs-block-inner">';
-                            } else {
-                                $str_output .= '<div class="zgpb-fl-gs-block-inner">';
-                            }
+            
+                            } 
+                            
+                            
+                            $str_output .= '<div class="'.$tmp_class.'">';
+                            
                             if (!empty($value['children'])) {
                                 foreach ($value['children'] as $key2 => $value2) {
                                     //get field
@@ -1582,9 +1620,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
                     $str_output .= '</div>';
                 }
             
-                $data = array();
-                $data = $this->gen_post_src[$child_field['num_tab']][$child_field['id']];
-                $str_output_2 .= self::$_modules['formbuilder']['fields']->posthtml_gridsystem_css($data);
+                
                 
                 break;
             case 31:
@@ -2393,6 +2429,15 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
         $data = array();
         $data['form_id'] = (isset($_GET['form_id']) && $_GET['form_id']) ? Uiform_Form_Helper::sanitizeInput(trim($_GET['form_id'])) : 0;
         $data['obj_sfm'] = Uiform_Form_Helper::get_font_library();
+        
+        if(intval($data['form_id'])>0){
+            
+            $formdata=$this->formsmodel->getFormById($data['form_id']);
+
+            $data['uifm_frm_record_tpl_enable']=$formdata->fmb_rec_tpl_st;
+            $data['uifm_frm_record_tpl_content']=$formdata->fmb_rec_tpl_html;
+        }
+        
         echo self::loadPartial('layout_editform.php', 'formbuilder/views/forms/create_form.php', $data);
     }
     

@@ -4,7 +4,9 @@
     _uifmvar.fm_ids.push(rockfm_vars._uifmvar.id);
     
     for( var i in _uifmvar.fm_ids ) {
-iFrameResize({
+        
+        document.getElementById('zgfm-iframe-'+_uifmvar.fm_ids[i]).onload = function() {
+         iFrameResize({
 				log                     : false,
                                 autoResize: true,
                                 sizeWidth: true,
@@ -13,6 +15,9 @@ iFrameResize({
                                     /*console.log("[OVERRIDE] overrode scrollCallback x: " + coords.x + " y: " + coords.y);*/
                                 }
 			},'#zgfm-iframe-'+_uifmvar.fm_ids[i]);
-                        
+    };
+        
+        
+        
     }
 

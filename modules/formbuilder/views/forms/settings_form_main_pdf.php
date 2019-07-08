@@ -15,7 +15,13 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
 ?>
 <div class="uiform-set-field-wrap"  >
   <div class="space20"></div>
-     
+          <div class="sfdc-help-block">
+                           <div class="sfdc-alert sfdc-alert-info">
+                               <?php echo __('Options below are only included in the pdf when your html content doesn\'t have Body and Html tag ','FRocket_admin'); ?>
+                    </div>
+                           
+                           
+                         </div>
     <div class="sfdc-row">
         <div class="sfdc-form-group">
             <div class="sfdc-col-sm-4">
@@ -66,7 +72,8 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
         </div>
     </div>
     <div class="space10 zgfm-opt-divider-stl1"></div>
-     <div class="sfdc-row ">
+     <div class="sfdc-row " style="display:none;">
+        <!--> it will be removed in next future version updstes -->
         
             <div class="sfdc-form-group">
                 <div class="sfdc-col-md-4">
@@ -82,11 +89,11 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
                        data-toggle="tooltip" data-placement="right" 
                        data-original-title="<?php echo __('Enable control whole html content','FRocket_admin'); ?>"
                        ><span class="fa fa-question-circle"></span></a>
-                       <p class="sfdc-help-block">
+                       <div class="sfdc-help-block">
                              <div class="sfdc-alert sfdc-alert-info">
                                <?php echo __('When you active this option, you have to add html, head, and body tag in the template because it allows you to have whole control of html content for pdf generation. remember this is only for all pdf content of zigaform','FRocket_admin'); ?>
                              </div>
-                       </p>
+                       </div>
                 </div>       
             </div>
     </div>
