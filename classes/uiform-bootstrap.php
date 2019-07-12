@@ -1017,6 +1017,7 @@ JS;
             wp_enqueue_script('rockefform-codemirror-matchbrackets', UIFORM_FORMS_URL . '/assets/common/js/codemirror/addon/edit/matchbrackets.js', array(), '1.0', true);
             wp_enqueue_script('rockefform-codemirror-autorefresh', UIFORM_FORMS_URL . '/assets/common/js/codemirror/addon/display/autorefresh.js', array(), '1.0', true);
             
+            wp_enqueue_script('rockefform-autooff', UIFORM_FORMS_URL . '/assets/backend/js/disableautofill/jquery.disableAutoFill.js');
             
               if(UIFORM_DEV===1){
                     
