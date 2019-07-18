@@ -1009,7 +1009,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         $data2['content']=$data['mail_usr_pdf_template_msg'];
         $data2['html_wholecont'] = $data['html_wholecont'];
         $tmp_html = self::$_modules['formbuilder']['frontend']->pdf_global_template($data2);
-        $output = uifm_generate_pdf($tmp_html, $data['mail_usr_pdf_fn'], false);
+        $output = uifm_generate_pdf($tmp_html, $data['mail_usr_pdf_fn'],$data['pdf_paper_size'],$data['pdf_paper_orie'], false);
                                           
         return $output;
     }
@@ -1068,14 +1068,14 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         $data2['html_wholecont']=$full_page; 
         $data2['content']=$content;
         $data2['is_html']=$is_html;
-        $tmp_html = self::$_modules['formbuilder']['frontend']->pdf_global_template($data2);
+        $tmp_res = self::$_modules['formbuilder']['frontend']->pdf_global_template($data2);
         
         if(intval($is_html)===1){
             header('Content-type: text/html');
             
-            echo $tmp_html;
+            echo $tmp_res['content'];
         }else{
-            uifm_generate_pdf($tmp_html,'record_'.$rec_id, true);
+            uifm_generate_pdf($tmp_res['content'],'record_'.$rec_id,$tmp_res['pdf_paper_size'],$tmp_res['pdf_paper_orie'], true);
         }
         
         die();
@@ -1093,16 +1093,20 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         $form_data_onsubm = json_decode($form_data->fmb_data2, true);
         $pdf_charset = (isset($form_data_onsubm['main']['pdf_charset'])) ? $form_data_onsubm['main']['pdf_charset'] : '';
         $pdf_font = (isset($form_data_onsubm['main']['pdf_font'])) ? urldecode($form_data_onsubm['main']['pdf_font']) : '';
+        $pdf_paper_size = (isset($form_data_onsubm['main']['pdf_paper_size'])) ? $form_data_onsubm['main']['pdf_paper_size'] : 'a4';
+        $pdf_paper_orie = (isset($form_data_onsubm['main']['pdf_paper_orie'])) ? $form_data_onsubm['main']['pdf_paper_orie'] : 'landscape';
         
         $data2=array();
         $data2['font']=$pdf_font;
         $data2['charset']=$pdf_charset;
+        $data2['pdf_paper_size']=$pdf_paper_size;
+        $data2['pdf_paper_orie']=$pdf_paper_orie;
         $data2['head_extra']=isset($data['head_extra'])?$data['head_extra']:'';
         $data2['content']=$data['content'];
         $data2['html_wholecont']=isset($data['html_wholecont'])?$data['html_wholecont']:'0';
         $data2['is_html']=isset($data['is_html'])?$data['is_html']:'0';
-        $content= self::render_template('formbuilder/views/forms/pdf_global_template.php', $data2);
-        return $content; 
+        $data2['content']= self::render_template('formbuilder/views/forms/pdf_global_template.php', $data2);
+        return $data2;
    }
     
    public function process_mail($data) {

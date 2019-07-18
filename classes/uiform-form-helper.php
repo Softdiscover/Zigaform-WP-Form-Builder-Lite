@@ -690,7 +690,7 @@ class Uiform_Form_Helper {
 
 use Dompdf\Dompdf;
             
-function uifm_generate_pdf($html, $filename, $stream = TRUE) {
+function uifm_generate_pdf($html, $filename,$papersize, $paperorien, $stream = TRUE) {
     if(ZIGAFORM_F_LITE == 1){
 
     }else{
@@ -699,7 +699,7 @@ function uifm_generate_pdf($html, $filename, $stream = TRUE) {
     $dompdf = new Dompdf();
             
     $dompdf->loadHtml($html);
-    $dompdf->setPaper('A4', 'landscape');
+    $dompdf->setPaper($papersize, $paperorien);
     $dompdf->set_option('isHtml5ParserEnabled', true);
     $dompdf->set_option('isRemoteEnabled', true);
     $dompdf->render();
