@@ -91,7 +91,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
         $modalmode = get_option( 'zgfm_b_modalmode', 0 );
         if(intval($modalmode)===1){
             //load resources
-            add_action( 'wp_enqueue_scripts', array( &$this, 'load_form_resources') );
+            add_action( 'wp_enqueue_scripts', array( &$this, 'load_form_resources'),50, 1 );
         }
         
         //add variables
