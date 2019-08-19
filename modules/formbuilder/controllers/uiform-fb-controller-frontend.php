@@ -643,6 +643,8 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                                            $tmp_options[$value] = $tmp_options_row;
                                         }
                                     //}
+                                    $form_f_tmp[$key]['input_label'] = $tmp_options_row['label'];
+                                    $form_f_tmp[$key]['input_value'] = $tmp_options_row['value'];
                                     /*saving data to field array*/
                                     $form_f_tmp[$key]['input'] = $tmp_options;
                                 

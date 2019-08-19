@@ -125,6 +125,9 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
         //show variables
         add_action('wp_ajax_rocket_fbuilder_variables_openmodal', array(&$this, 'ajax_variables_openmodal'));
         
+        //show variables email page
+        add_action('wp_ajax_rocket_fbuilder_variables_emailpage', array(&$this, 'ajax_variables_emailpage'));
+        
         //integrity
         add_action('wp_ajax_rocket_fbuilder_integrity_openmodal', array(&$this, 'ajax_integrity_openmodal'));
         
@@ -362,6 +365,25 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
         $json['modal_header'] = '<h3>'.__('Form variables','FRocket_admin').'</h3>';
         $json['modal_body'] = self::render_template('formbuilder/views/forms/ajax_variables_openmodal.php', $data, 'always');
         $json['modal_footer'] = self::render_template('formbuilder/views/forms/modal1_footer.php', array());
+        
+        //return data to ajax callback
+        header('Content-Type: application/json');
+        echo json_encode($json);
+        wp_die();
+    }
+
+        public function ajax_variables_emailpage() {
+        
+        check_ajax_referer( 'zgfm_ajax_nonce', 'zgfm_security' );
+        $data=array();
+        $form_id = (isset($_POST['form_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
+        $fmb_data = (isset($_POST['form_data']))?urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['form_data'])):'';
+        $fmb_data = str_replace("\'", "'",$fmb_data);
+        $fmb_data = (isset($fmb_data) && $fmb_data) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive_html'), json_decode($fmb_data, true)) : array();
+        $data['fmb_data'] = $fmb_data;
+                                    
+        $json = array();
+        $json['message'] = self::render_template('formbuilder/views/forms/ajax_variables_emailpage.php', $data, 'always');
         
         //return data to ajax callback
         header('Content-Type: application/json');
