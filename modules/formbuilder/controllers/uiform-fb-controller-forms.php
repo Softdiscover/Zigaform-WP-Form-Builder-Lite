@@ -751,7 +751,6 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
             
         //addon data
         $fmb_addon_data = (isset($_POST['addon_data']))?urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['addon_data'])):'';
-        $fmb_addon_data = str_replace("\'", "'",$fmb_addon_data);
         $fmb_addon_data = (isset($fmb_addon_data) && $fmb_addon_data) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive_html'), json_decode($fmb_addon_data, true)) : array();
         
             //more options
