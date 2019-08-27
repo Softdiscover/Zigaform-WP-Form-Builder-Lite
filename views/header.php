@@ -186,6 +186,22 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
             </a>
         </li>
         <li class="divider-menu"></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="fa fa-life-ring"></span> <?php echo __('Help','FRocket_admin'); ?><span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="https://kb.softdiscover.com/docs/zigaform-wordpress-form-builder/" target="_blank">
+                <?php echo __('Documentation','FRocket_admin'); ?>
+                </a>
+            </li>
+             <li><a href="https://github.com/Softdiscover/Zigaform-WP-Form-Builder-Lite/issues" target="_blank">
+                   <?php echo __('Forum','FRocket_admin'); ?></a>
+             </li>
+             <li><a href="https://www.fb.com/groups/zigaforms" target="_blank">
+                   <?php echo __('Zigaform Community','FRocket_admin'); ?></a>
+             </li>
+          </ul>
+        </li>
       </ul>
       <div id="uifm-loading-box" style="display:none;">
           <div class="uifm-alert"></div>

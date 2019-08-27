@@ -62,6 +62,7 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module {
         if(isset($_POST['_uifm_bkp_submit_file']) && intval($_POST['_uifm_bkp_submit_file'])===1){
             $this->backup_upload_file();
         }
+         
     }
     
     public function ajax_blocked_getmessage() {
@@ -140,6 +141,13 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module {
         }
         
         
+        $opt_fields_fastload = (isset($_POST['uifm_frm_fields_fastload']) && $_POST['uifm_frm_fields_fastload']) ? Uiform_Form_Helper::sanitizeInput($_POST['uifm_frm_fields_fastload']) : 0;
+        if((string)$opt_fields_fastload ==='on'){
+            update_option( 'zgfm_fields_fastload', 1);
+        }else{
+            update_option( 'zgfm_fields_fastload', 0);
+        }
+        
         $data = array();
         $data['language'] = $opt_language;
         $where = array(
@@ -176,6 +184,7 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module {
         $data['lang_list'] = $list_lang;
         
         $data['modalmode'] = get_option( 'zgfm_b_modalmode', 0 );
+        $data['fields_fastload'] = get_option( 'zgfm_fields_fastload', 0 );
         
 
         echo self::loadPartial('layout.php', 'formbuilder/views/settings/view_settings.php', $data);

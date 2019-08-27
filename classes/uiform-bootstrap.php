@@ -1086,6 +1086,7 @@ JS;
             //load rocket form
             wp_enqueue_script(self::PREFIX . 'admin');
             $zgfm_vars = apply_filters('zgfm_back_filter_globalvars', array('url_site' => site_url(),
+                'fields_fastload'=>get_option( 'zgfm_fields_fastload', 0 ),
                 'url_admin' => admin_url(), 
                 'url_plugin' => UIFORM_FORMS_URL,
                 'app_version' => UIFORM_VERSION,
