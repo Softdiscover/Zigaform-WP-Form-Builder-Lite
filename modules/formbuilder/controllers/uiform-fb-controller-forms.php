@@ -425,10 +425,10 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
         $dump_form = unserialize(Uiform_Form_Helper::base64url_decode($imp_form));
         $data_form = array();
         $data_form['fmb_data'] = json_decode($dump_form['fmb_data']);
-        $data_form['fmb_html_backend'] = $dump_form['fmb_html_backend'];
-        $data_form['fmb_name'] = $dump_form['fmb_name'];
-        $data_form['fmb_rec_tpl_html'] = $dump_form['fmb_rec_tpl_html'];
-        $data_form['fmb_rec_tpl_st'] = $dump_form['fmb_rec_tpl_st'];
+        $data_form['fmb_html_backend'] = @$dump_form['fmb_html_backend'];
+        $data_form['fmb_name'] = @$dump_form['fmb_name'];
+        $data_form['fmb_rec_tpl_html'] = @$dump_form['fmb_rec_tpl_html'];
+        $data_form['fmb_rec_tpl_st'] = @$dump_form['fmb_rec_tpl_st'];
         $json = array();
         $json['data'] = $data_form;
         header('Content-Type: application/json');
