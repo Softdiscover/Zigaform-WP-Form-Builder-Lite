@@ -1,13 +1,13 @@
 === Zigaform - Form Builder lite ===
 Contributors: softdiscover
-Donate link: https://codecanyon.net/item/zigaform-wordpress-form-builder/11057544?ref=Softdiscover
+Donate link: https://1.envato.market/0KDVM
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: form, forms, contact form, custom form, form builder, form creator, form manager, form creation, contact forms, custom forms, forms builder, forms creator, forms manager, forms creation, form administration,
 Requires at least: 3.6
-Tested up to: 5.2.2
+Tested up to: 5.2.3
 Requires PHP: 5.3
-Stable tag: 3.9.9.8.7
+Stable tag: 3.9.9.9.1
 
 Create forms with total control using this powerful drag and drop form builder which makes you to build contact forms or any form on few minutes.
 
@@ -450,7 +450,7 @@ https://www.youtube.com/watch?v=W3yTkaDD4Mk&w=532&rel=0
 * minor changes
 = 3.9.2.4 = 
  *added custom reply to mail messages
-= 3.9.9.8.7 = 
+= 3.9.9.9.1 = 
  * minor changes
 
 == Upgrade Notice ==
@@ -496,5 +496,5 @@ https://www.youtube.com/watch?v=W3yTkaDD4Mk&w=532&rel=0
 * minor changes
 = 3.9.2.4 = 
  *added custom reply to mail messages
-= 3.9.9.8.7 = 
+= 3.9.9.9.1 = 
  * minor changes

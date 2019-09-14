@@ -727,7 +727,7 @@ JS;
                 $plugin_page = admin_url('admin.php?page=zgfm_form_builder');
                 $meta[] = "<a href='https://wordpress-form-builder.zigaform.com/#contact' target='_blank'><span class='dashicons  dashicons-admin-users'></span>" . __('Support', 'FRocket_admin') . "</a>";
             if (ZIGAFORM_F_LITE===1) {
-                $meta[] = "<a href='https://codecanyon.net/item/zigaform-wordpress-form-builder/11057544?ref=Softdiscover' target='_blank'><span class='dashicons  dashicons-cart'></span>" . __('Get Premium', 'FRocket_admin') . "</a>";
+                $meta[] = "<a href='https://1.envato.market/0KDVM' target='_blank'><span class='dashicons  dashicons-cart'></span>" . __('Get Premium', 'FRocket_admin') . "</a>";
                // $meta[] = "<a href='https://wordpress.org/support/plugin/zigaform-form-builder-lite/' target='_blank'>" . __('Support', 'FRocket_admin') . "</a>";
             }
             

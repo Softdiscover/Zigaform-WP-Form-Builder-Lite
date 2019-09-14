@@ -1178,8 +1178,20 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 
         $return = array();
         $return['output_html'] = $str_output;
-        $return['output_css'] = $str_output_3;
+        
 
+        //add css inside namespace of the form
+            require_once(UIFORM_FORMS_DIR . '/libraries/lesslib/lessc.inc.php');
+            $less = new lessc();
+            $css_store='';
+            try {
+                $css_store=$less->compile('#rockfm_form_'.$this->saved_form_id.' {'.$str_output_3.'}');
+              } catch (exception $e) {
+                $css_store=$str_output_3;
+              }    
+        
+        $return['output_css'] = $css_store;      
+              
         return $return;
     }
     

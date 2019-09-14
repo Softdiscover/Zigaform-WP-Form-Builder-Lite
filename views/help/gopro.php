@@ -130,11 +130,11 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
     <div class="sfdc-col-sm-12">
      
       <p>
-          <a href="https://codecanyon.net/item/zigaform-wordpress-form-builder/11057544?ref=Softdiscover"
+          <a href="https://1.envato.market/0KDVM"
              target="_blank"
              class="btn btn-info btn-lg"><i class="fa fa-cloud-download"></i> <span><?php echo __('DOWNLOAD', 'FRocket_admin');?></span></a>
         <a 
-            href="https://codecanyon.net/item/zigaform-wordpress-form-builder/11057544?ref=Softdiscover"
+            href="https://1.envato.market/0KDVM"
              target="_blank"
             class="btn btn-success btn-lg"><i class="fa fa-eye" aria-hidden="true"></i> <span><?php echo __('GET STARTED', 'FRocket_admin');?></span></a>
       </p>
