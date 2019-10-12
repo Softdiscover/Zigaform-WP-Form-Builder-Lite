@@ -392,8 +392,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
     public function ajax_submit_ajaxmode() {
         
         check_ajax_referer( 'zgfm_ajax_nonce', 'zgfm_security' );
-        
-        $resp = array();
+        $resp = array();       
         $resp=$this->process_form();
        
         if (isset($this->flag_submitted) && intval($this->flag_submitted) > 0) {
@@ -404,9 +403,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
             $resp['success'] = 0;
             $resp['show_message'] = '<div class="rockfm-alert rockfm-alert-danger"><i class="fa fa-exclamation-triangle"></i> ' . __('warning! Form was not submitted', 'frocket_front') . '</div>';
         }
-        
-        $resp['sm_redirect_st'] = $resp['sm_redirect_st'];
-        $resp['sm_redirect_url'] = $resp['sm_redirect_url'];
+               
         //return data to ajax callback
         header('Content-Type: text/html; charset=UTF-8');
         echo json_encode($resp);
@@ -540,7 +537,12 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                         $tmp_field_name = $this->model_fields->getFieldNameByUniqueId($key, $form_id);
                         
                        if(!isset($tmp_field_name->type)){
-                            throw new Exception('error $key:'.$key.' - $form_id:'.$form_id);
+                            $err_output='error $key:'.$key.' - $form_id:'.$form_id;
+                            if(UIFORM_DEBUG === 1 ){
+                                $err_output.=' - Last query: '.htmlentities($this->wpdb->last_query,ENT_NOQUOTES, "UTF-8");
+                            }
+                            
+                            throw new Exception($err_output);
                         }
                         
                         
@@ -1197,8 +1199,10 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                         $temp_cost=array();
                         $temp_qty=array();
                         
+                        if(is_array($value2))
                         foreach ($value2 as $key3 => $value3) {
                             //values
+                            if(is_array($value3))
                             foreach ($value3 as $key4 => $value4) {
                                 switch ($key4) {
                                         case 'label':

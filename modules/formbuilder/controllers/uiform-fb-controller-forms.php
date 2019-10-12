@@ -1142,6 +1142,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
             case 39:
                 //wizard buttons
                 $data['form_wizard'] = $this->current_data_wizard;
+                $data['tab_count'] = $this->current_data_steps;
                 $str_output.=self::$_modules['formbuilder']['fields']->formhtml_wizardbtn($data, $child_field['num_tab']);
                 $str_output_3.=self::$_modules['formbuilder']['fields']->formhtml_wizardbtn_css($data);
                 break;
@@ -1200,6 +1201,13 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
         $str_output = '';
         
         $data = array();
+        
+        if(empty($this->current_data_form[intval($child_field['num_tab'])][$child_field['id']])){
+            $return = array();
+            $return['output_html'] = '';
+            return $return;
+        }
+        
         $data = $this->current_data_form[intval($child_field['num_tab'])][$child_field['id']];
         $data['quick_options'] = self::render_template('formbuilder/views/fields/templates/prevpanel_quickopts.php', $data, 'always');
         switch (intval($child_field['type'])) {
