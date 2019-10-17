@@ -29,7 +29,7 @@ if (!class_exists('UiformFormbuilder')) {
          * @var string
          * @since 1.0
          */
-        public $version = '3.9.9.9.7';
+        public $version = '3.9.9.9.8';
 
         /**
          * The minimal required version of WordPress for this plug-in to function correctly.
