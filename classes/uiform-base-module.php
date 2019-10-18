@@ -206,21 +206,7 @@ abstract class Uiform_Base_Module {
      */
     abstract protected function __construct();
 
-    /**
-     * Prepares sites to use the plugin during single or network-wide activation
-     *
-     * @mvc Controller
-     *
-     * @param bool $network_wide
-     */
-    abstract public function activate($network_wide);
 
-    /**
-     * Rolls back activation procedures when de-activating the plugin
-     *
-     * @mvc Controller
-     */
-    abstract public function deactivate();
     
     
 

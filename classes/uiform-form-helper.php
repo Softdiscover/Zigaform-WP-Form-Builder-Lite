@@ -700,6 +700,7 @@ class Uiform_Form_Helper {
             };
             return preg_replace_callback($pattern, $callback, json_encode($input, $flags));
         }
+            
 }
 
 use Dompdf\Dompdf;
@@ -734,6 +735,5 @@ function uifm_generate_pdf($html, $filename,$papersize, $paperorien, $stream = T
     }
 
 }
-
-
+            
 ?>

@@ -189,7 +189,7 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
                 $notice_content = esc_html__( "And hey, if you do, you can check the PRO version and get access to more features!", "FRocket_admin" );
                 $button_content = esc_html__( "Go Zigaform Pro", "FRocket_admin" );
             }else{
-                $notice_url = 'https://codecanyon.net/item/zigaform-wordpress-form-builder/11057544';
+                $notice_url = 'https://1.envato.market/0KDVM';
                 $notice_heading = esc_html__( "Thanks for installing Zigaform. We hope you like it!", "FRocket_admin" );
                 $notice_content = esc_html__( "And hey, if you do, give it a 5-star rating on Codencayon to help us spread the word and boost our motivation.", "FRocket_admin" );
                 $button_content = esc_html__( "Go Zigaform Pro", "FRocket_admin" );
@@ -1157,33 +1157,7 @@ JS;
         }
     }
 
-    /*
-     * Instance methods
-     */
 
-    /**
-     * Prepares sites to use the plugin during single or network-wide activation
-     *
-     * @mvc Controller
-     *
-     * @param bool $network_wide
-     */
-    public function activate($network_wide = false) {
-        require_once( UIFORM_FORMS_DIR . '/classes/uiform-installdb.php');
-        $installdb = new Uiform_InstallDB();
-        $installdb->install($network_wide);
-        return true;
-    }
-
-    /**
-     * Rolls back activation procedures when de-activating the plugin
-     *
-     * @mvc Controller
-     */
-    public function deactivate() {
-        
-        return true;
-    }
     
    
     

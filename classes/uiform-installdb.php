@@ -312,16 +312,22 @@ class Uiform_InstallDB {
     }
     
     public function uninstall(){
-        global $wpdb;
-        $wpdb->query('DROP TABLE IF EXISTS '. $this->form_history);
-        $wpdb->query('DROP TABLE IF EXISTS '. $this->form_fields);
-        $wpdb->query('DROP TABLE IF EXISTS '. $this->form_log);
-        $wpdb->query('DROP TABLE IF EXISTS '. $this->form_fields_type);
-        $wpdb->query('DROP TABLE IF EXISTS '. $this->form);
-        $wpdb->query('DROP TABLE IF EXISTS '. $this->settings);
-        $wpdb->query('DROP TABLE IF EXISTS '. $this->core_addon);
-        $wpdb->query('DROP TABLE IF EXISTS '. $this->core_addon_detail);
-        $wpdb->query('DROP TABLE IF EXISTS '. $this->core_addon_log);
+ 
+    global $wpdb;
+    $wpdb->query('DROP TABLE IF EXISTS '. $this->form_history);
+    $wpdb->query('DROP TABLE IF EXISTS '. $this->form_fields);
+    $wpdb->query('DROP TABLE IF EXISTS '. $this->form_log);
+    $wpdb->query('DROP TABLE IF EXISTS '. $this->form_fields_type);
+    $wpdb->query('DROP TABLE IF EXISTS '. $this->form);
+    $wpdb->query('DROP TABLE IF EXISTS '. $this->settings);
+    $wpdb->query('DROP TABLE IF EXISTS '. $this->core_addon);
+    $wpdb->query('DROP TABLE IF EXISTS '. $this->core_addon_detail);
+    $wpdb->query('DROP TABLE IF EXISTS '. $this->core_addon_log);
+
+     //removing options
+    delete_option('uifmfbuild_version' );
+ 
+        
     }
 }
 ?>
