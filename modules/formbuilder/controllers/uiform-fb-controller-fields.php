@@ -155,9 +155,17 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module {
         
         $html_output.=html_entity_decode($html_output_head);
         
+        $search1=UIFORM_FORMS_URL;
+        $replace1="{{{data.plugin_url}}}";
+
+        $search2=site_url();
+        $replace2="{{{data.site_url}}}";
         
         foreach ($data_render as $key => $value) {
             $html_output.='<script type="text/html" id="tmpl-zgfm-field-opt-type-'.$key.'">';
+            $value= str_replace($search1, $replace1, $value);
+            $value= str_replace($search2, $replace2, $value);
+            
             $html_output.= htmlentities($value);
             $html_output.='</script>';
             $html_output.='';

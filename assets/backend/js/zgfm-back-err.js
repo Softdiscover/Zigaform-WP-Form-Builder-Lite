@@ -119,7 +119,7 @@ var zgfm_back_err = function(){
             
             $.ajax({
                                 type: 'POST',
-                                url: rockfm_vars.uifm_siteurl+"formbuilder/forms/ajax_integrity_openmodal",
+                                url: ajaxurl,
                                 data: {
                                     'action': 'rocket_fbuilder_integrity_openmodal',
                                     'page':'zgfm_form_builder',
