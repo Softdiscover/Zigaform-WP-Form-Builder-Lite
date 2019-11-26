@@ -1,3 +1,9 @@
+Version 4.5
+   [fixed] -  minor changes
+-----------------------------------------------------------------------------------------------------------------
+Version 4.4
+   [fixed] -  fast load issue 
+-----------------------------------------------------------------------------------------------------------------
 Version 4.2
    [fixed] -  hide currency and symbol
    [fixed] -  character or numeric for textbox calculation

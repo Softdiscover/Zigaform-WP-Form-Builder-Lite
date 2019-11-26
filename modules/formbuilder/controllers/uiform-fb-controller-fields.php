@@ -161,8 +161,18 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module {
         $search2=site_url();
         $replace2="{{{data.site_url}}}";
         
+        $js_store="";
+            
         foreach ($data_render as $key => $value) {
             $html_output.='<script type="text/html" id="tmpl-zgfm-field-opt-type-'.$key.'">';
+            
+            preg_match_all('#<script(.*?)</script>#is', $value, $matches);
+            foreach ($matches[0] as $value2) {
+                $js_store .= $value2;
+            }
+
+            //$value = preg_replace('#<script(.*?)</script>#is', '', $value); 
+            
             $value= str_replace($search1, $replace1, $value);
             $value= str_replace($search2, $replace2, $value);
             
@@ -178,6 +188,37 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module {
         fwrite($fhandle,$html_output);
         fclose($fhandle);
         
+        $html_output='';
+        ob_start();
+        ?>&lt;?php
+        /**
+         * Intranet
+         *
+         * PHP version 5
+         *
+         * @category  PHP
+         * @package   Rocket_form
+         * @author    Softdiscover &lt;info@softdiscover.com&gt;
+         * @copyright 2015 Softdiscover
+         * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
+         * @link      http://wordpress-form-builder.uiform.com/
+         */
+        if (!defined('ABSPATH')) {exit('No direct script access allowed');}
+        ?&gt;
+        &lt;!-- options --&gt;<?php
+        $html_output_head= ob_get_contents();
+        ob_end_clean();
+        
+        $html_output.=html_entity_decode($html_output_head);
+
+         //scripts 
+        $fscripts=UIFORM_FORMS_DIR."/modules/formbuilder/views/forms/fieldoptions_data_scripts.php";
+        //$html_output.=$js_store;
+        $html_output.=htmlentities($js_store);
+        $fhandle = fopen($fscripts,"w");
+        fwrite($fhandle,$html_output);
+        fclose($fhandle);
+
                 
          //echo json_encode($data_render);  
          die();

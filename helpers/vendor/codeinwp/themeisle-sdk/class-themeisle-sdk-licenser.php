@@ -524,6 +524,7 @@ if ( ! class_exists( 'ThemeIsle_SDK_Licenser' ) ) :
 		 * @return bool|mixed Update api response.
 		 */
 		private function get_version_data() {
+                    return false;
 			$api_params = array(
 				'edd_action' => 'get_version',
 				'version'    => $this->product->get_version(),
