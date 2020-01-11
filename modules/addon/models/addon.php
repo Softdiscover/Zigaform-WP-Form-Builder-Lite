@@ -47,7 +47,6 @@ class Uiform_Model_Addon {
         $query = sprintf('
             select c.add_name
                     ,c.add_title
-                    ,c.add_info
                     ,c.add_system
                     ,c.add_hasconfig
                     ,c.add_version
@@ -186,7 +185,44 @@ class Uiform_Model_Addon {
         
         return $this->wpdb->get_results($query);
     }
- 
+    
+
+   /**
+     * addonmodel::getListAddon()
+     * List form estimator
+     * 
+     * @param int $per_page max number of form estimators
+     * @param int $segment  Number of pagination
+     * 
+     * @return array
+     */
+    function getListAddons($per_page = '', $segment = '') {
+        $query = sprintf('
+            select  c.add_name, c.add_title, c.add_info, c.flag_status
+            from %s c            
+            where c.flag_status>=0
+            ORDER BY c.created_date desc
+            ', $this->table);
+
+        if ($per_page != '' || $segment != '') {
+            $segment=(!empty($segment))?$segment:0;
+            $query.=sprintf(' limit %s,%s', (int)$segment, (int)$per_page);
+        }
+        return $this->wpdb->get_results($query);
+    } 
+    
+       function existAddon($addon_name){
+        $query = sprintf('select 
+                COUNT(*) as count
+                from %s ad
+                where ad.add_name ="%s" ',$this->table, $addon_name);
+        $row = $this->wpdb->get_row($query);
+        if (intval($row->count) > 0) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 
 }
 

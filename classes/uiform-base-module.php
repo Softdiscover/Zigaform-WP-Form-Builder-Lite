@@ -30,7 +30,9 @@ abstract class Uiform_Base_Module {
     
     
     public static $_addons = array();
-    public static $_addons_routes = array();
+    public static $_addons_actions = array();
+    public static $_addons_jsactions = array();
+    public static $_form_data = array();
     
     /*
      * Magic methods

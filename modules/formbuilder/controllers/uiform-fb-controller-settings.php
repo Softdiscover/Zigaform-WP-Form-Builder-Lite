@@ -289,7 +289,7 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module {
             $tmp_arr=array();
             if(!empty($row)){
                  foreach ($row as $key => $value2) {
-                      $tmp_arr[]=$value2->Field;
+                      $tmp_arr[$value2->Field]=array('type'=>$value2->Type);
                  }
             }
             
@@ -328,21 +328,37 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module {
         $col_st=false;
         if(!empty($row)){
             $tmp_arr=array();
-             foreach ($row as $key => $value) {
-                  if(isset($tmp_all_db[$table]) && in_array($value->Field, $tmp_all_db[$table])){
-                 
-                    if (($key2 = array_search($value->Field, $tmp_all_db[$table])) !== false) {
-                            unset($tmp_all_db[$table][$key2]);
-                        }
-                    
-                  }
-             }
+            if(isset($tmp_all_db[$table])){
+                foreach ($row as $key => $value) {
+                          if( isset($tmp_all_db[$table][$value->Field]) ){
+                                 
+                                    /*if (($key2 = array_search($value->Field, $tmp_all_db[$table])) !== false) {
+                                            unset($tmp_all_db[$table][$key2]);
+                                        }*/
+
+                                        if( strval($value->Type)===strval($tmp_all_db[$table][$value->Field]['type']) ){
+
+                                        }else{
+                                            $err_msgs[]=$value->Field.' field - '.$tmp_all_db[$table][$value->Field]['type'].' type is missing';
+                                        }
+                                    
+
+
+                          }else{
+                            $err_msgs[]=$value->Field.' field is missing';
+                          }
+                     }
+            }else{
+                $err_msgs[]=$table.' table is missing';
+            }
+             
+
         }
         
+        /*
         foreach ($tmp_all_db[$table] as $value) {
            $err_msgs[]=$value.' column is missing';
-        }
-        
+        }*/
        
         
         $resultado['err_msgs'] = $err_msgs;

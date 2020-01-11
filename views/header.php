@@ -202,6 +202,11 @@ if (!defined('ABSPATH')) {exit('No direct script access allowed');}
              </li>
           </ul>
         </li>
+           <li class="divider-menu"></li>
+        <li ><a href="<?php echo admin_url().'?page=zgfm_form_builder&zgfm_mod=addon&zgfm_contr=backend&zgfm_action=list_extensions';?>">
+            <span class="fa fa-plug"></span> <?php echo __('Extensions','FRocket_admin'); ?>
+            </a>
+        </li>
       </ul>
       <div id="uifm-loading-box" style="display:none;">
           <div class="uifm-alert"></div>

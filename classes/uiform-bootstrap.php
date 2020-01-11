@@ -589,7 +589,7 @@ JS;
         $this->modules['addon']['backend']->load_addonsbyBack();
                     
         //add addon routes
-        $this->modules['addon']['backend']->load_addRoutes();
+        $this->modules['addon']['backend']->load_addActions();
         
     }
 
@@ -628,12 +628,12 @@ JS;
         );
         self::$_modules = $this->modules;
         
-        //add new modules
-        $this->modules['addon']['frontend']->load_addonsbyFront();
-          
+        
+                //add new modules
+        $this->modules['addon']['frontend']->load_addonsByFront();
                     
         //add addon routes
-        //$this->modules['addon']['frontend']->load_addRoutes();
+        $this->modules['addon']['frontend']->load_addActions();
     }
 
     public function wphidenag() {
@@ -821,7 +821,7 @@ JS;
             wp_enqueue_style('rockefform-dev-css-20', UIFORM_FORMS_URL . '/assets/common/js/dcheckbox/uiform-dradiobtn.css');
             wp_enqueue_style('rockefform-dev-css-21', UIFORM_FORMS_URL . '/assets/backend/css/extra.css');
             wp_enqueue_style('rockefform-dev-css-22', UIFORM_FORMS_URL . '/assets/backend/css/zigabuilder-grid-style.css');
-            
+            wp_enqueue_style('rockefform-dev-css-24', UIFORM_FORMS_URL . '/assets/backend/css/addons.css');
      
         }else{
             wp_register_style(
@@ -851,6 +851,8 @@ JS;
             //bootstrap
             wp_enqueue_style('rockefform-bootstrap', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/css/bootstrap-wrapper.css');
             wp_enqueue_style('rockefform-bootstrap-theme', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/css/bootstrap-theme-wrapper.css');
+            
+             wp_enqueue_style('rockefform-bootstrap-v4', UIFORM_FORMS_URL . '/assets/common/bootstrap/4.3.1/css/bootstrap.css');
             
             //sfdc bootstrap
             //wp_enqueue_style('sfdcgb-bootstrap', UIFORM_FORMS_URL . '/assets/common/js/bootstrap/3.2.0-sfdc/bootstrap-widget.css');

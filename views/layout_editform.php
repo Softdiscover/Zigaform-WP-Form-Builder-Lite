@@ -2,7 +2,14 @@
 if (!defined('ABSPATH')) {exit('No direct script access allowed');}
 ?>
 
-<form id="zgfm_edit_panel" onsubmit="return false;" autocomplete="off">
+    <form id="zgfm_edit_panel"
+          onsubmit="return false;"
+          enctype="multipart/form-data" 
+          action="" 
+          accept-charset="UTF-8" 
+          name="" 
+          method="post" 
+          autocomplete="off">
    <div id="rocketform-bk-dashboard" class="sfdc-wrap uiform-wrap" style="display:none;" >
    
     <div id="rocketform-bk-header">
