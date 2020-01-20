@@ -27,11 +27,11 @@ ob_start();
     <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0, private" >
     <meta http-equiv="Pragma" content="no-cache" >
     <meta http-equiv="Expires" content="0" >
-       <?php
-if (!empty($script_head)) {
-    echo $script_head;
-}
-?>  
+
+<script type="text/javascript">
+ var rockfm_vars=<?php echo json_encode($rockfm_vars_arr, JSON_PRETTY_PRINT); ?>; 
+ </script>   
+   
      <?php 
     if(!empty($head_files)){
         foreach ($head_files['files'] as $value) {
