@@ -1715,7 +1715,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
     public function shortcode_show_version(){
         if(ZIGAFORM_F_LITE===1){
            $output='<noscript>';
-          $output.='Powered by <a href="https://www.zigaform.com/?uifm_v='.UIFORM_VERSION.'" title="Wordpress Form Builder" >ZigaForm version '.UIFORM_VERSION.'</a>';
+          $output.='<a href="https://www.zigaform.com/?uifm_v='.UIFORM_VERSION.'" title="Wordpress Form Builder" >ZigaForm </a> version '.UIFORM_VERSION;
           $output.='</noscript>';
           echo $output; 
         }
