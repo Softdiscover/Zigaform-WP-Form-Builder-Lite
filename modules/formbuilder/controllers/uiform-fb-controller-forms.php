@@ -2643,7 +2643,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
         
         $data['fields_fastload'] = get_option( 'zgfm_fields_fastload', 0 );
 
-        $data['modules_tab_extension']= self::$_modules['addon']['backend']->addons_doActions('back_exttab_block');
+        $data['modules_tab_extension']= self::$_modules['addon']['backend']->addons_doActions('back_exttab_block',true);
         echo self::loadPartial('layout_editform.php', 'formbuilder/views/forms/create_form.php', $data);
     }
     

@@ -108,6 +108,9 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module {
     public function loadStyle(){
         //load 
         wp_enqueue_script('zgfm_back_addon_js', UIFORM_FORMS_URL . '/modules/addon/views/backend/assets/back-addon.js'); 
+        
+                
+        wp_enqueue_style('zgfm_back_addon_css', UIFORM_FORMS_URL . '/modules/addon/views/backend/assets/back-addon.css');
     }
     
     public function load_addonsbyBack(){
@@ -206,7 +209,7 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module {
     
      
     
-    public function addons_doActions($section=''){
+    public function addons_doActions($section='',$return_array=false){
         
         if(empty(self::$_addons_actions[$section])){
            return ''; 
@@ -215,13 +218,22 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module {
         
         $tmp_addons=self::$_addons_actions[$section];
         
-        $tmp_str = '';
+        if($return_array){
+            $tmp_str = array();
+        }else{
+            $tmp_str = '';
+        }
+        
         
         if(!empty($tmp_addons)){
            foreach ($tmp_addons as $key => $value) {
                foreach ($value as $key2 => $value2) {
+                    if($return_array){
+                        $tmp_str[]=call_user_func( array( self::$_addons[$key2][$value2['controller']], $value2['function'] ) );
+                    }else{
+                        $tmp_str.=call_user_func( array( self::$_addons[$key2][$value2['controller']], $value2['function'] ) );
+                    }
                     
-                    $tmp_str.=call_user_func( array( self::$_addons[$key2][$value2['controller']], $value2['function'] ) );
                  
                    
                }

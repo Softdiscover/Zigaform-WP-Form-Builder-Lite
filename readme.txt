@@ -7,7 +7,7 @@ Tags: form, forms, contact form, custom form, form builder, form creator, form m
 Requires at least: 3.6
 Tested up to: 5.3
 Requires PHP: 5.3
-Stable tag: 4.5.9.3
+Stable tag: 4.5.9.5
 
 Create forms with total control using this powerful drag and drop form builder which makes you to build contact forms or any form on few minutes.
 
@@ -146,6 +146,14 @@ When creating a form, you want to make sure to only show and only require the ne
 >Try out [Zigaform Form Builder Premium](http://goo.gl/dKuLCe)
 
 More info in http://www.zigaform.com
+
+
+** EXTENSIONS
+------------------------------------------------------------
+
+>1. Animation effects Add-On: You can animate your fields adding many animation effects. Also you can set up the delay and other options (pro version)
+>2. WebHooks Add-On: You can use the WebHooks Add-On to send data from your forms to any custom page or script you like. This page can perform integration tasks to transform, parse, manipulate and send your submission data to wherever you choose. If you are developing an application that needs to be updated every time a form is submitted, WebHooks is for you. The advantage of WebHooks is that the passing of data is immediate and you can pass all submitted form data at once. - https://zapier.com/page/webhooks/ (pro version)
+
 
 ### features
 
@@ -450,7 +458,7 @@ https://www.youtube.com/watch?v=W3yTkaDD4Mk&w=532&rel=0
 * minor changes
 = 3.9.2.4 = 
  *added custom reply to mail messages
-= 4.5.9.3 = 
+= 4.5.9.5 = 
  * minor changes
 
 == Upgrade Notice ==
@@ -496,5 +504,5 @@ https://www.youtube.com/watch?v=W3yTkaDD4Mk&w=532&rel=0
 * minor changes
 = 3.9.2.4 = 
  *added custom reply to mail messages
-= 4.5.9.3 = 
+= 4.5.9.5 = 
  * minor changes
