@@ -1178,7 +1178,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
                     }
                 }
                  
-                $to = $data['to'];
+                $to = trim($data['to']);
                
                 if (preg_match('/^[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/',$to)){
                    if(!empty($data['attachments'])){
