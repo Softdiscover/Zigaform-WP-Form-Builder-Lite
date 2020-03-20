@@ -826,6 +826,7 @@ JS;
             wp_enqueue_style('rockefform-dev-css-21', UIFORM_FORMS_URL . '/assets/backend/css/extra.css');
             wp_enqueue_style('rockefform-dev-css-22', UIFORM_FORMS_URL . '/assets/backend/css/zigabuilder-grid-style.css');
             wp_enqueue_style('rockefform-dev-css-24', UIFORM_FORMS_URL . '/assets/backend/css/addons.css');
+            wp_enqueue_style('rockefform-dev-css-25', UIFORM_FORMS_URL . '/assets/backend/css/conflicts.css');
      
         }else{
             wp_register_style(
