@@ -2,22 +2,22 @@
 	<p>Zigaform error: Your environment doesn't meet all of the system requirements listed below.</p>
 
 	<ul class="ul-disc">
-            <?php 
-            $zgfm_is_installed = UiformFormbuilderLite::another_zgfm_isInstalled();
+			<?php
+			$zgfm_is_installed = UiformFormbuilderLite::another_zgfm_isInstalled();
 
-           if($zgfm_is_installed['result']){
-               
-               ?>
-            <li>
-			<strong><?php echo $zgfm_is_installed['message'];?></strong>
-			<em><?php echo $zgfm_is_installed['message2'];?></em>
+			if ( $zgfm_is_installed['result'] ) {
+
+				?>
+			<li>
+			<strong><?php echo $zgfm_is_installed['message']; ?></strong>
+			<em><?php echo $zgfm_is_installed['message2']; ?></em>
 		</li>
-<?php
-            
-            }
+				<?php
 
-            
-            ?>
+			}
+
+
+			?>
 		<li>
 			<strong>PHP <?php echo $this->php_version; ?>+</strong>
 			<em>(You're running version <?php echo PHP_VERSION; ?>)</em>

@@ -11,4 +11,4 @@ $cntACmp = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $cntACmp);
 $cntACmp = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), ' ', $cntACmp);
 ob_end_clean();
 echo $cntACmp;
-?>
+?>F
