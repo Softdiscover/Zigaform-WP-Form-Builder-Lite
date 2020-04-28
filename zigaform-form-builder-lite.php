@@ -243,10 +243,10 @@ if ( ! class_exists( 'UiformFormbuilderLite' ) ) {
 			$this->define( 'UIFORM_FORMS_URL', plugins_url() . '/' . UIFORM_FOLDER );
 			$this->define( 'UIFORM_FORMS_LIBS', UIFORM_FORMS_DIR . '/libraries' );
 			$this->define( 'UIFORM_DEMO', 0 );
-			$this->define( 'UIFORM_DEV', 1 );
+			$this->define('UIFORM_DEV', 0);
 
-			$this->define( 'ZIGAFORM_F_LITE', 0 );
-			$this->define( 'UIFORM_DEBUG', 1 );
+			$this->define('ZIGAFORM_F_LITE', 1);
+			$this->define('UIFORM_DEBUG', 0);
 			if ( UIFORM_DEBUG == 1 ) {
 				error_reporting( E_ALL );
 				ini_set( 'display_errors', 1 );

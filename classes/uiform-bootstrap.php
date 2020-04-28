@@ -828,7 +828,7 @@ JS;
 		} else {
 			wp_register_style(
 				self::PREFIX . 'admin',
-				UIFORM_FORMS_URL . '/assets/backend/css/admin-css.php?v' . date( 'YmdHis' ),
+				UIFORM_FORMS_URL . '/assets/backend/css/admin-css.css',
 				array(),
 				UIFORM_VERSION,
 				'all'
@@ -1086,7 +1086,7 @@ JS;
 		} else {
 			wp_register_script(
 				self::PREFIX . 'admin',
-				UIFORM_FORMS_URL . '/assets/backend/js/admin-js.php?v' . date( 'YmdHis' ),
+				UIFORM_FORMS_URL . '/assets/backend/js/admin-js.js',
 				array(),
 				UIFORM_VERSION,
 				true
