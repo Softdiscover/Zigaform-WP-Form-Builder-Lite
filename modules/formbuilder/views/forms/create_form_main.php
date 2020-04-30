@@ -208,9 +208,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</div>
 	
 </div>
-<script>
-  
-	window.onload = function () {
+<script type="text/javascript">
+  jQuery(window).load(function() {
 	rocketform.loadForm_globalSettings();
 	<?php
 	if ( isset( $form_id ) && intval( $form_id ) > 0 ) {
@@ -231,7 +230,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	?>
 			rocketform.loadForm_globalSettings_end();
-};
+});
 </script>
 
 <?php

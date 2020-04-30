@@ -1,9 +1,9 @@
 <?php
 /*
- * Plugin Name: ZigaForm - Premium WordPress Form Builder
+ * Plugin Name: Zigaform - Wordpress Form Builder Lite
  * Plugin URI: https://wordpress-form-builder.zigaform.com/
  * Description: The ZigaForm WordPress form builder is the ultimate form creation solution for WordPress.
- * Version: 4.6.5
+ * Version: 4.6.8
  * Author: ZigaForm.Com
  * Author URI: https://wordpress-form-builder.zigaform.com/
  */
@@ -30,7 +30,7 @@ if ( ! class_exists( 'UiformFormbuilderLite' ) ) {
 		 * @var string
 		 * @since 1.0
 		 */
-		public $version = '4.6.5';
+		public $version = '4.6.8';
 
 		/**
 		 * The minimal required version of WordPress for this plug-in to function correctly.
@@ -155,7 +155,7 @@ if ( ! class_exists( 'UiformFormbuilderLite' ) ) {
 			/*if (is_plugin_active( 'uiform-form-builder/uiform-form-builder.php' ) ) {
 			return true;
 			}*/
-			$check_is_lite = false;
+			 
 			$check_slug    = 'Zigaform - Premium WordPress Form Builder';
 
 			$output           = array();
@@ -178,7 +178,7 @@ if ( ! class_exists( 'UiformFormbuilderLite' ) ) {
 						return $output;
 					}
 
-					if ( $check_is_lite ) {
+					if ( ZIGAFORM_F_LITE === 1 ) {
 						if ( strpos( $value, 'zigaform-wp-form-builder.php' ) !== false ) {
 							$output['message']  = __( 'Zigaform alert', 'FRocket_admin' );
 							$output['message2'] = __( 'Found zigaform form builder installed. Deactivate it before installing ' . $check_slug, 'FRocket_admin' );
