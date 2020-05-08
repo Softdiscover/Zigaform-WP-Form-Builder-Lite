@@ -447,6 +447,7 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
 		$initArray['fix_table_elements'] = false;
 		$initArray['cleanup']            = false;
 		$initArray['convert_urls']       = false;
+                $initArray['remove_script_host'] = false;
 
 		$initArray['forced_root_block']       = false;
 		$initArray['force_br_newlines']       = false;
