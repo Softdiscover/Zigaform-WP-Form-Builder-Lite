@@ -96,7 +96,7 @@ class Zigaform_b_notice {
 		// Fetch when plugin was initially installed
 		$activated = get_option( 'zgfm_b_activated', array() );
 
-		$type = class_exists( 'UiformFormbuilder' ) ? 'pro' : 'lite';
+		$type = class_exists( 'UiformFormbuilderLite' ) ? 'pro' : 'lite';
 
 		if ( ! empty( $activated[ $type ] ) ) {
 			// continue if plugin is installed for at least 7 days

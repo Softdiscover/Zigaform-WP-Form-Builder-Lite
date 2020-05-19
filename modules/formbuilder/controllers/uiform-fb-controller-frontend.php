@@ -1400,10 +1400,14 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 						   $form_variables['_uifmvar']['addon']='';
 						   $form_variables['_uifmvar']['is_demo']='';
 
+						   if(UIFORM_DEBUG===1){
+						   		wp_enqueue_script('rockefform-iframe-script', UIFORM_FORMS_URL . '/assets/frontend/js/front.iframe.debug.js', array('jquery',self::PREFIX . 'rockefform-iframe'), '1', false);
+						   }else{
+						   		wp_enqueue_script('rockefform-iframe-script', UIFORM_FORMS_URL . '/assets/frontend/js/front.iframe.min.js', array('jquery',self::PREFIX . 'rockefform-iframe'), '1', false);	
+						   }
+
 						   wp_localize_script(self::PREFIX . 'rockefform-iframe', 'rockfm_vars', $form_variables);
-						   wp_enqueue_script(self::PREFIX . 'rockefform-iframe'); 
-						   
-						   wp_enqueue_script('rockefform-iframe-script', UIFORM_FORMS_URL . '/assets/frontend/js/loader-iframe.js', array('jquery',self::PREFIX . 'rockefform-iframe'), '1', false);
+						  
 						   
 							
 						   $style='border:none;width:100%;';
@@ -1563,9 +1567,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 		 {
 			 return;
 		 }
-		wp_register_style(self::PREFIX . 'rockfm_global', UIFORM_FORMS_URL . '/assets/frontend/css/css.css', array(), UIFORM_VERSION, 'all'
-		);
-
+		 
 		/* load css */
 		//loas ui
 		wp_enqueue_style('jquery-ui');
@@ -1617,7 +1619,12 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 		wp_enqueue_style('rockfm-checkradio', UIFORM_FORMS_URL . '/assets/common/js/checkradio/2.2.2/css/jquery.checkradios.css');
 		
 		//global
-		wp_enqueue_style(self::PREFIX . 'rockfm_global');
+			if(UIFORM_DEBUG===1){
+			wp_enqueue_style(self::PREFIX . 'rockfm_global', UIFORM_FORMS_URL . '/assets/frontend/css/front.debug.css?v='.date("Ymdgis"), array(), UIFORM_VERSION, 'all');
+		}else{
+			wp_enqueue_style(self::PREFIX . 'rockfm_global', UIFORM_FORMS_URL . '/assets/frontend/css/front.min.css', array(), UIFORM_VERSION, 'all');	
+		}
+		 	
 						
 	   
 
@@ -1677,8 +1684,12 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 		//checkradio
 		wp_enqueue_script('rockfm-checkradio', UIFORM_FORMS_URL . '/assets/common/js/checkradio/2.2.2/js/jquery.checkradios.js', array('jquery'), '2.2.2', true);
 						
-		 /* load js */
-		wp_enqueue_script( 'wprofmr_rockfm_js_global', UIFORM_FORMS_URL . '/assets/frontend/js/js.js',array('rockfm-bootstrap'),UIFORM_VERSION, true);
+		  /* load js */
+		 if(UIFORM_DEBUG===1){
+		 	wp_enqueue_script('wprofmr_rockfm_js_global', UIFORM_FORMS_URL . '/assets/frontend/js/front.debug.js?v='.date("Ymdgis"),array('rockfm-bootstrap'),UIFORM_VERSION, true);
+		 }else{
+			wp_enqueue_script('wprofmr_rockfm_js_global', UIFORM_FORMS_URL . '/assets/frontend/js/front.min.js',array('rockfm-bootstrap'),UIFORM_VERSION, true); 	
+		 }
 	}
 	
 	
@@ -1706,7 +1717,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 		$form_variables=array();
 		$form_variables['_uifmvar']['addon']=self::$_addons_jsactions;
 		$form_variables['_uifmvar']['is_demo']=$is_demo;
-		$form_variables['_uifmvar']['is_dev']=UIFORM_DEV;
+		$form_variables['_uifmvar']['is_dev']=UIFORM_DEBUG;
 						
 		wp_localize_script(self::PREFIX . 'rockfm_js_global', 'rockfm_vars', apply_filters('zgfm_front_initvar_load',$form_variables));
 						

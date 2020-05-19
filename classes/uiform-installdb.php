@@ -310,7 +310,7 @@ class Uiform_InstallDB {
 		$wpdb->query( $sql );
 
 		// Store the date when the initial activation was performed
-		$type      = class_exists( 'UiformFormbuilder' ) ? 'pro' : 'lite';
+		$type      = class_exists( 'UiformFormbuilderLite' ) ? 'pro' : 'lite';
 		$activated = get_option( 'zgfm_b_activated', array() );
 		if ( empty( $activated[ $type ] ) ) {
 			$activated[ $type ] = time();

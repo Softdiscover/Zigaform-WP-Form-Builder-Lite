@@ -789,9 +789,7 @@ JS;
 	public static function load_admin_resources() {
 		 //admin
 
-		/*wp_register_script(
-		self::PREFIX . 'rockfm_js_global_frontend', UIFORM_FORMS_URL . '/assets/backend/js/js_global_frontend.js', array(), UIFORM_VERSION, true
-		);*/
+	 
 		wp_register_script(
 			self::PREFIX . 'uifm_js_recaptcha',
 			'https://www.google.com/recaptcha/api.js?render=explicit',
@@ -800,41 +798,23 @@ JS;
 			true
 		);
 
-		if ( UIFORM_DEV === 1 ) {
-			wp_enqueue_style( 'rockefform-dev-css-1', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/css/bootstrap-sfdc.css' );
-			wp_enqueue_style( 'rockefform-dev-css-2', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/css/bootstrap-theme-sfdc.css' );
-			wp_enqueue_style( 'rockefform-dev-css-3', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/css/dropdown-sfdc.css' );
-			wp_enqueue_style( 'rockefform-dev-css-4', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/css/modals-sfdc.css' );
-			wp_enqueue_style( 'rockefform-dev-css-5', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/css/popovers-sfdc.css' );
-			wp_enqueue_style( 'rockefform-dev-css-6', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/css/tooltip-sfdc.css' );
-			wp_enqueue_style( 'rockefform-dev-css-7', UIFORM_FORMS_URL . '/assets/backend/css/style.css' );
-
-			wp_enqueue_style( 'rockefform-dev-css-9', UIFORM_FORMS_URL . '/assets/backend/css/global.css' );
-			wp_enqueue_style( 'rockefform-dev-css-10', UIFORM_FORMS_URL . '/assets/backend/css/shortcuts.css' );
-			wp_enqueue_style( 'rockefform-dev-css-11', UIFORM_FORMS_URL . '/assets/backend/css/shortcuts_intranet.css' );
-			wp_enqueue_style( 'rockefform-dev-css-12', UIFORM_FORMS_URL . '/assets/backend/css/uiform-textbox.css' );
-			wp_enqueue_style( 'rockefform-dev-css-13', UIFORM_FORMS_URL . '/assets/backend/css/responsive.css' );
-			wp_enqueue_style( 'rockefform-dev-css-14', UIFORM_FORMS_URL . '/assets/frontend/css/global.css' );
-			wp_enqueue_style( 'rockefform-dev-css-15', UIFORM_FORMS_URL . '/assets/common/css/custom.css' );
-			wp_enqueue_style( 'rockefform-dev-css-16', UIFORM_FORMS_URL . '/assets/common/css/custom2.css' );
-			wp_enqueue_style( 'rockefform-dev-css-17', UIFORM_FORMS_URL . '/assets/common/css/global-form.css' );
-			wp_enqueue_style( 'rockefform-dev-css-18', UIFORM_FORMS_URL . '/assets/backend/css/deprecated.css' );
-			wp_enqueue_style( 'rockefform-dev-css-19', UIFORM_FORMS_URL . '/assets/common/js/dcheckbox/uiform-dcheckbox.css' );
-			wp_enqueue_style( 'rockefform-dev-css-20', UIFORM_FORMS_URL . '/assets/common/js/dcheckbox/uiform-dradiobtn.css' );
-			wp_enqueue_style( 'rockefform-dev-css-21', UIFORM_FORMS_URL . '/assets/backend/css/extra.css' );
-			wp_enqueue_style( 'rockefform-dev-css-22', UIFORM_FORMS_URL . '/assets/backend/css/zigabuilder-grid-style.css' );
-			wp_enqueue_style( 'rockefform-dev-css-24', UIFORM_FORMS_URL . '/assets/backend/css/addons.css' );
-			wp_enqueue_style( 'rockefform-dev-css-25', UIFORM_FORMS_URL . '/assets/backend/css/conflicts.css' );
-
-		} else {
-			wp_register_style(
+	 		if(UIFORM_DEBUG===1){
+	 			wp_register_style(
 				self::PREFIX . 'admin',
-				UIFORM_FORMS_URL . '/assets/backend/css/admin-css.css',
+				UIFORM_FORMS_URL . '/assets/backend/css/admin.debug.css?v'. date( 'YmdHis' ),
 				array(),
 				UIFORM_VERSION,
 				'all'
 			);
-		}
+	 		}else{
+	 			wp_register_style(
+				self::PREFIX . 'admin',
+				UIFORM_FORMS_URL . '/assets/backend/css/admin.min.css',
+				array(),
+				UIFORM_VERSION,
+				'all'
+			);	
+	 		}
 
 		global $wp_scripts;
 		$jquery_ui_version = isset( $wp_scripts->registered['jquery-ui-core']->ver ) ? $wp_scripts->registered['jquery-ui-core']->ver : '1.11.4';
@@ -842,11 +822,11 @@ JS;
 		//loas ui
 		switch ( $jquery_ui_version ) {
 			case '1.11.4':
-				wp_register_style( 'jquery-ui-style', UIFORM_FORMS_URL . '/temp/jqueryui/1.11.4/themes/start/jquery-ui.min.css', array(), $jquery_ui_version );
+				wp_register_style( 'jquery-ui-style', UIFORM_FORMS_URL . '/assets/common/css/jqueryui/1.11.4/themes/start/jquery-ui.min.css', array(), $jquery_ui_version );
 				wp_enqueue_style( 'jquery-ui-style' );
 				break;
 			case '1.10.4':
-				wp_register_style( 'jquery-ui-style', UIFORM_FORMS_URL . '/temp/jqueryui/1.10.4/themes/start/jquery-ui.min.css', array(), $jquery_ui_version );
+				wp_register_style( 'jquery-ui-style', UIFORM_FORMS_URL . '/assets/common/css/jqueryui/1.10.4/themes/start/jquery-ui.min.css', array(), $jquery_ui_version );
 				wp_enqueue_style( 'jquery-ui-style' );
 				break;
 			default:
@@ -1025,70 +1005,19 @@ JS;
 
 		wp_enqueue_script( 'rockefform-autooff', UIFORM_FORMS_URL . '/assets/backend/js/disableautofill/jquery.disableAutoFill.js' );
 
-		if ( UIFORM_DEV === 1 ) {
-
-			wp_enqueue_script( 'rockefform-dev-1', UIFORM_FORMS_URL . '/assets/backend/js/prev.js', array(), date( 'YmdHis' ), true );
-			//wp_enqueue_script('rockefform-dev-2', UIFORM_FORMS_URL . '/assets/backend/js/init.js', array(),date('YmdHis'),true);
-			wp_enqueue_script( 'rockefform-dev-3', UIFORM_FORMS_URL . '/assets/backend/js/uiform-core.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-4', UIFORM_FORMS_URL . '/assets/backend/js/zgfm-back-helper.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-4-1', UIFORM_FORMS_URL . '/assets/backend/js/zgfm-back-tools.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-5', UIFORM_FORMS_URL . '/assets/backend/js/zgfm-back-upgrade.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-7', UIFORM_FORMS_URL . '/assets/backend/js/zgfm-back-err.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-7-1', UIFORM_FORMS_URL . '/assets/backend/js/zgfm-back-general.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-7-2', UIFORM_FORMS_URL . '/assets/backend/js/zgfm-back-fld-options.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-8', UIFORM_FORMS_URL . '/assets/backend/js/uiform_textbox.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-9', UIFORM_FORMS_URL . '/assets/backend/js/uiform_textarea.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-10', UIFORM_FORMS_URL . '/assets/backend/js/uiform_radiobtn.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-11', UIFORM_FORMS_URL . '/assets/backend/js/uiform_checkbox.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-12', UIFORM_FORMS_URL . '/assets/backend/js/uiform_select.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-13', UIFORM_FORMS_URL . '/assets/backend/js/uiform_multiselect.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-14', UIFORM_FORMS_URL . '/assets/backend/js/uiform_fileupload.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-15', UIFORM_FORMS_URL . '/assets/backend/js/uiform_imageupload.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-16', UIFORM_FORMS_URL . '/assets/backend/js/uiform_customhtml.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-17', UIFORM_FORMS_URL . '/assets/backend/js/uiform_password.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-18', UIFORM_FORMS_URL . '/assets/backend/js/uiform_preptext.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-19', UIFORM_FORMS_URL . '/assets/backend/js/uiform_appetext.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-20', UIFORM_FORMS_URL . '/assets/backend/js/uiform_prepapptext.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-21', UIFORM_FORMS_URL . '/assets/backend/js/uiform_slider.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-22', UIFORM_FORMS_URL . '/assets/backend/js/uiform_range.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-23', UIFORM_FORMS_URL . '/assets/backend/js/uiform_spinner.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-24', UIFORM_FORMS_URL . '/assets/backend/js/uiform_captcha.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-25', UIFORM_FORMS_URL . '/assets/backend/js/uiform_recaptcha.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-26', UIFORM_FORMS_URL . '/assets/backend/js/uiform_datepicker.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-26-1', UIFORM_FORMS_URL . '/assets/backend/js/uiform_datepicker2.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-27', UIFORM_FORMS_URL . '/assets/backend/js/uiform_timepicker.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-28', UIFORM_FORMS_URL . '/assets/backend/js/uiform_datetime.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-29', UIFORM_FORMS_URL . '/assets/backend/js/uiform_divider.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-30', UIFORM_FORMS_URL . '/assets/backend/js/uiform_colorpicker.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-31', UIFORM_FORMS_URL . '/assets/backend/js/uiform_ratingstar.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-32', UIFORM_FORMS_URL . '/assets/backend/js/uiform_hiddeninput.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-33', UIFORM_FORMS_URL . '/assets/backend/js/uiform_submitbtn.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-34', UIFORM_FORMS_URL . '/assets/backend/js/uiform_panelfld.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-35', UIFORM_FORMS_URL . '/assets/backend/js/uiform_heading.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-36', UIFORM_FORMS_URL . '/assets/backend/js/uiform_wizardbtn.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-37', UIFORM_FORMS_URL . '/assets/backend/js/uiform_switch.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-38', UIFORM_FORMS_URL . '/assets/backend/js/uiform_dyncheckbox.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-39', UIFORM_FORMS_URL . '/assets/backend/js/uiform_dynradiobtn.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-40', UIFORM_FORMS_URL . '/assets/backend/js/uiform-f-gridsystem.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-41', UIFORM_FORMS_URL . '/assets/backend/js/uiform-panel.js', array(), date( 'YmdHis' ), true );
-
-			wp_enqueue_script( 'rockefform-dev-43', UIFORM_FORMS_URL . '/assets/common/js/dcheckbox/uiform-dcheckbox.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-44', UIFORM_FORMS_URL . '/assets/backend/js/zgpbld-grid.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-45', UIFORM_FORMS_URL . '/assets/backend/js/functions.js', array(), date( 'YmdHis' ), true );
-			wp_enqueue_script( 'rockefform-dev-46', UIFORM_FORMS_URL . '/assets/backend/js/global.js', array(), date( 'YmdHis' ), true );
-
+		if(UIFORM_DEBUG===1){
 			wp_register_script(
 				self::PREFIX . 'admin',
-				UIFORM_FORMS_URL . '/assets/backend/js/blank.js',
-				array(),
-				date( 'YmdHis' ),
+				UIFORM_FORMS_URL . '/assets/backend/js/admin.debug.js?v='.date( 'YmdHis' ),
+				array('rockefform-bootstrap-sfdc'),
+				UIFORM_VERSION,
 				true
 			);
-		} else {
+		}else{
 			wp_register_script(
 				self::PREFIX . 'admin',
-				UIFORM_FORMS_URL . '/assets/backend/js/admin-js.js',
-				array(),
+				UIFORM_FORMS_URL . '/assets/backend/js/admin.min.js',
+				array('rockefform-bootstrap-sfdc'),
 				UIFORM_VERSION,
 				true
 			);
