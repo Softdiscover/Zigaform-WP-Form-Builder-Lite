@@ -37,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				  
 				</div>
 						<?php $message = __( 'Wizard form', 'FRocket_admin' ); ?>
-						<?php include( UIFORM_FORMS_DIR . '/modules/formbuilder/views/settings/blocked_getmessage.php' ); ?>
+						<?php include UIFORM_FORMS_DIR . '/modules/formbuilder/views/settings/blocked_getmessage.php'; ?>
 				
 		<?php } else { ?>
 		   <label for="uifm_frm_wiz_st"><?php echo __( 'Enable wizard forms', 'FRocket_admin' ); ?></label>

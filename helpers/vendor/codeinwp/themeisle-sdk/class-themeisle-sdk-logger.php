@@ -85,7 +85,8 @@ if ( ! class_exists( 'ThemeIsle_SDK_Logger' ) ) :
 			$environment['plugins']         = get_option( 'active_plugins' );
 
 			wp_remote_post(
-				$this->logging_url, array(
+				$this->logging_url,
+				array(
 					'method'      => 'POST',
 					'timeout'     => 3,
 					'redirection' => 5,
@@ -159,7 +160,8 @@ if ( ! class_exists( 'ThemeIsle_SDK_Logger' ) ) :
 		function get_html( $key ) {
 			$heading       = apply_filters( $this->product->get_key() . '_logger_heading', $this->heading );
 			$heading       = str_replace(
-				array( '{product}' ), array(
+				array( '{product}' ),
+				array(
 					trim( str_replace( 'Lite', '', $this->product->get_name() ) ),
 				),
 				$heading
@@ -171,12 +173,20 @@ if ( ! class_exists( 'ThemeIsle_SDK_Logger' ) ) :
 				   . '<p>' . $heading . '</p>'
 				   . '<div class="actions">'
 				. get_submit_button(
-					$button_submit, 'primary ' . $this->product->get_key() . '-ti-logger', $this->product->get_key() . 'ti-logger-yes', false, array(
+					$button_submit,
+					'primary ' . $this->product->get_key() . '-ti-logger',
+					$this->product->get_key() . 'ti-logger-yes',
+					false,
+					array(
 						'data-ti-log-enable' => 1,
 					)
 				)
 				. get_submit_button(
-					$button_cancel, 'secondary ' . $this->product->get_key() . '-ti-logger', $this->product->get_key() . 'ti-logger-no', false, array(
+					$button_cancel,
+					'secondary ' . $this->product->get_key() . '-ti-logger',
+					$this->product->get_key() . 'ti-logger-no',
+					false,
+					array(
 						'data-ti-log-enable' => 0,
 					)
 				)

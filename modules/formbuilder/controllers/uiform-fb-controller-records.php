@@ -107,7 +107,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
 				$this->wpdb->update( $this->model_fields->table, $data, $where );
 			}
 
-			//update order for all fields according to form
+			// update order for all fields according to form
 			if ( ! empty( $data_fields2 ) ) {
 				foreach ( $data_fields2 as $value ) {
 					$where = array(
@@ -158,12 +158,12 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
 
 		$form_id = ( isset( $_POST['form_id'] ) && $_POST['form_id'] ) ? Uiform_Form_Helper::sanitizeInput( $_POST['form_id'] ) : 0;
 
-		//records to show
+		// records to show
 		$name_fields            = $this->model_record->getNameFieldEnabledByForm( $form_id, true );
 		$data                   = array();
 		$data['datatable_head'] = $name_fields;
 
-		//process record
+		// process record
 		$flag_types = array();
 		foreach ( $name_fields as $key => $value ) {
 
@@ -183,7 +183,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
 					switch ( intval( $flag_types[ $count1 ] ) ) {
 						case 12:
 						case 13:
-							//checking if image exists
+							// checking if image exists
 							if ( @is_array( getimagesize( $value2 ) ) ) {
 								 $new_record[ $key ][ $key2 ] = '<img width="100px" src="' . $value2 . '"/>';
 							}
@@ -252,7 +252,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
 				case 12:
 				case 13:
 					$value_new = $value['input'];
-					//checking if image exists
+					// checking if image exists
 					if ( @is_array( getimagesize( $value_new ) ) ) {
 						 $value_new = '<img width="100px" src="' . $value_new . '"/>';
 					}
@@ -276,7 +276,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
 		$data['record_info'] = $data2['record_info'] = $new_record_user;
 		$data['info_date']   = $data2['info_date'] = date( 'F j, Y, g:i a', strtotime( $data_record->created_date ) );
 		$data['info_ip']     = $data2['info_ip'] = $data_record->created_ip;
-		require_once( UIFORM_FORMS_DIR . '/helpers/clientsniffer.php' );
+		require_once UIFORM_FORMS_DIR . '/helpers/clientsniffer.php';
 		$data['info_useragent'] = $data2['info_useragent'] = zgfm_clientSniffer::test( array( $data_record->fbh_user_agent ) );
 		$data['info_referer']   = $data2['info_referer'] = $data_record->fbh_referer;
 		$data['form_name']      = $data2['form_name'] = $form_rec_data->fmb_name;
@@ -303,10 +303,10 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
 
 	public function list_records() {
 
-		require_once( UIFORM_FORMS_DIR . '/classes/Pagination.php' );
+		require_once UIFORM_FORMS_DIR . '/classes/Pagination.php';
 		$this->pagination = new CI_Pagination();
 		$offset           = ( isset( $_GET['offset'] ) && $_GET['offset'] ) ? Uiform_Form_Helper::sanitizeInput( $_GET['offset'] ) : 0;
-		//list all forms
+		// list all forms
 		$data                           = $config = array();
 		$config['base_url']             = admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=list_records';
 		$config['total_rows']           = $this->model_record->CountRecords();
@@ -341,7 +341,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
 
 
 	public function csv_showAllForms( $form_id ) {
-		require_once( UIFORM_FORMS_DIR . '/helpers/exporttocsv.php' );
+		require_once UIFORM_FORMS_DIR . '/helpers/exporttocsv.php';
 		if ( false ) {
 			$name_fields = $this->model_record->getNameFieldEnabledByForm( $form_id, true );
 		} else {
@@ -395,8 +395,8 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
 	public function init() {
 
 		try {
-			//$instance_example = new WPPS_Instance_Class( 'Instance example', '42' );
-			//add_notice('ba');
+			// $instance_example = new WPPS_Instance_Class( 'Instance example', '42' );
+			// add_notice('ba');
 		} catch ( Exception $exception ) {
 			add_notice( __METHOD__ . ' error: ' . $exception->getMessage(), 'error' );
 		}

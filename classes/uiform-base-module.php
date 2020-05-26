@@ -192,7 +192,7 @@ abstract class Uiform_Base_Module {
 	protected static function loadPartial( $template = '', $view = '', $view_data = array(), $return = false ) {
 		$data            = array();
 		$data['content'] = self::render_template( $view, $view_data );
-		//$this->set('content', $this->template_data['controller']->load->view($view, $view_data, true));
+		// $this->set('content', $this->template_data['controller']->load->view($view, $view_data, true));
 		// return $this->template_data['controller']->load->view($template, $this->template_data, $return);
 		echo self::render_layout( $template, $data );
 	}

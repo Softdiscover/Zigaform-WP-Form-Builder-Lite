@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="sfdc-wrap uiform-wrap" id="rocketform-bk-dashboard">
 	<div id="rocketform-bk-header">
-		<?php include( 'header.php' ); ?>
+		<?php require 'header.php'; ?>
 	</div>
 	<div id="rocketform-bk-content">
 		<div id="uiform-panel-loadingst" style="display:none;">
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="clear"></div>
 	</div>
 	<div id="rocketform-bk-footer">
-		<?php include( 'footer.php' ); ?>
+		<?php require 'footer.php'; ?>
 	</div>
 </div>
-<?php include( 'captions.php' ); ?>
+<?php require 'captions.php'; ?>

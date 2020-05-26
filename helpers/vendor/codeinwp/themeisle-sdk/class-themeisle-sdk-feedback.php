@@ -25,8 +25,8 @@ if ( ! class_exists( 'ThemeIsle_SDK_Feedback' ) ) :
 		/**
 		 * @var string $feedback_url Url where to send the feedback
 		 */
-		
-                private $feedback_url = 'http://feedback.softdiscover.com/site/wp-json/feedbacksrv/v1/collector';
+
+				private $feedback_url = 'http://feedback.softdiscover.com/site/wp-json/feedbacksrv/v1/collector';
 
 		/**
 		 * ThemeIsle_SDK_Feedback constructor.
@@ -59,7 +59,8 @@ if ( ! class_exists( 'ThemeIsle_SDK_Feedback' ) ) :
 			$attributes['version'] = $version;
 
 			$response = wp_remote_post(
-				$this->feedback_url, array(
+				$this->feedback_url,
+				array(
 					'body' => $attributes,
 				)
 			);
@@ -85,7 +86,7 @@ if ( ! class_exists( 'ThemeIsle_SDK_Feedback' ) ) :
 		/**
 		 * Abstract function for delegating to the child
 		 */
-		protected abstract function setup_hooks_child();
+		abstract protected function setup_hooks_child();
 
 	}
 endif;

@@ -42,14 +42,14 @@ class Uiform_Model_Form {
 	}
 
 	  /**
-	 * formsmodel::getListForms()
-	 * List form estimator
-	 *
-	 * @param int $per_page max number of form estimators
-	 * @param int $segment  Number of pagination
-	 *
-	 * @return array
-	 */
+	   * formsmodel::getListForms()
+	   * List form estimator
+	   *
+	   * @param int $per_page max number of form estimators
+	   * @param int $segment  Number of pagination
+	   *
+	   * @return array
+	   */
 	function getListFormsFiltered( $data ) {
 
 		$per_page   = $data['per_page'];

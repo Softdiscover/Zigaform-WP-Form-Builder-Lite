@@ -1,34 +1,34 @@
 <?php
-if (!defined('ABSPATH')) {
-    exit('No direct script access allowed');
+if ( ! defined( 'ABSPATH' ) ) {
+	exit( 'No direct script access allowed' );
 }
-if (interface_exists('CaptchaBuilderInterface')) {
-    return;
+if ( interface_exists( 'CaptchaBuilderInterface' ) ) {
+	return;
 }
- 
+
 /**
  * A Captcha builder
  */
-interface CaptchaBuilderInterface
-{
-    /**
-     * Builds the code
-     */
-    public function build($width, $height, $font, $fingerprint);
+interface CaptchaBuilderInterface {
 
-    /**
-     * Saves the code to a file
-     */
-    public function save($filename, $quality);
+	/**
+	 * Builds the code
+	 */
+	public function build( $width, $height, $font, $fingerprint);
 
-    /**
-     * Gets the image contents
-     */
-    public function get($quality);
+	/**
+	 * Saves the code to a file
+	 */
+	public function save( $filename, $quality);
 
-    /**
-     * Outputs the image
-     */
-    public function output($quality);
+	/**
+	 * Gets the image contents
+	 */
+	public function get( $quality);
+
+	/**
+	 * Outputs the image
+	 */
+	public function output( $quality);
 }
 

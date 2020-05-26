@@ -166,7 +166,8 @@ if ( ! class_exists( 'ThemeIsle_SDK_Feedback_Review' ) ) :
 			$heading = apply_filters( $this->product->get_key() . '_feedback_review_heading', $this->heading );
 			$heading = str_replace(
 				array( '{product}' ),
-				$this->product->get_friendly_name(), $heading
+				$this->product->get_friendly_name(),
+				$heading
 			);
 			$heading = str_replace( '{developer}', $this->developers[ $this->product->get_type() ][ rand( 0, ( count( $this->developers[ $this->product->get_type() ] ) - 1 ) ) ], $heading );
 

@@ -137,7 +137,7 @@ class Uiform_Model_Form_Records {
 						$query = sprintf( $sql, $this->table, $this->tbform, (int) $rec_id );
 
 					if ( false ) {
-						//not tested yet
+						// not tested yet
 						$sql   = "select extractvalue(fbh_data_rec_xml,'/params/child::" . $f_id . "_chosen') AS uifmoptvalue,";
 						$sql  .= 'r.fbh_id,r.created_date';
 						$sql  .= ' from %1$s r';
@@ -147,7 +147,7 @@ class Uiform_Model_Form_Records {
 						$row   = $this->wpdb->get_row( $query );
 
 						$chosen = $row->uifmoptvalue;
-						//get value or label
+						// get value or label
 						$sql    = 'select ';
 						$temp   = array();
 						$temp[] = "extractvalue(fbh_data_rec_xml,'/params/child::" . $f_id . '_input_' . $chosen . '_' . $f_atr1 . "') AS uifmoptvalue";

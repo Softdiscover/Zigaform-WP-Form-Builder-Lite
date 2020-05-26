@@ -219,18 +219,21 @@ if ( ! class_exists( 'ThemeIsle_SDK_Licenser' ) ) :
 			}
 			$status                = $this->get_license_status();
 			$no_activations_string = apply_filters(
-				$this->product->get_key() . '_lc_no_activations_string', 'No activations left for %s !!!. You need to
+				$this->product->get_key() . '_lc_no_activations_string',
+				'No activations left for %s !!!. You need to
 									upgrade your plan in order to use %s on more
 									websites. Please ask the %s
 									Staff for more details.'
 			);
 			$no_valid_string       = apply_filters(
-				$this->product->get_key() . '_lc_no_valid_string', 'In order to benefit from updates and support for %s, please add
+				$this->product->get_key() . '_lc_no_valid_string',
+				'In order to benefit from updates and support for %s, please add
 								your license code from your  <a href="%s" target="_blank">purchase history</a> and validate it <a
 									href="%s">here</a>. '
 			);
 			$expiration_string     = apply_filters(
-				$this->product->get_key() . '_lc_expiration_string', 'Your license is about to expire
+				$this->product->get_key() . '_lc_expiration_string',
+				'Your license is about to expire
 									for %s. You can go to %s and renew it   '
 			);
 			if ( $status != 'valid' ) {
@@ -241,7 +244,10 @@ if ( ! class_exists( 'ThemeIsle_SDK_Licenser' ) ) :
 							<p><strong>
 									<?php
 									echo sprintf(
-										$no_activations_string, $this->product->get_name(), $this->product->get_name(), '<a href="' . $this->product->get_store_url() . '"
+										$no_activations_string,
+										$this->product->get_name(),
+										$this->product->get_name(),
+										'<a href="' . $this->product->get_store_url() . '"
 																	target="_blank">' . $this->product->get_store_name() . '</a>'
 									);
 									?>
@@ -270,7 +276,9 @@ if ( ! class_exists( 'ThemeIsle_SDK_Licenser' ) ) :
 								<strong>
 									<?php
 									echo sprintf(
-										$expiration_string, $this->product->get_name() . ' ' . $this->product->get_type(), '<a
+										$expiration_string,
+										$this->product->get_name() . ' ' . $this->product->get_type(),
+										'<a
 										href="' . $this->renew_url() . '"
 										target="_blank">' . $this->product->get_store_name() . '</a>'
 									);
@@ -334,7 +342,8 @@ if ( ! class_exists( 'ThemeIsle_SDK_Licenser' ) ) :
 			);
 			// Call the custom API.
 			$response = wp_remote_get(
-				add_query_arg( $api_params, $this->product->get_store_url() ), array(
+				add_query_arg( $api_params, $this->product->get_store_url() ),
+				array(
 					'timeout'   => 15,
 					'sslverify' => false,
 				)
@@ -439,7 +448,8 @@ if ( ! class_exists( 'ThemeIsle_SDK_Licenser' ) ) :
 		public function enable() {
 			if ( $this->product->get_type() == 'plugin' ) {
 				add_filter(
-					'pre_set_site_transient_update_plugins', array(
+					'pre_set_site_transient_update_plugins',
+					array(
 						$this,
 						'pre_set_site_transient_update_plugins_filter',
 					)
@@ -524,7 +534,7 @@ if ( ! class_exists( 'ThemeIsle_SDK_Licenser' ) ) :
 		 * @return bool|mixed Update api response.
 		 */
 		private function get_version_data() {
-                    return false;
+					return false;
 			$api_params = array(
 				'edd_action' => 'get_version',
 				'version'    => $this->product->get_version(),
@@ -535,7 +545,8 @@ if ( ! class_exists( 'ThemeIsle_SDK_Licenser' ) ) :
 				'url'        => rawurlencode( home_url() ),
 			);
 			$response   = wp_remote_post(
-				$this->product->get_store_url(), array(
+				$this->product->get_store_url(),
+				array(
 					'timeout'   => 15,
 					'sslverify' => false,
 					'body'      => $api_params,
@@ -570,7 +581,7 @@ if ( ! class_exists( 'ThemeIsle_SDK_Licenser' ) ) :
 				}
 				// If the response failed, try again in 30 minutes.
 				if ( $failed ) {
-					$data              = new stdClass;
+					$data              = new stdClass();
 					$data->new_version = $this->product->get_version();
 					set_transient( $this->product_key, $data, strtotime( '+30 minutes' ) );
 

@@ -57,22 +57,22 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module {
 		// refresh captcha
 		add_action( 'wp_ajax_rocket_backend_refreshcaptcha', array( &$this, 'ajax_refresh_captcha' ) );
 
-		//load field options
+		// load field options
 		add_action( 'wp_ajax_rocket_fbuilder_field_options', array( &$this, 'ajax_field_option' ) );
 
-		//load field options
+		// load field options
 		add_action( 'wp_ajax_rocket_fbuilder_field_sel_impbulkdata', array( &$this, 'ajax_field_sel_impbulkdata' ) );
 
-		//refresh list form table
+		// refresh list form table
 		add_action( 'wp_ajax_rocket_fbuilder_dev_generate_fieldopt', array( &$this, 'ajax_dev_genfieldopts' ) );
 	}
 
 
 	 /**
-	 * Forms::ajax_dev generation field options
-	 *
-	 * @return
-	 */
+	  * Forms::ajax_dev generation field options
+	  *
+	  * @return
+	  */
 	public function ajax_dev_genfieldopts() {
 		check_ajax_referer( 'zgfm_ajax_nonce', 'zgfm_security' );
 
@@ -82,22 +82,22 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module {
 		foreach ( $array as $type ) {
 			switch ( intval( $type ) ) {
 				case 1:
-					//1 col
+					// 1 col
 					$field_block          = 0;
 					$data_render[ $type ] = $this->load_field_options( $type, '', $field_block );
 					break;
 				case 2:
-					//2 cols
+					// 2 cols
 					$field_block          = 0;
 					$data_render[ $type ] = $this->load_field_options( $type, '', $field_block );
 					break;
 				case 3:
-					//3 cols
+					// 3 cols
 					$field_block          = 0;
 					$data_render[ $type ] = $this->load_field_options( $type, '', $field_block );
 					break;
 				case 4:
-					//4 cols
+					// 4 cols
 					$field_block          = 0;
 					$data_render[ $type ] = $this->load_field_options( $type, '', $field_block );
 					break;
@@ -107,24 +107,24 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module {
 					$data_render[ $type ] = $this->load_field_options( $type, '', $field_block );
 					break;
 				case 6:
-					//textbox
+					// textbox
 					$data_render[ $type ] = $this->load_field_options( $type, '', null );
 					break;
 
 				case 8:
-					//radio button
+					// radio button
 					$data_render[ $type ] = $this->load_field_options( $type, '', null );
 					break;
 				case 9:
-					//checkbox
+					// checkbox
 					$data_render[ $type ] = $this->load_field_options( $type, '', null );
 					break;
 				case 10:
-					//select
+					// select
 					$data_render[ $type ] = $this->load_field_options( $type, '', null );
 					break;
 				case 11:
-					//multiple select
+					// multiple select
 					$data_render[ $type ] = $this->load_field_options( $type, '', null );
 					break;
 			}
@@ -170,7 +170,7 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module {
 				$js_store .= $value2;
 			}
 
-			//$value = preg_replace('#<script(.*?)</script>#is', '', $value);
+			// $value = preg_replace('#<script(.*?)</script>#is', '', $value);
 
 			$value = str_replace( $search1, $replace1, $value );
 			$value = str_replace( $search2, $replace2, $value );
@@ -210,23 +210,23 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module {
 
 		$html_output .= html_entity_decode( $html_output_head );
 
-		 //scripts
+		 // scripts
 		$fscripts = UIFORM_FORMS_DIR . '/modules/formbuilder/views/forms/fieldoptions_data_scripts.php';
-		//$html_output.=$js_store;
+		// $html_output.=$js_store;
 		$html_output .= htmlentities( $js_store );
 		$fhandle      = fopen( $fscripts, 'w' );
 		fwrite( $fhandle, $html_output );
 		fclose( $fhandle );
 
-		 //echo json_encode($data_render);
+		 // echo json_encode($data_render);
 		 die();
 	}
 
 	 /**
-	 * Forms::ajax_delete_form_byid()
-	 *
-	 * @return
-	 */
+	  * Forms::ajax_delete_form_byid()
+	  *
+	  * @return
+	  */
 	public function ajax_field_sel_impbulkdata() {
 
 		$data = array();
@@ -237,17 +237,17 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module {
 		$json['modal_body']   = self::render_template( 'formbuilder/views/fields/options/select/impbulkdata.php', $data, 'always' );
 		$json['modal_footer'] = self::render_template( 'formbuilder/views/fields/options/select/impbulkdata_footer.php', $data, 'always' );
 
-		//return data to ajax callback
+		// return data to ajax callback
 		header( 'Content-Type: application/json' );
 		echo json_encode( $json );
 		die();
 	}
 
 	 /**
-	 * Get field option in order to customize the field
-	 *
-	 * @return json
-	 */
+	  * Get field option in order to customize the field
+	  *
+	  * @return json
+	  */
 	public function ajax_field_option() {
 
 		check_ajax_referer( 'zgfm_ajax_nonce', 'zgfm_security' );
@@ -258,15 +258,15 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module {
 		$field_block = ( isset( $field_block ) && intval( $field_block ) > 0 ) ? $field_block : 0;
 		$json        = array();
 
-		//$json['modal_header'] = self::render_template('pagebuilder/views/fields/modal_field_header.php', array(), 'always');
+		// $json['modal_header'] = self::render_template('pagebuilder/views/fields/modal_field_header.php', array(), 'always');
 		$json['modal_body'] = $this->load_field_options( $type, $id, $field_block );
-		//$json['modal_footer'] = self::render_template('pagebuilder/views/fields/modal_field_footer.php', array(), 'always');
+		// $json['modal_footer'] = self::render_template('pagebuilder/views/fields/modal_field_footer.php', array(), 'always');
 		$json['field_id']    = $id;
 		$json['field_type']  = $type;
 		$json['field_block'] = $field_block;
 
-		//addons
-		//$json['addons'] = self::$_models['addon']['addon']->getActiveAddonsNamesOnBack();
+		// addons
+		// $json['addons'] = self::$_models['addon']['addon']->getActiveAddonsNamesOnBack();
 
 		header( 'Content-Type: application/json' );
 		echo json_encode( $json );
@@ -308,21 +308,21 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module {
 				break;
 
 			default:
-				//textbox
+				// textbox
 				$data               = array();
 				$data['field_id']   = $id;
 				$data['field_type'] = $type;
 				switch ( intval( $type ) ) {
 					case 8:
-						//radio button
+						// radio button
 					case 9:
-						//checkbox
+						// checkbox
 						$data['field_extra_src'] = self::render_template( 'formbuilder/views/fields/modal/field_opt_checkbox_extra.php', $data, 'always' );
 						break;
 					case 10:
-						//select
+						// select
 					case 11:
-						//Multiple select
+						// Multiple select
 						$data['field_extra_src'] = self::render_template( 'formbuilder/views/fields/modal/field_opt_select_extra.php', $data, 'always' );
 						break;
 					default:
@@ -367,7 +367,7 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module {
 		$captcha_options = Uiform_Form_Helper::base64url_encode( json_encode( $resp ) );
 		$resp2           = array();
 		$resp2['rkver']  = $captcha_options;
-		//return data to ajax callback
+		// return data to ajax callback
 		header( 'Content-Type: application/json' );
 		echo json_encode( $resp2 );
 		wp_die();
@@ -445,7 +445,7 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module {
 	}
 
 	public function formhtml_multiselect_css( $data ) {
-		//using select css because it's the same
+		// using select css because it's the same
 		return $this->formhtml_renderCssField( $data );
 	}
 
@@ -1197,26 +1197,26 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module {
 
 
 	 /**
-	 * Generate grid system css
-	 *
-	 * @return string
-	 */
+	  * Generate grid system css
+	  *
+	  * @return string
+	  */
 	public function posthtml_gridsystem_css( $data ) {
 
 		$str_output_2 = '';
 
 		foreach ( $data as $key => $value ) {
 
-			//$key -> main or blocks
+			// $key -> main or blocks
 			if ( ! empty( $value ) && is_array( $value ) ) {
 
 				if ( (string) $key === 'main' ) {
-					//send info of main
+					// send info of main
 					$str_output_2 .= $this->posthtml_gridsystem_css_block( $data['id'], 0, $value );
 				} else {
 
 					foreach ( $value as $key2 => $value2 ) {
-						//$key2 -> skin or index
+						// $key2 -> skin or index
 						if ( is_array( $value2 ) ) {
 							$str_output_2 .= $this->posthtml_gridsystem_css_block( $data['id'], $key2, $value2 );
 						}
@@ -1229,10 +1229,10 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module {
 	}
 
 	 /**
-	 * Generate grid system blocks
-	 *
-	 * @return string
-	 */
+	  * Generate grid system blocks
+	  *
+	  * @return string
+	  */
 	public function posthtml_gridsystem_css_block( $id, $block, $data ) {
 
 		$data2 = array();
@@ -1263,8 +1263,8 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module {
 	public function init() {
 
 		try {
-			//$instance_example = new WPPS_Instance_Class( 'Instance example', '42' );
-			//add_notice('ba');
+			// $instance_example = new WPPS_Instance_Class( 'Instance example', '42' );
+			// add_notice('ba');
 		} catch ( Exception $exception ) {
 			add_notice( __METHOD__ . ' error: ' . $exception->getMessage(), 'error' );
 		}

@@ -3,7 +3,7 @@
  * Plugin Name: Zigaform - Wordpress Form Builder Lite
  * Plugin URI: https://wordpress-form-builder.zigaform.com/
  * Description: The ZigaForm WordPress form builder is the ultimate form creation solution for WordPress.
- * Version: 4.7.5
+ * Version: 4.7.6
  * Author: ZigaForm.Com
  * Author URI: https://wordpress-form-builder.zigaform.com/
  */
@@ -30,7 +30,7 @@ if ( ! class_exists( 'UiformFormbuilderLite' ) ) {
 		 * @var string
 		 * @since 1.0
 		 */
-		public $version = '4.7.5';
+		public $version = '4.7.6';
 
 		/**
 		 * The minimal required version of WordPress for this plug-in to function correctly.
@@ -74,7 +74,7 @@ if ( ! class_exists( 'UiformFormbuilderLite' ) ) {
 		public static function instance() {
 			 $class_name = get_class();
 			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof $class_name ) ) {
-				self::$instance = new $class_name;
+				self::$instance = new $class_name();
 			}
 			return self::$instance;
 		}
@@ -83,7 +83,7 @@ if ( ! class_exists( 'UiformFormbuilderLite' ) ) {
 			 // Save the class name for later use
 			$this->class_name = get_class();
 			//
-			//  Plug-in requirements
+			// Plug-in requirements
 			//
 			$this->define_constants();
 			$this->load_dependencies();
@@ -127,7 +127,7 @@ if ( ! class_exists( 'UiformFormbuilderLite' ) ) {
 		 * @param bool $network_wide
 		 */
 		public function activate( $network_wide = false ) {
-			$zgfm_is_installed = UiformFormbuilderLite::another_zgfm_isInstalled();
+			$zgfm_is_installed = self::another_zgfm_isInstalled();
 
 			if ( $zgfm_is_installed['result'] ) {
 				wp_die( $zgfm_is_installed['message2'] );
@@ -152,11 +152,12 @@ if ( ! class_exists( 'UiformFormbuilderLite' ) ) {
 		 *  check if another wp zigaform is installed
 		 */
 		public static function another_zgfm_isInstalled() {
-			/*if (is_plugin_active( 'uiform-form-builder/uiform-form-builder.php' ) ) {
+			/*
+			if (is_plugin_active( 'uiform-form-builder/uiform-form-builder.php' ) ) {
 			return true;
 			}*/
-			 
-			$check_slug    = 'Zigaform - Premium WordPress Form Builder';
+
+			$check_slug = 'Zigaform - Wordpress Form Builder Lite';
 
 			$output           = array();
 			$output['result'] = false;
@@ -217,7 +218,7 @@ if ( ! class_exists( 'UiformFormbuilderLite' ) ) {
 			}
 
 			include_once ABSPATH . 'wp-admin/includes/plugin.php';
-			$zgfm_is_installed = UiformFormbuilderLite::another_zgfm_isInstalled();
+			$zgfm_is_installed = self::another_zgfm_isInstalled();
 			if ( $zgfm_is_installed['result'] ) {
 				return false;
 			}
@@ -257,7 +258,8 @@ if ( ! class_exists( 'UiformFormbuilderLite' ) ) {
 
 		/**
 		 * Define constant if not already set
-		 * @param  string $name
+		 *
+		 * @param  string      $name
 		 * @param  string|bool $value
 		 */
 		private function define( $name, $value ) {
@@ -276,7 +278,7 @@ if ( ! class_exists( 'UiformFormbuilderLite' ) ) {
 				require_once UIFORM_FORMS_DIR . '/classes/uiform-base-module.php';
 				require_once UIFORM_FORMS_DIR . '/classes/uiform-form-helper.php';
 				require_once UIFORM_FORMS_DIR . '/classes/uiform-bootstrap.php';
-				//include UIFORM_FORMS_DIR . '/helpers/styles-font-menu/plugin.php';
+				// include UIFORM_FORMS_DIR . '/helpers/styles-font-menu/plugin.php';
 
 				require_once UIFORM_FORMS_DIR . '/classes/zigaform-notice.php';
 
@@ -296,7 +298,7 @@ if ( ! class_exists( 'UiformFormbuilderLite' ) ) {
 		private function check_updateChanges() {
 			global $wpdb;
 			$version     = UIFORM_VERSION;
-			$install_ver = get_option( 'uifmfbuild_version' );
+			$install_ver = get_option( 'uifmfbuild_version', UIFORM_VERSION );
 
 			require_once UIFORM_FORMS_DIR . '/libraries/updates.php';
 		}

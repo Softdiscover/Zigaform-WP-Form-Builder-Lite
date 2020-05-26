@@ -64,8 +64,8 @@ class zgfm_mod_addon_controller_common extends Uiform_Base_Module {
 	 */
 	public function init() {
 		try {
-			//$instance_example = new WPPS_Instance_Class( 'Instance example', '42' );
-			//add_notice('ba');
+			// $instance_example = new WPPS_Instance_Class( 'Instance example', '42' );
+			// add_notice('ba');
 		} catch ( Exception $exception ) {
 			add_notice( __METHOD__ . ' error: ' . $exception->getMessage(), 'error' );
 		}

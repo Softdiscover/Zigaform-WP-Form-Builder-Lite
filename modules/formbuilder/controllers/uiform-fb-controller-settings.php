@@ -56,7 +56,7 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module {
 		// Delete file
 		add_action( 'wp_ajax_uiform_fbuilder_setting_restorebkpfile', array( &$this, 'ajax_backup_restorefile' ) );
 
-		//blocked message
+		// blocked message
 		add_action( 'wp_ajax_uiform_fbuilder_blocked_getmessage', array( &$this, 'ajax_blocked_getmessage' ) );
 
 		if ( isset( $_POST['_uifm_bkp_submit_file'] ) && intval( $_POST['_uifm_bkp_submit_file'] ) === 1 ) {
@@ -80,7 +80,7 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module {
 
 	public function backup_upload_file() {
 
-		require_once( UIFORM_FORMS_DIR . '/classes/uiform_backup.php' );
+		require_once UIFORM_FORMS_DIR . '/classes/uiform_backup.php';
 		$dbBackup = new Uiform_Backup();
 		$dbBackup->uploadBackupFile();
 	}
@@ -90,7 +90,7 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module {
 		check_ajax_referer( 'zgfm_ajax_nonce', 'zgfm_security' );
 
 		$json = array();
-		require_once( UIFORM_FORMS_DIR . '/classes/uiform_backup.php' );
+		require_once UIFORM_FORMS_DIR . '/classes/uiform_backup.php';
 		$dbBackup = new Uiform_Backup();
 		$name_bkp = ( isset( $_POST['uifm_frm_namebackup'] ) && $_POST['uifm_frm_namebackup'] ) ? Uiform_Form_Helper::sanitizeInput( $_POST['uifm_frm_namebackup'] ) : '';
 		$dbBackup->makeDbBackup( $name_bkp );
@@ -105,7 +105,7 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module {
 
 		$json             = array();
 		$uifm_frm_resfile = ( isset( $_POST['uifm_frm_resfile'] ) && $_POST['uifm_frm_resfile'] ) ? Uiform_Form_Helper::sanitizeInput( $_POST['uifm_frm_resfile'] ) : '';
-		require_once( UIFORM_FORMS_DIR . '/classes/uiform_backup.php' );
+		require_once UIFORM_FORMS_DIR . '/classes/uiform_backup.php';
 		$dbBackup = new Uiform_Backup();
 		$dbBackup->restoreBackup( $uifm_frm_resfile );
 		header( 'Content-Type: application/json' );
@@ -235,7 +235,7 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module {
 		$uiform_tbs[] = $this->wpdb->prefix . 'uiform_addon_details';
 		$uiform_tbs[] = $this->wpdb->prefix . 'uiform_addon_details_log';
 
-		//tables
+		// tables
 		$name_tb                                        = array();
 		$name_tb[ $this->wpdb->prefix . 'uiform_form' ] = 'Forms';
 		$name_tb[ $this->wpdb->prefix . 'uiform_form_records' ]      = 'Records';
@@ -254,10 +254,10 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module {
 			$tmp_tb            = array();
 			$tmp_tb['table']   = $name_tb[ $value ];
 			$tmp_tb['message'] = '';
-			//check database
+			// check database
 			( in_array( $value, $all_tables_tmp ) ) ? $tmp_tb['status'] = 1 : $tmp_tb['status'] = 0;
 
-			//check columns
+			// check columns
 			$tmp_check = $this->check_Database_Column( $value );
 
 			if ( ! empty( $tmp_check['err_msgs'] ) ) {
@@ -302,7 +302,7 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module {
 
 			$row = $this->model_settings->getColsFromTable( $value );
 
-			//tables
+			// tables
 			$resultado = array();
 
 			$tmp_arr = array();
@@ -315,10 +315,10 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module {
 			$tmp_all_db[ str_replace( $this->wpdb->prefix, '', $value ) ] = $tmp_arr;
 		}
 
-		//Encode the array into a JSON string.
+		// Encode the array into a JSON string.
 		$encodedString = json_encode( $tmp_all_db );
 
-		//Save the JSON string to a text file.
+		// Save the JSON string to a text file.
 		file_put_contents( UIFORM_FORMS_DIR . '/modules/formbuilder/views/settings/system_db.txt', $encodedString );
 
 		die( 'database structure generated' );
@@ -326,16 +326,16 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module {
 
 	public function check_Database_Column( $table ) {
 
-		//Retrieve the data from our text file.
+		// Retrieve the data from our text file.
 		$fileContents = file_get_contents( UIFORM_FORMS_DIR . '/modules/formbuilder/views/settings/system_db.txt' );
 
-		//Convert the JSON string back into an array.
+		// Convert the JSON string back into an array.
 		$tmp_all_db = json_decode( $fileContents, true );
 
 		global $wpdb;
-		//$row= $wpdb->get_results("SHOW COLUMNS FROM " . $table );
+		// $row= $wpdb->get_results("SHOW COLUMNS FROM " . $table );
 		$row = $this->model_settings->getColsFromTable( $table );
-		//tables
+		// tables
 		$resultado = array();
 
 		$err_msgs = array();
@@ -349,7 +349,8 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module {
 				foreach ( $row as $key => $value ) {
 					if ( isset( $tmp_all_db[ $table ][ $value->Field ] ) ) {
 
-							  /*if (($key2 = array_search($value->Field, $tmp_all_db[$table])) !== false) {
+							  /*
+							  if (($key2 = array_search($value->Field, $tmp_all_db[$table])) !== false) {
 									  unset($tmp_all_db[$table][$key2]);
 								  }*/
 
@@ -418,8 +419,8 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module {
 	public function init() {
 
 		try {
-			//$instance_example = new WPPS_Instance_Class( 'Instance example', '42' );
-			//add_notice('ba');
+			// $instance_example = new WPPS_Instance_Class( 'Instance example', '42' );
+			// add_notice('ba');
 		} catch ( Exception $exception ) {
 			add_notice( __METHOD__ . ' error: ' . $exception->getMessage(), 'error' );
 		}

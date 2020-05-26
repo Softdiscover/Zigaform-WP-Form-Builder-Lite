@@ -40,7 +40,7 @@ if ( ! class_exists( 'ThemeIsle_SDK_Loader' ) ) :
 		public static function init_product( $basefile ) {
 
 			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof ThemeIsle_SDK_Loader ) ) {
-				self::$instance = new ThemeIsle_SDK_Loader;
+				self::$instance = new ThemeIsle_SDK_Loader();
 
 			}
 			$product_object                                = new ThemeIsle_SDK_Product( $basefile );

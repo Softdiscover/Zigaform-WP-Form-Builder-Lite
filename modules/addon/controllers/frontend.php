@@ -55,24 +55,24 @@ class zgfm_mod_addon_controller_front extends Uiform_Base_Module {
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'uiform_addon';
 		if ( $wpdb->get_var( "SHOW TABLES LIKE '$table_name'" ) != $table_name ) {
-			//table not in database
+			// table not in database
 			return;
 		}
 
-		//get addons
+		// get addons
 		$tmp_addons = $this->model_addon->getListAddonsByFront();
 
-		//flag variables
+		// flag variables
 		$tmp_addons_arr  = array();
 		$tmp_modules_arr = self::$_addons;
 
 		foreach ( $tmp_addons as $key => $value ) {
-			//$tmp_addons_arr[$value->add_section][$value->add_name]=$tmp_addons[$key];
+			// $tmp_addons_arr[$value->add_section][$value->add_name]=$tmp_addons[$key];
 
-			//load addons
+			// load addons
 			require_once UIFORM_FORMS_DIR . '/modules/addon_' . $value->add_name . '/controllers/frontend.php';
 
-			//$tmp_modules_arr['addon_'.$value->add_name]=array( 'back' => call_user_func( array( 'zfaddn_back_'.$value->add_name, 'get_instance' ) ));
+			// $tmp_modules_arr['addon_'.$value->add_name]=array( 'back' => call_user_func( array( 'zfaddn_back_'.$value->add_name, 'get_instance' ) ));
 
 			$tmp_add_new_contr             = array();
 			$tmp_add_new_contr['frontend'] = call_user_func( array( 'zfaddn_' . $value->add_name . '_front', 'get_instance' ) );
@@ -81,11 +81,11 @@ class zgfm_mod_addon_controller_front extends Uiform_Base_Module {
 
 			$tmp_add_new_contr = array_merge( $tmp_add_new_contr, $tmp_add_new_flag );
 
-			//$tmp_modules_arr['addon_'.$value->add_name] = $tmp_add_new_contr;
+			// $tmp_modules_arr['addon_'.$value->add_name] = $tmp_add_new_contr;
 			self::$_addons[ $value->add_name ] = $tmp_add_new_contr;
 		}
 
-		//self::$_addons = $tmp_addons_arr;
+		// self::$_addons = $tmp_addons_arr;
 	}
 
 	public function load_addActions() {
@@ -93,10 +93,11 @@ class zgfm_mod_addon_controller_front extends Uiform_Base_Module {
 
 		$tmp_addons_actions = array();
 
-		/*pending to add cache*/
-		//loop addons
+		/*
+		pending to add cache*/
+		// loop addons
 		foreach ( $tmp_addons as $key => $value ) {
-			//loop controllers
+			// loop controllers
 			foreach ( $value as $key2 => $value2 ) {
 
 				$tmp_flag = array();
@@ -117,13 +118,14 @@ class zgfm_mod_addon_controller_front extends Uiform_Base_Module {
 
 		self::$_addons_actions = $tmp_addons_actions;
 
-		//add js actions
+		// add js actions
 		$tmp_addons_actions = array();
 
-		/*pending to add cache*/
-		//loop addons
+		/*
+		pending to add cache*/
+		// loop addons
 		foreach ( $tmp_addons as $key => $value ) {
-			//loop controllers
+			// loop controllers
 			foreach ( $value as $key2 => $value2 ) {
 
 				$tmp_flag = array();
@@ -184,8 +186,8 @@ class zgfm_mod_addon_controller_front extends Uiform_Base_Module {
 	 */
 	public function init() {
 		try {
-			//$instance_example = new WPPS_Instance_Class( 'Instance example', '42' );
-			//add_notice('ba');
+			// $instance_example = new WPPS_Instance_Class( 'Instance example', '42' );
+			// add_notice('ba');
 		} catch ( Exception $exception ) {
 			add_notice( __METHOD__ . ' error: ' . $exception->getMessage(), 'error' );
 		}

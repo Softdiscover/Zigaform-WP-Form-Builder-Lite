@@ -55,7 +55,7 @@ class Uiform_InstallDB {
 				$charset .= " COLLATE $wpdb->collate";
 			}
 		}
-		//forms
+		// forms
 		$sql = "CREATE  TABLE IF NOT EXISTS $this->form (
 			`fmb_id` INT(10) NOT NULL AUTO_INCREMENT ,
 			`fmb_data` longtext ,
@@ -79,7 +79,7 @@ class Uiform_InstallDB {
 			`fmb_rec_tpl_st` TINYINT(1) NULL DEFAULT 0 ,
 			PRIMARY KEY (`fmb_id`) ) " . $charset . ';';
 		$wpdb->query( $sql );
-		//form request statitistics
+		// form request statitistics
 		$sql = "CREATE  TABLE IF NOT EXISTS $this->form_history (
 				`fbh_id` INT(10) NOT NULL AUTO_INCREMENT ,
 				`fbh_data` longtext,
@@ -98,7 +98,7 @@ class Uiform_InstallDB {
 				`fbh_error` text,
 			 PRIMARY KEY (`fbh_id`) )  " . $charset . ';';
 		$wpdb->query( $sql );
-		//fields type
+		// fields type
 		$sql = "CREATE  TABLE IF NOT EXISTS $this->form_fields_type (
 		`fby_id` INT(6) NOT NULL AUTO_INCREMENT ,
 		`fby_name` VARCHAR(25) NULL ,
@@ -111,7 +111,7 @@ class Uiform_InstallDB {
 		`updated_by` VARCHAR(100) NULL ,
 		PRIMARY KEY (`fby_id`) )" . $charset . ';';
 		$wpdb->query( $sql );
-		//insert types
+		// insert types
 		$uifm_field_types = $wpdb->get_row( 'SELECT COUNT(*) AS total FROM ' . $this->form_fields_type, ARRAY_A );
 		if ( isset( $uifm_field_types['total'] ) && intval( $uifm_field_types['total'] ) === 0 ) {
 			$sql = "INSERT INTO $this->form_fields_type VALUES
@@ -161,7 +161,7 @@ class Uiform_InstallDB {
 			$wpdb->query( $sql );
 		}
 
-		//fields
+		// fields
 		$sql = "CREATE  TABLE IF NOT EXISTS $this->form_fields (
 		`fmf_id` int(10) NOT NULL AUTO_INCREMENT,
 		`fmf_uniqueid` varchar(255) DEFAULT NULL,
@@ -182,7 +182,7 @@ class Uiform_InstallDB {
 		 PRIMARY KEY (`fmf_id`,`form_fmb_id`) )  " . $charset . ';';
 		$wpdb->query( $sql );
 
-		//settings
+		// settings
 		$sql = "CREATE  TABLE IF NOT EXISTS $this->settings (
 		`version` varchar(10) DEFAULT NULL,
 		`type_email` SMALLINT(1) NULL ,
@@ -197,16 +197,16 @@ class Uiform_InstallDB {
 		) " . $charset . ';';
 
 		$wpdb->query( $sql );
-		//insert data
+		// insert data
 		$uifm_settings = $wpdb->get_row( 'SELECT COUNT(*) AS total FROM ' . $this->settings, ARRAY_A );
 		if ( isset( $uifm_settings['total'] ) && intval( $uifm_settings['total'] ) === 0 ) {
-			$sql = "INSERT INTO $this->settings VALUES ('4.5.9.5', null, null, null, null, null, null, '', '1');";
+			$sql = "INSERT INTO $this->settings VALUES ('4.7.6', null, null, null, null, null, null, '', '1');";
 			$wpdb->query( $sql );
 		}
 
 		update_option( 'uifmfbuild_version', UIFORM_VERSION );
 
-		//form log
+		// form log
 		$sql = "CREATE  TABLE IF NOT EXISTS $this->form_log (
 			`log_id` bigint(20) NOT NULL AUTO_INCREMENT,
 			`log_frm_data` longtext,
@@ -228,7 +228,7 @@ class Uiform_InstallDB {
 
 		$wpdb->query( $sql );
 
-		//addon
+		// addon
 		$sql = "CREATE  TABLE IF NOT EXISTS $this->core_addon (
 			`add_name` varchar(45) NOT NULL DEFAULT '',
 			`add_title` text ,
@@ -258,20 +258,20 @@ class Uiform_InstallDB {
 
 		$wpdb->query( $sql );
 
-		//insert data
+		// insert data
 		$uifm_check_total = $wpdb->get_row( 'SELECT COUNT(*) AS total FROM ' . $this->core_addon . " where add_name='func_anim'", ARRAY_A );
 		if ( isset( $uifm_check_total['total'] ) && intval( $uifm_check_total['total'] ) === 0 ) {
 			$sql = "INSERT INTO $this->core_addon VALUES ('func_anim', 'Animation effect', 'You can animate your fields adding many animation effects. Also you can set up the delay and other options.', 1, 1, NULL, NULL, 1, 1, NULL, NULL, NULL, 0, '1980-01-01 00:00:01', '2018-01-31 10:35:14', NULL, NULL, NULL, NULL, NULL, 1, 1, 1);";
 			$wpdb->query( $sql );
 		}
-		//insert data
+		// insert data
 		$uifm_check_total = $wpdb->get_row( 'SELECT COUNT(*) AS total FROM ' . $this->core_addon . " where add_name='webhook'", ARRAY_A );
 		if ( isset( $uifm_check_total['total'] ) && intval( $uifm_check_total['total'] ) === 0 ) {
 			$sql = "INSERT INTO $this->core_addon VALUES ('webhook', 'WebHooks Add-On', 'You can use the WebHooks Add-On to send data from your forms to any custom page or script you like. This page can perform integration tasks to transform, parse, manipulate and send your submission data to wherever you choose. If you are developing an application that needs to be updated every time a form is submitted, WebHooks is for you. The advantage of WebHooks is that the passing of data is immediate and you can pass all submitted form data at once. e.g. you can connect with Webhook of Zapier - https%3A%2F%2Fzapier.com%2Fpage%2Fwebhooks%2F', 1, 1, NULL, NULL, 1, 2, NULL, NULL, NULL, 0, '2019-12-30 01:36:23', '2019-12-30 01:34:27', NULL, NULL, NULL, NULL, NULL, 1, 1, 0);";
 			$wpdb->query( $sql );
 		}
 
-		//addon detail
+		// addon detail
 		$sql = "CREATE  TABLE IF NOT EXISTS $this->core_addon_detail (
 			`add_name` varchar(45)  NOT NULL,
 			`fmb_id` int(10) NOT NULL,
@@ -290,7 +290,7 @@ class Uiform_InstallDB {
 
 		$wpdb->query( $sql );
 
-		//addon log
+		// addon log
 		$sql = "CREATE  TABLE IF NOT EXISTS $this->core_addon_log (
 			`add_log_id` bigint(20) NOT NULL AUTO_INCREMENT,
 			`add_name` varchar(45)  NOT NULL,
@@ -317,7 +317,7 @@ class Uiform_InstallDB {
 			update_option( 'zgfm_b_activated', $activated );
 		}
 
-		//ajax mode by default
+		// ajax mode by default
 		update_option( 'zgfm_b_modalmode', 0 );
 	}
 
@@ -333,7 +333,7 @@ class Uiform_InstallDB {
 		$wpdb->query( 'DROP TABLE IF EXISTS ' . $this->core_addon_detail );
 		$wpdb->query( 'DROP TABLE IF EXISTS ' . $this->core_addon_log );
 
-		//removing options
+		// removing options
 		delete_option( 'uifmfbuild_version' );
 	}
 }

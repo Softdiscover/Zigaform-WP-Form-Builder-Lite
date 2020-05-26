@@ -93,7 +93,8 @@ if ( ! class_exists( 'ThemeIsle_SDK_Rollback' ) ) :
 		 */
 		private function show_link() {
 			add_filter(
-				'plugin_action_links_' . plugin_basename( $this->product->get_basefile() ), array(
+				'plugin_action_links_' . plugin_basename( $this->product->get_basefile() ),
+				array(
 					$this,
 					'add_rollback_link',
 				)
@@ -163,7 +164,7 @@ if ( ! class_exists( 'ThemeIsle_SDK_Rollback' ) ) :
 
 			if ( false === $transient ) {
 				set_transient( $this->product->get_key() . '_warning_rollback', 'in progress', 30 );
-				require_once( ABSPATH . 'wp-admin/includes/class-wp-upgrader.php' );
+				require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
 				$title = sprintf( apply_filters( $this->product->get_key() . '_rollback_message', 'Rolling back %s to v%s' ), $this->product->get_name(), $version );
 				$theme = $folder . '/style.css';
 				$nonce = 'upgrade-theme_' . $theme;
@@ -173,7 +174,9 @@ if ( ! class_exists( 'ThemeIsle_SDK_Rollback' ) ) :
 				$upgrader->upgrade( $theme );
 				delete_transient( $this->product->get_key() . '_warning_rollback' );
 				wp_die(
-					'', $title, array(
+					'',
+					$title,
+					array(
 						'response' => 200,
 					)
 				);
@@ -203,7 +206,7 @@ if ( ! class_exists( 'ThemeIsle_SDK_Rollback' ) ) :
 
 			if ( false === $transient ) {
 				set_transient( $this->product->get_key() . '_warning_rollback', 'in progress', 30 );
-				require_once( ABSPATH . 'wp-admin/includes/class-wp-upgrader.php' );
+				require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
 				$title         = sprintf( apply_filters( $this->product->get_key() . '_rollback_message', 'Rolling back %s to v%s' ), $this->product->get_name(), $version );
 				$plugin        = $plugin_folder . '/' . $plugin_file;
 				$nonce         = 'upgrade-plugin_' . $plugin;
@@ -213,7 +216,9 @@ if ( ! class_exists( 'ThemeIsle_SDK_Rollback' ) ) :
 				$upgrader->upgrade( $plugin );
 				delete_transient( $this->product->get_key() . '_warning_rollback' );
 				wp_die(
-					'', $title, array(
+					'',
+					$title,
+					array(
 						'response' => 200,
 					)
 				);

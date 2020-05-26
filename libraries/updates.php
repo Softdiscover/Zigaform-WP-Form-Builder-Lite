@@ -16,9 +16,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-if ( ! $install_ver || version_compare( $version, $install_ver, '>' ) ) {
+if ( version_compare( $version, $install_ver, '>' ) ) {
 
-	if ( ! $install_ver || version_compare( $install_ver, '1.7.3.6', '<' ) ) {
+	if ( version_compare( $install_ver, '1.7.3.6', '<' ) ) {
 		$tbname = $wpdb->prefix . 'uiform_form_records';
 
 		if ( (string) $wpdb->get_var( "SHOW TABLES LIKE '$tbname'" ) === $tbname ) {
@@ -37,7 +37,7 @@ if ( ! $install_ver || version_compare( $version, $install_ver, '>' ) ) {
 	}
 
 
-	if ( ! $install_ver || version_compare( $install_ver, '1.9', '<' ) ) {
+	if ( version_compare( $install_ver, '1.9', '<' ) ) {
 		$tbname = $wpdb->prefix . 'uiform_fields';
 
 		if ( (string) $wpdb->get_var( "SHOW TABLES LIKE '$tbname'" ) === $tbname ) {
@@ -59,13 +59,13 @@ if ( ! $install_ver || version_compare( $version, $install_ver, '>' ) ) {
 		}
 	}
 
-	if ( ! $install_ver || version_compare( $install_ver, '3', '<' ) ) {
+	if ( version_compare( $install_ver, '3', '<' ) ) {
 
 		$tbname = $wpdb->prefix . 'uiform_form_log';
 
 		if ( (string) $wpdb->get_var( "SHOW TABLES LIKE '$tbname'" ) != $tbname ) {
 				$charset = '';
-				//form log
+				// form log
 				$sql = "CREATE  TABLE IF NOT EXISTS $tbname (
                                 `log_id` int(6) NOT NULL AUTO_INCREMENT,
                                 `log_frm_data` longtext,
@@ -91,8 +91,8 @@ if ( ! $install_ver || version_compare( $version, $install_ver, '>' ) ) {
 		}
 	}
 
-	   //below 3.7
-	if ( ! $install_ver || version_compare( $install_ver, '3.7', '<' ) ) {
+	   // below 3.7
+	if ( version_compare( $install_ver, '3.7', '<' ) ) {
 
 		$charset = '';
 		if ( $wpdb->has_cap( 'collation' ) ) {
@@ -109,7 +109,7 @@ if ( ! $install_ver || version_compare( $version, $install_ver, '>' ) ) {
 
 		if ( (string) $wpdb->get_var( "SHOW TABLES LIKE '$tbname'" ) != $tbname ) {
 
-			 //addon
+			 // addon
 			$sql = "CREATE  TABLE IF NOT EXISTS $tbname (
                             `add_name` varchar(45) NOT NULL DEFAULT '',
                             `add_title` text ,
@@ -148,7 +148,7 @@ if ( ! $install_ver || version_compare( $version, $install_ver, '>' ) ) {
 		$tbname = $wpdb->prefix . 'uiform_addon_details';
 
 		if ( (string) $wpdb->get_var( "SHOW TABLES LIKE '$tbname'" ) != $tbname ) {
-			  //addon detail
+			  // addon detail
 				$sql = "CREATE  TABLE IF NOT EXISTS $tbname (
                                 `add_name` varchar(45)  NOT NULL,
                                 `fmb_id` int(5) NOT NULL,
@@ -171,7 +171,7 @@ if ( ! $install_ver || version_compare( $version, $install_ver, '>' ) ) {
 
 		if ( (string) $wpdb->get_var( "SHOW TABLES LIKE '$tbname'" ) != $tbname ) {
 
-			//addon log
+			// addon log
 			$sql = "CREATE  TABLE IF NOT EXISTS $tbname (
                             `add_log_id` int(5) NOT NULL AUTO_INCREMENT,
                             `add_name` varchar(45)  NOT NULL,
@@ -192,8 +192,8 @@ if ( ! $install_ver || version_compare( $version, $install_ver, '>' ) ) {
 		}
 	}
 
-	//below 3.7.6.3
-	if ( ! $install_ver || version_compare( $install_ver, '3.7.6.3', '<' ) ) {
+	// below 3.7.6.3
+	if ( version_compare( $install_ver, '3.7.6.3', '<' ) ) {
 
 		 $tbname = $wpdb->prefix . 'uiform_addon';
 
@@ -210,8 +210,8 @@ if ( ! $install_ver || version_compare( $version, $install_ver, '>' ) ) {
 			}
 		}
 	}
-	//below 3.7
-	if ( ! $install_ver || version_compare( $install_ver, '3.7.7', '<' ) ) {
+	// below 3.7
+	if ( version_compare( $install_ver, '3.7.7', '<' ) ) {
 
 			$charset = '';
 		if ( $wpdb->has_cap( 'collation' ) ) {
@@ -228,7 +228,7 @@ if ( ! $install_ver || version_compare( $version, $install_ver, '>' ) ) {
 
 		if ( (string) $wpdb->get_var( "SHOW TABLES LIKE '$tbname'" ) != $tbname ) {
 
-						 //addon
+						 // addon
 						$sql = "CREATE  TABLE IF NOT EXISTS $tbname (
                                 `add_name` varchar(45) NOT NULL DEFAULT '',
                                 `add_title` text ,
@@ -265,8 +265,8 @@ if ( ! $install_ver || version_compare( $version, $install_ver, '>' ) ) {
 		}
 	}
 
-			//below 3.7
-	if ( ! $install_ver || version_compare( $install_ver, '3.9.5', '<' ) ) {
+			// below 3.7
+	if ( version_compare( $install_ver, '3.9.5', '<' ) ) {
 
 
 		$tbname = $wpdb->prefix . 'uiform_fields_type';
@@ -279,8 +279,8 @@ if ( ! $install_ver || version_compare( $version, $install_ver, '>' ) ) {
 		}
 	}
 
-			  //below 3.9.9.6.1
-	if ( ! $install_ver || version_compare( $install_ver, '3.9.9.6.1', '<' ) ) {
+			  // below 3.9.9.6.1
+	if ( version_compare( $install_ver, '3.9.9.6.1', '<' ) ) {
 				  $tbname = $wpdb->prefix . 'uiform_form';
 
 		if ( (string) $wpdb->get_var( "SHOW TABLES LIKE '$tbname'" ) === $tbname ) {

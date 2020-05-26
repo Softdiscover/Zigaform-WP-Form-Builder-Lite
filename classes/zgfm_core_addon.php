@@ -36,8 +36,9 @@ class zgfm_core_addon extends Uiform_Base_Module {
 	public $theme_options = array();
 
 	public function __construct() {
-		//load library
-		/* require_once( UIFORM_FORMS_DIR . '/modules/addon/controllers/common.php');
+		// load library
+		/*
+		 require_once( UIFORM_FORMS_DIR . '/modules/addon/controllers/common.php');
 		$this->modules = array(
 		'formbuilder' => array('frontend' => Uiform_Fb_Controller_Frontend::get_instance(),
 		'records' => Uiform_Fb_Controller_Records::get_instance())
@@ -75,7 +76,7 @@ class zgfm_core_addon extends Uiform_Base_Module {
 					}
 				}
 
-				//check if variable is installed
+				// check if variable is installed
 				if ( get_option( SFDC_A_PREFIX . $page['name'] ) ) {
 					$data_options[ $page['name'] ] = array_merge( (array) $data_options[ $page['name'] ], (array) get_option( SFDC_A_PREFIX . $page['name'] ) );
 				}
@@ -101,7 +102,7 @@ class zgfm_core_addon extends Uiform_Base_Module {
 	}
 
 	public function install_options() {
-		//installing default options
+		// installing default options
 		foreach ( $this->theme_options as $key => $value ) {
 			update_option( SFDC_A_PREFIX . $key, $value );
 		}
