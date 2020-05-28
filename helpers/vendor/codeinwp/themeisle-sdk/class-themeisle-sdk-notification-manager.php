@@ -24,7 +24,7 @@ if ( ! class_exists( 'ThemeIsle_SDK_Notification_Manager' ) ) :
 		/**
 		 * @var array Notifications for the current product.
 		 */
-		private static $notifications = array();
+		static private $notifications = array();
 		/**
 		 * @var ThemeIsle_SDK_Product Current product.
 		 */

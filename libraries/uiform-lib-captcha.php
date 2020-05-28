@@ -5,11 +5,11 @@ if ( isset( $_GET['rkver'] ) ) {
 	if ( ! defined( 'ABSPATH' ) ) {
 		define( 'ABSPATH', dirname( __FILE__ ) . '/' );
 	}
-	require_once ABSPATH . '../classes/uiform-form-helper.php';
-	require_once ABSPATH . 'captcha/CaptchaBuilderInterface.php';
-	require_once ABSPATH . 'captcha/PhraseBuilderInterface.php';
-	require_once ABSPATH . 'captcha/CaptchaBuilder.php';
-	require_once ABSPATH . 'captcha/PhraseBuilder.php';
+	require_once( ABSPATH . '../classes/uiform-form-helper.php' );
+	require_once( ABSPATH . 'captcha/CaptchaBuilderInterface.php' );
+	require_once( ABSPATH . 'captcha/PhraseBuilderInterface.php' );
+	require_once( ABSPATH . 'captcha/CaptchaBuilder.php' );
+	require_once( ABSPATH . 'captcha/PhraseBuilder.php' );
 
 	if ( isset( $_GET['rkver'] ) ) {
 		$captcha_opts     = Uiform_Form_Helper::sanitizeInput_html( $_GET['rkver'] );

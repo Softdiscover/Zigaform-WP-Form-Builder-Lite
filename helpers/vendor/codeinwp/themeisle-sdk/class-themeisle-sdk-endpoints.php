@@ -29,7 +29,7 @@ if ( ! class_exists( 'ThemeIsle_SDK_Endpoints' ) ) :
 		/**
 		 * @var ThemeIsle_SDK_Product $products Array of Themeisle Product.
 		 */
-		protected static $products = array();
+		static protected $products = array();
 
 		/**
 		 * ThemeIsle_SDK_Endpoints constructor.
@@ -101,16 +101,16 @@ if ( ! class_exists( 'ThemeIsle_SDK_Endpoints' ) ) :
 				$response['custom_css'] = $custom_css;
 			}
 
-			$response['child_theme'] = $this->get_theme_properties();
+			$response['child_theme']    = $this->get_theme_properties();
 
 			foreach ( $products as $product ) {
-				$files = array();
+				$files      = array();
 				switch ( $product->get_type() ) {
 					case 'plugin':
 						$files = array();
 						break;
 					case 'theme':
-						$files = array( 'style.css', 'functions.php' );
+						$files      = array( 'style.css', 'functions.php' );
 						break;
 				}
 
@@ -144,21 +144,21 @@ if ( ! class_exists( 'ThemeIsle_SDK_Endpoints' ) ) :
 				return false;
 			}
 
-			$properties = array();
-			$theme      = wp_get_theme();
+			$properties         = array();
+			$theme              = wp_get_theme();
 			// @codingStandardsIgnoreStart
 			$properties['name'] = $theme->Name;
 			// @codingStandardsIgnoreEnd
 
 			// get the files in the child theme.
-			require_once ABSPATH . 'wp-admin/includes/file.php';
+			require_once( ABSPATH . 'wp-admin/includes/file.php' );
 			WP_Filesystem();
 			global $wp_filesystem;
 			$path = str_replace( ABSPATH, $wp_filesystem->abspath(), get_stylesheet_directory() );
 			$list = $wp_filesystem->dirlist( $path, false, false );
 			if ( $list ) {
-				$list                = array_keys( self::flatten_dirlist( $list ) );
-				$properties['files'] = $list;
+				$list                   = array_keys( self::flatten_dirlist( $list ) );
+				$properties['files']    = $list;
 			}
 			return $properties;
 		}
@@ -213,7 +213,7 @@ if ( ! class_exists( 'ThemeIsle_SDK_Endpoints' ) ) :
 		 * @return string
 		 */
 		private function generate_diff( $product, $files, $recurse = false ) {
-			require_once ABSPATH . 'wp-admin/includes/file.php';
+			require_once( ABSPATH . 'wp-admin/includes/file.php' );
 			WP_Filesystem();
 			global $wp_filesystem;
 
@@ -296,9 +296,7 @@ if ( ! class_exists( 'ThemeIsle_SDK_Endpoints' ) ) :
 				$value = sanitize_text_field( $data[ $param ] );
 				if ( empty( $value ) ) {
 					return new WP_Error(
-						'themeisle_' . $param . '_invalid',
-						sprintf( 'Invalid %', $param ),
-						array(
+						'themeisle_' . $param . '_invalid', sprintf( 'Invalid %', $param ), array(
 							'status' => 403,
 						)
 					);

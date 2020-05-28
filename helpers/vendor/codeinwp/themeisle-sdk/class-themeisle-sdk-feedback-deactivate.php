@@ -7,11 +7,11 @@
  * @copyright   Copyright (c) 2017, Marius Cristea
  * @license     http://opensource.org/licenses/gpl-3.0.php GNU Public License
  * @since       1.0.0
- */
+ */ 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
-}
+} 
 if ( ! class_exists( 'ThemeIsle_SDK_Feedback_Deactivate' ) ) :
 	/**
 	 * Deactivate feedback model for ThemeIsle SDK.
@@ -29,8 +29,8 @@ if ( ! class_exists( 'ThemeIsle_SDK_Feedback_Deactivate' ) ) :
 				'placeholder' => 'What\'s the plugin\'s name?',
 			),
 			'I could not get the plugin to work' => array(
-				'id'          => 4,
-				'type'        => 'text',
+				'id' => 4,
+                                'type'        => 'text',
 				'placeholder' => 'What happened?',
 			),
 			'I no longer need the plugin'        => array(
@@ -123,10 +123,10 @@ if ( ! class_exists( 'ThemeIsle_SDK_Feedback_Deactivate' ) ) :
 		 */
 		public function setup_hooks_child() {
 			global $pagenow;
-
-			if ( ( $this->product->get_type() === 'plugin' && $pagenow === 'plugins.php' ) ||
-								( $this->product->get_type() === 'theme' && $pagenow === 'theme-install.php' ) ) {
-
+                                                
+			if ( ( $this->product->get_type() === 'plugin' && $pagenow === 'plugins.php' ) || 
+                                ( $this->product->get_type() === 'theme' && $pagenow === 'theme-install.php' ) ) {
+                             
 				add_action( 'admin_head', array( $this, 'load_resources' ) );
 			}
 			add_action( 'wp_ajax_' . $this->product->get_key() . __CLASS__, array( $this, 'post_deactivate' ) );
@@ -352,122 +352,122 @@ if ( ! class_exists( 'ThemeIsle_SDK_Feedback_Deactivate' ) ) :
 					right: 0 !important;
 					width: 600px !important;
 				}
-								
-								#sfdc_wpfeedback_inp_email_wrap{
-									padding-bottom: 20px;
-									padding-top: 10px;
-								}
-								
-								#sfdc_wpfeedback_inp_email_wrap span{
-									color:#ffa293;
-								}
-								#sfdc_wpfeedback_inp_email_wrap input{
-									margin-left:10px;
-									background-color: #fff;
-									background-image: none;
-									border: 1px solid #ccc;
-									border-radius: 4px;
-									box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-									color: #555;
-									
-									font-size: 14px;
-									height: 34px;
-									line-height: 1.42857;
-									padding: 6px 12px;
-									transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
-									width: 326px;
-									
-								}
-								#sfdc_wpfeedback_inp_email_wrap label{
-									font-size: 15px;
-									line-height: 0;
-									vertical-align: baseline;
-								}
-								
-								#sfdc-thickbox-loader-wrap{
-									  position: absolute;
-									  background:white;
-									  top:0;
-									  left:0;
-									  width:100%;
-									  height:100%;
-									  display:block;
-									   /* IE 8 */
-										-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+                                
+                                #sfdc_wpfeedback_inp_email_wrap{
+                                    padding-bottom: 20px;
+                                    padding-top: 10px;
+                                }
+                                
+                                #sfdc_wpfeedback_inp_email_wrap span{
+                                    color:#ffa293;
+                                }
+                                #sfdc_wpfeedback_inp_email_wrap input{
+                                    margin-left:10px;
+                                    background-color: #fff;
+                                    background-image: none;
+                                    border: 1px solid #ccc;
+                                    border-radius: 4px;
+                                    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+                                    color: #555;
+                                    
+                                    font-size: 14px;
+                                    height: 34px;
+                                    line-height: 1.42857;
+                                    padding: 6px 12px;
+                                    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+                                    width: 326px;
+                                    
+                                }
+                                #sfdc_wpfeedback_inp_email_wrap label{
+                                    font-size: 15px;
+                                    line-height: 0;
+                                    vertical-align: baseline;
+                                }
+                                
+                                #sfdc-thickbox-loader-wrap{
+                                      position: absolute;
+                                      background:white;
+                                      top:0;
+                                      left:0;
+                                      width:100%;
+                                      height:100%;
+                                      display:block;
+                                       /* IE 8 */
+                                        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
 
-										/* IE 5-7 */
-										filter: alpha(opacity=70);
+                                        /* IE 5-7 */
+                                        filter: alpha(opacity=70);
 
-										/* Netscape */
-										-moz-opacity: 0.7;
+                                        /* Netscape */
+                                        -moz-opacity: 0.7;
 
-										/* Safari 1.x */
-										-khtml-opacity: 0.7;
+                                        /* Safari 1.x */
+                                        -khtml-opacity: 0.7;
 
-										/* Good browsers */
-										opacity: 0.7;
-									   
-								}
-								.sfdc-thickbox-loading{
-									display: block;
-									position: absolute;
-									left: 50%;
-									top: 50%;
-									margin: -25px 0 0 -46px;
-									width: 80px;
-									padding: 10px;
-									  
-									box-shadow: inset 0 1px 0 rgba(255,255,255,0.3),
-												0 1px 3px rgba(0,0,0,0.3);
-									border: 1px solid #888;
-									border-radius: 5px;
-									text-align: center;
-									opacity: 0.8;
-									z-index: 1000;
-									
-									background: linear-gradient(to bottom, #555, #333);
-									border-color: #444;
-									border-bottom-color: #111;
-								}
-								.sfdc-thickbox-loading div{
-									 position: relative;
-									top: 2px;
-									text-transform: uppercase;
-									font: 10px/1.21 'Helvetica Neue', helvetica, arial, sans-serif;
-									letter-spacing: 0.04em;
-									color: #888;
-								}
-								
-								.sfdc-thickbox-spinner{
-								   display: inline-block;
-									width: 14px;
-									height: 14px;
-									border: 1px solid rgba(0,0,0,0.8);
-									  
-									border-radius: 50%;
-									-webkit-animation: rotate 600ms linear infinite;
-									-moz-animation: rotate 600ms linear infinite;
-									-ms-animation: rotate 600ms linear infinite;
-									animation: rotate 600ms linear infinite;
-									
-									border-color: rgba(255,255,255,0.8);
-		border-left-color: rgba(255,255,255,0.6);
-		border-bottom-color: rgba(255,255,255,0.4);
-		border-right-color: rgba(255,255,255,0.2);
-								}
-								
-									@-webkit-keyframes rotate {
-										0%    { transform: rotate(0deg); }
-										100%  { transform: rotate(360deg); }
-									}
-									@-moz-keyframes rotate {
-										0%    { transform: rotate(0deg); }
-										100%  { transform: rotate(360deg); }
-									}
-									@keyframes rotate {
-										0%    { transform: rotate(0deg); }
-										100%  { transform: rotate(360deg); }
-									}  
+                                        /* Good browsers */
+                                        opacity: 0.7;
+                                      
+                                }
+                                .sfdc-thickbox-loading{
+                                    display: block;
+                                    position: absolute;
+                                    left: 50%;
+                                    top: 50%;
+                                    margin: -25px 0 0 -46px;
+                                    width: 80px;
+                                    padding: 10px;
+                                     
+                                    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3),
+                                                0 1px 3px rgba(0,0,0,0.3);
+                                    border: 1px solid #888;
+                                    border-radius: 5px;
+                                    text-align: center;
+                                    opacity: 0.8;
+                                    z-index: 1000;
+                                    
+                                    background: linear-gradient(to bottom, #555, #333);
+                                    border-color: #444;
+                                    border-bottom-color: #111;
+                                }
+                                .sfdc-thickbox-loading div{
+                                     position: relative;
+                                    top: 2px;
+                                    text-transform: uppercase;
+                                    font: 10px/1.21 'Helvetica Neue', helvetica, arial, sans-serif;
+                                    letter-spacing: 0.04em;
+                                    color: #888;
+                                }
+                                
+                                .sfdc-thickbox-spinner{
+                                   display: inline-block;
+                                    width: 14px;
+                                    height: 14px;
+                                    border: 1px solid rgba(0,0,0,0.8);
+                                     
+                                    border-radius: 50%;
+                                    -webkit-animation: rotate 600ms linear infinite;
+                                    -moz-animation: rotate 600ms linear infinite;
+                                    -ms-animation: rotate 600ms linear infinite;
+                                    animation: rotate 600ms linear infinite;
+                                    
+                                    border-color: rgba(255,255,255,0.8);
+        border-left-color: rgba(255,255,255,0.6);
+        border-bottom-color: rgba(255,255,255,0.4);
+        border-right-color: rgba(255,255,255,0.2);
+                                }
+                                
+                                    @-webkit-keyframes rotate {
+                                        0%    { transform: rotate(0deg); }
+                                        100%  { transform: rotate(360deg); }
+                                    }
+                                    @-moz-keyframes rotate {
+                                        0%    { transform: rotate(0deg); }
+                                        100%  { transform: rotate(360deg); }
+                                    }
+                                    @keyframes rotate {
+                                        0%    { transform: rotate(0deg); }
+                                        100%  { transform: rotate(360deg); }
+                                    }  
 			</style>
 			<?php
 		}
@@ -490,13 +490,13 @@ if ( ! class_exists( 'ThemeIsle_SDK_Feedback_Deactivate' ) ) :
 						var target_element = 'tr[data-plugin^="<?php echo $this->product->get_slug(); ?>/"] span.deactivate a';
 						<?php
 						if ( 'theme' === $type ) {
-							?>
+						?>
 						auto_trigger = true;
 						if ($('a.ti-auto-anchor').length == 0) {
 							$('body').append($('<a class="ti-auto-anchor" href=""></a>'));
 						}
 						target_element = 'a.ti-auto-anchor';
-							<?php
+						<?php
 						}
 						?>
 
@@ -531,9 +531,9 @@ if ( ! class_exists( 'ThemeIsle_SDK_Feedback_Deactivate' ) ) :
 						});
 
 						$('#<?php echo $key; ?> ul.ti-list label, #<?php echo $key; ?> ul.ti-list input[name="ti-deactivate-option"]').on('click', function (e) {
-													
-													$('#sfdc_wpfeedback_inp_email_wrap').show();
-													
+                                                    
+                                                    $('#sfdc_wpfeedback_inp_email_wrap').show();
+                                                    
 							$('#<?php echo $key; ?>ti-deactivate-yes').val($('#<?php echo $key; ?>ti-deactivate-yes').attr('data-after-text'));
 
 							var radio = $(this).prop('tagName') === 'LABEL' ? $(this).parent() : $(this);
@@ -554,16 +554,16 @@ if ( ! class_exists( 'ThemeIsle_SDK_Feedback_Deactivate' ) ) :
 						$('#<?php echo $key; ?>ti-deactivate-yes').attr('data-ti-action', href).on('click', function (e) {
 							e.preventDefault();
 							e.stopPropagation();
-														
-													 var tmp_this=$(this);
-														
-														
-														$("#sfdc-thickbox-loader-wrap").show();
-														
+                                                        
+                                                     var tmp_this=$(this);
+                                                        
+                                                        
+                                                        $("#sfdc-thickbox-loader-wrap").show();
+                                                        
 							$.ajax({
 								url: ajaxurl,
 								method: 'post',
-																async : false,
+                                                                async : false,
 								data: {
 									'action': '<?php echo $key . __CLASS__; ?>',
 									'nonce': '<?php echo wp_create_nonce( (string) __CLASS__ ); ?>',
@@ -571,48 +571,48 @@ if ( ! class_exists( 'ThemeIsle_SDK_Feedback_Deactivate' ) ) :
 									'msg': $('#<?php echo $key; ?> input[name="ti-deactivate-option"]:checked').parent().find('textarea').val(),
 									'type': '<?php echo $type; ?>',
 									'key': '<?php echo $key; ?>',
-																		'email':$('#sfdc_wpfeedback_inp_email').val()
+                                                                        'email':$('#sfdc_wpfeedback_inp_email').val()
 								},
-																success: function (dataCheck) {
-																	
-																	$("#sfdc-thickbox-loader-wrap").hide();
-																	
-																	var thickbox_shown = ($('#TB_window').is(':visible')) ? true : false;
-																	if(thickbox_shown){
-																	  $('body').unbind('thickbox:removed');
-																							  tb_remove();
-																	}
-																	
-																	var redirect = tmp_this.attr('data-ti-action');
-																	if (redirect != '') {
-																			location.href = redirect;
-																	} else {
-																			$('body').unbind('thickbox:removed');
-																			tb_remove();
-																	}  
-												   
-																	
-																},
-																error: function (jqXHR, exception) {
-																	$("#sfdc-thickbox-loader-wrap").hide();
-																	
-																	var thickbox_shown = ($('#TB_window').is(':visible')) ? true : false;
-																	if(thickbox_shown){
-																	  $('body').unbind('thickbox:removed');
-																							  tb_remove();
-																	}
-																	
-																	var redirect = tmp_this.attr('data-ti-action');
-																	if (redirect != '') {
-																			location.href = redirect;
-																	} else {
-																			$('body').unbind('thickbox:removed');
-																			tb_remove();
-																	}  
-																}
+                                                                success: function (dataCheck) {
+                                                                    
+                                                                    $("#sfdc-thickbox-loader-wrap").hide();
+                                                                    
+                                                                    var thickbox_shown = ($('#TB_window').is(':visible')) ? true : false;
+                                                                    if(thickbox_shown){
+                                                                      $('body').unbind('thickbox:removed');
+                                                                                              tb_remove();
+                                                                    }
+                                                                    
+                                                                    var redirect = tmp_this.attr('data-ti-action');
+                                                                    if (redirect != '') {
+                                                                            location.href = redirect;
+                                                                    } else {
+                                                                            $('body').unbind('thickbox:removed');
+                                                                            tb_remove();
+                                                                    }  
+                                                  
+                                                                    
+                                                                },
+                                                                error: function (jqXHR, exception) {
+                                                                    $("#sfdc-thickbox-loader-wrap").hide();
+                                                                    
+                                                                    var thickbox_shown = ($('#TB_window').is(':visible')) ? true : false;
+                                                                    if(thickbox_shown){
+                                                                      $('body').unbind('thickbox:removed');
+                                                                                              tb_remove();
+                                                                    }
+                                                                    
+                                                                    var redirect = tmp_this.attr('data-ti-action');
+                                                                    if (redirect != '') {
+                                                                            location.href = redirect;
+                                                                    } else {
+                                                                            $('body').unbind('thickbox:removed');
+                                                                            tb_remove();
+                                                                    }  
+                                                                }
 							});
-												   
-													
+                                                  
+                                                   
 							
 						});
 
@@ -659,10 +659,10 @@ if ( ! class_exists( 'ThemeIsle_SDK_Feedback_Deactivate' ) ) :
 
 			$list = '';
 			foreach ( $options as $title => $attributes ) {
-				$id    = $attributes['id'];
+				$id   = $attributes['id'];
 				$list .= '<li ti-option-id="' . $id . '"><input type="radio" name="ti-deactivate-option" id="' . $key . $id . '"><label for="' . $key . $id . '">' . str_replace( '{theme}', $this->product->get_name(), $title ) . '</label>';
 				if ( array_key_exists( 'type', $attributes ) ) {
-					$list       .= '<div>';
+					$list        .= '<div>';
 					$placeholder = array_key_exists( 'placeholder', $attributes ) ? $attributes['placeholder'] : '';
 					switch ( $attributes['type'] ) {
 						case 'text':
@@ -676,36 +676,36 @@ if ( ! class_exists( 'ThemeIsle_SDK_Feedback_Deactivate' ) ) :
 				}
 				$list .= '</li>';
 			}
-
-					   $part   = '<div id="' . $this->product->get_key() . '">'
-				   . '<ul class="ti-list">' . $list . '</ul>';
-					   $part  .= '<div id="sfdc_wpfeedback_inp_email_wrap" style="display:none;">';
-						$part .= '<div class="form-group">';
-						$part .= '<label for="sfdc_wpfeedback_inp_email"> Email address</label>';
-						$part .= '<input class="" placeholder="Here your email" id="sfdc_wpfeedback_inp_email" type="text"> <span>(optional)</span>';
-						$part .= '</div>';
-						$part .= '</div>';
-
-						$loader          = '<div id="sfdc-thickbox-loader-wrap" style="display:none;">';
-						$loader         .= ' <div class="sfdc-thickbox-loading">';
-								$loader .= '<span class="sfdc-thickbox-spinner"></span>';
-								$loader .= '<div>loading</div>';
-						$loader         .= ' </div>';
-						$loader         .= '</div>';
-
-			return $part . '<div class="actions">'
+                        
+                            
+                        
+                       $part='<div id="' . $this->product->get_key() . '">'
+				   . '<ul class="ti-list">' . $list . '</ul>';     
+                       $part.='<div id="sfdc_wpfeedback_inp_email_wrap" style="display:none;">';
+                        $part.='<div class="form-group">';
+                        $part.='<label for="sfdc_wpfeedback_inp_email"> Email address</label>';
+                        $part.='<input class="" placeholder="Here your email" id="sfdc_wpfeedback_inp_email" type="text"> <span>(optional)</span>';
+                        $part.='</div>';  
+                        $part.='</div>';  
+                        
+                        $loader='<div id="sfdc-thickbox-loader-wrap" style="display:none;">';
+                        $loader.=' <div class="sfdc-thickbox-loading">';
+                                $loader.='<span class="sfdc-thickbox-spinner"></span>';
+                                $loader.='<div>loading</div>';
+                        $loader.=' </div>';
+                        $loader.='</div>';
+                                                
+                        
+                        
+			return $part  . '<div class="actions">'
 				. get_submit_button(
-					$button_submit,
-					'secondary',
-					$this->product->get_key() . 'ti-deactivate-yes',
-					false,
-					array(
+					$button_submit, 'secondary', $this->product->get_key() . 'ti-deactivate-yes', false, array(
 						'data-after-text' => $button_submit,
 						'disabled'        => true,
 					)
 				)
 				   . get_submit_button( $button_cancel, 'primary', $this->product->get_key() . 'ti-deactivate-no', false )
-				   . '</div></div>' . $loader;
+				   . '</div></div>'.$loader;
 		}
 
 		/**
@@ -713,22 +713,23 @@ if ( ! class_exists( 'ThemeIsle_SDK_Feedback_Deactivate' ) ) :
 		 */
 		function post_deactivate() {
 			check_ajax_referer( (string) __CLASS__, 'nonce' );
-
-			if ( ZIGAFORM_F_LITE === 1 ) {
-				$tmp_prod_code = 'zgfm_wp_builder_lite';
-			} else {
-				$tmp_prod_code = 'zgfm_wp_builder_pro';
-			}
-
+                        
+                        if(ZIGAFORM_F_LITE===1){
+                            $tmp_prod_code='zgfm_wp_builder_lite';
+                        }else{
+                            $tmp_prod_code='zgfm_wp_builder_pro';
+                        }
+                        
+                        
 			if ( ! empty( $_POST['id'] ) ) {
 				$this->call_api(
 					array(
-						'type'      => 'deactivate',
-						'id'        => $_POST['id'],
-						'email'     => $_POST['email'],
-						'prod_code' => $tmp_prod_code,
-						'version'   => UIFORM_VERSION,
-						'comment'   => isset( $_POST['msg'] ) ? $_POST['msg'] : '',
+						'type'    => 'deactivate',
+						'id'      => $_POST['id'],
+                                                'email'      => $_POST['email'],
+                                                'prod_code' => $tmp_prod_code,
+                                                'version' => UIFORM_VERSION,
+						'comment' => isset( $_POST['msg'] ) ? $_POST['msg'] : '',
 					)
 				);
 			}

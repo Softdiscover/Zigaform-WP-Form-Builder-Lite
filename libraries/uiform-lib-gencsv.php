@@ -2,9 +2,9 @@
 
 if ( isset( $_GET['rkopt'] ) ) {
 	$wp_abs_path = explode( 'wp-content', __FILE__ );
-	require_once $wp_abs_path[0] . 'wp-load.php';
-	require_once dirname( __FILE__ ) . '/' . '../helpers/exporttocsv.php';
-	require_once dirname( __FILE__ ) . '/' . '../classes/uiform-form-helper.php';
+	require_once( $wp_abs_path[0] . 'wp-load.php' );
+	require_once( dirname( __FILE__ ) . '/' . '../helpers/exporttocsv.php' );
+	require_once( dirname( __FILE__ ) . '/' . '../classes/uiform-form-helper.php' );
 
 	if ( isset( $_GET['rkopt'] ) && $_GET['rkopt'] === 'gencsv' ) {
 

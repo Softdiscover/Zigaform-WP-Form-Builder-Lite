@@ -44,7 +44,7 @@ if ( ! class_exists( 'ThemeIsle_SDK_Widget' ) ) :
 		/**
 		 * Abstract function for delegating to the child
 		 */
-		abstract protected function setup_hooks_child();
+		protected abstract function setup_hooks_child();
 
 	}
 endif;

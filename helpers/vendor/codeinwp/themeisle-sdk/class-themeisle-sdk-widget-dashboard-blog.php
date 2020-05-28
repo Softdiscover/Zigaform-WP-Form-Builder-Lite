@@ -53,8 +53,7 @@ if ( ! class_exists( 'ThemeIsle_SDK_Widget_Dashboard_Blog' ) ) :
 		function setup_vars() {
 			$this->dashboard_name = apply_filters( 'themeisle_sdk_dashboard_widget_name', 'WordPress Guides/Tutorials' );
 			$this->feeds          = apply_filters(
-				'themeisle_sdk_dashboard_widget_feeds',
-				array(
+				'themeisle_sdk_dashboard_widget_feeds', array(
 					'',
 				)
 			);
@@ -71,9 +70,7 @@ if ( ! class_exists( 'ThemeIsle_SDK_Widget_Dashboard_Blog' ) ) :
 				return;
 			}
 			wp_add_dashboard_widget(
-				'themeisle',
-				$this->dashboard_name,
-				array(
+				'themeisle', $this->dashboard_name, array(
 					&$this,
 					'render_dashboard_widget',
 				)
@@ -201,8 +198,7 @@ if ( ! class_exists( 'ThemeIsle_SDK_Widget_Dashboard_Blog' ) ) :
 							array(
 								'utm_campaign' => 'feed',
 								'utm_medium'   => 'dashboard_widget',
-							),
-							$item['link']
+							), $item['link']
 						);
 						?>
 						" target="_blank">
@@ -225,8 +221,7 @@ if ( ! class_exists( 'ThemeIsle_SDK_Widget_Dashboard_Blog' ) ) :
 					$url = add_query_arg(
 						array(
 							'theme' => $recommend['slug'],
-						),
-						network_admin_url( 'theme-install.php' )
+						), network_admin_url( 'theme-install.php' )
 					);
 
 					if ( 'plugin' === $type ) {
@@ -235,8 +230,7 @@ if ( ! class_exists( 'ThemeIsle_SDK_Widget_Dashboard_Blog' ) ) :
 							array(
 								'tab'    => 'plugin-information',
 								'plugin' => $recommend['slug'],
-							),
-							network_admin_url( 'plugin-install.php' )
+							), network_admin_url( 'plugin-install.php' )
 						);
 					}
 					?>
@@ -250,9 +244,7 @@ if ( ! class_exists( 'ThemeIsle_SDK_Widget_Dashboard_Blog' ) ) :
 								array(
 									'lite',
 									'Lite',
-								),
-								'',
-								$recommend['name']
+								), '', $recommend['name']
 							)
 						);
 						?>
