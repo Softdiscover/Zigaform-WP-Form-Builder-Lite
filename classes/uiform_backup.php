@@ -7,7 +7,6 @@ if ( class_exists( 'Uiform_Backup' ) ) {
 }
 
 class Uiform_Backup {
-
 	private $tables = array();
 	private $suffix = 'd-M-Y_H-i-s';
 	/**
@@ -16,7 +15,7 @@ class Uiform_Backup {
 	 * @mvc Controller
 	 */
 	public function __construct() {
-		 global $wpdb;
+		global $wpdb;
 		$this->wpdb = $wpdb;
 		define( 'nl', "\r\n" );
 	}
@@ -60,66 +59,96 @@ class Uiform_Backup {
 
 			/*Begin restore*/
 
-			$dir           = UIFORM_FORMS_DIR . '/backups/';
+				$dir       = UIFORM_FORMS_DIR . '/backups/';
 			$database_file = $dir . $file;
 
-			$database_name     = DB_NAME;
-			$database_user     = DB_USER;
-			$datadase_password = DB_PASSWORD;
-			$database_host     = DB_HOST;
+				$database_name     = DB_NAME;
+				$database_user     = DB_USER;
+				$datadase_password = DB_PASSWORD;
+				$database_host     = DB_HOST;
 
-			ini_set( 'max_execution_time', '5000' );
-			ini_set( 'max_input_time', '5000' );
-			ini_set( 'memory_limit', '1000M' );
-			set_time_limit( 0 );
+				ini_set( 'max_execution_time', '5000' );
+				ini_set( 'max_input_time', '5000' );
+				ini_set( 'memory_limit', '1000M' );
+				set_time_limit( 0 );
 
-			if ( ( trim( (string) $database_name ) != '' ) && ( trim( (string) $database_user ) != '' ) && ( trim( (string) $database_host ) != '' ) && ( $conn = @mysql_connect( (string) $database_host, (string) $database_user, (string) $datadase_password ) ) ) {
-				/*BEGIN: Select the Database*/
-				if ( ! mysql_select_db( (string) $database_name, $conn ) ) {
-					$sql = 'CREATE DATABASE IF NOT EXISTS `' . (string) $database_name . '`';
-					mysql_query( $sql, $conn );
-					mysql_select_db( (string) $database_name, $conn );
-				}
-				/*END: Select the Database*/
+			if ( ( trim( (string) $database_name ) != '' ) &&
+			( trim( (string) $database_user ) != '' ) &&
+			( trim( (string) $database_host ) != '' )
+			 ) {
 
-				/*BEGIN: Remove All Tables from the Database*/
-
-				require_once UIFORM_FORMS_DIR . '/classes/uiform-installdb.php';
-				$installdb  = new Uiform_InstallDB();
-				$dbTables   = array();
-				$dbTables[] = $installdb->form_history;
-				$dbTables[] = $installdb->form_fields;
-				$dbTables[] = $installdb->form_fields_type;
-				$dbTables[] = $installdb->form;
-				$dbTables[] = $installdb->settings;
-
-				if ( count( $dbTables ) > 0 ) {
-					foreach ( $dbTables as $table_name ) {
-
-						mysql_query( 'DROP TABLE `' . (string) $database_name . "`.{$table_name}", $conn );
+				if ( function_exists( 'mysqli_connect' ) ) {
+					$conn = mysqli_connect( (string) $database_host, (string) $database_user, (string) $datadase_password, (string) $database_name );
+					if ( mysqli_connect_errno() ) {
+						throw new Exception( 'ERROR connecting database: ' . mysqli_connect_error() );
+						die();
 					}
-				}
 
-				/*END: Remove All Tables from the Database*/
+					/**
+					 * Disable foreign key checks
+					 */
 
-				/*BEGIN: Restore Database Content*/
-				if ( isset( $database_file ) ) {
+						mysqli_query( $conn, 'SET foreign_key_checks = 0' );
 
-					$sql_file = file_get_contents( $database_file, true );
+					$sql = 'CREATE DATABASE IF NOT EXISTS \`' . (string) $database_name . '\`';
 
-					$sql_file    = strtr(
-						$sql_file,
-						array(
-							"\r\n" => "\n",
-							"\r"   => "\n",
-						)
-					);
-					$sql_queries = explode( ";\n", $sql_file );
+					mysqli_query( $conn, $sql );
 
-					for ( $i = 0; $i < count( $sql_queries ); $i++ ) {
+						/*END: Select the Database*/
 
-						@mysql_query( $sql_queries[ $i ], $conn );
+					/*BEGIN: Remove All Tables from the Database*/
+					/*END: Remove All Tables from the Database*/
 
+					/*BEGIN: Restore Database Content*/
+					if ( isset( $database_file ) ) {
+
+						$sql_file = file_get_contents( $database_file, true );
+
+						$sql_file    = strtr(
+							$sql_file,
+							array(
+								"\r\n" => "\n",
+								"\r"   => "\n",
+							)
+						);
+						$sql_queries = explode( ";\n", $sql_file );
+
+						for ( $i = 0; $i < count( $sql_queries ); $i++ ) {
+
+							mysqli_query( $conn, $sql_queries[ $i ] );
+						}
+					}
+				} elseif ( $conn = @mysql_connect( (string) $database_host, (string) $database_user, (string) $datadase_password ) ) {
+
+						/*BEGIN: Select the Database*/
+					if ( ! mysql_select_db( (string) $database_name, $conn ) ) {
+						$sql = 'CREATE DATABASE IF NOT EXISTS \`' . (string) $database_name . '\`';
+						mysql_query( $sql, $conn );
+						mysql_select_db( (string) $database_name, $conn );
+					}
+					/*END: Select the Database*/
+
+					/*BEGIN: Remove All Tables from the Database*/
+					/*END: Remove All Tables from the Database*/
+
+					/*BEGIN: Restore Database Content*/
+					if ( isset( $database_file ) ) {
+
+						$sql_file = file_get_contents( $database_file, true );
+
+						$sql_file    = strtr(
+							$sql_file,
+							array(
+								"\r\n" => "\n",
+								"\r"   => "\n",
+							)
+						);
+						$sql_queries = explode( ";\n", $sql_file );
+
+						for ( $i = 0; $i < count( $sql_queries ); $i++ ) {
+
+							@mysql_query( $sql_queries[ $i ], $conn );
+						}
 					}
 				}
 			}
@@ -131,48 +160,53 @@ class Uiform_Backup {
 			die( $exception->getMessage() );
 		}
 	}
-	public function makeDbBackup( $name = '' ) {
+	function makeDbBackup( $name = '' ) {
 		require_once UIFORM_FORMS_DIR . '/classes/uiform-installdb.php';
-		$installdb    = new Uiform_InstallDB();
-		$dbTables     = array();
-		$dbTables[]   = $installdb->form;
-		$dbTables[]   = $installdb->form_history;
-		$dbTables[]   = $installdb->form_fields_type;
-		$dbTables[]   = $installdb->form_fields;
-		$dbTables[]   = $installdb->settings;
+		$installdb  = new Uiform_InstallDB();
+		$dbTables   = array();
+		$dbTables[] = $installdb->form;
+		$dbTables[] = $installdb->form_history;
+		$dbTables[] = $installdb->form_fields_type;
+		$dbTables[] = $installdb->form_fields;
+		$dbTables[] = $installdb->settings;
+		$dbTables[] = $installdb->pay_gateways;
+		$dbTables[] = $installdb->pay_records;
+		$dbTables[] = $installdb->pay_logs;
+		// $dbTables[]=$installdb->visitor;
+		// $dbTables[]=$installdb->visitor_error;
 		$this->tables = $dbTables;
 
-		$dump     = '';
-		$database = DB_NAME;
-		$server   = DB_HOST;
-		$dump    .= '-- --------------------------------------------------------------------------------' . nl;
-		$dump    .= '-- ' . nl;
-		$dump    .= '-- @version: ' . $database . '.sql ' . date( 'M j, Y' ) . ' ' . date( 'H:i' ) . ' Softdiscover' . nl;
-		$dump    .= '-- @package Uiform - WordPress Form Builder' . nl;
-		$dump    .= '-- @author softdiscover.com.' . nl;
-		$dump    .= '-- @copyright 2015' . nl;
-		$dump    .= '-- ' . nl;
-		$dump    .= '-- --------------------------------------------------------------------------------' . nl;
-		$dump    .= '-- Host: ' . $server . nl;
-		$dump    .= '-- Database: ' . $database . nl;
-		$dump    .= '-- Time: ' . date( 'M j, Y' ) . '-' . date( 'H:i' ) . nl;
-		$dump    .= '-- MySQL version: ' . Uiform_Form_Helper::mysql_version() . nl;
-		$dump    .= '-- PHP version: ' . phpversion() . nl;
-		$dump    .= '-- --------------------------------------------------------------------------------' . nl . nl;
+		  $dump       = '';
+			$database = DB_NAME;
+			$server   = DB_HOST;
+		  $dump      .= '-- --------------------------------------------------------------------------------' . nl;
+		  $dump      .= '-- ' . nl;
+		  $dump      .= '-- @version: ' . $database . '.sql ' . date( 'M j, Y' ) . ' ' . date( 'H:i' ) . ' Softdiscover' . nl;
+		  $dump      .= '-- @package Uiform - WordPress Cost Estimation & Payment' . nl;
+		  $dump      .= '-- @author softdiscover.com.' . nl;
+		  $dump      .= '-- @copyright 2015' . nl;
+		  $dump      .= '-- ' . nl;
+		  $dump      .= '-- --------------------------------------------------------------------------------' . nl;
+		  $dump      .= '-- Host: ' . $server . nl;
+		  $dump      .= '-- Database: ' . $database . nl;
+		  $dump      .= '-- Time: ' . date( 'M j, Y' ) . '-' . date( 'H:i' ) . nl;
+		  $dump      .= '-- MySQL version: ' . Uiform_Form_Helper::mysql_version() . nl;
+		  $dump      .= '-- PHP version: ' . phpversion() . nl;
+		  $dump      .= '-- --------------------------------------------------------------------------------' . nl . nl;
 
-		$dump .= 'DROP TABLE IF EXISTS `' . $installdb->form_history . '`;' . nl;
-		$dump .= 'DROP TABLE IF EXISTS `' . $installdb->form_fields . '`;' . nl;
-		$dump .= 'DROP TABLE IF EXISTS `' . $installdb->form_fields_type . '`;' . nl;
-		$dump .= 'DROP TABLE IF EXISTS `' . $installdb->form . '`;' . nl;
-		$dump .= 'DROP TABLE IF EXISTS `' . $installdb->settings . '`;' . nl;
+		  $dump .= 'DROP TABLE IF EXISTS `' . $installdb->form_history . '`;' . nl;
+		  $dump .= 'DROP TABLE IF EXISTS `' . $installdb->form_fields . '`;' . nl;
+		  $dump .= 'DROP TABLE IF EXISTS `' . $installdb->form_fields_type . '`;' . nl;
+		  $dump .= 'DROP TABLE IF EXISTS `' . $installdb->form . '`;' . nl;
+		  $dump .= 'DROP TABLE IF EXISTS `' . $installdb->settings . '`;' . nl;
 
-		$database = DB_NAME;
+		  $database = DB_NAME;
 		if ( ! empty( $database ) ) {
 			$dump .= '#' . nl;
 			$dump .= '# Database: `' . $database . '`' . nl;
 		}
-		$dump  .= '#' . nl . nl . nl;
-		$tables = $this->getTables();
+		  $dump  .= '#' . nl . nl . nl;
+		  $tables = $this->getTables();
 		if ( ! empty( $tables ) ) {
 			foreach ( $this->tables as $key => $table ) {
 				if ( intval( $key ) === 0 ) {
@@ -188,17 +222,17 @@ class Uiform_Backup {
 			}
 		}
 
-		$fname  = UIFORM_FORMS_DIR . '/backups/';
-		$fname .= ( ! empty( $name ) ) ? $name : date( $this->suffix );
-		$fname .= '.sql';
+		  $fname      = UIFORM_FORMS_DIR . '/backups/';
+			  $fname .= ( ! empty( $name ) ) ? $name : date( $this->suffix );
+			  $fname .= '.sql';
 		if ( ! ( $f = fopen( $fname, 'w' ) ) ) {
 			return false;
 		}
-		fwrite( $f, $dump );
-		fclose( $f );
+			  fwrite( $f, $dump );
+			  fclose( $f );
 	}
 
-	public function getTables() {
+	function getTables() {
 		$value = array();
 		if ( ! ( $result = $this->wpdb->get_results( 'SHOW TABLES' ) ) ) {
 			return false;
@@ -206,7 +240,7 @@ class Uiform_Backup {
 		foreach ( $result as $mytable ) {
 			foreach ( $mytable as $t ) {
 				if ( in_array( $t, $this->tables ) ) {
-					$value[] = $t;
+					 $value[] = $t;
 				}
 			}
 		}
@@ -218,9 +252,10 @@ class Uiform_Backup {
 
 	}
 
-	public function dumpTable( $table, $flag = false ) {
-		// $dump = '';
-		$this->wpdb->query( 'LOCK TABLES ' . $table . ' WRITE' );
+
+	function dumpTable( $table, $flag = false ) {
+		 // $dump = '';
+		  $this->wpdb->query( 'LOCK TABLES ' . $table . ' WRITE' );
 
 		// $tables = $this->wpdb->get_col('SHOW TABLES');
 		$output = '';
@@ -234,12 +269,12 @@ class Uiform_Backup {
 				return false;
 			}
 		}
-		$output .= '-- --------------------------------------------------' . nl;
-		$output .= '# -- Table structure for table `' . $table . '`' . nl;
-		$output .= '-- --------------------------------------------------' . nl;
-		$output .= 'DROP TABLE IF EXISTS `' . $table . '`;' . nl;
-		$row2    = $this->wpdb->get_row( 'SHOW CREATE TABLE ' . $table, ARRAY_N );
-		$output .= "\n\n" . $row2[1] . ";\n\n";
+				$output .= '-- --------------------------------------------------' . nl;
+		  $output       .= '# -- Table structure for table `' . $table . '`' . nl;
+		  $output       .= '-- --------------------------------------------------' . nl;
+		  $output       .= 'DROP TABLE IF EXISTS `' . $table . '`;' . nl;
+		$row2            = $this->wpdb->get_row( 'SHOW CREATE TABLE ' . $table, ARRAY_N );
+		$output         .= "\n\n" . $row2[1] . ";\n\n";
 		for ( $i = 0; $i < count( $result ); $i++ ) {
 			$row     = $result[ $i ];
 			$output .= 'INSERT INTO ' . $table . ' VALUES(';
@@ -255,40 +290,42 @@ class Uiform_Backup {
 		$output .= "\n";
 		// }
 
-		$this->wpdb->query( 'UNLOCK TABLES' );
-		return $output;
+		  $this->wpdb->query( 'UNLOCK TABLES' );
+		  return $output;
 	}
 
-	public function insert( $table ) {
-		$output = '';
+	function insert( $table ) {
+			 $output = '';
 		if ( ! $query = $this->wpdb->get_results( 'SELECT * FROM `' . $table . '`' ) ) {
-			return false;
+				return false;
 		}
 		foreach ( $query as $result ) {
-			$fields = '';
+				$fields = '';
 
 			foreach ( array_keys( (array) $result ) as $value ) {
-				$fields .= '`' . $value . '`, ';
+					$fields .= '`' . $value . '`, ';
 			}
-			$values = '';
+				$values = '';
 
 			foreach ( array_values( (array) $result ) as $value ) {
-				/*
-				$value = str_replace(array("\x00", "\x0a", "\x0d", "\x1a"), array('\0', '\n', '\r', '\Z'), $value);
-				$value = str_replace(array("\n", "\r", "\t"), array('\n', '\r', '\t'), $value);
-				$value = str_replace('\\', '\\\\', $value);
-				$value = str_replace('\'', '\\\'', $value);
-				$value = str_replace('\\\n', '\n', $value);
-				$value = str_replace('\\\r', '\r', $value);
-				$value = str_replace('\\\t', '\t', $value);*/
+					/*
+					$value = str_replace(array("\x00", "\x0a", "\x0d", "\x1a"), array('\0', '\n', '\r', '\Z'), $value);
+					$value = str_replace(array("\n", "\r", "\t"), array('\n', '\r', '\t'), $value);
+					$value = str_replace('\\', '\\\\', $value);
+					$value = str_replace('\'', '\\\'', $value);
+					$value = str_replace('\\\n', '\n', $value);
+					$value = str_replace('\\\r', '\r', $value);
+					$value = str_replace('\\\t', '\t', $value);*/
 
-				$values .= '\'' . $value . '\', ';
+					$values .= '\'' . $value . '\', ';
 			}
 
-			$output .= 'INSERT INTO `' . $table . '` (' . preg_replace( '/, $/', '', $fields ) . ') VALUES (' . preg_replace( '/, $/', '', $values ) . ');' . "\n";
+				$output .= 'INSERT INTO `' . $table . '` (' . preg_replace( '/, $/', '', $fields ) . ') VALUES (' . preg_replace( '/, $/', '', $values ) . ');' . "\n";
 
 		}
-		return $output;
+			return $output;
 	}
 
+
 }
+

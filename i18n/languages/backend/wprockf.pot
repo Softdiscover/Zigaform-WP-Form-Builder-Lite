@@ -1,8 +1,8 @@
-# Copyright (C) 2020 Zigaform WP Form Builder 4.8.0
-# This file is distributed under the same license as the Zigaform WP Form Builder 4.8.0 package.
+# Copyright (C) 2020 Zigaform WP Form Builder 4.8.3
+# This file is distributed under the same license as the Zigaform WP Form Builder 4.8.3 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zigaform WP Form Builder 4.8.0\n"
+"Project-Id-Version: Zigaform WP Form Builder 4.8.3\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -425,63 +425,63 @@ msgstr ""
 msgid "I already did"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:215
+#: modules/addon_func_anim/controllers/animation.php:228
 msgid "Customs"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:240
+#: modules/addon_func_anim/controllers/animation.php:253
 msgid "Attention Seekers"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:277
+#: modules/addon_func_anim/controllers/animation.php:290
 msgid "Bouncing Entrances"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:303
+#: modules/addon_func_anim/controllers/animation.php:316
 msgid "Bouncing Exits"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:329
+#: modules/addon_func_anim/controllers/animation.php:342
 msgid "Fading Entrances"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:371
+#: modules/addon_func_anim/controllers/animation.php:384
 msgid "Fading Exits"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:412
+#: modules/addon_func_anim/controllers/animation.php:425
 msgid "Flippers"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:437
+#: modules/addon_func_anim/controllers/animation.php:450
 msgid "Lightspeed"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:450
+#: modules/addon_func_anim/controllers/animation.php:463
 msgid "Rotating Entrances"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:475
+#: modules/addon_func_anim/controllers/animation.php:488
 msgid "Rotating Exits"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:500
+#: modules/addon_func_anim/controllers/animation.php:513
 msgid "Specials"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:517
+#: modules/addon_func_anim/controllers/animation.php:530
 msgid "Zoom Entrances"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:542
+#: modules/addon_func_anim/controllers/animation.php:555
 msgid "Zoom Exits"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:567
+#: modules/addon_func_anim/controllers/animation.php:580
 msgid "Slide Entrances"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:588
+#: modules/addon_func_anim/controllers/animation.php:601
 msgid "Slide Exits"
 msgstr ""
 
@@ -517,15 +517,15 @@ msgstr ""
 msgid "Error! User has no permission to edit this form"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:979
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:945
 msgid "Error on saving form"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1068
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1070
 msgid "Order summary"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1438
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1440
 msgid "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 msgstr ""
 
@@ -669,7 +669,7 @@ msgstr ""
 msgid "To form values"
 msgstr ""
 
-#: modules/addon_webhook/views/backend/get_content.php:93, modules/addon_webhook/views/backend/get_content.php:132, modules/formbuilder/views/forms/ajax_rollback_openmodal.php:34, modules/formbuilder/views/forms/create_form.php:199, modules/formbuilder/views/forms/list_forms_table.php:41, modules/formbuilder/views/records/list_records.php:38, modules/formbuilder/views/records/list_records_getdatatable.php:25, modules/formbuilder/views/settings/backup_settings.php:69, modules/formbuilder/views/fields/modal/field_opt_column.php:44, modules/formbuilder/views/fields/modal/field_opt_text.php:44, modules/formbuilder/views/fields/modal/settings_field_input_2.php:115
+#: modules/addon_webhook/views/backend/get_content.php:93, modules/addon_webhook/views/backend/get_content.php:132, modules/formbuilder/views/forms/ajax_rollback_openmodal.php:34, modules/formbuilder/views/forms/create_form.php:190, modules/formbuilder/views/forms/list_forms_table.php:41, modules/formbuilder/views/records/list_records.php:38, modules/formbuilder/views/records/list_records_getdatatable.php:25, modules/formbuilder/views/settings/backup_settings.php:69, modules/formbuilder/views/fields/modal/field_opt_column.php:44, modules/formbuilder/views/fields/modal/field_opt_text.php:44, modules/formbuilder/views/fields/modal/settings_field_input_2.php:115
 msgid "Options"
 msgstr ""
 
@@ -725,7 +725,7 @@ msgstr ""
 msgid "Created"
 msgstr ""
 
-#: modules/formbuilder/views/forms/ajax_rollback_openmodal.php:51, modules/formbuilder/views/forms/create_form.php:204
+#: modules/formbuilder/views/forms/ajax_rollback_openmodal.php:51, modules/formbuilder/views/forms/create_form.php:195
 msgid "Rollback"
 msgstr ""
 
@@ -837,39 +837,39 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:180
+#: modules/formbuilder/views/forms/create_form.php:171
 msgid "Dev Options"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:185
+#: modules/formbuilder/views/forms/create_form.php:176
 msgid "test"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:187
+#: modules/formbuilder/views/forms/create_form.php:178
 msgid "Show data"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:189
+#: modules/formbuilder/views/forms/create_form.php:180
 msgid "Generate field static data"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:206, modules/formbuilder/views/forms/settings_form_email.php:490, modules/formbuilder/views/forms/settings_form_email.php:497
+#: modules/formbuilder/views/forms/create_form.php:197, modules/formbuilder/views/forms/settings_form_email.php:490, modules/formbuilder/views/forms/settings_form_email.php:497
 msgid "Variables"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:209
+#: modules/formbuilder/views/forms/create_form.php:200
 msgid "C.Logic Graph"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:212
+#: modules/formbuilder/views/forms/create_form.php:203
 msgid "Refresh & Clean Form"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:222
+#: modules/formbuilder/views/forms/create_form.php:213
 msgid "preview"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form.php:231
+#: modules/formbuilder/views/forms/create_form.php:222
 msgid "Save form"
 msgstr ""
 

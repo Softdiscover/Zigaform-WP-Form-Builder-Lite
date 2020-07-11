@@ -42,7 +42,7 @@ if ( isset( $input18['pane_background']['show_st'] )
 				<?php } ?>
 	   <?php } else { ?>
 	
-	padding:10px;
+
 <?php } ?>                    
 								
 		<?php
@@ -100,7 +100,7 @@ if ( isset( $input18['pane_background']['show_st'] )
 				<?php
 			} else {
 				?>
-			
+				padding:10px;
 			<?php } ?>    
 			
 		 <?php

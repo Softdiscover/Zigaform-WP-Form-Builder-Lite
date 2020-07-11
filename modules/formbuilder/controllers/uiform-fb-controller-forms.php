@@ -823,27 +823,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 				);
 
 				 // process addons
-				if ( ! empty( self::$_addons_actions ) ) {
-					foreach ( self::$_addons_actions as $zkey => $zvalue ) {
-
-						if ( strval( $zkey ) === 'saveForm_store' ) {
-							foreach ( $zvalue as $zkey2 => $zvalue2 ) {
-								foreach ( $zvalue2 as $zkey3 => $zvalue3 ) {
-									// call_user_func(array(self::$_addons[$zkey3][$zvalue3['controller']], $zvalue3['function']),$json['id'], $value['data'],$fmb_data);
-
-									self::$_addons[ $zkey3 ][ $zvalue3['controller'] ]->saveData( $json['id'], $fmb_data );
-								}
-							}
-						}
-						/*
-						if(isset(self::$_addons[$key][$value['controller']])){
-							//call_user_func(array(self::$_addons[$key][$value['controller']] , 'saveData'));
-							self::$_addons[$key][$value['controller']]->saveData($json['id'], $value['data'],$fmb_data);
-
-
-						}*/
-					}
-				}
+				$fmb_data = apply_filters('zgfm_saveForm_store', $fmb_data, $json['id']); 
 
 				// all data fields
 				$this->current_data_addon    = $fmb_data['addons'];
@@ -931,21 +911,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 				}
 
 				// process addons
-				if ( ! empty( self::$_addons_actions ) ) {
-					foreach ( self::$_addons_actions as $zkey => $zvalue ) {
-
-						if ( strval( $zkey ) === 'OnSaveForm_saveLog' ) {
-							foreach ( $zvalue as $zkey2 => $zvalue2 ) {
-								foreach ( $zvalue2 as $zkey3 => $zvalue3 ) {
-
-									if ( isset( $this->current_data_addon[ $zkey3 ]['data'] ) ) {
-										self::$_addons[ $zkey3 ][ $zvalue3['controller'] ]->saveLog( $json['id'], $save_log_st, $log_lastid, $this->current_data_addon[ $zkey3 ]['data'] );
-									}
-								}
-							}
-						}
-					}
-				}
+				 //do_action('zgfm_OnSaveForm_saveLog', $json['id'], $save_log_st, $log_lastid, $this->current_data_addon[ 'OnSaveForm_saveLog' ]['data']);
 
 				// checking errors
 				$output_error = ob_get_contents();
@@ -997,19 +963,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 		$data['addon_extraclass'] = '';
 
 		// process addons
-		if ( ! empty( self::$_addons_actions ) ) {
-			foreach ( self::$_addons_actions as $zkey => $zvalue ) {
-
-				if ( strval( $zkey ) === 'field_addon_extraclass' ) {
-					foreach ( $zvalue as $zkey2 => $zvalue2 ) {
-						foreach ( $zvalue2 as $zkey3 => $zvalue3 ) {
-
-									  self::$_addons[ $zkey3 ][ $zvalue3['controller'] ]->getExtraDataField( $data );
-						}
-					}
-				}
-			}
-		}
+		$data = apply_filters('zgfm_field_addon_extraclass', $data);
 
 		switch ( intval( $child_field['type'] ) ) {
 			case 6:
@@ -2397,7 +2351,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 		$json['data']        = $data_form;
 
 		// temp
-		$tmp_addon_names = self::$_models['addon']['addon']->getActiveAddonsNamesOnBack( $form_id );
+		/*$tmp_addon_names = self::$_models['addon']['addon']->getActiveAddonsNamesOnBack( $form_id );
 
 		$tmp_addon = array();
 
@@ -2408,7 +2362,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 			}
 		}
 
-		$json['addons'] = $tmp_addon;
+		$json['addons'] = $tmp_addon;*/
 
 		header( 'Content-Type: application/json' );
 		echo json_encode( $json );
@@ -2541,7 +2495,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 			$data['uifm_frm_record_tpl_enable']=$formdata->fmb_rec_tpl_st;
 			$data['uifm_frm_record_tpl_content']=$formdata->fmb_rec_tpl_html;*/
 		}
-		$data['addons_actions'] = self::$_addons_actions;
+		
 		$pdf_paper_size         = array(
 			'4a0'                      => array( 0, 0, 4767.87, 6740.79 ),
 			'2a0'                      => array( 0, 0, 3370.39, 4767.87 ),
@@ -2605,7 +2559,8 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 
 		$data['fields_fastload'] = get_option( 'zgfm_fields_fastload', 0 );
 
-		$data['modules_tab_extension'] = self::$_modules['addon']['backend']->addons_doActions( 'back_exttab_block', true );
+		//$data['modules_tab_extension'] = self::$_modules['addon']['backend']->addons_doActions( 'back_exttab_block', true );
+		$data['modules_tab_extension'] = apply_filters( 'zgfm_back_exttab_block', array() );
 		echo self::loadPartial( 'layout_editform.php', 'formbuilder/views/forms/create_form.php', $data );
 	}
 

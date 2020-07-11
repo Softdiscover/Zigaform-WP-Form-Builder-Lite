@@ -8,15 +8,3 @@
 #uiformc-menu-sec7 .sfdc-nav-tabs li.sfdc-active a {
 	background: #fff !important;
 }
-
-#uiformc-menu-sec7 .tabs-left > li,
-.tabs-right > li {
-	float: none !important;
-	margin: 0 !important;
-}
-
-#uiformc-menu-sec7 .tabs-left > li a,
-.tabs-right > li a {
-	border: none !important;
-	margin: 0px !important;
-}

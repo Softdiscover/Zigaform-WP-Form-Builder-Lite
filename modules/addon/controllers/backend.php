@@ -54,7 +54,7 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module {
 		add_action( 'admin_enqueue_scripts', array( &$this, 'loadStyle' ), 20, 1 );
 
 		add_filter( 'zgfm_back_filter_globalvars', array( &$this, 'filter_add_globalvariable' ) );
-
+		
 		// ajax for saving form
 		add_action( 'wp_ajax_rocket_fbuilder_addon_status', array( &$this, 'listaddon_updateStatus' ) );
 	}
@@ -87,7 +87,7 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module {
 	}
 
 	public function filter_add_globalvariable( $value ) {
-		$value['addon'] = self::$_addons_jsactions;
+		/*$value['addon'] = self::$_addons_jsactions;*/
 		return $value;
 	}
 
@@ -105,7 +105,7 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module {
 
 	public function loadStyle() {
 		// load
-		wp_enqueue_script( 'zgfm_back_addon_js', UIFORM_FORMS_URL . '/modules/addon/views/backend/assets/back-addon.js' );
+		wp_enqueue_script( 'zgfm_back_addon_js', UIFORM_FORMS_URL . '/modules/addon/views/backend/assets/back-addon.js', array(), (UIFORM_DEBUG) ? date('YmdHis'):1 , true );
 
 		wp_enqueue_style( 'zgfm_back_addon_css', UIFORM_FORMS_URL . '/modules/addon/views/backend/assets/back-addon.css' );
 	}
@@ -114,7 +114,7 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module {
 
 		// get addons
 		$tmp_addons = $this->model_addon->getListAddonsByBack();
-
+		
 		// flag variables
 		$tmp_addons_arr  = array();
 		$tmp_modules_arr = self::$_addons;
@@ -124,7 +124,9 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module {
 
 			// load addons
 			require_once UIFORM_FORMS_DIR . '/modules/addon_' . $value->add_name . '/controllers/backend.php';
-
+			call_user_func( array( 'zfaddn_' . $value->add_name . '_back', 'get_instance' ) );
+			
+			/*
 			$tmp_add_new_contr = array();
 
 			$tmp_add_new_contr['backend'] = call_user_func( array( 'zfaddn_' . $value->add_name . '_back', 'get_instance' ) );
@@ -134,7 +136,7 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module {
 
 			$tmp_add_new_contr = array_merge( $tmp_add_new_contr, $tmp_add_new_flag );
 
-			self::$_addons[ $value->add_name ] = $tmp_add_new_contr;
+			self::$_addons[ $value->add_name ] = $tmp_add_new_contr;*/
 
 		}
 
@@ -144,33 +146,11 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module {
 
 		$tmp_addons = self::$_addons;
 
-		$tmp_addons_actions = array();
+ 
 
-		/*
-		pending to add cache*/
-		// loop addons
-		foreach ( $tmp_addons as $key => $value ) {
-			// loop controllers
-			foreach ( $value as $key2 => $value2 ) {
-
-				$tmp_flag = array();
-				$tmp_flag = $value2->local_back_actions;
-
-				if ( ! empty( $tmp_flag ) ) {
-					foreach ( $tmp_flag as $key3 => $value3 ) {
-						$tmp_addons_actions[ $value3['action'] ][ $value3['priority'] ][ $key ] = array(
-							'function'      => $value3['function'],
-							'accepted_args' => $value3['accepted_args'],
-							'controller'    => $key2,
-
-						);
-					}
-				}
-			}
-		}
-
-		self::$_addons_actions = $tmp_addons_actions;
-
+		//self::$_addons_actions = $tmp_addons_actions;
+		self::$_addons_actions = apply_filters( 'zgfm_addons_actions', array() );
+		
 		// add js actions
 		$tmp_addons_actions = array();
 
@@ -198,6 +178,8 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module {
 		}
 
 		self::$_addons_jsactions = $tmp_addons_actions;
+		//self::$_addons_jsactions = apply_filters( 'zgfm_addons_actions', array() );
+		 
 
 	}
 

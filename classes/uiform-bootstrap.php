@@ -634,7 +634,7 @@ JS;
 		$this->modules['addon']['frontend']->load_addonsByFront();
 
 		// add addon routes
-		$this->modules['addon']['frontend']->load_addActions();
+		//$this->modules['addon']['frontend']->load_addActions();
 	}
 
 	public function wphidenag() {
@@ -1010,7 +1010,7 @@ JS;
 			wp_register_script(
 				self::PREFIX . 'admin',
 				UIFORM_FORMS_URL . '/assets/backend/js/admin.debug.js?v=' . date( 'YmdHis' ),
-				array( 'rockefform-bootstrap-sfdc' ),
+				array( 'rockefform-bootstrap-sfdc', 'wp-i18n', 'wp-hooks' ),
 				UIFORM_VERSION,
 				true
 			);
@@ -1018,7 +1018,7 @@ JS;
 			wp_register_script(
 				self::PREFIX . 'admin',
 				UIFORM_FORMS_URL . '/assets/backend/js/admin.min.js',
-				array( 'rockefform-bootstrap-sfdc' ),
+				array( 'rockefform-bootstrap-sfdc' , 'wp-i18n', 'wp-hooks'),
 				UIFORM_VERSION,
 				true
 			);
