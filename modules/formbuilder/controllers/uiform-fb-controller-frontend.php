@@ -1276,21 +1276,20 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 
 		wp_register_script( 'rockefform-prev-jquery', UIFORM_FORMS_URL . '/assets/common/js/init.js', array( 'jquery' ) );
 		wp_enqueue_script( 'rockefform-prev-jquery' );
+
+		wp_register_script( 'zgfm-wp-i18n', site_url().'/wp-includes/js/dist/i18n.min.js', array());
+		wp_enqueue_script( 'zgfm-wp-i18n' );
+ 
+		wp_register_script( 'zgfm-wp-hooks', site_url().'/wp-includes/js/dist/hooks.min.js', array());
+		wp_enqueue_script( 'zgfm-wp-hooks' );
+				
 		// load resources
 		$this->load_form_resources();
 
 		// load rocket form
 		wp_enqueue_script( self::PREFIX . 'rockfm_js_global' );
-
-		$data_addon_front = self::$_addons;
-		if ( ! empty( $data_addon_front ) ) {
-			foreach ( $data_addon_front as $key => $value ) {
-				foreach ( $value as $key2 => $value2 ) {
-					@call_user_func( array( $data_addon_front[ $key ][ $key2 ], 'loadStyleOnFront' ) );
-				}
-			}
-		}
-
+		do_action('wp_enqueue_scripts');
+		 
 		$result            = array();
 		$result['scripts'] = array();
 		$result['styles']  = array();
@@ -1305,9 +1304,18 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 		foreach ( $wp_scripts->queue as $script ) :
 
 			if ( ! Uiform_Form_Helper::isValidUrl_structure( $wp_scripts->registered[ $script ]->src ) && strpos( $wp_scripts->registered[ $script ]->src, 'wp-includes/js/jquery' ) !== false ) {
+				if( strpos($result['scripts']['base_url'] . $wp_scripts->registered[ $script ]->src, 'dist/block-library') === false &&
+						strpos($result['scripts']['base_url'] . $wp_scripts->registered[ $script ]->src, get_template_directory_uri() ) === false
+					){
 				$result['files'][] = '<script type="text/javascript" src="' . $result['scripts']['base_url'] . $wp_scripts->registered[ $script ]->src . '"></script>';
+					}
 			} elseif ( Uiform_Form_Helper::isValidUrl_structure( $wp_scripts->registered[ $script ]->src ) ) {
-				$result['files'][] = '<script type="text/javascript" src="' . $wp_scripts->registered[ $script ]->src . '"></script>';
+					if( strpos($wp_scripts->registered[ $script ]->src, 'dist/block-library') === false &&
+						strpos($wp_scripts->registered[ $script ]->src, get_template_directory_uri() ) === false
+					 ){
+						$result['files'][] = '<script type="text/javascript" src="' . $wp_scripts->registered[ $script ]->src . '"></script>';	
+						}
+					
 			}
 
 		endforeach;
@@ -1317,10 +1325,13 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 		$result['styles']['base_url']    = $wp_styles->base_url;
 		$result['styles']['content_url'] = $wp_styles->content_url;
 		foreach ( $wp_styles->queue as $style ) :
+			//excepting block-library
+			if( strpos($wp_styles->registered[ $style ]->src, 'dist/block-library') === false &&
+				strpos($wp_styles->registered[ $style ]->src, get_template_directory_uri() ) === false
+			 ){
 			$result['files'][] = '<link href="' . $wp_styles->registered[ $style ]->src . '" rel="stylesheet">';
+			}
 		endforeach;
-		// var_dump($result);
-		// die();
 		return $result;
 	}
 
@@ -1708,7 +1719,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 
 		// load form variables
 		$form_variables                        = array();
-		$form_variables['_uifmvar']['addon']   = self::$_addons_jsactions;
+		//$form_variables['_uifmvar']['addon']   = self::$_addons_jsactions;
 		$form_variables['_uifmvar']['is_demo'] = $is_demo;
 		$form_variables['_uifmvar']['is_dev']  = UIFORM_DEBUG;
 

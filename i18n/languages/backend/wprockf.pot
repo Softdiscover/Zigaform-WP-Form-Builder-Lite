@@ -1,8 +1,8 @@
-# Copyright (C) 2020 Zigaform WP Form Builder 4.8.3
-# This file is distributed under the same license as the Zigaform WP Form Builder 4.8.3 package.
+# Copyright (C) 2020 Zigaform WP Form Builder 4.8.5
+# This file is distributed under the same license as the Zigaform WP Form Builder 4.8.5 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zigaform WP Form Builder 4.8.3\n"
+"Project-Id-Version: Zigaform WP Form Builder 4.8.5\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -425,63 +425,63 @@ msgstr ""
 msgid "I already did"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:228
+#: modules/addon_func_anim/controllers/animation.php:231
 msgid "Customs"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:253
+#: modules/addon_func_anim/controllers/animation.php:256
 msgid "Attention Seekers"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:290
+#: modules/addon_func_anim/controllers/animation.php:293
 msgid "Bouncing Entrances"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:316
+#: modules/addon_func_anim/controllers/animation.php:319
 msgid "Bouncing Exits"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:342
+#: modules/addon_func_anim/controllers/animation.php:345
 msgid "Fading Entrances"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:384
+#: modules/addon_func_anim/controllers/animation.php:387
 msgid "Fading Exits"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:425
+#: modules/addon_func_anim/controllers/animation.php:428
 msgid "Flippers"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:450
+#: modules/addon_func_anim/controllers/animation.php:453
 msgid "Lightspeed"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:463
+#: modules/addon_func_anim/controllers/animation.php:466
 msgid "Rotating Entrances"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:488
+#: modules/addon_func_anim/controllers/animation.php:491
 msgid "Rotating Exits"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:513
+#: modules/addon_func_anim/controllers/animation.php:516
 msgid "Specials"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:530
+#: modules/addon_func_anim/controllers/animation.php:533
 msgid "Zoom Entrances"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:555
+#: modules/addon_func_anim/controllers/animation.php:558
 msgid "Zoom Exits"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:580
+#: modules/addon_func_anim/controllers/animation.php:583
 msgid "Slide Entrances"
 msgstr ""
 
-#: modules/addon_func_anim/controllers/animation.php:601
+#: modules/addon_func_anim/controllers/animation.php:604
 msgid "Slide Exits"
 msgstr ""
 
@@ -525,7 +525,7 @@ msgstr ""
 msgid "Order summary"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1440
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1451
 msgid "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 msgstr ""
 
