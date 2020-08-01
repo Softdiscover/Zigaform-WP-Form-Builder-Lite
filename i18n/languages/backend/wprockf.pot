@@ -1,8 +1,8 @@
-# Copyright (C) 2020 Zigaform WP Form Builder 4.8.5
-# This file is distributed under the same license as the Zigaform WP Form Builder 4.8.5 package.
+# Copyright (C) 2020 Zigaform WP Form Builder 4.8.7
+# This file is distributed under the same license as the Zigaform WP Form Builder 4.8.7 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zigaform WP Form Builder 4.8.5\n"
+"Project-Id-Version: Zigaform WP Form Builder 4.8.7\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -525,7 +525,7 @@ msgstr ""
 msgid "Order summary"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1451
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1445
 msgid "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 msgstr ""
 
@@ -669,7 +669,7 @@ msgstr ""
 msgid "To form values"
 msgstr ""
 
-#: modules/addon_webhook/views/backend/get_content.php:93, modules/addon_webhook/views/backend/get_content.php:132, modules/formbuilder/views/forms/ajax_rollback_openmodal.php:34, modules/formbuilder/views/forms/create_form.php:190, modules/formbuilder/views/forms/list_forms_table.php:41, modules/formbuilder/views/records/list_records.php:38, modules/formbuilder/views/records/list_records_getdatatable.php:25, modules/formbuilder/views/settings/backup_settings.php:69, modules/formbuilder/views/fields/modal/field_opt_column.php:44, modules/formbuilder/views/fields/modal/field_opt_text.php:44, modules/formbuilder/views/fields/modal/settings_field_input_2.php:115
+#: modules/addon_webhook/views/backend/get_content.php:93, modules/addon_webhook/views/backend/get_content.php:132, modules/formbuilder/views/forms/ajax_rollback_openmodal.php:34, modules/formbuilder/views/forms/create_form.php:190, modules/formbuilder/views/forms/list_forms_table.php:41, modules/formbuilder/views/records/list_records.php:38, modules/formbuilder/views/records/list_records_getdatatable.php:26, modules/formbuilder/views/settings/backup_settings.php:69, modules/formbuilder/views/fields/modal/field_opt_column.php:44, modules/formbuilder/views/fields/modal/field_opt_text.php:44, modules/formbuilder/views/fields/modal/settings_field_input_2.php:115
 msgid "Options"
 msgstr ""
 
@@ -2049,7 +2049,7 @@ msgstr ""
 msgid "Export to csv"
 msgstr ""
 
-#: modules/formbuilder/views/records/list_records_getdatatable.php:42
+#: modules/formbuilder/views/records/list_records_getdatatable.php:44
 msgid "Show detail"
 msgstr ""
 

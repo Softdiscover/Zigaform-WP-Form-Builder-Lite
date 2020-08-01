@@ -923,13 +923,13 @@ JS;
 		wp_enqueue_script( 'jquery-ui-button' );
 
 		// prev jquery
-		wp_enqueue_script( 'rockefform-prev-jquery', UIFORM_FORMS_URL . '/assets/common/js/init.js', array( 'jquery' ) );
+		wp_enqueue_script( 'rockfm-prev-jquery', UIFORM_FORMS_URL . '/assets/common/js/init.js', array( 'jquery' ) );
 
 		// bootstrap
-		wp_enqueue_script( 'rockefform-bootstrap', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/js/bootstrap.js', array( 'jquery', 'rockefform-prev-jquery' ) );
+		wp_enqueue_script( 'rockefform-bootstrap', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/js/bootstrap.js', array( 'jquery', 'rockfm-prev-jquery' ) );
 
 		// bootstrap sfdc
-		wp_enqueue_script( 'rockefform-bootstrap-sfdc', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/js/bootstrap-sfdc.js', array( 'jquery', 'rockefform-prev-jquery' ) );
+		wp_enqueue_script( 'rockefform-bootstrap-sfdc', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/js/bootstrap-sfdc.js', array( 'jquery', 'rockfm-prev-jquery' ) );
 
 		// jasny bootstrap
 		wp_enqueue_script( 'rockefform-jasny-bootstrap', UIFORM_FORMS_URL . '/assets/common/js/bjasny/jasny-bootstrap.js', array( 'jquery', 'rockefform-bootstrap' ), '1.0', true );
@@ -953,7 +953,7 @@ JS;
 		// bootstrap switch
 		wp_enqueue_script( 'rockefform-bootstrap-switch', UIFORM_FORMS_URL . '/assets/backend/js/bswitch/bootstrap-switch.js', array( 'jquery', 'rockefform-bootstrap' ), '1.0', true );
 		// bootstrap slider
-		wp_enqueue_script( 'rockefform-bootstrap-slider', UIFORM_FORMS_URL . '/assets/backend/js/bslider/4.12.1/bootstrap-slider.js', array( 'jquery', 'rockefform-bootstrap', 'rockefform-prev-jquery' ), '1.0', true );
+		wp_enqueue_script( 'rockefform-bootstrap-slider', UIFORM_FORMS_URL . '/assets/backend/js/bslider/4.12.1/bootstrap-slider.js', array( 'jquery', 'rockefform-bootstrap', 'rockfm-prev-jquery' ), '1.0', true );
 		// bootstrap touchspin
 		wp_enqueue_script( 'rockefform-bootstrap-touchspin', UIFORM_FORMS_URL . '/assets/backend/js/btouchspin/jquery.bootstrap-touchspin.js', array( 'jquery', 'rockefform-bootstrap' ), '1.0', true );
 		// bootstrap datetimepicker
@@ -1054,7 +1054,7 @@ JS;
 		$form_variables['uifm_sfm_baseurl'] = UIFORM_FORMS_URL . '/libraries/styles-font-menu/styles-fonts/png/';
 		$form_variables['imagesurl']        = UIFORM_FORMS_URL . '/assets/frontend/images';
 
-		wp_localize_script( 'rockefform-prev-jquery', 'rockfm_vars', $form_variables );
+		wp_localize_script( 'rockfm-prev-jquery', 'rockfm_vars', $form_variables );
 
 	}
 

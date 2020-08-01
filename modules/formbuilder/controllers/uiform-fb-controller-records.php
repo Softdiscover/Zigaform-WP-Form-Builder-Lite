@@ -361,9 +361,9 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
 		foreach ( $tmp_data['datatable_body'] as $key => $value ) {
 			$tmp_ar = array();
 			foreach ( $value as $key => $value2 ) {
-				if ( $key != 'fbh_id' ) {
+				//if ( $key != 'fbh_id' ) {
 					$tmp_ar[] = $value2;
-				}
+				//}
 			}
 			$data[] = $tmp_ar;
 		}
