@@ -1717,7 +1717,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 		$form_variables['_uifmvar']['is_demo'] = $is_demo;
 		$form_variables['_uifmvar']['is_dev']  = UIFORM_DEBUG;
 
-		wp_localize_script( self::PREFIX . 'rockfm_js_global', 'rockfm_vars', apply_filters( 'zgfm_front_initvar_load', $form_variables ) );
+		wp_localize_script( 'rockfm-js_global', 'rockfm_vars', apply_filters( 'zgfm_front_initvar_load', $form_variables ) );
 
 	}
 
