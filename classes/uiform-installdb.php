@@ -200,7 +200,7 @@ class Uiform_InstallDB {
 		// insert data
 		$uifm_settings = $wpdb->get_row( 'SELECT COUNT(*) AS total FROM ' . $this->settings, ARRAY_A );
 		if ( isset( $uifm_settings['total'] ) && intval( $uifm_settings['total'] ) === 0 ) {
-			$sql = "INSERT INTO $this->settings VALUES ('4.8.7', null, null, null, null, null, null, '', '1');";
+			$sql = "INSERT INTO $this->settings VALUES ('4.8.8', null, null, null, null, null, null, '', '1');";
 			$wpdb->query( $sql );
 		}
 

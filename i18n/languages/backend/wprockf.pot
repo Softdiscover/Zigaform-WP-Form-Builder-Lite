@@ -1,8 +1,8 @@
-# Copyright (C) 2020 Zigaform WP Form Builder 4.8.7
-# This file is distributed under the same license as the Zigaform WP Form Builder 4.8.7 package.
+# Copyright (C) 2020 Zigaform WP Form Builder 4.8.8
+# This file is distributed under the same license as the Zigaform WP Form Builder 4.8.8 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zigaform WP Form Builder 4.8.7\n"
+"Project-Id-Version: Zigaform WP Form Builder 4.8.8\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -521,11 +521,11 @@ msgstr ""
 msgid "Error on saving form"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1070
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1082
 msgid "Order summary"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1445
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1457
 msgid "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 msgstr ""
 
