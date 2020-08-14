@@ -1,8 +1,8 @@
-# Copyright (C) 2020 Zigaform WP Form Builder 4.8.8
-# This file is distributed under the same license as the Zigaform WP Form Builder 4.8.8 package.
+# Copyright (C) 2020 Zigaform WP Form Builder 4.8.9
+# This file is distributed under the same license as the Zigaform WP Form Builder 4.8.9 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zigaform WP Form Builder 4.8.8\n"
+"Project-Id-Version: Zigaform WP Form Builder 4.8.9\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -529,35 +529,35 @@ msgstr ""
 msgid "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:284
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:285
 msgid "Entry information"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:285, modules/formbuilder/views/records/info_record.php:26
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:286, modules/formbuilder/views/records/info_record.php:29
 msgid "Submitted form data"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:286, modules/formbuilder/views/records/info_record.php:71
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:287, modules/formbuilder/views/records/info_record.php:82
 msgid "Additional info"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:287, modules/formbuilder/views/forms/fields_available.php:787, modules/formbuilder/views/records/info_record.php:74, modules/formbuilder/views/records/list_records_getdatatable.php:24, modules/formbuilder/views/settings/backup_settings.php:68
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:288, modules/formbuilder/views/forms/fields_available.php:787, modules/formbuilder/views/records/info_record.php:85, modules/formbuilder/views/records/list_records_getdatatable.php:24, modules/formbuilder/views/settings/backup_settings.php:68
 msgid "Date"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:288, modules/formbuilder/views/records/info_record.php:78
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:289, modules/formbuilder/views/records/info_record.php:89
 msgid "IP"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:289, modules/formbuilder/views/records/info_record.php:82
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:290, modules/formbuilder/views/records/info_record.php:93
 msgid "Client PC info"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:290
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:291
 msgid "Form URL"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:291, modules/formbuilder/views/forms/ajax_variables_openmodal.php:55, modules/formbuilder/views/forms/create_form_main.php:88, modules/formbuilder/views/forms/create_form_modals.php:113, modules/formbuilder/views/forms/settings_form_email.php:551, modules/formbuilder/views/records/info_record.php:90
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:292, modules/formbuilder/views/forms/ajax_variables_openmodal.php:55, modules/formbuilder/views/forms/create_form_main.php:88, modules/formbuilder/views/forms/create_form_modals.php:113, modules/formbuilder/views/forms/settings_form_email.php:551, modules/formbuilder/views/records/info_record.php:101
 msgid "Form name"
 msgstr ""
 
@@ -2005,7 +2005,7 @@ msgstr ""
 msgid "Images"
 msgstr ""
 
-#: modules/formbuilder/views/frontend/form_summary.php:40, modules/formbuilder/views/records/info_record.php:42, modules/formbuilder/views/records/info_record_topdf.php:58
+#: modules/formbuilder/views/frontend/form_summary.php:40, modules/formbuilder/views/records/info_record.php:45, modules/formbuilder/views/records/info_record_topdf.php:58
 msgid "Units"
 msgstr ""
 
@@ -2029,11 +2029,11 @@ msgstr ""
 msgid "Order"
 msgstr ""
 
-#: modules/formbuilder/views/records/info_record.php:86
+#: modules/formbuilder/views/records/info_record.php:97
 msgid "URL page"
 msgstr ""
 
-#: modules/formbuilder/views/records/info_record.php:120, modules/formbuilder/views/records/info_record.php:113
+#: modules/formbuilder/views/records/info_record.php:125, modules/formbuilder/views/records/info_record.php:118
 msgid "Export to PDF"
 msgstr ""
 
