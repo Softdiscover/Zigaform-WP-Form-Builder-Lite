@@ -1,8 +1,8 @@
-# Copyright (C) 2020 Zigaform WP Form Builder 4.9.0
-# This file is distributed under the same license as the Zigaform WP Form Builder 4.9.0 package.
+# Copyright (C) 2020 Zigaform WP Form Builder 4.9.4
+# This file is distributed under the same license as the Zigaform WP Form Builder 4.9.4 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zigaform WP Form Builder 4.9.0\n"
+"Project-Id-Version: Zigaform WP Form Builder 4.9.4\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -905,7 +905,7 @@ msgstr ""
 msgid "skin section. you can change skin options of your form"
 msgstr ""
 
-#: modules/formbuilder/views/forms/create_form_main.php:118, modules/formbuilder/views/fields/modal/field_opt_column.php:79, modules/formbuilder/views/fields/modal/settings_field_input_4.php:104
+#: modules/formbuilder/views/forms/create_form_main.php:118, modules/formbuilder/views/fields/modal/field_opt_column.php:79, modules/formbuilder/views/fields/modal/settings_field_input_4.php:125
 msgid "Skin"
 msgstr ""
 
@@ -1717,11 +1717,11 @@ msgstr ""
 msgid "Select font size"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_skin.php:21, modules/formbuilder/views/fields/modal/settings_field_input_4.php:111
+#: modules/formbuilder/views/forms/settings_form_skin.php:21, modules/formbuilder/views/fields/modal/settings_field_input_4.php:132
 msgid "Custom width"
 msgstr ""
 
-#: modules/formbuilder/views/forms/settings_form_skin.php:35, modules/formbuilder/views/fields/modal/settings_field_input_4.php:124
+#: modules/formbuilder/views/forms/settings_form_skin.php:35, modules/formbuilder/views/fields/modal/settings_field_input_4.php:145
 msgid "Max width"
 msgstr ""
 
@@ -2837,11 +2837,15 @@ msgstr ""
 msgid "Default value"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_4.php:76
+#: modules/formbuilder/views/fields/modal/settings_field_input_4.php:77
+msgid "Decimals"
+msgstr ""
+
+#: modules/formbuilder/views/fields/modal/settings_field_input_4.php:97
 msgid "Range 1"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_4.php:86
+#: modules/formbuilder/views/fields/modal/settings_field_input_4.php:107
 msgid "Range 2"
 msgstr ""
 

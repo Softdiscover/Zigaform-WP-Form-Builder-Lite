@@ -82,9 +82,9 @@ if (!$uifm.isFunction(zgfm_back_addon)) {
 				$.ajax({
 					type: 'POST',
 					url: ajaxurl,
-					data: 'action=rocket_fbuilder_addon_status&page=zgfm_cost_estimate&add_name=' + tmp_addon_name + '&add_status=' + status + '&zgfm_security=' + uiform_vars.ajax_nonce,
+					data: 'action=rocket_fbuilder_addon_status&page=zgfm_form_builder&add_name=' + tmp_addon_name + '&add_status=' + status + '&zgfm_security=' + uiform_vars.ajax_nonce,
 					success: function (msg) {
-						rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_cost_estimate&zgfm_mod=addon&zgfm_contr=backend&zgfm_action=list_extensions');
+						rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=addon&zgfm_contr=backend&zgfm_action=list_extensions');
 					}
 				});
 			};
