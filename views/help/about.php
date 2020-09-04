@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<form role="form">
 								<fieldset>
 									
-									<?php if ( ZIGAFORM_F_LITE == 1 ) { ?>
+									<?php if ( ZIGAFORM_F_LITE === 1 ) { ?>
 									
 									<div class="form-group">
 											<a href="https://wordpress.org/support/plugin/zigaform-form-builder-lite/reviews/?filter=5#new-post"

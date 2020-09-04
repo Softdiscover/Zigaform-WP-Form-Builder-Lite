@@ -1,8 +1,8 @@
-# Copyright (C) 2020 Zigaform WP Form Builder 4.9.4
-# This file is distributed under the same license as the Zigaform WP Form Builder 4.9.4 package.
+# Copyright (C) 2020 Zigaform WP Form Builder 4.9.8
+# This file is distributed under the same license as the Zigaform WP Form Builder 4.9.8 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zigaform WP Form Builder 4.9.4\n"
+"Project-Id-Version: Zigaform WP Form Builder 4.9.8\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -61,7 +61,7 @@ msgstr ""
 msgid "Form was created"
 msgstr ""
 
-#: views/footer.php:54, modules/formbuilder/controllers/uiform-fb-controller-forms.php:648
+#: views/footer.php:54, modules/formbuilder/controllers/uiform-fb-controller-forms.php:749
 msgid "Success! The form was created. Now just copy and paste the shortcode to your content"
 msgstr ""
 
@@ -493,32 +493,36 @@ msgstr ""
 msgid "Column"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:316
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:329
 msgid "Rollback Form"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:336
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:349
 msgid "Error message"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:358
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:371
 msgid "Form variables"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:651
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:752
 msgid "Success"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:668
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:769
 msgid "Shortcodes"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:735, modules/formbuilder/controllers/uiform-fb-controller-forms.php:761
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:836, modules/formbuilder/controllers/uiform-fb-controller-forms.php:862
 msgid "Error! User has no permission to edit this form"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:945
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1046
 msgid "Error on saving form"
+msgstr ""
+
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:2521
+msgid "Forms in trash"
 msgstr ""
 
 #: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1082
@@ -529,36 +533,44 @@ msgstr ""
 msgid "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:285
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:372
 msgid "Entry information"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:286, modules/formbuilder/views/records/info_record.php:29
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:373, modules/formbuilder/views/records/info_record.php:29
 msgid "Submitted form data"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:287, modules/formbuilder/views/records/info_record.php:82
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:374, modules/formbuilder/views/records/info_record.php:82
 msgid "Additional info"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:288, modules/formbuilder/views/forms/fields_available.php:787, modules/formbuilder/views/records/info_record.php:85, modules/formbuilder/views/records/list_records_getdatatable.php:24, modules/formbuilder/views/settings/backup_settings.php:68
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:375, modules/formbuilder/views/forms/fields_available.php:787, modules/formbuilder/views/records/info_record.php:85, modules/formbuilder/views/records/list_records_getdatatable.php:24, modules/formbuilder/views/settings/backup_settings.php:68
 msgid "Date"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:289, modules/formbuilder/views/records/info_record.php:89
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:376, modules/formbuilder/views/records/info_record.php:89
 msgid "IP"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:290, modules/formbuilder/views/records/info_record.php:93
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:377, modules/formbuilder/views/records/info_record.php:93
 msgid "Client PC info"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:291
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:378
 msgid "Form URL"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:292, modules/formbuilder/views/forms/ajax_variables_openmodal.php:55, modules/formbuilder/views/forms/create_form_main.php:88, modules/formbuilder/views/forms/create_form_modals.php:113, modules/formbuilder/views/forms/settings_form_email.php:551, modules/formbuilder/views/records/info_record.php:101
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:379, modules/formbuilder/views/forms/ajax_variables_openmodal.php:55, modules/formbuilder/views/forms/create_form_main.php:88, modules/formbuilder/views/forms/create_form_modals.php:113, modules/formbuilder/views/forms/settings_form_email.php:551, modules/formbuilder/views/records/info_record.php:101
 msgid "Form name"
+msgstr ""
+
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:412
+msgid "Records list"
+msgstr ""
+
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:445
+msgid "Records in trash"
 msgstr ""
 
 #: modules/formbuilder/controllers/uiform-fb-controller-settings.php:175
@@ -1245,12 +1257,8 @@ msgstr ""
 msgid "Enable Form"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms.php:62, modules/formbuilder/views/forms/list_forms_table.php:91
-msgid "Delete Form"
-msgstr ""
-
-#: modules/formbuilder/views/forms/list_forms.php:66, modules/formbuilder/views/forms/list_forms_table.php:93, modules/formbuilder/views/forms/settings_form_wizard.php:98, modules/formbuilder/views/forms/settings_form_wizard.php:424, modules/formbuilder/views/records/list_records.php:74, modules/formbuilder/views/records/list_records.php:77, modules/formbuilder/views/settings/backup_settings.php:96
-msgid "Delete"
+#: modules/formbuilder/views/forms/list_forms.php:62, modules/formbuilder/views/forms/list_forms.php:66, modules/formbuilder/views/forms/list_forms_table.php:90, modules/formbuilder/views/forms/list_forms_table.php:91
+msgid "Move to trash"
 msgstr ""
 
 #: modules/formbuilder/views/forms/list_forms.php:86
@@ -1269,35 +1277,39 @@ msgstr ""
 msgid "Rows per page"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms.php:137
+#: modules/formbuilder/views/forms/list_forms.php:134, modules/formbuilder/views/fields/modal/settings_form_clogic.php:89
+msgid "All"
+msgstr ""
+
+#: modules/formbuilder/views/forms/list_forms.php:138
 msgid "Search"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms.php:146
+#: modules/formbuilder/views/forms/list_forms.php:147
 msgid "Order by"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms.php:148
+#: modules/formbuilder/views/forms/list_forms.php:149
 msgid "Descendent"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms.php:149
+#: modules/formbuilder/views/forms/list_forms.php:150
 msgid "Ascendent"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms.php:154
+#: modules/formbuilder/views/forms/list_forms.php:155
 msgid "Remember parameters"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms.php:157
+#: modules/formbuilder/views/forms/list_forms.php:158
 msgid "Save Settings"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms.php:176
+#: modules/formbuilder/views/forms/list_forms.php:178
 msgid "List form information"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms.php:178
+#: modules/formbuilder/views/forms/list_forms.php:180
 msgid "there is no forms selected. select one at least"
 msgstr ""
 
@@ -1337,8 +1349,8 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms_table.php:90
-msgid "Delete form"
+#: modules/formbuilder/views/forms/list_forms_table.php:93
+msgid "Move to Trash "
 msgstr ""
 
 #: modules/formbuilder/views/forms/preview_clogic_graph.php:47
@@ -1867,6 +1879,10 @@ msgstr ""
 
 #: modules/formbuilder/views/forms/settings_form_wizard.php:91, modules/formbuilder/views/forms/settings_form_wizard.php:417
 msgid "Type tab title"
+msgstr ""
+
+#: modules/formbuilder/views/forms/settings_form_wizard.php:98, modules/formbuilder/views/forms/settings_form_wizard.php:424, modules/formbuilder/views/records/list_records.php:74, modules/formbuilder/views/records/list_records.php:77, modules/formbuilder/views/settings/backup_settings.php:96
+msgid "Delete"
 msgstr ""
 
 #: modules/formbuilder/views/forms/settings_form_wizard.php:114
@@ -3169,10 +3185,6 @@ msgstr ""
 msgid "this field if"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:89
-msgid "All"
-msgstr ""
-
 #: modules/formbuilder/views/fields/modal/settings_form_clogic.php:90
 msgid "Any"
 msgstr ""
@@ -3205,7 +3217,7 @@ msgstr ""
 msgid "less than"
 msgstr ""
 
-#: modules/formbuilder/views/fields/render_front/type_subbtn.php:22, modules/formbuilder/views/fields/render_front/type_wizardbtn.php:38
+#: modules/formbuilder/views/fields/render_front/type_subbtn.php:22, modules/formbuilder/views/fields/render_front/type_wizardbtn.php:40
 msgid "Sending"
 msgstr ""
 

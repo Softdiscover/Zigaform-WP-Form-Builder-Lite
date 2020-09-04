@@ -19,6 +19,8 @@ if ( class_exists( 'Uiform_Fb_Controller_Records' ) ) {
 	return;
 }
 
+use \Zigaform\Admin\List_data;
+
 /**
  * Controller Records class
  *
@@ -57,9 +59,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
 		$this->model_record = self::$_models['formbuilder']['form_records'];
 		$this->formsmodel   = self::$_models['formbuilder']['form'];
 		$this->model_fields = self::$_models['formbuilder']['fields'];
-
-		// ajax for deleting form
-		add_action( 'wp_ajax_rocket_fbuilder_delete_records', array( &$this, 'ajax_delete_record' ) );
+ 
 		// ajax for loading forms
 		add_action( 'wp_ajax_rocket_fbuilder_load_records_byform', array( &$this, 'ajax_load_record_byform' ) );
 		// custom report
@@ -68,8 +68,87 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
 		add_action( 'wp_ajax_rocket_fbuilder_creport_savefields', array( &$this, 'ajax_load_savereport' ) );
 		// view charts
 		add_action( 'wp_ajax_rocket_fbuilder_loadchart_byform', array( &$this, 'ajax_load_viewchart' ) );
+
+		//list records
+		//ajax_recordlist_sendfilter
+		add_action( 'wp_ajax_zgfm_fbuilder_recordlist_sendfilter', array( &$this, 'ajax_recordlist_sendfilter' ) );
+		
+		// list form update status
+		add_action( 'wp_ajax_zgfm_fbuilder_list_record_updatest', array( &$this, 'ajax_list_record_updatest' ) );
+		
+		// delete record
+		add_action( 'wp_ajax_rocket_fbuilder_delete_record', array( &$this, 'ajax_delete_record' ) );
 	}
 
+	public function ajax_list_record_updatest() {
+		
+		check_ajax_referer( 'zgfm_ajax_nonce', 'zgfm_security' );
+		$list_ids = ( isset( $_POST['id'] ) && $_POST['id'] ) ? array_map( array( 'Uiform_Form_Helper', 'sanitizeRecursive' ), $_POST['id'] ) : array();
+		$form_st  = ( isset( $_POST['form_st'] ) && $_POST['form_st'] ) ? Uiform_Form_Helper::sanitizeInput( $_POST['form_st'] ) : '';
+		$is_trash  = ( isset( $_POST['is_trash'] ) && $_POST['is_trash'] ) ? Uiform_Form_Helper::sanitizeInput( $_POST['is_trash'] ) : '';
+		if ( $list_ids ) {
+			
+			if(intval($is_trash)===0){
+				switch (intval($form_st)) {
+					case 1:
+					case 2:
+					case 0:
+						foreach ( $list_ids as $value ) {
+							$where = array(
+								'fbh_id' => $value,
+							);
+							$data  = array(
+								'flag_status' => intval( $form_st ),
+							);
+							$this->wpdb->update( $this->model_record->table, $data, $where );
+						}
+						break;
+					default:
+						break;
+				}
+			}else{
+				switch (intval($form_st)) {
+					case 1:
+					case 2:	
+						foreach ( $list_ids as $value ) {
+							$where = array(
+								'fbh_id' => $value,
+							);
+							$data  = array(
+								'flag_status' => intval( $form_st ),
+							);
+							$this->wpdb->update( $this->model_record->table, $data, $where );
+						}
+						break;
+					case 0:
+						foreach ( $list_ids as $value ) {
+							
+							$this->delete_form_process($value);
+							 
+						}
+						
+						break;
+					default:
+						# code...
+						break;
+				}
+			
+			}
+			
+			
+		}
+	}
+
+	private function delete_form_process($value){
+		 
+		//remove from records
+		$where = array(
+			'fbh_id' => $value,
+		);
+		$this->wpdb->delete( $this->model_record->table, $where );
+		 
+	}
+	
 	public function ajax_load_viewchart() {
 
 		check_ajax_referer( 'zgfm_ajax_nonce', 'zgfm_security' );
@@ -208,14 +287,22 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
 
 		check_ajax_referer( 'zgfm_ajax_nonce', 'zgfm_security' );
 
-		$form_id = ( isset( $_POST['rec_id'] ) && $_POST['rec_id'] ) ? Uiform_Form_Helper::sanitizeInput( $_POST['rec_id'] ) : 0;
-		$where   = array(
-			'fbh_id' => $form_id,
-		);
-		$data    = array(
-			'flag_status' => 0,
-		);
-		$this->wpdb->update( $this->model_record->table, $data, $where );
+		$rec_id = ( isset( $_POST['rec_id'] ) && $_POST['rec_id'] ) ? Uiform_Form_Helper::sanitizeInput( $_POST['rec_id'] ) : 0;
+		$is_trash = ( isset( $_POST['is_trash'] ) && $_POST['is_trash'] ) ? Uiform_Form_Helper::sanitizeInput( $_POST['is_trash'] ) : 0;
+		
+		if(intval($is_trash)===0){
+			$where   = array(
+				'fbh_id' => $rec_id,
+			);
+			$data    = array(
+				'flag_status' => 0,
+			);
+			$this->wpdb->update( $this->model_record->table, $data, $where );
+		}else{
+			$this->delete_form_process($rec_id);
+			 
+			 
+		}
 	}
 
 	public function info_records_byforms() {
@@ -302,16 +389,140 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
 		echo self::loadPartial( 'layout.php', 'formbuilder/views/records/info_record.php', $data );
 	}
 
+	/**
+	 * list records
+	 *
+	 * @return void
+	 */
 	public function list_records() {
+		$filter_data = get_option( 'zgfm_listrecords_searchfilter', true );
+		$data2       = array();
+		if ( empty( $filter_data ) ) {
+			$data2['per_page']   = intval( $this->per_page );
+			$data2['orderby']    = 'asc';
+		} else {
+			$data2['per_page']   = intval( $filter_data['per_page'] );
+			$data2['orderby']    = $filter_data['orderby'];
+		}
+
+		$offset          = ( isset( $_GET['offset'] ) ) ? Uiform_Form_Helper::sanitizeInput( $_GET['offset'] ) : 0;
+		$data2['offset'] = $offset;
+		
+		$form_data=$this->model_record->ListTotals();
+		$data2['title']=__( 'Records list', 'FRocket_admin' );
+		$data2['all']=$form_data->r_all;
+		$data2['trash']=$form_data->r_trash;
+		$data2['header_buttons']= List_data::get()->list_detail_record_headerbuttons();
+		$data2['script_trigger']= 'zgfm_back_general.recordslist_search_process();';
+		$data2['subcurrent']= 1;
+		$data2['subsubsub'] = List_data::get()->subsubsub_records($data2);
+        $data2['is_trash'] =0;
+    
+        $content=List_data::get()->show_list($data2);
+        echo self::loadPartial2( 'layout.php', $content);
+	}
+
+	/**
+	 * list trash records
+	 *
+	 * @return void
+	 */
+	public function list_trash_records() {
+		$filter_data = get_option( 'zgfm_listrecords_searchfilter', true );
+		$data2       = array();
+		if ( empty( $filter_data ) ) {
+			$data2['per_page']   = intval( $this->per_page );
+			$data2['orderby']    = 'asc';
+		} else {
+			$data2['per_page']   = intval( $filter_data['per_page'] );
+			$data2['orderby']    = $filter_data['orderby'];
+		}
+
+		$offset          = ( isset( $_GET['offset'] ) ) ? Uiform_Form_Helper::sanitizeInput( $_GET['offset'] ) : 0;
+		$data2['offset'] = $offset;
+		
+		$form_data=$this->model_record->ListTotals();
+		$data2['title']=__( 'Records in trash', 'FRocket_admin' );
+		$data2['all']=$form_data->r_all;
+		$data2['trash']=$form_data->r_trash;
+		$data2['header_buttons']= List_data::get()->list_detail_trashrecord_headerbuttons();
+		$data2['script_trigger']= 'zgfm_back_general.recordslist_search_process();';
+		$data2['subcurrent']= 2;
+		$data2['subsubsub'] = List_data::get()->subsubsub_records($data2);
+        $data2['is_trash'] =1;
+    
+        $content=List_data::get()->show_list($data2);
+        echo self::loadPartial2( 'layout.php', $content);
+	}
+
+    /**
+	 * List trash forms
+	 *
+	 * @return void
+	 */
+	function ajax_recordlist_sendfilter() {
+		check_ajax_referer( 'zgfm_ajax_nonce', 'zgfm_security' );
+
+		$data_filter = ( isset( $_POST['data_filter'] ) && $_POST['data_filter'] ) ? $_POST['data_filter'] : '';
+
+		$opt_save   = ( isset( $_POST['opt_save'] ) && $_POST['opt_save'] ) ? Uiform_Form_Helper::sanitizeInput( $_POST['opt_save'] ) : 0;
+		$opt_offset = ( isset( $_POST['opt_offset'] ) && $_POST['opt_offset'] ) ? Uiform_Form_Helper::sanitizeInput( $_POST['opt_offset'] ) : 0;
+		$is_trash = ( isset( $_POST['op_is_trash'] ) && $_POST['op_is_trash'] ) ? Uiform_Form_Helper::sanitizeInput( $_POST['op_is_trash'] ) : 0;
+
+		parse_str( $data_filter, $data_filter_arr );
+
+		$per_page   = $data_filter_arr['zgfm-listform-pref-perpage'];
+		$orderby    = $data_filter_arr['zgfm-listform-pref-orderby'];
+
+		$data               = array();
+		$data['per_page']   = $per_page;
+		$data['orderby']    = $orderby;
+		$data['is_trash']    = $is_trash;
+
+		
+		update_option( 'zgfm_listrecords_searchfilter', $data );
+		
+
+		$data['segment'] = 0;
+		$data['offset']  = $opt_offset;
+        
+		$result = $this->ajax_recordslist_refresh( $data );
+         
+		$json            = array();
+		$json['content'] = $result;
+
+		header( 'Content-Type: application/json' );
+		echo json_encode( $json );
+		wp_die();
+	}
+
+    /**
+	 * get forms in trash
+	 *
+	 * @param [type] $data
+	 * @return void
+	 */
+	function ajax_recordslist_refresh( $data ) {
 
 		require_once UIFORM_FORMS_DIR . '/classes/Pagination.php';
 		$this->pagination = new CI_Pagination();
-		$offset           = ( isset( $_GET['offset'] ) && $_GET['offset'] ) ? Uiform_Form_Helper::sanitizeInput( $_GET['offset'] ) : 0;
+
+		$offset = $data['offset'];
+
 		// list all forms
-		$data                           = $config = array();
-		$config['base_url']             = admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=list_records';
-		$config['total_rows']           = $this->model_record->CountRecords();
-		$config['per_page']             = $this->per_page;
+		$config                         = array();
+		
+		
+		$tmp = $this->model_record->ListTotals();
+		if(intval($data['is_trash'])===0){
+			$config['base_url']             = admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=list_records';
+			$config['total_rows']           = $tmp->r_all;
+		}else{
+			$config['base_url']             = admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=list_trash_records';
+			$config['total_rows']           = $tmp->r_trash;
+		}
+		
+		$config['per_page']             = $data['per_page'];
 		$config['first_link']           = 'First';
 		$config['last_link']            = 'Last';
 		$config['full_tag_open']        = '<ul class="pagination pagination-sm">';
@@ -320,7 +531,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
 		$config['first_tag_close']      = '</li>';
 		$config['last_tag_open']        = '<li>';
 		$config['last_tag_close']       = '</li>';
-		$config['cur_tag_open']         = '<li><span>';
+		$config['cur_tag_open']         = '<li class="zgfm-pagination-active"><span>';
 		$config['cur_tag_close']        = '</span></li>';
 		$config['next_tag_open']        = '<li>';
 		$config['next_tag_close']       = '</li>';
@@ -334,11 +545,30 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
 		$this->pagination->initialize( $config );
 		// If the pagination library doesn't recognize the current page add:
 		$this->pagination->cur_page = $offset;
-		$data['query']              = $this->model_record->getListRecords( $this->per_page, $offset );
-		$data['pagination']         = $this->pagination->create_links();
 
-		echo self::loadPartial( 'layout.php', 'formbuilder/views/records/list_records.php', $data );
+		$data2               = array();
+		$data2['per_page']   = $data['per_page'];
+		$data2['segment']    = $offset;
+		$data2['orderby']    = $data['orderby'];
+		$data2['is_trash']  = $data['is_trash'];
+		
+        if(intval($data2['is_trash'])===0){
+            $data2['query'] = $this->model_record->getListAllRecordsFiltered( $data2 );   
+        }else{
+			$data2['query'] = $this->model_record->getListTrashRecordsFiltered( $data2 );   
+        }
+		
+		$data2['pagination'] = $this->pagination->create_links();
+		$data2['obj_list_data'] = List_data::get();
+		
+		if(intval($data2['is_trash'])===0){
+			return List_data::get()->list_detail_records($data2);
+		}else{
+			return List_data::get()->list_detail_trashrecords($data2);
+		}
+        
 	}
+
 
 
 	public function csv_showAllForms( $form_id ) {

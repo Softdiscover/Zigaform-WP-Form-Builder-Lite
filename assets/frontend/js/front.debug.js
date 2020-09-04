@@ -1176,7 +1176,7 @@ if (!$uifm.isFunction(rocketfm)) {
 						form: obj_form
 					});
 
-					obj_form.on('click', '.rockfm-submitbtn.rockfm-field [type="submit"]', function (e) {
+					obj_form.on('click', '.rockfm-submitbtn.rockfm-field [type="button"],.rockfm-submitbtn.rockfm-field [type="submit"]', function (e) {
 						e.preventDefault();
 						var obj_form_alt = $(this).closest('.rockfm-form');
 						rocketfm.setInnerVariable('submitting_form_id', obj_form_alt.find('._rockfm_form_id').val());

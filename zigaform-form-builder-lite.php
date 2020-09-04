@@ -3,7 +3,7 @@
  * Plugin Name: Zigaform - Wordpress Form Builder Lite
  * Plugin URI: https://wordpress-form-builder.zigaform.com/
  * Description: The ZigaForm WordPress form builder is the ultimate form creation solution for WordPress.
- * Version: 4.9.4
+ * Version: 4.9.8
  * Author: ZigaForm.Com
  * Author URI: https://wordpress-form-builder.zigaform.com/
  */
@@ -30,7 +30,7 @@ if ( ! class_exists( 'UiformFormbuilderLite' ) ) {
 		 * @var string
 		 * @since 1.0
 		 */
-		public $version = '4.9.4';
+		public $version = '4.9.8';
 
 		/**
 		 * The minimal required version of WordPress for this plug-in to function correctly.
@@ -250,7 +250,7 @@ if ( ! class_exists( 'UiformFormbuilderLite' ) ) {
 			$this->define( 'ZIGAFORM_F_LITE', 1 );
 			$this->define( 'UIFORM_DEBUG', 0 );
 			
-			if ( UIFORM_DEBUG == 1 ) {
+			if ( UIFORM_DEBUG === 1 ) {
 				error_reporting( E_ALL );
 				ini_set( 'display_errors', 1 );
 			}

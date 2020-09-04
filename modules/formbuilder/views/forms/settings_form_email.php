@@ -379,7 +379,7 @@ $default_template = ob_get_clean();
 								</div>
 						</div>
 					</div> 
-				   <?php if ( ZIGAFORM_F_LITE == 1 ) { ?>
+				   <?php if ( ZIGAFORM_F_LITE === 1 ) { ?>
 		 
 						
 											<?php } else { ?>

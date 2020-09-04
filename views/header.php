@@ -64,7 +64,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			  <li><a onclick="javascript:rocketform.templates_load(10);" 
 				   href="javascript:void(0);"><?php echo __( 'Order form', 'FRocket_admin' ); ?></a>
 			  </li>
-			   <?php if ( ZIGAFORM_F_LITE == 1 ) { ?>
+			   <?php if ( ZIGAFORM_F_LITE === 1 ) { ?>
 			   
 				<?php } else { ?>
 					  <li><a onclick="javascript:rocketform.templates_load(11);" 
@@ -75,7 +75,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			  <li><a onclick="javascript:rocketform.templates_load(12);" 
 				   href="javascript:void(0);"><?php echo __( 'All fields', 'FRocket_admin' ); ?></a>
 			  </li>
-			   <?php if ( ZIGAFORM_F_LITE == 1 ) { ?>
+			   <?php if ( ZIGAFORM_F_LITE === 1 ) { ?>
 		
 				<?php } else { ?>
 			 <li><a onclick="javascript:rocketform.templates_load(13);" 
@@ -117,7 +117,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</a>
 			</li>
 			
-			 <?php if ( ZIGAFORM_F_LITE == 1 ) { ?>
+			 <?php if ( ZIGAFORM_F_LITE === 1 ) { ?>
 			<li><a onclick="javascript:rocketform.showFeatureLocked(this);"
 				  data-blocked-feature="Filter record"
 				   href="javascript:void(0);">
@@ -130,7 +130,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			   </li>
 		   <?php } ?>
 			
-		   <?php if ( ZIGAFORM_F_LITE == 1 ) { ?>
+		   <?php if ( ZIGAFORM_F_LITE === 1 ) { ?>
 			   <li><a onclick="javascript:rocketform.showFeatureLocked(this);"
 				  data-blocked-feature="Custom report"
 				   href="javascript:void(0);">

@@ -879,7 +879,7 @@ class Uiform_Form_Helper {
 use Dompdf\Dompdf;
 
 function uifm_generate_pdf( $html, $filename, $papersize, $paperorien, $stream = true ) {
-	if ( ZIGAFORM_F_LITE == 1 ) {
+	if ( ZIGAFORM_F_LITE === 1 ) {
 
 	} else {
 		

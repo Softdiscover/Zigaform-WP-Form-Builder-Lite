@@ -1348,7 +1348,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 			return '';
 		}
 
-		$shortcode_string = stripslashes( $rdata->fmb_html );
+		$shortcode_string =  $rdata->fmb_html ;
 
 		$data = array();
 
@@ -1465,7 +1465,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 				if ( empty( $data_form ) ) {
 					return;
 				}
-							$shortcode_string = stripslashes( $data_form->fmb_html );
+							$shortcode_string =  $data_form->fmb_html ;
 				 // load resources
 							$this->load_form_resources_alt( $id, $is_demo );
 
@@ -1518,7 +1518,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 				if ( empty( $data_form ) ) {
 					return;
 				}
-				$shortcode_string = stripslashes( $data_form->fmb_html );
+				$shortcode_string =  $data_form->fmb_html ;
 
 				$modalmode = get_option( 'zgfm_b_modalmode', 0 );
 
@@ -1604,7 +1604,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 		// wp_enqueue_style('rockfm-bootstrap-theme', UIFORM_FORMS_URL . '/assets/common/css/bootstrap-theme.css');
 		// }
 
-		wp_enqueue_style( 'rockfm-fontawesome', UIFORM_FORMS_URL . '/assets/common/css/fontawesome/4.7.0/css/font-awesome.min.css' );
+		wp_enqueue_style( 'rockfm-fontawesome', UIFORM_FORMS_URL . '/assets/common/css/fontawesome/4.7.0/css/font-awesome.min-sfdc.css' );
 
 		// jasny bootstrap
 		wp_enqueue_style( 'rockfm-jasny-bootstrap', UIFORM_FORMS_URL . '/assets/common/js/bjasny/jasny-bootstrap.css' );
@@ -1734,12 +1734,10 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 	}
 
 	public function shortcode_show_version() {
-		if ( ZIGAFORM_F_LITE === 1 ) {
 			$output  = '<noscript>';
-			$output .= '<a href="https://www.zigaform.com/?uifm_v=' . UIFORM_VERSION . '" title="WordPress Form Builder" >ZigaForm </a> version ' . UIFORM_VERSION;
+			$output .= '<a href="https://zigaform.com/?uifm_v=' . UIFORM_VERSION . '" title="WordPress Form Builder" >ZigaForm </a> version ' . UIFORM_VERSION;
 			$output .= '</noscript>';
 			echo $output;
-		}
 
 	}
 

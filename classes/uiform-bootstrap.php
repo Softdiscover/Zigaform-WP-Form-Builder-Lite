@@ -57,6 +57,12 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
 		add_filter( 'rockfm_languages_domain', array( &$this, 'rockfm_lang_domain_filter' ) );
 		add_filter( 'plugin_locale', array( &$this, 'rockfm_lang_locale_filter' ) );
 
+		// Composer autoload
+        $composer_path = path_join(UIFORM_FORMS_DIR, 'vendor/autoload.php');
+        if (file_exists($composer_path)) {
+            require_once $composer_path;
+        }
+
 		// load admin
 		if ( is_admin() && Uiform_Form_Helper::is_uiform_page() ) {
 
@@ -661,7 +667,7 @@ JS;
 	 * @return null
 	 */
 	public function loadMenu() {
-		if ( ZIGAFORM_F_LITE == 1 ) {
+		if ( ZIGAFORM_F_LITE === 1 ) {
 			add_menu_page( 'ZigaForm - WordPress Form Builder Lite', 'Zigaform Lite', 'edit_posts', 'zgfm_form_builder', array( &$this, 'get_menu' ), UIFORM_FORMS_URL . '/assets/backend/image/rockfm-logo-ico.png' );
 		} else {
 			add_menu_page( 'ZigaForm - WordPress Form Builder', 'Zigaform', 'edit_posts', 'zgfm_form_builder', array( &$this, 'get_menu' ), UIFORM_FORMS_URL . '/assets/backend/image/rockfm-logo-ico.png' );
@@ -674,12 +680,12 @@ JS;
 		$page_help  = add_submenu_page( 'zgfm_form_builder', __( 'Help', 'FRocket_admin' ), __( 'Help', 'FRocket_admin' ), $perms, 'zigaform-builder-help', array( &$this, 'get_menu' ) );
 		$page_about = add_submenu_page( 'zgfm_form_builder', __( 'About', 'FRocket_admin' ), __( 'About', 'FRocket_admin' ), $perms, 'zigaform-builder-about', array( &$this, 'get_menu' ) );
 
-		if ( UIFORM_DEBUG == 1 ) {
+		if ( UIFORM_DEBUG === 1 ) {
 			$page_debug = add_submenu_page( 'zgfm_form_builder', __( 'Debug', 'FRocket_admin' ), __( 'Debug', 'FRocket_admin' ), $perms, 'zigaform-builder-debug', array( &$this, 'get_menu' ) );
 			add_action( 'admin_print_styles-' . $page_debug, array( &$this, 'load_admin_resources' ) );
 		}
 
-		if ( ZIGAFORM_F_LITE == 1 ) {
+		if ( ZIGAFORM_F_LITE === 1 ) {
 			// go pro page
 			$submenu_txt = __( 'Go Pro!', 'FRocket_admin' );
 			$go_pro_link = '<span style="color:#f18500">' . $submenu_txt . '</span>';
@@ -990,7 +996,7 @@ JS;
 		wp_enqueue_script( 'rockefform-codemirror-autorefresh', UIFORM_FORMS_URL . '/assets/common/js/codemirror/addon/display/autorefresh.js', array(), '1.0', true );
 
 		wp_enqueue_script( 'rockefform-autooff', UIFORM_FORMS_URL . '/assets/backend/js/disableautofill/jquery.disableAutoFill.js' );
-
+		
 		if ( UIFORM_DEBUG === 1 ) {
 			wp_register_script(
 				self::PREFIX . 'admin',

@@ -5159,7 +5159,7 @@ var rocketform = rocketform || null;
 
 			arguments.callee.loadFormToEditPanel_default = function (form_data) {
 				if (typeof form_data != 'undefined' && form_data) {
-					$('#uifm_frm_record_tpl_enable').bootstrapSwitchZgpb('state', form_data.data['fmb_rec_tpl_st']);
+					$('#uifm_frm_record_tpl_enable').bootstrapSwitchZgpb('state', parseInt(form_data.data['fmb_rec_tpl_st']));
 
 					var editor, content;
 					if (typeof tinymce != 'undefined' && form_data.data.hasOwnProperty('fmb_rec_tpl_html') && form_data.data['fmb_rec_tpl_html'] != null) {
@@ -29203,23 +29203,23 @@ if (!$uifm.isFunction(zgfm_back_general)) {
 				alert('Filter paramaters saved');
 			};
 
-			this.formslist_search_process = function (opt_save) {
+			this.invoiceslist_search_process = function () {
 				var tmp_params = $('#zgfm-listform-filter-panel-form').serialize();
 
 				$.ajax({
 					type: 'POST',
 					url: ajaxurl,
 					data: {
-						action: 'zgfm_fbuilder_formlist_filter',
+						action: 'zgfm_fbuilder_invoicelist_sendfilter',
 						page: 'zgfm_form_builder',
 						zgfm_security: uiform_vars.ajax_nonce,
 						data_filter: tmp_params,
-						opt_save: opt_save,
-						opt_offset: $('#uifm_listform_offset_val').val()
+						opt_save: 1,
+						opt_offset: $('#uifm_listform_offset_val').val(),
+						op_is_trash:$('#uifm_listrecord_is_trash').val()
 					},
 					success: function (msg) {
 						$('#zgfm-back-listform-maintable-container').html(msg['content']);
-
 						$('.uiform-confirmation-func-action').click(function (e) {
 							e.preventDefault(); 
 							var targetUrl = $(this).attr('href'); 
@@ -29246,7 +29246,275 @@ if (!$uifm.isFunction(zgfm_back_general)) {
 					}
 				});
 			};
-		};
+
+			this.recordslist_search_process = function () {
+				var tmp_params = $('#zgfm-listform-filter-panel-form').serialize();
+
+				$.ajax({
+					type: 'POST',
+					url: ajaxurl,
+					data: {
+						action: 'zgfm_fbuilder_recordlist_sendfilter',
+						page: 'zgfm_form_builder',
+						zgfm_security: uiform_vars.ajax_nonce,
+						data_filter: tmp_params,
+						opt_save: 1,
+						opt_offset: $('#uifm_listform_offset_val').val(),
+						op_is_trash:$('#uifm_listrecord_is_trash').val()
+					},
+					success: function (msg) {
+						$('#zgfm-back-listform-maintable-container').html(msg['content']);
+						$('.uiform-confirmation-func-action').click(function (e) {
+							e.preventDefault(); 
+							var targetUrl = $(this).attr('href'); 
+							var tmp_callback = $(this).data('dialog-callback');
+							$('#uiform-confirmation-func-action-dialog').dialog({
+								autoOpen: false,
+								title: 'Confirmation',
+								modal: true,
+								buttons: {
+									OK: function () {
+										$(this).dialog('close');
+										eval(tmp_callback);
+									},
+									Cancel: function () {
+										$(this).dialog('close');
+									}
+								}
+							});
+
+							$('#uiform-confirmation-func-action-dialog').dialog('option', 'title', $(this).data('dialog-title'));
+
+							$('#uiform-confirmation-func-action-dialog').dialog('open');
+						});
+					}
+				});
+			};
+
+			this.formslist_trashsearch_process = function () {
+				var tmp_params = $('#zgfm-listform-filter-panel-form').serialize();
+
+				$.ajax({
+					type: 'POST',
+					url: ajaxurl,
+					data: {
+						action: 'zgfm_fbuilder_trashformlist_filter',
+						page: 'zgfm_form_builder',
+						zgfm_security: uiform_vars.ajax_nonce,
+						data_filter: tmp_params,
+						opt_save: 1,
+						opt_offset: $('#uifm_listform_offset_val').val()
+					},
+					success: function (msg) {
+						$('#zgfm-back-listform-maintable-container').html(msg['content']);
+						$('.uiform-confirmation-func-action').click(function (e) {
+							e.preventDefault(); 
+							var targetUrl = $(this).attr('href'); 
+							var tmp_callback = $(this).data('dialog-callback');
+							$('#uiform-confirmation-func-action-dialog').dialog({
+								autoOpen: false,
+								title: 'Confirmation',
+								modal: true,
+								buttons: {
+									OK: function () {
+										$(this).dialog('close');
+										eval(tmp_callback);
+									},
+									Cancel: function () {
+										$(this).dialog('close');
+									}
+								}
+							});
+
+							$('#uiform-confirmation-func-action-dialog').dialog('option', 'title', $(this).data('dialog-title'));
+
+							$('#uiform-confirmation-func-action-dialog').dialog('open');
+						});
+					}
+				});
+			};
+
+			this.formslist_search_process = function (opt_save) {
+				var tmp_params = $('#zgfm-listform-filter-panel-form').serialize();
+
+				$.ajax({
+					type: 'POST',
+					url: ajaxurl,
+					data: {
+						action: 'zgfm_fbuilder_formlist_filter',
+						page: 'zgfm_form_builder',
+						zgfm_security: uiform_vars.ajax_nonce,
+						data_filter: tmp_params,
+						opt_save: opt_save,
+						opt_offset: $('#uifm_listform_offset_val').val()
+					},
+					success: function (msg) {
+						$('#zgfm-back-listform-maintable-container').html(msg['content']);
+						$('.uiform-confirmation-func-action').click(function (e) {
+							e.preventDefault(); 
+							var targetUrl = $(this).attr('href'); 
+							var tmp_callback = $(this).data('dialog-callback');
+							$('#uiform-confirmation-func-action-dialog').dialog({
+								autoOpen: false,
+								title: 'Confirmation',
+								modal: true,
+								buttons: {
+									OK: function () {
+										$(this).dialog('close');
+										eval(tmp_callback);
+									},
+									Cancel: function () {
+										$(this).dialog('close');
+									}
+								}
+							});
+
+							$('#uiform-confirmation-func-action-dialog').dialog('option', 'title', $(this).data('dialog-title'));
+
+							$('#uiform-confirmation-func-action-dialog').dialog('open');
+						});
+					}
+				});
+			};
+
+			this.list_records_updateStatus = function (rec_st) {
+				if ($('.uiform-listform-chk-id').is(':checked')) {
+					var data = $('#uiform-form-listform').serialize();
+					var is_trash=$('#uifm_listrecord_is_trash').val()||0;
+					$.ajax({
+						type: 'POST',
+						url: ajaxurl,
+						data: data + '&action=zgfm_fbuilder_list_record_updatest&page=zgfm_form_builder&form_st=' + rec_st + '&zgfm_security=' + uiform_vars.ajax_nonce+'&is_trash='+is_trash,
+						success: function (msg) {
+							if(parseInt(is_trash)===0){
+								rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=list_records');
+							}else{
+								rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=list_trash_records');
+							}
+
+													}
+					});
+				} else {
+					$('#uifm_modal_msg').sfdc_modal('show');
+					$('#uifm_modal_msg .sfdc-modal-title').html($('#uifm_listform_popup_title').val());
+					$('#uifm_modal_msg .sfdc-modal-body').html('<p>' + $('#uifm_listform_popup_notforms').val() + '</p>');
+					$('#uifm_modal_msg').on('show.bs.modal', rocketform.modal_centerPos($('#uifm_modal_msg')));
+				}
+			};
+
+
+			this.list_invoices_updateStatus = function (rec_st) {
+				if ($('.uiform-listform-chk-id').is(':checked')) {
+					var data = $('#uiform-form-listform').serialize();
+					var is_trash=$('#uifm_listrecord_is_trash').val()||0;
+					$.ajax({
+						type: 'POST',
+						url: ajaxurl,
+						data: data + '&action=zgfm_fbuilder_list_invoice_updatest&page=zgfm_form_builder&form_st=' + rec_st + '&zgfm_security=' + uiform_vars.ajax_nonce+'&is_trash='+is_trash,
+						success: function (msg) {
+							if(parseInt(is_trash)===0){
+								rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=gateways&zgfm_contr=records&zgfm_action=list_records');
+							}else{
+								rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=gateways&zgfm_contr=records&zgfm_action=list_trash_records');
+							}
+
+													}
+					});
+				} else {
+					$('#uifm_modal_msg').sfdc_modal('show');
+					$('#uifm_modal_msg .sfdc-modal-title').html($('#uifm_listform_popup_title').val());
+					$('#uifm_modal_msg .sfdc-modal-body').html('<p>' + $('#uifm_listform_popup_notforms').val() + '</p>');
+					$('#uifm_modal_msg').on('show.bs.modal', rocketform.modal_centerPos($('#uifm_modal_msg')));
+				}
+			};
+
+			this.list_trashform_updateStatus = function (form_st) {
+				if ($('.uiform-listform-chk-id').is(':checked')) {
+					var data = $('#uiform-form-listform').serialize();
+					$.ajax({
+						type: 'POST',
+						url: ajaxurl,
+						data: data + '&action=rocket_fbuilder_list_trashform_updatest&page=zgfm_form_builder&form_st=' + form_st + '&zgfm_security=' + uiform_vars.ajax_nonce,
+						success: function (msg) {
+							rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=list_trash');
+						}
+					});
+				} else {
+					$('#uifm_modal_msg').sfdc_modal('show');
+					$('#uifm_modal_msg .sfdc-modal-title').html($('#uifm_listform_popup_title').val());
+					$('#uifm_modal_msg .sfdc-modal-body').html('<p>' + $('#uifm_listform_popup_notforms').val() + '</p>');
+					$('#uifm_modal_msg').on('show.bs.modal', rocketform.modal_centerPos($('#uifm_modal_msg')));
+				}
+			};
+
+			this.listform_deleteTrashFormById = function (idform) {
+				$.ajax({
+					type: 'POST',
+					url: ajaxurl,
+					data: {
+						action: 'rocket_fbuilder_delete_trashform',
+						page: 'zgfm_form_builder',
+						zgfm_security: uiform_vars.ajax_nonce,
+						form_id: idform
+					},
+					success: function (msg) {
+						rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=list_trash');
+					}
+				});
+			};
+
+			this.listform_deleteRecordById = function (id) {
+				var is_trash=$('#uifm_listrecord_is_trash').val()||0;
+
+								$.ajax({
+					type: 'POST',
+					url: ajaxurl,
+					data: {
+						action: 'rocket_fbuilder_delete_record',
+						page: 'zgfm_form_builder',
+						zgfm_security: uiform_vars.ajax_nonce,
+						rec_id: id,
+						is_trash: is_trash
+					},
+					success: function (msg) {
+						if(parseInt(is_trash)===0){
+							rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=list_records');
+						}else{
+							rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=list_trash_records');
+						}
+
+
+																	}
+				});
+			};
+
+			this.listform_deleteInvoiceById = function (id) {
+
+							var is_trash=$('#uifm_listrecord_is_trash').val()||0;
+
+								$.ajax({
+					type: 'POST',
+					url: ajaxurl,
+					data: {
+						action: 'rocket_fbuilder_delete_invoice',
+						page: 'zgfm_form_builder',
+						zgfm_security: uiform_vars.ajax_nonce,
+						pgr_id: id,
+						is_trash: is_trash
+					},
+					success: function (msg) {
+						if(parseInt(is_trash)===0){
+							rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=gateways&zgfm_contr=records&zgfm_action=list_records');
+						}else{
+							rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=gateways&zgfm_contr=records&zgfm_action=list_trash_records');
+						}
+
+
+																	}
+				});
+			};
+
+					};
 		window.zgfm_back_general = zgfm_back_general = $.zgfm_back_general = new zgfm_back_general();
 	})($uifm, window);
 }

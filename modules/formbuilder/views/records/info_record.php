@@ -110,7 +110,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="space10"></div>
    <div class="sfdc-row">
 	   <div class="sfdc-col-md-12">
-		 <?php if ( ZIGAFORM_F_LITE == 1 ) { ?>
+		 <?php if ( ZIGAFORM_F_LITE === 1 ) { ?>
 	   <a 
 	onclick="javascript:rocketform.showFeatureLocked(this);"
 				  data-blocked-feature="PDF export"

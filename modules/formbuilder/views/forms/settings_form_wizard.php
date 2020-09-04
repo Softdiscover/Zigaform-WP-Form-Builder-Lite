@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="sfdc-row">
 		<div class="sfdc-col-sm-12">
 			<div class="sfdc-form-group">
-				 <?php if ( ZIGAFORM_F_LITE == 1 ) { ?>
+				 <?php if ( ZIGAFORM_F_LITE === 1 ) { ?>
 				<div 
 					style="cursor: pointer;"
 					onclick="javascript:rocketform.showFeatureLocked(this);"

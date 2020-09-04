@@ -197,6 +197,25 @@ abstract class Uiform_Base_Module {
 		echo self::render_layout( $template, $data );
 	}
 
+
+	/**
+	 * Load partial 2
+	 *
+	 * @param string  $template  template
+	 * @param string  $view      view
+	 * @param string  $view_data view_data
+	 * @param boolean $return    return
+	 *
+	 * @return  array
+	 */
+	protected static function loadPartial2( $template = '', $content = '', $return = false ) {
+		$data            = array();
+		$data['content'] = $content;
+		// $this->set('content', $this->template_data['controller']->load->view($view, $view_data, true));
+		// return $this->template_data['controller']->load->view($template, $this->template_data, $return);
+		echo self::render_layout( $template, $data );
+	}
+
 	/*
 	 * Abstract methods
 	 */

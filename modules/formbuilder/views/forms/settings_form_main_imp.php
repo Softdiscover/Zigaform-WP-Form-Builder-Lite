@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="sfdc-col-sm-8">
 			
 			
-			 <?php if ( ZIGAFORM_F_LITE == 1 ) { ?>
+			 <?php if ( ZIGAFORM_F_LITE === 1 ) { ?>
 	   <a onclick="javascript:rocketform.showFeatureLocked(this);"
 				  data-blocked-feature="IMPORT FORM"
 				   href="javascript:void(0);"
@@ -50,7 +50,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		  
 		</div>
 	</div>
-	 <?php if ( ZIGAFORM_F_LITE == 1 ) { ?>
+	 <?php if ( ZIGAFORM_F_LITE === 1 ) { ?>
 		<div id="zgfm-blocked-feature-pdf-box">
 			<?php $message = __( 'IMPORT FORM', 'FRocket_admin' ); ?>
 				<?php include UIFORM_FORMS_DIR . '/modules/formbuilder/views/settings/blocked_getmessage.php'; ?>
