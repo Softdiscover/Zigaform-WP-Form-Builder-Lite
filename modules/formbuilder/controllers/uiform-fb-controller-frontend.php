@@ -1734,11 +1734,12 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 	}
 
 	public function shortcode_show_version() {
+		if( ZIGAFORM_F_LITE === 1 ){
 			$output  = '<noscript>';
 			$output .= '<a href="https://zigaform.com/?uifm_v=' . UIFORM_VERSION . '" title="WordPress Form Builder" >ZigaForm </a> version ' . UIFORM_VERSION;
 			$output .= '</noscript>';
 			echo $output;
-
+			}
 	}
 
 	/**

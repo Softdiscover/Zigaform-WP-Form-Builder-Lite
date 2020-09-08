@@ -117,7 +117,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</div>
 	</div>
    <div class="uifm-set-section-input2-optbox clearfix">
-	   <div class="">
+	   <div class="zgfm-fld-inp">
 		<div class="sfdc-col-md-12">
 			<a href="javascript:void(0);"
 			   onclick="javascript:rocketform.input2settings_addNewRdoOption();"
@@ -128,7 +128,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			 <i class="fa fa-trash-o"></i> <?php echo __( 'Remove all options', 'FRocket_admin' ); ?></button>
 			 <button onclick="javascript:rocketform.input2settings_fillBlankValues();" 
 					class="sfdc-btn sfdc-btn-sm sfdc-btn-success">
-			 <i class="fa fa-trash-o"></i> <?php echo __( 'Fill Empty Spaces', 'FRocket_admin' ); ?></button>
+			 <i class="fa fa-trash-o"></i> <?php echo __( 'Copy Label to Value', 'FRocket_admin' ); ?></button>
 			 <button onclick="javascript:rocketform.input2settings_ImportBulkData();" 
 					class="sfdc-btn sfdc-btn-sm sfdc-btn-warning">
 			 <i class="fa fa-trash-o"></i> <?php echo __( 'Import bulk data', 'FRocket_admin' ); ?></button>
@@ -137,9 +137,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	   <div class="space20"></div>
 	   <div class="">
 			<div class="sfdc-col-md-12">
-				<div class="sfdc-col-md-2">
-					<label ><?php echo __( 'Check', 'FRocket_admin' ); ?></label>   
+				<div class="sfdc-col-md-1">
+					<label ><?php echo __( 'Check', 'FRocket_admin' ); ?></label>  
+				</div>	
+				<div class="sfdc-col-md-1">
+					 
 				</div>
+				
 				<div class="sfdc-col-md-4">
 					<label ><?php echo __( 'Label', 'FRocket_admin' ); ?></label>   
 				</div>
@@ -147,11 +151,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<label ><?php echo __( 'Value', 'FRocket_admin' ); ?></label>   
 				</div>
 				<div class="sfdc-col-md-2">
-					
 				</div>
-				<div id="uifm-fld-inp2-options-container">
-
-				</div>
+				
+			</div>
+			<div id="uifm-fld-inp2-options-container">
 
 			</div>
 		</div>

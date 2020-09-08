@@ -57,15 +57,16 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
 		add_filter( 'rockfm_languages_domain', array( &$this, 'rockfm_lang_domain_filter' ) );
 		add_filter( 'plugin_locale', array( &$this, 'rockfm_lang_locale_filter' ) );
 
-		// Composer autoload
-        $composer_path = path_join(UIFORM_FORMS_DIR, 'vendor/autoload.php');
-        if (file_exists($composer_path)) {
-            require_once $composer_path;
-        }
+
 
 		// load admin
 		if ( is_admin() && Uiform_Form_Helper::is_uiform_page() ) {
-
+			
+			// Composer autoload
+	        $composer_path = path_join(UIFORM_FORMS_DIR, 'vendor/autoload.php');
+	        if (file_exists($composer_path)) {
+	            require_once $composer_path;
+	        }
 			// add class to body
 			add_filter( 'body_class', array( &$this, 'filter_body_class' ) );
 
