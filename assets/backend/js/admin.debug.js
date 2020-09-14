@@ -27588,6 +27588,7 @@ rocketform();
 					'.uifm-set-section-inputboxborder',
 					'.uifm-set-section-helpblock',
 					'.uifm-set-section-validator',
+					'.zgfm-set-section-custominput-box',
 					'#uifm-custom-val-req-btn',
 					'#uifm-custom-val-alpha-btn',
 					'#uifm-custom-val-alphanum-btn',
