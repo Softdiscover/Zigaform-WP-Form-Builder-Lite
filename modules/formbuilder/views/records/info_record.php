@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<?php if ( isset( $fmb_rec_tpl_st ) && intval( $fmb_rec_tpl_st ) === 0 ) { ?>  
 
-			<div class="uifm-inforecord-box-info clearfix">
+			<div class="uifm-inforecord-box-info sfdc-clearfix">
 				<h1><?php echo $form_name; ?></h1>
 				<h4 class="zgfm-no-margin zgfm-margin-bottom-20"><?php echo __( 'Submitted form data', 'FRocket_admin' ); ?></h4>
 				<ul>

@@ -32,3 +32,5 @@ a,a:active,a:focus,a:hover,button{outline:0!important}:focus{outline:0}::-moz-fo
 .rockfm-field .rockfm-inp2-opt-price-lbl p{margin:0 0 0 5px!important;padding:0!important}
 .zgfm-tab-calc-mathvar-item a:after{font-family:FontAwesome;content:"\f0dc";display:inline-block;padding-right:3px;float:right;cursor:move}
 .zgfm_inp2_opt_sortablerow{color:#fff000;font-size:15px;cursor:move}.uifm_frm_inp2_opt_checked{text-align:center}
+
+.sfdc-clearfix{clear:both}

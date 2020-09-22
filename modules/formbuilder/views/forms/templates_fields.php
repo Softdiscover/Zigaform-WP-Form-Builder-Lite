@@ -1977,7 +1977,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <!--  template option input 2--->
 <div id="uifm_frm_inp2_templates" style="display:none;">
-	<div data-opt-index="0" class="uifm-fld-inp2-options-row clearfix">
+	<div data-opt-index="0" class="uifm-fld-inp2-options-row sfdc-clearfix">
 		<div class="sfdc-col-md-1">
 			<div class="zgfm_inp2_opt_sortablerow">
 			<i class="fa fa-sort"></i>
@@ -2044,7 +2044,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <!--/ template option input 2 --> 
 <!--  template option input 17--->
 <div id="uifm_frm_inp17_templates" style="display:none;">
-	<div class="uifm-fld-inp17-options-row clearfix" data-opt-index="0">
+	<div class="uifm-fld-inp17-options-row sfdc-clearfix" data-opt-index="0">
 		<div class="sfdc-col-md-1">
 			<input type="checkbox" 
 				   data-option-store="checked"
@@ -2082,7 +2082,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<i class="fa fa-plus-square"></i> <?php echo __( 'Add new', 'FRocket_admin' ); ?>
 				</a>
 						<div class="space10"></div>
-						<div class="uifm_frm_inp17_opt_img_list_wrap clearfix">
+						<div class="uifm_frm_inp17_opt_img_list_wrap sfdc-clearfix">
 						</div>
 					</div>
 				</div>
@@ -2092,7 +2092,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<div class="sfdc-form-group">
 						<label><?php echo __( 'Images', 'FRocket_admin' ); ?></label>
 						<div class="space10"></div>
-						<div class="uifm_frm_inp17_opt_img_list_2_wrap clearfix">
+						<div class="uifm_frm_inp17_opt_img_list_2_wrap sfdc-clearfix">
 						</div>
 					</div>
 				</div>
@@ -2101,7 +2101,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			
 		</div>
 	</div>
-	<div class="uifm_frm_inp17_opt_imgwrap clearfix" data-opt-index="0" >
+	<div class="uifm_frm_inp17_opt_imgwrap sfdc-clearfix" data-opt-index="0" >
 		<div class="sfdc-col-md-3">
 		<div class="uifm_frm_inp17_opt_imgitem">
 			<img class="sfdc-img-thumbnail" src="">
@@ -2131,7 +2131,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</a>
 			</div>
 	</div>
-	 <div class="uifm_frm_inp17_opt2_imgwrap clearfix" data-opt-index="0" >
+	 <div class="uifm_frm_inp17_opt2_imgwrap sfdc-clearfix" data-opt-index="0" >
 		<div class="sfdc-col-md-3">
 			<div class="uifm_frm_inp17_opt_imgitem">
 				<img class="sfdc-img-thumbnail" src="">

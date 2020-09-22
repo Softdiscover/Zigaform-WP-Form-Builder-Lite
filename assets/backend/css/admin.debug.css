@@ -15424,3 +15424,7 @@ th.tabco3 {
   text-align: center;
 }
 
+
+.sfdc-clearfix {
+  clear: both;
+}
