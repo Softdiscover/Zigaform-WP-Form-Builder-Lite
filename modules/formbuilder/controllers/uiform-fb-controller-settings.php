@@ -169,46 +169,9 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module {
 		$data  = array();
 		$query = $this->model_settings->getOptions();
 
-		$list_lang         = array();
-		$list_lang[]       = array(
-			'val'   => '',
-			'label' => __( 'Select language', 'FRocket_admin' ),
-		);
-		$list_lang[]       = array(
-			'val'   => 'en_US',
-			'label' => __( 'english', 'FRocket_admin' ),
-		);
-		$list_lang[]       = array(
-			'val'   => 'es_ES',
-			'label' => __( 'spanish', 'FRocket_admin' ),
-		);
-		$list_lang[]       = array(
-			'val'   => 'fr_FR',
-			'label' => __( 'french', 'FRocket_admin' ),
-		);
-		$list_lang[]       = array(
-			'val'   => 'de_DE',
-			'label' => __( 'german', 'FRocket_admin' ),
-		);
-		$list_lang[]       = array(
-			'val'   => 'it_IT',
-			'label' => __( 'italian', 'FRocket_admin' ),
-		);
-		$list_lang[]       = array(
-			'val'   => 'pt_BR',
-			'label' => __( 'portuguese', 'FRocket_admin' ),
-		);
-		$list_lang[]       = array(
-			'val'   => 'ru_RU',
-			'label' => __( 'russian', 'FRocket_admin' ),
-		);
-		$list_lang[]       = array(
-			'val'   => 'zh_CN',
-			'label' => __( 'chinese', 'FRocket_admin' ),
-		);
-		$data['language']  = $query->language;
-		$data['lang_list'] = $list_lang;
-
+		$pofilespath=UIFORM_FORMS_DIR.'/i18n/languages/backend/';    
+		$data['language']        = $query->language;
+		$data['lang_list']       = Uiform_Form_Helper::getLanguageList($pofilespath);
 		$data['modalmode']       = get_option( 'zgfm_b_modalmode', 0 );
 		$data['fields_fastload'] = get_option( 'zgfm_fields_fastload', 0 );
 

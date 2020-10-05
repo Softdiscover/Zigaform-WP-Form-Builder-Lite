@@ -95,10 +95,10 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module {
 	* Show extensions
 	*/
 	public function list_extensions() {
-
+		global $wp_version;
 		$data          = array();
 		$data['query'] = $this->model_addon->getListAddons( 100, 0 );
-
+		$data['wp_version']=$wp_version;
 		echo self::loadPartial( 'layout.php', 'addon/views/backend/list_extensions.php', $data );
 	}
 

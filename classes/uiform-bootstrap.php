@@ -48,51 +48,59 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
 	 * @mvc Controller
 	 */
 	public function register_hook_callbacks() {
-		 global $wp_version;
+		global $wp_version;
 
 		add_action( 'admin_menu', array( &$this, 'loadMenu' ) );
 
 		// add lang dir
-		add_filter( 'rockfm_languages_directory', array( &$this, 'rockfm_lang_dir_filter' ) );
-		add_filter( 'rockfm_languages_domain', array( &$this, 'rockfm_lang_domain_filter' ) );
-		add_filter( 'plugin_locale', array( &$this, 'rockfm_lang_locale_filter' ) );
-
-
-
+			add_filter( 'rockfm_languages_directory', array( &$this, 'rockfm_lang_dir_filter' ) );
+			add_filter( 'rockfm_languages_domain', array( &$this, 'rockfm_lang_domain_filter' ) );
+			add_filter( 'plugin_locale', array( &$this, 'rockfm_lang_locale_filter' ) );
+		 
 		// load admin
-		if ( is_admin() && Uiform_Form_Helper::is_uiform_page() ) {
+		if ( is_admin() ) {
 			
 			// Composer autoload
-	        $composer_path = path_join(UIFORM_FORMS_DIR, 'vendor/autoload.php');
-	        if (file_exists($composer_path)) {
-	            require_once $composer_path;
-	        }
+			$composer_path = path_join(UIFORM_FORMS_DIR, 'vendor/autoload.php');
+			if (file_exists($composer_path)) {
+				require_once $composer_path;
+			}
+			//load controllers
+			$this->loadBackendControllers();
+			
 			// add class to body
 			add_filter( 'body_class', array( &$this, 'filter_body_class' ) );
-
-			// deregister bootstrap in child themes
-			add_action( 'admin_enqueue_scripts', array( &$this, 'remove_unwanted_css' ), 1000 );
-			// admin resources
-			add_action( 'admin_enqueue_scripts', array( &$this, 'load_admin_resources' ), 20, 1 );
-
-			$this->loadBackendControllers();
-			// disabling WordPress update message
-			add_action( 'admin_menu', array( &$this, 'wphidenag' ) );
-			// format WordPress editor
-			if ( version_compare( $wp_version, 4, '<' ) ) {
-				// for WordPress 3.x
-				// event tinymce
-				add_filter( 'tiny_mce_before_init', array( &$this, 'wpse24113_tiny_mce_before_init' ) );
-				// add_filter('tiny_mce_before_init', array(&$this, 'myformatTinyMCE'));
-			} else {
-				add_filter( 'tiny_mce_before_init', array( &$this, 'wpver411_tiny_mce_before_init' ) );
-				add_filter( 'mce_external_plugins', array( &$this, 'my_external_plugins' ) );
+			 
+			//load script and styles
+			if(Uiform_Form_Helper::is_uiform_page()){
+				// deregister bootstrap in child themes
+				add_action( 'admin_enqueue_scripts', array( &$this, 'remove_unwanted_css' ), 1000 );
+				
+				// admin resources
+				add_action( 'admin_enqueue_scripts', array( &$this, 'load_admin_resources' ), 20, 1 );
+	
+				// disabling WordPress update message
+				add_action( 'admin_menu', array( &$this, 'wphidenag' ) );
+				// format WordPress editor
+				if ( version_compare( $wp_version, 4, '<' ) ) {
+					// for WordPress 3.x
+					// event tinymce
+					add_filter( 'tiny_mce_before_init', array( &$this, 'wpse24113_tiny_mce_before_init' ) );
+					// add_filter('tiny_mce_before_init', array(&$this, 'myformatTinyMCE'));
+				} else {
+					add_filter( 'tiny_mce_before_init', array( &$this, 'wpver411_tiny_mce_before_init' ) );
+					add_filter( 'mce_external_plugins', array( &$this, 'my_external_plugins' ) );
+	
+				}
+			}else{
+				// admin resources
+				add_action( 'admin_enqueue_scripts', array( &$this, 'load_adminGeneral_resources' ), 20, 1 );
 			}
-
 			// end format WordPress editor
 			add_action( 'init', array( $this, 'init' ) );
+			
 		} else {
- 
+			 
 			// load frontend
 			$this->loadFrontendControllers();
 		}
@@ -415,7 +423,7 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
 			$domain = 'FRocket_admin';
 		} else {
 			// load frontend
-			$domain = 'FRocket_front';
+			$domain = 'frocket_front';
 		}
 		return $domain;
 	}
@@ -768,6 +776,105 @@ JS;
 			$this->modules['formbuilder']['forms']->list_uiforms();
 		}
 	}
+
+	
+	/**
+	 * load styles and script across the site
+	 */
+	public function load_adminGeneral_resources(){
+		// admin
+		if ( UIFORM_DEBUG === 1 ) {
+			wp_register_style(
+				self::PREFIX . 'admin',
+				UIFORM_FORMS_URL . '/assets/backend/css/admin-global.debug.css?v' . date( 'YmdHis' ),
+				array(),
+				UIFORM_VERSION,
+				'all'
+			);
+		} else {
+			wp_register_style(
+				self::PREFIX . 'admin',
+				UIFORM_FORMS_URL . '/assets/backend/css/admin-global.min.css',
+				array(),
+				UIFORM_VERSION,
+				'all'
+			);
+		}
+		
+		// load rocketform
+		wp_enqueue_style( self::PREFIX . 'admin' );
+		 
+		//bootstrap 4
+		wp_enqueue_style( 'rockefform-bootstrap-v4', UIFORM_FORMS_URL . '/assets/common/bootstrap/4.3.1/css/bootstrap.css' );
+		
+		//font awesome
+		wp_enqueue_style( 'rockefform-fontawesome', UIFORM_FORMS_URL . '/assets/common/css/fontawesome/4.7.0/css/font-awesome.min.css' );
+		
+	    
+	    // load jquery
+			wp_enqueue_script( 'jquery' );
+			wp_enqueue_script( 'jquery-ui-core' );
+			wp_enqueue_script( 'jquery-ui-widget' );
+			wp_enqueue_script( 'jquery-ui-mouse' );
+			wp_enqueue_script( 'jquery-ui-dialog' );
+			wp_enqueue_script( 'jquery-ui-resizable' );
+			wp_enqueue_script( 'jquery-ui-position' );
+			wp_enqueue_script( 'jquery-ui-sortable' );
+			wp_enqueue_script( 'jquery-ui-draggable' );
+			wp_enqueue_script( 'jquery-ui-droppable' );
+			wp_enqueue_script( 'jquery-ui-accordion' );
+			wp_enqueue_script( 'jquery-ui-autocomplete' );
+			wp_enqueue_script( 'jquery-ui-menu' );
+			wp_enqueue_script( 'jquery-ui-datepicker' );
+			wp_enqueue_script( 'jquery-ui-slider' );
+			wp_enqueue_script( 'jquery-ui-spinner' );
+			wp_enqueue_script( 'jquery-ui-button' );
+
+			// prev jquery
+			wp_enqueue_script( 'rockfm-prev-jquery', UIFORM_FORMS_URL . '/assets/common/js/init.js', array( 'jquery' ) );
+ 
+			// bootstrap sfdc
+			wp_enqueue_script( 'rockefform-bootstrap-sfdc', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/js/bootstrap-sfdc.js', array( 'jquery', 'rockfm-prev-jquery' ) );
+	    
+		if ( UIFORM_DEBUG === 1 ) {
+			wp_register_script(
+				self::PREFIX . 'admin',
+				UIFORM_FORMS_URL . '/assets/backend/js/admin-global.debug.js?v=' . date( 'YmdHis' ),
+				array( 'rockefform-bootstrap-sfdc' ),
+				UIFORM_VERSION,
+				true
+			);
+		} else {
+			wp_register_script(
+				self::PREFIX . 'admin',
+				UIFORM_FORMS_URL . '/assets/backend/js/admin-global.min.js',
+				array( 'rockefform-bootstrap-sfdc' ),
+				UIFORM_VERSION,
+				true
+			);
+		}
+
+			// load rocket form
+			wp_enqueue_script( self::PREFIX . 'admin' );
+
+			$zgfm_vars = apply_filters(
+				'zgfm_back_filter_globalvars',
+				array(
+					'url_site'        => site_url(),
+					'fields_fastload' => get_option( 'zgfm_fields_fastload', 0 ),
+					'url_admin'       => admin_url(),
+					'url_plugin'      => UIFORM_FORMS_URL,
+					'app_version'     => UIFORM_VERSION,
+					'app_is_lite'     => ZIGAFORM_F_LITE,
+					'app_demo_st'     => UIFORM_DEMO,
+					'url_assets'      => UIFORM_FORMS_URL . '/assets',
+					'ajax_nonce'      => wp_create_nonce( 'zgfm_ajax_nonce' ),
+				)
+			);
+
+			wp_localize_script( self::PREFIX . 'admin', 'uiform_vars', $zgfm_vars );
+	}
+
 
 	/*
 	 * Static methods

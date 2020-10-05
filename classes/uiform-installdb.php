@@ -200,7 +200,7 @@ class Uiform_InstallDB {
 		// insert data
 		$uifm_settings = $wpdb->get_row( 'SELECT COUNT(*) AS total FROM ' . $this->settings, ARRAY_A );
 		if ( isset( $uifm_settings['total'] ) && intval( $uifm_settings['total'] ) === 0 ) {
-			$sql = "INSERT INTO $this->settings VALUES ('5.0.1', null, null, null, null, null, null, '', '1');";
+			$sql = "INSERT INTO $this->settings VALUES ('5.0.5', null, null, null, null, null, null, '', '1');";
 			$wpdb->query( $sql );
 		}
 
@@ -270,6 +270,14 @@ class Uiform_InstallDB {
 			$sql = "INSERT INTO $this->core_addon VALUES ('webhook', 'WebHooks Add-On', 'You can use the WebHooks Add-On to send data from your forms to any custom page or script you like. This page can perform integration tasks to transform, parse, manipulate and send your submission data to wherever you choose. If you are developing an application that needs to be updated every time a form is submitted, WebHooks is for you. The advantage of WebHooks is that the passing of data is immediate and you can pass all submitted form data at once. e.g. you can connect with Webhook of Zapier - https%3A%2F%2Fzapier.com%2Fpage%2Fwebhooks%2F', 1, 1, NULL, NULL, 1, 2, NULL, NULL, NULL, 0, '2019-12-30 01:36:23', '2019-12-30 01:34:27', NULL, NULL, NULL, NULL, NULL, 1, 1, 0);";
 			$wpdb->query( $sql );
 		}
+
+         // insert data
+			$uifm_check_total = $wpdb->get_row( 'SELECT COUNT(*) AS total FROM ' . $this->core_addon . " where add_name='mgtranslate'", ARRAY_A );
+            if ( isset( $uifm_check_total['total'] ) && intval( $uifm_check_total['total'] ) === 0 ) {
+                $sql = "INSERT INTO $this->core_addon VALUES ('mgtranslate', 'Translation Manager Add-on', 'Translate any text on zigaform, and add new language', 1, 1, '1.0', NULL, 0, 4, '{\"required_wp\":5.0,\"required_php\":7.2}', NULL, NULL, 0, '2020-09-26 12:13:06', '2020-09-26 12:12:40', NULL, NULL, NULL, NULL, '<?xml version=\"1.0\"?> <params><required_wp>5.0</required_wp><required_php>7.2</required_php></params>', 1, 0, 0);";
+                 $wpdb->query( $sql );
+            }
+        
 
 		// addon detail
 		$sql = "CREATE  TABLE IF NOT EXISTS $this->core_addon_detail (

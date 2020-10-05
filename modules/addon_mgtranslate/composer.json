@@ -1,0 +1,11 @@
+{
+     "require": {
+        "php": ">=7.1"
+    },
+    "autoload": {
+        "psr-4": {"PoParser\\": "src/"}
+    },
+     "require-dev": {
+          "gettext/gettext": "^5.5"
+     }
+}

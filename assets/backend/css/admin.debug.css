@@ -15428,3 +15428,20 @@ th.tabco3 {
 .sfdc-clearfix {
   clear: both;
 }
+
+#zgfm-extensions-page .list-options ul li:first-child {
+  color: royalblue;
+}
+
+#zgfm-extensions-page .list-options ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+#zgfm-extensions-page .list-options ul .fa-check-square {
+  color: #038b03;
+}
+
+#zgfm-extensions-page .list-options ul .fa-window-close {
+  color: red;
+}

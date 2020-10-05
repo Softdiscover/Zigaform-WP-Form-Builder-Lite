@@ -7,7 +7,7 @@ Tags: form, forms, contact form, custom form, form builder, form creator, form m
 Requires at least: 3.6
 Tested up to: 5.5.1
 Requires PHP: 5.4
-Stable tag: 5.0.1
+Stable tag: 5.0.5
 
 Create forms with total control using this powerful drag and drop form builder which makes you to build contact forms or any form on few minutes.
 
@@ -458,7 +458,7 @@ https://www.youtube.com/watch?v=W3yTkaDD4Mk&w=532&rel=0
 * minor changes
 = 3.9.2.4 = 
  *added custom reply to mail messages
-= 5.0.1 = 
+= 5.0.5 = 
  * minor changes
 
 == Upgrade Notice ==
@@ -504,5 +504,5 @@ https://www.youtube.com/watch?v=W3yTkaDD4Mk&w=532&rel=0
 * minor changes
 = 3.9.2.4 = 
  *added custom reply to mail messages
-= 5.0.1 = 
+= 5.0.5 = 
  * minor changes
