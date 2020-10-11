@@ -331,13 +331,26 @@ class Uiform_Form_Helper {
 	public static function is_uiform_page() {
 		$vget_page  = ( isset( $_GET['page'] ) ) ? self::sanitizeInput( $_GET['page'] ) : '';
 		$vpost_page = ( isset( $_POST['page'] ) ) ? self::sanitizeInput( $_POST['page'] ) : '';
-
-		// $wpage=(isset($_GET['page']))?Uiform_Form_Helper::sanitizeInput($_GET['page']):'';
+ 
 		if ( ( $vget_page === 'zgfm_form_builder' ) || ( $vpost_page === 'zgfm_form_builder' ) ) {
 			return true;
 		} else {
 			return false;
 		}
+	}
+
+	public static function is_zigaform_admin_enabled() {
+	
+		$vget_page  = ( isset( $_GET['page'] ) ) ? self::sanitizeInput( $_GET['page'] ) : '';
+		$vpost_page = ( isset( $_POST['page'] ) ) ? self::sanitizeInput( $_POST['page'] ) : '';
+
+		$allowedPages= array('zgfm_form_builder','zigaform-translation');
+		if ( in_array($vget_page, $allowedPages) || in_array($vpost_page, $allowedPages) ) {
+			return true;
+		} 
+		
+		return false;
+		
 	}
 
 	public static function remove_non_tag_space( $text ) {

@@ -52,9 +52,7 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module {
 
 		// admin resources
 		add_action( 'admin_enqueue_scripts', array( &$this, 'loadStyle' ), 20, 1 );
-
-		add_filter( 'zgfm_back_filter_globalvars', array( &$this, 'filter_add_globalvariable' ) );
-		
+ 
 		// ajax for saving form
 		add_action( 'wp_ajax_rocket_fbuilder_addon_status', array( &$this, 'listaddon_updateStatus' ) );
 	}
@@ -86,10 +84,7 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module {
 		wp_die();
 	}
 
-	public function filter_add_globalvariable( $value ) {
-		/*$value['addon'] = self::$_addons_jsactions;*/
-		return $value;
-	}
+	 
 
 	/*
 	* Show extensions

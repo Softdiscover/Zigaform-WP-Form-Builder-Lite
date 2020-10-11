@@ -48,62 +48,16 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
 	 * @mvc Controller
 	 */
 	public function register_hook_callbacks() {
-		global $wp_version;
+		
 
 		add_action( 'admin_menu', array( &$this, 'loadMenu' ) );
 
-		// add lang dir
-			add_filter( 'rockfm_languages_directory', array( &$this, 'rockfm_lang_dir_filter' ) );
-			add_filter( 'rockfm_languages_domain', array( &$this, 'rockfm_lang_domain_filter' ) );
-			add_filter( 'plugin_locale', array( &$this, 'rockfm_lang_locale_filter' ) );
+	
 		 
-		// load admin
-		if ( is_admin() ) {
-			
-			// Composer autoload
-			$composer_path = path_join(UIFORM_FORMS_DIR, 'vendor/autoload.php');
-			if (file_exists($composer_path)) {
-				require_once $composer_path;
-			}
-			//load controllers
-			$this->loadBackendControllers();
-			
-			// add class to body
-			add_filter( 'body_class', array( &$this, 'filter_body_class' ) );
-			 
-			//load script and styles
-			if(Uiform_Form_Helper::is_uiform_page()){
-				// deregister bootstrap in child themes
-				add_action( 'admin_enqueue_scripts', array( &$this, 'remove_unwanted_css' ), 1000 );
-				
-				// admin resources
-				add_action( 'admin_enqueue_scripts', array( &$this, 'load_admin_resources' ), 20, 1 );
-	
-				// disabling WordPress update message
-				add_action( 'admin_menu', array( &$this, 'wphidenag' ) );
-				// format WordPress editor
-				if ( version_compare( $wp_version, 4, '<' ) ) {
-					// for WordPress 3.x
-					// event tinymce
-					add_filter( 'tiny_mce_before_init', array( &$this, 'wpse24113_tiny_mce_before_init' ) );
-					// add_filter('tiny_mce_before_init', array(&$this, 'myformatTinyMCE'));
-				} else {
-					add_filter( 'tiny_mce_before_init', array( &$this, 'wpver411_tiny_mce_before_init' ) );
-					add_filter( 'mce_external_plugins', array( &$this, 'my_external_plugins' ) );
-	
-				}
-			}else{
-				// admin resources
-				add_action( 'admin_enqueue_scripts', array( &$this, 'load_adminGeneral_resources' ), 20, 1 );
-			}
-			// end format WordPress editor
-			add_action( 'init', array( $this, 'init' ) );
-			
-		} else {
-			 
-			// load frontend
-			$this->loadFrontendControllers();
-		}
+		// end format WordPress editor
+			add_action( 'init', array( $this, 'init' ) );	
+
+
 
 		// i18n
 		add_action( 'init', array( &$this, 'i18n' ) );
@@ -124,18 +78,7 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
 
 		// add_action( 'init',                  array( $this, 'upgrade' ), 11 );
 
-		// disable update notifications
-		if ( is_admin() ) {
-			add_filter( 'site_transient_update_plugins', array( &$this, 'disable_plugin_updates' ) );
-
-			// if(ZIGAFORM_F_LITE===1){
-			add_filter( ( is_multisite() ? 'network_admin_' : '' ) . 'plugin_action_links', array( $this, 'plugin_add_links' ), 10, 2 );
-
-			// ZigaForm Upgrade
-			add_action( 'admin_notices', array( $this, 'zigaform_upgrade' ) );
-			// }
-
-		}
+	
 
 	}
 
@@ -585,7 +528,7 @@ JS;
 		$this->modules['addon']['backend']->load_addonsbyBack();
 
 		// add addon routes
-		$this->modules['addon']['backend']->load_addActions();
+		//$this->modules['addon']['backend']->load_addActions();
 
 	}
 
@@ -1195,6 +1138,74 @@ JS;
 	 */
 	public function init() {
 		try {
+			
+			global $wp_version;
+
+			// load admin
+		if ( is_admin() &&
+			current_user_can( 'manage_options' ) &&
+		  	Uiform_Form_Helper::is_zigaform_admin_enabled() ) {
+			
+			// Composer autoload
+			$composer_path = path_join(UIFORM_FORMS_DIR, 'vendor/autoload.php');
+			if (file_exists($composer_path)) {
+				require_once $composer_path;
+			}
+			//load controllers
+			$this->loadBackendControllers();
+			
+			// add class to body
+			add_filter( 'body_class', array( &$this, 'filter_body_class' ) );
+			 
+			//load script and styles
+			if(Uiform_Form_Helper::is_uiform_page()){
+				// deregister bootstrap in child themes
+				add_action( 'admin_enqueue_scripts', array( &$this, 'remove_unwanted_css' ), 1000 );
+				
+				// admin resources
+				add_action( 'admin_enqueue_scripts', array( &$this, 'load_admin_resources' ), 20, 1 );
+	
+				// disabling WordPress update message
+				add_action( 'admin_menu', array( &$this, 'wphidenag' ) );
+				// format WordPress editor
+				if ( version_compare( $wp_version, 4, '<' ) ) {
+					// for WordPress 3.x
+					// event tinymce
+					add_filter( 'tiny_mce_before_init', array( &$this, 'wpse24113_tiny_mce_before_init' ) );
+					// add_filter('tiny_mce_before_init', array(&$this, 'myformatTinyMCE'));
+				} else {
+					add_filter( 'tiny_mce_before_init', array( &$this, 'wpver411_tiny_mce_before_init' ) );
+					add_filter( 'mce_external_plugins', array( &$this, 'my_external_plugins' ) );
+	
+				}
+			}else{
+				// admin resources
+				add_action( 'admin_enqueue_scripts', array( &$this, 'load_adminGeneral_resources' ), 20, 1 );
+			}
+			
+				// disable update notifications
+			if ( is_admin() ) {
+				add_filter( 'site_transient_update_plugins', array( &$this, 'disable_plugin_updates' ) );
+
+				// if(ZIGAFORM_F_LITE===1){
+				add_filter( ( is_multisite() ? 'network_admin_' : '' ) . 'plugin_action_links', array( $this, 'plugin_add_links' ), 10, 2 );
+
+				// ZigaForm Upgrade
+				add_action( 'admin_notices', array( $this, 'zigaform_upgrade' ) );
+				// }
+
+			}
+			
+		} else {
+			 
+			// load frontend
+			$this->loadFrontendControllers();
+		}
+
+			// add lang dir
+			add_filter( 'rockfm_languages_directory', array( &$this, 'rockfm_lang_dir_filter' ) );
+			add_filter( 'rockfm_languages_domain', array( &$this, 'rockfm_lang_domain_filter' ) );
+			add_filter( 'plugin_locale', array( &$this, 'rockfm_lang_locale_filter' ) );
 
 		} catch ( Exception $exception ) {
 			add_notice( __METHOD__ . ' error: ' . $exception->getMessage(), 'error' );
