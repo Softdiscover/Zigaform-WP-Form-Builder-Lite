@@ -349,9 +349,65 @@ class Uiform_Form_Helper {
 			return true;
 		} 
 		
+		if( Uiform_Form_Helper::is_admin_request() ){
+			return true;
+		}
+
+		if ( is_user_logged_in() && is_admin_bar_showing() ) {
+			return true;
+		}
+
 		return false;
 		
 	}
+
+/**
+ * Check if this is a request at the backend.
+ *
+ * @return bool true if is admin request, otherwise false.
+ */
+public static function is_admin_request() {
+	/**
+	 * Get current URL.
+	 *
+	 * @link https://wordpress.stackexchange.com/a/126534
+	 */
+	$current_url = home_url( add_query_arg( null, null ) );
+
+	/**
+	 * Get admin URL and referrer.
+	 *
+	 * @link https://core.trac.wordpress.org/browser/tags/4.8/src/wp-includes/pluggable.php#L1076
+	 */
+	$admin_url = strtolower( admin_url() );
+	$referrer  = strtolower( wp_get_referer() );
+
+	/**
+	 * Check if this is a admin request. If true, it
+	 * could also be a AJAX request from the frontend.
+	 */
+	if ( 0 === strpos( $current_url, $admin_url ) ) {
+		/**
+		 * Check if the user comes from a admin page.
+		 */
+		if ( 0 === strpos( $referrer, $admin_url ) ) {
+			return true;
+		} else {
+			/**
+			 * Check for AJAX requests.
+			 *
+			 * @link https://gist.github.com/zitrusblau/58124d4b2c56d06b070573a99f33b9ed#file-lazy-load-responsive-images-php-L193
+			 */
+			if ( function_exists( 'wp_doing_ajax' ) ) {
+				return ! wp_doing_ajax();
+			} else {
+				return ! ( defined( 'DOING_AJAX' ) && DOING_AJAX );
+			}
+		}
+	} else {
+		return false;
+	}
+}
 
 	public static function remove_non_tag_space( $text ) {
 		$len    = strlen( $text );
