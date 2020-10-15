@@ -149,7 +149,7 @@ if (!$uifm.isFunction(zgfm_back_mgtranslate)) {
 				$.ajax({
 					type        : 'POST', 
 					url: ajaxurl,
-					data: $.param(tmpArrs) + '&action=zgfm_mgtranslate_savePo' + '&zgfm_security=' + uiform_vars.ajax_nonce + '&lang=' +$('#mgtr-input-lang').val() + '&side=' + $('#mgtr-input-side').val(),
+					data: $.param(tmpArrs) + '&action=zgfm_mgtranslate_savePo' + '&page=zgfm_form_builder&zgfm_security=' + uiform_vars.ajax_nonce + '&lang=' +$('#mgtr-input-lang').val() + '&side=' + $('#mgtr-input-side').val(),
 					dataType    : 'json', 
 					encode          : true,
 					beforeSend: function () {
