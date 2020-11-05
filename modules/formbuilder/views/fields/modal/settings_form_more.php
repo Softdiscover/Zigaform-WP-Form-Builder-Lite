@@ -254,11 +254,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</div>
 		 </fieldset>
 	<!-- load modules -->
-		<?php 
-		if(!empty($modules_field_more)){
+		<?php
+		if ( ! empty( $modules_field_more ) ) {
 			echo $modules_field_more;
 		}
-		 ?>
+		?>
 	
 	<!--/ load modules -->
 	

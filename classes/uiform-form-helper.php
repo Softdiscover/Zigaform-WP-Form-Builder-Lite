@@ -331,7 +331,7 @@ class Uiform_Form_Helper {
 	public static function is_uiform_page() {
 		$vget_page  = ( isset( $_GET['page'] ) ) ? self::sanitizeInput( $_GET['page'] ) : '';
 		$vpost_page = ( isset( $_POST['page'] ) ) ? self::sanitizeInput( $_POST['page'] ) : '';
- 
+
 		if ( ( $vget_page === 'zgfm_form_builder' ) || ( $vpost_page === 'zgfm_form_builder' ) ) {
 			return true;
 		} else {
@@ -340,16 +340,16 @@ class Uiform_Form_Helper {
 	}
 
 	public static function is_zigaform_admin_enabled() {
-	
+
 		$vget_page  = ( isset( $_GET['page'] ) ) ? self::sanitizeInput( $_GET['page'] ) : '';
 		$vpost_page = ( isset( $_POST['page'] ) ) ? self::sanitizeInput( $_POST['page'] ) : '';
 
-		$allowedPages= array('zgfm_form_builder','zigaform-translation');
-		if ( in_array($vget_page, $allowedPages) || in_array($vpost_page, $allowedPages) ) {
+		$allowedPages = array( 'zgfm_form_builder', 'zigaform-translation' );
+		if ( in_array( $vget_page, $allowedPages ) || in_array( $vpost_page, $allowedPages ) ) {
 			return true;
-		} 
-		
-		if( Uiform_Form_Helper::is_admin_request() ){
+		}
+
+		if ( Uiform_Form_Helper::is_admin_request() ) {
 			return true;
 		}
 
@@ -358,56 +358,56 @@ class Uiform_Form_Helper {
 		}
 
 		return false;
-		
+
 	}
 
-/**
- * Check if this is a request at the backend.
- *
- * @return bool true if is admin request, otherwise false.
- */
-public static function is_admin_request() {
 	/**
-	 * Get current URL.
+	 * Check if this is a request at the backend.
 	 *
-	 * @link https://wordpress.stackexchange.com/a/126534
+	 * @return bool true if is admin request, otherwise false.
 	 */
-	$current_url = home_url( add_query_arg( null, null ) );
-
-	/**
-	 * Get admin URL and referrer.
-	 *
-	 * @link https://core.trac.wordpress.org/browser/tags/4.8/src/wp-includes/pluggable.php#L1076
-	 */
-	$admin_url = strtolower( admin_url() );
-	$referrer  = strtolower( wp_get_referer() );
-
-	/**
-	 * Check if this is a admin request. If true, it
-	 * could also be a AJAX request from the frontend.
-	 */
-	if ( 0 === strpos( $current_url, $admin_url ) ) {
+	public static function is_admin_request() {
 		/**
-		 * Check if the user comes from a admin page.
+		 * Get current URL.
+		 *
+		 * @link https://wordpress.stackexchange.com/a/126534
 		 */
-		if ( 0 === strpos( $referrer, $admin_url ) ) {
-			return true;
-		} else {
+		$current_url = home_url( add_query_arg( null, null ) );
+
+		/**
+		 * Get admin URL and referrer.
+		 *
+		 * @link https://core.trac.wordpress.org/browser/tags/4.8/src/wp-includes/pluggable.php#L1076
+		 */
+		$admin_url = strtolower( admin_url() );
+		$referrer  = strtolower( wp_get_referer() );
+
+		/**
+		 * Check if this is a admin request. If true, it
+		 * could also be a AJAX request from the frontend.
+		 */
+		if ( 0 === strpos( $current_url, $admin_url ) ) {
 			/**
-			 * Check for AJAX requests.
-			 *
-			 * @link https://gist.github.com/zitrusblau/58124d4b2c56d06b070573a99f33b9ed#file-lazy-load-responsive-images-php-L193
+			 * Check if the user comes from a admin page.
 			 */
-			if ( function_exists( 'wp_doing_ajax' ) ) {
-				return ! wp_doing_ajax();
+			if ( 0 === strpos( $referrer, $admin_url ) ) {
+				return true;
 			} else {
-				return ! ( defined( 'DOING_AJAX' ) && DOING_AJAX );
+				/**
+				 * Check for AJAX requests.
+				 *
+				 * @link https://gist.github.com/zitrusblau/58124d4b2c56d06b070573a99f33b9ed#file-lazy-load-responsive-images-php-L193
+				 */
+				if ( function_exists( 'wp_doing_ajax' ) ) {
+					return ! wp_doing_ajax();
+				} else {
+					return ! ( defined( 'DOING_AJAX' ) && DOING_AJAX );
+				}
 			}
+		} else {
+			return false;
 		}
-	} else {
-		return false;
 	}
-}
 
 	public static function remove_non_tag_space( $text ) {
 		$len    = strlen( $text );
@@ -944,54 +944,53 @@ public static function is_admin_request() {
 	}
 
 
-		public static function getLanguageList($pofilespath){
-	
-		
-		$files = scandir($pofilespath);
-        $total = count($files);
-        $list_lang               = array();
+	public static function getLanguageList( $pofilespath ) {
+
+		$files = scandir( $pofilespath );
+		$total = count( $files );
+		$list_lang               = array();
 		$list_lang[]             = array(
 			'val'   => '',
 			'label' => __( 'Select language', 'FRocket_admin' ),
 		);
-        for ($x = 0; $x <= $total; $x++) :
-            if (isset($files[$x]) && $files[$x] != '.' && $files[$x] != '..' && strtolower(substr($files[$x], strrpos($files[$x], '.') + 1)) == 'po' ) {
-                $temp = str_replace(".po", "", str_replace("wprockf-", "", $files[$x]));
-                $pre_list=array();
-                $pre_list['val']=$temp;
-                switch ($temp) {
+		for ( $x = 0; $x <= $total; $x++ ) :
+			if ( isset( $files[ $x ] ) && $files[ $x ] != '.' && $files[ $x ] != '..' && strtolower( substr( $files[ $x ], strrpos( $files[ $x ], '.' ) + 1 ) ) == 'po' ) {
+				$temp = str_replace( '.po', '', str_replace( 'wprockf-', '', $files[ $x ] ) );
+				$pre_list = array();
+				$pre_list['val'] = $temp;
+				switch ( $temp ) {
 					case 'en_US':
-						$pre_list['label']=__('English', 'FRocket_admin');
+						$pre_list['label'] = __( 'English', 'FRocket_admin' );
 						break;
 					case 'es_ES':
-						$pre_list['label']=__('Spanish', 'FRocket_admin');
+						$pre_list['label'] = __( 'Spanish', 'FRocket_admin' );
 						break;
 					case 'fr_FR':
-						$pre_list['label']=__('French', 'FRocket_admin');
-						break;	
+						$pre_list['label'] = __( 'French', 'FRocket_admin' );
+						break;
 					case 'de_DE':
-						$pre_list['label']=__('German', 'FRocket_admin');
-						break;	
+						$pre_list['label'] = __( 'German', 'FRocket_admin' );
+						break;
 					case 'it_IT':
-						$pre_list['label']=__('Italian', 'FRocket_admin');
+						$pre_list['label'] = __( 'Italian', 'FRocket_admin' );
 						break;
 					case 'pt_BR':
-						$pre_list['label']=__('Portuguese', 'FRocket_admin');
+						$pre_list['label'] = __( 'Portuguese', 'FRocket_admin' );
 						break;
 					case 'ru_RU':
-						$pre_list['label']=__('Russian', 'FRocket_admin');
+						$pre_list['label'] = __( 'Russian', 'FRocket_admin' );
 						break;
 					case 'zh_CN':
-						$pre_list['label']=__('Chinese', 'FRocket_admin');
+						$pre_list['label'] = __( 'Chinese', 'FRocket_admin' );
 						break;
 					default:
-						$pre_list['label']=$temp;
+						$pre_list['label'] = $temp;
 						break;
 				}
-                $list_lang[]=$pre_list;
-            }
-        endfor;
-		
+				$list_lang[] = $pre_list;
+			}
+		endfor;
+
 		return $list_lang;
 	}
 
@@ -1003,15 +1002,13 @@ function uifm_generate_pdf( $html, $filename, $papersize, $paperorien, $stream =
 	if ( ZIGAFORM_F_LITE === 1 ) {
 
 	} else {
-		
-		if (version_compare(phpversion(), '7.1', '>='))
-		{
+
+		if ( version_compare( phpversion(), '7.1', '>=' ) ) {
 			require_once UIFORM_FORMS_DIR . '/helpers/dompdf/0.8.5/autoload.inc.php';
-		}else{
+		} else {
 			require_once UIFORM_FORMS_DIR . '/helpers/dompdf/0.8.3/autoload.inc.php';
 		}
 
-		
 		$dompdf = new Dompdf();
 
 		$dompdf->loadHtml( $html );

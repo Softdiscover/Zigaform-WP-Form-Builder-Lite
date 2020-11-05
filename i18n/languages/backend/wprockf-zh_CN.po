@@ -1,5 +1,5 @@
-# Copyright (C) 2020 Zigaform WP Cost Estimation Form Builder 5.0.9
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.0.9 package.
+# Copyright (C) 2020 Zigaform WP Cost Estimation Form Builder 5.1.4
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.1.4 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Rocket form\n"
@@ -38,7 +38,7 @@ msgstr "加载中"
 msgid "Saving"
 msgstr "Saving"
 
-#: views/footer-global.php:18, modules/addon_mgtranslate/controllers/backend.php:98, modules/formbuilder/views/forms/create_form_modals.php:30, modules/formbuilder/views/forms/formhtml_form.php:131, modules/formbuilder/views/forms/modal1_footer.php:19, modules/formbuilder/views/forms/templates_fields.php:1923, modules/formbuilder/views/fields/render_front/block_label.php:88, modules/formbuilder/views/fields/templates/prevpanel_main.php:43, modules/formbuilder/views/fields/options/select/impbulkdata_footer.php:20
+#: views/footer-global.php:18, modules/addon_mgtranslate/controllers/backend.php:95, modules/formbuilder/views/forms/create_form_modals.php:30, modules/formbuilder/views/forms/formhtml_form.php:131, modules/formbuilder/views/forms/modal1_footer.php:19, modules/formbuilder/views/forms/templates_fields.php:1923, modules/formbuilder/views/fields/render_front/block_label.php:88, modules/formbuilder/views/fields/templates/prevpanel_main.php:43, modules/formbuilder/views/fields/options/select/impbulkdata_footer.php:20
 msgid "Close"
 msgstr "关闭"
 
@@ -62,7 +62,7 @@ msgstr "Success! Updated successfully"
 msgid "Form was created"
 msgstr "Form was created"
 
-#: views/footer.php:33, modules/formbuilder/controllers/uiform-fb-controller-forms.php:749
+#: views/footer.php:33, modules/formbuilder/controllers/uiform-fb-controller-forms.php:746
 msgid ""
 "Success! The form was created. Now just copy and paste the shortcode to "
 "your content"
@@ -462,87 +462,87 @@ msgstr "Nope, maybe later"
 msgid "I already did"
 msgstr "I already did"
 
-#: modules/addon_func_anim/controllers/animation.php:231
+#: modules/addon_func_anim/controllers/animation.php:228
 msgid "Customs"
 msgstr "自定义css"
 
-#: modules/addon_func_anim/controllers/animation.php:256
+#: modules/addon_func_anim/controllers/animation.php:253
 msgid "Attention Seekers"
 msgstr "Attention Seekers"
 
-#: modules/addon_func_anim/controllers/animation.php:293
+#: modules/addon_func_anim/controllers/animation.php:290
 msgid "Bouncing Entrances"
 msgstr "Bouncing Entrances"
 
-#: modules/addon_func_anim/controllers/animation.php:319
+#: modules/addon_func_anim/controllers/animation.php:316
 msgid "Bouncing Exits"
 msgstr "Bouncing Exits"
 
-#: modules/addon_func_anim/controllers/animation.php:345
+#: modules/addon_func_anim/controllers/animation.php:342
 msgid "Fading Entrances"
 msgstr "Fading Entrances"
 
-#: modules/addon_func_anim/controllers/animation.php:387
+#: modules/addon_func_anim/controllers/animation.php:384
 msgid "Fading Exits"
 msgstr "右填充"
 
-#: modules/addon_func_anim/controllers/animation.php:428
+#: modules/addon_func_anim/controllers/animation.php:425
 msgid "Flippers"
 msgstr "Flippers"
 
-#: modules/addon_func_anim/controllers/animation.php:453
+#: modules/addon_func_anim/controllers/animation.php:450
 msgid "Lightspeed"
 msgstr "加亮"
 
-#: modules/addon_func_anim/controllers/animation.php:466
+#: modules/addon_func_anim/controllers/animation.php:463
 msgid "Rotating Entrances"
 msgstr "Rotating Entrances"
 
-#: modules/addon_func_anim/controllers/animation.php:491
+#: modules/addon_func_anim/controllers/animation.php:488
 msgid "Rotating Exits"
 msgstr "Rotating Exits"
 
-#: modules/addon_func_anim/controllers/animation.php:516
+#: modules/addon_func_anim/controllers/animation.php:513
 msgid "Specials"
 msgstr "Specials"
 
-#: modules/addon_func_anim/controllers/animation.php:533
+#: modules/addon_func_anim/controllers/animation.php:530
 msgid "Zoom Entrances"
 msgstr "Zoom Entrances"
 
-#: modules/addon_func_anim/controllers/animation.php:558
+#: modules/addon_func_anim/controllers/animation.php:555
 msgid "Zoom Exits"
 msgstr "Zoom Exits"
 
-#: modules/addon_func_anim/controllers/animation.php:583
+#: modules/addon_func_anim/controllers/animation.php:580
 msgid "Slide Entrances"
 msgstr "Slide Entrances"
 
-#: modules/addon_func_anim/controllers/animation.php:604
+#: modules/addon_func_anim/controllers/animation.php:601
 msgid "Slide Exits"
 msgstr "Slide Exits"
 
-#: modules/addon_mgtranslate/controllers/backend.php:93, modules/addon_mgtranslate/controllers/backend.php:158, modules/addon_mgtranslate/controllers/backend.php:246, modules/addon_mgtranslate/views/backend/show_list.php:24
+#: modules/addon_mgtranslate/controllers/backend.php:90, modules/addon_mgtranslate/controllers/backend.php:148, modules/addon_mgtranslate/controllers/backend.php:234, modules/addon_mgtranslate/views/backend/show_list.php:24
 msgid "Translation Manager"
 msgstr "翻译错误消息"
 
-#: modules/addon_mgtranslate/controllers/backend.php:125
+#: modules/addon_mgtranslate/controllers/backend.php:118
 msgid "New translation created successfully"
 msgstr "New translation created successfully"
 
-#: modules/addon_mgtranslate/controllers/backend.php:138
+#: modules/addon_mgtranslate/controllers/backend.php:130
 msgid "Error! An error ocurred during the process"
 msgstr "Error! An error ocurred during the process"
 
-#: modules/addon_mgtranslate/controllers/backend.php:160
+#: modules/addon_mgtranslate/controllers/backend.php:150
 msgid "Create New"
 msgstr "创建"
 
-#: modules/addon_mgtranslate/controllers/backend.php:247
+#: modules/addon_mgtranslate/controllers/backend.php:235
 msgid "Translation saved successfully"
 msgstr "Translation saved successfully"
 
-#: modules/addon_mgtranslate/controllers/backend.php:292, modules/addon_mgtranslate/controllers/backend.php:292, modules/addon_mgtranslate/views/backend/ajax_load_pofile.php:36
+#: modules/addon_mgtranslate/controllers/backend.php:278, modules/addon_mgtranslate/controllers/backend.php:278, modules/addon_mgtranslate/views/backend/ajax_load_pofile.php:36
 msgid "Translation"
 msgstr "Translation"
 
@@ -566,79 +566,79 @@ msgstr "自定义错误消息"
 msgid "Form variables"
 msgstr "Form Name"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:752
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:749
 msgid "Success"
 msgstr "成功提示信息"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:769
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:766
 msgid "Shortcodes"
 msgstr "简码"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:836, modules/formbuilder/controllers/uiform-fb-controller-forms.php:862
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:833, modules/formbuilder/controllers/uiform-fb-controller-forms.php:859
 msgid "Error! User has no permission to edit this form"
 msgstr "Error! User has no permission to edit this form"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1046
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1043
 msgid "Error on saving form"
 msgstr "Error on saving form"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:2521
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:2518
 msgid "Forms in trash"
 msgstr "Form Name"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1082
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1145
 msgid "Order summary"
 msgstr "Order summary"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1457
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1520
 msgid "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 msgstr "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:372
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:368
 msgid "Entry information"
 msgstr "输入信息"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:373, modules/formbuilder/views/records/info_record.php:29
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:369, modules/formbuilder/views/records/info_record.php:29
 msgid "Submitted form data"
 msgstr "提交的表单数据"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:374, modules/formbuilder/views/records/info_record.php:82
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:370, modules/formbuilder/views/records/info_record.php:82
 msgid "Additional info"
 msgstr "附加信息"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:375, modules/formbuilder/views/forms/fields_available.php:787, modules/formbuilder/views/records/info_record.php:85, modules/formbuilder/views/records/list_records_getdatatable.php:24, modules/formbuilder/views/settings/backup_settings.php:68
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:371, modules/formbuilder/views/forms/fields_available.php:787, modules/formbuilder/views/records/info_record.php:85, modules/formbuilder/views/records/list_records_getdatatable.php:24, modules/formbuilder/views/settings/backup_settings.php:68
 msgid "Date"
 msgstr "日期"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:376, modules/formbuilder/views/records/info_record.php:89
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:372, modules/formbuilder/views/records/info_record.php:89
 msgid "IP"
 msgstr "IP"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:377, modules/formbuilder/views/records/info_record.php:93
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:373, modules/formbuilder/views/records/info_record.php:93
 msgid "Client PC info"
 msgstr "客户端 PC 信息"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:378
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:374
 msgid "Form URL"
 msgstr "URL形式"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:379, modules/formbuilder/views/forms/ajax_variables_openmodal.php:55, modules/formbuilder/views/forms/create_form_main.php:88, modules/formbuilder/views/forms/create_form_modals.php:113, modules/formbuilder/views/forms/settings_form_email.php:551, modules/formbuilder/views/records/info_record.php:101
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:375, modules/formbuilder/views/forms/ajax_variables_openmodal.php:55, modules/formbuilder/views/forms/create_form_main.php:88, modules/formbuilder/views/forms/create_form_modals.php:113, modules/formbuilder/views/forms/settings_form_email.php:551, modules/formbuilder/views/records/info_record.php:101
 msgid "Form name"
 msgstr "Form Name"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:412
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:408
 msgid "Records list"
 msgstr "记录"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:445
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:441
 msgid "Records in trash"
 msgstr "记录"
 
-#: modules/addon/views/backend/list_extensions.php:64
+#: modules/addon/views/backend/list_extensions.php:65
 msgid "locked"
 msgstr "模块"
 
-#: modules/addon/views/backend/list_extensions.php:58
+#: modules/addon/views/backend/list_extensions.php:59
 msgid ""
 "This addon is not compatible with your site. try to upgrade your site and "
 "fullfil the requirements."
@@ -654,15 +654,15 @@ msgstr "禁用"
 msgid "Enable"
 msgstr "启用"
 
-#: modules/addon/views/backend/list_extensions.php:77
+#: modules/addon/views/backend/list_extensions.php:78
 msgid "Requirements"
 msgstr "必须的"
 
-#: modules/addon/views/backend/list_extensions.php:78
+#: modules/addon/views/backend/list_extensions.php:79
 msgid "WP"
 msgstr "WP"
 
-#: modules/addon/views/backend/list_extensions.php:85
+#: modules/addon/views/backend/list_extensions.php:88
 msgid "PHP"
 msgstr "PHP"
 
@@ -804,7 +804,7 @@ msgstr "Map URL parameters"
 msgid "To form values"
 msgstr "新的形式要求"
 
-#: modules/addon_webhook/views/backend/get_content.php:93, modules/addon_webhook/views/backend/get_content.php:132, modules/formbuilder/views/forms/ajax_rollback_openmodal.php:34, modules/formbuilder/views/forms/create_form.php:190, modules/formbuilder/views/forms/list_forms_table.php:41, modules/formbuilder/views/records/list_records.php:38, modules/formbuilder/views/records/list_records_getdatatable.php:26, modules/formbuilder/views/settings/backup_settings.php:69, modules/formbuilder/views/fields/modal/field_opt_column.php:44, modules/formbuilder/views/fields/modal/field_opt_text.php:44, modules/formbuilder/views/fields/modal/settings_field_input_2.php:115
+#: modules/addon_webhook/views/backend/get_content.php:93, modules/addon_webhook/views/backend/get_content.php:132, modules/formbuilder/views/forms/ajax_rollback_openmodal.php:34, modules/formbuilder/views/forms/create_form.php:191, modules/formbuilder/views/forms/list_forms_table.php:41, modules/formbuilder/views/records/list_records.php:38, modules/formbuilder/views/records/list_records_getdatatable.php:26, modules/formbuilder/views/settings/backup_settings.php:69, modules/formbuilder/views/fields/modal/field_opt_column.php:44, modules/formbuilder/views/fields/modal/field_opt_text.php:44, modules/formbuilder/views/fields/modal/settings_field_input_2.php:115
 msgid "Options"
 msgstr "选项"
 
@@ -872,7 +872,7 @@ msgstr "名称窗体"
 msgid "Created"
 msgstr "创建"
 
-#: modules/formbuilder/views/forms/ajax_rollback_openmodal.php:51, modules/formbuilder/views/forms/create_form.php:195
+#: modules/formbuilder/views/forms/ajax_rollback_openmodal.php:51, modules/formbuilder/views/forms/create_form.php:196
 msgid "Rollback"
 msgstr "Rollback"
 
@@ -1004,23 +1004,23 @@ msgstr "显示明细数据"
 msgid "Generate field static data"
 msgstr "Generate field static data"
 
-#: modules/formbuilder/views/forms/create_form.php:197, modules/formbuilder/views/forms/settings_form_email.php:490, modules/formbuilder/views/forms/settings_form_email.php:497
+#: modules/formbuilder/views/forms/create_form.php:198, modules/formbuilder/views/forms/settings_form_email.php:490, modules/formbuilder/views/forms/settings_form_email.php:497
 msgid "Variables"
 msgstr "禁用"
 
-#: modules/formbuilder/views/forms/create_form.php:200
+#: modules/formbuilder/views/forms/create_form.php:201
 msgid "C.Logic Graph"
 msgstr "C.Logic"
 
-#: modules/formbuilder/views/forms/create_form.php:203
+#: modules/formbuilder/views/forms/create_form.php:204
 msgid "Refresh & Clean Form"
 msgstr "Refresh & Clean Form"
 
-#: modules/formbuilder/views/forms/create_form.php:213
+#: modules/formbuilder/views/forms/create_form.php:214
 msgid "preview"
 msgstr "预览...."
 
-#: modules/formbuilder/views/forms/create_form.php:222
+#: modules/formbuilder/views/forms/create_form.php:223
 msgid "Save form"
 msgstr "保存窗体"
 

@@ -85,8 +85,7 @@ class Uiform_Model_Form_Records {
 	 * @return void
 	 */
 	function getListAllRecordsFiltered( $data ) {
-	 
-		
+
 		$per_page   = $data['per_page'];
 		$segment    = $data['segment'];
 		$orderby    = $data['orderby'];
@@ -102,7 +101,7 @@ class Uiform_Model_Form_Records {
 			$this->table,
 			$this->tbform
 		);
- 
+
 		$orderby = ( $orderby === 'asc' ) ? 'asc' : 'desc';
 
 		$query .= sprintf( ' ORDER BY c.created_date %s ', $orderby );
@@ -113,9 +112,9 @@ class Uiform_Model_Form_Records {
 		}
 
 		return $this->wpdb->get_results( $query );
-		 
+
 	}
-	
+
 	/**
 	 * Show trash records according to filter
 	 *
@@ -124,8 +123,7 @@ class Uiform_Model_Form_Records {
 	 * @return void
 	 */
 	function getListTrashRecordsFiltered( $data ) {
-	 
-		
+
 		$per_page   = $data['per_page'];
 		$segment    = $data['segment'];
 		$orderby    = $data['orderby'];
@@ -141,7 +139,7 @@ class Uiform_Model_Form_Records {
 			$this->table,
 			$this->tbform
 		);
- 
+
 		$orderby = ( $orderby === 'asc' ) ? 'asc' : 'desc';
 
 		$query .= sprintf( ' ORDER BY c.created_date %s ', $orderby );
@@ -152,7 +150,7 @@ class Uiform_Model_Form_Records {
 		}
 
 		return $this->wpdb->get_results( $query );
-		 
+
 	}
 
 
@@ -510,7 +508,7 @@ class Uiform_Model_Form_Records {
 		/*
 	* list all and trash forms
 	*/
-	function ListTotals(){
+	function ListTotals() {
 		$query = sprintf(
 			'
 			SELECT 
@@ -519,11 +517,10 @@ class Uiform_Model_Form_Records {
 			FROM %s
 			',
 			$this->table
-			
 		);
 
 		return $this->wpdb->get_row( $query );
-	
+
 	}
 
 }

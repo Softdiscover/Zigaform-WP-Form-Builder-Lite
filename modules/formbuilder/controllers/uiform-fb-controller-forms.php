@@ -603,15 +603,15 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 	}
 
 	public function ajax_list_trashform_updatest() {
-		
+
 		check_ajax_referer( 'zgfm_ajax_nonce', 'zgfm_security' );
 		$list_ids = ( isset( $_POST['id'] ) && $_POST['id'] ) ? array_map( array( 'Uiform_Form_Helper', 'sanitizeRecursive' ), $_POST['id'] ) : array();
 		$form_st  = ( isset( $_POST['form_st'] ) && $_POST['form_st'] ) ? Uiform_Form_Helper::sanitizeInput( $_POST['form_st'] ) : '';
 		if ( $list_ids ) {
-		
-			switch (intval($form_st)) {
+
+			switch ( intval( $form_st ) ) {
 				case 1:
-				case 2:	
+				case 2:
 					foreach ( $list_ids as $value ) {
 						$where = array(
 							'fmb_id' => $value,
@@ -624,61 +624,58 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 					break;
 				case 0:
 					foreach ( $list_ids as $value ) {
-					
-						$this->delete_form_process($value);
-						 
+
+						$this->delete_form_process( $value );
+
 					}
-					
+
 					break;
 				default:
 					# code...
 					break;
 			}
-			
 		}
 	}
-	
-	private function delete_form_process($value){
+
+	private function delete_form_process( $value ) {
 		//remove from log form
 		$where = array(
 			'log_frm_id' => $value,
 		);
 		$this->wpdb->delete( $this->model_form_log->table, $where );
-		
+
 		//remove from fields
 		$where = array(
 			'form_fmb_id' => $value,
 		);
 		$this->wpdb->delete( $this->model_fields->table, $where );
-		
+
 		//remove from addons logs
 		$where = array(
 			'fmb_id' => $value,
 		);
 		$this->wpdb->delete( self::$_models['addon']['addon_details_log']->table, $where );
-		
-		
+
 		//remove from addons
 		$where = array(
 			'fmb_id' => $value,
 		);
 		$this->wpdb->delete( self::$_models['addon']['addon_details']->table, $where );
-		 
-		
+
 		//remove from records
 		$where = array(
 			'form_fmb_id' => $value,
 		);
 		$this->wpdb->delete( self::$_models['formbuilder']['form_records']->table, $where );
-		
+
 		//remove from form
 		$where = array(
 			'fmb_id' => $value,
 		);
 		$this->wpdb->delete( $this->formsmodel->table, $where );
 	}
-	
-	
+
+
 	/**
 	 * delete trash form by form id
 	 *
@@ -687,8 +684,8 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 	public function ajax_delete_trashform_byid() {
 		check_ajax_referer( 'zgfm_ajax_nonce', 'zgfm_security' );
 		$form_id = ( isset( $_POST['form_id'] ) && $_POST['form_id'] ) ? Uiform_Form_Helper::sanitizeInput( $_POST['form_id'] ) : 0;
-		
-		$this->delete_form_process($form_id);
+
+		$this->delete_form_process( $form_id );
 	}
 
 	public function ajax_delete_form_byid() {
@@ -924,7 +921,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 				);
 
 				 // process addons
-				$fmb_data = apply_filters('zgfm_saveForm_store', $fmb_data, $json['id']); 
+				$fmb_data = apply_filters( 'zgfm_saveForm_store', $fmb_data, $json['id'] );
 
 				// all data fields
 				$this->current_data_addon    = $fmb_data['addons'];
@@ -1064,7 +1061,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 		$data['addon_extraclass'] = '';
 
 		// process addons
-		$data = apply_filters('zgfm_field_addon_extraclass', $data);
+		$data = apply_filters( 'zgfm_field_addon_extraclass', $data );
 
 		switch ( intval( $child_field['type'] ) ) {
 			case 6:
@@ -2485,25 +2482,25 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 
 		$offset          = ( isset( $_GET['offset'] ) ) ? Uiform_Form_Helper::sanitizeInput( $_GET['offset'] ) : 0;
 		$data2['offset'] = $offset;
-		
-		$form_data=$this->formsmodel->ListTotals();
-		
-		$data2['all']=$form_data->r_all;
-		$data2['trash']=$form_data->r_trash;
-		$data2['subcurrent']=1;
-		$data2['subsubsub'] = List_data::get()->subsubsub($data2);
+
+		$form_data = $this->formsmodel->ListTotals();
+
+		$data2['all'] = $form_data->r_all;
+		$data2['trash'] = $form_data->r_trash;
+		$data2['subcurrent'] = 1;
+		$data2['subsubsub'] = List_data::get()->subsubsub( $data2 );
 
 		echo self::loadPartial( 'layout.php', 'formbuilder/views/forms/list_forms.php', $data2 );
 	}
 
 
-    /**
+	/**
 	 * Show trash list
 	 *
 	 * @return void
 	 */
-    public function list_trash(){
-    
+	public function list_trash() {
+
 		$filter_data = get_option( 'zgfm_listform_searchfilter', true );
 		$data2       = array();
 		if ( empty( $filter_data ) ) {
@@ -2516,23 +2513,22 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 
 		$offset          = ( isset( $_GET['offset'] ) ) ? Uiform_Form_Helper::sanitizeInput( $_GET['offset'] ) : 0;
 		$data2['offset'] = $offset;
-		
-		$form_data=$this->formsmodel->ListTotals();
-		$data2['title']=__( 'Forms in trash', 'FRocket_admin' );
-		$data2['all']=$form_data->r_all;
-		$data2['trash']=$form_data->r_trash;
-		$data2['header_buttons']= List_data::get()->list_detail_form_headerbuttons();
-		$data2['script_trigger']= 'zgfm_back_general.formslist_trashsearch_process();';
-		$data2['subcurrent']= 2;
-		$data2['subsubsub'] = List_data::get()->subsubsub($data2);
-    
-    
-        $content=List_data::get()->show_list($data2);
-        echo self::loadPartial2( 'layout.php', $content);
-    }
-    
-    
-    /**
+
+		$form_data = $this->formsmodel->ListTotals();
+		$data2['title'] = __( 'Forms in trash', 'FRocket_admin' );
+		$data2['all'] = $form_data->r_all;
+		$data2['trash'] = $form_data->r_trash;
+		$data2['header_buttons'] = List_data::get()->list_detail_form_headerbuttons();
+		$data2['script_trigger'] = 'zgfm_back_general.formslist_trashsearch_process();';
+		$data2['subcurrent'] = 2;
+		$data2['subsubsub'] = List_data::get()->subsubsub( $data2 );
+
+		$content = List_data::get()->show_list( $data2 );
+		echo self::loadPartial2( 'layout.php', $content );
+	}
+
+
+	/**
 	 * List trash forms
 	 *
 	 * @return void
@@ -2560,8 +2556,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 
 		$data['segment'] = 0;
 		$data['offset']  = $opt_offset;
-		
- 
+
 		$result = $this->ajax_trashformlist_refresh( $data );
 
 		$json            = array();
@@ -2571,8 +2566,8 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 		echo json_encode( $json );
 		wp_die();
 	}
-    
-    /**
+
+	/**
 	 * get forms in trash
 	 *
 	 * @param [type] $data
@@ -2588,7 +2583,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 		// list all forms
 		$config                         = array();
 		$config['base_url']             = admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=list_trash';
-		
+
 		$tmp = $this->formsmodel->ListTotals();
 		$config['total_rows']           = $tmp->r_trash;
 		$config['per_page']             = $data['per_page'];
@@ -2623,15 +2618,15 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 		$data2['pagination'] = $this->pagination->create_links();
 		$data2['obj_list_data'] = List_data::get();
 		$data2['is_trash']  = 1;
-		
+
 		//$data2['list_buttons'] = List_data::get()->list_detail_form_buttons();
 		///$content=List_data::get()->list_detail($data3);
-        return List_data::get()->list_detail($data2);
-		
+		return List_data::get()->list_detail( $data2 );
+
 		//return self::render_template( 'formbuilder/views/forms/list_forms_table.php', $data3 );
 	}
-    
-    /**
+
+	/**
 	 * list forms
 	 *
 	 * @return void
@@ -2743,7 +2738,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 			$data['uifm_frm_record_tpl_enable']=$formdata->fmb_rec_tpl_st;
 			$data['uifm_frm_record_tpl_content']=$formdata->fmb_rec_tpl_html;*/
 		}
-		
+
 		$pdf_paper_size         = array(
 			'4a0'                      => array( 0, 0, 4767.87, 6740.79 ),
 			'2a0'                      => array( 0, 0, 3370.39, 4767.87 ),

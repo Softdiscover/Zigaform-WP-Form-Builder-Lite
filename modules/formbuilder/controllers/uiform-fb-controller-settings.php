@@ -59,6 +59,9 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module {
 		// blocked message
 		add_action( 'wp_ajax_uiform_fbuilder_blocked_getmessage', array( &$this, 'ajax_blocked_getmessage' ) );
 
+		// refresh DB checker
+		add_action( 'wp_ajax_rocket_fbuilder_dev_generate_dbchecker', array( &$this, 'system_gendb_column' ) );
+
 		if ( isset( $_POST['_uifm_bkp_submit_file'] ) && intval( $_POST['_uifm_bkp_submit_file'] ) === 1 ) {
 			$this->backup_upload_file();
 		}
@@ -169,9 +172,9 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module {
 		$data  = array();
 		$query = $this->model_settings->getOptions();
 
-		$pofilespath=UIFORM_FORMS_DIR.'/i18n/languages/backend/';    
+		$pofilespath = UIFORM_FORMS_DIR . '/i18n/languages/backend/';
 		$data['language']        = $query->language;
-		$data['lang_list']       = Uiform_Form_Helper::getLanguageList($pofilespath);
+		$data['lang_list']       = Uiform_Form_Helper::getLanguageList( $pofilespath );
 		$data['modalmode']       = get_option( 'zgfm_b_modalmode', 0 );
 		$data['fields_fastload'] = get_option( 'zgfm_fields_fastload', 0 );
 

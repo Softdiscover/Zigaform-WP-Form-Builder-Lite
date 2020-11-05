@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<h1><?php echo $form_name; ?></h1>
 				<h4 class="zgfm-no-margin zgfm-margin-bottom-20"><?php echo __( 'Submitted form data', 'FRocket_admin' ); ?></h4>
 				<ul>
-			  <?php
+				<?php
 				foreach ( $record_info as $value ) {
 					?>
 					<?php if ( is_array( $value['value'] ) ) { ?>   
@@ -68,13 +68,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 				  
 				</ul>    
 			</div>
-			<?php
-			 } else {
+				<?php
+			} else {
 
-				 echo $custom_template;
+				echo $custom_template;
 
-			 }
-				?>
+			}
+			?>
 			
 		</div>
 		<div class="sfdc-col-md-4">

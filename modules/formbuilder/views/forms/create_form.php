@@ -116,9 +116,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<div class="uiformc-tab-content-inner2 sfdc-clearfix">
 					<!-- load modules -->
 			  <?php
-				 
+
 					$count = 1;
-					?>
+				?>
 				  <div class="sfdc-col-xs-3">
 					  <ul class="sfdc-nav sfdc-nav-tabs tabs-left">
 					<?php
@@ -178,7 +178,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 				href="javascript:void(0);"><?php echo __( 'Show data', 'FRocket_admin' ); ?> </a></li>
 		   <li><a onclick="javascript:zgfm_back_fld_options.generate_field_htmldata();"
 				href="javascript:void(0);"><?php echo __( 'Generate field static data', 'FRocket_admin' ); ?> </a></li>
-			
+			<li><a onclick="javascript:zgfm_back_fld_options.generate_dbChecker();"
+				href="javascript:void(0);"> Generate DB checker </a></li>
 			</ul>
 			</div>
 	</div>

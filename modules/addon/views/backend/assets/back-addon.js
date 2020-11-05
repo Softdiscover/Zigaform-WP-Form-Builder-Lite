@@ -3,22 +3,22 @@ if (typeof $uifm === 'undefined') {
 }
 var zgfm_back_addon = zgfm_back_addon || null;
 if (!$uifm.isFunction(zgfm_back_addon)) {
-	(function ($, window) {
+	(function($, window) {
 		'use strict';
 
-		var zgfm_fn_addon = function () {
+		var zgfm_fn_addon = function() {
 			var variable = [];
 			variable.innerVars = {};
 			variable.externalVars = {};
 
 			var defaults = {
-				data: {}
+				data: {},
 			};
 
 			var settings = $.extend(true, {}, defaults);
 
-			this.initialize = function () {};
-			this.dump_data = function () {
+			this.initialize = function() {};
+			this.dump_data = function() {
 				console.log(this.dumpvar3(settings));
 			};
 			/*
@@ -27,14 +27,12 @@ if (!$uifm.isFunction(zgfm_back_addon)) {
 			 * @param {type} options
 			 * @returns {undefined}
 			 */
-			this.load_initData = function (data_info) {
+			this.load_initData = function(data_info) {
 				settings = $.extend(true, {}, defaults, { data: data_info });
 			};
 
-			this.load_addon = function () {
-			 
-                wp.hooks.applyFilters( 'zgfm.onLoadForm_loadAddon');
-                
+			this.load_addon = function() {
+				wp.hooks.applyFilters('zgfm.onLoadForm_loadAddon');
 			};
 
 			/*
@@ -43,7 +41,7 @@ if (!$uifm.isFunction(zgfm_back_addon)) {
 			 * @param object $obj_data data of the object
 			 * @returns {undefined}
 			 */
-			this.do_action = function (action, obj_data) {
+			this.do_action = function(action, obj_data) {
 				var tmp_data = {};
 
 				let tmp_addon_arr = uiform_vars.addon;
@@ -75,7 +73,7 @@ if (!$uifm.isFunction(zgfm_back_addon)) {
 			/*
 			 * change addon status
 			 */
-			this.listaddon_changeStatus = function (el) {
+			this.listaddon_changeStatus = function(el) {
 				var elem = $(el);
 				var tmp_addon_name = elem.closest('.zgfm-ext-block').attr('data-name');
 				var status = elem.attr('data-status');
@@ -83,25 +81,25 @@ if (!$uifm.isFunction(zgfm_back_addon)) {
 					type: 'POST',
 					url: ajaxurl,
 					data: 'action=rocket_fbuilder_addon_status&page=zgfm_form_builder&add_name=' + tmp_addon_name + '&add_status=' + status + '&zgfm_security=' + uiform_vars.ajax_nonce,
-					success: function (msg) {
+					success: function(msg) {
 						rocketform.redirect_tourl(uiform_vars.url_admin + '?page=zgfm_form_builder&zgfm_mod=addon&zgfm_contr=backend&zgfm_action=list_extensions');
-					}
+					},
 				});
 			};
 
-			this.setExternalVars = function () {};
-			this.getExternalVars = function (name) {
+			this.setExternalVars = function() {};
+			this.getExternalVars = function(name) {
 				if (variable.externalVars[name]) {
 					return variable.externalVars[name];
 				} else {
 					return '';
 				}
 			};
-			this.setInnerVariable = function (name, value) {
+			this.setInnerVariable = function(name, value) {
 				variable.innerVars[name] = value;
 			};
 
-			this.getInnerVariable = function (name) {
+			this.getInnerVariable = function(name) {
 				if (variable.innerVars[name]) {
 					return variable.innerVars[name];
 				} else {
@@ -109,16 +107,16 @@ if (!$uifm.isFunction(zgfm_back_addon)) {
 				}
 			};
 
-			this.dumpvar3 = function (object) {
+			this.dumpvar3 = function(object) {
 				return JSON.stringify(object, null, 2);
 			};
-			this.dumpvar2 = function (object) {
+			this.dumpvar2 = function(object) {
 				return JSON.stringify(object);
 			};
 
-			this.dumpvar = function (object) {
+			this.dumpvar = function(object) {
 				var seen = [];
-				var json = JSON.stringify(object, function (key, val) {
+				var json = JSON.stringify(object, function(key, val) {
 					if (val != null && typeof val == 'object') {
 						if (seen.indexOf(val) >= 0) return;
 						seen.push(val);
@@ -128,7 +126,7 @@ if (!$uifm.isFunction(zgfm_back_addon)) {
 				return seen;
 			};
 
-			this.redirect_tourl = function (redirect) {
+			this.redirect_tourl = function(redirect) {
 				if (window.event) {
 					/*IE 6*/
 					window.event.returnValue = false;
@@ -140,7 +138,7 @@ if (!$uifm.isFunction(zgfm_back_addon)) {
 				}
 			};
 
-			this.printmaindata = function () {
+			this.printmaindata = function() {
 				console.log(this.dumpvar3(settings));
 				//zgfm_back_addon_anim.dump_data();
 			};
