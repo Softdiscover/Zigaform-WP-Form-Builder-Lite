@@ -1,5 +1,5 @@
-# Copyright (C) 2020 Zigaform WP Cost Estimation Form Builder 5.1.4
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.1.4 package.
+# Copyright (C) 2020 Zigaform WP Cost Estimation Form Builder 5.2.0
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.2.0 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Rocket form\n"
@@ -592,7 +592,7 @@ msgstr "Formularname"
 msgid "Order summary"
 msgstr "Bestellformular"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1520
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1523
 msgid "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 msgstr "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 

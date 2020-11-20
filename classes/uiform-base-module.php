@@ -114,10 +114,10 @@ abstract class Uiform_Base_Module {
 	 * @return string
 	 */
 	protected static function render_template( $default_template_path = false, $variables = array(), $require = 'once' ) {
-		$template_path = locate_template( basename( $default_template_path ) );
-		if ( ! $template_path ) {
+		//$template_path = locate_template( basename( $default_template_path ) );
+		//if ( ! $template_path ) {
 			$template_path = dirname( __DIR__ ) . '/modules/' . $default_template_path;
-		}
+		//}
 		$template_path = apply_filters( 'uiform_rocket_template_path', $template_path );
 
 		if ( is_file( $template_path ) ) {
@@ -154,10 +154,10 @@ abstract class Uiform_Base_Module {
 	 * @return string
 	 */
 	protected static function render_layout( $default_template_path = false, $variables = array(), $require = 'once' ) {
-		$template_path = locate_template( basename( $default_template_path ) );
-		if ( ! $template_path ) {
+		//$template_path = locate_template( basename( $default_template_path ) );
+		//if ( ! $template_path ) {
 			$template_path = dirname( __DIR__ ) . '/views/' . $default_template_path;
-		}
+		//}
 		$template_path = apply_filters( 'uiform_rocket_template_path', $template_path );
 
 		if ( is_file( $template_path ) ) {

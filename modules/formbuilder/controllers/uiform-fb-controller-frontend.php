@@ -1322,6 +1322,9 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 											$data3[ $key . '_' . $key2 . '_' . $key3 . '_' . $key4 ] = $value4;
 
 										}
+									} else {
+										 $data3[ $key . '_' . $key2 . '_' . $key3 ] = $value3;
+
 									}
 								}
 							}
