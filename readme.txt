@@ -4,7 +4,7 @@ Donate link: https://1.envato.market/0KDVM
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: form, forms, contact form, custom form, form builder, form creator, form manager, form creation, contact forms, custom forms, forms builder, forms creator, forms manager, forms creation, form administration,
-Requires at least: 3.6
+Requires at least: 5.0
 Tested up to: 5.6.2
 Requires PHP: 5.4
 Stable tag: 5.2.6

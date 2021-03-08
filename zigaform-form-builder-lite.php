@@ -38,7 +38,7 @@ if ( ! class_exists( 'UiformFormbuilderLite' ) ) {
 		 * @var string
 		 * @since 1.0
 		 */
-		public $wp_version = '3.6';
+		public $wp_version = '5.0';
 
 		/**
 		 * The minimal required version of WordPress for this plug-in to function correctly.
@@ -46,7 +46,7 @@ if ( ! class_exists( 'UiformFormbuilderLite' ) ) {
 		 * @var string
 		 * @since 1.0
 		 */
-		public $php_version = '5.3';
+		public $php_version = '5.4';
 
 		/**
 		 * Class name
