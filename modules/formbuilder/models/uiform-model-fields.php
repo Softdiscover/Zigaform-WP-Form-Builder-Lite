@@ -85,14 +85,14 @@ class Uiform_Model_Fields {
 
 	function getFieldNameByUniqueId( $uid, $form_id ) {
 		$query = sprintf(
-			'
-            select f.type_fby_id as type,f.fmf_data as data,coalesce(NULLIF(f.fmf_fieldname,""),CONCAT(t.fby_name,f.fmf_id)) as fieldname
+			"
+            select f.type_fby_id as type,f.fmf_data as data,coalesce(NULLIF(f.fmf_fieldname,''),CONCAT(t.fby_name,f.fmf_id)) as fieldname
             from %s f
             join %s t on f.type_fby_id=t.fby_id 
             join %s frm on f.form_fmb_id=frm.fmb_id
             where
             frm.fmb_id=%s
-            and f.fmf_uniqueid="%s"',
+            and f.fmf_uniqueid='%s'",
 			$this->table,
 			$this->tbformtype,
 			$this->tbform,

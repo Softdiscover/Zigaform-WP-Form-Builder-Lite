@@ -1,5 +1,5 @@
-# Copyright (C) 2021 Zigaform WP Cost Estimation Form Builder 5.2.8
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.2.8 package.
+# Copyright (C) 2021 Zigaform WP Cost Estimation Form Builder 5.3.5
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.3.5 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Rocket form\n"
@@ -588,11 +588,11 @@ msgstr "Error on saving form"
 msgid "Forms in trash"
 msgstr "Forms in trash"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1145
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1159
 msgid "Order summary"
 msgstr "Order summary"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1523
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1538
 msgid "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 msgstr "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 
@@ -878,19 +878,19 @@ msgstr "Created"
 msgid "Rollback"
 msgstr "Rollback"
 
-#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:24, modules/formbuilder/views/forms/ajax_variables_openmodal.php:75, modules/formbuilder/views/forms/settings_form_email.php:513, modules/formbuilder/views/forms/templates_fields.php:91, modules/formbuilder/views/forms/templates_fields.php:115
+#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:24, modules/formbuilder/views/forms/ajax_variables_openmodal.php:79, modules/formbuilder/views/forms/settings_form_email.php:513, modules/formbuilder/views/forms/templates_fields.php:91, modules/formbuilder/views/forms/templates_fields.php:115
 msgid "Field"
 msgstr "Field"
 
-#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:25, modules/formbuilder/views/forms/ajax_variables_openmodal.php:76, modules/formbuilder/views/forms/settings_form_email.php:514
+#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:25, modules/formbuilder/views/forms/ajax_variables_openmodal.php:80, modules/formbuilder/views/forms/settings_form_email.php:514
 msgid "Codes"
 msgstr "Codes"
 
-#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:28, modules/formbuilder/views/forms/ajax_variables_openmodal.php:79, modules/formbuilder/views/forms/settings_form_email.php:517
+#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:28, modules/formbuilder/views/forms/ajax_variables_openmodal.php:83, modules/formbuilder/views/forms/settings_form_email.php:517
 msgid "label"
 msgstr "label"
 
-#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:29, modules/formbuilder/views/forms/ajax_variables_openmodal.php:80, modules/formbuilder/views/forms/settings_form_email.php:518
+#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:29, modules/formbuilder/views/forms/ajax_variables_openmodal.php:84, modules/formbuilder/views/forms/settings_form_email.php:518
 msgid "input"
 msgstr "input"
 
@@ -918,7 +918,7 @@ msgstr "Backend"
 msgid "Frontend"
 msgstr "Frontend"
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:32, modules/formbuilder/views/forms/ajax_variables_openmodal.php:70
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:32, modules/formbuilder/views/forms/ajax_variables_openmodal.php:74
 msgid "Fields"
 msgstr "Fields"
 
@@ -945,6 +945,10 @@ msgstr "Form Url"
 #: modules/formbuilder/views/forms/ajax_variables_openmodal.php:60, modules/formbuilder/views/forms/settings_form_email.php:556
 msgid "Form record id"
 msgstr "Form record id"
+
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:64
+msgid "User IP"
+msgstr ""
 
 #: modules/formbuilder/views/forms/create_form.php:24
 msgid "Form editor"
@@ -1410,7 +1414,7 @@ msgstr "Move to trash"
 msgid "Duplicate Form"
 msgstr "Duplicate Form"
 
-#: modules/formbuilder/views/forms/list_forms.php:90, modules/formbuilder/views/forms/list_forms.php:79
+#: modules/formbuilder/views/forms/list_forms.php:90, modules/formbuilder/views/forms/list_forms.php:79, modules/formbuilder/views/forms/settings_form_wizard.php:432
 msgid "Duplicate"
 msgstr "Duplicate"
 
@@ -2068,15 +2072,15 @@ msgstr "Clean Tabs"
 msgid "Add new"
 msgstr "Add new"
 
-#: modules/formbuilder/views/forms/settings_form_wizard.php:86, modules/formbuilder/views/forms/settings_form_wizard.php:412
+#: modules/formbuilder/views/forms/settings_form_wizard.php:86, modules/formbuilder/views/forms/settings_form_wizard.php:417
 msgid "Tab"
 msgstr "Tab"
 
-#: modules/formbuilder/views/forms/settings_form_wizard.php:91, modules/formbuilder/views/forms/settings_form_wizard.php:417
+#: modules/formbuilder/views/forms/settings_form_wizard.php:91, modules/formbuilder/views/forms/settings_form_wizard.php:422
 msgid "Type tab title"
 msgstr "Type tab title"
 
-#: modules/formbuilder/views/forms/settings_form_wizard.php:98, modules/formbuilder/views/forms/settings_form_wizard.php:424, modules/formbuilder/views/records/list_records.php:74, modules/formbuilder/views/records/list_records.php:77, modules/formbuilder/views/settings/backup_settings.php:96
+#: modules/formbuilder/views/forms/settings_form_wizard.php:98, modules/formbuilder/views/forms/settings_form_wizard.php:429, modules/formbuilder/views/records/list_records.php:74, modules/formbuilder/views/records/list_records.php:77, modules/formbuilder/views/settings/backup_settings.php:96
 msgid "Delete"
 msgstr "Delete"
 

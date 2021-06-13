@@ -1,5 +1,5 @@
-# Copyright (C) 2021 Zigaform WP Cost Estimation Form Builder 5.2.8
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.2.8 package.
+# Copyright (C) 2021 Zigaform WP Cost Estimation Form Builder 5.3.5
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.3.5 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Rocket form\n"
@@ -14,23 +14,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.4.1\n"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:488, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1619
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:502, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1634
 msgid "warning! Form was not submitted"
 msgstr "Warnung! Form wurde nicht gesendet,"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:485, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1613
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:499, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1628
 msgid "Success! your form was submitted"
 msgstr "Erfolg! das Formular wurde vorgelegt"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:754
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:768
 msgid "Error! The file exceeds the allowed size of"
 msgstr "Error! The file exceeds the allowed size of"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:761
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:775
 msgid "Error! Type of file is not allowed to upload"
 msgstr "Error! Type of file is not allowed to upload"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:987, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1032
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1001, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1046
 msgid "New form request"
 msgstr "Neue Formularanfrage"
 

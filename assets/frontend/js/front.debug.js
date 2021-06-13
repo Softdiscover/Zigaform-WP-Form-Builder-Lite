@@ -2375,6 +2375,14 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 				var obj_form = $(field).closest('.rockfm-form');
 			};
 
+			this.triggerEvent_before = function(){
+
+				 			};
+
+						this.triggerEvent_after = function(){
+
+				 			};
+
 			this.event_isDefined_toEl = function(el, search_evt, list_events) {
 				var flag = false;
 				try {
@@ -2556,6 +2564,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									if (e) {
 										e.preventDefault();
 									}
+									wp.hooks.applyFilters('zgfmfront.events_before');
 
 									tmp_field_id = $(this).attr('data-idfield');
 									if (obj_form.find('.rockfm-clogic-fcond').length) {
@@ -2576,6 +2585,8 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									}
 
 									runExtraTasks($(this));
+
+									wp.hooks.applyFilters('zgfmfront.events_after');
 								});
 
 								break;
@@ -2588,6 +2599,8 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 											if (e) {
 												e.preventDefault();
 											}
+											wp.hooks.applyFilters('zgfmfront.events_before');
+
 											tmp_field_id = $(this).attr('data-idfield');
 
 											if (obj_form.find('.rockfm-clogic-fcond').length) {
@@ -2600,6 +2613,8 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 												}
 											}
 											runExtraTasks($(this));
+
+											wp.hooks.applyFilters('zgfmfront.events_after');
 										});
 										break;
 									default:
@@ -2607,6 +2622,8 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 											if (e) {
 												e.preventDefault();
 											}
+											wp.hooks.applyFilters('zgfmfront.events_before');
+
 											tmp_field_id = $(this).attr('data-idfield');
 
 											if (obj_form.find('.rockfm-clogic-fcond').length) {
@@ -2620,6 +2637,8 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 											}
 
 											runExtraTasks($(this));
+
+											wp.hooks.applyFilters('zgfmfront.events_after');
 										});
 								}
 
@@ -2629,6 +2648,8 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									if (e) {
 										e.preventDefault();
 									}
+									wp.hooks.applyFilters('zgfmfront.events_before');
+
 									tmp_field_id = $(this).attr('data-idfield');
 
 									if (obj_form.find('.rockfm-clogic-fcond').length) {
@@ -2642,6 +2663,8 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									}
 
 									runExtraTasks($(this));
+
+									wp.hooks.applyFilters('zgfmfront.events_after');
 								});
 								break;
 							case 18:
@@ -2649,6 +2672,8 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									if (e) {
 										e.preventDefault();
 									}
+									wp.hooks.applyFilters('zgfmfront.events_before');
+
 									tmp_field_id = $(this).attr('data-idfield');
 
 									if (obj_form.find('.rockfm-clogic-fcond').length) {
@@ -2662,6 +2687,8 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									}
 
 									runExtraTasks($(this));
+
+									wp.hooks.applyFilters('zgfmfront.events_after');
 								});
 								break;
 							case 40:
@@ -2669,6 +2696,8 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									if (e) {
 										e.preventDefault();
 									}
+									wp.hooks.applyFilters('zgfmfront.events_before');
+
 									tmp_field_id = $(this).attr('data-idfield');
 
 									if (obj_form.find('.rockfm-clogic-fcond').length) {
@@ -2682,6 +2711,8 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									}
 
 									runExtraTasks($(this));
+
+									wp.hooks.applyFilters('zgfmfront.events_after');
 								});
 								break;
 							case 41:
@@ -2690,6 +2721,8 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									if (e) {
 										e.preventDefault();
 									}
+									wp.hooks.applyFilters('zgfmfront.events_before');
+
 									tmp_field_id = $(this).attr('data-idfield');
 
 									if (obj_form.find('.rockfm-clogic-fcond').length) {
@@ -2703,6 +2736,8 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									}
 
 									runExtraTasks($(this));
+
+									wp.hooks.applyFilters('zgfmfront.events_after');
 								});
 
 								break;
@@ -2712,7 +2747,13 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 			};
 		};
 		window.zgfm_front_helper = zgfm_front_helper = $.zgfm_front_helper = new zgfm_front_helper();
-	})($uifm, window);
+
+		const { addFilter } = wp.hooks;
+		addFilter('zgfmfront.events_before', 'zgfm_front_helper/triggerEvent_before', zgfm_front_helper.triggerEvent_before);
+		addFilter('zgfmfront.events_after', 'zgfm_front_helper/triggerEvent_after', zgfm_front_helper.triggerEvent_after);
+
+
+		})($uifm, window);
 }
 
 (function() {
