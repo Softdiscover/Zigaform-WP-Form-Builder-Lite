@@ -1,5 +1,6 @@
 /*! =========================================================
- * bootstrap-slider.js
+ * custom plugin v1.0 - softdiscover
+ * original author: bootstrap-slider.js
  *
  * Maintainers:
  *		Kyle Kemp

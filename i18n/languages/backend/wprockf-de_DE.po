@@ -1,5 +1,5 @@
-# Copyright (C) 2021 Zigaform WP Cost Estimation Form Builder 5.3.5
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.3.5 package.
+# Copyright (C) 2021 Zigaform WP Cost Estimation Form Builder 5.4.1
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.4.1 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Rocket form\n"
@@ -464,65 +464,385 @@ msgstr "Nope, maybe later"
 msgid "I already did"
 msgstr "I already did"
 
+#: modules/addon_func_anim/controllers/animation.php:224
+msgid "None"
+msgstr ""
+
 #: modules/addon_func_anim/controllers/animation.php:228
 msgid "Customs"
 msgstr "Benutzerdefinierte CSS"
+
+#: modules/addon_func_anim/controllers/animation.php:230
+msgid "Top to Bottom"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:234
+msgid "Bottom to Top"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:238
+msgid "Left to Right"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:242
+msgid "Right to Left"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:246
+msgid "Appear from center"
+msgstr ""
 
 #: modules/addon_func_anim/controllers/animation.php:253
 msgid "Attention Seekers"
 msgstr "Attention Seekers"
 
+#: modules/addon_func_anim/controllers/animation.php:255
+msgid "bounce"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:259
+msgid "flash"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:263
+msgid "pulse"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:267
+msgid "rubberBand"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:271
+msgid "shake"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:275
+msgid "swing"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:279
+msgid "tada"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:283
+msgid "wobble"
+msgstr ""
+
 #: modules/addon_func_anim/controllers/animation.php:290
 msgid "Bouncing Entrances"
 msgstr "Bouncing Entrances"
+
+#: modules/addon_func_anim/controllers/animation.php:293
+msgid "bounceIn"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:297
+msgid "bounceInDown"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:301
+msgid "bounceInLeft"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:305
+msgid "bounceInRight"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:309
+msgid "bounceInUp"
+msgstr ""
 
 #: modules/addon_func_anim/controllers/animation.php:316
 msgid "Bouncing Exits"
 msgstr "Bouncing Exits"
 
+#: modules/addon_func_anim/controllers/animation.php:319
+msgid "bounceOut"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:323
+msgid "bounceOutDown"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:327
+msgid "bounceOutLeft"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:331
+msgid "bounceOutRight"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:335
+msgid "bounceOutUp"
+msgstr ""
+
 #: modules/addon_func_anim/controllers/animation.php:342
 msgid "Fading Entrances"
 msgstr "Fading Entrances"
+
+#: modules/addon_func_anim/controllers/animation.php:345
+msgid "fadeIn"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:349
+msgid "fadeInDown"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:353
+msgid "fadeInDownBig"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:357
+msgid "fadeInLeft"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:361
+msgid "fadeInLeftBig"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:365
+msgid "fadeInRight"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:369
+msgid "fadeInRightBig"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:373
+msgid "fadeInUp"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:377
+msgid "fadeInUpBig"
+msgstr ""
 
 #: modules/addon_func_anim/controllers/animation.php:384
 msgid "Fading Exits"
 msgstr "Innenabstand Rechts"
 
+#: modules/addon_func_anim/controllers/animation.php:386
+msgid "fadeOut"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:390
+msgid "fadeOutDown"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:394
+msgid "fadeOutDownBig"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:398
+msgid "fadeOutLeft"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:402
+msgid "fadeOutLeftBig"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:406
+msgid "fadeOutRight"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:410
+msgid "fadeOutRightBig"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:414
+msgid "fadeOutUp"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:418
+msgid "fadeOutUpBig"
+msgstr ""
+
 #: modules/addon_func_anim/controllers/animation.php:425
 msgid "Flippers"
 msgstr "Flippers"
+
+#: modules/addon_func_anim/controllers/animation.php:427
+msgid "flip"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:431
+msgid "flipInX"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:435
+msgid "flipInY"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:439
+msgid "flipOutX"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:443
+msgid "flipOutY"
+msgstr ""
 
 #: modules/addon_func_anim/controllers/animation.php:450
 msgid "Lightspeed"
 msgstr "Hell"
 
+#: modules/addon_func_anim/controllers/animation.php:452
+msgid "lightSpeedIn"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:456
+msgid "lightSpeedOut"
+msgstr ""
+
 #: modules/addon_func_anim/controllers/animation.php:463
 msgid "Rotating Entrances"
 msgstr "Rotating Entrances"
+
+#: modules/addon_func_anim/controllers/animation.php:465
+msgid "rotateIn"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:469
+msgid "rotateInDownLeft"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:473
+msgid "rotateInDownRight"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:477
+msgid "rotateInUpLeft"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:481
+msgid "rotateInUpRight"
+msgstr ""
 
 #: modules/addon_func_anim/controllers/animation.php:488
 msgid "Rotating Exits"
 msgstr "Rotating Exits"
 
+#: modules/addon_func_anim/controllers/animation.php:490
+msgid "rotateOut"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:494
+msgid "rotateOutDownLeft"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:498
+msgid "rotateOutDownRight"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:502
+msgid "rotateOutUpLeft"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:506
+msgid "rotateOutUpRight"
+msgstr ""
+
 #: modules/addon_func_anim/controllers/animation.php:513
 msgid "Specials"
 msgstr "Specials"
+
+#: modules/addon_func_anim/controllers/animation.php:515
+msgid "hinge"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:519
+msgid "rollIn"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:523
+msgid "rollOut"
+msgstr ""
 
 #: modules/addon_func_anim/controllers/animation.php:530
 msgid "Zoom Entrances"
 msgstr "Zoom Entrances"
 
+#: modules/addon_func_anim/controllers/animation.php:532
+msgid "zoomIn"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:536
+msgid "zoomInDown"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:540
+msgid "zoomInLeft"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:544
+msgid "zoomInRight"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:548
+msgid "zoomInUp"
+msgstr ""
+
 #: modules/addon_func_anim/controllers/animation.php:555
 msgid "Zoom Exits"
 msgstr "Zoom Exits"
+
+#: modules/addon_func_anim/controllers/animation.php:557
+msgid "zoomOut"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:561
+msgid "zoomOutDown"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:565
+msgid "zoomOutLeft"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:569
+msgid "zoomOutRight"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:573
+msgid "zoomOutUp"
+msgstr ""
 
 #: modules/addon_func_anim/controllers/animation.php:580
 msgid "Slide Entrances"
 msgstr "Slide Entrances"
 
+#: modules/addon_func_anim/controllers/animation.php:582
+msgid "slideInDown"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:586
+msgid "slideInLeft"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:590
+msgid "slideInRight"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:594
+msgid "slideInUp"
+msgstr ""
+
 #: modules/addon_func_anim/controllers/animation.php:601
 msgid "Slide Exits"
 msgstr "Slide Exits"
+
+#: modules/addon_func_anim/controllers/animation.php:603
+msgid "slideOutDown"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:607
+msgid "slideOutLeft"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:611
+msgid "slideOutRight"
+msgstr ""
+
+#: modules/addon_func_anim/controllers/animation.php:615
+msgid "slideOutUp"
+msgstr ""
 
 #: modules/addon_mgtranslate/controllers/backend.php:90, modules/addon_mgtranslate/controllers/backend.php:148, modules/addon_mgtranslate/controllers/backend.php:234, modules/addon_mgtranslate/views/backend/show_list.php:24
 msgid "Translation Manager"
@@ -2318,7 +2638,7 @@ msgstr "Es gibt keine Formulare. Neue hinzufügen"
 msgid "Download"
 msgstr "Download"
 
-#: modules/formbuilder/views/settings/backup_settings.php:91, modules/formbuilder/views/settings/backup_settings.php:181
+#: modules/formbuilder/views/settings/backup_settings.php:91, modules/formbuilder/views/settings/backup_settings.php:174
 msgid "Restore Backup"
 msgstr "Restore Backup"
 
@@ -2330,11 +2650,11 @@ msgstr "Upload Backup"
 msgid "Save changes"
 msgstr "Änderungen speichern"
 
-#: modules/formbuilder/views/settings/backup_settings.php:179
+#: modules/formbuilder/views/settings/backup_settings.php:172
 msgid "Database backup success"
 msgstr "Database backup success"
 
-#: modules/formbuilder/views/settings/backup_settings.php:180
+#: modules/formbuilder/views/settings/backup_settings.php:173
 msgid "Delete File selected"
 msgstr "Ausgewählte Feld löschen"
 
@@ -3446,19 +3766,19 @@ msgstr "Neuen bedingten Logik hinzufügen"
 msgid "Remove all"
 msgstr "Alle entfernen"
 
-#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:140, modules/formbuilder/views/fields/modal/settings_form_clogic.php:146
+#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:136, modules/formbuilder/views/fields/modal/settings_form_clogic.php:142
 msgid "is"
 msgstr "is"
 
-#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:141, modules/formbuilder/views/fields/modal/settings_form_clogic.php:147
+#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:137, modules/formbuilder/views/fields/modal/settings_form_clogic.php:143
 msgid "is not"
 msgstr "ist nicht"
 
-#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:148
+#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:144
 msgid "greater than"
 msgstr "größer als"
 
-#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:149
+#: modules/formbuilder/views/fields/modal/settings_form_clogic.php:145
 msgid "less than"
 msgstr "weniger als"
 

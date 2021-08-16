@@ -2281,8 +2281,4 @@ if ( ! defined( 'ABSPATH' ) ) {
    
 </div>
 <!--/ template option input 17--> 
-<script type="text/javascript">
-						 jQuery(document).ready(function($) {
-							
-						}); 
-					</script>
+

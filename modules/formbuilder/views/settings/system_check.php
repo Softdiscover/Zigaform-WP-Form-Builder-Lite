@@ -177,10 +177,3 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</div>
 	
 </div>
-<script type="text/javascript">
-//<![CDATA[
-jQuery(document).ready(function () {
-	
-});
-//]]>
-</script>

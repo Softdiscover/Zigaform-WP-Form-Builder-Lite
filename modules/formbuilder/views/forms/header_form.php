@@ -16,10 +16,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</div>
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	  <ul class="nav navbar-nav">
+	  <ul class="sfdc-nav sfdc-navbar-nav">
 		  <li class="divider-menu"></li>
 		<li class="dropdown">
-		  <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="fa fa-file"></span> File <span class="caret"></span></a>
+		  <a href="#" class="sfdc-dropdown-toggle" data-toggle="dropdown"> <span class="fa fa-file"></span> File <span class="caret"></span></a>
 		  <ul class="dropdown-menu" role="menu">
 			<li><a href="#">New</a></li>
 			<li><a href="#">Open</a></li>
@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</li>
 		<li class="divider-menu"></li>
 		<li class="dropdown">
-		  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-file-text-o"></span> Templates <span class="caret"></span></a>
+		  <a href="#" class="sfdc-dropdown-toggle" data-toggle="dropdown"><span class="fa fa-file-text-o"></span> Templates <span class="caret"></span></a>
 		  <ul class="dropdown-menu" role="menu">
 			<li><a href="#">desktop</a></li>
 			<li><a href="#">tablet</a></li>
@@ -37,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</li>
 		<li class="divider-menu"></li>
 		<li class="dropdown">
-		  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-desktop"></span> Preview <span class="caret"></span></a>
+		  <a href="#" class="sfdc-dropdown-toggle" data-toggle="dropdown"><span class="fa fa-desktop"></span> Preview <span class="caret"></span></a>
 		  <ul class="dropdown-menu" role="menu">
 			<li><a href="#">desktop</a></li>
 			<li><a href="#">tablet</a></li>
@@ -47,7 +47,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		
 		<li class="divider-menu"></li>
 		<li class="dropdown">
-		  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-question-circle"></span> Help <span class="caret"></span></a>
+		  <a href="#" class="sfdc-dropdown-toggle" data-toggle="dropdown"><span class="fa fa-question-circle"></span> Help <span class="caret"></span></a>
 		  <ul class="dropdown-menu" role="menu">
 			<li><a href="#">desktop</a></li>
 			<li><a href="#">tablet</a></li>

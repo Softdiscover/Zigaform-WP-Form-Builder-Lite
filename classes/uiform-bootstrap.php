@@ -347,7 +347,7 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
 
 	public function rockfm_lang_locale_filter( $locale ) {
 		$tmp_lang = $this->models['formbuilder']['settings']->getLangOptions();
-		if ( ! empty( $tmp_lang->language ) ) {
+		if ( ! empty( $tmp_lang->language ) && $tmp_lang->language!= 'en_US' ) {
 			$locale = $tmp_lang->language;
 		}
 
@@ -740,9 +740,7 @@ JS;
 		// load rocketform
 		wp_enqueue_style( self::PREFIX . 'admin' );
 
-		//bootstrap 4
-		wp_enqueue_style( 'rockefform-bootstrap-v4', UIFORM_FORMS_URL . '/assets/common/bootstrap/4.3.1/css/bootstrap.css' );
-
+		
 		//font awesome
 		wp_enqueue_style( 'rockefform-fontawesome', UIFORM_FORMS_URL . '/assets/common/css/fontawesome/4.7.0/css/font-awesome.min.css' );
 
@@ -870,13 +868,7 @@ JS;
 		// bootstrap
 		wp_enqueue_style( 'rockefform-bootstrap', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/css/bootstrap-wrapper.css' );
 		wp_enqueue_style( 'rockefform-bootstrap-theme', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/css/bootstrap-theme-wrapper.css' );
-
-		wp_enqueue_style( 'rockefform-bootstrap-v4', UIFORM_FORMS_URL . '/assets/common/bootstrap/4.3.1/css/bootstrap.css' );
-
-		// sfdc bootstrap
-		// wp_enqueue_style('sfdcgb-bootstrap', UIFORM_FORMS_URL . '/assets/common/js/bootstrap/3.2.0-sfdc/bootstrap-widget.css');
-		// wp_enqueue_style('sfdcgb-bootstrap-theme', UIFORM_FORMS_URL . '/assets/common/js/bootstrap/3.2.0-sfdc/bootstrap-theme-widget.css');
-
+ 
 		wp_enqueue_style( 'rockefform-fontawesome', UIFORM_FORMS_URL . '/assets/common/css/fontawesome/4.7.0/css/font-awesome.min.css' );
 
 		// custom fonts
@@ -889,7 +881,7 @@ JS;
 		wp_enqueue_style( 'rockefform-jscrollpane', UIFORM_FORMS_URL . '/assets/backend/js/jscrollpane/jquery.jscrollpane.css' );
 		wp_enqueue_style( 'rockefform-jscrollpane-lozenge', UIFORM_FORMS_URL . '/assets/backend/js/jscrollpane/jquery.jscrollpane.lozenge.css' );
 		// chosen
-		wp_enqueue_style( 'rockefform-chosen', UIFORM_FORMS_URL . '/assets/backend/js/chosen/chosen.css' );
+		wp_enqueue_style( 'rockefform-chosen', UIFORM_FORMS_URL . '/assets/backend/js/chosen/1.8.7/chosen.css' );
 		wp_enqueue_style( 'rockefform-chosen-style', UIFORM_FORMS_URL . '/assets/backend/js/chosen/style.css' );
 		// color picker
 		wp_enqueue_style( 'rockefform-bootstrap-colorpicker', UIFORM_FORMS_URL . '/assets/backend/js/colorpicker/2.5/css/bootstrap-colorpicker.css' );
@@ -904,10 +896,10 @@ JS;
 		// bootstrap iconpicker
 		wp_enqueue_style( 'rockefform-bootstrap-iconpicker', UIFORM_FORMS_URL . '/assets/backend/js/biconpicker/1.9.0/css/bootstrap-iconpicker.css' );
 		// bootstrap datetimepicker
-		wp_enqueue_style( 'rockefform-bootstrap-datetimepicker', UIFORM_FORMS_URL . '/assets/backend/js/bdatetime/bootstrap-datetimepicker.css' );
+		wp_enqueue_style( 'rockefform-bootstrap-datetimepicker', UIFORM_FORMS_URL . '/assets/backend/js/bdatetime/4.17.45/bootstrap-datetimepicker.css' );
 
 		// bootstrap datetimepicker2
-		wp_enqueue_style( 'rockefform-bootstrap-datetimepicker2', UIFORM_FORMS_URL . '/assets/common/js/flatpickr/4.5.2/flatpickr.min.css' );
+		wp_enqueue_style( 'rockefform-bootstrap-datetimepicker2', UIFORM_FORMS_URL . '/assets/common/js/flatpickr/4.6.2/flatpickr.min.css' );
 
 		// star rating
 		wp_enqueue_style( 'rockefform-star-rating', UIFORM_FORMS_URL . '/assets/backend/js/bratestar/star-rating.css' );
@@ -937,7 +929,7 @@ JS;
 		 load js */
 		// load jquery
 		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'jquery-uiform-validation', UIFORM_FORMS_URL . '/assets/backend/js/jsvalidate/jquery.validate.min.js', array( 'jquery' ), '1.9.0', true );
+		wp_enqueue_script( 'jquery-uiform-validation', UIFORM_FORMS_URL . '/assets/backend/js/jsvalidate/1.19.3/jquery.validate.min.js', array( 'jquery' ), '1.9.0', true );
 		// load jquery ui
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-widget' );
@@ -958,15 +950,12 @@ JS;
 
 		// prev jquery
 		wp_enqueue_script( 'rockfm-prev-jquery', UIFORM_FORMS_URL . '/assets/common/js/init.js', array( 'jquery' ) );
-
-		// bootstrap
-		wp_enqueue_script( 'rockefform-bootstrap', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/js/bootstrap.js', array( 'jquery', 'rockfm-prev-jquery' ) );
-
+ 
 		// bootstrap sfdc
 		wp_enqueue_script( 'rockefform-bootstrap-sfdc', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/js/bootstrap-sfdc.js', array( 'jquery', 'rockfm-prev-jquery' ) );
 
 		// jasny bootstrap
-		wp_enqueue_script( 'rockefform-jasny-bootstrap', UIFORM_FORMS_URL . '/assets/common/js/bjasny/jasny-bootstrap.js', array( 'jquery', 'rockefform-bootstrap' ), '1.0', true );
+		wp_enqueue_script( 'rockefform-jasny-bootstrap', UIFORM_FORMS_URL . '/assets/common/js/bjasny/jasny-bootstrap.js', array( 'jquery', 'rockefform-bootstrap-sfdc' ), '1.0', true );
 
 		// md5
 		wp_enqueue_script( 'rockefform-md5', UIFORM_FORMS_URL . '/assets/backend/js/md5.js' );
@@ -979,32 +968,32 @@ JS;
 		wp_enqueue_script( 'rockefform-mousewheel', UIFORM_FORMS_URL . '/assets/backend/js/jscrollpane/jquery.mousewheel.js' );
 		wp_enqueue_script( 'rockefform-jscrollpane', UIFORM_FORMS_URL . '/assets/backend/js/jscrollpane/jquery.jscrollpane.min.js' );
 		// chosen
-		wp_enqueue_script( 'rockefform-chosen', UIFORM_FORMS_URL . '/assets/backend/js/chosen/chosen.jquery.min.js' );
+		wp_enqueue_script( 'rockefform-chosen', UIFORM_FORMS_URL . '/assets/backend/js/chosen/1.8.7/chosen.jquery.min.js' );
 		// color picker
-		wp_enqueue_script( 'rockefform-bootstrap-colorpicker', UIFORM_FORMS_URL . '/assets/backend/js/colorpicker/2.5/js/bootstrap-colorpicker_mod.js', array( 'jquery', 'rockefform-bootstrap' ), '1.0', true );
+		wp_enqueue_script( 'rockefform-bootstrap-colorpicker', UIFORM_FORMS_URL . '/assets/backend/js/colorpicker/2.5/js/bootstrap-colorpicker_mod.js', array( 'jquery','rockfm-prev-jquery' , 'rockefform-bootstrap-sfdc' ), '1.0', true );
 		// bootstrap select
-		wp_enqueue_script( 'rockefform-bootstrap-select', UIFORM_FORMS_URL . '/assets/common/js/bselect/1.12.4/js/bootstrap-select-mod.js', array( 'jquery', 'rockefform-bootstrap' ), '1.12.4', true );
+		wp_enqueue_script( 'rockefform-bootstrap-select', UIFORM_FORMS_URL . '/assets/common/js/bselect/1.12.4/js/bootstrap-select-mod.js', array( 'jquery', 'rockefform-bootstrap-sfdc' ), '1.12.4', true );
 		// bootstrap switch
-		wp_enqueue_script( 'rockefform-bootstrap-switch', UIFORM_FORMS_URL . '/assets/backend/js/bswitch/bootstrap-switch.js', array( 'jquery', 'rockefform-bootstrap' ), '1.0', true );
+		wp_enqueue_script( 'rockefform-bootstrap-switch', UIFORM_FORMS_URL . '/assets/backend/js/bswitch/bootstrap-switch.js', array( 'jquery', 'rockefform-bootstrap-sfdc' ), '1.0', true );
 		// bootstrap slider
-		wp_enqueue_script( 'rockefform-bootstrap-slider', UIFORM_FORMS_URL . '/assets/backend/js/bslider/4.12.1/bootstrap-slider.js', array( 'jquery', 'rockefform-bootstrap', 'rockfm-prev-jquery' ), '1.0', true );
+		wp_enqueue_script( 'rockefform-bootstrap-slider', UIFORM_FORMS_URL . '/assets/backend/js/bslider/4.12.1/bootstrap-slider.js', array( 'jquery', 'rockefform-bootstrap-sfdc', 'rockfm-prev-jquery' ), '1.0', true );
 		// bootstrap touchspin
-		wp_enqueue_script( 'rockefform-bootstrap-touchspin', UIFORM_FORMS_URL . '/assets/backend/js/btouchspin/jquery.bootstrap-touchspin.js', array( 'jquery', 'rockefform-bootstrap' ), '1.0', true );
+		wp_enqueue_script( 'rockefform-bootstrap-touchspin', UIFORM_FORMS_URL . '/assets/backend/js/btouchspin/jquery.bootstrap-touchspin.js', array( 'jquery', 'rockefform-bootstrap-sfdc' ), '1.0', true );
 		// bootstrap datetimepicker
-		wp_enqueue_script( 'rockefform-bootstrap-dtpicker-locales', UIFORM_FORMS_URL . '/assets/backend/js/bdatetime/moment-with-locales.js', array( 'jquery', 'rockefform-bootstrap' ), '1.0', true );
-		wp_enqueue_script( 'rockefform-bootstrap-datetimepicker', UIFORM_FORMS_URL . '/assets/backend/js/bdatetime/bootstrap-datetimepicker.js', array( 'jquery', 'rockefform-bootstrap' ), '1.0', true );
+		wp_enqueue_script( 'rockefform-bootstrap-dtpicker-locales', UIFORM_FORMS_URL . '/assets/backend/js/bdatetime/4.17.45/moment-with-locales.js', array( 'jquery', 'rockefform-bootstrap-sfdc' ), '1.0', true );
+		wp_enqueue_script( 'rockefform-bootstrap-datetimepicker', UIFORM_FORMS_URL . '/assets/backend/js/bdatetime/4.17.45/bootstrap-datetimepicker.js', array( 'jquery', 'rockefform-bootstrap-sfdc' ), '1.0', true );
 
 		// bootstrap datetimepicker2
-		wp_enqueue_script( 'rockefform-bootstrap-dtpicker-locales2', UIFORM_FORMS_URL . '/assets/common/js/flatpickr/4.5.2/flatpickr.js', array( 'jquery', 'rockefform-bootstrap' ), '1.0', true );
-		wp_enqueue_script( 'rockefform-bootstrap-datetimepicker2', UIFORM_FORMS_URL . '/assets/common/js/flatpickr/4.5.2/l10n/all-lang.js', array( 'jquery', 'rockefform-bootstrap' ), '1.0', true );
+		wp_enqueue_script( 'rockefform-bootstrap-dtpicker-locales2', UIFORM_FORMS_URL . '/assets/common/js/flatpickr/4.6.2/flatpickr.js', array( 'jquery', 'rockefform-bootstrap-sfdc' ), '1.0', true );
+		wp_enqueue_script( 'rockefform-bootstrap-datetimepicker2', UIFORM_FORMS_URL . '/assets/common/js/flatpickr/4.6.2/l10n/all-lang.js', array( 'jquery', 'rockefform-bootstrap-sfdc' ), '1.0', true );
 
 		// autogrow
 		wp_enqueue_script( 'rockefform-autogrow-textarea', UIFORM_FORMS_URL . '/assets/backend/js/jquery.autogrow-textarea.js' );
 		// bootstrap iconpicker
-		wp_enqueue_script( 'rockefform-bootstrap-iconpicker-all', UIFORM_FORMS_URL . '/assets/backend/js/biconpicker/1.9.0/js/bootstrap-iconpicker-iconset-all.js', array( 'jquery', 'rockefform-bootstrap' ), '1.0', true );
-		wp_enqueue_script( 'rockefform-bootstrap-iconpicker', UIFORM_FORMS_URL . '/assets/backend/js/biconpicker/1.9.0/js/bootstrap-iconpicker.js', array( 'jquery', 'rockefform-bootstrap' ), '1.0', true );
+		wp_enqueue_script( 'rockefform-bootstrap-iconpicker-all', UIFORM_FORMS_URL . '/assets/backend/js/biconpicker/1.9.0/js/bootstrap-iconpicker-iconset-all.js', array( 'jquery', 'rockefform-bootstrap-sfdc' ), '1.0', true );
+		wp_enqueue_script( 'rockefform-bootstrap-iconpicker', UIFORM_FORMS_URL . '/assets/backend/js/biconpicker/1.9.0/js/bootstrap-iconpicker.js', array( 'jquery', 'rockefform-bootstrap-sfdc' ), '1.0', true );
 		// star rating
-		wp_enqueue_script( 'rockefform-star-rating', UIFORM_FORMS_URL . '/assets/backend/js/bratestar/star-rating.js', array( 'jquery', 'rockefform-bootstrap' ), '1.0', true );
+		wp_enqueue_script( 'rockefform-star-rating', UIFORM_FORMS_URL . '/assets/backend/js/bratestar/star-rating.js', array( 'jquery', 'rockefform-bootstrap-sfdc' ), '1.0', true );
 		// datatables
 		wp_enqueue_script( 'rockefform-dataTables', UIFORM_FORMS_URL . '/assets/backend/js/bdatatable/1.10.9/jquery.dataTables.js' );
 		// bootbox
@@ -1012,9 +1001,9 @@ JS;
 		// intro
 		wp_enqueue_script( 'rockefform-introjs', UIFORM_FORMS_URL . '/assets/backend/js/introjs/intro.js' );
 		// blueimp
-		wp_enqueue_script( 'rockefform-blueimp', UIFORM_FORMS_URL . '/assets/common/js/blueimp/2.16.0/js/blueimp-gallery.min.js', array( 'jquery', 'rockefform-bootstrap' ), '2.16.0', true );
+		wp_enqueue_script( 'rockefform-blueimp', UIFORM_FORMS_URL . '/assets/common/js/blueimp/2.16.0/js/blueimp-gallery.min.js', array( 'jquery', 'rockefform-bootstrap-sfdc' ), '2.16.0', true );
 		// bootstrap gallery
-		wp_enqueue_script( 'rockefform-bootstrap-gal', UIFORM_FORMS_URL . '/assets/common/js/bgallery/3.1.3/js/bootstrap-image-gallery.js', array( 'jquery', 'rockefform-bootstrap', 'rockefform-blueimp' ), '3.1.0', true );
+		wp_enqueue_script( 'rockefform-bootstrap-gal', UIFORM_FORMS_URL . '/assets/common/js/bgallery/3.1.3/js/bootstrap-image-gallery.js', array( 'jquery', 'rockefform-bootstrap-sfdc', 'rockefform-blueimp' ), '3.1.0', true );
 		// lzstring
 		wp_enqueue_script( 'rockefform-lzstring', UIFORM_FORMS_URL . '/assets/backend/js/lzstring/lz-string.min.js' );
 
@@ -1044,7 +1033,7 @@ JS;
 			wp_register_script(
 				self::PREFIX . 'admin',
 				UIFORM_FORMS_URL . '/assets/backend/js/admin.debug.js?v=' . date( 'YmdHis' ),
-				array( 'rockefform-bootstrap-sfdc', 'wp-i18n', 'wp-hooks' ),
+				array( 'rockefform-bootstrap-sfdc', 'wp-i18n', 'wp-hooks'  ),
 				UIFORM_VERSION,
 				true
 			);

@@ -883,15 +883,32 @@ if (!$uifm.isFunction(rocketfm)) {
 						obj_form.addClass('rockfm-form-mloaded');
 
 						if (obj_form.find('.rockfm-input4-slider').length) {
-							obj_form.find('.rockfm-input4-slider').bootstrapSlider();
-							obj_form.find('.rockfm-input4-slider').on('slide', function(slideEvt) {
+							var rockfm_slider_d = obj_form.find('.rockfm-input4-slider');
+							rockfm_slider_d.each(function(i) {
+								$(this).bootstrapSlider();
+								$(this).parent().parent().find('.slider-tick-label').hide();
 								$(this)
-									.parent()
-									.parent()
-									.find('.rockfm-input4-number')
-									.text(slideEvt.value);
-							});
+										.parent()
+										.parent()
+										.find('.rockfm-input4-number')
+										.text($(this).val());
+
+																obj_form.find('.rockfm-input4-slider').on('slide', function(slideEvt) {
+									$(this)
+										.parent()
+										.parent()
+										.find('.rockfm-input4-number')
+										.text(slideEvt.value);
+
+																				$(this)
+										.parent()
+										.parent().find('.slider-tick-label').show();	
+
+																	});
+
+															});
 						}
+
 						if (obj_form.find('.rockfm-input4-spinner').length) {
 							var spinners = obj_form.find('.rockfm-input4-spinner'),
 								s_min,
@@ -1108,7 +1125,6 @@ if (!$uifm.isFunction(rocketfm)) {
 								}
 							});
 
-							obj_form.find('.rockfm-input7-datetimepic').datetimepicker();
 						}
 
 						if (obj_form.find('.rockfm-input-ratingstar').length) {
