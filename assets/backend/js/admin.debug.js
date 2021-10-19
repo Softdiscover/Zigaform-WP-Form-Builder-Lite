@@ -128,7 +128,11 @@ if (!$uifm.isFunction(rocketform)) {
 				},
 				num_tabs: 1,
 				steps: {
-					tab_title: [],
+					tab_title: [
+						{
+						'title': 'Tab title 1'
+						}
+					],
 					tab_cont: [],
 				},
 				steps_src: [],
@@ -7971,7 +7975,9 @@ if (!$uifm.isFunction(rocketform)) {
 					this.wizardtab_gotoFirstPosition();
 				}
 				rocketform.setUiData2('wizard', 'enable_st', wiz_st);
-			};
+
+
+							};
 			arguments.callee.wizardtab_changeTabTitle = function(nro) {
 				var tabobj = $(".uiform-step-list li > a[data-tab-nro='" + nro + "']").find('.uifm-title');
 				var tab_title = $('#uifm_frm_skin_tab' + nro + '_title').val() ? $('#uifm_frm_skin_tab' + nro + '_title').val() : 'Tab title';

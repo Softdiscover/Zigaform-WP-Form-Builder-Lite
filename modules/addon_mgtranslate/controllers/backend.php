@@ -300,6 +300,9 @@ class zfaddn_mgtranslate_back extends Uiform_Base_Module {
 	* load css, and javascript files
 	*/
 	public function load_dependencies() {
+		
+		wp_enqueue_style( 'zgfm-bootstrap-original',  UIFORM_FORMS_URL . '/assets/common/bootstrap/4.3.1/css/bootstrap.css' );
+	
 		if ( UIFORM_DEBUG === 1 ) {
 			// css
 			wp_enqueue_style( 'zgfm-mgtranslate-style', UIFORM_FORMS_URL . '/modules/addon_mgtranslate/assets/backend/css/style.debug.css' );

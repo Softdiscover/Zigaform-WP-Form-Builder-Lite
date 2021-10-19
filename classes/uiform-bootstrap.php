@@ -347,7 +347,7 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
 
 	public function rockfm_lang_locale_filter( $locale ) {
 		$tmp_lang = $this->models['formbuilder']['settings']->getLangOptions();
-		if ( ! empty( $tmp_lang->language ) && $tmp_lang->language!= 'en_US' ) {
+		if ( ! empty( $tmp_lang->language ) ) {
 			$locale = $tmp_lang->language;
 		}
 

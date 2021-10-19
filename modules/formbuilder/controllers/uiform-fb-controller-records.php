@@ -393,7 +393,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
 	public function list_records() {
 		$filter_data = get_option( 'zgfm_listrecords_searchfilter', true );
 		$data2       = array();
-		if ( empty( $filter_data ) ) {
+		if ( empty( $filter_data ) && !isset($filter_data['orderby'])) {
 			$data2['per_page']   = intval( $this->per_page );
 			$data2['orderby']    = 'asc';
 		} else {
@@ -426,7 +426,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
 	public function list_trash_records() {
 		$filter_data = get_option( 'zgfm_listrecords_searchfilter', true );
 		$data2       = array();
-		if ( empty( $filter_data ) ) {
+		if ( empty( $filter_data ) && !isset($filter_data['orderby'])) {
 			$data2['per_page']   = intval( $this->per_page );
 			$data2['orderby']    = 'asc';
 		} else {

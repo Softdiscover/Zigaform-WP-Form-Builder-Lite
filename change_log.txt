@@ -1,3 +1,9 @@
+version 5.5.1
+[fixed] - advanced search fixed
+-----------------------------------------------------------------------------------------------------------------
+version 5.5
+- wizard form creation fixed
+- fixed- Font weight for sub label stuck on bold
 version 5.4.1
 [fixed] - popup issue
 ---------------------------------------------------------------------
