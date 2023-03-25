@@ -110,11 +110,16 @@ class CI_Pagination {
 	 * @return  string
 	 */
 	function create_links() {
+	
+	
+		$this->per_page = (int)$this->per_page;
+		$this->total_rows = (int)$this->total_rows;
+		
 		// If our item count or per-page total is zero there is no need to continue.
 		if ( $this->total_rows == 0 or $this->per_page == 0 ) {
 			return '';
 		}
-
+		 
 		// Calculate the total number of pages
 		$num_pages = ceil( $this->total_rows / $this->per_page );
 

@@ -717,19 +717,21 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 		frameborder="0" 
 		style="border:none;width:100%;" 
 		allowTransparency="true"></iframe>
-		
+	
 		<script type="text/javascript">
 				 document.getElementById('zgfm-iframe-<?php echo $form_id; ?>').onload = function() {
 		 document.getElementById("uifm_frm_modal_html_loader").style.display = 'none';
-					iFrameResize({
+		 iFrameResize({
 																log                     : false,
 																onScroll: function (coords) {
 																	/*console.log("[OVERRIDE] overrode scrollCallback x: " + coords.x + " y: " + coords.y);*/
 																}
 														},'#zgfm-iframe-<?php echo $form_id; ?>');
 				};   
- 
+ 	
+				
 		  </script> 
+		 
 		<?php
 		$output = ob_get_clean();
 		echo $output;

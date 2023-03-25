@@ -336,7 +336,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
 				case 13:
 					$value_new = $value['input'];
 					// checking if image exists
-					if ( @is_array( getimagesize( $value_new ) ) ) {
+					if ( !empty($value_new) && @is_array( getimagesize( $value_new ) ) ) {
 						 $value_new = '<img width="100px" src="' . $value_new . '"/>';
 					}
 
@@ -391,13 +391,14 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module {
 	 * @return void
 	 */
 	public function list_records() {
-		$filter_data = get_option( 'zgfm_listrecords_searchfilter', true );
+		$filter_data = get_option( 'zgfm_listrecords_searchfilter', false );
+		
 		$data2       = array();
 		if ( empty( $filter_data ) && !isset($filter_data['orderby'])) {
 			$data2['per_page']   = intval( $this->per_page );
 			$data2['orderby']    = 'asc';
 		} else {
-			$data2['per_page']   = intval( $filter_data['per_page'] );
+			$data2['per_page']   = (intval( $filter_data['per_page'] ))?:$this->per_page;
 			$data2['orderby']    = $filter_data['orderby'];
 		}
 

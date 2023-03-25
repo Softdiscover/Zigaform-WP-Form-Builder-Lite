@@ -1011,7 +1011,7 @@ JS;
 		wp_enqueue_script( 'rockefform-checkradio', UIFORM_FORMS_URL . '/assets/common/js/checkradio/2.2.2/js/jquery.checkradios.js', array( 'jquery' ), '2.2.2', true );
 
 		// iframe
-		wp_enqueue_script( 'rockefform-iframe', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/4.1.1/iframeResizer.min.js', array(), UIFORM_VERSION, true );
+		wp_enqueue_script( 'rockefform-iframe', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/4.1.1/iframeResizer.js', array(), UIFORM_VERSION, true );
 
 		// codemirror
 		wp_enqueue_script( 'rockefform-codemirror', UIFORM_FORMS_URL . '/assets/common/js/codemirror/codemirror.js', array(), '1.0', true );
@@ -1028,6 +1028,8 @@ JS;
 		wp_enqueue_script( 'rockefform-codemirror-autorefresh', UIFORM_FORMS_URL . '/assets/common/js/codemirror/addon/display/autorefresh.js', array(), '1.0', true );
 
 		wp_enqueue_script( 'rockefform-autooff', UIFORM_FORMS_URL . '/assets/backend/js/disableautofill/jquery.disableAutoFill.js' );
+		
+		wp_enqueue_script( 'rockefform-iframe', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/4.1.1/iframeResizer.contentWindow.js' );
 
 		if ( UIFORM_DEBUG === 1 ) {
 			wp_register_script(
