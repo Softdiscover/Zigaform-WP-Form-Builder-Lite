@@ -159,7 +159,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module {
 				case 13:
 					$value_new = $value['input'];
 					// checking if image exists
-					if ( @is_array( getimagesize( $value_new ) ) ) {
+					if ( !empty($value_new) && @is_array( getimagesize( $value_new ) ) ) {
 						 $value_new = '<img width="100px" src="' . $value_new . '"/>';
 					}
 

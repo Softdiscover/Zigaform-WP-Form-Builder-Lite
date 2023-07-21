@@ -2509,8 +2509,8 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module {
 			$data2['per_page']   = intval( $this->per_page );
 			$data2['orderby']    = 'asc';
 		} else {
-			$data2['per_page']   = intval( $filter_data['per_page'] );
-			$data2['orderby']    = $filter_data['orderby'];
+			$data2['per_page']   = intval( $filter_data['per_page']??'' );
+			$data2['orderby']    = $filter_data['orderby']??'';
 		}
 
 		$offset          = ( isset( $_GET['offset'] ) ) ? Uiform_Form_Helper::sanitizeInput( $_GET['offset'] ) : 0;

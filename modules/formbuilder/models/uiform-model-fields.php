@@ -35,6 +35,7 @@ class Uiform_Model_Fields {
 	private $wpdb      = '';
 	public $table      = '';
 	public $tbformtype = '';
+	public $tbform = '';
 
 	function __construct() {
 		global $wpdb;
