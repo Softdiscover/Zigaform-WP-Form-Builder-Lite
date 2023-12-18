@@ -1,12 +1,12 @@
-# Copyright (C) 2023 Zigaform WP Cost Estimation Form Builder 5.8.0
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.8.0 package.
+# Copyright (C) 2023 Zigaform WP Cost Estimation Form Builder 5.8.1
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.8.1 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 5.8.0\n"
+"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 5.8.1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-10-04 04:00+0000\n"
+"POT-Creation-Date: 2023-12-18 04:57+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -962,7 +962,7 @@ msgstr ""
 msgid "Animation delay"
 msgstr ""
 
-#: modules/addon_mgtranslate/views/backend/ajax_load_pofile.php:25, modules/formbuilder/views/fields/modal/settings_field_input_19.php:156, modules/formbuilder/views/fields/modal/settings_field_input_19.php:157, modules/formbuilder/views/fields/modal/settings_field_input_7.php:23
+#: modules/addon_mgtranslate/views/backend/ajax_load_pofile.php:25, modules/formbuilder/views/fields/modal/settings_field_input_19.php:136, modules/formbuilder/views/fields/modal/settings_field_input_19.php:137, modules/formbuilder/views/fields/modal/settings_field_input_7.php:23
 msgid "Language"
 msgstr ""
 
@@ -1046,11 +1046,11 @@ msgstr ""
 msgid "Content Type"
 msgstr ""
 
-#: modules/addon_webhook/views/backend/get_content.php:75, modules/formbuilder/views/fields/modal/settings_field_input_7.php:40
+#: modules/addon_webhook/views/backend/get_content.php:75, modules/formbuilder/views/fields/modal/settings_field_input_7.php:41
 msgid "Format"
 msgstr ""
 
-#: modules/addon_webhook/views/backend/get_content.php:78, modules/formbuilder/views/fields/modal/settings_field_input_2.php:211, modules/formbuilder/views/fields/modal/settings_field_input_7.php:44
+#: modules/addon_webhook/views/backend/get_content.php:78, modules/formbuilder/views/fields/modal/settings_field_input_2.php:211, modules/formbuilder/views/fields/modal/settings_field_input_7.php:45
 msgid "Default"
 msgstr ""
 
@@ -2690,7 +2690,7 @@ msgstr ""
 msgid "Enable Width"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:157, modules/formbuilder/views/fields/modal/settings_field_input_19.php:21, modules/formbuilder/views/fields/modal/settings_form_more.php:21
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:157, modules/formbuilder/views/fields/modal/settings_field_input_19.php:23, modules/formbuilder/views/fields/modal/settings_form_more.php:21
 msgid "Margin"
 msgstr ""
 
@@ -3142,79 +3142,83 @@ msgstr ""
 msgid "Margin left"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:27, modules/formbuilder/views/fields/modal/settings_field_input_19.php:28
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:29, modules/formbuilder/views/fields/modal/settings_field_input_19.php:30
 msgid "Enable time"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:45, modules/formbuilder/views/fields/modal/settings_field_input_19.php:46, modules/formbuilder/views/fields/modal/settings_field_input_19.php:64
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:44, modules/formbuilder/views/fields/modal/settings_field_input_19.php:45, modules/formbuilder/views/fields/modal/settings_field_input_19.php:60
 msgid "No calendar"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:63
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:59
 msgid "time 24 hour"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:81, modules/formbuilder/views/fields/modal/settings_field_input_19.php:82
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:74, modules/formbuilder/views/fields/modal/settings_field_input_19.php:75
 msgid "Alternative input"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:99
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:89
 msgid "Alternative input format"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:100
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:90
 msgid "Alternative format input"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:118, modules/formbuilder/views/fields/modal/settings_field_input_19.php:119
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:105, modules/formbuilder/views/fields/modal/settings_field_input_19.php:106
 msgid "Inline display"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:136, modules/formbuilder/views/fields/modal/settings_field_input_19.php:137
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:120, modules/formbuilder/views/fields/modal/settings_field_input_19.php:121
 msgid "Date format"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:165, modules/formbuilder/views/fields/modal/settings_field_input_7.php:27
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:141, modules/formbuilder/views/fields/modal/settings_field_input_7.php:27
 msgid "English"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:166, modules/formbuilder/views/fields/modal/settings_field_input_7.php:28
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:142, modules/formbuilder/views/fields/modal/settings_field_input_7.php:28
 msgid "Spanish"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:167, modules/formbuilder/views/fields/modal/settings_field_input_7.php:29
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:143, modules/formbuilder/views/fields/modal/settings_field_input_7.php:29
 msgid "French"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:168, modules/formbuilder/views/fields/modal/settings_field_input_7.php:30
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:144, modules/formbuilder/views/fields/modal/settings_field_input_7.php:30
 msgid "Italian"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:169, modules/formbuilder/views/fields/modal/settings_field_input_7.php:31
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:145, modules/formbuilder/views/fields/modal/settings_field_input_7.php:31
 msgid "Japanese"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:170, modules/formbuilder/views/fields/modal/settings_field_input_7.php:32
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:146, modules/formbuilder/views/fields/modal/settings_field_input_7.php:32
 msgid "Portuguese"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:171, modules/formbuilder/views/fields/modal/settings_field_input_7.php:33
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:147, modules/formbuilder/views/fields/modal/settings_field_input_7.php:33
 msgid "Russian"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:172, modules/formbuilder/views/fields/modal/settings_field_input_7.php:34
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:148, modules/formbuilder/views/fields/modal/settings_field_input_7.php:34
 msgid "Chinese"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:186, modules/formbuilder/views/fields/modal/settings_field_input_19.php:187
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:149, modules/formbuilder/views/fields/modal/settings_field_input_7.php:35
+msgid "German"
+msgstr ""
+
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:162, modules/formbuilder/views/fields/modal/settings_field_input_19.php:163
 msgid "Minimum date"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:206, modules/formbuilder/views/fields/modal/settings_field_input_19.php:207
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:178, modules/formbuilder/views/fields/modal/settings_field_input_19.php:179
 msgid "Maximum date"
 msgstr ""
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:226, modules/formbuilder/views/fields/modal/settings_field_input_19.php:227
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:194, modules/formbuilder/views/fields/modal/settings_field_input_19.php:195
 msgid "Default date"
 msgstr ""
 
