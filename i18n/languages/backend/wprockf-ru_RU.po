@@ -1,5 +1,5 @@
-# Copyright (C) 2022 Zigaform WP Cost Estimation Form Builder 5.5.7
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.5.7 package.
+# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 5.8.9
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.8.9 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Rocket form\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.4.1\n"
 
-#: zigaform-wp-form-builder.php:178, zigaform-wp-form-builder.php:185, zigaform-wp-form-builder.php:199, zigaform-wp-form-builder.php:193
+#: zigaform-wp-form-builder.php:177, zigaform-wp-form-builder.php:184, zigaform-wp-form-builder.php:198, zigaform-wp-form-builder.php:192
 msgid "Zigaform alert"
 msgstr "Zigaform alert"
 
@@ -38,7 +38,7 @@ msgstr "Загрузка"
 msgid "Saving"
 msgstr "Saving"
 
-#: views/footer-global.php:18, modules/addon_mgtranslate/controllers/backend.php:95, modules/formbuilder/views/forms/create_form_modals.php:30, modules/formbuilder/views/forms/formhtml_form.php:131, modules/formbuilder/views/forms/modal1_footer.php:19, modules/formbuilder/views/forms/templates_fields.php:1923, modules/formbuilder/views/fields/render_front/block_label.php:88, modules/formbuilder/views/fields/templates/prevpanel_main.php:43, modules/formbuilder/views/fields/options/select/impbulkdata_footer.php:20
+#: views/footer-global.php:18, modules/addon_mgtranslate/controllers/backend.php:95, modules/formbuilder/views/forms/create_form_modals.php:30, modules/formbuilder/views/forms/formhtml_form.php:133, modules/formbuilder/views/forms/modal1_footer.php:19, modules/formbuilder/views/forms/templates_fields.php:1923, modules/formbuilder/views/fields/render_front/block_label.php:88, modules/formbuilder/views/fields/templates/prevpanel_main.php:43, modules/formbuilder/views/fields/options/select/impbulkdata_footer.php:20
 msgid "Close"
 msgstr "Закрыть"
 
@@ -62,7 +62,7 @@ msgstr "Успех! Успешно обновлен"
 msgid "Form was created"
 msgstr "Form was created"
 
-#: views/footer.php:33, modules/formbuilder/controllers/uiform-fb-controller-forms.php:746
+#: views/footer.php:33, modules/formbuilder/controllers/uiform-fb-controller-forms.php:748
 msgid ""
 "Success! The form was created. Now just copy and paste the shortcode to "
 "your content"
@@ -198,7 +198,7 @@ msgstr "Планшет"
 msgid "smartphone"
 msgstr "Смартфон"
 
-#: views/header.php:113, modules/formbuilder/views/forms/create_form.php:74
+#: views/header.php:113, modules/formbuilder/views/forms/create_form.php:75
 msgid "Records"
 msgstr "Записей"
 
@@ -214,7 +214,7 @@ msgstr "Список записей."
 msgid "Custom Report"
 msgstr "Пользовательский отчет"
 
-#: views/header.php:153, modules/formbuilder/views/forms/create_form.php:70
+#: views/header.php:153, modules/formbuilder/views/forms/create_form.php:71
 msgid "Import"
 msgstr "Импортировать"
 
@@ -866,11 +866,11 @@ msgstr "Успех! Успешно обновлен"
 msgid "Translation"
 msgstr "Translation"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-fields.php:235
+#: modules/formbuilder/controllers/uiform-fb-controller-fields.php:210
 msgid "Import Bulk Data"
 msgstr "Import Bulk Data"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-fields.php:302, modules/formbuilder/views/forms/templates_fields.php:73
+#: modules/formbuilder/controllers/uiform-fb-controller-fields.php:277, modules/formbuilder/views/forms/templates_fields.php:73
 msgid "Column"
 msgstr "Column"
 
@@ -886,31 +886,31 @@ msgstr "Настраиваемое сообщение об ошибке"
 msgid "Form variables"
 msgstr "Название формы"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:749
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:751
 msgid "Success"
 msgstr "Сообщение об успешном действии"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:766
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:768
 msgid "Shortcodes"
 msgstr "Shortcode"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:833, modules/formbuilder/controllers/uiform-fb-controller-forms.php:859
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:835, modules/formbuilder/controllers/uiform-fb-controller-forms.php:861
 msgid "Error! User has no permission to edit this form"
 msgstr "Error! User has no permission to edit this form"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1043
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1045
 msgid "Error on saving form"
 msgstr "Error on saving form"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:2518
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:2520
 msgid "Forms in trash"
 msgstr "Название формы"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1159
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1171
 msgid "Order summary"
 msgstr "Форма заказа"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1538
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1550
 msgid "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 msgstr "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 
@@ -946,19 +946,19 @@ msgstr "URL-адрес формы"
 msgid "Form name"
 msgstr "Название формы"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:408
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:409
 msgid "Records list"
 msgstr "Записей"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:441
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:442
 msgid "Records in trash"
 msgstr "Записей"
 
-#: modules/addon/views/backend/list_extensions.php:65
+#: modules/addon/views/backend/list_extensions.php:66
 msgid "locked"
 msgstr "Блок"
 
-#: modules/addon/views/backend/list_extensions.php:59
+#: modules/addon/views/backend/list_extensions.php:60
 msgid ""
 "This addon is not compatible with your site. try to upgrade your site and "
 "fullfil the requirements."
@@ -966,23 +966,23 @@ msgstr ""
 "This addon is not compatible with your site. try to upgrade your site and "
 "fullfil the requirements."
 
-#: modules/addon/views/backend/list_extensions.php:53, modules/formbuilder/views/forms/list_forms.php:48
+#: modules/addon/views/backend/list_extensions.php:54, modules/formbuilder/views/forms/list_forms.php:48
 msgid "Disable"
 msgstr "Выкл."
 
-#: modules/addon/views/backend/list_extensions.php:50, modules/formbuilder/views/forms/list_forms.php:57, modules/formbuilder/views/records/custom_report_getAllfields.php:24
+#: modules/addon/views/backend/list_extensions.php:51, modules/formbuilder/views/forms/list_forms.php:57, modules/formbuilder/views/records/custom_report_getAllfields.php:24
 msgid "Enable"
 msgstr "Вкл."
 
-#: modules/addon/views/backend/list_extensions.php:78
+#: modules/addon/views/backend/list_extensions.php:79
 msgid "Requirements"
 msgstr "Обязательное поле"
 
-#: modules/addon/views/backend/list_extensions.php:79
+#: modules/addon/views/backend/list_extensions.php:80
 msgid "WP"
 msgstr "WP"
 
-#: modules/addon/views/backend/list_extensions.php:88
+#: modules/addon/views/backend/list_extensions.php:89
 msgid "PHP"
 msgstr "PHP"
 
@@ -1002,7 +1002,7 @@ msgstr "Данные формы списка"
 msgid "Animation delay"
 msgstr "Animation delay"
 
-#: modules/addon_mgtranslate/views/backend/ajax_load_pofile.php:25, modules/formbuilder/views/fields/modal/settings_field_input_19.php:156, modules/formbuilder/views/fields/modal/settings_field_input_19.php:157, modules/formbuilder/views/fields/modal/settings_field_input_7.php:23
+#: modules/addon_mgtranslate/views/backend/ajax_load_pofile.php:25, modules/formbuilder/views/fields/modal/settings_field_input_19.php:136, modules/formbuilder/views/fields/modal/settings_field_input_19.php:137, modules/formbuilder/views/fields/modal/settings_field_input_7.php:23
 msgid "Language"
 msgstr "Язык"
 
@@ -1104,11 +1104,23 @@ msgstr "Webhook URL"
 msgid "Content Type"
 msgstr "Content Type"
 
-#: modules/addon_webhook/views/backend/get_content.php:78
+#: modules/addon_webhook/views/backend/get_content.php:75, modules/formbuilder/views/fields/modal/settings_field_input_7.php:41
+msgid "Format"
+msgstr "Формат"
+
+#: modules/addon_webhook/views/backend/get_content.php:78, modules/formbuilder/views/fields/modal/settings_field_input_2.php:211, modules/formbuilder/views/fields/modal/settings_field_input_7.php:45
+msgid "Default"
+msgstr "По умолчанию"
+
+#: modules/addon_webhook/views/backend/get_content.php:79
+msgid "Soho"
+msgstr ""
+
+#: modules/addon_webhook/views/backend/get_content.php:86
 msgid "Form Fields"
 msgstr "Дополнительные поля"
 
-#: modules/addon_webhook/views/backend/get_content.php:82
+#: modules/addon_webhook/views/backend/get_content.php:90
 msgid ""
 "Under this section, choose the fields whose data should be transferred "
 "using Webhooks"
@@ -1116,27 +1128,27 @@ msgstr ""
 "Under this section, choose the fields whose data should be transferred "
 "using Webhooks"
 
-#: modules/addon_webhook/views/backend/get_content.php:85, modules/addon_webhook/views/backend/get_content.php:124
+#: modules/addon_webhook/views/backend/get_content.php:93, modules/addon_webhook/views/backend/get_content.php:132
 msgid "Map URL parameters"
 msgstr "Map URL parameters"
 
-#: modules/addon_webhook/views/backend/get_content.php:89
+#: modules/addon_webhook/views/backend/get_content.php:97
 msgid "To form values"
 msgstr "Новый запрос форма"
 
-#: modules/addon_webhook/views/backend/get_content.php:93, modules/addon_webhook/views/backend/get_content.php:132, modules/formbuilder/views/forms/ajax_rollback_openmodal.php:34, modules/formbuilder/views/forms/create_form.php:191, modules/formbuilder/views/forms/list_forms_table.php:41, modules/formbuilder/views/records/list_records.php:38, modules/formbuilder/views/records/list_records_getdatatable.php:26, modules/formbuilder/views/settings/backup_settings.php:69, modules/formbuilder/views/fields/modal/field_opt_column.php:44, modules/formbuilder/views/fields/modal/field_opt_text.php:44, modules/formbuilder/views/fields/modal/settings_field_input_2.php:115
+#: modules/addon_webhook/views/backend/get_content.php:101, modules/addon_webhook/views/backend/get_content.php:140, modules/formbuilder/views/forms/ajax_rollback_openmodal.php:34, modules/formbuilder/views/forms/create_form.php:197, modules/formbuilder/views/forms/list_forms_table.php:41, modules/formbuilder/views/records/list_records.php:38, modules/formbuilder/views/records/list_records_getdatatable.php:26, modules/formbuilder/views/settings/backup_settings.php:69, modules/formbuilder/views/fields/modal/field_opt_column.php:44, modules/formbuilder/views/fields/modal/field_opt_text.php:44, modules/formbuilder/views/fields/modal/settings_field_input_2.php:115
 msgid "Options"
 msgstr "Options"
 
-#: modules/addon_webhook/views/backend/get_content.php:109
+#: modules/addon_webhook/views/backend/get_content.php:117
 msgid "Add New Field Parameter"
 msgstr "Add New Field Parameter"
 
-#: modules/addon_webhook/views/backend/get_content.php:117
+#: modules/addon_webhook/views/backend/get_content.php:125
 msgid "Additional Parameters"
 msgstr "Дополнительный CSS"
 
-#: modules/addon_webhook/views/backend/get_content.php:121
+#: modules/addon_webhook/views/backend/get_content.php:129
 msgid ""
 "Under this section, you can add additional parameters whose data should be "
 "transferred using Webhooks"
@@ -1144,15 +1156,15 @@ msgstr ""
 "Under this section, you can add additional parameters whose data should be "
 "transferred using Webhooks"
 
-#: modules/addon_webhook/views/backend/get_content.php:128
+#: modules/addon_webhook/views/backend/get_content.php:136
 msgid "To custom values"
 msgstr "To custom values"
 
-#: modules/addon_webhook/views/backend/get_content.php:146
+#: modules/addon_webhook/views/backend/get_content.php:154
 msgid "Add New Custom Parameter"
 msgstr "Add New Custom Parameter"
 
-#: modules/addon_webhook/views/backend/get_content.php:173
+#: modules/addon_webhook/views/backend/get_content.php:181
 msgid "choose an option"
 msgstr "Удалите все параметры"
 
@@ -1192,7 +1204,7 @@ msgstr "Имя формы"
 msgid "Created"
 msgstr "Создано"
 
-#: modules/formbuilder/views/forms/ajax_rollback_openmodal.php:51, modules/formbuilder/views/forms/create_form.php:196
+#: modules/formbuilder/views/forms/ajax_rollback_openmodal.php:51, modules/formbuilder/views/forms/create_form.php:202
 msgid "Rollback"
 msgstr "Rollback"
 
@@ -1304,51 +1316,55 @@ msgstr "Глобальные настройки"
 msgid "Main"
 msgstr "Main"
 
-#: modules/formbuilder/views/forms/create_form.php:71, modules/formbuilder/views/fields/modal/field_opt_column.php:906, modules/formbuilder/views/fields/modal/settings_form_more.php:193
+#: modules/formbuilder/views/forms/create_form.php:70
+msgid "Recaptcha v3"
+msgstr "Recaptcha v3"
+
+#: modules/formbuilder/views/forms/create_form.php:72, modules/formbuilder/views/fields/modal/field_opt_column.php:906, modules/formbuilder/views/fields/modal/settings_form_more.php:193
 msgid "Additional"
 msgstr "Дополнительный CSS"
 
-#: modules/formbuilder/views/forms/create_form.php:72
+#: modules/formbuilder/views/forms/create_form.php:73
 msgid "PDF"
 msgstr "PDF"
 
-#: modules/formbuilder/views/forms/create_form.php:73, modules/formbuilder/views/forms/create_form_main.php:128, modules/formbuilder/views/fields/modal/settings_field_validate.php:102, modules/formbuilder/views/fields/modal/settings_field_validate.php:323
+#: modules/formbuilder/views/forms/create_form.php:74, modules/formbuilder/views/forms/create_form_main.php:128, modules/formbuilder/views/fields/modal/settings_field_validate.php:102, modules/formbuilder/views/fields/modal/settings_field_validate.php:323
 msgid "Email"
 msgstr "E-mail"
 
-#: modules/formbuilder/views/forms/create_form.php:171
+#: modules/formbuilder/views/forms/create_form.php:177
 msgid "Dev Options"
 msgstr "Options"
 
-#: modules/formbuilder/views/forms/create_form.php:176
+#: modules/formbuilder/views/forms/create_form.php:182
 msgid "test"
 msgstr "test"
 
-#: modules/formbuilder/views/forms/create_form.php:178
+#: modules/formbuilder/views/forms/create_form.php:184
 msgid "Show data"
 msgstr "Показать детали"
 
-#: modules/formbuilder/views/forms/create_form.php:180
+#: modules/formbuilder/views/forms/create_form.php:186
 msgid "Generate field static data"
 msgstr "Generate field static data"
 
-#: modules/formbuilder/views/forms/create_form.php:198, modules/formbuilder/views/forms/settings_form_email.php:490, modules/formbuilder/views/forms/settings_form_email.php:497
+#: modules/formbuilder/views/forms/create_form.php:204, modules/formbuilder/views/forms/settings_form_email.php:490, modules/formbuilder/views/forms/settings_form_email.php:497
 msgid "Variables"
 msgstr "Выкл."
 
-#: modules/formbuilder/views/forms/create_form.php:201
+#: modules/formbuilder/views/forms/create_form.php:207
 msgid "C.Logic Graph"
 msgstr "C.Logic"
 
-#: modules/formbuilder/views/forms/create_form.php:204
+#: modules/formbuilder/views/forms/create_form.php:210
 msgid "Refresh & Clean Form"
 msgstr "Refresh & Clean Form"
 
-#: modules/formbuilder/views/forms/create_form.php:214
+#: modules/formbuilder/views/forms/create_form.php:220
 msgid "preview"
 msgstr "Предпросмотр:"
 
-#: modules/formbuilder/views/forms/create_form.php:223
+#: modules/formbuilder/views/forms/create_form.php:229
 msgid "Save form"
 msgstr "Сохранить форму"
 
@@ -1686,11 +1702,15 @@ msgstr "Кнопка радио"
 msgid "Panel"
 msgstr "Panel"
 
-#: modules/formbuilder/views/forms/formhtml_form.php:99, modules/formbuilder/views/forms/templates_fields.php:164
+#: modules/formbuilder/views/forms/formhtml_form.php:28
+msgid "Recaptcha failed, refresh page and try again"
+msgstr ""
+
+#: modules/formbuilder/views/forms/formhtml_form.php:101, modules/formbuilder/views/forms/templates_fields.php:164
 msgid "Previous"
 msgstr "Предыдущий"
 
-#: modules/formbuilder/views/forms/formhtml_form.php:102, modules/formbuilder/views/forms/templates_fields.php:167, modules/formbuilder/views/forms/templates_fields.php:1706, modules/formbuilder/views/fields/templates/prevpanel_wizardbtn.php:31
+#: modules/formbuilder/views/forms/formhtml_form.php:104, modules/formbuilder/views/forms/templates_fields.php:167, modules/formbuilder/views/forms/templates_fields.php:1706, modules/formbuilder/views/fields/templates/prevpanel_wizardbtn.php:31
 msgid "Next"
 msgstr "Следующий"
 
@@ -1794,7 +1814,7 @@ msgstr "Имя формы"
 msgid "Copy and paste the shortcode to your desired page"
 msgstr "Скопировать и вставить короткий номер для требуемой страницы"
 
-#: modules/formbuilder/views/forms/list_forms_table.php:40, modules/formbuilder/views/records/list_records.php:37, modules/formbuilder/views/settings/system_check.php:53
+#: modules/formbuilder/views/forms/list_forms_table.php:40, modules/formbuilder/views/records/list_records.php:37, modules/formbuilder/views/settings/system_check.php:59
 msgid "Status"
 msgstr "Статус"
 
@@ -2213,6 +2233,34 @@ msgstr ""
 #: modules/formbuilder/views/forms/settings_form_main_pdf.php:138
 msgid "PDF Export"
 msgstr "Экспорт"
+
+#: modules/formbuilder/views/forms/settings_form_main_recaptcha.php:25
+msgid "Get keys from Recaptcha page :  "
+msgstr ""
+
+#: modules/formbuilder/views/forms/settings_form_main_recaptcha.php:33
+msgid "Enable Recaptcha Version 3"
+msgstr ""
+
+#: modules/formbuilder/views/forms/settings_form_main_recaptcha.php:42
+msgid "Enable Recaptcha v3"
+msgstr ""
+
+#: modules/formbuilder/views/forms/settings_form_main_recaptcha.php:52
+msgid "Site Key"
+msgstr ""
+
+#: modules/formbuilder/views/forms/settings_form_main_recaptcha.php:54
+msgid "This is required. Get Site key from recaptcha site. "
+msgstr ""
+
+#: modules/formbuilder/views/forms/settings_form_main_recaptcha.php:72
+msgid "Secret Key"
+msgstr ""
+
+#: modules/formbuilder/views/forms/settings_form_main_recaptcha.php:74
+msgid "This is required. Get Secret key from recaptcha site. "
+msgstr ""
 
 #: modules/formbuilder/views/forms/settings_form_main_record.php:23
 msgid "Summary"
@@ -2634,7 +2682,7 @@ msgstr "Restore Backup"
 msgid "Upload Backup"
 msgstr "Upload Backup"
 
-#: modules/formbuilder/views/settings/backup_settings.php:161, modules/formbuilder/views/settings/view_settings.php:141, modules/formbuilder/views/settings/view_settings.php:132
+#: modules/formbuilder/views/settings/backup_settings.php:161, modules/formbuilder/views/settings/view_settings.php:162, modules/formbuilder/views/settings/view_settings.php:153
 msgid "Save changes"
 msgstr "Сохранить"
 
@@ -2668,19 +2716,19 @@ msgstr "UPGRADE TO PRO VERSION"
 msgid "System check"
 msgstr "System check"
 
-#: modules/formbuilder/views/settings/system_check.php:43
+#: modules/formbuilder/views/settings/system_check.php:49
 msgid "Database Integrity"
 msgstr "Database Integrity"
 
-#: modules/formbuilder/views/settings/system_check.php:99
+#: modules/formbuilder/views/settings/system_check.php:105
 msgid "Database is fine"
 msgstr "Database is fine"
 
-#: modules/formbuilder/views/settings/system_check.php:52
+#: modules/formbuilder/views/settings/system_check.php:58
 msgid "Tables"
 msgstr "Планшет"
 
-#: modules/formbuilder/views/settings/system_check.php:90
+#: modules/formbuilder/views/settings/system_check.php:96
 msgid ""
 "if you see a red status for any table, it means the plugin installation "
 "have failed. try enabling and disabling the plugin or make a fresh install "
@@ -2690,27 +2738,27 @@ msgstr ""
 "have failed. try enabling and disabling the plugin or make a fresh install "
 "or contact developer for support"
 
-#: modules/formbuilder/views/settings/system_check.php:117
+#: modules/formbuilder/views/settings/system_check.php:125
 msgid "Directives"
 msgstr "Активировать"
 
-#: modules/formbuilder/views/settings/system_check.php:120
+#: modules/formbuilder/views/settings/system_check.php:128
 msgid "allow_url_fopen"
 msgstr "allow_url_fopen"
 
-#: modules/formbuilder/views/settings/system_check.php:131
+#: modules/formbuilder/views/settings/system_check.php:139
 msgid "allow_url_fopen php directive is disabled and Recaptcha will not work"
 msgstr "allow_url_fopen php directive is disabled and Recaptcha will not work"
 
-#: modules/formbuilder/views/settings/system_check.php:142
+#: modules/formbuilder/views/settings/system_check.php:150
 msgid "PHP Extensions"
 msgstr "PHP Extensions"
 
-#: modules/formbuilder/views/settings/system_check.php:145
+#: modules/formbuilder/views/settings/system_check.php:153
 msgid "Simple XML"
 msgstr "Simple XML"
 
-#: modules/formbuilder/views/settings/system_check.php:156
+#: modules/formbuilder/views/settings/system_check.php:164
 msgid ""
 "simplexml extension is important for the software. ask your webhost if this "
 "extension is not installed"
@@ -2739,26 +2787,24 @@ msgid "it allows to load the form in modal popups"
 msgstr "it allows to load the form in modal popups"
 
 #: modules/formbuilder/views/settings/view_settings.php:96
-msgid "FIELDS FAST LOAD"
-msgstr "FIELDS FAST LOAD"
+msgid "DISABLE FIELDS FAST LOAD"
+msgstr ""
 
 #: modules/formbuilder/views/settings/view_settings.php:98
-msgid "it allows to loads field options in a fast way."
-msgstr "it allows to loads field options in a fast way."
-
-#: modules/formbuilder/views/settings/view_settings.php:114, modules/formbuilder/views/fields/options/select/impbulkdata.php:23
-msgid "Info"
-msgstr "Info"
-
-#: modules/formbuilder/views/settings/view_settings.php:114
-msgid ""
-"This feature is in beta test, so you if you enable option, maybe you could "
-"face some weird issues when loading field options. In case of that, just "
-"disable that option and report this issue at info@softdiscover.com "
+msgid "it allows to disable fast loading field."
 msgstr ""
-"This feature is in beta test, so you if you enable option, maybe you could "
-"face some weird issues when loading field options. In case of that, just "
-"disable that option and report this issue at info@softdiscover.com "
+
+#: modules/formbuilder/views/settings/view_settings.php:120
+msgid "Regenerate cache fields"
+msgstr ""
+
+#: modules/formbuilder/views/settings/view_settings.php:122
+msgid "Generate cache field"
+msgstr ""
+
+#: modules/formbuilder/views/settings/view_settings.php:131
+msgid "Regeneate cache fields"
+msgstr ""
 
 #: modules/formbuilder/views/fields/modal/field_opt_checkbox_extra.php:31
 msgid "Icon"
@@ -2810,7 +2856,7 @@ msgstr "Оповещения позиция"
 msgid "Enable Width"
 msgstr "Вкл."
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:157, modules/formbuilder/views/fields/modal/settings_field_input_19.php:21, modules/formbuilder/views/fields/modal/settings_form_more.php:21
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:157, modules/formbuilder/views/fields/modal/settings_field_input_19.php:23, modules/formbuilder/views/fields/modal/settings_form_more.php:21
 msgid "Margin"
 msgstr "Margin"
 
@@ -3266,79 +3312,83 @@ msgstr "Нижний отступ"
 msgid "Margin left"
 msgstr "Заполнение слева"
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:27, modules/formbuilder/views/fields/modal/settings_field_input_19.php:28
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:29, modules/formbuilder/views/fields/modal/settings_field_input_19.php:30
 msgid "Enable time"
 msgstr "Вкл."
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:45, modules/formbuilder/views/fields/modal/settings_field_input_19.php:46, modules/formbuilder/views/fields/modal/settings_field_input_19.php:64
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:44, modules/formbuilder/views/fields/modal/settings_field_input_19.php:45, modules/formbuilder/views/fields/modal/settings_field_input_19.php:60
 msgid "No calendar"
 msgstr "No calendar"
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:63
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:59
 msgid "time 24 hour"
 msgstr "time 24 hour"
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:81, modules/formbuilder/views/fields/modal/settings_field_input_19.php:82
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:74, modules/formbuilder/views/fields/modal/settings_field_input_19.php:75
 msgid "Alternative input"
 msgstr "Alternative input"
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:99
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:89
 msgid "Alternative input format"
 msgstr "Alternative input format"
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:100
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:90
 msgid "Alternative format input"
 msgstr "Alternative format input"
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:118, modules/formbuilder/views/fields/modal/settings_field_input_19.php:119
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:105, modules/formbuilder/views/fields/modal/settings_field_input_19.php:106
 msgid "Inline display"
 msgstr "Для встраивания в технологическую линию"
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:136, modules/formbuilder/views/fields/modal/settings_field_input_19.php:137
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:120, modules/formbuilder/views/fields/modal/settings_field_input_19.php:121
 msgid "Date format"
 msgstr "Удалить форму"
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:165, modules/formbuilder/views/fields/modal/settings_field_input_7.php:27
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:141, modules/formbuilder/views/fields/modal/settings_field_input_7.php:27
 msgid "English"
 msgstr "Английский"
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:166, modules/formbuilder/views/fields/modal/settings_field_input_7.php:28
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:142, modules/formbuilder/views/fields/modal/settings_field_input_7.php:28
 msgid "Spanish"
 msgstr "Испанский"
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:167, modules/formbuilder/views/fields/modal/settings_field_input_7.php:29
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:143, modules/formbuilder/views/fields/modal/settings_field_input_7.php:29
 msgid "French"
 msgstr "Французский"
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:168, modules/formbuilder/views/fields/modal/settings_field_input_7.php:30
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:144, modules/formbuilder/views/fields/modal/settings_field_input_7.php:30
 msgid "Italian"
 msgstr "Итальянское"
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:169, modules/formbuilder/views/fields/modal/settings_field_input_7.php:31
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:145, modules/formbuilder/views/fields/modal/settings_field_input_7.php:31
 msgid "Japanese"
 msgstr "Японский"
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:170, modules/formbuilder/views/fields/modal/settings_field_input_7.php:32
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:146, modules/formbuilder/views/fields/modal/settings_field_input_7.php:32
 msgid "Portuguese"
 msgstr "Португальский"
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:171, modules/formbuilder/views/fields/modal/settings_field_input_7.php:33
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:147, modules/formbuilder/views/fields/modal/settings_field_input_7.php:33
 msgid "Russian"
 msgstr "Русский"
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:172, modules/formbuilder/views/fields/modal/settings_field_input_7.php:34
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:148, modules/formbuilder/views/fields/modal/settings_field_input_7.php:34
 msgid "Chinese"
 msgstr "Китайский"
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:186, modules/formbuilder/views/fields/modal/settings_field_input_19.php:187
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:149, modules/formbuilder/views/fields/modal/settings_field_input_7.php:35
+msgid "German"
+msgstr ""
+
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:162, modules/formbuilder/views/fields/modal/settings_field_input_19.php:163
 msgid "Minimum date"
 msgstr "Минимум"
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:206, modules/formbuilder/views/fields/modal/settings_field_input_19.php:207
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:178, modules/formbuilder/views/fields/modal/settings_field_input_19.php:179
 msgid "Maximum date"
 msgstr "Максимум"
 
-#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:226, modules/formbuilder/views/fields/modal/settings_field_input_19.php:227
+#: modules/formbuilder/views/fields/modal/settings_field_input_19.php:194, modules/formbuilder/views/fields/modal/settings_field_input_19.php:195
 msgid "Default date"
 msgstr "Значение по умолчанию"
 
@@ -3381,10 +3431,6 @@ msgstr "Тема"
 #: modules/formbuilder/views/fields/modal/settings_field_input_2.php:206
 msgid "Choose Theme"
 msgstr "Choose Theme"
-
-#: modules/formbuilder/views/fields/modal/settings_field_input_2.php:211, modules/formbuilder/views/fields/modal/settings_field_input_7.php:44
-msgid "Default"
-msgstr "По умолчанию"
 
 #: modules/formbuilder/views/fields/modal/settings_field_input_3.php:23
 msgid "Custom html content"
@@ -3465,10 +3511,6 @@ msgstr "Пользовательские линии фронта"
 #: modules/formbuilder/views/fields/modal/settings_field_input_6.php:173
 msgid "Distortion"
 msgstr "Искажения сигнала"
-
-#: modules/formbuilder/views/fields/modal/settings_field_input_7.php:40
-msgid "Format"
-msgstr "Формат"
 
 #: modules/formbuilder/views/fields/modal/settings_field_input_9.php:23
 msgid "Text star 1"
@@ -3773,6 +3815,10 @@ msgstr "меньше чем"
 #: modules/formbuilder/views/fields/render_front/type_subbtn.php:22, modules/formbuilder/views/fields/render_front/type_wizardbtn.php:40
 msgid "Sending"
 msgstr "Идет отправка"
+
+#: modules/formbuilder/views/fields/options/select/impbulkdata.php:23
+msgid "Info"
+msgstr "Info"
 
 #: modules/formbuilder/views/fields/options/select/impbulkdata.php:23
 msgid ""

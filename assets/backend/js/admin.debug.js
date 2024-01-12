@@ -13693,7 +13693,7 @@ if (!$uifm.isFunction(rocketform)) {
 					}
 
 					var tmp_fast_load = uiform_vars.fields_fastload;
-					if (parseInt(tmp_fast_load) === 1) {
+					if (parseInt(tmp_fast_load) !== 1) {
 						var tmp_get_fieldOption;
 						switch (parseInt(type)) {
 							case 1:
@@ -30084,7 +30084,7 @@ if (!$uifm.isFunction(zgfm_back_fld_options)) {
 				});
 			};
 
-			this.generate_field_htmldata = function() {
+			this.generate_field_htmldata = function(showAlert = true) {
 				$.ajax({
 					type: 'POST',
 					url: ajaxurl,
@@ -30095,7 +30095,10 @@ if (!$uifm.isFunction(zgfm_back_fld_options)) {
 					},
 					beforeSend: function() {},
 					success: function(response) {
-						alert('generate field options finished');
+						if (showAlert == true) { 
+							alert('generate field options finished');
+						}
+
 					},
 				});
 			};
@@ -30350,7 +30353,7 @@ if (!$uifm.isFunction(zgfm_back_fld_options)) {
 				}
 
 				var tmp_fast_load = uiform_vars.fields_fastload;
-				if (parseInt(tmp_fast_load) === 1) {
+				if (parseInt(tmp_fast_load) !== 1) {
 					zgfm_back_fld_options.selfld_settings_form_more();
 					zgfm_back_fld_options.selfld_field_opt_column();
 					zgfm_back_fld_options.selfld_field_opt_text();

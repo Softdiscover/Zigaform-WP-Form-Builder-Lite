@@ -21,6 +21,22 @@ if ( class_exists( 'Uiform_InstallDB' ) ) {
 
 class Uiform_InstallDB {
 
+
+	private $form;
+	private $form_history;
+	private $form_fields;
+	private $form_log;
+	private $form_fields_type;
+	private $settings;
+	private $nopre_form;
+	private $nopre_form_history;
+	private $nopre_form_fields;
+	private $nopre_form_fields_type;
+	private $nopre_settings;
+	private $core_addon;
+	private $core_addon_detail;
+	private $core_addon_log;
+
 	public function __construct() {
 		 global $wpdb;
 		$this->form                   = $wpdb->prefix . 'uiform_form';

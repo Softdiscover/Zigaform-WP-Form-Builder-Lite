@@ -347,6 +347,7 @@ class Uiform_Bootstrap extends Uiform_Base_Module {
 
 	public function rockfm_lang_locale_filter( $locale ) {
 		$tmp_lang = $this->models['formbuilder']['settings']->getLangOptions();
+		 
 		if ( ! empty( $tmp_lang->language ) ) {
 			$locale = $tmp_lang->language;
 		}
@@ -1030,7 +1031,12 @@ JS;
 		wp_enqueue_script( 'rockefform-autooff', UIFORM_FORMS_URL . '/assets/backend/js/disableautofill/jquery.disableAutoFill.js' );
 		
 		wp_enqueue_script( 'rockefform-iframe', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/4.1.1/iframeResizer.contentWindow.js' );
+		
+		wp_enqueue_script( 'rockefform-menu-fonts', UIFORM_FORMS_URL . '/assets/backend/js/fonts.js' );
+		wp_enqueue_script( 'rockefform-menu-main', UIFORM_FORMS_URL . '/libraries/styles-font-menu/js/styles-font-menu.js' );
+		wp_enqueue_style( 'rockefform-menu-style', UIFORM_FORMS_URL . '/libraries/styles-font-menu/css/styles-font-menu.css' );
 
+		
 		if ( UIFORM_DEBUG === 1 ) {
 			wp_register_script(
 				self::PREFIX . 'admin',
