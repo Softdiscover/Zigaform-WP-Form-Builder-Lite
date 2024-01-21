@@ -10,13 +10,13 @@
  * @author    Softdiscover <info@softdiscover.com>
  * @copyright 2015 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
- * @link      http://wordpress-cost-estimator.zigaform.com
+ * @link      https://softdiscover.com/zigaform/wordpress-cost-estimator
  */
-if ( ! defined( 'ABSPATH' ) ) {
-	exit( 'No direct script access allowed' );
+if (! defined('ABSPATH')) {
+    exit('No direct script access allowed');
 }
-if ( class_exists( 'Uiform_Model_Addon_Details_Log' ) ) {
-	return;
+if (class_exists('Uiform_Model_Addon_Details_Log')) {
+    return;
 }
 
 /**
@@ -28,18 +28,19 @@ if ( class_exists( 'Uiform_Model_Addon_Details_Log' ) ) {
  * @copyright 2013 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
  * @version   Release: 1.00
- * @link      http://wordpress-cost-estimator.zigaform.com
+ * @link      https://softdiscover.com/zigaform/wordpress-cost-estimator
  */
-class Uiform_Model_Addon_Details_Log {
+class Uiform_Model_Addon_Details_Log
+{
 
 
-	private $wpdb = '';
-	public $table = '';
+    private $wpdb = '';
+    public $table = '';
 
-	public function __construct() {
-		 global $wpdb;
-		$this->wpdb  = $wpdb;
-		$this->table = $wpdb->prefix . 'uiform_addon_details_log';
-	}
-
+    public function __construct()
+    {
+         global $wpdb;
+        $this->wpdb  = $wpdb;
+        $this->table = $wpdb->prefix . 'uiform_addon_details_log';
+    }
 }

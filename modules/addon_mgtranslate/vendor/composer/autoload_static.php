@@ -7,11 +7,11 @@ namespace Composer\Autoload;
 class ComposerStaticInitb8e04c4c5aeff5414f3a2b4e7dfad8b2
 {
     public static $prefixLengthsPsr4 = array (
-        'P' => 
+        'P' =>
         array (
             'PoParser\\' => 9,
         ),
-        'G' => 
+        'G' =>
         array (
             'Gettext\\Languages\\' => 18,
             'Gettext\\' => 8,
@@ -19,15 +19,15 @@ class ComposerStaticInitb8e04c4c5aeff5414f3a2b4e7dfad8b2
     );
 
     public static $prefixDirsPsr4 = array (
-        'PoParser\\' => 
+        'PoParser\\' =>
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
-        'Gettext\\Languages\\' => 
+        'Gettext\\Languages\\' =>
         array (
             0 => __DIR__ . '/..' . '/gettext/languages/src',
         ),
-        'Gettext\\' => 
+        'Gettext\\' =>
         array (
             0 => __DIR__ . '/..' . '/gettext/gettext/src',
         ),
@@ -38,7 +38,6 @@ class ComposerStaticInitb8e04c4c5aeff5414f3a2b4e7dfad8b2
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitb8e04c4c5aeff5414f3a2b4e7dfad8b2::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitb8e04c4c5aeff5414f3a2b4e7dfad8b2::$prefixDirsPsr4;
-
         }, null, ClassLoader::class);
     }
 }

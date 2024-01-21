@@ -10,13 +10,13 @@
  * @author    Softdiscover <info@softdiscover.com>
  * @copyright 2015 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
- * @link      https://wordpress-form-builder.zigaform.com/
+ * @link      https://softdiscover.com/zigaform/wordpress-form-builder/
  */
-if ( ! defined( 'ABSPATH' ) ) {
-	exit( 'No direct script access allowed' );
+if (! defined('ABSPATH')) {
+    exit('No direct script access allowed');
 }
-if ( class_exists( 'Uiform_Model_Form' ) ) {
-	return;
+if (class_exists('Uiform_Model_Form')) {
+    return;
 }
 
 /**
@@ -28,157 +28,165 @@ if ( class_exists( 'Uiform_Model_Form' ) ) {
  * @copyright 2013 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
  * @version   Release: 1.00
- * @link      https://wordpress-form-builder.zigaform.com/
+ * @link      https://softdiscover.com/zigaform/wordpress-form-builder/
  */
-class Uiform_Model_Form {
+class Uiform_Model_Form
+{
 
-	private $wpdb = '';
-	public $table = '';
+    private $wpdb = '';
+    public $table = '';
 
-	function __construct() {
-		global $wpdb;
-		$this->wpdb  = $wpdb;
-		$this->table = $wpdb->prefix . 'uiform_form';
-	}
+    public function __construct()
+    {
+        global $wpdb;
+        $this->wpdb  = $wpdb;
+        $this->table = $wpdb->prefix . 'uiform_form';
+    }
 
-	  /**
-	   * formsmodel::getListForms()
-	   * List form estimator
-	   *
-	   * @param int $per_page max number of form estimators
-	   * @param int $segment  Number of pagination
-	   *
-	   * @return array
-	   */
-	function getListFormsFiltered( $data ) {
+      /**
+       * formsmodel::getListForms()
+       * List form estimator
+       *
+       * @param int $per_page max number of form estimators
+       * @param int $segment  Number of pagination
+       *
+       * @return array
+       */
+    public function getListFormsFiltered($data)
+    {
 
-		$per_page   = $data['per_page'];
-		$segment    = $data['segment'];
-		$search_txt = $data['search_txt'];
-		$orderby    = $data['orderby'];
+        $per_page   = $data['per_page'];
+        $segment    = $data['segment'];
+        $search_txt = $data['search_txt'];
+        $orderby    = $data['orderby'];
 
-		$query = sprintf(
-			'
+        $query = sprintf(
+            '
             select uf.fmb_id,uf.fmb_data,uf.fmb_name,uf.fmb_html,uf.fmb_html_backend,uf.flag_status,uf.created_date,uf.updated_date,
                 uf.fmb_html_css,uf.fmb_default,uf.fmb_skin_status,uf.fmb_skin_data,uf.fmb_skin_type,uf.fmb_data2
             from %s uf
             where uf.flag_status>0 ',
-			$this->table
-		);
+            $this->table
+        );
 
-		if ( ! empty( $search_txt ) ) {
-			$query .= " and  uf.fmb_name like '%" . $search_txt . "%' ";
-		}
+        if (! empty($search_txt)) {
+            $query .= " and  uf.fmb_name like '%" . $search_txt . "%' ";
+        }
 
-		$orderby = ( $orderby === 'asc' ) ? 'asc' : 'desc';
+        $orderby = ( $orderby === 'asc' ) ? 'asc' : 'desc';
 
-		$query .= sprintf( ' ORDER BY uf.updated_date %s ', $orderby );
+        $query .= sprintf(' ORDER BY uf.updated_date %s ', $orderby);
 
-		if ( $per_page != '' || $segment != '' ) {
-			$segment = ( ! empty( $segment ) ) ? $segment : 0;
-			$query  .= sprintf( ' limit %s,%s', (int) $segment, (int) $per_page );
-		}
+        if ($per_page != '' || $segment != '') {
+            $segment = ( ! empty($segment) ) ? $segment : 0;
+            $query  .= sprintf(' limit %s,%s', (int) $segment, (int) $per_page);
+        }
 
-		return $this->wpdb->get_results( $query );
-	}
+        return $this->wpdb->get_results($query);
+    }
 
-	/**
-	 * formsmodel::getListForms()
-	 * List form estimator
-	 *
-	 * @param int $per_page max number of form estimators
-	 * @param int $segment  Number of pagination
-	 *
-	 * @return array
-	 */
-	function getListTrashFormsFiltered( $data ) {
+    /**
+     * formsmodel::getListForms()
+     * List form estimator
+     *
+     * @param int $per_page max number of form estimators
+     * @param int $segment  Number of pagination
+     *
+     * @return array
+     */
+    public function getListTrashFormsFiltered($data)
+    {
 
-		$per_page   = $data['per_page'];
-		$segment    = $data['segment'];
-		$orderby    = $data['orderby'];
+        $per_page   = $data['per_page'];
+        $segment    = $data['segment'];
+        $orderby    = $data['orderby'];
 
-		$query = sprintf(
-			'
+        $query = sprintf(
+            '
 			select uf.fmb_id,uf.fmb_data,uf.fmb_name,uf.fmb_html,uf.fmb_html_backend,uf.flag_status,uf.created_date,uf.updated_date,
 				uf.fmb_html_css,uf.fmb_default,uf.fmb_skin_status,uf.fmb_skin_data,uf.fmb_skin_type,uf.fmb_data2
 			from %s uf
 			where uf.flag_status=0 ',
-			$this->table
-		);
+            $this->table
+        );
 
-		$orderby = ( $orderby === 'asc' ) ? 'asc' : 'desc';
+        $orderby = ( $orderby === 'asc' ) ? 'asc' : 'desc';
 
-		$query .= sprintf( ' ORDER BY uf.updated_date %s ', $orderby );
+        $query .= sprintf(' ORDER BY uf.updated_date %s ', $orderby);
 
-		if ( $per_page != '' || $segment != '' ) {
-			$segment = ( ! empty( $segment ) ) ? $segment : 0;
-			$query  .= sprintf( ' limit %s,%s', (int) $segment, (int) $per_page );
-		}
+        if ($per_page != '' || $segment != '') {
+            $segment = ( ! empty($segment) ) ? $segment : 0;
+            $query  .= sprintf(' limit %s,%s', (int) $segment, (int) $per_page);
+        }
 
-		return $this->wpdb->get_results( $query );
-	}
+        return $this->wpdb->get_results($query);
+    }
 
-	/**
-	 * formsmodel::getListForms()
-	 * List form estimator
-	 *
-	 * @param int $per_page max number of form estimators
-	 * @param int $segment  Number of pagination
-	 *
-	 * @return array
-	 */
-	function getListForms( $per_page = '', $segment = '' ) {
-		$query = sprintf(
-			'
+    /**
+     * formsmodel::getListForms()
+     * List form estimator
+     *
+     * @param int $per_page max number of form estimators
+     * @param int $segment  Number of pagination
+     *
+     * @return array
+     */
+    public function getListForms($per_page = '', $segment = '')
+    {
+        $query = sprintf(
+            '
             select uf.fmb_id,uf.fmb_data,uf.fmb_name,uf.fmb_html,uf.fmb_html_backend,uf.flag_status,uf.created_date,uf.updated_date,
                 uf.fmb_html_css,uf.fmb_default,uf.fmb_skin_status,uf.fmb_skin_data,uf.fmb_skin_type,uf.fmb_data2
             from %s uf
             where uf.flag_status>0 
             ORDER BY uf.updated_date desc
             ',
-			$this->table
-		);
+            $this->table
+        );
 
-		if ( $per_page != '' || $segment != '' ) {
-			$segment = ( ! empty( $segment ) ) ? $segment : 0;
-			$query  .= sprintf( ' limit %s,%s', $segment, $per_page );
-		}
+        if ($per_page != '' || $segment != '') {
+            $segment = ( ! empty($segment) ) ? $segment : 0;
+            $query  .= sprintf(' limit %s,%s', $segment, $per_page);
+        }
 
-		return $this->wpdb->get_results( $query );
-	}
+        return $this->wpdb->get_results($query);
+    }
 
-	function getFormById( $id ) {
-		$query = sprintf(
-			'
+    public function getFormById($id)
+    {
+        $query = sprintf(
+            '
             select uf.fmb_id,uf.fmb_data,uf.fmb_name,uf.fmb_html,uf.fmb_html_backend,uf.flag_status,uf.created_date,uf.updated_date,
                 uf.fmb_html_css,uf.fmb_default,uf.fmb_skin_status,uf.fmb_skin_data,uf.fmb_skin_type,uf.fmb_data2,fmb_rec_tpl_html,fmb_rec_tpl_st
             from %s uf
             where uf.fmb_id=%s
             ',
-			$this->table,
-			$id
-		);
+            $this->table,
+            $id
+        );
 
-		return $this->wpdb->get_row( $query );
-	}
+        return $this->wpdb->get_row($query);
+    }
 
-	function getTitleFormById( $id ) {
-		$query = sprintf(
-			'
+    public function getTitleFormById($id)
+    {
+        $query = sprintf(
+            '
             select uf.fmb_name
             from %s uf
             where uf.fmb_id=%s
             ',
-			$this->table,
-			(int) $id
-		);
+            $this->table,
+            (int) $id
+        );
 
-		return $this->wpdb->get_row( $query );
-	}
+        return $this->wpdb->get_row($query);
+    }
 
-	function getAvailableFormById( $id ) {
-		$query = sprintf(
-			'
+    public function getAvailableFormById($id)
+    {
+        $query = sprintf(
+            '
             select uf.fmb_id,uf.fmb_data,uf.fmb_name,uf.fmb_html,uf.fmb_html_backend,uf.flag_status,uf.created_date,uf.updated_date,
                 uf.fmb_html_css,uf.fmb_default,uf.fmb_skin_status,uf.fmb_skin_data,uf.fmb_skin_type,uf.fmb_data2
             from %s uf
@@ -186,64 +194,62 @@ class Uiform_Model_Form {
             uf.flag_status=1 and
             uf.fmb_id=%s
             ',
-			$this->table,
-			$id
-		);
+            $this->table,
+            $id
+        );
 
-		return $this->wpdb->get_row( $query );
-	}
+        return $this->wpdb->get_row($query);
+    }
 
-	function getFormById_2( $id ) {
-		$query = sprintf(
-			'
+    public function getFormById_2($id)
+    {
+        $query = sprintf(
+            '
             select uf.fmb_data2,uf.fmb_name
             from %s uf
             where uf.fmb_id=%s
             ',
-			$this->table,
-			$id
-		);
+            $this->table,
+            $id
+        );
 
-		return $this->wpdb->get_row( $query );
-	}
+        return $this->wpdb->get_row($query);
+    }
 
-	function CountForms() {
-		$query = sprintf(
-			'
+    public function CountForms()
+    {
+        $query = sprintf(
+            '
             select COUNT(*) AS counted
             from %s c
             where c.flag_status>0 
             ORDER BY c.updated_date desc
             ',
-			$this->table
-		);
-		$row   = $this->wpdb->get_row( $query );
-		if ( isset( $row->counted ) ) {
-			return $row->counted;
-		} else {
-			return 0;
-		}
-	}
+            $this->table
+        );
+        $row   = $this->wpdb->get_row($query);
+        if (isset($row->counted)) {
+            return $row->counted;
+        } else {
+            return 0;
+        }
+    }
 
-	/*
-	* list all and trash forms
-	*/
-	function ListTotals() {
-		$query = sprintf(
-			'
+    /*
+    * list all and trash forms
+    */
+    public function ListTotals()
+    {
+        $query = sprintf(
+            '
 			SELECT 
 			  SUM(CASE WHEN flag_status = 0 THEN 1 ELSE 0 END) AS r_trash,
 			  SUM(CASE WHEN flag_status != 0 THEN 1 ELSE 0 END) AS r_all
 			FROM %s
 			',
-			$this->table
-		);
+            $this->table
+        );
 
-		return $this->wpdb->get_row( $query );
-
-	}
-
-
+        return $this->wpdb->get_row($query);
+    }
 }
-
-

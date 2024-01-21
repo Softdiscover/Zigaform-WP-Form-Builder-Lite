@@ -9,13 +9,13 @@
  * @author    Softdiscover <info@softdiscover.com>
  * @copyright 2015 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
- * @link      http://wordpress-cost-estimator.zigaform.com
+ * @link      https://softdiscover.com/zigaform/wordpress-cost-estimator
  */
-if ( ! defined( 'ABSPATH' ) ) {
-	exit( 'No direct script access allowed' );
+if (! defined('ABSPATH')) {
+    exit('No direct script access allowed');
 }
-if ( class_exists( 'Uiform_Fb_Default_Controller_Back' ) ) {
-	return;
+if (class_exists('Uiform_Fb_Default_Controller_Back')) {
+    return;
 }
 
 /**
@@ -27,119 +27,124 @@ if ( class_exists( 'Uiform_Fb_Default_Controller_Back' ) ) {
  * @copyright 2013 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
  * @version   Release: 1.00
- * @link      http://wordpress-cost-estimator.zigaform.com
+ * @link      https://softdiscover.com/zigaform/wordpress-cost-estimator
  */
-class Uiform_Fb_Default_Controller_Back extends Uiform_Base_Module {
+class Uiform_Fb_Default_Controller_Back extends Uiform_Base_Module
+{
 
-	const VERSION = '1.2';
+    const VERSION = '1.2';
 
-	private $wpdb = '';
+    private $wpdb = '';
 
-	private $pagination = '';
-	private $formsmodel = '';
-	protected $modules;
-	var $per_page = 10;
+    private $pagination = '';
+    private $formsmodel = '';
+    protected $modules;
+    private $per_page = 10;
 
-	const PREFIX = 'wprofmr_';
+    const PREFIX = 'wprofmr_';
 
-	/**
-	 * Constructor
-	 *
-	 * @mvc Controller
-	 */
-	protected function __construct() {
+    /**
+     * Constructor
+     *
+     * @mvc Controller
+     */
+    protected function __construct()
+    {
 
-		$this->formsmodel = self::$_models['formbuilder']['form'];
+        $this->formsmodel = self::$_models['formbuilder']['form'];
 
-		// Handle the smush pro dismiss features notice ajax
-		add_action( 'wp_ajax_zgfm_dismiss_upgrade_notice', array( $this, 'dismiss_upgrade_notice' ) );
-
-	}
-
-
-	/**
-	 * Hide upgrade notice
-	 */
-	function dismiss_upgrade_notice( $ajax = true ) {
-			update_site_option( 'zgfm-b-hide_upgrade_notice', 1 );
-			// No Need to send json response for other requests
-		if ( $ajax ) {
-				wp_send_json_success();
-		}
-	}
+        // Handle the smush pro dismiss features notice ajax
+        add_action('wp_ajax_zgfm_dismiss_upgrade_notice', array( $this, 'dismiss_upgrade_notice' ));
+    }
 
 
-	/**
-	 * Register callbacks for actions and filters
-	 *
-	 * @mvc Controller
-	 */
-	public function register_hook_callbacks() {
+    /**
+     * Hide upgrade notice
+     */
+    public function dismiss_upgrade_notice($ajax = true)
+    {
+            update_site_option('zgfm-b-hide_upgrade_notice', 1);
+            // No Need to send json response for other requests
+        if ($ajax) {
+                wp_send_json_success();
+        }
+    }
 
-	}
 
-	/**
-	 * Initializes variables
-	 *
-	 * @mvc Controller
-	 */
-	public function init() {
+    /**
+     * Register callbacks for actions and filters
+     *
+     * @mvc Controller
+     */
+    public function register_hook_callbacks()
+    {
+    }
 
-		try {
-			// $instance_example = new WPPS_Instance_Class( 'Instance example', '42' );
-			// add_notice('ba');
-		} catch ( Exception $exception ) {
-			add_notice( __METHOD__ . ' error: ' . $exception->getMessage(), 'error' );
-		}
-	}
+    /**
+     * Initializes variables
+     *
+     * @mvc Controller
+     */
+    public function init()
+    {
 
-	/*
-	 * Instance methods
-	 */
+        try {
+            // $instance_example = new WPPS_Instance_Class( 'Instance example', '42' );
+            // add_notice('ba');
+        } catch (Exception $exception) {
+            add_notice(__METHOD__ . ' error: ' . $exception->getMessage(), 'error');
+        }
+    }
 
-	/**
-	 * Prepares sites to use the plugin during single or network-wide activation
-	 *
-	 * @mvc Controller
-	 *
-	 * @param bool $network_wide
-	 */
-	public function activate( $network_wide ) {
+    /*
+     * Instance methods
+     */
 
-		return true;
-	}
+    /**
+     * Prepares sites to use the plugin during single or network-wide activation
+     *
+     * @mvc Controller
+     *
+     * @param bool $network_wide
+     */
+    public function activate($network_wide)
+    {
 
-	/**
-	 * Rolls back activation procedures when de-activating the plugin
-	 *
-	 * @mvc Controller
-	 */
-	public function deactivate() {
-		return true;
-	}
+        return true;
+    }
 
-	/**
-	 * Checks if the plugin was recently updated and upgrades if necessary
-	 *
-	 * @mvc Controller
-	 *
-	 * @param string $db_version
-	 */
-	public function upgrade( $db_version = 0 ) {
-		return true;
-	}
+    /**
+     * Rolls back activation procedures when de-activating the plugin
+     *
+     * @mvc Controller
+     */
+    public function deactivate()
+    {
+        return true;
+    }
 
-	/**
-	 * Checks that the object is in a correct state
-	 *
-	 * @mvc Model
-	 *
-	 * @param string $property An individual property to check, or 'all' to check all of them
-	 * @return bool
-	 */
-	protected function is_valid( $property = 'all' ) {
-		return true;
-	}
+    /**
+     * Checks if the plugin was recently updated and upgrades if necessary
+     *
+     * @mvc Controller
+     *
+     * @param string $db_version
+     */
+    public function upgrade($db_version = 0)
+    {
+        return true;
+    }
 
+    /**
+     * Checks that the object is in a correct state
+     *
+     * @mvc Model
+     *
+     * @param string $property An individual property to check, or 'all' to check all of them
+     * @return bool
+     */
+    protected function is_valid($property = 'all')
+    {
+        return true;
+    }
 }
-

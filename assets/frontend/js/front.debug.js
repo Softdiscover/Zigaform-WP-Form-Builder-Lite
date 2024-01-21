@@ -142,14 +142,13 @@ if (!$uifm.isFunction(rocketfm)) {
 			};
 
 			arguments.callee.validate_applyPopOverOpt = function(element, defaultMsg) {
+				defaultMsg = defaultMsg || '';
 
-				 				defaultMsg = defaultMsg || '';
-
-								if (defaultMsg === '') {
+				if (defaultMsg === '') {
 					defaultMsg = $(element).data('val-custxt') || 'Ops... this is required';
 				}
 
-								var tmp_cur_fm_obj = this.getInnerVariable('cur_form_obj') || 'body';
+				var tmp_cur_fm_obj = this.getInnerVariable('cur_form_obj') || 'body';
 
 				var cus_placement;
 				switch (parseInt($(element).data('val-pos'))) {
@@ -610,31 +609,30 @@ if (!$uifm.isFunction(rocketfm)) {
 				jQuery(document).trigger('zgfm.form.after_submit', {});
 			};
 			arguments.callee.submitForm_submit = function(el) {
+				formId = parseInt(el.find('._rockfm_form_id').val());
 
-				 				formId = parseInt(el.find('._rockfm_form_id').val());
-
-				 				isMockingSubmit = 'no';
+				isMockingSubmit = 'no';
 				if (rockfm_vars.hasOwnProperty('forms') && rockfm_vars.forms.hasOwnProperty(formId) && rockfm_vars.forms[formId].hasOwnProperty('is_mocking_submit')) {
 					isMockingSubmit = rockfm_vars.forms[formId]['is_mocking_submit'];
 				}
 
 				if (String(isMockingSubmit) === 'yes') {
 					var tmp_msg = el.parent().find('.rockfm-alert-container');
-					   tmp_msg.html('');
-						   tmp_msg.append('<div class="rockfm-alert-inner" ><div class="rockfm-alert rockfm-alert-success"><b>Success!</b> Form was submitted successfully</div></div>');
-						   $('html,body').animate(
-							   {
-								   scrollTop: tmp_msg.offset().top,
-							   },
-							   'slow'
-						   );
-						   tmp_msg.show();
-						   el.hide();
+					tmp_msg.html('');
+					tmp_msg.append('<div class="rockfm-alert-inner" ><div class="rockfm-alert rockfm-alert-success"><b>Success!</b> Form was submitted successfully</div></div>');
+					$('html,body').animate(
+						{
+							scrollTop: tmp_msg.offset().top,
+						},
+						'slow'
+					);
+					tmp_msg.show();
+					el.hide();
 
-												   return;
-					   }
+					return;
+				}
 
-								if (el.find('._rockfm_type_submit') && parseInt(el.find('._rockfm_type_submit').val()) === 1) {
+				if (el.find('._rockfm_type_submit') && parseInt(el.find('._rockfm_type_submit').val()) === 1) {
 					var obj_btn = el.find('.rockfm-submitbtn .rockfm-txtbox-inp-val');
 					if (el.find('.rockfm-fileupload-wrap').length) {
 						var options = {
@@ -804,47 +802,45 @@ if (!$uifm.isFunction(rocketfm)) {
 				}
 			};
 
-						arguments.callee.recaptchav3_validate = function() {
+			arguments.callee.recaptchav3_validate = function() {
 				var form_obj = this.getInnerVariable('val_curform_obj');
 
-								grecaptcha.execute(form_obj.attr('data-zgfm-recaptchav3-sitekey'), { action: 'submit' }).then(function(token) {
+				grecaptcha.execute(form_obj.attr('data-zgfm-recaptchav3-sitekey'), { action: 'submit' }).then(function(token) {
 					$.ajax({
-							type: 'POST',
-							url: rockfm_vars.ajaxurl,
-							dataType: 'json',
-							data: {
-								action: 'rocket_front_checkrecaptchav3',
-								zgfm_security: rockfm_vars.ajax_nonce,
-								zgfm_token: token,
-								form_id: form_obj.find('._rockfm_form_id').val(),
-							},
-							beforeSend: function() {
-								rocketfm.submit_changeModbutton(form_obj, true);
-							},
-							success: function(response) {
-								try {
-									rocketfm.submit_changeModbutton(form_obj, false);
-									if (typeof response == 'object') {
-										if (response.success === true) {
-											rocketfm.recaptchav3_response(true);
-										} else {
-											rocketfm.recaptchav3_response(false);
-										}
+						type: 'POST',
+						url: rockfm_vars.ajaxurl,
+						dataType: 'json',
+						data: {
+							action: 'rocket_front_checkrecaptchav3',
+							zgfm_security: rockfm_vars.ajax_nonce,
+							zgfm_token: token,
+							form_id: form_obj.find('._rockfm_form_id').val(),
+						},
+						beforeSend: function() {
+							rocketfm.submit_changeModbutton(form_obj, true);
+						},
+						success: function(response) {
+							try {
+								rocketfm.submit_changeModbutton(form_obj, false);
+								if (typeof response == 'object') {
+									if (response.success === true) {
+										rocketfm.recaptchav3_response(true);
 									} else {
 										rocketfm.recaptchav3_response(false);
 									}
-								} catch (ex) {
+								} else {
 									rocketfm.recaptchav3_response(false);
 								}
-							},
-							error: function(jqXHR, textStatus, errorThrown) {
+							} catch (ex) {
 								rocketfm.recaptchav3_response(false);
-							},
-						});
-
+							}
+						},
+						error: function(jqXHR, textStatus, errorThrown) {
+							rocketfm.recaptchav3_response(false);
+						},
+					});
 				});
-
-							};
+			};
 
 			arguments.callee.recaptcha_validate = function() {
 				var form_obj = this.getInnerVariable('val_curform_obj');
@@ -945,9 +941,9 @@ if (!$uifm.isFunction(rocketfm)) {
 				}
 			};
 
-						arguments.callee.recaptchav3_response = function(success) {
+			arguments.callee.recaptchav3_response = function(success) {
 				var temp = this.getInnerVariable('val_curform_obj');
-				if ( success === true ) {
+				if (success === true) {
 					rocketfm.submitForm_submit(temp);
 				} else {
 					var tmp_captcha = $(temp);
@@ -955,13 +951,14 @@ if (!$uifm.isFunction(rocketfm)) {
 						tmp_captcha.sfdc_popover('hide');
 					};
 
-										tmp_captcha.sfdc_popover('destroy')
+					tmp_captcha
+						.sfdc_popover('destroy')
 						.sfdc_popover(rocketfm.validate_applyPopOverOpt(tmp_captcha, tmp_captcha.attr('data-zgfm-recaptchav3-errmsg')))
 						.focus(hidePopover)
 						.sfdc_popover('show');
 
 
-								if (String(uifmvariable.externalVars['fm_loadmode']) === 'iframe') {
+					if (String(uifmvariable.externalVars['fm_loadmode']) === 'iframe') {
 						if ('parentIFrame' in window) {
 							parentIFrame.scrollTo(0, tmp_captcha.offset().top - 40);
 						}
@@ -976,8 +973,7 @@ if (!$uifm.isFunction(rocketfm)) {
 				}
 			};
 
-
-						arguments.callee.loadform_init = function() {
+			arguments.callee.loadform_init = function() {
 				var obj_form_list = $('.rockfm-form-container');
 				var obj_form;
 				obj_form_list.each(function(i) {
@@ -989,27 +985,31 @@ if (!$uifm.isFunction(rocketfm)) {
 							var rockfm_slider_d = obj_form.find('.rockfm-input4-slider');
 							rockfm_slider_d.each(function(i) {
 								$(this).bootstrapSlider();
-								$(this).parent().parent().find('.slider-tick-label').hide();
 								$(this)
-										.parent()
-										.parent()
-										.find('.rockfm-input4-number')
-										.text($(this).val());
+									.parent()
+									.parent()
+									.find('.slider-tick-label')
+									.hide();
+								$(this)
+									.parent()
+									.parent()
+									.find('.rockfm-input4-number')
+									.text($(this).val());
 
-																obj_form.find('.rockfm-input4-slider').on('slide', function(slideEvt) {
+								obj_form.find('.rockfm-input4-slider').on('slide', function(slideEvt) {
 									$(this)
 										.parent()
 										.parent()
 										.find('.rockfm-input4-number')
 										.text(slideEvt.value);
 
-																				$(this)
+									$(this)
 										.parent()
-										.parent().find('.slider-tick-label').show();	
-
-																	});
-
-															});
+										.parent()
+										.find('.slider-tick-label')
+										.show();
+								});
+							});
 						}
 
 						if (obj_form.find('.rockfm-input4-spinner').length) {
@@ -1079,9 +1079,7 @@ if (!$uifm.isFunction(rocketfm)) {
 								var s = document.getElementsByTagName('script')[0];
 								s.parentNode.insertBefore(rockfm_recaptcha, s);
 							}
-
-
-																				}
+						}
 
 						if (parseInt(obj_form.attr('data-zgfm-recaptchav3-active')) === 1) {
 							let siteKey = obj_form.attr('data-zgfm-recaptchav3-sitekey');
@@ -1090,11 +1088,10 @@ if (!$uifm.isFunction(rocketfm)) {
 							rockfm_recaptcha.async = true;
 							rockfm_recaptcha.id = 'zgfm_form_lib_recaptchav3';
 							rockfm_recaptcha.defer = 'defer';
-							rockfm_recaptcha.src = 'https://www.google.com/recaptcha/api.js?render='+siteKey;
+							rockfm_recaptcha.src = 'https://www.google.com/recaptcha/api.js?render=' + siteKey;
 							var s = document.getElementsByTagName('script')[0];
 							s.parentNode.insertBefore(rockfm_recaptcha, s);
 						}
-
 
 						if (obj_form.find('.rockfm-captcha').length) {
 							if (parseInt(obj_form.find('.rockfm-captcha').length) > 1) {
@@ -1357,7 +1354,7 @@ if (!$uifm.isFunction(rocketfm)) {
 						});
 
 
-							if (String(uifmvariable.externalVars['fm_loadmode']) === 'iframe') {
+						if (String(uifmvariable.externalVars['fm_loadmode']) === 'iframe') {
 							if ('parentIFrame' in window) {
 								parentIFrame.size(); 
 							}
@@ -1385,20 +1382,17 @@ if (!$uifm.isFunction(rocketfm)) {
 							form: obj_form,
 						});
 
-												obj_form.on('click', '.rockfm-submitbtn.rockfm-field [type="button"],.rockfm-submitbtn.rockfm-field [type="submit"]', function (e) {
+						obj_form.on('click', '.rockfm-submitbtn.rockfm-field [type="button"],.rockfm-submitbtn.rockfm-field [type="submit"]', function(e) {
 							e.preventDefault();
 
-														var obj_form_alt = $(this).closest('.rockfm-form');
+							var obj_form_alt = $(this).closest('.rockfm-form');
 
 							rocketfm.setInnerVariable('submitting_form_id', obj_form_alt.find('._rockfm_form_id').val());
 
-								rocketfm.submitForm_process(obj_form_alt, e);
+							rocketfm.submitForm_process(obj_form_alt, e);
 						});
-
-											}
-
-
-									});
+					}
+				});
 
 			};
 
@@ -1407,7 +1401,7 @@ if (!$uifm.isFunction(rocketfm)) {
 				rocketfm.submitForm_process_beforeVal(
 					function(data) {
 						if (data.is_valid === true) {
-							rocketfm.submitForm_process_validation(e, obj_form, function (data) {
+							rocketfm.submitForm_process_validation(e, obj_form, function(data) {
 								if (data.is_valid === true) {
 									rocketfm.submitForm_submit(obj_form);
 								}
@@ -1429,7 +1423,7 @@ if (!$uifm.isFunction(rocketfm)) {
 				var events = rocketfm.getInnerVariable('submit_form_events');
 
 				if (res_val.isValid) {
-					if ( parseInt(el_form.attr('data-zgfm-recaptchav3-active')) === 1 ) { 
+					if (parseInt(el_form.attr('data-zgfm-recaptchav3-active')) === 1) {
 						this.recaptchav3_validate();
 					} else if (el_form.find('.g-recaptcha').length) {
 						this.recaptcha_validate();
@@ -1442,8 +1436,7 @@ if (!$uifm.isFunction(rocketfm)) {
 							callback({
 								is_valid: true,
 							});
-
-													}
+						}
 					}
 				}
 
@@ -2518,13 +2511,9 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 				var obj_form = $(field).closest('.rockfm-form');
 			};
 
-			this.triggerEvent_before = function(){
+			this.triggerEvent_before = function() {};
 
-				 			};
-
-						this.triggerEvent_after = function(){
-
-				 			};
+			this.triggerEvent_after = function() {};
 
 			this.event_isDefined_toEl = function(el, search_evt, list_events) {
 				var flag = false;
@@ -2894,9 +2883,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 		const { addFilter } = wp.hooks;
 		addFilter('zgfmfront.events_before', 'zgfm_front_helper/triggerEvent_before', zgfm_front_helper.triggerEvent_before);
 		addFilter('zgfmfront.events_after', 'zgfm_front_helper/triggerEvent_after', zgfm_front_helper.triggerEvent_after);
-
-
-		})($uifm, window);
+	})($uifm, window);
 }
 
 (function() {
