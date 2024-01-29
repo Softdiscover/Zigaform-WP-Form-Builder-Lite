@@ -1,5 +1,5 @@
-# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 5.9.4
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.9.4 package.
+# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 5.9.5
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 5.9.5 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Rocket form\n"
@@ -226,7 +226,7 @@ msgstr "导出"
 msgid "Charts"
 msgstr "統計圖表"
 
-#: views/header.php:169, modules/formbuilder/views/forms/create_form_main.php:115, modules/formbuilder/views/fields/modal/settings_field_input_14.php:24, modules/formbuilder/views/fields/modal/settings_field_input_15.php:24
+#: views/header.php:169, modules/formbuilder/views/forms/create_form_main.php:115, modules/formbuilder/views/settings/view_settings.php:31, modules/formbuilder/views/fields/modal/settings_field_input_14.php:24, modules/formbuilder/views/fields/modal/settings_field_input_15.php:24
 msgid "Settings"
 msgstr "设置"
 
@@ -910,11 +910,11 @@ msgstr "Error on saving form"
 msgid "Forms in trash"
 msgstr "Form Name"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1186
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1189
 msgid "Order summary"
 msgstr "Order summary"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1563
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1570
 msgid "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 msgstr "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 
@@ -2686,7 +2686,7 @@ msgstr "Restore Backup"
 msgid "Upload Backup"
 msgstr "Upload Backup"
 
-#: modules/formbuilder/views/settings/backup_settings.php:161, modules/formbuilder/views/settings/view_settings.php:162, modules/formbuilder/views/settings/view_settings.php:154
+#: modules/formbuilder/views/settings/backup_settings.php:161, modules/formbuilder/views/settings/view_settings.php:159, modules/formbuilder/views/settings/view_settings.php:154
 msgid "Save changes"
 msgstr "保存更改"
 
@@ -2770,11 +2770,15 @@ msgstr ""
 "simplexml extension is important for the software. ask your webhost if this "
 "extension is not installed"
 
-#: modules/formbuilder/views/settings/view_settings.php:30
-msgid "Global Settings"
-msgstr "全局设置"
+#: modules/formbuilder/views/settings/view_settings.php:39
+msgid "Global"
+msgstr ""
 
-#: modules/formbuilder/views/settings/view_settings.php:48
+#: modules/formbuilder/views/settings/view_settings.php:40
+msgid "Misc"
+msgstr ""
+
+#: modules/formbuilder/views/settings/view_settings.php:50
 msgid "LANGUAGE"
 msgstr "LANGUAGE"
 
@@ -2782,32 +2786,40 @@ msgstr "LANGUAGE"
 msgid "it allows to change the language"
 msgstr "it allows to change the language"
 
-#: modules/formbuilder/views/settings/view_settings.php:77
+#: modules/formbuilder/views/settings/view_settings.php:76
 msgid "MODAL MODE"
 msgstr "MODAL MODE"
 
-#: modules/formbuilder/views/settings/view_settings.php:79
+#: modules/formbuilder/views/settings/view_settings.php:76
 msgid "it allows to load the form in modal popups"
 msgstr "it allows to load the form in modal popups"
 
-#: modules/formbuilder/views/settings/view_settings.php:97
+#: modules/formbuilder/views/settings/view_settings.php:90
 msgid "DISABLE FIELDS FAST LOAD"
 msgstr ""
 
-#: modules/formbuilder/views/settings/view_settings.php:99
+#: modules/formbuilder/views/settings/view_settings.php:90
 msgid "it allows to disable fast loading field."
 msgstr ""
 
-#: modules/formbuilder/views/settings/view_settings.php:121
+#: modules/formbuilder/views/settings/view_settings.php:114
 msgid "Regenerate cache fields"
 msgstr ""
 
-#: modules/formbuilder/views/settings/view_settings.php:123
+#: modules/formbuilder/views/settings/view_settings.php:114
 msgid "Generate cache field"
 msgstr ""
 
-#: modules/formbuilder/views/settings/view_settings.php:132
+#: modules/formbuilder/views/settings/view_settings.php:122
 msgid "Regeneate cache fields"
+msgstr ""
+
+#: modules/formbuilder/views/settings/view_settings.php:133
+msgid "Hide Version"
+msgstr ""
+
+#: modules/formbuilder/views/settings/view_settings.php:133
+msgid "It shows the version of the software in front."
 msgstr ""
 
 #: modules/formbuilder/views/fields/modal/field_opt_checkbox_extra.php:31
