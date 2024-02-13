@@ -1701,6 +1701,11 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         wp_enqueue_style('rockfm-bootstrap-colorpicker', UIFORM_FORMS_URL . '/assets/backend/js/colorpicker/2.5/css/bootstrap-colorpicker.css');
         // bootstrap select
         wp_enqueue_style('rockfm-bootstrap-select', UIFORM_FORMS_URL . '/assets/common/js/bselect/1.12.4/css/bootstrap-select-mod.css');
+        
+        // bootstrap select 2
+        wp_enqueue_style('rockfm-bootstrap-select2', UIFORM_FORMS_URL . '/assets/common/js/select2/4.0.13/css/select2.min.css');
+        
+        
         // star rating
         wp_enqueue_style('rockfm-star-rating', UIFORM_FORMS_URL . '/assets/backend/js/bratestar/star-rating.css');
 
@@ -1763,6 +1768,10 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         wp_enqueue_script('rockfm-bootstrap-colorpicker', UIFORM_FORMS_URL . '/assets/backend/js/colorpicker/2.5/js/bootstrap-colorpicker.js', array('jquery', 'rockfm-bootstrap'), '1.0', true);
         // bootstrap select
         wp_enqueue_script('rockfm-bootstrap-select', UIFORM_FORMS_URL . '/assets/common/js/bselect/1.12.4/js/bootstrap-select-mod.js', array('jquery', 'rockfm-bootstrap'), '1.12.4', true);
+        
+        // select2
+        wp_enqueue_script('rockfm-bootstrap-select2', UIFORM_FORMS_URL . '/assets/common/js/select2/4.0.13/js/select2.full.min.js', array( 'jquery', 'rockfm-bootstrap' ), '4.0.13', true);
+                
         // bootstrap switch
         wp_enqueue_script('rockfm-bootstrap-switch', UIFORM_FORMS_URL . '/assets/backend/js/bswitch/bootstrap-switch.js', array('jquery', 'rockfm-bootstrap'), '1.0', true);
         // form

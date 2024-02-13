@@ -1285,6 +1285,17 @@ if (!$uifm.isFunction(rocketfm)) {
 							});
 						}
 
+												if (obj_form.find('.rockfm-input2-sel-styl2').length) {
+							tmp_load_obj = obj_form.find('.rockfm-input2-sel-styl2');
+							tmp_load_obj.each(function(i) {
+								$(this).select2({
+									placeholder: 'Select an option',
+									theme: 'classic',
+									width: '100%',
+								});
+							});
+						}
+
 						if (obj_form.find('.rockfm-input2-chk-styl1').length) {
 							tmp_load_obj = obj_form.find('.rockfm-input2-chk-styl1');
 							var tmp_chk_icon;
@@ -2170,6 +2181,11 @@ var zgfm_recaptcha_onloadCallback = function() {
 								response['value_field'] = tempvar.selectpicker('val');
 								response['input_field'] = input;
 								break;
+							case 2:
+								tempvar = getrow.find('.rockfm-input2-sel-styl2');
+								response['value_field'] = tempvar.val();
+								response['input_field'] = input;
+								break;	
 							default:
 								tempvar = getrow.find('.uifm-input2-opt-main');
 								response['value_field'] = tempvar.val();
@@ -2187,6 +2203,14 @@ var zgfm_recaptcha_onloadCallback = function() {
 								response['value_field'] = tempvar.selectpicker('val');
 								response['input_field'] = input;
 								break;
+							case 2:
+								searchInput = $.map(getrow.find('.rockfm-input2-sel-styl2 option:selected'), function(elem) {
+									return $(elem).attr('value');
+								});
+
+								response['value_field'] = searchInput;
+								response['input_field'] = input;
+								break;	
 							default:
 								searchInput = $.map(getrow.find('.uifm-input2-opt-main option:selected'), function(elem) {
 									return $(elem).attr('value');
@@ -2623,6 +2647,9 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 									case 1:
 										tmp_field_inp = tmp_field.find('.rockfm-input2-sel-styl1');
 										break;
+										case 2:
+										tmp_field_inp = tmp_field.find('.rockfm-input2-sel-styl2');
+										break;
 									default:
 										tmp_field_inp = tmp_field.find('.uifm-input2-opt-main');
 										break;
@@ -2900,7 +2927,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 				if (options == null) {
 					options = {};
 				}
-				  _this_obj=this;
+				_this_obj = this;
 				this.$element = $(element);
 				this.options = $.extend(
 					{},
@@ -2937,7 +2964,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 							$(element)
 								.parent()
 								.attr('data-thopt-width') || 100,
-						backend: this.$element.data('backend')||0,
+						backend: this.$element.data('backend') || 0,
 						baseClass: this.$element.data('base-class'),
 					},
 					options
@@ -3037,16 +3064,13 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 			uiformDCheckbox.prototype._constructor = uiformDCheckbox;
 
 			uiformDCheckbox.prototype._refresh = function() {
-
-if (parseInt(_this_obj.options.backend) === 1) {
-				 this.$canvas_parent = this.$element.closest('.uifm-input17-wrap').width();
+				if (parseInt(_this_obj.options.backend) === 1) {
+					this.$canvas_parent = this.$element.closest('.uifm-input17-wrap').width();
 				} else {
 					this.$canvas_parent = this.$element.closest('.rockfm-input17-wrap').width();
 				}
 
-
-
-				 				this._enableCheckboxVal(this.$opt_gal_checkbox, this);
+				this._enableCheckboxVal(this.$opt_gal_checkbox, this);
 				this._setValToChkBoxInput(this);
 				this._get_items();
 			};
@@ -3439,10 +3463,10 @@ if (parseInt(_this_obj.options.backend) === 1) {
 									.attr('data-inp17-opt-index');
 
 								if (parseInt(_this_obj.options.backend) === 1) {
-					var tmp_container = $(this).closest('.uifm-input17-wrap');
-				} else {
-					var tmp_container = $(this).closest('.rockfm-input17-wrap');
-				}
+									var tmp_container = $(this).closest('.uifm-input17-wrap');
+								} else {
+									var tmp_container = $(this).closest('.rockfm-input17-wrap');
+								}
 
 								var tmp_radiobtn_items = tmp_container.find('.uifm-dradiobtn-item');
 
@@ -3485,10 +3509,10 @@ if (parseInt(_this_obj.options.backend) === 1) {
 									.attr('data-inp17-opt-index');
 
 								if (parseInt(_this_obj.options.backend) === 1) {
-					var tmp_container = $(this).closest('.uifm-input17-wrap');
-				} else {
-					var tmp_container = $(this).closest('.rockfm-input17-wrap');
-				}
+									var tmp_container = $(this).closest('.uifm-input17-wrap');
+								} else {
+									var tmp_container = $(this).closest('.rockfm-input17-wrap');
+								}
 								var tmp_radiobtn_items = tmp_container.find('.uifm-dradiobtn-item');
 
 								var tmp_item_index;

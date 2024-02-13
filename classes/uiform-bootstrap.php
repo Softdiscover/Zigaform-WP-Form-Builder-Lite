@@ -888,6 +888,10 @@ JS;
 		wp_enqueue_style( 'rockefform-bootstrap-colorpicker', UIFORM_FORMS_URL . '/assets/backend/js/colorpicker/2.5/css/bootstrap-colorpicker.css' );
 		// bootstrap select
 		wp_enqueue_style( 'rockefform-bootstrap-select', UIFORM_FORMS_URL . '/assets/common/js/bselect/1.12.4/css/bootstrap-select-mod.css' );
+		
+		// select 2
+		wp_enqueue_style( 'rockefform-bootstrap-select2', UIFORM_FORMS_URL . '/assets/common/js/select2/4.0.13/css/select2.min.css' );
+			
 		// bootstrap switch
 		wp_enqueue_style( 'rockefform-bootstrap-switch', UIFORM_FORMS_URL . '/assets/backend/js/bswitch/bootstrap-switch.css' );
 		// bootstrap slider
@@ -974,6 +978,9 @@ JS;
 		wp_enqueue_script( 'rockefform-bootstrap-colorpicker', UIFORM_FORMS_URL . '/assets/backend/js/colorpicker/2.5/js/bootstrap-colorpicker_mod.js', array( 'jquery','rockfm-prev-jquery' , 'rockefform-bootstrap-sfdc' ), '1.0', true );
 		// bootstrap select
 		wp_enqueue_script( 'rockefform-bootstrap-select', UIFORM_FORMS_URL . '/assets/common/js/bselect/1.12.4/js/bootstrap-select-mod.js', array( 'jquery', 'rockefform-bootstrap-sfdc' ), '1.12.4', true );
+		
+		wp_enqueue_script( 'rockefform-bootstrap-select2', UIFORM_FORMS_URL . '/assets/common/js/select2/4.0.13/js/select2.full.min.js', array( 'jquery', 'rockefform-bootstrap-sfdc' ), '4.0.13', true );
+			
 		// bootstrap switch
 		wp_enqueue_script( 'rockefform-bootstrap-switch', UIFORM_FORMS_URL . '/assets/backend/js/bswitch/bootstrap-switch.js', array( 'jquery', 'rockefform-bootstrap-sfdc' ), '1.0', true );
 		// bootstrap slider
