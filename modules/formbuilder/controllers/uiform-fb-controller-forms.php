@@ -1800,7 +1800,14 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
                     $count_str   = 0;
                     if (isset($child_field['inner'])) {
                         foreach ($child_field['inner'] as $key => $value) {
-                            $str_output .= '<div data-zgpb-blocknum="' . $value['num_tab'] . '" class="zgpb-fl-gs-block-style sfdc-col-xs-' . $value['cols'] . ' sfdc-col-sm-' . $value['cols'] . '">';
+                            // generate class
+                            $tmpMobileClass = '';
+                            if (isset($data['main']['skin']['mobile']['keep_grid_st'])) {
+                                $tmpKeepGrid= $data['main']['skin']['mobile']['keep_grid_st'];
+                                $tmpMobileClass = (intval($tmpKeepGrid)=== 1)?'sfdc-col-xs-'. $value['cols']:'';
+                            }
+                            
+                            $str_output .= '<div data-zgpb-blocknum="' . $value['num_tab'] . '" class="zgpb-fl-gs-block-style ' . $tmpMobileClass . ' sfdc-col-sm-' . $value['cols'] . '">';
 
                             // generate class
                             $tmp_class = 'zgpb-fl-gs-block-inner ';

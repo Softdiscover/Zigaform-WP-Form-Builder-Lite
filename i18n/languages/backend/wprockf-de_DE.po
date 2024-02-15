@@ -1,5 +1,5 @@
-# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 6.0.2
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 6.0.2 package.
+# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 6.0.3
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 6.0.3 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Rocket form\n"
@@ -908,7 +908,7 @@ msgstr "Error! User has no permission to edit this form"
 msgid "Error on saving form"
 msgstr "Error on saving form"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:2585
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:2592
 msgid "Forms in trash"
 msgstr "Formularname"
 
@@ -1346,7 +1346,7 @@ msgstr "Main"
 msgid "Recaptcha v3"
 msgstr "Recaptcha v3"
 
-#: modules/formbuilder/views/forms/create_form.php:72, modules/formbuilder/views/fields/modal/field_opt_column.php:905, modules/formbuilder/views/fields/modal/settings_form_more.php:194
+#: modules/formbuilder/views/forms/create_form.php:72, modules/formbuilder/views/fields/modal/field_opt_column.php:932, modules/formbuilder/views/fields/modal/settings_form_more.php:194
 msgid "Additional"
 msgstr "Zusätzliches CSS"
 
@@ -1666,7 +1666,7 @@ msgstr "Picker Felder"
 msgid "Date "
 msgstr "Datum"
 
-#: modules/formbuilder/views/forms/fields_available.php:492, modules/formbuilder/views/forms/settings_form_skin.php:188, modules/formbuilder/views/forms/settings_form_skin.php:342, modules/formbuilder/views/forms/settings_form_skin.php:433, modules/formbuilder/views/forms/settings_form_submission.php:99, modules/formbuilder/views/fields/modal/field_opt_column.php:335, modules/formbuilder/views/fields/modal/field_opt_column.php:421, modules/formbuilder/views/fields/modal/field_opt_column.php:648, modules/formbuilder/views/fields/modal/field_opt_column.php:800, modules/formbuilder/views/fields/modal/settings_field_input_1.php:312, modules/formbuilder/views/fields/modal/settings_field_input_1.php:491, modules/formbuilder/views/fields/modal/settings_field_input_1.php:604, modules/formbuilder/views/fields/modal/settings_field_input_11.php:78, modules/formbuilder/views/fields/modal/settings_field_input_12.php:130, modules/formbuilder/views/fields/modal/settings_field_input_12.php:309, modules/formbuilder/views/fields/modal/settings_field_input_12.php:422, modules/formbuilder/views/fields/modal/settings_field_input_13.php:109, modules/formbuilder/views/fields/modal/settings_field_input_13.php:288, modules/formbuilder/views/fields/modal/settings_field_input_13.php:401, modules/formbuilder/views/fields/modal/settings_field_input_18.php:298, modules/formbuilder/views/fields/modal/settings_field_input_18.php:441, modules/formbuilder/views/fields/modal/settings_field_input_18.php:527, modules/formbuilder/views/fields/modal/settings_field_input_2.php:71, modules/formbuilder/views/fields/modal/settings_field_input_6.php:37, modules/formbuilder/views/fields/modal/settings_field_input_6.php:78, modules/formbuilder/views/fields/modal/settings_field_label.php:137, modules/formbuilder/views/fields/modal/settings_field_label.php:344
+#: modules/formbuilder/views/forms/fields_available.php:492, modules/formbuilder/views/forms/settings_form_skin.php:188, modules/formbuilder/views/forms/settings_form_skin.php:342, modules/formbuilder/views/forms/settings_form_skin.php:433, modules/formbuilder/views/forms/settings_form_submission.php:99, modules/formbuilder/views/fields/modal/field_opt_column.php:362, modules/formbuilder/views/fields/modal/field_opt_column.php:448, modules/formbuilder/views/fields/modal/field_opt_column.php:675, modules/formbuilder/views/fields/modal/field_opt_column.php:827, modules/formbuilder/views/fields/modal/settings_field_input_1.php:312, modules/formbuilder/views/fields/modal/settings_field_input_1.php:491, modules/formbuilder/views/fields/modal/settings_field_input_1.php:604, modules/formbuilder/views/fields/modal/settings_field_input_11.php:78, modules/formbuilder/views/fields/modal/settings_field_input_12.php:130, modules/formbuilder/views/fields/modal/settings_field_input_12.php:309, modules/formbuilder/views/fields/modal/settings_field_input_12.php:422, modules/formbuilder/views/fields/modal/settings_field_input_13.php:109, modules/formbuilder/views/fields/modal/settings_field_input_13.php:288, modules/formbuilder/views/fields/modal/settings_field_input_13.php:401, modules/formbuilder/views/fields/modal/settings_field_input_18.php:298, modules/formbuilder/views/fields/modal/settings_field_input_18.php:441, modules/formbuilder/views/fields/modal/settings_field_input_18.php:527, modules/formbuilder/views/fields/modal/settings_field_input_2.php:71, modules/formbuilder/views/fields/modal/settings_field_input_6.php:37, modules/formbuilder/views/fields/modal/settings_field_input_6.php:78, modules/formbuilder/views/fields/modal/settings_field_label.php:137, modules/formbuilder/views/fields/modal/settings_field_label.php:344
 msgid "Color"
 msgstr "Farbe"
 
@@ -2358,7 +2358,7 @@ msgstr "Innenabstand Unten"
 msgid "Padding left"
 msgstr "Innenabstand Rechts"
 
-#: modules/formbuilder/views/forms/settings_form_skin.php:136, modules/formbuilder/views/forms/settings_form_submission.php:50, modules/formbuilder/views/fields/modal/field_opt_column.php:359, modules/formbuilder/views/fields/modal/settings_field_input_1.php:442, modules/formbuilder/views/fields/modal/settings_field_input_12.php:260, modules/formbuilder/views/fields/modal/settings_field_input_13.php:239, modules/formbuilder/views/fields/modal/settings_field_input_18.php:250
+#: modules/formbuilder/views/forms/settings_form_skin.php:136, modules/formbuilder/views/forms/settings_form_submission.php:50, modules/formbuilder/views/fields/modal/field_opt_column.php:386, modules/formbuilder/views/fields/modal/settings_field_input_1.php:442, modules/formbuilder/views/fields/modal/settings_field_input_12.php:260, modules/formbuilder/views/fields/modal/settings_field_input_13.php:239, modules/formbuilder/views/fields/modal/settings_field_input_18.php:250
 msgid "Background"
 msgstr "Hintergrund"
 
@@ -2366,11 +2366,11 @@ msgstr "Hintergrund"
 msgid "Background color"
 msgstr "Hintergrundfarbe"
 
-#: modules/formbuilder/views/forms/settings_form_skin.php:169, modules/formbuilder/views/forms/settings_form_skin.php:376, modules/formbuilder/views/forms/settings_form_submission.php:82, modules/formbuilder/views/fields/modal/field_opt_column.php:397, modules/formbuilder/views/fields/modal/field_opt_column.php:684, modules/formbuilder/views/fields/modal/settings_field_input_1.php:474, modules/formbuilder/views/fields/modal/settings_field_input_1.php:662, modules/formbuilder/views/fields/modal/settings_field_input_12.php:292, modules/formbuilder/views/fields/modal/settings_field_input_12.php:480, modules/formbuilder/views/fields/modal/settings_field_input_13.php:271, modules/formbuilder/views/fields/modal/settings_field_input_13.php:459, modules/formbuilder/views/fields/modal/settings_field_input_18.php:281, modules/formbuilder/views/fields/modal/settings_field_input_18.php:473
+#: modules/formbuilder/views/forms/settings_form_skin.php:169, modules/formbuilder/views/forms/settings_form_skin.php:376, modules/formbuilder/views/forms/settings_form_submission.php:82, modules/formbuilder/views/fields/modal/field_opt_column.php:424, modules/formbuilder/views/fields/modal/field_opt_column.php:711, modules/formbuilder/views/fields/modal/settings_field_input_1.php:474, modules/formbuilder/views/fields/modal/settings_field_input_1.php:662, modules/formbuilder/views/fields/modal/settings_field_input_12.php:292, modules/formbuilder/views/fields/modal/settings_field_input_12.php:480, modules/formbuilder/views/fields/modal/settings_field_input_13.php:271, modules/formbuilder/views/fields/modal/settings_field_input_13.php:459, modules/formbuilder/views/fields/modal/settings_field_input_18.php:281, modules/formbuilder/views/fields/modal/settings_field_input_18.php:473
 msgid "Solid"
 msgstr "Durchgehend"
 
-#: modules/formbuilder/views/forms/settings_form_skin.php:179, modules/formbuilder/views/forms/settings_form_submission.php:91, modules/formbuilder/views/fields/modal/field_opt_column.php:407, modules/formbuilder/views/fields/modal/settings_field_input_1.php:483, modules/formbuilder/views/fields/modal/settings_field_input_12.php:301, modules/formbuilder/views/fields/modal/settings_field_input_13.php:280, modules/formbuilder/views/fields/modal/settings_field_input_18.php:290
+#: modules/formbuilder/views/forms/settings_form_skin.php:179, modules/formbuilder/views/forms/settings_form_submission.php:91, modules/formbuilder/views/fields/modal/field_opt_column.php:434, modules/formbuilder/views/fields/modal/settings_field_input_1.php:483, modules/formbuilder/views/fields/modal/settings_field_input_12.php:301, modules/formbuilder/views/fields/modal/settings_field_input_13.php:280, modules/formbuilder/views/fields/modal/settings_field_input_18.php:290
 msgid "Gradient"
 msgstr "Gradient"
 
@@ -2378,23 +2378,23 @@ msgstr "Gradient"
 msgid "Pick the color"
 msgstr "Wählen Sie die Farbe"
 
-#: modules/formbuilder/views/forms/settings_form_skin.php:210, modules/formbuilder/views/forms/settings_form_submission.php:118, modules/formbuilder/views/fields/modal/field_opt_column.php:448, modules/formbuilder/views/fields/modal/settings_field_input_1.php:510, modules/formbuilder/views/fields/modal/settings_field_input_12.php:328, modules/formbuilder/views/fields/modal/settings_field_input_13.php:307, modules/formbuilder/views/fields/modal/settings_field_input_18.php:317
+#: modules/formbuilder/views/forms/settings_form_skin.php:210, modules/formbuilder/views/forms/settings_form_submission.php:118, modules/formbuilder/views/fields/modal/field_opt_column.php:475, modules/formbuilder/views/fields/modal/settings_field_input_1.php:510, modules/formbuilder/views/fields/modal/settings_field_input_12.php:328, modules/formbuilder/views/fields/modal/settings_field_input_13.php:307, modules/formbuilder/views/fields/modal/settings_field_input_18.php:317
 msgid "Start color"
 msgstr "Startfarbe"
 
-#: modules/formbuilder/views/forms/settings_form_skin.php:229, modules/formbuilder/views/forms/settings_form_submission.php:135, modules/formbuilder/views/fields/modal/field_opt_column.php:471, modules/formbuilder/views/fields/modal/settings_field_input_1.php:528, modules/formbuilder/views/fields/modal/settings_field_input_12.php:346, modules/formbuilder/views/fields/modal/settings_field_input_13.php:325, modules/formbuilder/views/fields/modal/settings_field_input_18.php:335
+#: modules/formbuilder/views/forms/settings_form_skin.php:229, modules/formbuilder/views/forms/settings_form_submission.php:135, modules/formbuilder/views/fields/modal/field_opt_column.php:498, modules/formbuilder/views/fields/modal/settings_field_input_1.php:528, modules/formbuilder/views/fields/modal/settings_field_input_12.php:346, modules/formbuilder/views/fields/modal/settings_field_input_13.php:325, modules/formbuilder/views/fields/modal/settings_field_input_18.php:335
 msgid "End color"
 msgstr "Endfarbe"
 
-#: modules/formbuilder/views/forms/settings_form_skin.php:250, modules/formbuilder/views/fields/modal/field_opt_column.php:495, modules/formbuilder/views/fields/modal/settings_field_input_18.php:353
+#: modules/formbuilder/views/forms/settings_form_skin.php:250, modules/formbuilder/views/fields/modal/field_opt_column.php:522, modules/formbuilder/views/fields/modal/settings_field_input_18.php:353
 msgid "Background image"
 msgstr "Hintergrundbild"
 
-#: modules/formbuilder/views/forms/settings_form_skin.php:290, modules/formbuilder/views/forms/settings_form_skin.php:328, modules/formbuilder/views/fields/modal/field_opt_column.php:624, modules/formbuilder/views/fields/modal/settings_field_input_1.php:555, modules/formbuilder/views/fields/modal/settings_field_input_1.php:591, modules/formbuilder/views/fields/modal/settings_field_input_12.php:373, modules/formbuilder/views/fields/modal/settings_field_input_12.php:409, modules/formbuilder/views/fields/modal/settings_field_input_13.php:352, modules/formbuilder/views/fields/modal/settings_field_input_13.php:388, modules/formbuilder/views/fields/modal/settings_field_input_18.php:393, modules/formbuilder/views/fields/modal/settings_field_input_18.php:428
+#: modules/formbuilder/views/forms/settings_form_skin.php:290, modules/formbuilder/views/forms/settings_form_skin.php:328, modules/formbuilder/views/fields/modal/field_opt_column.php:651, modules/formbuilder/views/fields/modal/settings_field_input_1.php:555, modules/formbuilder/views/fields/modal/settings_field_input_1.php:591, modules/formbuilder/views/fields/modal/settings_field_input_12.php:373, modules/formbuilder/views/fields/modal/settings_field_input_12.php:409, modules/formbuilder/views/fields/modal/settings_field_input_13.php:352, modules/formbuilder/views/fields/modal/settings_field_input_13.php:388, modules/formbuilder/views/fields/modal/settings_field_input_18.php:393, modules/formbuilder/views/fields/modal/settings_field_input_18.php:428
 msgid "Border"
 msgstr "Rahmen"
 
-#: modules/formbuilder/views/forms/settings_form_skin.php:297, modules/formbuilder/views/fields/modal/field_opt_column.php:729, modules/formbuilder/views/fields/modal/settings_field_input_1.php:562, modules/formbuilder/views/fields/modal/settings_field_input_12.php:380, modules/formbuilder/views/fields/modal/settings_field_input_13.php:359, modules/formbuilder/views/fields/modal/settings_field_input_18.php:400
+#: modules/formbuilder/views/forms/settings_form_skin.php:297, modules/formbuilder/views/fields/modal/field_opt_column.php:756, modules/formbuilder/views/fields/modal/settings_field_input_1.php:562, modules/formbuilder/views/fields/modal/settings_field_input_12.php:380, modules/formbuilder/views/fields/modal/settings_field_input_13.php:359, modules/formbuilder/views/fields/modal/settings_field_input_18.php:400
 msgid "Border radius"
 msgstr "Border Radius"
 
@@ -2402,11 +2402,11 @@ msgstr "Border Radius"
 msgid "border style"
 msgstr "Rahmenstil"
 
-#: modules/formbuilder/views/forms/settings_form_skin.php:386, modules/formbuilder/views/fields/modal/field_opt_column.php:694, modules/formbuilder/views/fields/modal/settings_field_input_1.php:671, modules/formbuilder/views/fields/modal/settings_field_input_12.php:489, modules/formbuilder/views/fields/modal/settings_field_input_13.php:468, modules/formbuilder/views/fields/modal/settings_field_input_18.php:482
+#: modules/formbuilder/views/forms/settings_form_skin.php:386, modules/formbuilder/views/fields/modal/field_opt_column.php:721, modules/formbuilder/views/fields/modal/settings_field_input_1.php:671, modules/formbuilder/views/fields/modal/settings_field_input_12.php:489, modules/formbuilder/views/fields/modal/settings_field_input_13.php:468, modules/formbuilder/views/fields/modal/settings_field_input_18.php:482
 msgid "Dotted"
 msgstr "Gepunktet"
 
-#: modules/formbuilder/views/forms/settings_form_skin.php:394, modules/formbuilder/views/fields/modal/field_opt_column.php:708, modules/formbuilder/views/fields/modal/settings_field_input_1.php:679, modules/formbuilder/views/fields/modal/settings_field_input_12.php:497, modules/formbuilder/views/fields/modal/settings_field_input_13.php:476, modules/formbuilder/views/fields/modal/settings_field_input_18.php:490
+#: modules/formbuilder/views/forms/settings_form_skin.php:394, modules/formbuilder/views/fields/modal/field_opt_column.php:735, modules/formbuilder/views/fields/modal/settings_field_input_1.php:679, modules/formbuilder/views/fields/modal/settings_field_input_12.php:497, modules/formbuilder/views/fields/modal/settings_field_input_13.php:476, modules/formbuilder/views/fields/modal/settings_field_input_18.php:490
 msgid "Border width"
 msgstr "Randbreite"
 
@@ -2694,7 +2694,7 @@ msgstr "Veröffentlicht am"
 msgid "Name"
 msgstr "Namensform"
 
-#: modules/formbuilder/views/settings/backup_settings.php:68, modules/formbuilder/views/fields/modal/field_opt_column.php:530, modules/formbuilder/views/fields/modal/field_opt_column.php:753
+#: modules/formbuilder/views/settings/backup_settings.php:68, modules/formbuilder/views/fields/modal/field_opt_column.php:557, modules/formbuilder/views/fields/modal/field_opt_column.php:780
 msgid "Size"
 msgstr "Size"
 
@@ -2900,191 +2900,199 @@ msgstr "Alert position"
 msgid "Enable Width"
 msgstr "Aktivieren"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:156, modules/formbuilder/views/fields/modal/settings_field_input_19.php:23, modules/formbuilder/views/fields/modal/settings_form_more.php:22
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:152
+msgid "Mobile"
+msgstr ""
+
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:158, modules/formbuilder/views/fields/modal/field_opt_column.php:159
+msgid "Keep grid"
+msgstr ""
+
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:183, modules/formbuilder/views/fields/modal/settings_field_input_19.php:23, modules/formbuilder/views/fields/modal/settings_form_more.php:22
 msgid "Margin"
 msgstr "Margin"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:162, modules/formbuilder/views/fields/modal/field_opt_column.php:248, modules/formbuilder/views/fields/modal/settings_field_input_18.php:70, modules/formbuilder/views/fields/modal/settings_field_label.php:453, modules/formbuilder/views/fields/modal/settings_field_validate.php:375, modules/formbuilder/views/fields/modal/settings_form_more.php:28, modules/formbuilder/views/fields/modal/settings_form_more.php:113
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:189, modules/formbuilder/views/fields/modal/field_opt_column.php:275, modules/formbuilder/views/fields/modal/settings_field_input_18.php:70, modules/formbuilder/views/fields/modal/settings_field_label.php:453, modules/formbuilder/views/fields/modal/settings_field_validate.php:375, modules/formbuilder/views/fields/modal/settings_form_more.php:28, modules/formbuilder/views/fields/modal/settings_form_more.php:113
 msgid "Top"
 msgstr "Oben"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:163, modules/formbuilder/views/fields/modal/field_opt_column.php:249, modules/formbuilder/views/fields/modal/settings_form_more.php:29, modules/formbuilder/views/fields/modal/settings_form_more.php:114
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:190, modules/formbuilder/views/fields/modal/field_opt_column.php:276, modules/formbuilder/views/fields/modal/settings_form_more.php:29, modules/formbuilder/views/fields/modal/settings_form_more.php:114
 msgid "Top margin (px)"
 msgstr "Top margin (px)"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:182, modules/formbuilder/views/fields/modal/field_opt_column.php:268, modules/formbuilder/views/fields/modal/settings_field_label.php:475, modules/formbuilder/views/fields/modal/settings_field_validate.php:397, modules/formbuilder/views/fields/modal/settings_form_more.php:47, modules/formbuilder/views/fields/modal/settings_form_more.php:133
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:209, modules/formbuilder/views/fields/modal/field_opt_column.php:295, modules/formbuilder/views/fields/modal/settings_field_label.php:475, modules/formbuilder/views/fields/modal/settings_field_validate.php:397, modules/formbuilder/views/fields/modal/settings_form_more.php:47, modules/formbuilder/views/fields/modal/settings_form_more.php:133
 msgid "Bottom"
 msgstr "Unten"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:183, modules/formbuilder/views/fields/modal/field_opt_column.php:269, modules/formbuilder/views/fields/modal/settings_form_more.php:48, modules/formbuilder/views/fields/modal/settings_form_more.php:134
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:210, modules/formbuilder/views/fields/modal/field_opt_column.php:296, modules/formbuilder/views/fields/modal/settings_form_more.php:48, modules/formbuilder/views/fields/modal/settings_form_more.php:134
 msgid "Bottom margin (px)"
 msgstr "Bottom margin (px)"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:202, modules/formbuilder/views/fields/modal/field_opt_column.php:288, modules/formbuilder/views/fields/modal/settings_field_input_18.php:103, modules/formbuilder/views/fields/modal/settings_form_more.php:67, modules/formbuilder/views/fields/modal/settings_form_more.php:153
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:229, modules/formbuilder/views/fields/modal/field_opt_column.php:315, modules/formbuilder/views/fields/modal/settings_field_input_18.php:103, modules/formbuilder/views/fields/modal/settings_form_more.php:67, modules/formbuilder/views/fields/modal/settings_form_more.php:153
 msgid "left"
 msgstr "left"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:203, modules/formbuilder/views/fields/modal/field_opt_column.php:289, modules/formbuilder/views/fields/modal/settings_form_more.php:68, modules/formbuilder/views/fields/modal/settings_form_more.php:154
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:230, modules/formbuilder/views/fields/modal/field_opt_column.php:316, modules/formbuilder/views/fields/modal/settings_form_more.php:68, modules/formbuilder/views/fields/modal/settings_form_more.php:154
 msgid "Left margin (px)"
 msgstr "Left margin (px)"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:222, modules/formbuilder/views/fields/modal/field_opt_column.php:308, modules/formbuilder/views/fields/modal/settings_form_more.php:87, modules/formbuilder/views/fields/modal/settings_form_more.php:173
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:249, modules/formbuilder/views/fields/modal/field_opt_column.php:335, modules/formbuilder/views/fields/modal/settings_form_more.php:87, modules/formbuilder/views/fields/modal/settings_form_more.php:173
 msgid "right"
 msgstr "Rechts"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:223, modules/formbuilder/views/fields/modal/field_opt_column.php:309, modules/formbuilder/views/fields/modal/settings_form_more.php:88, modules/formbuilder/views/fields/modal/settings_form_more.php:174
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:250, modules/formbuilder/views/fields/modal/field_opt_column.php:336, modules/formbuilder/views/fields/modal/settings_form_more.php:88, modules/formbuilder/views/fields/modal/settings_form_more.php:174
 msgid "Right margin (px)"
 msgstr "Right margin (px)"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:242, modules/formbuilder/views/fields/modal/settings_form_more.php:107
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:269, modules/formbuilder/views/fields/modal/settings_form_more.php:107
 msgid "Padding"
 msgstr "Innenabstand Oben"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:329, modules/formbuilder/views/fields/modal/settings_field_input_1.php:237, modules/formbuilder/views/fields/modal/settings_field_input_11.php:24, modules/formbuilder/views/fields/modal/settings_field_input_12.php:34, modules/formbuilder/views/fields/modal/settings_field_input_13.php:36, modules/formbuilder/views/fields/modal/settings_field_input_8.php:24
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:356, modules/formbuilder/views/fields/modal/settings_field_input_1.php:237, modules/formbuilder/views/fields/modal/settings_field_input_11.php:24, modules/formbuilder/views/fields/modal/settings_field_input_12.php:34, modules/formbuilder/views/fields/modal/settings_field_input_13.php:36, modules/formbuilder/views/fields/modal/settings_field_input_8.php:24
 msgid "Text"
 msgstr "Text"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:336
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:363
 msgid "Color for texts inner field"
 msgstr "Color for texts inner field"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:365, modules/formbuilder/views/fields/modal/field_opt_column.php:366
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:392, modules/formbuilder/views/fields/modal/field_opt_column.php:393
 msgid "Enable background"
 msgstr "Hintergrund"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:382
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:409
 msgid "Background type"
 msgstr "Hintergrund"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:383
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:410
 msgid "Choose background type"
 msgstr "Choose background type"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:422
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:449
 msgid "Color for background"
 msgstr "Farbe (Focus)"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:449
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:476
 msgid "Start color for background"
 msgstr "Start color for background"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:472
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:499
 msgid "End color for background"
 msgstr "End color for background"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:494
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:521
 msgid "Image"
 msgstr "Bilder"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:510
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:537
 msgid "Update Image"
 msgstr "Bild aktualisieren"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:531
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:558
 msgid "Background size"
 msgstr "Hintergrundbild"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:571
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:598
 msgid "Repeat"
 msgstr "Repeat"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:572
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:599
 msgid "Background repeat"
 msgstr "Hintergrund"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:601
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:628
 msgid "Position"
 msgstr "Option:"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:602
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:629
 msgid "Background position"
 msgstr "Hintergrundfarbe"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:630
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:657
 msgid "Enable Border"
 msgstr "Aktivieren"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:631
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:658
 msgid "Enable border"
 msgstr "Aktivieren"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:649
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:676
 msgid "Color for border"
 msgstr "Color for border"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:669
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:696
 msgid "Border type"
 msgstr "Rahmenstil"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:670
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:697
 msgid "Choose border type"
 msgstr "Rahmenstil"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:707
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:734
 msgid "Width"
 msgstr "Width"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:735, modules/formbuilder/views/fields/modal/field_opt_column.php:736
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:762, modules/formbuilder/views/fields/modal/field_opt_column.php:763
 msgid "Enable border radius"
 msgstr "Border Radius"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:754
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:781
 msgid "Drag the slider to increase the size of border radius"
 msgstr "Drag the slider to increase the size of border radius"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:776
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:803
 msgid "Shadow"
 msgstr "Box Schatten"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:782, modules/formbuilder/views/fields/modal/field_opt_column.php:783
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:809, modules/formbuilder/views/fields/modal/field_opt_column.php:810
 msgid "Enable shadow"
 msgstr "Textschatten"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:801
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:828
 msgid "Shadow color"
 msgstr "Startfarbe"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:823
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:850
 msgid "Horizontal"
 msgstr "Horizontale"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:824
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:851
 msgid "Drag the slider to modify horizontal value"
 msgstr "Drag the slider to modify horizontal value"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:847
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:874
 msgid "Vertical"
 msgstr "V"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:848
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:875
 msgid "Drag the slider to modify vertical value"
 msgstr "Drag the slider to modify vertical value"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:871
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:898
 msgid "Blur"
 msgstr "Blur"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:872
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:899
 msgid "Drag the slider to modify blur value"
 msgstr "Drag the slider to modify blur value"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:912, modules/formbuilder/views/fields/modal/settings_form_more.php:201
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:939, modules/formbuilder/views/fields/modal/settings_form_more.php:201
 msgid "ID selector"
 msgstr "ID selector"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:913, modules/formbuilder/views/fields/modal/settings_form_more.php:202
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:940, modules/formbuilder/views/fields/modal/settings_form_more.php:202
 msgid "ID selector let you control through css or javascript"
 msgstr "ID selector let you control through css or javascript"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:931, modules/formbuilder/views/fields/modal/settings_form_more.php:220
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:958, modules/formbuilder/views/fields/modal/settings_form_more.php:220
 msgid "CSS class"
 msgstr "CSS class"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:932, modules/formbuilder/views/fields/modal/settings_form_more.php:221
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:959, modules/formbuilder/views/fields/modal/settings_form_more.php:221
 msgid "CSS class let you control through css or javascript"
 msgstr "CSS class let you control through css or javascript"
 
-#: modules/formbuilder/views/fields/modal/field_opt_column.php:951, modules/formbuilder/views/fields/modal/field_opt_column.php:952, modules/formbuilder/views/fields/modal/settings_form_more.php:240, modules/formbuilder/views/fields/modal/settings_form_more.php:241
+#: modules/formbuilder/views/fields/modal/field_opt_column.php:978, modules/formbuilder/views/fields/modal/field_opt_column.php:979, modules/formbuilder/views/fields/modal/settings_form_more.php:240, modules/formbuilder/views/fields/modal/settings_form_more.php:241
 msgid "Additional css"
 msgstr "Zusätzliches CSS"
 
