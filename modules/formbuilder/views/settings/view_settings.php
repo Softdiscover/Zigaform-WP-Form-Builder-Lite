@@ -54,12 +54,12 @@ if (!defined('ABSPATH')) {
                                                                 <select class="sfdc-form-control input-sm" name="language" id="language" data-placeholder="Select here..">
                                                                     <?php
                                                                     foreach ($lang_list as $frow) :
-                                                                    ?>
+                                                                        ?>
                                                                         <?php $sel = ($frow['val'] == $language) ? ' selected="selected"' : ''; ?>
                                                                         <option value="<?php echo $frow['val']; ?>" <?php echo $sel; ?>>
                                                                             <?php echo $frow['label']; ?>
                                                                         </option>
-                                                                    <?php
+                                                                        <?php
                                                                     endforeach;
                                                                     ?>
                                                                     <?php unset($frow); ?>

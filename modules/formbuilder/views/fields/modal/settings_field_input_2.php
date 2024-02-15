@@ -17,7 +17,7 @@ if (! defined('ABSPATH')) {
 ?>
 
 <div class="uifm-set-section-input2">
-    <div id="uifm-section-input2-cus">
+    <div id="uifm-section-input2-custom-opts-theme1">
     <div class="sfdc-row">
             <div class="sfdc-col-sm-12">
                 <div class="sfdc-form-group">

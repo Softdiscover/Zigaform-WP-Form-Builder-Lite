@@ -22784,8 +22784,7 @@ rocketform();
 				obj.find('.uifm-input2-wrap').html('');
 
 				switch (parseInt(f_type)) {
-
-					 					case 11:
+					case 11:
 						obj.find('.uifm-input2-wrap').append('<select class="sfdc-form-control uifm-input2-opt-main" multiple ></select>');
 						$.each(values, function(index, value) {
 							newoptprev = '<option data-inp2-opt-index="' + index + '" ';
@@ -22862,8 +22861,7 @@ rocketform();
 			var options = rocketform.getUiData5('steps_src', parseInt(f_step), f_id, 'input2', 'options');
 
 			switch (parseInt(f_type)) {
-
-				 				case 9:
+				case 9:
 				case 11:
 					var el_checked = el.is(':checked') ? 1 : 0;
 					var el_box_index = el.closest('.uifm-fld-inp2-options-row');
@@ -22893,8 +22891,7 @@ rocketform();
 				.find("[data-inp2-opt-index='" + opt_index + "']");
 
 			switch (parseInt(f_type)) {
-
-				 				case 11:
+				case 11:
 					if (parseInt(stl1_st) === 0) {
 						prev_el_sel.prop('selected', opt_value);
 					} else if (parseInt(stl1_st) === 1) {

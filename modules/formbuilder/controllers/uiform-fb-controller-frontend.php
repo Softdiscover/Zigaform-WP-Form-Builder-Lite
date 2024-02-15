@@ -328,31 +328,31 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         switch (strval($vars['atr1'])) {
             case 'label':
                 ob_start();
-?>
+                ?>
                 <span data-zgfm-id="<?php echo $vars['id']; ?>" data-zgfm-type="0" data-zgfm-atr="0" class="zgfm-recfvar-obj"></span>
-            <?php
+                <?php
                 $output = ob_get_contents();
                 ob_end_clean();
                 break;
             case 'input':
                 ob_start();
-            ?>
+                ?>
                 <span data-zgfm-id="<?php echo $vars['id']; ?>" data-zgfm-atr="1" class="zgfm-recfvar-obj"></span>
-            <?php
+                <?php
                 $output = ob_get_contents();
                 ob_end_clean();
                 break;
             case 'amount':
                 ob_start();
-            ?>
+                ?>
                 <span data-zgfm-id="<?php echo $vars['id']; ?>" data-zgfm-atr="2" class="zgfm-recfvar-obj"></span>
-            <?php
+                <?php
                 $output = ob_get_contents();
                 ob_end_clean();
                 break;
             case 'qty':
                 ob_start();
-            ?>
+                ?>
                 <span data-zgfm-id="<?php echo $vars['id']; ?>" data-zgfm-atr="3" class="zgfm-recfvar-obj"></span>
                 <?php
                 $output = ob_get_contents();
@@ -385,9 +385,9 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                 case 'calc':
                     ob_start();
                     if (isset($vars['atr1']) && intval($vars['atr1']) >= 0) {
-                ?>
+                        ?>
                         <div class="zgfm-f-calc-var-lbl zgfm-f-calc-var<?php echo $vars['atr1']; ?>-lbl"></div>
-                    <?php
+                        <?php
                     }
                     $output = ob_get_contents();
                     ob_end_clean();
@@ -397,23 +397,23 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                     ob_start();
                     ?>
                     <span class="uiform-stickybox-symbol"></span>
-                <?php
+                    <?php
                     $output = ob_get_contents();
                     ob_end_clean();
                     break;
                 case 'form_cur_code':
                     ob_start();
-                ?>
+                    ?>
                     <span class="uiform-stickybox-currency"></span>
-                <?php
+                    <?php
                     $output = ob_get_contents();
                     ob_end_clean();
                     break;
                 case 'form_subtotal_amount':
                     ob_start();
-                ?>
+                    ?>
                     <span class="uiform-stickybox-subtotal">0</span>
-                <?php
+                    <?php
 
                     $output = ob_get_contents();
                     ob_end_clean();
@@ -421,9 +421,9 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                 case 'form_tax_amount':
                     ob_start();
 
-                ?>
+                    ?>
                     <span class="uiform-stickybox-tax">0</span>
-            <?php
+                    <?php
 
                     $output = ob_get_contents();
                     ob_end_clean();
@@ -1590,7 +1590,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                 echo $shortcode_string;
                 // buffer 4
                 ob_start();
-            ?>
+                ?>
                 <script type="text/javascript">
                     jQuery("#rockfm_form_<?php echo $id; ?>").ready(function() {
                         zgfm_front_helper.load_cssfiles(<?php echo $id; ?>);
@@ -1600,7 +1600,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                         rocketfm.loadform_init();
                     });
                 </script>
-<?php
+                <?php
                 $js_string = ob_get_clean();
                 // end buffer 4
 
@@ -1794,12 +1794,15 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
 
     public function load_form_resources_alt($id, $is_demo = 0)
     {
-
-        if (file_exists(UIFORM_FORMS_DIR . '/assets/frontend/css/rockfm_form' . $id . '.css')) {
+        if ( file_exists(WP_CONTENT_DIR.'/uploads/softdiscover/' . UIFORM_SLUG . '/rockfm_form' . $id . '.css')) {
+            wp_register_style(self::PREFIX . 'rockfm_form' . $id, site_url().'/wp-content/uploads/softdiscover/' . UIFORM_SLUG . '/rockfm_form' . $id . '.css?' . date('Ymdgis'), array(), UIFORM_VERSION, 'all');
+            wp_enqueue_style(self::PREFIX . 'rockfm_form' . $id);
+        } elseif ( file_exists(UIFORM_FORMS_DIR . '/assets/frontend/css/rockfm_form' . $id . '.css')) {
             wp_register_style(self::PREFIX . 'rockfm_form' . $id, UIFORM_FORMS_URL . '/assets/frontend/css/rockfm_form' . $id . '.css?' . date('Ymdgis'), array(), UIFORM_VERSION, 'all');
             wp_enqueue_style(self::PREFIX . 'rockfm_form' . $id);
         }
 
+        
         // load form variables
         $form_variables                        = array();
         //$form_variables['_uifmvar']['addon']   = self::$_addons_jsactions;
@@ -1812,11 +1815,11 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
     /**
      * show version.
      *
-     * @author	Unknown
-     * @since	v0.0.1
-     * @version	v1.0.0	Sunday, January 28th, 2024.
-     * @access	public
-     * @return	void
+     * @author  Unknown
+     * @since   v0.0.1
+     * @version v1.0.0  Sunday, January 28th, 2024.
+     * @access  public
+     * @return  void
      */
     public function shortcode_show_version()
     {

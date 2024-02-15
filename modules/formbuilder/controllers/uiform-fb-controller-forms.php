@@ -976,9 +976,16 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
                 $gen_return['output_css']  = self::render_template('formbuilder/views/forms/formhtml_css_init.php', $data3) . $gen_return['output_css'];
                 $data4['fmb_html_css']     = $gen_return['output_css'];
                 $this->wpdb->update($this->formsmodel->table, $data4, $where);
+                
+                if ($this->createCustomFolder()) {
+                    $newPublicDir = WP_CONTENT_DIR.'/uploads/softdiscover/' . UIFORM_SLUG;
+                } else {
+                    $newPublicDir = UIFORM_FORMS_DIR . '/assets/frontend/css/';
+                }
+                
                 // generate form css
                 ob_start();
-                $pathCssFile = UIFORM_FORMS_DIR . '/assets/frontend/css/rockfm_form' . $json['id'] . '.css';
+                $pathCssFile = $newPublicDir . '/rockfm_form' . $json['id'] . '.css';
                 $f           = fopen($pathCssFile, 'w');
                 fwrite($f, $gen_return['output_css']);
                 fclose($f);
@@ -1036,26 +1043,6 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
                     throw new Exception($output_error);
                 }
         } catch (Exception $e) {
-            /*
-            there is no visitor table
-            $data = array();
-            $error = array();
-            $error['Message'] = $e->getMessage();
-            $error['Trace'] = $e->getTrace();
-            $ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
-            $user_agent = isset($_SERVER["HTTP_USER_AGENT"]) ? $_SERVER["HTTP_USER_AGENT"] : '';
-            $hash = hash('crc32', md5($ip . $user_agent));
-
-            $referer = isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"] : '';
-            $data['vis_uniqueid'] = $hash;
-            $data['vis_user_agent'] = $user_agent;
-            $data['vis_page'] = $_SERVER['REQUEST_URI'];
-            $data['vis_referer'] = $referer;
-            $data['vis_error'] = Uiform_Form_Helper::array2xml($error);
-            $data['vis_ip'] = $ip;
-            $data['vis_last_date'] = date('Y-m-d H:i:s');
-            $this->wpdb->insert($this->model_vis_error->table, $data);*/
-
             $json                 = array();
             $json['status']       = 'failed';
             $json['modal_header'] = __('Error on saving form', 'FRocket_admin');
@@ -1068,6 +1055,59 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         echo json_encode($json);
         wp_die();
     }
+
+    protected function createCustomFolder()
+    {
+
+        // Define the path where you want to create the folder
+        $folder_path = WP_CONTENT_DIR.'/uploads/softdiscover';
+        
+        // Check if the folder already exists
+        if (file_exists($folder_path.'/'.UIFORM_SLUG)) {
+            return true;
+        }
+
+        // Load WordPress filesystem API
+        if (!function_exists('WP_Filesystem')) {
+            require_once ABSPATH . '/wp-admin/includes/file.php';
+        }
+
+        // Initialize the WordPress filesystem
+        if (!function_exists('WP_Filesystem')) {
+            require_once ABSPATH . '/wp-admin/includes/file.php';
+        }
+        if (!function_exists('WP_Filesystem')) {
+            require_once ABSPATH . '/wp-admin/includes/file.php';
+        }
+        // Initialize the WordPress filesystem
+        if (!WP_Filesystem()) {
+            // Failed to initialize WordPress filesystem, shouldn't happen
+            return false;
+        }
+
+
+        // Create the folder
+        WP_Filesystem();
+        global $wp_filesystem;
+        
+        if (!file_exists($folder_path)) {
+            $wp_filesystem->mkdir($folder_path);
+        }
+        
+        $wp_filesystem->mkdir($folder_path.'/'.UIFORM_SLUG);
+        // Check if folder creation was successful
+        if (!$wp_filesystem->is_dir($folder_path)) {
+            // Failed to create folder, handle the error
+            return false;
+        } else {
+            // Folder created successfully
+            return true;
+        }
+
+
+        return true;
+    }
+
 
     protected function generate_form_getField($child_field)
     {
@@ -1760,7 +1800,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
                     $count_str   = 0;
                     if (isset($child_field['inner'])) {
                         foreach ($child_field['inner'] as $key => $value) {
-                            $str_output .= '<div data-zgpb-blocknum="' . $value['num_tab'] . '" class="zgpb-fl-gs-block-style sfdc-col-sm-' . $value['cols'] . '">';
+                            $str_output .= '<div data-zgpb-blocknum="' . $value['num_tab'] . '" class="zgpb-fl-gs-block-style sfdc-col-xs-' . $value['cols'] . ' sfdc-col-sm-' . $value['cols'] . '">';
 
                             // generate class
                             $tmp_class = 'zgpb-fl-gs-block-inner ';
@@ -1889,7 +1929,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
                                 $tmp_col = $tmp_col_rest;
                             }
 
-                            $str_output .= '<div class="zgpb-fl-gs-block-style sfdc-col-sm-' . $tmp_col . '" data-zgpb-blocknum="' . $value['num_tab'] . '" data-zgpb-width="" data-zgpb-blockcol="' . $tmp_col . '">';
+                            $str_output .= '<div class="zgpb-fl-gs-block-style sfdc-col-xs-' . $tmp_col . ' sfdc-col-sm-' . $tmp_col . '" data-zgpb-blocknum="' . $value['num_tab'] . '" data-zgpb-width="" data-zgpb-blockcol="' . $tmp_col . '">';
                             $str_output .= '<div class="uiform-items-container zgpb-fl-gs-block-inner">';
 
                             if (! empty($value['children'])) {
