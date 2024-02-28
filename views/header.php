@@ -4,16 +4,16 @@ if (! defined('ABSPATH')) {
 }
 ?>
 <div class="uiform-editing-header">
-   <nav class="navbar navbar-default" role="navigation">
-  <div class="navbar-inner">
-<div class="navbar-header">
+   <nav class="sfdc-navbar sfdc-navbar-default" role="navigation">
+  <div class="sfdc-navbar-inner">
+<div class="sfdc-navbar-header">
           <button data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
             <span class="sr-only"><?php echo __('Toggle navigation', 'FRocket_admin'); ?></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="javascript:void(0);" class="navbar-brand"><img title="Zigaform Form" src="<?php echo UIFORM_FORMS_URL; ?>/assets/backend/image/rockfm-logo-header.png"></a>
+          <a href="javascript:location.reload();" class="navbar-brand"><img title="Zigaform Form" src="<?php echo UIFORM_FORMS_URL; ?>/assets/backend/image/rockfm-logo-header.png"></a>
         </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

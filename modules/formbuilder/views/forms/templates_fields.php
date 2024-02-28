@@ -2072,7 +2072,28 @@ if (! defined('ABSPATH')) {
                 </div>
 
             </div>
-              
+            <div class="space10"></div>
+            <div class="sfdc-col-md-12">
+                <div class="sfdc-col-md-6">
+                        <div class="sfdc-form-group">
+                        <label><?php echo __('Enable quantity', 'FRocket_admin'); ?></label>
+                        <input 
+                            class="switch-field-17 uifm_frm_inp17_opt_qty_st"
+                            type="checkbox"/>
+                    </div>
+
+                </div>
+                    <div class="sfdc-col-md-6">
+                    <div class="sfdc-form-group">
+                        <label><?php echo __('Maximum quantity', 'FRocket_admin'); ?></label>
+                         <input  
+                            class="uifm_fld_inp17_spinner uifm_frm_inp17_opt_qty_max"
+                            type="text"
+                            value="2">
+                    </div>
+                </div>
+            </div>
+            <div class="space10"></div>  
             <div class="space10"></div>
             <div class="sfdc-col-md-12 uifm_frm_inp17_opt_img_list_1">
                 <div class="sfdc-col-md-12">
@@ -2169,23 +2190,14 @@ if (! defined('ABSPATH')) {
                                                 <i class="fa fa-square-o"></i>
                                             </div>
                                             <div style="display:none" class="uifm-dcheckbox-item-qty-wrap">
-                                                <div class="sfdc-input-group">
-                                                    <span class="sfdc-input-group-btn">
-                                                        <button type="button" class="sfdc-btn sfdc-btn-default" data-value="decrease">
-                                                            <span class="sfdc-glyphicon sfdc-glyphicon-minus"></span>
-                                                        </button>
-                                                    </span>
-                                                    <span class="sfdc-input-group-btn">
-                                                        <input type="text" 
-                                                               data-max="40"
-                                                               data-min="1"
-                                                               class="uifm-dcheckbox-item-qty-num" value="1">   
-                                                    </span>
-                                                    <span class="sfdc-input-group-btn">
-                                                        <button type="button" class="sfdc-btn sfdc-btn-default" data-value="increase">
-                                                            <span class="sfdc-glyphicon sfdc-glyphicon-plus"></span>
-                                                        </button>
-                                                    </span>
+                                                <div class="uifm-dfield-spinner">
+                                                  <button class="uifm-dfield-minus sfdc-btn sfdc-btn-default" data-value="decrease">-</button>
+                                                  <input type="hidden" 
+                                                                data-max="40"
+                                                                data-min="1"
+                                                                class="uifm-dcheckbox-item-qty-num" value="1">
+                                                  <div class="uifm-dfield-input " contenteditable="true">1</div>
+                                                  <button class="uifm-dfield-plus sfdc-btn sfdc-btn-default" data-value="increase">+</button>
                                                 </div>
                                             </div>
                                             <div class="uifm-dcheckbox-item-showgallery  sfdc-btn-primary">
@@ -2230,23 +2242,14 @@ if (! defined('ABSPATH')) {
                                                 <i class="fa fa-check-circle-o"></i>
                                             </div>
                                             <div style="display:none" class="uifm-dcheckbox-item-qty-wrap">
-                                                <div class="sfdc-input-group">
-                                                    <span class="sfdc-input-group-btn">
-                                                        <button type="button" class="sfdc-btn sfdc-btn-default" data-value="decrease">
-                                                            <span class="sfdc-glyphicon sfdc-glyphicon-minus"></span>
-                                                        </button>
-                                                    </span>
-                                                    <span class="sfdc-input-group-btn">
-                                                        <input type="text" 
-                                                               data-max="40"
-                                                               data-min="1"
-                                                               class="uifm-dcheckbox-item-qty-num" value="1">   
-                                                    </span>
-                                                    <span class="sfdc-input-group-btn">
-                                                        <button type="button" class="sfdc-btn sfdc-btn-default" data-value="increase">
-                                                            <span class="sfdc-glyphicon sfdc-glyphicon-plus"></span>
-                                                        </button>
-                                                    </span>
+                                                <div class="uifm-dfield-spinner">
+                                                  <button class="uifm-dfield-minus sfdc-btn sfdc-btn-default" data-value="decrease">-</button>
+                                                  <input type="hidden" 
+                                                                data-max="40"
+                                                                data-min="1"
+                                                                class="uifm-dcheckbox-item-qty-num" value="1">
+                                                  <div class="uifm-dfield-input " contenteditable="true">1</div>
+                                                  <button class="uifm-dfield-plus sfdc-btn sfdc-btn-default" data-value="increase">+</button>
                                                 </div>
                                             </div>
                                             <div class="uifm-dcheckbox-item-showgallery  sfdc-btn-primary">
