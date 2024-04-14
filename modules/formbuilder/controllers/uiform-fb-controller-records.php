@@ -12,7 +12,7 @@
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
  * @link      https://softdiscover.com/zigaform/wordpress-form-builder/
  */
-if (! defined('ABSPATH')) {
+if (!defined('ABSPATH')) {
     exit('No direct script access allowed');
 }
 if (class_exists('Uiform_Fb_Controller_Records')) {
@@ -63,32 +63,32 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
         $this->model_fields = self::$_models['formbuilder']['fields'];
 
         // ajax for loading forms
-        add_action('wp_ajax_rocket_fbuilder_load_records_byform', array( &$this, 'ajax_load_record_byform' ));
+        add_action('wp_ajax_rocket_fbuilder_load_records_byform', array(&$this, 'ajax_load_record_byform'));
         // custom report
-        add_action('wp_ajax_rocket_fbuilder_creport_byform', array( &$this, 'ajax_load_customreport' ));
+        add_action('wp_ajax_rocket_fbuilder_creport_byform', array(&$this, 'ajax_load_customreport'));
         // save custom report
-        add_action('wp_ajax_rocket_fbuilder_creport_savefields', array( &$this, 'ajax_load_savereport' ));
+        add_action('wp_ajax_rocket_fbuilder_creport_savefields', array(&$this, 'ajax_load_savereport'));
         // view charts
-        add_action('wp_ajax_rocket_fbuilder_loadchart_byform', array( &$this, 'ajax_load_viewchart' ));
+        add_action('wp_ajax_rocket_fbuilder_loadchart_byform', array(&$this, 'ajax_load_viewchart'));
 
         //list records
         //ajax_recordlist_sendfilter
-        add_action('wp_ajax_zgfm_fbuilder_recordlist_sendfilter', array( &$this, 'ajax_recordlist_sendfilter' ));
+        add_action('wp_ajax_zgfm_fbuilder_recordlist_sendfilter', array(&$this, 'ajax_recordlist_sendfilter'));
 
         // list form update status
-        add_action('wp_ajax_zgfm_fbuilder_list_record_updatest', array( &$this, 'ajax_list_record_updatest' ));
+        add_action('wp_ajax_zgfm_fbuilder_list_record_updatest', array(&$this, 'ajax_list_record_updatest'));
 
         // delete record
-        add_action('wp_ajax_rocket_fbuilder_delete_record', array( &$this, 'ajax_delete_record' ));
+        add_action('wp_ajax_rocket_fbuilder_delete_record', array(&$this, 'ajax_delete_record'));
     }
 
     public function ajax_list_record_updatest()
     {
 
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
-        $list_ids = ( isset($_POST['id']) && $_POST['id'] ) ? array_map(array( 'Uiform_Form_Helper', 'sanitizeRecursive' ), $_POST['id']) : array();
-        $form_st  = ( isset($_POST['form_st']) && $_POST['form_st'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['form_st']) : '';
-        $is_trash  = ( isset($_POST['is_trash']) && $_POST['is_trash'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['is_trash']) : '';
+        $list_ids = (isset($_POST['id']) && $_POST['id']) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive'), $_POST['id']) : array();
+        $form_st  = (isset($_POST['form_st']) && $_POST['form_st']) ? Uiform_Form_Helper::sanitizeInput($_POST['form_st']) : '';
+        $is_trash  = (isset($_POST['is_trash']) && $_POST['is_trash']) ? Uiform_Form_Helper::sanitizeInput($_POST['is_trash']) : '';
         if ($list_ids) {
             if (intval($is_trash) === 0) {
                 switch (intval($form_st)) {
@@ -151,7 +151,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
 
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
-        $form_id = ( isset($_POST['form_id']) && $_POST['form_id'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : 0;
+        $form_id = (isset($_POST['form_id']) && $_POST['form_id']) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : 0;
 
         $data_chart = $this->model_record->getChartDataByIdForm($form_id);
 
@@ -167,32 +167,32 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
 
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
-        $form_id      = ( isset($_POST['form_id']) && $_POST['form_id'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : 0;
-        $data_fields  = ( isset($_POST['data']) && ! empty($_POST['data']) ) ? array_map(array( 'Uiform_Form_Helper', 'sanitizeRecursive' ), $_POST['data']) : array();
-        $data_fields2 = ( isset($_POST['data2']) && ! empty($_POST['data2']) ) ? array_map(array( 'Uiform_Form_Helper', 'sanitizeRecursive' ), $_POST['data2']) : array();
+        $form_id      = (isset($_POST['form_id']) && $_POST['form_id']) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : 0;
+        $data_fields  = (isset($_POST['data']) && !empty($_POST['data'])) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive'), $_POST['data']) : array();
+        $data_fields2 = (isset($_POST['data2']) && !empty($_POST['data2'])) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive'), $_POST['data2']) : array();
 
         /* update all fields by form */
-        $where = array( 'form_fmb_id' => $form_id );
-        $data  = array( 'fmf_status_qu' => 0 );
+        $where = array('form_fmb_id' => $form_id);
+        $data  = array('fmf_status_qu' => 0);
         $this->wpdb->update($this->model_fields->table, $data, $where);
-        if (! empty($data_fields)) {
+        if (!empty($data_fields)) {
             foreach ($data_fields as $value) {
                 $where = array(
                     'form_fmb_id'  => $form_id,
                     'fmf_uniqueid' => $value,
                 );
-                $data  = array( 'fmf_status_qu' => 1 );
+                $data  = array('fmf_status_qu' => 1);
                 $this->wpdb->update($this->model_fields->table, $data, $where);
             }
 
             // update order for all fields according to form
-            if (! empty($data_fields2)) {
+            if (!empty($data_fields2)) {
                 foreach ($data_fields2 as $value) {
                     $where = array(
                         'form_fmb_id'  => $form_id,
                         'fmf_uniqueid' => $value['name'],
                     );
-                    $data  = array( 'order_rec' => $value['value'] );
+                    $data  = array('order_rec' => $value['value']);
 
                     $this->wpdb->update($this->model_fields->table, $data, $where);
                 }
@@ -206,7 +206,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
 
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
-        $form_id = ( isset($_POST['form_id']) && $_POST['form_id'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : 0;
+        $form_id = (isset($_POST['form_id']) && $_POST['form_id']) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : 0;
 
         $all_fields = $this->model_record->getAllFieldsForReport($form_id);
 
@@ -237,7 +237,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
 
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
-        $form_id = ( isset($_POST['form_id']) && $_POST['form_id'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : 0;
+        $form_id = (isset($_POST['form_id']) && $_POST['form_id']) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : 0;
 
         // records to show
         $name_fields            = $this->model_record->getNameFieldEnabledByForm($form_id, true);
@@ -247,7 +247,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
         // process record
         $flag_types = array();
         foreach ($name_fields as $key => $value) {
-            $flag_types[ $key ] = $value->fby_id;
+            $flag_types[$key] = $value->fby_id;
         }
 
         $pre_datatable_body = (array) $this->model_record->getDetailRecord($name_fields, $form_id);
@@ -255,15 +255,15 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
         foreach ($pre_datatable_body as $key => $value) {
             $count1 = 0;
             foreach ($value as $key2 => $value2) {
-                 $new_record[ $key ][ $key2 ] = $value2;
+                $new_record[$key][$key2] = $value2;
 
-                if (isset($flag_types[ $count1 ])) {
-                    switch (intval($flag_types[ $count1 ])) {
+                if (isset($flag_types[$count1])) {
+                    switch (intval($flag_types[$count1])) {
                         case 12:
                         case 13:
                             // checking if image exists
                             if (@is_array(getimagesize($value2))) {
-                                 $new_record[ $key ][ $key2 ] = '<img width="100px" src="' . $value2 . '"/>';
+                                $new_record[$key][$key2] = '<img width="100px" src="' . $value2 . '"/>';
                             }
                             break;
                         default:
@@ -286,8 +286,8 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
 
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
-        $rec_id = ( isset($_POST['rec_id']) && $_POST['rec_id'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['rec_id']) : 0;
-        $is_trash = ( isset($_POST['is_trash']) && $_POST['is_trash'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['is_trash']) : 0;
+        $rec_id = (isset($_POST['rec_id']) && $_POST['rec_id']) ? Uiform_Form_Helper::sanitizeInput($_POST['rec_id']) : 0;
+        $is_trash = (isset($_POST['is_trash']) && $_POST['is_trash']) ? Uiform_Form_Helper::sanitizeInput($_POST['is_trash']) : 0;
 
         if (intval($is_trash) === 0) {
             $where   = array(
@@ -311,20 +311,20 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
 
     public function info_record()
     {
-        $id_rec        = ( isset($_GET['id_rec']) && $_GET['id_rec'] ) ? Uiform_Form_Helper::sanitizeInput($_GET['id_rec']) : 0;
+        $id_rec        = (isset($_GET['id_rec']) && $_GET['id_rec']) ? Uiform_Form_Helper::sanitizeInput($_GET['id_rec']) : 0;
         $name_fields   = $this->model_record->getNameField($id_rec);
         $form_rec_data = $this->model_record->getFormDataById($id_rec);
 
         $name_fields_check = array();
         foreach ($name_fields as $value) {
-            $name_fields_check[ $value->fmf_uniqueid ] = $value->fieldname;
+            $name_fields_check[$value->fmf_uniqueid] = $value->fieldname;
         }
         $data_record     = $this->model_record->getRecordById($id_rec);
         $record_user     = json_decode($data_record->fbh_data, true);
         $new_record_user = array();
         foreach ($record_user as $key => $value) {
-            if (isset($name_fields_check[ $key ])) {
-                $key = $name_fields_check[ $key ];
+            if (isset($name_fields_check[$key])) {
+                $key = $name_fields_check[$key];
             }
 
             switch (intval($value['type'])) {
@@ -340,7 +340,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
                     $value_new = $value['input'];
                     // checking if image exists
                     if (!empty($value_new) && @is_array(getimagesize($value_new))) {
-                         $value_new = '<img width="100px" src="' . $value_new . '"/>';
+                        $value_new = '<img width="100px" src="' . $value_new . '"/>';
                     }
 
                     $new_record_user[] = array(
@@ -349,10 +349,10 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
                     );
                     break;
                 default:
-                      $new_record_user[] = array(
-                          'field' => $value['label'],
-                          'value' => $value['input'],
-                      );
+                    $new_record_user[] = array(
+                        'field' => $value['label'],
+                        'value' => $value['input'],
+                    );
                     break;
             }
         }
@@ -380,10 +380,10 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
         $data['info_export']    = Uiform_Form_Helper::base64url_encode(json_encode($data2));
 
         $data['fmb_rec_tpl_st']      = $form_rec_data->fmb_rec_tpl_st;
-            $data['base_url']        = UIFORM_FORMS_URL . '/';
-            $data['form_id']         = $form_rec_data->form_fmb_id;
-            $data['url_form']        = site_url() . '/?uifm_fbuilder_api_handler&zgfm_action=uifm_fb_api_handler&uifm_action=show_record&uifm_mode=pdf&is_html=1&id=' . $id_rec;
-            $data['custom_template'] = self::render_template('formbuilder/views/frontend/form_summary_custom.php', $data);
+        $data['base_url']        = UIFORM_FORMS_URL . '/';
+        $data['form_id']         = $form_rec_data->form_fmb_id;
+        $data['url_form']        = site_url() . '/?uifm_fbuilder_api_handler&zgfm_action=uifm_fb_api_handler&uifm_action=show_record&uifm_mode=pdf&is_html=1&id=' . $id_rec;
+        $data['custom_template'] = self::render_template('formbuilder/views/frontend/form_summary_custom.php', $data);
 
         echo self::loadPartial('layout.php', 'formbuilder/views/records/info_record.php', $data);
     }
@@ -396,17 +396,17 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
     public function list_records()
     {
         $filter_data = get_option('zgfm_listrecords_searchfilter', false);
-        
+
         $data2       = array();
         if (empty($filter_data) && !isset($filter_data['orderby'])) {
             $data2['per_page']   = intval($this->per_page);
             $data2['orderby']    = 'asc';
         } else {
-            $data2['per_page']   = (intval($filter_data['per_page']))?:$this->per_page;
-            $data2['orderby']    = $filter_data['orderby']??'';
+            $data2['per_page']   = (intval($filter_data['per_page'])) ?: $this->per_page;
+            $data2['orderby']    = $filter_data['orderby'] ?? '';
         }
 
-        $offset          = ( isset($_GET['offset']) ) ? Uiform_Form_Helper::sanitizeInput($_GET['offset']) : 0;
+        $offset          = (isset($_GET['offset'])) ? Uiform_Form_Helper::sanitizeInput($_GET['offset']) : 0;
         $data2['offset'] = $offset;
 
         $form_data = $this->model_record->ListTotals();
@@ -436,11 +436,11 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
             $data2['per_page']   = intval($this->per_page);
             $data2['orderby']    = 'asc';
         } else {
-            $data2['per_page']   = intval($filter_data['per_page']??'');
-            $data2['orderby']    = $filter_data['orderby']??'';
+            $data2['per_page']   = intval($filter_data['per_page'] ?? '');
+            $data2['orderby']    = $filter_data['orderby'] ?? '';
         }
 
-        $offset          = ( isset($_GET['offset']) ) ? Uiform_Form_Helper::sanitizeInput($_GET['offset']) : 0;
+        $offset          = (isset($_GET['offset'])) ? Uiform_Form_Helper::sanitizeInput($_GET['offset']) : 0;
         $data2['offset'] = $offset;
 
         $form_data = $this->model_record->ListTotals();
@@ -466,11 +466,11 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
     {
         check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
-        $data_filter = ( isset($_POST['data_filter']) && $_POST['data_filter'] ) ? $_POST['data_filter'] : '';
+        $data_filter = (isset($_POST['data_filter']) && $_POST['data_filter']) ? $_POST['data_filter'] : '';
 
-        $opt_save   = ( isset($_POST['opt_save']) && $_POST['opt_save'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['opt_save']) : 0;
-        $opt_offset = ( isset($_POST['opt_offset']) && $_POST['opt_offset'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['opt_offset']) : 0;
-        $is_trash = ( isset($_POST['op_is_trash']) && $_POST['op_is_trash'] ) ? Uiform_Form_Helper::sanitizeInput($_POST['op_is_trash']) : 0;
+        $opt_save   = (isset($_POST['opt_save']) && $_POST['opt_save']) ? Uiform_Form_Helper::sanitizeInput($_POST['opt_save']) : 0;
+        $opt_offset = (isset($_POST['opt_offset']) && $_POST['opt_offset']) ? Uiform_Form_Helper::sanitizeInput($_POST['opt_offset']) : 0;
+        $is_trash = (isset($_POST['op_is_trash']) && $_POST['op_is_trash']) ? Uiform_Form_Helper::sanitizeInput($_POST['op_is_trash']) : 0;
 
         parse_str($data_filter, $data_filter_arr);
 
@@ -590,11 +590,16 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
         }
         $data[] = $tmp_ar;
 
+        $recordDelimiter = get_option('zgfm_frm_main_recexpdelimiter', '');
         foreach ($tmp_data['datatable_body'] as $key => $value) {
             $tmp_ar = array();
             foreach ($value as $key => $value2) {
                 //if ( $key != 'fbh_id' ) {
+                if ($recordDelimiter !== '' && strpos($value2, '^,^') !== false) {
+                    $tmp_ar[] = str_replace('^,^', $recordDelimiter, $value2);
+                } else {
                     $tmp_ar[] = $value2;
+                }
                 //}
             }
             $data[] = $tmp_ar;
@@ -605,7 +610,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
 
         $tsv->initialize();
         foreach ($data as $row) {
-                $tsv->addRow($row);
+            $tsv->addRow($row);
         }
         $tsv->finalize();
     }

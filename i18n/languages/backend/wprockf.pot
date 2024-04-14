@@ -1,12 +1,12 @@
-# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 6.0.8
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 6.0.8 package.
+# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 6.1.1
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 6.1.1 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 6.0.8\n"
+"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 6.1.1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-03-12 06:50+0000\n"
+"POT-Creation-Date: 2024-04-13 21:59+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -874,11 +874,11 @@ msgstr ""
 msgid "Forms in trash"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1189
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1197
 msgid "Order summary"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1570
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1578
 msgid "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 msgstr ""
 
@@ -1158,19 +1158,19 @@ msgstr ""
 msgid "Rollback"
 msgstr ""
 
-#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:25, modules/formbuilder/views/forms/ajax_variables_openmodal.php:80, modules/formbuilder/views/forms/settings_form_email.php:512, modules/formbuilder/views/forms/templates_fields.php:92, modules/formbuilder/views/forms/templates_fields.php:116
+#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:25, modules/formbuilder/views/forms/ajax_variables_openmodal.php:88, modules/formbuilder/views/forms/settings_form_email.php:512, modules/formbuilder/views/forms/templates_fields.php:92, modules/formbuilder/views/forms/templates_fields.php:116
 msgid "Field"
 msgstr ""
 
-#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:26, modules/formbuilder/views/forms/ajax_variables_openmodal.php:81, modules/formbuilder/views/forms/settings_form_email.php:513
+#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:26, modules/formbuilder/views/forms/ajax_variables_openmodal.php:89, modules/formbuilder/views/forms/settings_form_email.php:513
 msgid "Codes"
 msgstr ""
 
-#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:29, modules/formbuilder/views/forms/ajax_variables_openmodal.php:84, modules/formbuilder/views/forms/settings_form_email.php:516
+#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:29, modules/formbuilder/views/forms/ajax_variables_openmodal.php:92, modules/formbuilder/views/forms/settings_form_email.php:516
 msgid "label"
 msgstr ""
 
-#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:30, modules/formbuilder/views/forms/ajax_variables_openmodal.php:85, modules/formbuilder/views/forms/settings_form_email.php:517
+#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:30, modules/formbuilder/views/forms/ajax_variables_openmodal.php:93, modules/formbuilder/views/forms/settings_form_email.php:517
 msgid "input"
 msgstr ""
 
@@ -1194,7 +1194,7 @@ msgstr ""
 msgid "Frontend"
 msgstr ""
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:33, modules/formbuilder/views/forms/ajax_variables_openmodal.php:75
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:33, modules/formbuilder/views/forms/ajax_variables_openmodal.php:83
 msgid "Fields"
 msgstr ""
 
@@ -1224,6 +1224,14 @@ msgstr ""
 
 #: modules/formbuilder/views/forms/ajax_variables_openmodal.php:65
 msgid "User IP"
+msgstr ""
+
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:69, modules/formbuilder/views/forms/settings_form_email.php:559
+msgid "Logged Username"
+msgstr ""
+
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:73, modules/formbuilder/views/forms/settings_form_email.php:563
+msgid "Logged email"
 msgstr ""
 
 #: modules/formbuilder/views/forms/create_form.php:25
@@ -2566,7 +2574,7 @@ msgstr ""
 msgid "Upload Backup"
 msgstr ""
 
-#: modules/formbuilder/views/settings/backup_settings.php:161, modules/formbuilder/views/settings/view_settings.php:159, modules/formbuilder/views/settings/view_settings.php:154
+#: modules/formbuilder/views/settings/backup_settings.php:161, modules/formbuilder/views/settings/view_settings.php:180, modules/formbuilder/views/settings/view_settings.php:175
 msgid "Save changes"
 msgstr ""
 
@@ -2646,48 +2654,64 @@ msgstr ""
 msgid "Misc"
 msgstr ""
 
-#: modules/formbuilder/views/settings/view_settings.php:50
+#: modules/formbuilder/views/settings/view_settings.php:41
+msgid "Export Records"
+msgstr ""
+
+#: modules/formbuilder/views/settings/view_settings.php:51
 msgid "LANGUAGE"
 msgstr ""
 
-#: modules/formbuilder/views/settings/view_settings.php:50
+#: modules/formbuilder/views/settings/view_settings.php:51
 msgid "it allows to change the language"
 msgstr ""
 
-#: modules/formbuilder/views/settings/view_settings.php:76
+#: modules/formbuilder/views/settings/view_settings.php:77
 msgid "MODAL MODE"
 msgstr ""
 
-#: modules/formbuilder/views/settings/view_settings.php:76
+#: modules/formbuilder/views/settings/view_settings.php:77
 msgid "it allows to load the form in modal popups"
 msgstr ""
 
-#: modules/formbuilder/views/settings/view_settings.php:90
+#: modules/formbuilder/views/settings/view_settings.php:91
 msgid "DISABLE FIELDS FAST LOAD"
 msgstr ""
 
-#: modules/formbuilder/views/settings/view_settings.php:90
+#: modules/formbuilder/views/settings/view_settings.php:91
 msgid "it allows to disable fast loading field."
 msgstr ""
 
-#: modules/formbuilder/views/settings/view_settings.php:114
+#: modules/formbuilder/views/settings/view_settings.php:115
 msgid "Regenerate cache fields"
 msgstr ""
 
-#: modules/formbuilder/views/settings/view_settings.php:114
+#: modules/formbuilder/views/settings/view_settings.php:115
 msgid "Generate cache field"
 msgstr ""
 
-#: modules/formbuilder/views/settings/view_settings.php:122
+#: modules/formbuilder/views/settings/view_settings.php:123
 msgid "Regeneate cache fields"
 msgstr ""
 
-#: modules/formbuilder/views/settings/view_settings.php:133
+#: modules/formbuilder/views/settings/view_settings.php:134
 msgid "Hide Version"
 msgstr ""
 
-#: modules/formbuilder/views/settings/view_settings.php:133
+#: modules/formbuilder/views/settings/view_settings.php:134
 msgid "It shows the version of the software in front."
+msgstr ""
+
+#: modules/formbuilder/views/settings/view_settings.php:151
+msgid "Custom delimiter for multiple options"
+msgstr ""
+
+#: modules/formbuilder/views/settings/view_settings.php:152
+msgid "Custome delimiter"
+msgstr ""
+
+#: modules/formbuilder/views/settings/view_settings.php:156
+msgid "Add your delimiter"
 msgstr ""
 
 #: modules/formbuilder/views/fields/modal/field_opt_checkbox_extra.php:31

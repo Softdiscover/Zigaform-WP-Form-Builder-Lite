@@ -10,6 +10,7 @@ class Uiform_Backup
 {
     private $tables = array();
     private $suffix = 'd-M-Y_H-i-s';
+    private $wpdb;
     /**
      * Constructor
      *
@@ -161,9 +162,7 @@ class Uiform_Backup
         $dbTables[] = $installdb->form_fields_type;
         $dbTables[] = $installdb->form_fields;
         $dbTables[] = $installdb->settings;
-        $dbTables[] = $installdb->pay_gateways;
-        $dbTables[] = $installdb->pay_records;
-        $dbTables[] = $installdb->pay_logs;
+        
         // $dbTables[]=$installdb->visitor;
         // $dbTables[]=$installdb->visitor_error;
         $this->tables = $dbTables;

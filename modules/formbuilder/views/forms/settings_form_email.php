@@ -555,6 +555,14 @@ $default_template = ob_get_clean();
                                                         <td><?php echo __('Form record id', 'FRocket_admin'); ?></td>
                                                         <td><textarea style="width: 284px;" onclick="this.select();">[uifm_var opt="rec_id"]</textarea></td>
                                                     </tr>
+                                                    <tr>
+                                                        <td><?php echo __('Logged Username', 'FRocket_admin'); ?></td>
+                                                        <td><textarea onclick="this.select();">[uifm_var opt="logged_username"]</textarea></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><?php echo __('Logged email', 'FRocket_admin'); ?></td>
+                                                        <td><textarea onclick="this.select();">[uifm_var opt="logged_email"]</textarea></td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>

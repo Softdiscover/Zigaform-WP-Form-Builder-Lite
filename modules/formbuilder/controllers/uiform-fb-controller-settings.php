@@ -217,7 +217,14 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module
         } else {
             update_option('zgfm_fields_fastload', 0);
         }
-
+        
+        $recordexpsetting = (isset($_POST['uifm_frm_main_recordexpsetting']) && $_POST['uifm_frm_main_recordexpsetting']) ? sanitize_text_field($_POST['uifm_frm_main_recordexpsetting']) : '';
+        if ($recordexpsetting !== '') {
+            update_option('zgfm_frm_main_recexpdelimiter', $recordexpsetting);
+        } else {
+            update_option('zgfm_frm_main_recexpdelimiter', '');
+        }
+        
         $data             = array();
         $data['language'] = $opt_language;
         $where            = array(
@@ -246,6 +253,7 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module
         $data['lang_list']       = Uiform_Form_Helper::getLanguageList($pofilespath);
         $data['modalmode']       = get_option('zgfm_b_modalmode', 0);
         $data['hideversion']       = get_option('zgfm_b_hideversion', 0);
+        $data['zgfm_frm_main_recexpdelimiter']       = get_option('zgfm_frm_main_recexpdelimiter', '');
         $data['fields_fastload'] = get_option('zgfm_fields_fastload', 0);
 
         echo self::loadPartial('layout.php', 'formbuilder/views/settings/view_settings.php', $data);

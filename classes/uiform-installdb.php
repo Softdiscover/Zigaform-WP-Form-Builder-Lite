@@ -23,20 +23,20 @@ class Uiform_InstallDB
 {
 
 
-    private $form;
-    private $form_history;
-    private $form_fields;
-    private $form_log;
-    private $form_fields_type;
-    private $settings;
-    private $nopre_form;
-    private $nopre_form_history;
-    private $nopre_form_fields;
-    private $nopre_form_fields_type;
-    private $nopre_settings;
-    private $core_addon;
-    private $core_addon_detail;
-    private $core_addon_log;
+    public $form;
+    public $form_history;
+    public $form_fields;
+    public $form_log;
+    public $form_fields_type;
+    public $settings;
+    public $nopre_form;
+    public $nopre_form_history;
+    public $nopre_form_fields;
+    public $nopre_form_fields_type;
+    public $nopre_settings;
+    public $core_addon;
+    public $core_addon_detail;
+    public $core_addon_log;
 
     public function __construct()
     {

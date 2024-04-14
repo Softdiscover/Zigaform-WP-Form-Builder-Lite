@@ -6,6 +6,6 @@
         "psr-4": {"PoParser\\": "src/"}
     },
      "require-dev": {
-          "gettext/gettext": "^5.5"
+          "gettext/gettext": "^5.7.0"
      }
 }

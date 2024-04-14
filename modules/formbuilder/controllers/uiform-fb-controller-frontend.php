@@ -482,6 +482,14 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                     $data   = $this->model_formrecords->getFormDataById($rec_id);
                     $output = $data->created_ip;
                     break;
+                case 'logged_username':
+                    $user = wp_get_current_user();
+                    $output = $user->user_login;
+                    break;
+                case 'logged_email':
+                    $user = wp_get_current_user();
+                    $output = $user->user_email;
+                    break;
                 default:
             }
         } else {

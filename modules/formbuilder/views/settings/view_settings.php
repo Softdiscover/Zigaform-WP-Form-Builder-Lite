@@ -38,6 +38,7 @@ if (!defined('ABSPATH')) {
                                     <ul class="sfdc-nav sfdc-nav-tabs">
                                         <li class="sfdc-active"><a href="#uiform-settings-tab-1" data-toggle="sfdc-tab" aria-expanded="true"><?php echo esc_html(__('Global', 'FRocket_admin')); ?></a></li>
                                         <li><a href="#uiform-settings-tab-2" data-toggle="sfdc-tab" class="last-child" aria-expanded="true"><?php echo esc_html(__('Misc', 'FRocket_admin')); ?></a></li>
+                                        <li><a href="#uiform-settings-tab-3" data-toggle="sfdc-tab" class="last-child" aria-expanded="true"><?php echo esc_html(__('Export Records', 'FRocket_admin')); ?></a></li>
                                     </ul>
                                     <div class="sfdc-tab-content ">
                                         <div class="sfdc-tab-pane sfdc-active" id="uiform-settings-tab-1">
@@ -140,6 +141,26 @@ if (!defined('ABSPATH')) {
                                                 <?php } ?>
                                             </div>
                                         </div>
+                                        <div class="sfdc-tab-pane" id="uiform-settings-tab-3">
+                                            <div class="uiform-tab-content sfdc-clearfix">
+
+                                                <div class="sfdc-col-md-12">
+                                                    <div class="sfdc-form-group">
+
+                                                        <div class="sfdc-col-sm-4">
+                                                            <label for=""><?php echo __('Custom delimiter for multiple options', 'FRocket_admin'); ?><span style="color:red;"></span></label>
+                                                            <a href="javascript:void(0);" data-toggle="tooltip" data-placement="right" data-original-title="<?php echo __('Custome delimiter', 'FRocket_admin'); ?>">
+                                                            <span class="fa fa-question-circle"></span></a>
+                                                        </div>
+                                                        <div class="sfdc-col-sm-8">
+                                                            <input class="sfdc-form-control" value="<?php echo esc_attr($zgfm_frm_main_recexpdelimiter); ?>" id="uifm_frm_main_recordexpsetting" name="uifm_frm_main_recordexpsetting" type="text" placeholder="<?php echo __('Add your delimiter', 'FRocket_admin'); ?>">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -180,6 +201,7 @@ if (!defined('ABSPATH')) {
 
         set_modalmode = (parseInt(<?php echo $fields_fastload; ?>) === 1) ? true : false;
         $('#uifm_frm_fields_fastload').bootstrapSwitchZgpb('state', set_modalmode);
+        
     });
     //]]>
 </script>

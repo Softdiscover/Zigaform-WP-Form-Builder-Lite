@@ -2,8 +2,7 @@
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE)
-[![Build Status][ico-travis]][link-travis]
-[![Quality Score][ico-scrutinizer]][link-scrutinizer]
+![ico-ga]
 [![Total Downloads][ico-downloads]][link-downloads]
 
 > Note: this is the documentation of the new 5.x version. Go to [4.x branch](https://github.com/php-gettext/Gettext/tree/4.x) if you're looking for the old 4.x version
@@ -95,7 +94,7 @@ $translations->setDomain('my-blog');
 
 ## Loaders
 
-The loaders allows to get gettext values from any format. For example, to load a .po file:
+The loaders allow to get gettext values from multiple formats. For example, to load a .po file:
 
 ```php
 use Gettext\Loader\PoLoader;
@@ -110,10 +109,39 @@ $string = file_get_contents('locales2/en.po');
 $translations = $loader->loadString($string);
 ```
 
+As of version 5.7.0, a `StrictPoLoader` has been included, with a parser more aligned to the GNU gettext tooling with the same expectations and failures (see the tests for more details).
+- It will fail with an exception when there's anything wrong with the syntax, and display the reason together with the line/byte where it happened.
+- It might also emit useful warnings, e.g. when there are more/less plural translations than needed, missing translation header, dangling comments not associated with any translation, etc.
+- Due to its strictness and speed (about 50% slower than the `PoLoader`), it might be interesting to be used as a kind of `.po` linter in a build system.
+- It also implements the previous translation comment (e.g. `#| msgid "previous"`) and extra escapes (16-bit unicode `\u`, 32-bit unicode `\U`, hexadecimal `\xFF` and octal `\77`).
+
+The usage is basically the same as the `PoLoader`:
+
+```php
+use Gettext\Loader\StrictPoLoader;
+
+$loader = new StrictPoLoader();
+
+//From a file
+$translations = $loader->loadFile('locales/en.po');
+
+//From a string
+$string = file_get_contents('locales2/en.po');
+$translations = $loader->loadString($string);
+
+//Display error messages using "at line X column Y" instead of "at byte X"
+$loader->displayErrorLine = true;
+//Throw an exception when a warning happens
+$loader->throwOnWarning = true;
+//Retrieve the warnings
+$loader->getWarnings();
+```
+
 This package includes the following loaders:
 
 - `MoLoader`
 - `PoLoader`
+- `StrictPoLoader`
 
 And you can install other formats with loaders and generators:
 
@@ -246,14 +274,6 @@ More common scenarios may be added in a future.
 
 Thanks to all [contributors](https://github.com/oscarotero/Gettext/graphs/contributors) specially to [@mlocati](https://github.com/mlocati).
 
-## Donations
-
-If this library is useful for you, consider to donate to the author.
-
-[Buy me a beer :beer:](https://www.paypal.me/oscarotero)
-
-Thanks in advance!
-
 ---
 
 Please see [CHANGELOG](CHANGELOG.md) for more information about recent changes and [CONTRIBUTING](CONTRIBUTING.md) for contributing details.
@@ -262,11 +282,8 @@ The MIT License (MIT). Please see [LICENSE](LICENSE) for more information.
 
 [ico-version]: https://img.shields.io/packagist/v/gettext/gettext.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/php-gettext/Gettext/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/g/php-gettext/Gettext.svg?style=flat-square
+[ico-ga]: https://github.com/php-gettext/Gettext/workflows/testing/badge.svg
 [ico-downloads]: https://img.shields.io/packagist/dt/gettext/gettext.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/gettext/gettext
-[link-travis]: https://travis-ci.org/php-gettext/Gettext
-[link-scrutinizer]: https://scrutinizer-ci.com/g/php-gettext/Gettext
 [link-downloads]: https://packagist.org/packages/gettext/gettext
