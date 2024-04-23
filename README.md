@@ -35,7 +35,7 @@ https://kb.softdiscover.com/docs/zigaform-wordpress-form-builder/installation/vi
 
 ## Support ##
 
-Please see https://softdiscover.com/zigaform/wordpress-form-builder/#contact for more details.
+Please see https://wordpress-form-builder.zigaform.com/#contact for more details.
 
 ## Features : ## 
 * drag and drop or click to add fields to form

@@ -9,7 +9,7 @@
  * @author    Softdiscover <info@softdiscover.com>
  * @copyright 2015 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
- * @link      https://softdiscover.com/zigaform/wordpress-form-builder/
+ * @link      https://wordpress-form-builder.zigaform.com/
  */
 if (! defined('ABSPATH')) {
     exit('No direct script access allowed');
@@ -29,7 +29,7 @@ use \Zigaform\Admin\List_data;
  * @copyright 2013 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
  * @version   Release: 1.00
- * @link      https://softdiscover.com/zigaform/wordpress-form-builder/
+ * @link      https://wordpress-form-builder.zigaform.com/
  */
 class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 {

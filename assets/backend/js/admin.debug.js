@@ -144,7 +144,7 @@ if (!$uifm.isFunction(rocketform)) {
 				enableSortableItems();
 			}
 			function enableDraggableItems() {
-				$('ul.uiform-list-fields a')
+				$('ul.sfdc-two-column-list a')
 					.draggable({
 						connectToSortable: '.uiform-items-container',
 						helper: 'clone',

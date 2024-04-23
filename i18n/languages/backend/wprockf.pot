@@ -1,12 +1,12 @@
-# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 6.1.1
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 6.1.1 package.
+# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 6.1.2
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 6.1.2 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 6.1.1\n"
+"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 6.1.2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-04-13 21:59+0000\n"
+"POT-Creation-Date: 2024-04-23 03:29+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -894,7 +894,7 @@ msgstr ""
 msgid "Additional info"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:374, modules/formbuilder/views/forms/fields_available.php:787, modules/formbuilder/views/records/info_record.php:81, modules/formbuilder/views/records/list_records_getdatatable.php:25, modules/formbuilder/views/settings/backup_settings.php:69
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:374, modules/formbuilder/views/records/info_record.php:81, modules/formbuilder/views/records/list_records_getdatatable.php:25, modules/formbuilder/views/settings/backup_settings.php:69
 msgid "Date"
 msgstr ""
 
@@ -1198,7 +1198,7 @@ msgstr ""
 msgid "Fields"
 msgstr ""
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:36, modules/formbuilder/views/forms/fields_available.php:716
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:36, modules/formbuilder/views/forms/fields_available.php:726
 msgid "Others"
 msgstr ""
 
@@ -1438,211 +1438,215 @@ msgstr ""
 msgid "More fields"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:31
+#: modules/formbuilder/views/forms/fields_available.php:34
 msgid "Standard Fields"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:45
+#: modules/formbuilder/views/forms/fields_available.php:46
 msgid "Text Box"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:59
+#: modules/formbuilder/views/forms/fields_available.php:60
 msgid "Text Area"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:71
+#: modules/formbuilder/views/forms/fields_available.php:72
 msgid "Radio Button"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:84
+#: modules/formbuilder/views/forms/fields_available.php:85
 msgid "Check Box"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:97
+#: modules/formbuilder/views/forms/fields_available.php:98
 msgid "Select List"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:110
+#: modules/formbuilder/views/forms/fields_available.php:111
 msgid "Multiselect"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:122
+#: modules/formbuilder/views/forms/fields_available.php:123
 msgid "Submit Button"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:134
+#: modules/formbuilder/views/forms/fields_available.php:135
 msgid "Spinner"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:146
+#: modules/formbuilder/views/forms/fields_available.php:147
 msgid "Slider"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:158
+#: modules/formbuilder/views/forms/fields_available.php:159
 msgid "Range"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:172
+#: modules/formbuilder/views/forms/fields_available.php:171
 msgid "Grid System"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:184
+#: modules/formbuilder/views/forms/fields_available.php:183
 msgid "1 Col"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:197
+#: modules/formbuilder/views/forms/fields_available.php:196
 msgid "2 Cols"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:210
+#: modules/formbuilder/views/forms/fields_available.php:209
 msgid "3 Cols"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:222
+#: modules/formbuilder/views/forms/fields_available.php:221
 msgid "4 Cols"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:235
+#: modules/formbuilder/views/forms/fields_available.php:234
 msgid "6 Cols"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:250
+#: modules/formbuilder/views/forms/fields_available.php:249
 msgid "Additional Fields"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:262
+#: modules/formbuilder/views/forms/fields_available.php:261
 msgid "Star rating"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:275
+#: modules/formbuilder/views/forms/fields_available.php:274
 msgid "ReCaptcha"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:288
+#: modules/formbuilder/views/forms/fields_available.php:287
 msgid "Custom Html"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:302
+#: modules/formbuilder/views/forms/fields_available.php:301
 msgid "Hidden Input"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:316
+#: modules/formbuilder/views/forms/fields_available.php:315
 msgid "Password"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:330
+#: modules/formbuilder/views/forms/fields_available.php:329
 msgid "Captcha"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:345
+#: modules/formbuilder/views/forms/fields_available.php:344
 msgid "Date Picker"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:358, modules/formbuilder/views/forms/fields_available.php:546, modules/formbuilder/views/fields/modal/settings_field_input_1.php:24
+#: modules/formbuilder/views/forms/fields_available.php:357, modules/formbuilder/views/forms/fields_available.php:556, modules/formbuilder/views/fields/modal/settings_field_input_1.php:24
 msgid "Prepend"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:373
+#: modules/formbuilder/views/forms/fields_available.php:372
 msgid "Layout Elements"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:390
+#: modules/formbuilder/views/forms/fields_available.php:385
 msgid "Divider"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:406, modules/formbuilder/views/forms/fields_available.php:603
+#: modules/formbuilder/views/forms/fields_available.php:401, modules/formbuilder/views/forms/fields_available.php:613
 msgid "Heading H1"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:421
+#: modules/formbuilder/views/forms/fields_available.php:416
 msgid "Upload Fields"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:433
+#: modules/formbuilder/views/forms/fields_available.php:428
 msgid "File Upload"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:446
+#: modules/formbuilder/views/forms/fields_available.php:441
 msgid "Image Upload"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:466
+#: modules/formbuilder/views/forms/fields_available.php:461
 msgid "Picker Fields"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:479
+#: modules/formbuilder/views/forms/fields_available.php:474
 msgid "Date "
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:492, modules/formbuilder/views/forms/settings_form_skin.php:188, modules/formbuilder/views/forms/settings_form_skin.php:342, modules/formbuilder/views/forms/settings_form_skin.php:433, modules/formbuilder/views/forms/settings_form_submission.php:99, modules/formbuilder/views/fields/modal/field_opt_column.php:362, modules/formbuilder/views/fields/modal/field_opt_column.php:448, modules/formbuilder/views/fields/modal/field_opt_column.php:675, modules/formbuilder/views/fields/modal/field_opt_column.php:827, modules/formbuilder/views/fields/modal/settings_field_input_1.php:312, modules/formbuilder/views/fields/modal/settings_field_input_1.php:491, modules/formbuilder/views/fields/modal/settings_field_input_1.php:604, modules/formbuilder/views/fields/modal/settings_field_input_11.php:78, modules/formbuilder/views/fields/modal/settings_field_input_12.php:130, modules/formbuilder/views/fields/modal/settings_field_input_12.php:309, modules/formbuilder/views/fields/modal/settings_field_input_12.php:422, modules/formbuilder/views/fields/modal/settings_field_input_13.php:109, modules/formbuilder/views/fields/modal/settings_field_input_13.php:288, modules/formbuilder/views/fields/modal/settings_field_input_13.php:401, modules/formbuilder/views/fields/modal/settings_field_input_18.php:298, modules/formbuilder/views/fields/modal/settings_field_input_18.php:441, modules/formbuilder/views/fields/modal/settings_field_input_18.php:527, modules/formbuilder/views/fields/modal/settings_field_input_2.php:71, modules/formbuilder/views/fields/modal/settings_field_input_6.php:37, modules/formbuilder/views/fields/modal/settings_field_input_6.php:78, modules/formbuilder/views/fields/modal/settings_field_label.php:137, modules/formbuilder/views/fields/modal/settings_field_label.php:344
+#: modules/formbuilder/views/forms/fields_available.php:487, modules/formbuilder/views/forms/settings_form_skin.php:188, modules/formbuilder/views/forms/settings_form_skin.php:342, modules/formbuilder/views/forms/settings_form_skin.php:433, modules/formbuilder/views/forms/settings_form_submission.php:99, modules/formbuilder/views/fields/modal/field_opt_column.php:362, modules/formbuilder/views/fields/modal/field_opt_column.php:448, modules/formbuilder/views/fields/modal/field_opt_column.php:675, modules/formbuilder/views/fields/modal/field_opt_column.php:827, modules/formbuilder/views/fields/modal/settings_field_input_1.php:312, modules/formbuilder/views/fields/modal/settings_field_input_1.php:491, modules/formbuilder/views/fields/modal/settings_field_input_1.php:604, modules/formbuilder/views/fields/modal/settings_field_input_11.php:78, modules/formbuilder/views/fields/modal/settings_field_input_12.php:130, modules/formbuilder/views/fields/modal/settings_field_input_12.php:309, modules/formbuilder/views/fields/modal/settings_field_input_12.php:422, modules/formbuilder/views/fields/modal/settings_field_input_13.php:109, modules/formbuilder/views/fields/modal/settings_field_input_13.php:288, modules/formbuilder/views/fields/modal/settings_field_input_13.php:401, modules/formbuilder/views/fields/modal/settings_field_input_18.php:298, modules/formbuilder/views/fields/modal/settings_field_input_18.php:441, modules/formbuilder/views/fields/modal/settings_field_input_18.php:527, modules/formbuilder/views/fields/modal/settings_field_input_2.php:71, modules/formbuilder/views/fields/modal/settings_field_input_6.php:37, modules/formbuilder/views/fields/modal/settings_field_input_6.php:78, modules/formbuilder/views/fields/modal/settings_field_label.php:137, modules/formbuilder/views/fields/modal/settings_field_label.php:344
 msgid "Color"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:506
+#: modules/formbuilder/views/forms/fields_available.php:501
 msgid "Time"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:519
+#: modules/formbuilder/views/forms/fields_available.php:514
 msgid "Date and Time"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:534
+#: modules/formbuilder/views/forms/fields_available.php:528
+msgid "Date2"
+msgstr ""
+
+#: modules/formbuilder/views/forms/fields_available.php:544
 msgid "Prepend/Append Fields - Text Box"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:562, modules/formbuilder/views/fields/modal/settings_field_input_1.php:127
+#: modules/formbuilder/views/forms/fields_available.php:572, modules/formbuilder/views/fields/modal/settings_field_input_1.php:127
 msgid "Append"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:576
+#: modules/formbuilder/views/forms/fields_available.php:586
 msgid "Prepend/App"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:591
+#: modules/formbuilder/views/forms/fields_available.php:601
 msgid "Headings"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:616
+#: modules/formbuilder/views/forms/fields_available.php:626
 msgid "Heading H2"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:629
+#: modules/formbuilder/views/forms/fields_available.php:639
 msgid "Heading H3"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:642
+#: modules/formbuilder/views/forms/fields_available.php:652
 msgid "Heading H4"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:655
+#: modules/formbuilder/views/forms/fields_available.php:665
 msgid "Heading H5"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:668
+#: modules/formbuilder/views/forms/fields_available.php:678
 msgid "Heading H6"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:684
+#: modules/formbuilder/views/forms/fields_available.php:694
 msgid "Wizard elements"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:697
+#: modules/formbuilder/views/forms/fields_available.php:707
 msgid "Wizard buttons"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:728
+#: modules/formbuilder/views/forms/fields_available.php:738
 msgid "Switch"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:742
+#: modules/formbuilder/views/forms/fields_available.php:752
 msgid "Dyn Checkbox"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:756
+#: modules/formbuilder/views/forms/fields_available.php:766
 msgid "Dyn RadioBtn"
 msgstr ""
 
-#: modules/formbuilder/views/forms/fields_available.php:772
+#: modules/formbuilder/views/forms/fields_available.php:782
 msgid "Panel"
 msgstr ""
 

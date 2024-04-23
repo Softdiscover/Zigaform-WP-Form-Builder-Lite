@@ -9,7 +9,7 @@
  * @author    Softdiscover <info@softdiscover.com>
  * @copyright 2015 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
- * @link      https://softdiscover.com/zigaform/wordpress-form-builder/
+ * @link      https://wordpress-form-builder.zigaform.com/
  */
 if (! defined('ABSPATH')) {
     exit('No direct script access allowed');
@@ -25,13 +25,14 @@ if (! defined('ABSPATH')) {
 <div class="sfdc-tab-content">
   <div class="sfdc-tab-pane sfdc-in sfdc-active" id="uiform-fields-tab-1">
       <div class="uiform-tab-content">
+      
+   
+      
           <!-- Standard fields -->
           <div class="uiform-fields-group uiform-enable-fieldset">
-              <fieldset>
-                    <legend><?php echo __('Standard Fields', 'FRocket_admin'); ?> </legend>
-                    <div class="uiform-fieldset-inner">
-                        <div class="sfdc-row">
-                            <ul class="uiform-list-fields">
+          <fieldset class="sfdc-fieldset-list">
+    <legend><?php echo __('Standard Fields', 'FRocket_admin'); ?></legend>
+    <ul class="sfdc-two-column-list">
                                 <li>
                                     
                                     <a href="javascript:void(0);" 
@@ -161,18 +162,16 @@ if (! defined('ABSPATH')) {
                                     
                                 </li>
                             </ul>
-                        </div>
-                    </div>
-
-                </fieldset>
+</fieldset>
+ 
           </div>
           <!-- Grid System -->
           <div class="uiform-fields-group uiform-enable-fieldset">
-              <fieldset>
+              <fieldset class="sfdc-fieldset-list">
                     <legend><?php echo __('Grid System', 'FRocket_admin'); ?></legend>
-                    <div class="uiform-fieldset-inner">
-                        <div class="sfdc-row">
-                            <ul class="uiform-list-fields">
+                    <div class="">
+                        <div class="">
+                            <ul class="sfdc-two-column-list">
                                 <li>
                                     <a class="uiform-draggable-field uiform-button3 uiform-column1" 
                                        data-type="1" 
@@ -246,11 +245,11 @@ if (! defined('ABSPATH')) {
           </div>
           <!-- Aditional Fields -->
           <div class="uiform-fields-group uiform-enable-fieldset">
-              <fieldset>
+              <fieldset class="sfdc-fieldset-list">
                     <legend><?php echo __('Additional Fields', 'FRocket_admin'); ?></legend>
-                    <div class="uiform-fieldset-inner">
-                        <div class="sfdc-row">
-                            <ul class="uiform-list-fields">
+                    <div  >
+                        <div  >
+                            <ul class="sfdc-two-column-list">
                                 <li>
                                     <a class="uiform-draggable-field uiform-button3 uiform-ratingstar" 
                                        data-type="22" 
@@ -369,16 +368,12 @@ if (! defined('ABSPATH')) {
           </div>
           <!-- Layout Elements -->
           <div class="uiform-fields-group uiform-enable-fieldset">
-              <fieldset>
+              <fieldset class="sfdc-fieldset-list">
                     <legend><?php echo __('Layout Elements', 'FRocket_admin'); ?></legend>
-                    <div class="uiform-fieldset-inner">
-                        <div class="sfdc-row">
-                            <ul class="uiform-list-fields">
-                                <!--<li>
-                                  <a class="uiform-draggable-field uiform-button3" href="javascript:addFieldToForm(1);">
-                                    Group
-                                </a>  
-                                </li>-->
+                    <div class="">
+                        <div class="">
+                            <ul class="sfdc-two-column-list">
+                                
                                 <li>
                                     <a class="uiform-draggable-field uiform-button3 uiform-divider" 
                                        data-type="32" 
@@ -417,11 +412,11 @@ if (! defined('ABSPATH')) {
           </div>
           <!-- Uploads Fields -->
           <div class="uiform-fields-group uiform-enable-fieldset">
-              <fieldset>
+              <fieldset class="sfdc-fieldset-list">
                     <legend><?php echo __('Upload Fields', 'FRocket_admin'); ?></legend>
-                    <div class="uiform-fieldset-inner">
-                        <div class="sfdc-row">
-                            <ul class="uiform-list-fields">
+                    <div class="">
+                        <div class="">
+                            <ul class="sfdc-two-column-list">
                                 <li>
                                     <a class="uiform-draggable-field uiform-button3 uiform-fileupload" 
                                        data-type="12" 
@@ -462,11 +457,11 @@ if (! defined('ABSPATH')) {
            
           <!-- Picker Fields -->
           <div class="uiform-fields-group uiform-enable-fieldset">
-              <fieldset>
+              <fieldset class="sfdc-two-column-list">
                     <legend><?php echo __('Picker Fields', 'FRocket_admin'); ?></legend>
-                    <div class="uiform-fieldset-inner">
-                        <div class="sfdc-row">
-                            <ul class="uiform-list-fields">
+                    <div class="">
+                        <div class="">
+                            <ul class="sfdc-two-column-list">
                                 <li>
                                     <a class="uiform-draggable-field uiform-button3 uiform-datepicker" 
                                        data-type="24" 
@@ -521,6 +516,21 @@ if (! defined('ABSPATH')) {
                                           
                                     </a>
                                 </li>
+                                <li>
+                                    <a class="uiform-draggable-field uiform-button3 uiform-panelfld" 
+                                       data-type="43" 
+                                       onclick="javascript:rocketform.mainfields_addFieldToForm(this,43);"
+                                       href="javascript:void(0);">
+                                        
+                                        <span class="sfdc-btn1-icon-left"> 
+                                                       <span class="sfdc-glyphicon sfdc-glyphicon-move"></span> 
+                                                   </span>
+                                                   <span class="sfdc-btn1-text"> <?php echo __('Date2', 'FRocket_admin'); ?>   <span style="color:red;">New</span>
+                                                   </span>
+                                        
+                                        
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                         
@@ -530,11 +540,11 @@ if (! defined('ABSPATH')) {
           </div>
           <!-- Prepend/Append Fields -->
           <div class="uiform-fields-group uiform-enable-fieldset">
-              <fieldset>
+              <fieldset class="sfdc-fieldset-list">
                     <legend><?php echo __('Prepend/Append Fields - Text Box', 'FRocket_admin'); ?></legend>
-                    <div class="uiform-fieldset-inner">
-                        <div class="sfdc-row">
-                            <ul class="uiform-list-fields">
+                    <div class="">
+                        <div class="">
+                            <ul class="sfdc-two-column-list">
                                 <li>
                                     <a class="uiform-draggable-field uiform-button3 uiform-customhtml" 
                                        data-type="28" 
@@ -587,11 +597,11 @@ if (! defined('ABSPATH')) {
           </div>
           <!-- Headings -->
           <div class="uiform-fields-group uiform-enable-fieldset">
-              <fieldset>
+              <fieldset class="sfdc-fieldset-list">
                     <legend><?php echo __('Headings', 'FRocket_admin'); ?></legend>
-                    <div class="uiform-fieldset-inner">
-                        <div class="sfdc-row">
-                            <ul class="uiform-list-fields">
+                    <div class="">
+                        <div class="">
+                            <ul class="sfdc-two-column-list">
                                 <li>
                                     <a class="uiform-draggable-field uiform-button3 uiform-heading1" 
                                        data-type="33" 
@@ -680,11 +690,11 @@ if (! defined('ABSPATH')) {
             <?php } else { ?>
                                                <!-- Wizard elements -->
           <div class="uiform-fields-group uiform-enable-fieldset">
-              <fieldset>
+              <fieldset class="sfdc-fieldset-list">
                     <legend><?php echo __('Wizard elements', 'FRocket_admin'); ?></legend>
-                    <div class="uiform-fieldset-inner">
-                        <div class="sfdc-row">
-                            <ul class="uiform-list-fields">
+                    <div class="">
+                        <div class="">
+                            <ul class="sfdc-two-column-list">
                                 <li>
                                     
                                      <a class="uiform-draggable-field uiform-button3 uiform-wizardbtn" 
@@ -712,11 +722,11 @@ if (! defined('ABSPATH')) {
        
           <!-- Others -->
           <div class="uiform-fields-group uiform-enable-fieldset">
-              <fieldset>
+              <fieldset class="sfdc-fieldset-list">
                     <legend><?php echo __('Others', 'FRocket_admin'); ?></legend>
-                    <div class="uiform-fieldset-inner">
-                        <div class="sfdc-row">
-                            <ul class="uiform-list-fields">
+                    <div class="">
+                        <div class="">
+                            <ul class="sfdc-two-column-list">
                                 <li>
                                     <a class="uiform-draggable-field uiform-button3 uiform-switch" 
                                        data-type="40" 
@@ -775,21 +785,7 @@ if (! defined('ABSPATH')) {
                                         
                                     </a>
                                 </li>
-                                <li>
-                                    <a class="uiform-draggable-field uiform-button3 uiform-panelfld" 
-                                       data-type="43" 
-                                       onclick="javascript:rocketform.mainfields_addFieldToForm(this,43);"
-                                       href="javascript:void(0);">
-                                        
-                                        <span class="sfdc-btn1-icon-left"> 
-                                                       <span class="sfdc-glyphicon sfdc-glyphicon-move"></span> 
-                                                   </span>
-                                                   <span class="sfdc-btn1-text"> <?php echo __('Date', 'FRocket_admin'); ?>   <span style="color:red;">New</span>
-                                                   </span>
-                                        
-                                        
-                                    </a>
-                                </li>
+                               
                             </ul>
                         </div>
                     </div>

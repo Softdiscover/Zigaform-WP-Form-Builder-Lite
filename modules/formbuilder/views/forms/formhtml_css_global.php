@@ -9,7 +9,7 @@
  * @author    Softdiscover <info@softdiscover.com>
  * @copyright 2015 Softdiscover
  * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
- * @link      https://softdiscover.com/zigaform/wordpress-form-builder/
+ * @link      https://wordpress-form-builder.zigaform.com/
  */
 ob_start();
 ?>
