@@ -30,7 +30,7 @@ There are 2 ways to install. Please follow the steps below:
 5. Configure the plugin by going to the `Zigaform Form Builder` menu that appears in your admin menu
 
 if you have problems with installation, check here the documentation: 
-https://kb.softdiscover.com/docs/zigaform-wordpress-form-builder/installation/via-wordpress-panel/
+https://wordpress-form-builder.zigaform.com/docs/via-wordpress-panel/
 
 
 ## Support ##

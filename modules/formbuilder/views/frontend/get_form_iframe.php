@@ -36,7 +36,8 @@ ob_start();
 
     <?php
     if (!empty($head_files)) {
-        foreach ($head_files['files'] as $value) {
+        $files = apply_filters('zgfm_back_addons_load_scripts', $head_files['files']);
+        foreach ($files as $value) {
             echo $value;
         }
     }

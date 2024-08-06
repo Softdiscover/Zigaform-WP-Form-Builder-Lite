@@ -25,6 +25,8 @@ if ( ! defined('ABSPATH')) {
 			`fmb_data2` longtext NULL ,
 			`fmb_rec_tpl_html` longtext NULL ,
 			`fmb_rec_tpl_st` TINYINT NULL DEFAULT 0 ,
+			`fmb_type` TINYINT NULL DEFAULT 0 ,
+			`fmb_parent` BIGINT DEFAULT 0 ,
 			PRIMARY KEY (`fmb_id`) ) " . $charset . ';';
         $wpdb->query($sql);
         
@@ -150,7 +152,7 @@ if ( isset($uifm_field_types['total']) && intval($uifm_field_types['total']) ===
         // insert data
         $uifm_settings = $wpdb->get_row('SELECT COUNT(*) AS total FROM ' . $this->settings, ARRAY_A);
 if ( isset($uifm_settings['total']) && intval($uifm_settings['total']) === 0) {
-    $sql = "INSERT INTO $this->settings VALUES ('6.1.2', null, null, null, null, null, null, '', '1');";
+    $sql = "INSERT INTO $this->settings VALUES ('7.0.0', null, null, null, null, null, null, '', '1');";
     $wpdb->query($sql);
 }
 
@@ -173,6 +175,7 @@ if ( isset($uifm_settings['total']) && intval($uifm_settings['total']) === 0) {
 			`updated_ip` varchar(100) DEFAULT NULL,
 			`created_by` VARCHAR(100) DEFAULT NULL,
 			`updated_by` VARCHAR(100) DEFAULT NULL,
+			`log_frm_parent` BIGINT DEFAULT 0,
 			PRIMARY KEY (`log_id`)
 		) " . $charset . ';';
 

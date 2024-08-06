@@ -15,13 +15,14 @@ if (! defined('ABSPATH')) {
     exit('No direct script access allowed');
 }
 ob_start();
+$nameField =  apply_filters('uifm_ms_render_field_front', "uiform_fields[".$id."]", $id, $type);
 ?>
  <div class="sfdc-input-group">
         <input placeholder="<?php echo htmlentities($input['placeholder'], ENT_QUOTES, 'UTF-8'); ?>"
         class="rockfm-txtbox-inp-val sfdc-form-control"
         type="text" 
         data-uifm-tabnum="<?php echo $tab_num; ?>"
-        name="uiform_fields[<?php echo $id; ?>]"
+        name="<?php echo $nameField; ?>"
         value="<?php echo $input['value']; ?>">
         <div class="sfdc-input-group-addon rockfm-inp-apptxt"><?php echo urldecode($input['append_txt']); ?></div>
     </div>

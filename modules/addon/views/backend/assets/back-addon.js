@@ -32,7 +32,7 @@ if (!$uifm.isFunction(zgfm_back_addon)) {
             };
 
             this.load_addon = function () {
-                wp.hooks.applyFilters('zgfm.onLoadForm_loadAddon');
+                wp.hooks.doAction('zgfm.onLoadForm_loadAddon');
             };
 
             /*
@@ -42,7 +42,7 @@ if (!$uifm.isFunction(zgfm_back_addon)) {
              * @returns {undefined}
              */
             this.do_action = function (action, obj_data) {
-                var tmp_data = {};
+                /*var tmp_data = {};
 
                 let tmp_addon_arr = uiform_vars.addon;
 
@@ -67,7 +67,7 @@ if (!$uifm.isFunction(zgfm_back_addon)) {
                     }
                 }
 
-                return tmp_data;
+                return tmp_data;*/
             };
 
             /*

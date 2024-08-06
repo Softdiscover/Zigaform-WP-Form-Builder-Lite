@@ -308,7 +308,35 @@ if ( version_compare( $version, $install_ver, '>' ) ) {
 			   $wpdb->query( $sql );
 		  }
 	}
+	
+	if ( version_compare( $install_ver, '7.0.0', '<' ) ) {
+		$tbname = $wpdb->prefix . 'uiform_form';
 
+		if ( (string) $wpdb->get_var( "SHOW TABLES LIKE '$tbname'" ) === $tbname ) {
+ 
+
+			$row = $wpdb->get_var( 'SHOW COLUMNS FROM ' . $tbname . " LIKE 'fmb_type'" );
+			if ( empty( $row ) ) {
+				  $sql = 'ALTER TABLE ' . $tbname . ' ADD  fmb_type TINYINT(1) NULL DEFAULT 0;';
+				  $wpdb->query( $sql );
+				  $sql = 'ALTER TABLE ' . $tbname . ' ADD  fmb_parent BIGINT DEFAULT 0;';
+				  $wpdb->query( $sql );
+			}
+		}
+		
+		$tbname = $wpdb->prefix . 'uiform_form_log';
+
+		if ( (string) $wpdb->get_var( "SHOW TABLES LIKE '$tbname'" ) === $tbname ) {
+ 
+
+			$row = $wpdb->get_var( 'SHOW COLUMNS FROM ' . $tbname . " LIKE 'log_frm_parent'" );
+			if ( empty( $row ) ) {
+				  $sql = 'ALTER TABLE ' . $tbname . ' ADD  log_frm_parent BIGINT DEFAULT 0;';
+				  $wpdb->query( $sql );
+			}
+		}
+  }
+	
 	 update_option( 'uifmfbuild_version', $version );
 }
 

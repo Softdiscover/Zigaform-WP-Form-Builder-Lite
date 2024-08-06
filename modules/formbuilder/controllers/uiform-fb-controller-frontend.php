@@ -78,6 +78,11 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         // submit ajax mode
         add_action('wp_ajax_rocket_front_submitajaxmode', array(&$this, 'ajax_submit_ajaxmode'));
         add_action('wp_ajax_nopriv_rocket_front_submitajaxmode', array(&$this, 'ajax_submit_ajaxmode'));
+
+        // submit ajax mode for multi-step
+        add_action('wp_ajax_rocket_ms_front_submitajaxmode', array(&$this, 'ajax_ms_submit_ajaxmode'));
+        add_action('wp_ajax_nopriv_rocket_ms_front_submitajaxmode', array(&$this, 'ajax_ms_submit_ajaxmode'));
+
         // shortcodes
         add_shortcode('uifm_wrap', array(&$this, 'shortcode_uifm_recvar_wrap'));
         add_shortcode('uifm_recvar', array(&$this, 'shortcode_uifm_recvar'));
@@ -101,6 +106,10 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
 
         // add variables
         add_filter('zgfm_front_initvar_load', array(&$this, 'front_initvar_load'));
+
+        // ajax get children
+        add_action('wp_ajax_rocket_front_mm_get_child', array(&$this, 'ajax_mm_get_child'));
+        add_action('wp_ajax_nopriv_rocket_front_mm_get_child', array(&$this, 'ajax_mm_get_child'));
     }
 
     /**
@@ -210,7 +219,14 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                 break;
 
             default:
-                $f_data = $this->model_formrecords->getFieldDataById($this->flag_submitted, $vars['id']);
+                if (strpos($vars['id'], '_') !== false) {
+                    $tmpResult = explode('_', $vars['id']);
+                    $f_data = $this->model_formrecords->getFieldDataByIdOnMultistep($this->flag_submitted, $tmpResult[0], $tmpResult[1]);
+                } else {
+                    $f_data = $this->model_formrecords->getFieldDataById($this->flag_submitted, $vars['id']);
+                }
+                
+                
                 switch (intval($f_data->type)) {
                     case 16:
                     case 17:
@@ -251,7 +267,15 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
             $atts
         );
 
-        $f_data = $this->model_formrecords->getFieldDataById($this->flag_submitted, $vars['id']);
+        if (strpos($vars['id'], '_') !== false) {
+            $tmpResult = explode('_', $vars['id']);
+            $f_data = $this->model_formrecords->getFieldDataByIdOnMultistep($this->flag_submitted, $tmpResult[0], $tmpResult[1]);
+        } else {
+            $f_data = $this->model_formrecords->getFieldDataById($this->flag_submitted, $vars['id']);
+            
+        }
+        
+        //$f_data = $this->model_formrecords->getFieldDataById($this->flag_submitted, $vars['id']);
 
         $output = $this->model_formrecords->getFieldOptRecord($this->flag_submitted, $f_data->type, $vars['id'], $vars['atr1'], $vars['atr2']);
 
@@ -328,31 +352,31 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         switch (strval($vars['atr1'])) {
             case 'label':
                 ob_start();
-                ?>
+?>
                 <span data-zgfm-id="<?php echo $vars['id']; ?>" data-zgfm-type="0" data-zgfm-atr="0" class="zgfm-recfvar-obj"></span>
-                <?php
+            <?php
                 $output = ob_get_contents();
                 ob_end_clean();
                 break;
             case 'input':
                 ob_start();
-                ?>
+            ?>
                 <span data-zgfm-id="<?php echo $vars['id']; ?>" data-zgfm-atr="1" class="zgfm-recfvar-obj"></span>
-                <?php
+            <?php
                 $output = ob_get_contents();
                 ob_end_clean();
                 break;
             case 'amount':
                 ob_start();
-                ?>
+            ?>
                 <span data-zgfm-id="<?php echo $vars['id']; ?>" data-zgfm-atr="2" class="zgfm-recfvar-obj"></span>
-                <?php
+            <?php
                 $output = ob_get_contents();
                 ob_end_clean();
                 break;
             case 'qty':
                 ob_start();
-                ?>
+            ?>
                 <span data-zgfm-id="<?php echo $vars['id']; ?>" data-zgfm-atr="3" class="zgfm-recfvar-obj"></span>
                 <?php
                 $output = ob_get_contents();
@@ -385,9 +409,9 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                 case 'calc':
                     ob_start();
                     if (isset($vars['atr1']) && intval($vars['atr1']) >= 0) {
-                        ?>
+                ?>
                         <div class="zgfm-f-calc-var-lbl zgfm-f-calc-var<?php echo $vars['atr1']; ?>-lbl"></div>
-                        <?php
+                    <?php
                     }
                     $output = ob_get_contents();
                     ob_end_clean();
@@ -397,23 +421,23 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                     ob_start();
                     ?>
                     <span class="uiform-stickybox-symbol"></span>
-                    <?php
+                <?php
                     $output = ob_get_contents();
                     ob_end_clean();
                     break;
                 case 'form_cur_code':
                     ob_start();
-                    ?>
+                ?>
                     <span class="uiform-stickybox-currency"></span>
-                    <?php
+                <?php
                     $output = ob_get_contents();
                     ob_end_clean();
                     break;
                 case 'form_subtotal_amount':
                     ob_start();
-                    ?>
+                ?>
                     <span class="uiform-stickybox-subtotal">0</span>
-                    <?php
+                <?php
 
                     $output = ob_get_contents();
                     ob_end_clean();
@@ -421,9 +445,9 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                 case 'form_tax_amount':
                     ob_start();
 
-                    ?>
+                ?>
                     <span class="uiform-stickybox-tax">0</span>
-                    <?php
+            <?php
 
                     $output = ob_get_contents();
                     ob_end_clean();
@@ -503,6 +527,31 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         }
     }
 
+    public function ajax_ms_submit_ajaxmode()
+    {
+        $nonceCheck = apply_filters('zgfm_front_nonce_check', true);
+        if ($nonceCheck) {
+            check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        }
+
+        $resp = array();
+        $resp = $this->process_form(true);
+
+        if (isset($this->flag_submitted) && intval($this->flag_submitted) > 0) {
+            $resp['success']      = (isset($resp['success'])) ? $resp['success'] : 0;
+            $resp['show_message'] = (isset($resp['show_message'])) ? Uiform_Form_Helper::encodeHex($resp['show_message']) :
+                '<div class="rockfm-alert rockfm-alert-danger"><i class="fa fa-exclamation-triangle"></i> ' . __('Success! your form was submitted', 'frocket_front') . '</div>';
+        } else {
+            $resp['success']      = 0;
+            $resp['show_message'] = '<div class="rockfm-alert rockfm-alert-danger"><i class="fa fa-exclamation-triangle"></i> ' . __('warning! Form was not submitted', 'frocket_front') . '</div>';
+        }
+
+        // return data to ajax callback
+        header('Content-Type: text/html; charset=UTF-8');
+        echo json_encode($resp);
+        wp_die();
+    }
+
     public function ajax_submit_ajaxmode()
     {
         $nonceCheck = apply_filters('zgfm_front_nonce_check', true);
@@ -559,6 +608,28 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         echo json_encode($resp);
         wp_die();
     }
+
+    public function ajax_mm_get_child()
+    {
+        $nonceCheck = apply_filters('zgfm_front_nonce_check', true);
+        if ($nonceCheck) {
+            check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        }
+
+        $form_parent_id     = (isset($_POST['form_parent_id'])) ? Uiform_Form_Helper::sanitizeInput($_POST['form_parent_id']) : '';
+        $form_child_id  = (isset($_POST['form_child_id'])) ? Uiform_Form_Helper::sanitizeInput($_POST['form_child_id']) : '';
+        $resp            = array();
+
+        $data_form = $this->formsmodel->getFormById($form_child_id);
+
+        $resp['html'] = $data_form->fmb_html;
+
+        // return data to ajax callback
+        header('Content-Type: text/html; charset=UTF-8');
+        echo json_encode($resp);
+        wp_die();
+    }
+
 
     public function ajax_refresh_captcha()
     {
@@ -627,26 +698,335 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         $inst_re->front_verify_recaptchav3();
     }
 
-    public function process_form()
+
+
+    public function process_form_fields($form_fields, $form_id)
+    {
+        $form_f_tmp            = array();
+        $form_f_rec_tmp        = array();
+        $form_errors    = array();
+        $attachment_status     = 0;
+        $attachments           = array();  // initialize attachment array
+        if (!empty($form_fields)) {
+            foreach ($form_fields as $key => $value) {
+                $tmp_field_name = $this->model_fields->getFieldNameByUniqueId($key, $form_id);
+
+                if (!isset($tmp_field_name->type)) {
+                    $err_output = 'error $key:' . $key . ' - $form_id:' . $form_id;
+                    if (UIFORM_DEBUG === 1) {
+                        $err_output .= ' - Last query: ' . htmlentities($this->wpdb->last_query, ENT_NOQUOTES, 'UTF-8');
+                    }
+                    throw new Exception($err_output);
+                }
+
+                switch (intval($tmp_field_name->type)) {
+                    case 6:
+                        /*textbox*/
+                    case 28:
+                    case 29:
+                    case 30:
+                        $tmp_fdata = json_decode($tmp_field_name->data, true);
+                        if (isset($tmp_fdata['validate']) && isset($tmp_fdata['validate']['typ_val']) && intval($tmp_fdata['validate']['typ_val']) === 4) {
+                            // $mail_replyto=$value;
+                        }
+                        break;
+                }
+
+                /*storing to main array*/
+
+                switch (intval($tmp_field_name->type)) {
+                    case 9:
+                        /*checkbox*/
+                    case 11:
+                        /*multiselect*/
+                        $tmp_fdata = json_decode($tmp_field_name->data, true);
+
+                        $tmp_options                     = array();
+                        $tmp_field_label                 = (!empty($tmp_fdata['label']['text'])) ? $tmp_fdata['label']['text'] : $tmp_field_name->fieldname;
+                        $form_f_tmp[$key]['type']      = $tmp_field_name->type;
+                        $form_f_tmp[$key]['fieldname'] = $tmp_field_name->fieldname;
+                        $form_f_tmp[$key]['label']     = $tmp_field_label;
+
+                        $tmp_f_values = array();
+
+                        $tmp_inp_label = array();
+                        $tmp_inp_value = array();
+
+                        if (is_array($value)) {
+                            // for records
+                            $tmp_options_rec = array();
+                            foreach ($value as $key2 => $value2) {
+                                $tmp_options_row          = array();
+                                $tmp_options_row['label'] = isset($tmp_fdata['input2']['options'][$value2]['label']) ? $tmp_fdata['input2']['options'][$value2]['label'] : '';
+                                $tmp_options_row['value'] = isset($tmp_fdata['input2']['options'][$value2]['value']) ? $tmp_fdata['input2']['options'][$value2]['value'] : '';
+
+                                $tmp_options_rec[] = $tmp_options_row['value'];
+                                $tmp_f_values[]    = $value2;
+                            }
+                            $form_f_rec_tmp[$key] = implode('^,^', $tmp_options_rec);
+                            // end for records
+
+                            foreach ($value as $key2 => $value2) {
+                                $tmp_options_row          = array();
+                                $tmp_options_row['label'] = isset($tmp_fdata['input2']['options'][$value2]['label']) ? $tmp_fdata['input2']['options'][$value2]['label'] : '';
+                                $tmp_options_row['value'] = isset($tmp_fdata['input2']['options'][$value2]['value']) ? $tmp_fdata['input2']['options'][$value2]['value'] : '';
+
+                                // store label
+                                $tmp_inp_label[] = $tmp_options_row['label'];
+                                $tmp_inp_value[] = $tmp_options_row['value'];
+
+                                if (isset($tmp_fdata['input2']['options'][$value2]) && $tmp_fdata['input2']['options'][$value2]) {
+                                    $tmp_options[$value2] = $tmp_options_row;
+                                }
+                            }
+                        }
+
+                        $form_f_tmp[$key]['input_label'] = implode('^,^', $tmp_inp_label);
+                        $form_f_tmp[$key]['input_value'] = implode('^,^', $tmp_inp_value);
+                        $form_f_tmp[$key]['chosen']      = implode(',', $tmp_f_values);
+
+                        /*saving data to field array*/
+                        $form_f_tmp[$key]['input'] = $tmp_options;
+
+                        break;
+                    case 8:
+                        /*radiobutton*/
+                    case 10:
+                        /*select*/
+
+                        $tmp_fdata = json_decode($tmp_field_name->data, true);
+
+                        $tmp_options                     = array();
+                        $tmp_field_label                 = (!empty($tmp_fdata['label']['text'])) ? $tmp_fdata['label']['text'] : $tmp_field_name->fieldname;
+                        $form_f_tmp[$key]['type']      = $tmp_field_name->type;
+                        $form_f_tmp[$key]['fieldname'] = $tmp_field_name->fieldname;
+                        $form_f_tmp[$key]['label']     = $tmp_field_label;
+                        $form_f_tmp[$key]['chosen']    = implode(',', array($value));
+
+                        // foreach ($value as $key2=>$value2) {
+                        $tmp_options_row          = array();
+                        $tmp_options_row['label'] = isset($tmp_fdata['input2']['options'][$value]['label']) ? $tmp_fdata['input2']['options'][$value]['label'] : '';
+                        $tmp_options_row['value'] = isset($tmp_fdata['input2']['options'][$value]['value']) ? $tmp_fdata['input2']['options'][$value]['value'] : '';
+
+                        // for records
+                        $form_f_rec_tmp[$key] = $tmp_options_row['label'];
+
+                        if (isset($tmp_fdata['input2']['options'][$value])) {
+                            $tmp_options[$value] = $tmp_options_row;
+                        }
+                        // }
+                        $form_f_tmp[$key]['input_label'] = $tmp_options_row['label'];
+                        $form_f_tmp[$key]['input_value'] = $tmp_options_row['value'];
+                        /*saving data to field array*/
+                        $form_f_tmp[$key]['input'] = $tmp_options;
+
+                        break;
+                    case 12:
+                        /*file input field*/
+                    case 13:
+                        /*image upload*/
+                        $tmp_fdata = json_decode($tmp_field_name->data, true);
+
+                        $tmp_options                     = array();
+                        $tmp_field_label                 = (!empty($tmp_fdata['label']['text'])) ? $tmp_fdata['label']['text'] : $tmp_field_name->fieldname;
+                        $form_f_tmp[$key]['type']      = $tmp_field_name->type;
+                        $form_f_tmp[$key]['fieldname'] = $tmp_field_name->fieldname;
+                        $form_f_tmp[$key]['label']     = $tmp_field_label;
+
+                        $allowedext_default = array('aaaa', 'png', 'doc', 'docx', 'xls', 'xlsx', 'csv', 'txt', 'rtf', 'zip', 'mp3', 'wma', 'wmv', 'mpg', 'flv', 'avi', 'jpg', 'jpeg', 'png', 'gif', 'ods', 'rar', 'ppt', 'tif', 'wav', 'mov', 'psd', 'eps', 'sit', 'sitx', 'cdr', 'ai', 'mp4', 'm4a', 'bmp', 'pps', 'aif', 'pdf');
+                        $custom_allowedext  = (!empty($tmp_fdata['input16']['extallowed'])) ? array_map('trim', explode(',', $tmp_fdata['input16']['extallowed'])) : $allowedext_default;
+                        $custom_maxsize     = (!empty($tmp_fdata['input16']['maxsize'])) ? floatval($tmp_fdata['input16']['maxsize']) : 5;
+                        $custom_attach_st   = (isset($tmp_fdata['input16']['attach_st'])) ? intval($tmp_fdata['input16']['attach_st']) : 0;
+
+                        if (
+                            isset($_FILES['uiform_fields']['name'][$key])
+                            && !empty($_FILES['uiform_fields']['name'][$key])
+                        ) {
+                            $fileSize = $_FILES['uiform_fields']['size'][$key];
+                            if (floatval($fileSize) > $custom_maxsize * 1024 * 1024) {
+                                $form_errors[] = __('Error! The file exceeds the allowed size of', 'frocket_front') . ' ' . $custom_maxsize . ' MB';
+                            }
+                            /*find attachment max size found*/
+                            $attachment_status = ($attachment_status < $custom_attach_st) ? $custom_attach_st : $attachment_status;
+
+                            $ext = strtolower(substr($_FILES['uiform_fields']['name'][$key], strrpos($_FILES['uiform_fields']['name'][$key], '.') + 1));
+                            if (!in_array($ext, $custom_allowedext)) {
+                                $form_errors[] = __('Error! Type of file is not allowed to upload', 'frocket_front');
+                            }
+                            if (empty($form_errors)) {
+                                $upload_data   = wp_upload_dir();  // look for this function in WordPress documentation at codex
+                                $upload_dir    = $upload_data['path'];
+                                $upload_dirurl = $upload_data['baseurl'];
+                                $upload_subdir = $upload_data['subdir'];
+                                $rename        = 'file_' . md5(uniqid($_FILES['uiform_fields']['name'][$key], true));
+
+                                $_FILES['uiform_fields']['name'][$key] = $rename . '.' . strtolower($ext);
+
+                                $form_f_tmp[$key]['input'] = $upload_dirurl . $upload_subdir . '/' . $_FILES['uiform_fields']['name'][$key];
+                                $form_f_rec_tmp[$key]      = $upload_dirurl . $upload_subdir . '/' . $_FILES['uiform_fields']['name'][$key];
+                                $form_fields[$key]         = $upload_dirurl . $upload_subdir . '/' . $_FILES['uiform_fields']['name'][$key];
+
+                                // attachment
+
+                                if ($_FILES['uiform_fields']['error'][$key] == UPLOAD_ERR_OK) {
+                                    $tmp_name = $_FILES['uiform_fields']['tmp_name'][$key]; // Get temp name of uploaded file
+                                    $name     = $_FILES['uiform_fields']['name'][$key];  // rename it to whatever
+                                    move_uploaded_file($tmp_name, "$upload_dir/$name"); // move file to new location
+                                    if (intval($custom_attach_st) === 1) {
+                                        $attachments[] = "$upload_dir/$name";  // push the new uploaded file in attachment array
+                                    }
+                                }
+                            }
+                        } else {
+                            unset($form_fields[$key]);
+                            $form_f_tmp[$key]['input'] = '';
+                            $form_f_rec_tmp[$key]      = '';
+                        }
+
+                        break;
+                    case 16:
+                        /*slider*/
+                    case 18:
+                        /*spinner*/
+                        $tmp_fdata = json_decode($tmp_field_name->data, true);
+
+                        $tmp_field_label                 = (!empty($tmp_fdata['label']['text'])) ? $tmp_fdata['label']['text'] : $tmp_field_name->fieldname;
+                        $form_f_tmp[$key]['type']      = $tmp_field_name->type;
+                        $form_f_tmp[$key]['fieldname'] = $tmp_field_name->fieldname;
+                        $form_f_tmp[$key]['label']     = $tmp_field_label;
+
+                        // foreach ($value as $key2=>$value2) {
+                        $tmp_options_row = array();
+
+                        $tmp_options_row['qty']   = floatval($value);
+                        $tmp_options_row['label'] = floatval($value);
+                        // for records
+                        $form_f_rec_tmp[$key] = $value;
+
+                        // }
+                        /*saving data to field array*/
+                        $form_f_tmp[$key]['input'] = $tmp_options_row;
+
+                        break;
+                    case 40:
+                        /*switch*/
+                        $tmp_fdata = json_decode($tmp_field_name->data, true);
+
+                        $tmp_field_label                 = (!empty($tmp_fdata['label']['text'])) ? $tmp_fdata['label']['text'] : $tmp_field_name->fieldname;
+                        $form_f_tmp[$key]['type']      = $tmp_field_name->type;
+                        $form_f_tmp[$key]['fieldname'] = $tmp_field_name->fieldname;
+                        $form_f_tmp[$key]['label']     = $tmp_field_label;
+
+                        // foreach ($value as $key2=>$value2) {
+                        $tmp_options_row = array();
+                        if ($value === 'on') {
+                            $tmp_options_row['label'] = (!empty($tmp_fdata['input15']['txt_yes'])) ? $tmp_fdata['input15']['txt_yes'] : $value;
+                            $form_f_rec_tmp[$key]   = 1;
+                        } else {
+                            $tmp_options_row['label'] = (!empty($tmp_fdata['input15']['txt_no'])) ? $tmp_fdata['input15']['txt_no'] : $value;
+                            $form_f_rec_tmp[$key]   = 0;
+                        }
+
+                        // }
+                        /*saving data to field array*/
+                        $form_f_tmp[$key]['input'] = $tmp_options_row;
+
+                        break;
+                    case 41:
+                        /*dyn checkbox*/
+                    case 42:
+                        /*dyn radiobtn*/
+                        $tmp_fdata                       = json_decode($tmp_field_name->data, true);
+                        $tmp_options                     = array();
+                        $tmp_field_label                 = (!empty($tmp_fdata['label']['text'])) ? $tmp_fdata['label']['text'] : $tmp_field_name->fieldname;
+                        $form_f_tmp[$key]['type']      = $tmp_field_name->type;
+                        $form_f_tmp[$key]['fieldname'] = $tmp_field_name->fieldname;
+                        $form_f_tmp[$key]['label']     = $tmp_field_label;
+
+                        // for records
+                        $tmp_summary = array();
+
+                        foreach ($value as $key2 => $value2) {
+                            $tmp_summary_inner = '';
+
+                            if (isset($tmp_fdata['input17']['options'][$key2]['label'])) {
+                                $tmp_summary_inner .= $tmp_fdata['input17']['options'][$key2]['label'];
+                            }
+
+                            if (intval($value2) > 1) {
+                                $tmp_summary_inner .= ' - qty: ' . $value2;
+                            }
+                            $tmp_summary[] = $tmp_summary_inner;
+                        }
+
+                        $form_f_rec_tmp[$key] = implode('^,^', $tmp_summary);
+                        // end for records
+
+                        foreach ($value as $key2 => $value2) {
+                            $tmp_options_row          = array();
+                            $tmp_options_row['label'] = $tmp_fdata['input17']['options'][$key2]['label'];
+
+                            if ($tmp_fdata['input17']['options'][$key2]) {
+                            }
+                            $tmp_options_row['qty'] = $value2;
+
+                            $tmp_options[] = $tmp_options_row;
+                        }
+                        /*saving data to field array*/
+                        $form_f_tmp[$key]['input'] = $tmp_options;
+
+                        break;
+                    default:
+                        $tmp_fdata                       = json_decode($tmp_field_name->data, true);
+                        $form_f_tmp[$key]['type']      = $tmp_field_name->type;
+                        $form_f_tmp[$key]['fieldname'] = $tmp_field_name->fieldname;
+                        $tmp_field_label                 = (!empty($tmp_fdata['label']['text'])) ? $tmp_fdata['label']['text'] : $tmp_field_name->fieldname;
+                        $form_f_tmp[$key]['label']     = $tmp_field_label;
+                        if (is_array($value)) {
+                            $tmp_options = array();
+                            foreach ($value as $value2) {
+                                $tmp_options[] = $value2;
+                            }
+                            $form_f_tmp[$key]['input'] = implode('^,^', $tmp_options);
+                            // for records
+                            $form_f_rec_tmp[$key] = implode('^,^', $tmp_options);
+                        } else {
+                            $form_f_tmp[$key]['input'] = $value;
+                            // for records
+                            $form_f_rec_tmp[$key] = $value;
+                        }
+
+                        break;
+                }
+            }
+        }
+
+
+        return [$form_f_tmp, $form_f_rec_tmp, $form_errors, $attachments, $attachment_status];
+    }
+
+    public function process_form($isMultiStep = false)
     {
         try {
-            $form_id               = ($_POST['_rockfm_form_id']) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['_rockfm_form_id'])) : 0;
+            // get data from form
+
+            if ($isMultiStep) {
+                $form_id         = ($_POST['_rockfm_form_parent_id']) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['_rockfm_form_parent_id'])) : 0;
+            } else {
+                $form_id         = ($_POST['_rockfm_form_id']) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['_rockfm_form_id'])) : 0;
+            }
+
+            $form_data        = $this->formsmodel->getFormById_2($form_id);
             $is_demo               = ($_POST['zgfm_is_demo']) ? intval(Uiform_Form_Helper::sanitizeInput(trim($_POST['zgfm_is_demo']))) : 0;
             $this->current_form_id = $form_id;
             $form_fields           = (isset($_POST['uiform_fields']) && $_POST['uiform_fields']) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive_html'), $_POST['uiform_fields']) : array();
+
             $form_avars            = (isset($_POST['zgfm_avars']) && $_POST['zgfm_avars']) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive_html'), $_POST['zgfm_avars']) : array();
-            $form_f_tmp            = array();
-            $form_f_rec_tmp        = array();
-            $attachment_status     = 0;
-            $attachments           = array();  // initialize attachment array
-            // get data from form
-            $form_data        = $this->formsmodel->getFormById_2($form_id);
+
             $form_data_onsubm = json_decode($form_data->fmb_data2, true);
-            $form_data_name   = $form_data->fmb_name;
 
             // process fields
-            $message_fields = '';
-            $form_errors    = array();
+
             $mail_errors    = false;
 
             // other variables
@@ -666,302 +1046,40 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                 }
             }
 
-            // fields
 
-            if (!empty($form_fields)) {
-                foreach ($form_fields as $key => $value) {
-                    $tmp_field_name = $this->model_fields->getFieldNameByUniqueId($key, $form_id);
+            if ($isMultiStep) {
+                list($form_f_tmp, $form_f_rec_tmp, $form_errors, $attachments, $attachment_status) = [[], [], [], [], false];
 
-                    if (!isset($tmp_field_name->type)) {
-                        $err_output = 'error $key:' . $key . ' - $form_id:' . $form_id;
-                        if (UIFORM_DEBUG === 1) {
-                            $err_output .= ' - Last query: ' . htmlentities($this->wpdb->last_query, ENT_NOQUOTES, 'UTF-8');
+                if (!empty($form_fields)) {
+                    foreach ($form_fields as $key2 => $value2) {
+                        list($form_f_tmp2, $form_f_rec_tmp2, $form_errors2, $attachments2, $attachment_status2) = $this->process_form_fields($value2, $key2);
+                        
+                        $newArray = [];
+                        foreach ($form_f_tmp2 as $key3 => $value3) {
+                            $newIndex = $key3.'_'.$key2;
+                            $newArray[$newIndex] = $value3;
                         }
-
-                        throw new Exception($err_output);
-                    }
-
-                    switch (intval($tmp_field_name->type)) {
-                        case 6:
-                            /*textbox*/
-                        case 28:
-                        case 29:
-                        case 30:
-                            $tmp_fdata = json_decode($tmp_field_name->data, true);
-                            if (isset($tmp_fdata['validate']) && isset($tmp_fdata['validate']['typ_val']) && intval($tmp_fdata['validate']['typ_val']) === 4) {
-                                // $mail_replyto=$value;
-                            }
-                            break;
-                    }
-
-                    /*storing to main array*/
-
-                    switch (intval($tmp_field_name->type)) {
-                        case 9:
-                            /*checkbox*/
-                        case 11:
-                            /*multiselect*/
-                            $tmp_fdata = json_decode($tmp_field_name->data, true);
-
-                            $tmp_options                     = array();
-                            $tmp_field_label                 = (!empty($tmp_fdata['label']['text'])) ? $tmp_fdata['label']['text'] : $tmp_field_name->fieldname;
-                            $form_f_tmp[$key]['type']      = $tmp_field_name->type;
-                            $form_f_tmp[$key]['fieldname'] = $tmp_field_name->fieldname;
-                            $form_f_tmp[$key]['label']     = $tmp_field_label;
-
-                            $tmp_f_values = array();
-
-                            $tmp_inp_label = array();
-                            $tmp_inp_value = array();
-
-                            if (is_array($value)) {
-                                // for records
-                                $tmp_options_rec = array();
-                                foreach ($value as $key2 => $value2) {
-                                    $tmp_options_row          = array();
-                                    $tmp_options_row['label'] = isset($tmp_fdata['input2']['options'][$value2]['label']) ? $tmp_fdata['input2']['options'][$value2]['label'] : '';
-                                    $tmp_options_row['value'] = isset($tmp_fdata['input2']['options'][$value2]['value']) ? $tmp_fdata['input2']['options'][$value2]['value'] : '';
-
-                                    $tmp_options_rec[] = $tmp_options_row['value'];
-                                    $tmp_f_values[]    = $value2;
-                                }
-                                $form_f_rec_tmp[$key] = implode('^,^', $tmp_options_rec);
-                                // end for records
-
-                                foreach ($value as $key2 => $value2) {
-                                    $tmp_options_row          = array();
-                                    $tmp_options_row['label'] = isset($tmp_fdata['input2']['options'][$value2]['label']) ? $tmp_fdata['input2']['options'][$value2]['label'] : '';
-                                    $tmp_options_row['value'] = isset($tmp_fdata['input2']['options'][$value2]['value']) ? $tmp_fdata['input2']['options'][$value2]['value'] : '';
-
-                                    // store label
-                                    $tmp_inp_label[] = $tmp_options_row['label'];
-                                    $tmp_inp_value[] = $tmp_options_row['value'];
-
-                                    if (isset($tmp_fdata['input2']['options'][$value2]) && $tmp_fdata['input2']['options'][$value2]) {
-                                        $tmp_options[$value2] = $tmp_options_row;
-                                    }
-                                }
-                            }
-
-                            $form_f_tmp[$key]['input_label'] = implode('^,^', $tmp_inp_label);
-                            $form_f_tmp[$key]['input_value'] = implode('^,^', $tmp_inp_value);
-                            $form_f_tmp[$key]['chosen']      = implode(',', $tmp_f_values);
-
-                            /*saving data to field array*/
-                            $form_f_tmp[$key]['input'] = $tmp_options;
-
-                            break;
-                        case 8:
-                            /*radiobutton*/
-                        case 10:
-                            /*select*/
-
-                            $tmp_fdata = json_decode($tmp_field_name->data, true);
-
-                            $tmp_options                     = array();
-                            $tmp_field_label                 = (!empty($tmp_fdata['label']['text'])) ? $tmp_fdata['label']['text'] : $tmp_field_name->fieldname;
-                            $form_f_tmp[$key]['type']      = $tmp_field_name->type;
-                            $form_f_tmp[$key]['fieldname'] = $tmp_field_name->fieldname;
-                            $form_f_tmp[$key]['label']     = $tmp_field_label;
-                            $form_f_tmp[$key]['chosen']    = implode(',', array($value));
-
-                            // foreach ($value as $key2=>$value2) {
-                            $tmp_options_row          = array();
-                            $tmp_options_row['label'] = isset($tmp_fdata['input2']['options'][$value]['label']) ? $tmp_fdata['input2']['options'][$value]['label'] : '';
-                            $tmp_options_row['value'] = isset($tmp_fdata['input2']['options'][$value]['value']) ? $tmp_fdata['input2']['options'][$value]['value'] : '';
-
-                            // for records
-                            $form_f_rec_tmp[$key] = $tmp_options_row['label'];
-
-                            if (isset($tmp_fdata['input2']['options'][$value])) {
-                                $tmp_options[$value] = $tmp_options_row;
-                            }
-                            // }
-                            $form_f_tmp[$key]['input_label'] = $tmp_options_row['label'];
-                            $form_f_tmp[$key]['input_value'] = $tmp_options_row['value'];
-                            /*saving data to field array*/
-                            $form_f_tmp[$key]['input'] = $tmp_options;
-
-                            break;
-                        case 12:
-                            /*file input field*/
-                        case 13:
-                            /*image upload*/
-                            $tmp_fdata = json_decode($tmp_field_name->data, true);
-
-                            $tmp_options                     = array();
-                            $tmp_field_label                 = (!empty($tmp_fdata['label']['text'])) ? $tmp_fdata['label']['text'] : $tmp_field_name->fieldname;
-                            $form_f_tmp[$key]['type']      = $tmp_field_name->type;
-                            $form_f_tmp[$key]['fieldname'] = $tmp_field_name->fieldname;
-                            $form_f_tmp[$key]['label']     = $tmp_field_label;
-
-                            $allowedext_default = array('aaaa', 'png', 'doc', 'docx', 'xls', 'xlsx', 'csv', 'txt', 'rtf', 'zip', 'mp3', 'wma', 'wmv', 'mpg', 'flv', 'avi', 'jpg', 'jpeg', 'png', 'gif', 'ods', 'rar', 'ppt', 'tif', 'wav', 'mov', 'psd', 'eps', 'sit', 'sitx', 'cdr', 'ai', 'mp4', 'm4a', 'bmp', 'pps', 'aif', 'pdf');
-                            $custom_allowedext  = (!empty($tmp_fdata['input16']['extallowed'])) ? array_map('trim', explode(',', $tmp_fdata['input16']['extallowed'])) : $allowedext_default;
-                            $custom_maxsize     = (!empty($tmp_fdata['input16']['maxsize'])) ? floatval($tmp_fdata['input16']['maxsize']) : 5;
-                            $custom_attach_st   = (isset($tmp_fdata['input16']['attach_st'])) ? intval($tmp_fdata['input16']['attach_st']) : 0;
-
-                            if (
-                                isset($_FILES['uiform_fields']['name'][$key])
-                                && !empty($_FILES['uiform_fields']['name'][$key])
-                            ) {
-                                $fileSize = $_FILES['uiform_fields']['size'][$key];
-                                if (floatval($fileSize) > $custom_maxsize * 1024 * 1024) {
-                                    $form_errors[] = __('Error! The file exceeds the allowed size of', 'frocket_front') . ' ' . $custom_maxsize . ' MB';
-                                }
-                                /*find attachment max size found*/
-                                $attachment_status = ($attachment_status < $custom_attach_st) ? $custom_attach_st : $attachment_status;
-
-                                $ext = strtolower(substr($_FILES['uiform_fields']['name'][$key], strrpos($_FILES['uiform_fields']['name'][$key], '.') + 1));
-                                if (!in_array($ext, $custom_allowedext)) {
-                                    $form_errors[] = __('Error! Type of file is not allowed to upload', 'frocket_front');
-                                }
-                                if (empty($form_errors)) {
-                                    $upload_data   = wp_upload_dir();  // look for this function in WordPress documentation at codex
-                                    $upload_dir    = $upload_data['path'];
-                                    $upload_dirurl = $upload_data['baseurl'];
-                                    $upload_subdir = $upload_data['subdir'];
-                                    $rename        = 'file_' . md5(uniqid($_FILES['uiform_fields']['name'][$key], true));
-
-                                    $_FILES['uiform_fields']['name'][$key] = $rename . '.' . strtolower($ext);
-
-                                    $form_f_tmp[$key]['input'] = $upload_dirurl . $upload_subdir . '/' . $_FILES['uiform_fields']['name'][$key];
-                                    $form_f_rec_tmp[$key]      = $upload_dirurl . $upload_subdir . '/' . $_FILES['uiform_fields']['name'][$key];
-                                    $form_fields[$key]         = $upload_dirurl . $upload_subdir . '/' . $_FILES['uiform_fields']['name'][$key];
-
-                                    // attachment
-
-                                    if ($_FILES['uiform_fields']['error'][$key] == UPLOAD_ERR_OK) {
-                                        $tmp_name = $_FILES['uiform_fields']['tmp_name'][$key]; // Get temp name of uploaded file
-                                        $name     = $_FILES['uiform_fields']['name'][$key];  // rename it to whatever
-                                        move_uploaded_file($tmp_name, "$upload_dir/$name"); // move file to new location
-                                        if (intval($custom_attach_st) === 1) {
-                                            $attachments[] = "$upload_dir/$name";  // push the new uploaded file in attachment array
-                                        }
-                                    }
-                                }
-                            } else {
-                                unset($form_fields[$key]);
-                                $form_f_tmp[$key]['input'] = '';
-                                $form_f_rec_tmp[$key]      = '';
-                            }
-
-                            break;
-                        case 16:
-                            /*slider*/
-                        case 18:
-                            /*spinner*/
-                            $tmp_fdata = json_decode($tmp_field_name->data, true);
-
-                            $tmp_field_label                 = (!empty($tmp_fdata['label']['text'])) ? $tmp_fdata['label']['text'] : $tmp_field_name->fieldname;
-                            $form_f_tmp[$key]['type']      = $tmp_field_name->type;
-                            $form_f_tmp[$key]['fieldname'] = $tmp_field_name->fieldname;
-                            $form_f_tmp[$key]['label']     = $tmp_field_label;
-
-                            // foreach ($value as $key2=>$value2) {
-                            $tmp_options_row = array();
-
-                            $tmp_options_row['qty']   = floatval($value);
-                            $tmp_options_row['label'] = floatval($value);
-                            // for records
-                            $form_f_rec_tmp[$key] = $value;
-
-                            // }
-                            /*saving data to field array*/
-                            $form_f_tmp[$key]['input'] = $tmp_options_row;
-
-                            break;
-                        case 40:
-                            /*switch*/
-                            $tmp_fdata = json_decode($tmp_field_name->data, true);
-
-                            $tmp_field_label                 = (!empty($tmp_fdata['label']['text'])) ? $tmp_fdata['label']['text'] : $tmp_field_name->fieldname;
-                            $form_f_tmp[$key]['type']      = $tmp_field_name->type;
-                            $form_f_tmp[$key]['fieldname'] = $tmp_field_name->fieldname;
-                            $form_f_tmp[$key]['label']     = $tmp_field_label;
-
-                            // foreach ($value as $key2=>$value2) {
-                            $tmp_options_row = array();
-                            if ($value === 'on') {
-                                $tmp_options_row['label'] = (!empty($tmp_fdata['input15']['txt_yes'])) ? $tmp_fdata['input15']['txt_yes'] : $value;
-                                $form_f_rec_tmp[$key]   = 1;
-                            } else {
-                                $tmp_options_row['label'] = (!empty($tmp_fdata['input15']['txt_no'])) ? $tmp_fdata['input15']['txt_no'] : $value;
-                                $form_f_rec_tmp[$key]   = 0;
-                            }
-
-                            // }
-                            /*saving data to field array*/
-                            $form_f_tmp[$key]['input'] = $tmp_options_row;
-
-                            break;
-                        case 41:
-                            /*dyn checkbox*/
-                        case 42:
-                            /*dyn radiobtn*/
-                            $tmp_fdata                       = json_decode($tmp_field_name->data, true);
-                            $tmp_options                     = array();
-                            $tmp_field_label                 = (!empty($tmp_fdata['label']['text'])) ? $tmp_fdata['label']['text'] : $tmp_field_name->fieldname;
-                            $form_f_tmp[$key]['type']      = $tmp_field_name->type;
-                            $form_f_tmp[$key]['fieldname'] = $tmp_field_name->fieldname;
-                            $form_f_tmp[$key]['label']     = $tmp_field_label;
-
-                            // for records
-                            $tmp_summary = array();
-
-                            foreach ($value as $key2 => $value2) {
-                                $tmp_summary_inner = '';
-
-                                if (isset($tmp_fdata['input17']['options'][$key2]['label'])) {
-                                    $tmp_summary_inner .= $tmp_fdata['input17']['options'][$key2]['label'];
-                                }
-
-                                if (intval($value2) > 1) {
-                                    $tmp_summary_inner .= ' - qty: ' . $value2;
-                                }
-                                $tmp_summary[] = $tmp_summary_inner;
-                            }
-
-                            $form_f_rec_tmp[$key] = implode('^,^', $tmp_summary);
-                            // end for records
-
-                            foreach ($value as $key2 => $value2) {
-                                $tmp_options_row          = array();
-                                $tmp_options_row['label'] = $tmp_fdata['input17']['options'][$key2]['label'];
-
-                                if ($tmp_fdata['input17']['options'][$key2]) {
-                                }
-                                $tmp_options_row['qty'] = $value2;
-
-                                $tmp_options[] = $tmp_options_row;
-                            }
-                            /*saving data to field array*/
-                            $form_f_tmp[$key]['input'] = $tmp_options;
-
-                            break;
-                        default:
-                            $tmp_fdata                       = json_decode($tmp_field_name->data, true);
-                            $form_f_tmp[$key]['type']      = $tmp_field_name->type;
-                            $form_f_tmp[$key]['fieldname'] = $tmp_field_name->fieldname;
-                            $tmp_field_label                 = (!empty($tmp_fdata['label']['text'])) ? $tmp_fdata['label']['text'] : $tmp_field_name->fieldname;
-                            $form_f_tmp[$key]['label']     = $tmp_field_label;
-                            if (is_array($value)) {
-                                $tmp_options = array();
-                                foreach ($value as $value2) {
-                                    $tmp_options[] = $value2;
-                                }
-                                $form_f_tmp[$key]['input'] = implode('^,^', $tmp_options);
-                                // for records
-                                $form_f_rec_tmp[$key] = implode('^,^', $tmp_options);
-                            } else {
-                                $form_f_tmp[$key]['input'] = $value;
-                                // for records
-                                $form_f_rec_tmp[$key] = $value;
-                            }
-
-                            break;
+                        
+                        $newArray2 = [];
+                        foreach ($form_f_rec_tmp2 as $key3 => $value3) {
+                            $newIndex = $key3.'_'.$key2;
+                            $newArray2[$newIndex] = $value3;
+                        }
+                        
+                        $form_f_tmp = array_merge($form_f_tmp, $newArray);
+                        $form_f_rec_tmp = array_merge($form_f_rec_tmp, $newArray2);
+                        $form_errors = array_merge($form_errors, $form_errors2);
+                        $attachments = array_merge($attachments, $attachments2);
+                        if ($attachment_status2 === true) {
+                            $attachment_status =  true;
+                        }
                     }
                 }
+            } else {
+                // fields
+                list($form_f_tmp, $form_f_rec_tmp, $form_errors, $attachments, $attachment_status) = $this->process_form_fields($form_fields, $form_id);
             }
+
 
             if (count($form_errors) > 0) {
                 $data                = array();
@@ -979,8 +1097,6 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                 return $data;
             }
 
-            // generate mail html part
-            //$this->form_rec_msg_summ = self::render_template( 'formbuilder/views/frontend/mail_generate_fields.php', array( 'data' => $form_f_tmp ), 'always' );
 
             // ending form process
 
@@ -1151,7 +1267,6 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
             $data['fbh_id']          = $idActivate;
             $this->form_response     = $data;
 
-            //self::$_modules['addon']['frontend']->addons_doActions( 'onSubmitForm_pos' );
             do_action('zgfm_onSubmitForm_pos', self::$_form_data['form_id'], self::$_form_data['record_id']);
 
             return $data;
@@ -1598,7 +1713,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                 echo $shortcode_string;
                 // buffer 4
                 ob_start();
-                ?>
+            ?>
                 <script type="text/javascript">
                     jQuery("#rockfm_form_<?php echo $id; ?>").ready(function() {
                         zgfm_front_helper.load_cssfiles(<?php echo $id; ?>);
@@ -1608,7 +1723,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                         rocketfm.loadform_init();
                     });
                 </script>
-                <?php
+<?php
                 $js_string = ob_get_clean();
                 // end buffer 4
 
@@ -1709,11 +1824,11 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         wp_enqueue_style('rockfm-bootstrap-colorpicker', UIFORM_FORMS_URL . '/assets/backend/js/colorpicker/2.5/css/bootstrap-colorpicker.css');
         // bootstrap select
         wp_enqueue_style('rockfm-bootstrap-select', UIFORM_FORMS_URL . '/assets/common/js/bselect/1.12.4/css/bootstrap-select-mod.css');
-        
+
         // bootstrap select 2
         wp_enqueue_style('rockfm-bootstrap-select2', UIFORM_FORMS_URL . '/assets/common/js/select2/4.0.13/css/select2.min.css');
-        
-        
+
+
         // star rating
         wp_enqueue_style('rockfm-star-rating', UIFORM_FORMS_URL . '/assets/backend/js/bratestar/star-rating.css');
 
@@ -1776,10 +1891,10 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
         wp_enqueue_script('rockfm-bootstrap-colorpicker', UIFORM_FORMS_URL . '/assets/backend/js/colorpicker/2.5/js/bootstrap-colorpicker.js', array('jquery', 'rockfm-bootstrap'), '1.0', true);
         // bootstrap select
         wp_enqueue_script('rockfm-bootstrap-select', UIFORM_FORMS_URL . '/assets/common/js/bselect/1.12.4/js/bootstrap-select-mod.js', array('jquery', 'rockfm-bootstrap'), '1.12.4', true);
-        
+
         // select2
-        wp_enqueue_script('rockfm-bootstrap-select2', UIFORM_FORMS_URL . '/assets/common/js/select2/4.0.13/js/select2.full.min.js', array( 'jquery', 'rockfm-bootstrap' ), '4.0.13', true);
-                
+        wp_enqueue_script('rockfm-bootstrap-select2', UIFORM_FORMS_URL . '/assets/common/js/select2/4.0.13/js/select2.full.min.js', array('jquery', 'rockfm-bootstrap'), '4.0.13', true);
+
         // bootstrap switch
         wp_enqueue_script('rockfm-bootstrap-switch', UIFORM_FORMS_URL . '/assets/backend/js/bswitch/bootstrap-switch.js', array('jquery', 'rockfm-bootstrap'), '1.0', true);
         // form
@@ -1802,15 +1917,15 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
 
     public function load_form_resources_alt($id, $is_demo = 0)
     {
-        if ( file_exists(WP_CONTENT_DIR.'/uploads/softdiscover/' . UIFORM_SLUG . '/rockfm_form' . $id . '.css')) {
-            wp_register_style(self::PREFIX . 'rockfm_form' . $id, site_url().'/wp-content/uploads/softdiscover/' . UIFORM_SLUG . '/rockfm_form' . $id . '.css?' . date('Ymdgis'), array(), UIFORM_VERSION, 'all');
+        if (file_exists(WP_CONTENT_DIR . '/uploads/softdiscover/' . UIFORM_SLUG . '/rockfm_form' . $id . '.css')) {
+            wp_register_style(self::PREFIX . 'rockfm_form' . $id, site_url() . '/wp-content/uploads/softdiscover/' . UIFORM_SLUG . '/rockfm_form' . $id . '.css?' . date('Ymdgis'), array(), UIFORM_VERSION, 'all');
             wp_enqueue_style(self::PREFIX . 'rockfm_form' . $id);
-        } elseif ( file_exists(UIFORM_FORMS_DIR . '/assets/frontend/css/rockfm_form' . $id . '.css')) {
+        } elseif (file_exists(UIFORM_FORMS_DIR . '/assets/frontend/css/rockfm_form' . $id . '.css')) {
             wp_register_style(self::PREFIX . 'rockfm_form' . $id, UIFORM_FORMS_URL . '/assets/frontend/css/rockfm_form' . $id . '.css?' . date('Ymdgis'), array(), UIFORM_VERSION, 'all');
             wp_enqueue_style(self::PREFIX . 'rockfm_form' . $id);
         }
 
-        
+
         // load form variables
         $form_variables                        = array();
         //$form_variables['_uifmvar']['addon']   = self::$_addons_jsactions;

@@ -489,7 +489,26 @@ class Uiform_Model_Form_Records
             return 0;
         }
     }
-
+    
+    public function getFieldDataByIdOnMultistep($id_rec, $ui_field, $idform)
+    {
+        $query = sprintf(
+            "select f.type_fby_id as type,f.fmf_data
+            from wp_uiform_fields f
+            join wp_uiform_fields_type t on f.type_fby_id=t.fby_id 
+            where f.fmf_uniqueid='%s' and f.form_fmb_id=%s ",
+            $ui_field,
+            $idform
+        );
+        
+        $row = $this->wpdb->get_row($query);
+        if (! empty($row)) {
+            return $row;
+        } else {
+            return '';
+        }
+    }
+    
     public function getFieldDataById($id_rec, $ui_field)
     {
         $query = sprintf(

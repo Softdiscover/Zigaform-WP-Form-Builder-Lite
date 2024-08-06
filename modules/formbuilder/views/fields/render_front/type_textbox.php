@@ -15,11 +15,12 @@ if (! defined('ABSPATH')) {
     exit('No direct script access allowed');
 }
 ob_start();
+$nameField =  apply_filters('uifm_ms_render_field_front', "uiform_fields[".$id."]", $id, $type);
 ?>
  <input placeholder="<?php echo htmlentities($input['placeholder'], ENT_QUOTES, 'UTF-8'); ?>"
                             class="rockfm-txtbox-inp-val sfdc-form-control"
                             data-uifm-tabnum="<?php echo $tab_num; ?>"
-                            name="uiform_fields[<?php echo $id; ?>]"
+                            name="<?php echo $nameField; ?>"
                             type="text" value="<?php echo $input['value']; ?>">
 <?php
 $cntACmp = ob_get_contents();

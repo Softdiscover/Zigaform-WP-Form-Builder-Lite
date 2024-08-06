@@ -34,7 +34,7 @@ if (! defined('ABSPATH')) {
                 <div id="uiform-listform-options">
                     <div class="uiform-listform-options-col">
                          <a class="sfdc-btn sfdc-btn-sm sfdc-btn-primary" 
-                       href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=create_uiform'; ?>">
+                       href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=choose_mode'; ?>">
                         <i class="fa fa-plus">
                         </i>
                         <?php echo __('Add new form', 'FRocket_admin'); ?>

@@ -491,6 +491,7 @@ JS;
 
         require_once UIFORM_FORMS_DIR . '/modules/formbuilder/controllers/uiform-fb-controller-forms.php';
         require_once UIFORM_FORMS_DIR . '/modules/formbuilder/controllers/uiform-fb-controller-fields.php';
+        require_once UIFORM_FORMS_DIR . '/modules/multistep/controllers/dashboard.php';
         require_once UIFORM_FORMS_DIR . '/modules/formbuilder/models/uiform-model-form.php';
         require_once UIFORM_FORMS_DIR . '/modules/formbuilder/models/uiform-model-form-log.php';
         require_once UIFORM_FORMS_DIR . '/modules/formbuilder/models/uiform-model-fields.php';
@@ -523,6 +524,9 @@ JS;
                 'records'  => Uiform_Fb_Controller_Records::get_instance(),
                 'settings' => Uiform_Fb_Controller_Settings::get_instance(),
             ),
+            'multistep' => [
+                'dashboard' => Uiform_Fb_Controller_Multistep::get_instance(),
+            ],
             'addon'       => array(
                 'common'   => zgfm_mod_addon_controller_common::get_instance(),
                 'backend'  => zgfm_mod_addon_controller_back::get_instance(),
@@ -647,7 +651,7 @@ JS;
             add_action('admin_print_styles-' . $page_debug, array( &$this, 'load_admin_resources' ));
         }
 
-        if ( ZIGAFORM_F_LITE === 1) {
+        if ( ZIGAFORM_F_LITE === 1 || UIFORM_DEBUG === 1) {
             // go pro page
             $submenu_txt = __('Go Pro!', 'FRocket_admin');
             $go_pro_link = '<span style="color:#f18500">' . $submenu_txt . '</span>';
@@ -689,7 +693,7 @@ JS;
             }
 
             $meta[] = "<a href='https://wordpress-form-builder.zigaform.com/#demo-samples' target='_blank'><span class='dashicons  dashicons-laptop'></span>" . __('Live Demo', 'FRocket_admin') . '</a>';
-            $meta[] = "<a href='https://kb.softdiscover.com/docs/zigaform-wordpress-form-builder/' target='_blank'><span class='dashicons  dashicons-search'></span>" . __('Documentation', 'FRocket_admin') . '</a>';
+            $meta[] = "<a href='https://wordpress-form-builder.zigaform.com/docs/' target='_blank'><span class='dashicons  dashicons-search'></span>" . __('Documentation', 'FRocket_admin') . '</a>';
 
             if ( ZIGAFORM_F_LITE === 1) {
                 $meta[] = "<a href='https://wordpress.org/support/plugin/zigaform-form-builder-lite/reviews#new-post' target='_blank' title='" . __('Leave a review', 'FRocket_admin') . "'><i class='ml-stars'><svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg><svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg><svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg><svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg><svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg></i></a>";
@@ -985,6 +989,7 @@ JS;
 
         // md5
         wp_enqueue_script('rockefform-md5', UIFORM_FORMS_URL . '/assets/backend/js/md5.js');
+        
         // graph morris
         wp_enqueue_script('rockefform-graph-morris', UIFORM_FORMS_URL . '/assets/backend/js/graph/morris.min.js');
         wp_enqueue_script('rockefform-graph-raphael', UIFORM_FORMS_URL . '/assets/backend/js/graph/raphael-min.js');
@@ -1000,7 +1005,7 @@ JS;
         // bootstrap select
         wp_enqueue_script('rockefform-bootstrap-select', UIFORM_FORMS_URL . '/assets/common/js/bselect/1.12.4/js/bootstrap-select-mod.js', array( 'jquery', 'rockefform-bootstrap-sfdc' ), '1.12.4', true);
         
-        wp_enqueue_script('rockefform-bootstrap-select2', UIFORM_FORMS_URL . '/assets/common/js/select2/4.0.13/js/select2.full.min.js', array( 'jquery', 'rockefform-bootstrap-sfdc' ), '4.0.13', true);
+        
             
         // bootstrap switch
         wp_enqueue_script('rockefform-bootstrap-switch', UIFORM_FORMS_URL . '/assets/backend/js/bswitch/bootstrap-switch.js', array( 'jquery', 'rockefform-bootstrap-sfdc' ), '1.0', true);
@@ -1059,28 +1064,36 @@ JS;
         wp_enqueue_script('rockefform-autooff', UIFORM_FORMS_URL . '/assets/backend/js/disableautofill/jquery.disableAutoFill.js');
         
         wp_enqueue_script('rockefform-iframe', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/4.1.1/iframeResizer.contentWindow.js');
+         
+        wp_enqueue_script('rockefform-gsap', UIFORM_FORMS_URL . '/assets/backend/js/gsap/3.12.5/gsap.min.js');
         
         wp_enqueue_script('rockefform-menu-fonts', UIFORM_FORMS_URL . '/assets/backend/js/fonts.js');
         wp_enqueue_script('rockefform-menu-main', UIFORM_FORMS_URL . '/libraries/styles-font-menu/js/styles-font-menu.js');
         wp_enqueue_style('rockefform-menu-style', UIFORM_FORMS_URL . '/libraries/styles-font-menu/css/styles-font-menu.css');
 
-        
         if ( UIFORM_DEBUG === 1) {
+            wp_enqueue_script('rockefform-bootstrap-select2', UIFORM_FORMS_URL . '/assets/common/js/select2/4.0.13/js/select2.full.js', array( 'jquery', 'rockefform-bootstrap-sfdc' ), '4.0.13', true);
             wp_register_script(
                 self::PREFIX . 'admin',
                 UIFORM_FORMS_URL . '/assets/backend/js/admin.debug.js?v=' . date('YmdHis'),
-                array( 'rockefform-bootstrap-sfdc', 'wp-i18n', 'wp-hooks'  ),
+                array( 'rockefform-bootstrap-sfdc', 'wp-i18n', 'wp-hooks' ,'rockefform-multistep', 'rockefform-multistep-manager' ),
                 UIFORM_VERSION,
                 true
             );
+            //multistep
+            wp_enqueue_script('rockefform-multistep', UIFORM_FORMS_URL . '/assets/backend/js/multistep/multistep.debug.js?v='. date('YmdHis'));
+            wp_enqueue_script('rockefform-multistep-manager', UIFORM_FORMS_URL . '/assets/backend/js/multistep/multistepmanager.debug.js?v='. date('YmdHis'));
         } else {
+            wp_enqueue_script('rockefform-bootstrap-select2', UIFORM_FORMS_URL . '/assets/common/js/select2/4.0.13/js/select2.full.min.js', array( 'jquery', 'rockefform-bootstrap-sfdc' ), '4.0.13', true);
             wp_register_script(
                 self::PREFIX . 'admin',
                 UIFORM_FORMS_URL . '/assets/backend/js/admin.min.js',
-                array( 'rockefform-bootstrap-sfdc', 'wp-i18n', 'wp-hooks' ),
+                array( 'rockefform-bootstrap-sfdc', 'wp-i18n', 'wp-hooks','rockefform-multistep', 'rockefform-multistep-manager'),
                 UIFORM_VERSION,
                 true
             );
+            wp_enqueue_script('rockefform-multistep', UIFORM_FORMS_URL . '/assets/backend/js/multistep/multistep.min.js', [], UIFORM_VERSION);
+            wp_enqueue_script('rockefform-multistep-manager', UIFORM_FORMS_URL . '/assets/backend/js/multistep/multistepmanager.min.js', [], UIFORM_VERSION);
         }
 
         // load recaptcha api
@@ -1093,6 +1106,7 @@ JS;
                 'url_site'        => site_url(),
                 'fields_fastload' => get_option('zgfm_fields_fastload', 0),
                 'url_admin'       => admin_url(),
+                'is_debug'        => UIFORM_DEBUG,
                 'url_plugin'      => UIFORM_FORMS_URL,
                 'app_version'     => UIFORM_VERSION,
                 'app_is_lite'     => ZIGAFORM_F_LITE,
@@ -1219,7 +1233,7 @@ JS;
             add_filter('rockfm_languages_domain', array( &$this, 'rockfm_lang_domain_filter' ));
             add_filter('plugin_locale', array( &$this, 'rockfm_lang_locale_filter' ));
         } catch ( Exception $exception) {
-            add_notice(__METHOD__ . ' error: ' . $exception->getMessage(), 'error');
+            //add_notice(__METHOD__ . ' error: ' . $exception->getMessage(), 'error');
         }
     }
 

@@ -63,9 +63,9 @@ class Uiform_Model_Form
         $query = sprintf(
             '
             select uf.fmb_id,uf.fmb_data,uf.fmb_name,uf.fmb_html,uf.fmb_html_backend,uf.flag_status,uf.created_date,uf.updated_date,
-                uf.fmb_html_css,uf.fmb_default,uf.fmb_skin_status,uf.fmb_skin_data,uf.fmb_skin_type,uf.fmb_data2
+                uf.fmb_html_css,uf.fmb_default,uf.fmb_skin_status,uf.fmb_skin_data,uf.fmb_skin_type,uf.fmb_data2, uf.fmb_type
             from %s uf
-            where uf.flag_status>0 ',
+            where uf.flag_status>0 and uf.fmb_type in (0,1)',
             $this->table
         );
 
@@ -106,7 +106,7 @@ class Uiform_Model_Form
 			select uf.fmb_id,uf.fmb_data,uf.fmb_name,uf.fmb_html,uf.fmb_html_backend,uf.flag_status,uf.created_date,uf.updated_date,
 				uf.fmb_html_css,uf.fmb_default,uf.fmb_skin_status,uf.fmb_skin_data,uf.fmb_skin_type,uf.fmb_data2
 			from %s uf
-			where uf.flag_status=0 ',
+			where uf.flag_status=0 and uf.fmb_type in (0,1)',
             $this->table
         );
 
@@ -138,7 +138,7 @@ class Uiform_Model_Form
             select uf.fmb_id,uf.fmb_data,uf.fmb_name,uf.fmb_html,uf.fmb_html_backend,uf.flag_status,uf.created_date,uf.updated_date,
                 uf.fmb_html_css,uf.fmb_default,uf.fmb_skin_status,uf.fmb_skin_data,uf.fmb_skin_type,uf.fmb_data2
             from %s uf
-            where uf.flag_status>0 
+            where uf.flag_status>0  and uf.fmb_type in (0,1) 
             ORDER BY uf.updated_date desc
             ',
             $this->table
@@ -156,10 +156,10 @@ class Uiform_Model_Form
     {
         $query = sprintf(
             '
-            select uf.fmb_id,uf.fmb_data,uf.fmb_name,uf.fmb_html,uf.fmb_html_backend,uf.flag_status,uf.created_date,uf.updated_date,
-                uf.fmb_html_css,uf.fmb_default,uf.fmb_skin_status,uf.fmb_skin_data,uf.fmb_skin_type,uf.fmb_data2,fmb_rec_tpl_html,fmb_rec_tpl_st
+            select uf.fmb_id,uf.fmb_data,uf.fmb_name,uf.fmb_html,uf.fmb_html_backend,uf.flag_status,uf.created_date,uf.updated_date, uf.fmb_parent,
+                uf.fmb_html_css,uf.fmb_default,uf.fmb_skin_status,uf.fmb_skin_data,uf.fmb_skin_type,uf.fmb_data2,uf.fmb_rec_tpl_html,uf.fmb_rec_tpl_st, uf.fmb_type, uf.fmb_parent
             from %s uf
-            where uf.fmb_id=%s
+            where uf.fmb_id=%s  
             ',
             $this->table,
             $id
@@ -200,7 +200,25 @@ class Uiform_Model_Form
 
         return $this->wpdb->get_row($query);
     }
+    
+    public function getChildFormByParentId($id)
+    {
+        $query = sprintf(
+            '
+            select uf.fmb_id,uf.fmb_data,uf.fmb_name,uf.fmb_html,uf.fmb_html_backend,uf.flag_status,uf.created_date,uf.updated_date,
+                uf.fmb_html_css,uf.fmb_default,uf.fmb_skin_status,uf.fmb_skin_data,uf.fmb_skin_type,uf.fmb_data2, uf.fmb_rec_tpl_html, uf.fmb_rec_tpl_st, uf.fmb_type, uf.fmb_parent
+            from %s uf
+            where 
+            uf.flag_status=1 and
+            uf.fmb_parent=%s
+            ',
+            $this->table,
+            $id
+        );
 
+        return $this->wpdb->get_results($query);
+    }
+    
     public function getFormById_2($id)
     {
         $query = sprintf(
@@ -222,7 +240,7 @@ class Uiform_Model_Form
             '
             select COUNT(*) AS counted
             from %s c
-            where c.flag_status>0 
+            where c.flag_status>0  and c.fmb_type in (0,1)
             ORDER BY c.updated_date desc
             ',
             $this->table
@@ -245,7 +263,8 @@ class Uiform_Model_Form
 			SELECT 
 			  SUM(CASE WHEN flag_status = 0 THEN 1 ELSE 0 END) AS r_trash,
 			  SUM(CASE WHEN flag_status != 0 THEN 1 ELSE 0 END) AS r_all
-			FROM %s
+			FROM %s 
+			WHERE fmb_type in (0,1)
 			',
             $this->table
         );

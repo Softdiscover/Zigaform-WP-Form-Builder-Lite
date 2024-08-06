@@ -579,7 +579,11 @@ if (!$uifm.isFunction(rocketfm)) {
 					return false;
 				} else {
 					if (msg) {
-						var tmp_msg = el.parent().find('.rockfm-alert-container');
+						var tmp_msg;
+						tmp_msg = el.parent().find('.rockfm-alert-container');
+						if (rocketfm.isMultiStepActive(el)) {
+						}
+
 						tmp_msg.html('');
 						tmp_msg.append('<div class="rockfm-alert-inner" >' + msg + '</div>');
 						tmp_msg.show();
@@ -608,7 +612,85 @@ if (!$uifm.isFunction(rocketfm)) {
 
 				jQuery(document).trigger('zgfm.form.after_submit', {});
 			};
-			arguments.callee.submitForm_submit = function(el) {
+			arguments.callee.ms_submitForm_submit = function(el, obj_btn) {
+				let parentFormObj = el.closest('.rockfm-form');
+
+				formId = parseInt(parentFormObj.find('._rockfm_form_parent_id').val());
+
+				isMockingSubmit = 'no';
+				if (rockfm_vars.hasOwnProperty('forms') && rockfm_vars.forms.hasOwnProperty(formId) && rockfm_vars.forms[formId].hasOwnProperty('is_mocking_submit')) {
+					isMockingSubmit = rockfm_vars.forms[formId]['is_mocking_submit'];
+				}
+
+				if (String(isMockingSubmit) === 'yes') {
+					var tmp_msg = el.parent().find('.rockfm-alert-container');
+					tmp_msg.html('');
+					tmp_msg.append('<div class="rockfm-alert-inner" ><div class="rockfm-alert rockfm-alert-success"><b>Success!</b> Form was submitted successfully</div></div>');
+					$('html,body').animate(
+						{
+							scrollTop: tmp_msg.offset().top,
+						},
+						'slow'
+					);
+					tmp_msg.show();
+					el.hide();
+
+					return;
+				}
+
+				if (parentFormObj.find('.rockfm-fileupload-wrap').length) {
+					var options = {
+						url: rockfm_vars.ajaxurl,
+						beforeSend: function() {},
+						type: 'POST',
+						beforeSubmit: function(formData, formObject, formOptions) {
+							formData.push({
+								name: 'zgfm_security',
+								value: rockfm_vars.ajax_nonce,
+							});
+							formData.push({
+								name: 'zgfm_is_demo',
+								value: uifmvariable.externalVars['is_demo'],
+							});
+						},
+						beforeSerialize: function(form, options) {
+							parentFormObj.find('.rockfm-conditional-hidden', form).remove();
+							parentFormObj.find('.rockfm-cond-hidden-children', form).remove();
+							obj_btn.attr('disabled', 'disabled').html(obj_btn.attr('data-val-subm') + ' <i class="sfdc-glyphicon sfdc-glyphicon-refresh sfdc-gly-spin"></i>');
+						},
+
+						uploadProgress: function(event, position, total, percentComplete) {},
+						success: function() {},
+						complete: function(response) {
+							obj_btn.removeAttr('disabled');
+							rocketfm.submitForm_showMessage(parentFormObj, response.responseText, obj_btn);
+						},
+						error: function() {
+							console.log('errors');
+						},
+					};
+					parentFormObj.ajaxForm(options);
+					parentFormObj.submit();
+				} else {
+					var data = parentFormObj.uifm_serialize();
+					$.ajax({
+						type: 'post',
+						url: rockfm_vars.ajaxurl,
+						data: data + '&zgfm_is_demo=' + uifmvariable.externalVars['is_demo'] + '&zgfm_security=' + rockfm_vars.ajax_nonce,
+						async: true,
+						dataType: 'html',
+
+						beforeSend: function() {
+							obj_btn.attr('disabled', 'disabled').html(obj_btn.attr('data-val-subm') + ' <i class="sfdc-glyphicon sfdc-glyphicon-refresh sfdc-gly-spin"></i>');
+						},
+						success: function(response) {
+							obj_btn.removeAttr('disabled');
+							rocketfm.submitForm_showMessage(parentFormObj, response, obj_btn);
+						},
+					});
+				}
+			};
+			arguments.callee.submitForm_submit = function(el, btnObj) {
 				formId = parseInt(el.find('._rockfm_form_id').val());
 
 				isMockingSubmit = 'no';
@@ -668,6 +750,7 @@ if (!$uifm.isFunction(rocketfm)) {
 						el.ajaxForm(options);
 						el.submit();
 					} else {
+
 						var data = el.uifm_serialize();
 						$.ajax({
 							type: 'post',
@@ -973,402 +1056,466 @@ if (!$uifm.isFunction(rocketfm)) {
 				}
 			};
 
-			arguments.callee.loadform_init = function() {
-				var obj_form_list = $('.rockfm-form-container');
+			arguments.callee.loadFields = function(obj_form) {
+				if (obj_form.find('.rockfm-input4-slider').length) {
+					var rockfm_slider_d = obj_form.find('.rockfm-input4-slider');
+					rockfm_slider_d.each(function(i) {
+						$(this).bootstrapSlider();
+						$(this)
+							.parent()
+							.parent()
+							.find('.slider-tick-label')
+							.hide();
+						$(this)
+							.parent()
+							.parent()
+							.find('.rockfm-input4-number')
+							.text($(this).val());
+
+						obj_form.find('.rockfm-input4-slider').on('slide', function(slideEvt) {
+							$(this)
+								.parent()
+								.parent()
+								.find('.rockfm-input4-number')
+								.text(slideEvt.value);
+
+							$(this)
+								.parent()
+								.parent()
+								.find('.slider-tick-label')
+								.show();
+						});
+					});
+				}
+
+				if (obj_form.find('.rockfm-input4-spinner').length) {
+					var spinners = obj_form.find('.rockfm-input4-spinner'),
+						s_min,
+						s_max,
+						s_step,
+						s_value;
+					spinners.each(function(i) {
+						(s_min = $(this).attr('data-rockfm-min')), (s_max = $(this).attr('data-rockfm-max')), (s_step = $(this).attr('data-rockfm-step')), (s_value = $(this).attr('data-rockfm-value'));
+						let s_decimals = $(this).attr('data-rockfm-decimal') || 0;
+						$(this).TouchSpin({
+							verticalbuttons: true,
+							min: parseFloat(s_min),
+							max: parseFloat(s_max),
+							step: parseFloat(s_step),
+							verticalupclass: 'sfdc-glyphicon sfdc-glyphicon-plus',
+							verticaldownclass: 'sfdc-glyphicon sfdc-glyphicon-minus',
+							initval: parseFloat(s_value),
+							decimals: parseFloat(s_decimals),
+						});
+					});
+				}
+				if (obj_form.find('.rockfm-input15-switch').length) {
+					var rockfm_switch_d = obj_form.find('.rockfm-input15-switch');
+
+					rockfm_switch_d.each(function(i) {
+						$(this).bootstrapSwitchZgpb({
+							onText: $(this).attr('data-uifm-txt-yes'),
+							offText: $(this).attr('data-uifm-txt-no'),
+						});
+					});
+				}
+				if (obj_form.find('.rockfm-input17-wrap .uifm-dcheckbox-item').length) {
+					obj_form.find('.rockfm-input17-wrap .uifm-dcheckbox-item').uiformDCheckbox();
+				}
+
+				if (obj_form.find('.rockfm-input17-wrap .uifm-dradiobtn-item').length) {
+					obj_form.find('.rockfm-input17-wrap .uifm-dradiobtn-item').uiformDCheckbox();
+				}
+				if (obj_form.find('.g-recaptcha').length) {
+					if (parseInt(obj_form.find('.g-recaptcha').length) > 0) {
+						var rockfm_rcha_d = obj_form.find('.g-recaptcha');
+						rockfm_rcha_d.each(function(i) {
+							$(this).attr('id', 'zgfm_recaptcha_obj_' + obj_form.find('._rockfm_form_id').val());
+						});
+					}
+
+					if (parseInt(obj_form.find('.g-recaptcha').length) > 1) {
+						var rockfm_rcha_d = obj_form.find('.g-recaptcha');
+						rockfm_rcha_d.each(function(i) {
+							if (parseInt(i) != 0) {
+								$(this)
+									.removeClass('g-recaptcha')
+									.html('ReCaptcha is loaded once. Remove this field');
+							}
+						});
+					}
+
+					if (!$('#zgfm_form_lib_recaptcha').length) {
+						var rockfm_recaptcha = document.createElement('script');
+						rockfm_recaptcha.type = 'text/javascript';
+						rockfm_recaptcha.async = true;
+						rockfm_recaptcha.id = 'zgfm_form_lib_recaptcha';
+						rockfm_recaptcha.defer = 'defer';
+						rockfm_recaptcha.src = 'https://www.google.com/recaptcha/api.js?onload=zgfm_recaptcha_onloadCallback&render=explicit';
+						var s = document.getElementsByTagName('script')[0];
+						s.parentNode.insertBefore(rockfm_recaptcha, s);
+					}
+				}
+
+				if (parseInt(obj_form.attr('data-zgfm-recaptchav3-active')) === 1) {
+					let siteKey = obj_form.attr('data-zgfm-recaptchav3-sitekey');
+					var rockfm_recaptcha = document.createElement('script');
+					rockfm_recaptcha.type = 'text/javascript';
+					rockfm_recaptcha.async = true;
+					rockfm_recaptcha.id = 'zgfm_form_lib_recaptchav3';
+					rockfm_recaptcha.defer = 'defer';
+					rockfm_recaptcha.src = 'https://www.google.com/recaptcha/api.js?render=' + siteKey;
+					var s = document.getElementsByTagName('script')[0];
+					s.parentNode.insertBefore(rockfm_recaptcha, s);
+				}
+
+				if (obj_form.find('.rockfm-captcha').length) {
+					if (parseInt(obj_form.find('.rockfm-captcha').length) > 1) {
+						var rockfm_capcha_d = obj_form.find('.rockfm-captcha');
+						rockfm_capcha_d.each(function(i) {
+							if (parseInt(i) != 0) {
+								$(this)
+									.find('.rockfm-inp6-captcha')
+									.removeClass('rockfm-inp6-captcha')
+									.html('Captcha is loaded once. Remove this field');
+							}
+						});
+					}
+					var rockfm_capcha_refobj = obj_form.find('.rockfm-captcha .rockfm-inp6-wrap-refrescaptcha a');
+					rocketfm.captcha_refreshImage(rockfm_capcha_refobj);
+				}
+
+
+				if (obj_form.find('.rockfm-input7-datepic').length) {
+					var rockfm_datepic_d = obj_form.find('.rockfm-input7-datepic');
+					var rkfm_datepic_tmp1, rkfm_datepic_tmp2;
+					rockfm_datepic_d.each(function(i) {
+						$(this).datetimepicker({
+							format: 'L',
+						});
+						rkfm_datepic_tmp1 = $(this).attr('data-rkfm-language');
+						if (rkfm_datepic_tmp1) {
+							$(this)
+								.data('DateTimePicker')
+								.locale(rkfm_datepic_tmp1);
+						}
+						rkfm_datepic_tmp2 = $(this).attr('data-rkfm-showformat');
+						if (rkfm_datepic_tmp2) {
+							$(this)
+								.data('DateTimePicker')
+								.dayViewHeaderFormat(rkfm_datepic_tmp2);
+							$(this)
+								.data('DateTimePicker')
+								.format(rkfm_datepic_tmp2);
+						}
+					});
+				}
+
+				if (obj_form.find('.uifm-input-flatpickr').length) {
+					var rockfm_datepic_d = obj_form.find('.uifm-input-flatpickr');
+					var rkfm_datepic_tmp1, rkfm_datepic_tmp2;
+					var flatpick_instance;
+					rockfm_datepic_d.each(function(i) {
+						var tmp = {};
+
+						if (parseInt($(this).attr('data-rkfm-enabletime')) === 1) {
+							tmp['enableTime'] = true;
+						} else {
+							tmp['enableTime'] = false;
+						}
+
+						if (parseInt($(this).attr('data-rkfm-nocalendar')) === 1) {
+							tmp['noCalendar'] = true;
+						} else {
+							tmp['noCalendar'] = false;
+						}
+
+						if (parseInt($(this).attr('data-rkfm-time24hr')) === 1) {
+							tmp['time_24hr'] = true;
+						} else {
+							tmp['time_24hr'] = false;
+						}
+
+						if (parseInt($(this).attr('data-rkfm-altinput')) === 1) {
+							tmp['altInput'] = true;
+						} else {
+							tmp['altInput'] = false;
+						}
+
+						if (String($(this).attr('data-rkfm-altformat')).length > 0) {
+							tmp['altFormat'] = $(this).attr('data-rkfm-altformat');
+						} else {
+							tmp['altFormat'] = 'F j, Y';
+						}
+
+						if (String($(this).attr('data-rkfm-dateformat')).length > 0) {
+							tmp['dateFormat'] = $(this).attr('data-rkfm-dateformat');
+						} else {
+							tmp['dateFormat'] = 'Y-m-d';
+						}
+
+						tmp['locale'] = $(this).attr('data-rkfm-language');
+
+						if (String($(this).attr('data-rkfm-mindate')).length > 0) {
+							tmp['minDate'] = $(this).attr('data-rkfm-mindate');
+						}
+
+						if (String($(this).attr('data-rkfm-maxdate')).length > 0) {
+							tmp['maxDate'] = $(this).attr('data-rkfm-maxdate');
+						}
+
+						if (String($(this).attr('data-rkfm-defaultdate')).length > 0) {
+							tmp['defaultDate'] = $(this).attr('data-rkfm-defaultdate');
+						}
+
+						tmp['allowInput'] = true;
+
+						if (parseInt($(this).attr('data-rkfm-isinline')) === 1) {
+							tmp['inline'] = true;
+						} else {
+							tmp['wrap'] = true;
+						}
+
+						tmp['onChange'] = function(selectedDates, dateStr, instance) {
+							$(instance.element)
+								.find('input')
+								.val(dateStr);
+						};
+
+						flatpick_instance = $(this).flatpickr(tmp);
+						$(this).data('zgfm_flatpicker', flatpick_instance);
+					});
+				}
+
+				if (obj_form.find('.rockfm-input7-timepic').length) {
+					var rockfm_timepic_d = obj_form.find('.rockfm-input7-timepic');
+					rockfm_timepic_d.each(function(i) {
+						$(this).datetimepicker({
+							format: 'LT',
+						});
+					});
+				}
+				if (obj_form.find('.rockfm-input7-datetimepic').length) {
+					var rockfm_datetm_d = obj_form.find('.rockfm-input7-datetimepic');
+					var rkfm_datetm_tmp1, rkfm_datetm_tmp2;
+					rockfm_datetm_d.each(function(i) {
+						$(this).datetimepicker({
+							minDate: new Date(),
+						});
+						rkfm_datetm_tmp1 = $(this).attr('data-rkfm-language');
+						if (rkfm_datetm_tmp1) {
+							$(this)
+								.data('DateTimePicker')
+								.locale(rkfm_datetm_tmp1);
+						}
+						rkfm_datetm_tmp2 = $(this).attr('data-rkfm-showformat');
+						if (rkfm_datetm_tmp2) {
+							$(this)
+								.data('DateTimePicker')
+								.dayViewHeaderFormat(rkfm_datetm_tmp2);
+						}
+					});
+
+				}
+
+				if (obj_form.find('.rockfm-input-ratingstar').length) {
+					var rockfm_rstar_d = obj_form.find('.rockfm-input-ratingstar');
+					rockfm_rstar_d.each(function(i) {
+						$(this).rating({
+							starCaptions:
+								{
+									1: $(this).attr('data-uifm-txt-star1') || 'very bad',
+									2: $(this).attr('data-uifm-txt-star2') || 'bad',
+									3: $(this).attr('data-uifm-txt-star3') || 'ok',
+									4: $(this).attr('data-uifm-txt-star4') || 'good',
+									5: $(this).attr('data-uifm-txt-star5'),
+								} || 'very good',
+							clearCaption: $(this).attr('data-uifm-txt-norate'),
+							starCaptionClasses: {
+								1: 'text-danger',
+								2: 'text-warning',
+								3: 'text-info',
+								4: 'text-primary',
+								5: 'text-success',
+							},
+						});
+					});
+				}
+
+				var tmp_load_obj;
+
+				if (obj_form.find('.rockfm-input2-sel-styl1').length) {
+					tmp_load_obj = obj_form.find('.rockfm-input2-sel-styl1');
+					tmp_load_obj.each(function(i) {
+						$(this).selectpicker({
+							noneSelectedText: $(this)
+								.parent()
+								.attr('data-theme-stl1-txtnosel'),
+							noneResultsText: $(this)
+								.parent()
+								.attr('data-theme-stl1-txtnomatch'),
+							countSelectedText: $(this)
+								.parent()
+								.attr('data-theme-stl1-txtcountsel'),
+						});
+					});
+				}
+
+				if (obj_form.find('.rockfm-input2-sel-styl2').length) {
+					tmp_load_obj = obj_form.find('.rockfm-input2-sel-styl2');
+					tmp_load_obj.each(function(i) {
+						$(this).select2({
+							placeholder: 'Select an option',
+							theme: 'classic',
+							width: '100%',
+						});
+					});
+				}
+
+				if (obj_form.find('.rockfm-input2-chk-styl1').length) {
+					tmp_load_obj = obj_form.find('.rockfm-input2-chk-styl1');
+					var tmp_chk_icon;
+					tmp_load_obj.each(function(i) {
+						tmp_chk_icon = $(this).attr('data-chk-icon');
+						$(this).checkradios({
+							checkbox: {
+								iconClass: tmp_chk_icon,
+							},
+							radio: {
+								iconClass: tmp_chk_icon,
+							},
+						});
+					});
+				}
+
+				if (obj_form.find('.rockfm-colorpicker-wrap').length) {
+					var rockfm_cpicker_d = obj_form.find('.rockfm-colorpicker-wrap');
+					rockfm_cpicker_d.each(function(i) {
+						$(this).colorpicker();
+					});
+				}
+				if (obj_form.find('[data-rockfm-gfont]').length) {
+					var rockfm_tmp = obj_form.find('[data-rockfm-gfont]');
+					var rockfm_uniq_font = [];
+					rockfm_tmp.each(function(i) {
+						if ($.inArray($(this).attr('data-rockfm-gfont'), rockfm_uniq_font) === -1) {
+							var atImport = '@import url(//fonts.googleapis.com/css?family=' + $(this).attr('data-rockfm-gfont');
+							$('<style>')
+								.append(atImport)
+								.appendTo('head');
+							rockfm_uniq_font.push($(this).attr('data-rockfm-gfont'));
+						}
+					});
+				}
+
+				obj_form.zgfm_logicfrm();
+
+				if (obj_form.find('.rockfm-clogic-fcond').length) {
+
+					obj_form.data('zgfm_logicfrm').update_local_fields(
+						obj_form
+							.parent()
+							.find('.rockfm_clogic_data')
+							.val()
+					);
+					obj_form.data('zgfm_logicfrm').setData();
+					obj_form.data('zgfm_logicfrm').refreshfields();
+				}
+
+				if (rocketfm.isMultiStepActive(obj_form)) {
+					let parent = obj_form.closest('.rockfm-form');
+					obj_form.data('zgfm_logicfrm').setParent(parent);
+
+				} else {
+
+					let btnObjs = $('.rockfm-submitbtn.rockfm-field [type="button"],.rockfm-submitbtn.rockfm-field [type="submit"]');
+
+					let firstBtn = btnObjs.first();
+
+					if (firstBtn.attr('data-ms-action') === undefined) {
+						obj_form.on('click', '.rockfm-submitbtn.rockfm-field [type="button"],.rockfm-submitbtn.rockfm-field [type="submit"]', function(e) {
+							e.preventDefault();
+							e.stopPropagation();
+							rocketfm.single_submitbtn_click_event($(e.target));
+						});
+					}
+				}
+
+				$('.uiform-main-form [data-toggle="tooltip"]').tooltip({
+					selector: '',
+					placement: 'top',
+					container: obj_form,
+					html: true,
+				});
+
+				obj_form.find('input, textarea').placeholder();
+
+				$.each(obj_form.find('.rockfm-conditional-hidden'), function(i, val) {
+					$(this)
+						.find('.rockfm-field')
+						.addClass('rockfm-cond-hidden-children');
+				});
+
+				if (String(uifmvariable.externalVars['fm_loadmode']) === 'iframe') {
+					if ('parentIFrame' in window) {
+						parentIFrame.size(); 
+					}
+				}
+
+				zgfm_front_helper.load_form_init_events(obj_form);
+
+				if (rocketfm.isMultiStepActive(obj_form)) {
+					obj_form.data('zgfm_logicfrm').connection_router();
+				}
+
+				wp.hooks.applyFilters('zgfmfront.initForm_loadAddLibs');
+			};
+			arguments.callee.common_submitbtn_click_event = function(element) {
+				let btnObj = $(element);
+
+				let multiStepFormCont = btnObj.closest('.rockfm-form');
+				let isMultistep = multiStepFormCont.attr('data-zgfm-is-ms');
+				if (parseInt(isMultistep) === 1) {
+					rocketfm.multiple_submitbtn_click_event(element);
+				} else {
+					rocketfm.single_submitbtn_click_event(element);
+				}
+			};
+
+			arguments.callee.multiple_submitbtn_click_event = function(element) {
+				let btnObj = $(element);
+				let obj_form = btnObj.closest('.rockfm_form_single');
+
+				let btnContainer = btnObj.closest('.rockfm-submitbtn');
+
+				if (String(btnObj.attr('data-ms-action')) === 'previous') {
+					obj_form.data('zgfm_logicfrm').ms_load_prev_step();
+				} else if (parseInt(btnContainer.attr('data-uifm_mm_is_last_step')) === 1) {
+					rocketfm.setInnerVariable('submitting_form_id', obj_form.find('._rockfm_form_id').val());
+					rocketfm.ms_submitForm_process(obj_form, btnObj);
+				} else {
+					obj_form.data('zgfm_logicfrm').ms_load_next_step();
+				}
+			};
+			arguments.callee.single_submitbtn_click_event = function(element) {
+				let btnObj = $(element);
+				let obj_form = btnObj.closest('.rockfm-form');
+				rocketfm.setInnerVariable('submitting_form_id', obj_form.find('._rockfm_form_id').val());
+
+				rocketfm.submitForm_process(obj_form, btnObj);
+			};
+
+			arguments.callee.load_single_form = function(obj_form_list) {
 				var obj_form;
 				obj_form_list.each(function(i) {
 					obj_form = $(this).find('.rockfm-form');
 					if (!obj_form.hasClass('rockfm-form-mloaded')) {
 						obj_form.addClass('rockfm-form-mloaded');
 
-						if (obj_form.find('.rockfm-input4-slider').length) {
-							var rockfm_slider_d = obj_form.find('.rockfm-input4-slider');
-							rockfm_slider_d.each(function(i) {
-								$(this).bootstrapSlider();
-								$(this)
-									.parent()
-									.parent()
-									.find('.slider-tick-label')
-									.hide();
-								$(this)
-									.parent()
-									.parent()
-									.find('.rockfm-input4-number')
-									.text($(this).val());
-
-								obj_form.find('.rockfm-input4-slider').on('slide', function(slideEvt) {
-									$(this)
-										.parent()
-										.parent()
-										.find('.rockfm-input4-number')
-										.text(slideEvt.value);
-
-									$(this)
-										.parent()
-										.parent()
-										.find('.slider-tick-label')
-										.show();
-								});
-							});
-						}
-
-						if (obj_form.find('.rockfm-input4-spinner').length) {
-							var spinners = obj_form.find('.rockfm-input4-spinner'),
-								s_min,
-								s_max,
-								s_step,
-								s_value;
-							spinners.each(function(i) {
-								(s_min = $(this).attr('data-rockfm-min')), (s_max = $(this).attr('data-rockfm-max')), (s_step = $(this).attr('data-rockfm-step')), (s_value = $(this).attr('data-rockfm-value'));
-								let s_decimals = $(this).attr('data-rockfm-decimal') || 0;
-								$(this).TouchSpin({
-									verticalbuttons: true,
-									min: parseFloat(s_min),
-									max: parseFloat(s_max),
-									step: parseFloat(s_step),
-									verticalupclass: 'sfdc-glyphicon sfdc-glyphicon-plus',
-									verticaldownclass: 'sfdc-glyphicon sfdc-glyphicon-minus',
-									initval: parseFloat(s_value),
-									decimals: parseFloat(s_decimals),
-								});
-							});
-						}
-						if (obj_form.find('.rockfm-input15-switch').length) {
-							var rockfm_switch_d = obj_form.find('.rockfm-input15-switch');
-
-							rockfm_switch_d.each(function(i) {
-								$(this).bootstrapSwitchZgpb({
-									onText: $(this).attr('data-uifm-txt-yes'),
-									offText: $(this).attr('data-uifm-txt-no'),
-								});
-							});
-						}
-						if (obj_form.find('.rockfm-input17-wrap .uifm-dcheckbox-item').length) {
-							obj_form.find('.rockfm-input17-wrap .uifm-dcheckbox-item').uiformDCheckbox();
-						}
-
-						if (obj_form.find('.rockfm-input17-wrap .uifm-dradiobtn-item').length) {
-							obj_form.find('.rockfm-input17-wrap .uifm-dradiobtn-item').uiformDCheckbox();
-						}
-						if (obj_form.find('.g-recaptcha').length) {
-							if (parseInt(obj_form.find('.g-recaptcha').length) > 0) {
-								var rockfm_rcha_d = obj_form.find('.g-recaptcha');
-								rockfm_rcha_d.each(function(i) {
-									$(this).attr('id', 'zgfm_recaptcha_obj_' + obj_form.find('._rockfm_form_id').val());
-								});
-							}
-
-							if (parseInt(obj_form.find('.g-recaptcha').length) > 1) {
-								var rockfm_rcha_d = obj_form.find('.g-recaptcha');
-								rockfm_rcha_d.each(function(i) {
-									if (parseInt(i) != 0) {
-										$(this)
-											.removeClass('g-recaptcha')
-											.html('ReCaptcha is loaded once. Remove this field');
-									}
-								});
-							}
-
-							if (!$('#zgfm_form_lib_recaptcha').length) {
-								var rockfm_recaptcha = document.createElement('script');
-								rockfm_recaptcha.type = 'text/javascript';
-								rockfm_recaptcha.async = true;
-								rockfm_recaptcha.id = 'zgfm_form_lib_recaptcha';
-								rockfm_recaptcha.defer = 'defer';
-								rockfm_recaptcha.src = 'https://www.google.com/recaptcha/api.js?onload=zgfm_recaptcha_onloadCallback&render=explicit';
-								var s = document.getElementsByTagName('script')[0];
-								s.parentNode.insertBefore(rockfm_recaptcha, s);
-							}
-						}
-
-						if (parseInt(obj_form.attr('data-zgfm-recaptchav3-active')) === 1) {
-							let siteKey = obj_form.attr('data-zgfm-recaptchav3-sitekey');
-							var rockfm_recaptcha = document.createElement('script');
-							rockfm_recaptcha.type = 'text/javascript';
-							rockfm_recaptcha.async = true;
-							rockfm_recaptcha.id = 'zgfm_form_lib_recaptchav3';
-							rockfm_recaptcha.defer = 'defer';
-							rockfm_recaptcha.src = 'https://www.google.com/recaptcha/api.js?render=' + siteKey;
-							var s = document.getElementsByTagName('script')[0];
-							s.parentNode.insertBefore(rockfm_recaptcha, s);
-						}
-
-						if (obj_form.find('.rockfm-captcha').length) {
-							if (parseInt(obj_form.find('.rockfm-captcha').length) > 1) {
-								var rockfm_capcha_d = obj_form.find('.rockfm-captcha');
-								rockfm_capcha_d.each(function(i) {
-									if (parseInt(i) != 0) {
-										$(this)
-											.find('.rockfm-inp6-captcha')
-											.removeClass('rockfm-inp6-captcha')
-											.html('Captcha is loaded once. Remove this field');
-									}
-								});
-							}
-							var rockfm_capcha_refobj = obj_form.find('.rockfm-captcha .rockfm-inp6-wrap-refrescaptcha a');
-							rocketfm.captcha_refreshImage(rockfm_capcha_refobj);
-						}
-
-
-						if (obj_form.find('.rockfm-input7-datepic').length) {
-							var rockfm_datepic_d = obj_form.find('.rockfm-input7-datepic');
-							var rkfm_datepic_tmp1, rkfm_datepic_tmp2;
-							rockfm_datepic_d.each(function(i) {
-								$(this).datetimepicker({
-									format: 'L',
-								});
-								rkfm_datepic_tmp1 = $(this).attr('data-rkfm-language');
-								if (rkfm_datepic_tmp1) {
-									$(this)
-										.data('DateTimePicker')
-										.locale(rkfm_datepic_tmp1);
-								}
-								rkfm_datepic_tmp2 = $(this).attr('data-rkfm-showformat');
-								if (rkfm_datepic_tmp2) {
-									$(this)
-										.data('DateTimePicker')
-										.dayViewHeaderFormat(rkfm_datepic_tmp2);
-									$(this)
-										.data('DateTimePicker')
-										.format(rkfm_datepic_tmp2);
-								}
-							});
-						}
-
-						if (obj_form.find('.uifm-input-flatpickr').length) {
-							var rockfm_datepic_d = obj_form.find('.uifm-input-flatpickr');
-							var rkfm_datepic_tmp1, rkfm_datepic_tmp2;
-							var flatpick_instance;
-							rockfm_datepic_d.each(function(i) {
-								var tmp = {};
-
-								if (parseInt($(this).attr('data-rkfm-enabletime')) === 1) {
-									tmp['enableTime'] = true;
-								} else {
-									tmp['enableTime'] = false;
-								}
-
-								if (parseInt($(this).attr('data-rkfm-nocalendar')) === 1) {
-									tmp['noCalendar'] = true;
-								} else {
-									tmp['noCalendar'] = false;
-								}
-
-								if (parseInt($(this).attr('data-rkfm-time24hr')) === 1) {
-									tmp['time_24hr'] = true;
-								} else {
-									tmp['time_24hr'] = false;
-								}
-
-								if (parseInt($(this).attr('data-rkfm-altinput')) === 1) {
-									tmp['altInput'] = true;
-								} else {
-									tmp['altInput'] = false;
-								}
-
-								if (String($(this).attr('data-rkfm-altformat')).length > 0) {
-									tmp['altFormat'] = $(this).attr('data-rkfm-altformat');
-								} else {
-									tmp['altFormat'] = 'F j, Y';
-								}
-
-								if (String($(this).attr('data-rkfm-dateformat')).length > 0) {
-									tmp['dateFormat'] = $(this).attr('data-rkfm-dateformat');
-								} else {
-									tmp['dateFormat'] = 'Y-m-d';
-								}
-
-								tmp['locale'] = $(this).attr('data-rkfm-language');
-
-								if (String($(this).attr('data-rkfm-mindate')).length > 0) {
-									tmp['minDate'] = $(this).attr('data-rkfm-mindate');
-								}
-
-								if (String($(this).attr('data-rkfm-maxdate')).length > 0) {
-									tmp['maxDate'] = $(this).attr('data-rkfm-maxdate');
-								}
-
-								if (String($(this).attr('data-rkfm-defaultdate')).length > 0) {
-									tmp['defaultDate'] = $(this).attr('data-rkfm-defaultdate');
-								}
-
-								tmp['allowInput'] = true;
-
-								if (parseInt($(this).attr('data-rkfm-isinline')) === 1) {
-									tmp['inline'] = true;
-								} else {
-									tmp['wrap'] = true;
-								}
-
-								tmp['onChange'] = function(selectedDates, dateStr, instance) {
-									$(instance.element)
-										.find('input')
-										.val(dateStr);
-								};
-
-								flatpick_instance = $(this).flatpickr(tmp);
-								$(this).data('zgfm_flatpicker', flatpick_instance);
-							});
-						}
-
-						if (obj_form.find('.rockfm-input7-timepic').length) {
-							var rockfm_timepic_d = obj_form.find('.rockfm-input7-timepic');
-							rockfm_timepic_d.each(function(i) {
-								$(this).datetimepicker({
-									format: 'LT',
-								});
-							});
-						}
-						if (obj_form.find('.rockfm-input7-datetimepic').length) {
-							var rockfm_datetm_d = obj_form.find('.rockfm-input7-datetimepic');
-							var rkfm_datetm_tmp1, rkfm_datetm_tmp2;
-							rockfm_datetm_d.each(function(i) {
-								$(this).datetimepicker({
-									minDate: new Date(),
-								});
-								rkfm_datetm_tmp1 = $(this).attr('data-rkfm-language');
-								if (rkfm_datetm_tmp1) {
-									$(this)
-										.data('DateTimePicker')
-										.locale(rkfm_datetm_tmp1);
-								}
-								rkfm_datetm_tmp2 = $(this).attr('data-rkfm-showformat');
-								if (rkfm_datetm_tmp2) {
-									$(this)
-										.data('DateTimePicker')
-										.dayViewHeaderFormat(rkfm_datetm_tmp2);
-								}
-							});
-
-						}
-
-						if (obj_form.find('.rockfm-input-ratingstar').length) {
-							var rockfm_rstar_d = obj_form.find('.rockfm-input-ratingstar');
-							rockfm_rstar_d.each(function(i) {
-								$(this).rating({
-									starCaptions:
-										{
-											1: $(this).attr('data-uifm-txt-star1') || 'very bad',
-											2: $(this).attr('data-uifm-txt-star2') || 'bad',
-											3: $(this).attr('data-uifm-txt-star3') || 'ok',
-											4: $(this).attr('data-uifm-txt-star4') || 'good',
-											5: $(this).attr('data-uifm-txt-star5'),
-										} || 'very good',
-									clearCaption: $(this).attr('data-uifm-txt-norate'),
-									starCaptionClasses: {
-										1: 'text-danger',
-										2: 'text-warning',
-										3: 'text-info',
-										4: 'text-primary',
-										5: 'text-success',
-									},
-								});
-							});
-						}
-
-						var tmp_load_obj;
-
-						if (obj_form.find('.rockfm-input2-sel-styl1').length) {
-							tmp_load_obj = obj_form.find('.rockfm-input2-sel-styl1');
-							tmp_load_obj.each(function(i) {
-								$(this).selectpicker({
-									noneSelectedText: $(this)
-										.parent()
-										.attr('data-theme-stl1-txtnosel'),
-									noneResultsText: $(this)
-										.parent()
-										.attr('data-theme-stl1-txtnomatch'),
-									countSelectedText: $(this)
-										.parent()
-										.attr('data-theme-stl1-txtcountsel'),
-								});
-							});
-						}
-
-						if (obj_form.find('.rockfm-input2-sel-styl2').length) {
-							tmp_load_obj = obj_form.find('.rockfm-input2-sel-styl2');
-							tmp_load_obj.each(function(i) {
-								$(this).select2({
-									placeholder: 'Select an option',
-									theme: 'classic',
-									width: '100%',
-								});
-							});
-						}
-
-						if (obj_form.find('.rockfm-input2-chk-styl1').length) {
-							tmp_load_obj = obj_form.find('.rockfm-input2-chk-styl1');
-							var tmp_chk_icon;
-							tmp_load_obj.each(function(i) {
-								tmp_chk_icon = $(this).attr('data-chk-icon');
-								$(this).checkradios({
-									checkbox: {
-										iconClass: tmp_chk_icon,
-									},
-									radio: {
-										iconClass: tmp_chk_icon,
-									},
-								});
-							});
-						}
-
-						if (obj_form.find('.rockfm-colorpicker-wrap').length) {
-							var rockfm_cpicker_d = obj_form.find('.rockfm-colorpicker-wrap');
-							rockfm_cpicker_d.each(function(i) {
-								$(this).colorpicker();
-							});
-						}
-						if (obj_form.find('[data-rockfm-gfont]').length) {
-							var rockfm_tmp = obj_form.find('[data-rockfm-gfont]');
-							var rockfm_uniq_font = [];
-							rockfm_tmp.each(function(i) {
-								if ($.inArray($(this).attr('data-rockfm-gfont'), rockfm_uniq_font) === -1) {
-									var atImport = '@import url(//fonts.googleapis.com/css?family=' + $(this).attr('data-rockfm-gfont');
-									$('<style>')
-										.append(atImport)
-										.appendTo('head');
-									rockfm_uniq_font.push($(this).attr('data-rockfm-gfont'));
-								}
-							});
-						}
-
-						if (obj_form.find('.rockfm-clogic-fcond').length) {
-							obj_form.zgfm_logicfrm(
-								obj_form
-									.parent()
-									.find('.rockfm_clogic_data')
-									.val()
-							);
-							obj_form.data('zgfm_logicfrm').setData();
-							obj_form.data('zgfm_logicfrm').refreshfields();
-						}
-
 						if (obj_form.find('.rockfm_main_data')) {
 							obj_form.zgpb_datafrm(obj_form.find('.rockfm_main_data').val());
 						} else {
 							obj_form.zgpb_datafrm();
-						}
-
-						$('.uiform-main-form [data-toggle="tooltip"]').tooltip({
-							selector: '',
-							placement: 'top',
-							container: obj_form,
-							html: true,
-						});
-
-						obj_form.find('input, textarea').placeholder();
-
-						$.each(obj_form.find('.rockfm-conditional-hidden'), function(i, val) {
-							$(this)
-								.find('.rockfm-field')
-								.addClass('rockfm-cond-hidden-children');
-						});
-
-
-						if (String(uifmvariable.externalVars['fm_loadmode']) === 'iframe') {
-							if ('parentIFrame' in window) {
-								parentIFrame.size(); 
-							}
 						}
 
 						if (parseInt(obj_form.data('zgpb_datafrm').getData('onload_scroll')) === 1) {
@@ -1385,36 +1532,87 @@ if (!$uifm.isFunction(rocketfm)) {
 								);
 							}
 						}
+						rocketfm.loadFields(obj_form);
 
-						wp.hooks.applyFilters('zgfmfront.initForm_loadAddLibs');
-
-						zgfm_front_helper.load_form_init_events(obj_form);
 						jQuery(document).trigger('zgfm.form.init_loaded', {
 							form: obj_form,
 						});
+					}
+				});
+			};
 
-						obj_form.on('click', '.rockfm-submitbtn.rockfm-field [type="button"],.rockfm-submitbtn.rockfm-field [type="submit"]', function(e) {
-							e.preventDefault();
+			arguments.callee.load_multistep_form = function(obj_form_list) {
+				var obj_form;
+				var parent_form;
+				obj_form_list.each(function(i) {
+					parent_form = $(this)
+						.find('.rockfm-form')
+						.first();
 
-							var obj_form_alt = $(this).closest('.rockfm-form');
+					obj_form = $(this).find('.rockfm-form .rockfm_form_single');
 
-							rocketfm.setInnerVariable('submitting_form_id', obj_form_alt.find('._rockfm_form_id').val());
+					if (!obj_form.hasClass('rockfm-form-mloaded')) {
+						obj_form.addClass('rockfm-form-mloaded');
 
-							rocketfm.submitForm_process(obj_form_alt, e);
+						if (parent_form.find('.rockfm_main_data')) {
+							parent_form.zgpb_datafrm(parent_form.find('.rockfm_main_data').val());
+						} else {
+							parent_form.zgpb_datafrm();
+						}
+
+						parent_form.data('zgpb_datafrm').setConnections(parent_form.find('.rockfm_connection_data').val());
+						parent_form.data('zgpb_datafrm').setExtra(parent_form.find('.rockfm_connection_extra').val());
+						parent_form.data('zgpb_datafrm').setData('init_form', parent_form.find('.rockfm_data_initform').val());
+						parent_form.data('zgpb_datafrm').setData('ms_current_parent_form_id', parent_form.find('._rockfm_form_parent_id').val());
+						parent_form.data('zgpb_datafrm').setData('ms_form_current_id', parent_form.find('.rockfm_data_initform').val());
+
+						parent_form.data('zgpb_datafrm').showSettings();
+						if (parseInt(parent_form.data('zgpb_datafrm').getData('onload_scroll')) === 1) {
+							if (String(uifmvariable.externalVars['fm_loadmode']) === 'iframe') {
+								if ('parentIFrame' in window) {
+									parentIFrame.scrollTo(0, parent_form.offset().top);
+								}
+							} else {
+								$('html,body').animate(
+									{
+										scrollTop: parent_form.offset().top,
+									},
+									'slow'
+								);
+							}
+						}
+
+						rocketfm.loadFields(obj_form);
+
+						jQuery(document).trigger('zgfm.form.init_loaded', {
+							form: obj_form,
 						});
 					}
 				});
+			};
 
+			arguments.callee.loadform_init = function() {
+				let obj_form_list = $('.rockfm-form-container');
+
+				if (obj_form_list.length) {
+					this.load_single_form(obj_form_list);
+				}
+
+				let obj_form_list_multistep = $('.rockfm-form-container-ms');
+
+				if (obj_form_list_multistep.length) {
+					this.load_multistep_form(obj_form_list_multistep);
+				}
 			};
 
 
-			arguments.callee.submitForm_process = function(obj_form, e) {
+			arguments.callee.ms_submitForm_process = function(obj_form, e) {
 				rocketfm.submitForm_process_beforeVal(
 					function(data) {
 						if (data.is_valid === true) {
 							rocketfm.submitForm_process_validation(e, obj_form, function(data) {
 								if (data.is_valid === true) {
-									rocketfm.submitForm_submit(obj_form);
+									rocketfm.ms_submitForm_submit(obj_form, e);
 								}
 							});
 						} else {
@@ -1424,6 +1622,37 @@ if (!$uifm.isFunction(rocketfm)) {
 						console.log('error ' + error.test);
 					}
 				);
+			};
+
+
+			arguments.callee.submitForm_process = function(obj_form, e) {
+				rocketfm.submitForm_process_beforeVal(
+					function(data) {
+						if (data.is_valid === true) {
+							rocketfm.submitForm_process_validation(e, obj_form, function(data) {
+								if (data.is_valid === true) {
+									rocketfm.submitForm_submit(obj_form, e);
+								}
+							});
+						} else {
+						}
+					},
+					function(error) {
+						console.log('error ' + error.test);
+					}
+				);
+			};
+
+			arguments.callee.ms_validation_passed = function(obj_form) {
+				var el_form = obj_form;
+				this.setInnerVariable('val_curform_obj', el_form);
+				var res_val = this.validate_form(el_form);
+
+				if (res_val.isValid) {
+					return true;
+				}
+
+				return false;
 			};
 
 			arguments.callee.submitForm_process_validation = function(e, obj_form, callback) {
@@ -1887,6 +2116,16 @@ if (!$uifm.isFunction(rocketfm)) {
 					});
 				}
 			};
+
+			arguments.callee.isMultiStepActive = function(obj) {
+				let multiStepFormCont = $(obj).closest('.rockfm-form');
+				let isMultistep = multiStepFormCont.attr('data-zgfm-is-ms');
+				if (parseInt(isMultistep) === 1) {
+					return true;
+				}
+
+				return false;
+			};
 		};
 	})($uifm, window);
 }
@@ -2004,6 +2243,7 @@ var zgfm_recaptcha_onloadCallback = function() {
 
 (function($) {
 	var zgfmLogicFrm = function(element, options) {
+		var cur_parent_obj;
 		var cur_form_obj = $(element);
 		var obj = this;
 		var logical_fields = [];
@@ -2012,13 +2252,18 @@ var zgfm_recaptcha_onloadCallback = function() {
 		var cur_field_fire_value;
 		var cur_field_fire_id;
 
-		logical_fields = (JSON && JSON.parse(options)) || $.parseJSON(options);
-
+		this.update_local_fields = function(options) {
+			logical_fields = (JSON && JSON.parse(options)) || $.parseJSON(options);
+		};
 		this.publicMethod = function() {};
 
 		var privateMethod = function() {};
 
 		var runExtraTasks = function(field) {};
+
+		this.setParent = function(parent) {
+			cur_parent_obj = parent;
+		};
 
 		this.setData = function() {
 			this.processData();
@@ -2406,6 +2651,199 @@ var zgfm_recaptcha_onloadCallback = function() {
 				}
 			}
 		};
+
+		this.connection_router = function() {
+
+			let connections = cur_parent_obj.data('zgpb_datafrm').getData('connections');
+
+			let initForm = cur_parent_obj.data('zgpb_datafrm').getData('ms_form_current_id');
+
+			if (!connections['conns_route'][initForm]['outputs'].length) {
+				this.connection_final_step();
+				return;
+			}
+
+			var fallbackFormId = 0;
+
+			for (let key in connections['conns_route'][initForm]['outputs']) {
+				if (connections['conns_route'][initForm]['outputs'].hasOwnProperty(key)) {
+					let event = connections['conns_route'][initForm]['outputs'][key];
+
+					let connTmp = connections['conns'][event['conn']];
+
+					let fallBackTmp = parseInt(connTmp['rules']['is_fallback']);
+					if (fallBackTmp === 1) {
+						fallbackFormId = parseInt(connTmp['end']['id']);
+					} else {
+						let is_matched = this.connection_analyze(connTmp['rules']['list'], parseInt(connTmp['rules']['top_condition']));
+						if (is_matched === true) {
+							this.connection_next_step(parseInt(connTmp['end']['id']));
+							return;
+						}
+					}
+				}
+			}
+
+			if (fallbackFormId > 0) {
+				this.connection_next_step(fallbackFormId);
+			}
+		};
+
+		this.connection_final_step = function() {
+			cur_parent_obj.data('zgpb_datafrm').setData('ms_form_next_id', 0);
+			cur_form_obj.find('.rockfm-submitbtn').attr('data-uifm_mm_is_last_step', 1);
+		};
+
+		this.connection_next_step = function(formId) {
+			cur_parent_obj.data('zgpb_datafrm').setData('ms_form_next_id', formId);
+
+			if (
+				!cur_parent_obj
+					.data('zgpb_datafrm')
+					.getData('ms_form_children')
+					.hasOwnProperty(formId)
+			) {
+				$.ajax({
+					type: 'POST',
+					url: rockfm_vars.ajaxurl,
+					dataType: 'json',
+					async: true,
+					data: {
+						action: 'rocket_front_mm_get_child',
+						zgfm_security: rockfm_vars.ajax_nonce,
+						form_parent_id: cur_parent_obj.data('zgpb_datafrm').getData('ms_current_parent_form_id'),
+						form_child_id: formId,
+					},
+					beforeSend: function() {},
+					success: function(response) {
+						try {
+							cur_parent_obj.data('zgpb_datafrm').getData('ms_form_children')[formId] = {
+								html_body: response.html,
+							};
+
+							$(`#rockfm_form_children_${cur_parent_obj.data('zgpb_datafrm').getData('ms_current_parent_form_id')}`).append(response.html);
+						} catch (ex) {}
+					},
+				});
+			}
+
+
+			cur_form_obj.find('.rockfm-submitbtn').attr('data-uifm_mm_next_form', formId);
+		};
+		this.connection_analyze = function(list, top_condition) {
+			var match_count = 0;
+
+			var countItems = parseInt(list.length);
+
+			for (let key2 in list) {
+				if (list.hasOwnProperty(key2)) {
+					let event2 = list[key2];
+					let fieldFire = event2['field_fire'],
+						minput = event2['minput'],
+						mtype = event2['mtype'];
+
+					if (cur_form_obj.data('zgfm_logicfrm').calculateMatchs(fieldFire, minput, mtype) === true) {
+						match_count++;
+					}
+				}
+			}
+
+			if (top_condition === 1 && countItems === match_count) {
+				return true;
+			}
+
+			if (top_condition === 2 && match_count > 0) {
+				return true;
+			}
+
+			return false;
+		};
+		this.connection_analyze_condition = function(fieldFire, minput, mtype) {
+			$result = false;
+			return $result;
+		};
+		this.ms_load_prev_step = function() {
+			let newCurrentForm = $(`#rockfm_form_${cur_parent_obj.data('zgpb_datafrm').getData('ms_form_previous_id')}`);
+			newCurrentForm.show();
+
+			let formCurrent = $(`#rockfm_form_${cur_parent_obj.data('zgpb_datafrm').getData('ms_form_current_id')}`);
+			formCurrent.hide();
+			formCurrent.appendTo(`#rockfm_form_children_${cur_parent_obj.data('zgpb_datafrm').getData('ms_current_parent_form_id')}`);
+
+			if (cur_parent_obj.find('.zgfm-progress-bar').length) {
+				let progressBar = cur_parent_obj.data('zgpb_datafrm').getData('additional')['progressbar'];
+
+				let progressBarObj = $('.zgfm-progress-bar');
+
+				let previousFormId = cur_parent_obj.data('zgpb_datafrm').getData('ms_form_previous_id');
+
+				let pbId = progressBar['forms'][previousFormId];
+
+				progressBarObj
+					.find(`[data-index="${pbId}"]`)
+					.removeClass('uifm-complete')
+					.addClass('uifm-current');
+
+				previousFormId = cur_parent_obj.data('zgpb_datafrm').getData('ms_form_current_id');
+				pbId = progressBar['forms'][previousFormId];
+
+				progressBarObj.find(`[data-index="${pbId}"]`).removeClass('uifm-current');
+			}
+
+			cur_parent_obj.data('zgpb_datafrm').setData('ms_form_current_id', cur_parent_obj.data('zgpb_datafrm').getData('ms_form_previous_id'));
+
+			if (parseInt(newCurrentForm.attr('data-zgfm_mm_previous_form')) > 0) {
+				cur_parent_obj.data('zgpb_datafrm').setData('ms_form_previous_id', newCurrentForm.attr('data-zgfm_mm_previous_form'));
+			} else {
+				cur_parent_obj.data('zgpb_datafrm').setData('ms_form_previous_id', 0);
+			}
+
+			let btnObj = newCurrentForm.find(`.rockfm-submitbtn`).first();
+
+			cur_parent_obj.data('zgpb_datafrm').setData('ms_form_next_id', btnObj.attr('data-uifm_mm_next_form'));
+		};
+		this.ms_load_next_step = function() {
+			if (!rocketfm.ms_validation_passed(cur_form_obj)) {
+				return;
+			}
+
+			$(`#rockfm_form_${cur_parent_obj.data('zgpb_datafrm').getData('ms_form_current_id')}`).hide();
+
+			let parentFormId = cur_parent_obj.data('zgpb_datafrm').getData('ms_current_parent_form_id');
+
+			let newForm = $(`#rockfm_form_${cur_parent_obj.data('zgpb_datafrm').getData('ms_form_next_id')}`);
+			newForm.appendTo(`#rockfm_form_${parentFormId} .uiform-main-form`);
+
+			newForm.attr('data-zgfm_mm_previous_form', cur_parent_obj.data('zgpb_datafrm').getData('ms_form_current_id'));
+			newForm.show();
+
+			cur_parent_obj.data('zgpb_datafrm').setData('ms_form_previous_id', cur_parent_obj.data('zgpb_datafrm').getData('ms_form_current_id'));
+			cur_parent_obj.data('zgpb_datafrm').setData('ms_form_current_id', cur_parent_obj.data('zgpb_datafrm').getData('ms_form_next_id'));
+
+			rocketfm.loadFields(newForm);
+
+			if (cur_parent_obj.find('.zgfm-progress-bar').length) {
+				let progressBar = cur_parent_obj.data('zgpb_datafrm').getData('additional')['progressbar'];
+
+				let progressBarObj = $('.zgfm-progress-bar');
+
+				let previousFormId = cur_parent_obj.data('zgpb_datafrm').getData('ms_form_previous_id');
+				let pbId = progressBar['forms'][previousFormId];
+
+				progressBarObj
+					.find(`[data-index="${pbId}"]`)
+					.removeClass('uifm-current')
+					.addClass('uifm-complete');
+
+				previousFormId = cur_parent_obj.data('zgpb_datafrm').getData('ms_form_current_id');
+				pbId = progressBar['forms'][previousFormId];
+
+				progressBarObj
+					.find(`[data-index="${pbId}"]`)
+					.removeClass('uifm-complete')
+					.addClass('uifm-current');
+			}
+		};
 	};
 
 	$.fn.zgfm_logicfrm = function(options) {
@@ -2438,6 +2876,15 @@ var zgfm_recaptcha_onloadCallback = function() {
 			preload_noconflict: '0',
 			pdf_charset: 'UTF-8',
 			pdf_font: '2',
+			connections: {},
+			additional: {},
+			init_form: 0,
+			ms_current_parent_form_id: 0,
+			ms_current_parent_form_ob: null,
+			ms_form_children: {},
+			ms_form_next_id: 0,
+			ms_form_previous_id: 0,
+			ms_form_current_id: 0,
 		};
 		if (options) {
 			form_options = (JSON && JSON.parse(options)) || $.parseJSON(options);
@@ -2466,6 +2913,15 @@ var zgfm_recaptcha_onloadCallback = function() {
 				return '';
 			}
 		};
+
+		this.setConnections = function(value) {
+			let conn = (JSON && JSON.parse(value)) || $.parseJSON(value);
+			this.setData('connections', conn);
+		};
+		this.setExtra = function(value) {
+			let conn = (JSON && JSON.parse(value)) || $.parseJSON(value);
+			this.setData('additional', conn);
+		};
 		this.setData = function(name, value) {
 			settings[name] = value;
 		};
@@ -2475,6 +2931,9 @@ var zgfm_recaptcha_onloadCallback = function() {
 		var privateMethod = function() {};
 
 		this.showData = function() {};
+		this.showSettings = function() {
+
+			 		};
 	};
 
 	$.fn.zgpb_datafrm = function(options) {
@@ -2525,14 +2984,12 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 		'use strict';
 
 		var zgfm_front_helper = function() {
-			var zgfm_variable = [];
-			zgfm_variable.innerVars = {};
-			zgfm_variable.externalVars = {};
-
 			this.initialize = function() {};
 
-			var runExtraTasks = function(field) {
-				var obj_form = $(field).closest('.rockfm-form');
+			var runExtraTasks = function(field, obj_form) {
+				if (rocketfm.isMultiStepActive(obj_form)) {
+					obj_form.data('zgfm_logicfrm').connection_router();
+				}
 			};
 
 			this.triggerEvent_before = function() {};
@@ -2592,6 +3049,29 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 					},
 				];
 				uifm_loadcssfile(uifm_cssFiles);
+			};
+
+			this.load_form_event_selectlist = function(e, obj_form) {
+				if (e) {
+					e.preventDefault();
+				}
+				wp.hooks.applyFilters('zgfmfront.events_before');
+
+				let tmp_field_id = $(this).attr('data-idfield');
+
+				if (obj_form.find('.rockfm-clogic-fcond').length) {
+					obj_form.data('zgfm_logicfrm').triggerConditional(e.target, tmp_field_id);
+				}
+
+				if (String(rocketfm.getExternalVars('fm_loadmode')) === 'iframe') {
+					if ('parentIFrame' in window) {
+						parentIFrame.size(); 
+					}
+				}
+
+				runExtraTasks($(this), obj_form);
+
+				wp.hooks.applyFilters('zgfmfront.events_after');
 			};
 
 			this.load_form_init_events = function(obj_form) {
@@ -2683,11 +3163,11 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 						}
 
 						switch (parseInt(tmp_field.attr('data-typefield'))) {
-							case 6:
-							case 7:
-							case 28:
-							case 29:
-							case 30:
+							case 6: 
+							case 7: 
+							case 28: 
+							case 29: 
+							case 30: 
 								tmp_action = 'change keyup';
 
 								tmp_field_inp.on(tmp_action, function(e) {
@@ -2701,7 +3181,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 										}
 									}
 
-									runExtraTasks($(this));
+									runExtraTasks($(this), obj_form);
 								});
 
 								break;
@@ -2743,7 +3223,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 										rocketfm.validate_field($(this).closest('.rockfm-field'));
 									}
 
-									runExtraTasks($(this));
+									runExtraTasks($(this), obj_form);
 
 									wp.hooks.applyFilters('zgfmfront.events_after');
 								});
@@ -2755,49 +3235,12 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 								switch (parseInt(tmp_theme_type)) {
 									case 1:
 										tmp_field_inp.on('changed.bs.select', function(e) {
-											if (e) {
-												e.preventDefault();
-											}
-											wp.hooks.applyFilters('zgfmfront.events_before');
-
-											tmp_field_id = $(this).attr('data-idfield');
-
-											if (obj_form.find('.rockfm-clogic-fcond').length) {
-												obj_form.data('zgfm_logicfrm').triggerConditional(e.target, tmp_field_id);
-											}
-
-											if (String(rocketfm.getExternalVars('fm_loadmode')) === 'iframe') {
-												if ('parentIFrame' in window) {
-													parentIFrame.size(); 
-												}
-											}
-											runExtraTasks($(this));
-
-											wp.hooks.applyFilters('zgfmfront.events_after');
+											zgfm_front_helper.load_form_event_selectlist(e, obj_form);
 										});
 										break;
 									default:
 										tmp_field_inp.on('change', function(e) {
-											if (e) {
-												e.preventDefault();
-											}
-											wp.hooks.applyFilters('zgfmfront.events_before');
-
-											tmp_field_id = $(this).attr('data-idfield');
-
-											if (obj_form.find('.rockfm-clogic-fcond').length) {
-												obj_form.data('zgfm_logicfrm').triggerConditional(e.target, tmp_field_id);
-											}
-
-											if (String(rocketfm.getExternalVars('fm_loadmode')) === 'iframe') {
-												if ('parentIFrame' in window) {
-													parentIFrame.size(); 
-												}
-											}
-
-											runExtraTasks($(this));
-
-											wp.hooks.applyFilters('zgfmfront.events_after');
+											zgfm_front_helper.load_form_event_selectlist(e, obj_form);
 										});
 								}
 
@@ -2821,7 +3264,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 										}
 									}
 
-									runExtraTasks($(this));
+									runExtraTasks($(this), obj_form);
 
 									wp.hooks.applyFilters('zgfmfront.events_after');
 								});
@@ -2845,7 +3288,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 										}
 									}
 
-									runExtraTasks($(this));
+									runExtraTasks($(this), obj_form);
 
 									wp.hooks.applyFilters('zgfmfront.events_after');
 								});
@@ -2869,7 +3312,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 										}
 									}
 
-									runExtraTasks($(this));
+									runExtraTasks($(this), obj_form);
 
 									wp.hooks.applyFilters('zgfmfront.events_after');
 								});
@@ -2894,7 +3337,7 @@ if (!$uifm.isFunction(zgfm_front_helper)) {
 										}
 									}
 
-									runExtraTasks($(this));
+									runExtraTasks($(this), obj_form);
 
 									wp.hooks.applyFilters('zgfmfront.events_after');
 								});

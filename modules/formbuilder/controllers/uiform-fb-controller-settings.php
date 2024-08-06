@@ -459,7 +459,7 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module
             // $instance_example = new WPPS_Instance_Class( 'Instance example', '42' );
             // add_notice('ba');
         } catch (Exception $exception) {
-            add_notice(__METHOD__ . ' error: ' . $exception->getMessage(), 'error');
+            //add_notice(__METHOD__ . ' error: ' . $exception->getMessage(), 'error');
         }
     }
 

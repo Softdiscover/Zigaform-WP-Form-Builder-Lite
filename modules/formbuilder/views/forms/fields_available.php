@@ -398,7 +398,7 @@ if (! defined('ABSPATH')) {
                                         <span class="sfdc-btn1-icon-left"> 
                                             <span class="sfdc-glyphicon sfdc-glyphicon-move"></span> 
                                         </span>
-                                        <span class="sfdc-btn1-text"> <?php echo __('Heading H1', 'FRocket_admin'); ?>  
+                                        <span class="sfdc-btn1-text"> <?php echo __('Heading', 'FRocket_admin'); ?>  
                                         </span>  
                                         
                                         
@@ -525,7 +525,7 @@ if (! defined('ABSPATH')) {
                                         <span class="sfdc-btn1-icon-left"> 
                                                        <span class="sfdc-glyphicon sfdc-glyphicon-move"></span> 
                                                    </span>
-                                                   <span class="sfdc-btn1-text"> <?php echo __('Date2', 'FRocket_admin'); ?>   <span style="color:red;">New</span>
+                                                   <span class="sfdc-btn1-text"> <?php echo __('Date #2', 'FRocket_admin'); ?>  <i class="fa fa-calendar"></i>
                                                    </span>
                                         
                                         
@@ -595,101 +595,15 @@ if (! defined('ABSPATH')) {
 
                 </fieldset>
           </div>
-          <!-- Headings -->
-          <div class="uiform-fields-group uiform-enable-fieldset">
-              <fieldset class="sfdc-fieldset-list">
-                    <legend><?php echo __('Headings', 'FRocket_admin'); ?></legend>
-                    <div class="">
-                        <div class="">
-                            <ul class="sfdc-two-column-list">
-                                <li>
-                                    <a class="uiform-draggable-field uiform-button3 uiform-heading1" 
-                                       data-type="33" 
-                                       onclick="javascript:rocketform.mainfields_addFieldToForm(this,33);"
-                                       href="javascript:void(0);">
-                                       <span class="sfdc-btn1-icon-left"> 
-                                            <span class="sfdc-glyphicon sfdc-glyphicon-move"></span> 
-                                        </span>
-                                        <span class="sfdc-btn1-text"> <?php echo __('Heading H1', 'FRocket_admin'); ?>  
-                                        </span>   
-                                          
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="uiform-draggable-field uiform-button3 uiform-heading2" 
-                                       data-type="34" 
-                                       onclick="javascript:rocketform.mainfields_addFieldToForm(this,34);"
-                                       href="javascript:void(0);">
-                                       <span class="sfdc-btn1-icon-left"> 
-                                            <span class="sfdc-glyphicon sfdc-glyphicon-move"></span> 
-                                        </span>
-                                        <span class="sfdc-btn1-text"> <?php echo __('Heading H2', 'FRocket_admin'); ?>  
-                                        </span>
-                                    </a>
-                                    
-                                </li>
-                                <li>
-                                    <a class="uiform-draggable-field uiform-button3 uiform-heading3" 
-                                       data-type="35" 
-                                       onclick="javascript:rocketform.mainfields_addFieldToForm(this,35);"
-                                       href="javascript:void(0);">
-                                       <span class="sfdc-btn1-icon-left"> 
-                                            <span class="sfdc-glyphicon sfdc-glyphicon-move"></span> 
-                                        </span>
-                                        <span class="sfdc-btn1-text"> <?php echo __('Heading H3', 'FRocket_admin'); ?>  
-                                        </span>
-                                    </a>
-                                    
-                                </li>
-                                <li>
-                                    <a class="uiform-draggable-field uiform-button3 uiform-heading3" 
-                                       data-type="36" 
-                                       onclick="javascript:rocketform.mainfields_addFieldToForm(this,36);"
-                                       href="javascript:void(0);">
-                                       <span class="sfdc-btn1-icon-left"> 
-                                            <span class="sfdc-glyphicon sfdc-glyphicon-move"></span> 
-                                        </span>
-                                        <span class="sfdc-btn1-text"> <?php echo __('Heading H4', 'FRocket_admin'); ?>  
-                                        </span>
-                                    </a>
-                                    
-                                </li>
-                                <li>
-                                    <a class="uiform-draggable-field uiform-button3 uiform-heading3" 
-                                       data-type="37" 
-                                       onclick="javascript:rocketform.mainfields_addFieldToForm(this,37);"
-                                       href="javascript:void(0);">
-                                       <span class="sfdc-btn1-icon-left"> 
-                                            <span class="sfdc-glyphicon sfdc-glyphicon-move"></span> 
-                                        </span>
-                                        <span class="sfdc-btn1-text"> <?php echo __('Heading H5', 'FRocket_admin'); ?>  
-                                        </span>
-                                    </a>
-                                    
-                                </li>
-                                <li>
-                                    <a class="uiform-draggable-field uiform-button3 uiform-heading3" 
-                                       data-type="38" 
-                                       onclick="javascript:rocketform.mainfields_addFieldToForm(this,38);"
-                                       href="javascript:void(0);">
-                                       <span class="sfdc-btn1-icon-left"> 
-                                            <span class="sfdc-glyphicon sfdc-glyphicon-move"></span> 
-                                        </span>
-                                        <span class="sfdc-btn1-text"> <?php echo __('Heading H6', 'FRocket_admin'); ?>  
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </fieldset>
-          </div>
+         
            
             <?php if (ZIGAFORM_F_LITE === 1) { ?>
             <?php } else { ?>
+            
+                <?php if( $is_multistep !== 'yes' ) { ?>
+            
                                                <!-- Wizard elements -->
-          <div class="uiform-fields-group uiform-enable-fieldset">
+          <div class="uiform-fields-group uiform-enable-fieldset zgfm-fields-wizard-buttons">
               <fieldset class="sfdc-fieldset-list">
                     <legend><?php echo __('Wizard elements', 'FRocket_admin'); ?></legend>
                     <div class="">
@@ -716,7 +630,7 @@ if (! defined('ABSPATH')) {
 
                 </fieldset>
           </div>
-
+          <?php } ?>
             <?php } ?>
            
        
