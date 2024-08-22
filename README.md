@@ -133,7 +133,7 @@ Try out [Zigaform Form Builder Premium](http://goo.gl/dKuLCe).
 4. Customize your options and click **Save Form**.
 5. Copy the shortcode from the pop-up and paste it into your post/page.
 
-[Watch the tutorial video](https://www.youtube.com/watch?v=W3yTkaDD4Mk&w=532&rel=0).
+[![Watch the tutorial video](https://img.youtube.com/vi/hf7jq4Zo-gg/0.jpg)](https://www.youtube.com/watch?v=hf7jq4Zo-gg)
 
 ## License
 
