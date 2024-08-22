@@ -35,12 +35,15 @@ class Uiform_Model_Form
 
     private $wpdb = '';
     public $table = '';
-
+    public $tbformtype = '';
+    public $tbformfields = '';
     public function __construct()
     {
         global $wpdb;
         $this->wpdb  = $wpdb;
         $this->table = $wpdb->prefix . 'uiform_form';
+        $this->tbformtype   = $wpdb->prefix . 'uiform_fields_type';
+        $this->tbformfields = $wpdb->prefix . 'uiform_fields';
     }
 
       /**
@@ -218,7 +221,33 @@ class Uiform_Model_Form
 
         return $this->wpdb->get_results($query);
     }
-    
+    public function getFieldsById($id)
+    {
+        $query = sprintf(
+            '
+            select
+            	f.fmf_uniqueid,
+            	f.fmf_id,
+            	coalesce(NULLIF(f.fmf_fieldname, ""), CONCAT(t.fby_name, f.fmf_id)) as fieldname ,
+            	f.type_fby_id,
+            	f.fmf_data,
+            	fm.fmb_id
+            from
+            	%s f
+            join %s t on
+            	f.type_fby_id = t.fby_id
+            join %s fm on
+            	fm.fmb_id = f.form_fmb_id
+            where fm.fmb_id = %s
+            ',
+            $this->tbformfields,
+            $this->tbformtype,
+            $this->table,
+            $id
+        );
+
+        return $this->wpdb->get_results($query);
+    }
     public function getFormById_2($id)
     {
         $query = sprintf(

@@ -1,5 +1,5 @@
-# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 7.0.2
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.0.2 package.
+# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 7.0.5
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.0.5 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Rocket form\n"
@@ -34,11 +34,11 @@ msgstr "Error! Type of file is not allowed to upload"
 msgid "New form request"
 msgstr "新的形式要求"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:367
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:381
 msgid " , version : "
 msgstr " , version : "
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:367
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:381
 msgid " , platform : "
 msgstr " , platform : "
 

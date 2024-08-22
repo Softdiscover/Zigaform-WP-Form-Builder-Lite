@@ -600,7 +600,7 @@ if (! defined('ABSPATH')) {
             <?php if (ZIGAFORM_F_LITE === 1) { ?>
             <?php } else { ?>
             
-                <?php if( $is_multistep !== 'yes' ) { ?>
+                
             
                                                <!-- Wizard elements -->
           <div class="uiform-fields-group uiform-enable-fieldset zgfm-fields-wizard-buttons">
@@ -630,7 +630,7 @@ if (! defined('ABSPATH')) {
 
                 </fieldset>
           </div>
-          <?php } ?>
+           
             <?php } ?>
            
        
