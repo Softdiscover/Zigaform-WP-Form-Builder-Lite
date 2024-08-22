@@ -404,7 +404,7 @@ class Uiform_Model_Form_Records
     public function getNameField($id_field)
     {
         $query = sprintf(
-            'select f.fmf_uniqueid,f.fmf_id, coalesce(NULLIF(f.fmf_fieldname,""),CONCAT(t.fby_name,f.fmf_id)) as fieldname 
+            'select f.fmf_uniqueid,f.fmf_id, coalesce(NULLIF(f.fmf_fieldname,""),CONCAT(t.fby_name,f.fmf_id)) as fieldname ,f.type_fby_id,f.fmf_data
         from %s f 
         join %s t on f.type_fby_id=t.fby_id 
         join %s fm on fm.fmb_id=f.form_fmb_id
