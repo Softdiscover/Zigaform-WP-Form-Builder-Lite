@@ -1016,27 +1016,9 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         if ($list_ids) {
             foreach ($list_ids as $value) {
                 $data_form                = $this->formsmodel->getFormById($value);
-                $data                     = array();
-                $data['fmb_data']         = $data_form->fmb_data;
-                $data['fmb_data2']        = $data_form->fmb_data2;
-                $data['fmb_name']         = $data_form->fmb_name . ' - copy';
-                $data['fmb_html_backend'] = $data_form->fmb_html_backend;
-                $data['created_ip']       = $_SERVER['REMOTE_ADDR'];
-                $data['created_by']       = 1;
-                $data['created_date']     = date('Y-m-d h:i:s');
-
-                $this->wpdb->insert($this->formsmodel->table, $data);
-
-                $lastid = $this->wpdb->insert_id;
-
-                if (intval($lastid) === 0) {
-                    // in case the record is not duplicated because of strip_invalid_text
-                    // finally solved because the fmb_name was long than permitted
-                    $qrystr  = ' INSERT INTO ' . $this->formsmodel->table;
-                    $qrystr .= ' ( ' . implode(', ', array_keys($data)) . ') ';
-                    $qrystr .= " VALUES ('" . implode("', '", array_values($data)) . "')";
-                    $this->wpdb->query($qrystr);
-                }
+                
+                $exportCode = $this->load_export_form_get_code($data_form);
+                $this->processImportExportCode($exportCode, true);
             }
         }
         wp_die();
@@ -1311,7 +1293,8 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
             $fmb_data         = (isset($fmb_data) && $fmb_data) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive_html'), json_decode($fmb_data, true)) : array();
             $data['fmb_data'] = json_encode($fmb_data);
 
-
+            $data['fmb_type'] = 0;
+            $data['fmb_parent'] = 0;
 
             if ($isMultiStep === 'yes') {
 
@@ -3466,16 +3449,27 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         }
 
         public function ajax_load_export_form()
-        {
+    {
 
-            check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
 
-            $form_id   = (isset($_POST['form_id']) && $_POST['form_id']) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : 0;
-            $data_form = $this->formsmodel->getFormById($form_id);
+        $form_id   = (isset($_POST['form_id']) && $_POST['form_id']) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : 0;
+        $data_form = $this->formsmodel->getFormById($form_id);
 
-            if (empty($data_form)) {
-                return;
-            }
+        if (empty($data_form)) {
+            return;
+        }
+
+        $exportCode = $this->load_export_form_get_code($data_form);
+
+        $code_export                  = Uiform_Form_Helper::base64url_encode(serialize($exportCode));
+        echo $code_export;
+        wp_die();
+    }
+    
+    private function load_export_form_get_code($data_form){
+
+             
 
             $type = $data_form->fmb_type;
 
@@ -3504,7 +3498,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
             if (intval($type) === 1) {
 
                 $exportCode['children']         = [];
-                $children = $this->formsmodel->getChildFormByParentId($form_id);
+                $children = $this->formsmodel->getChildFormByParentId($data_form->fmb_id);
                 foreach ($children as $key => $child) {
                     $data_exp2 = [];
                     $data_exp2['fmb_data']         = $child->fmb_data;
@@ -3522,7 +3516,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
 
             //addons
-            $tmpData = $this->model_addon_details->getAddonsDataByForm($form_id);
+            $tmpData = $this->model_addon_details->getAddonsDataByForm($data_form->fmb_id);
             $addsArr = [];
             if (!empty($tmpData)) {
                 foreach ($tmpData as $key => $value) {
@@ -3535,10 +3529,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
                 }
             }
             $exportCode['addons'] = $addsArr;
-
-            $code_export                  = Uiform_Form_Helper::base64url_encode(serialize($exportCode));
-            echo $code_export;
-            wp_die();
+            return $exportCode;
         }
 
         public function generate_form_css($form_id = null)

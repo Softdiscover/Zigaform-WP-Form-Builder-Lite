@@ -1,12 +1,12 @@
-# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 7.1.2
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.1.2 package.
+# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 7.1.4
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.1.4 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 7.1.2\n"
+"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 7.1.4\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-09-11 06:49+0000\n"
+"POT-Creation-Date: 2024-09-17 22:40+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -62,7 +62,7 @@ msgstr ""
 msgid "Form was created"
 msgstr ""
 
-#: views/footer.php:34, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1204
+#: views/footer.php:34, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1186
 msgid "Success! The form was created. Now just copy and paste the shortcode to your content"
 msgstr ""
 
@@ -794,35 +794,35 @@ msgstr ""
 msgid "Form variables"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1217
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1199
 msgid "Success"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1219
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1201
 msgid "Go to List"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1219
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1201
 msgid "Back to Form"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1235
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1217
 msgid "Shortcodes"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1304, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1343, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1492, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1663, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1862, modules/multistep/controllers/dashboard.php:121
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1286, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1326, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1475, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1646, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1845, modules/multistep/controllers/dashboard.php:121
 msgid "Error! User has no permission to edit this form"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1349
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1332
 msgid "form id not found"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1435, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1645, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1844, modules/formbuilder/controllers/uiform-fb-controller-forms.php:2033
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1418, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1628, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1827, modules/formbuilder/controllers/uiform-fb-controller-forms.php:2016
 msgid "Error on saving form"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:3653
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:3644
 msgid "Forms in trash"
 msgstr ""
 
@@ -862,7 +862,7 @@ msgstr ""
 msgid "Form URL"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:392, modules/formbuilder/views/forms/ajax_variables_openmodal.php:56, modules/formbuilder/views/forms/create_form_main.php:105, modules/formbuilder/views/forms/create_form_modals.php:97, modules/formbuilder/views/forms/create_form_modals.php:131, modules/formbuilder/views/forms/settings_form_email.php:550, modules/formbuilder/views/records/info_record.php:97
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:392, modules/formbuilder/views/forms/ajax_variables_openmodal.php:66, modules/formbuilder/views/forms/create_form_main.php:105, modules/formbuilder/views/forms/create_form_modals.php:97, modules/formbuilder/views/forms/create_form_modals.php:131, modules/formbuilder/views/forms/settings_form_email.php:560, modules/formbuilder/views/records/info_record.php:97
 msgid "Form name"
 msgstr ""
 
@@ -1114,19 +1114,19 @@ msgstr ""
 msgid "Rollback"
 msgstr ""
 
-#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:25, modules/formbuilder/views/forms/ajax_variables_openmodal.php:88, modules/formbuilder/views/forms/create_form_main.php:386, modules/formbuilder/views/forms/settings_form_email.php:512, modules/formbuilder/views/forms/templates_fields.php:92, modules/formbuilder/views/forms/templates_fields.php:116
+#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:25, modules/formbuilder/views/forms/ajax_variables_openmodal.php:98, modules/formbuilder/views/forms/create_form_main.php:386, modules/formbuilder/views/forms/settings_form_email.php:512, modules/formbuilder/views/forms/templates_fields.php:92, modules/formbuilder/views/forms/templates_fields.php:116
 msgid "Field"
 msgstr ""
 
-#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:26, modules/formbuilder/views/forms/ajax_variables_openmodal.php:89, modules/formbuilder/views/forms/create_form_main.php:387, modules/formbuilder/views/forms/settings_form_email.php:513
+#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:26, modules/formbuilder/views/forms/ajax_variables_openmodal.php:99, modules/formbuilder/views/forms/create_form_main.php:387, modules/formbuilder/views/forms/settings_form_email.php:513
 msgid "Codes"
 msgstr ""
 
-#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:29, modules/formbuilder/views/forms/ajax_variables_openmodal.php:92, modules/formbuilder/views/forms/create_form_main.php:388, modules/formbuilder/views/forms/settings_form_email.php:516
+#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:29, modules/formbuilder/views/forms/ajax_variables_openmodal.php:102, modules/formbuilder/views/forms/create_form_main.php:388, modules/formbuilder/views/forms/settings_form_email.php:516
 msgid "label"
 msgstr ""
 
-#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:30, modules/formbuilder/views/forms/ajax_variables_openmodal.php:93, modules/formbuilder/views/forms/create_form_main.php:389, modules/formbuilder/views/forms/settings_form_email.php:517
+#: modules/formbuilder/views/forms/ajax_variables_emailpage.php:30, modules/formbuilder/views/forms/ajax_variables_openmodal.php:103, modules/formbuilder/views/forms/create_form_main.php:389, modules/formbuilder/views/forms/settings_form_email.php:517
 msgid "input"
 msgstr ""
 
@@ -1150,7 +1150,7 @@ msgstr ""
 msgid "Frontend"
 msgstr ""
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:33, modules/formbuilder/views/forms/ajax_variables_openmodal.php:83
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:33, modules/formbuilder/views/forms/ajax_variables_openmodal.php:93
 msgid "Fields"
 msgstr ""
 
@@ -1170,23 +1170,35 @@ msgstr ""
 msgid "Summary of submitted data"
 msgstr ""
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:52, modules/formbuilder/views/forms/settings_form_email.php:546
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:50, modules/formbuilder/views/forms/settings_form_email.php:544
+msgid "Default, it shows units and total price"
+msgstr ""
+
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:53, modules/formbuilder/views/forms/settings_form_email.php:547
+msgid "it shows without units"
+msgstr ""
+
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:56, modules/formbuilder/views/forms/settings_form_email.php:550
+msgid "it shows without units and total"
+msgstr ""
+
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:62, modules/formbuilder/views/forms/settings_form_email.php:556
 msgid "Form Url"
 msgstr ""
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:61, modules/formbuilder/views/forms/settings_form_email.php:555
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:71, modules/formbuilder/views/forms/settings_form_email.php:565
 msgid "Form record id"
 msgstr ""
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:65
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:75
 msgid "User IP"
 msgstr ""
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:69, modules/formbuilder/views/forms/settings_form_email.php:559
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:79, modules/formbuilder/views/forms/settings_form_email.php:569
 msgid "Logged Username"
 msgstr ""
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:73, modules/formbuilder/views/forms/settings_form_email.php:563
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:83, modules/formbuilder/views/forms/settings_form_email.php:573
 msgid "Logged email"
 msgstr ""
 
