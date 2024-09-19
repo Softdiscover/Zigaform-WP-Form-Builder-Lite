@@ -1387,7 +1387,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
                 $gen_return['output_css'] .= $child->fmb_html_css;
             }
 
-            if ($this->createCustomFolder()) {
+            if (Uiform_Form_Helper::createCustomFolder()) {
                 $newPublicDir = WP_CONTENT_DIR . '/uploads/softdiscover/' . UIFORM_SLUG;
             } else {
                 $newPublicDir = UIFORM_FORMS_DIR . '/assets/frontend/css/';
@@ -1753,49 +1753,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
             $data4['fmb_html_css']     = $gen_return['output_css'];
             $this->wpdb->update($this->formsmodel->table, $data4, $where);
 
-            /*if ($this->createCustomFolder()) {
-                    $newPublicDir = WP_CONTENT_DIR.'/uploads/softdiscover/' . UIFORM_SLUG;
-                } else {
-                    $newPublicDir = UIFORM_FORMS_DIR . '/assets/frontend/css/';
-                }*/
-
-            // generate form css
-            /*ob_start();
-                $pathCssFile = $newPublicDir . '/rockfm_form' . $json['id'] . '.css';
-                $f           = fopen($pathCssFile, 'w');
-                fwrite($f, $gen_return['output_css']);
-                fclose($f);
-                ob_end_clean();*/
-
-            // add to log
-            /*$save_log_st   = false;
-                $count_log_rec = $this->model_form_log->CountLogsByFormId($json['id']);
-
-                if (intval($count_log_rec) > 0) {
-                    $last_rec = $this->model_form_log->getLastLogById($json['id']);
-                    $new_hash = md5($data_form->fmb_data);
-                    $old_hash = $last_rec->log_frm_hash;
-                    if ($new_hash != $old_hash) {
-                        $save_log_st = true;
-                    }
-                } else {
-                    $save_log_st = true;
-                }*/
-
-            /*$log_lastid = 0;
-                if ($save_log_st) {
-                   
-                    $log_lastid = $this->wpdb->insert_id;
-                     // remove oldest if limit is exceeded
-                    if (intval($count_log_rec) > 50) {
-                        $tmp_log = $this->model_form_log->getOldLogById($json['id']);
-
-                        $where = array(
-                            'log_id' => $tmp_log->log_id,
-                        );
-                        $this->wpdb->delete($this->model_form_log->table, $where);
-                    }
-                }*/
+           
 
             $data5                         = array();
             $data5['log_frm_data']         = $data['fmb_data'];
@@ -1945,7 +1903,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
             $data4['fmb_html_css']     = $gen_return['output_css'];
             $this->wpdb->update($this->formsmodel->table, $data4, $where);
 
-            if ($this->createCustomFolder()) {
+            if (Uiform_Form_Helper::createCustomFolder()) {
                 $newPublicDir = WP_CONTENT_DIR . '/uploads/softdiscover/' . UIFORM_SLUG;
             } else {
                 $newPublicDir = UIFORM_FORMS_DIR . '/assets/frontend/css/';
@@ -2024,58 +1982,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         wp_die();
     }
 
-    protected function createCustomFolder()
-    {
-
-        // Define the path where you want to create the folder
-        $folder_path = WP_CONTENT_DIR . '/uploads/softdiscover';
-
-        // Check if the folder already exists
-        if (file_exists($folder_path . '/' . UIFORM_SLUG)) {
-            return true;
-        }
-
-        // Load WordPress filesystem API
-        if (!function_exists('WP_Filesystem')) {
-            require_once ABSPATH . '/wp-admin/includes/file.php';
-        }
-
-        // Initialize the WordPress filesystem
-        if (!function_exists('WP_Filesystem')) {
-            require_once ABSPATH . '/wp-admin/includes/file.php';
-        }
-        if (!function_exists('WP_Filesystem')) {
-            require_once ABSPATH . '/wp-admin/includes/file.php';
-        }
-        // Initialize the WordPress filesystem
-        if (!WP_Filesystem()) {
-            // Failed to initialize WordPress filesystem, shouldn't happen
-            return false;
-        }
-
-
-        // Create the folder
-        WP_Filesystem();
-        global $wp_filesystem;
-
-        if (!file_exists($folder_path)) {
-            $wp_filesystem->mkdir($folder_path);
-        }
-
-        $wp_filesystem->mkdir($folder_path . '/' . UIFORM_SLUG);
-        // Check if folder creation was successful
-        if (!$wp_filesystem->is_dir($folder_path)) {
-            // Failed to create folder, handle the error
-            return false;
-        } else {
-            // Folder created successfully
-            return true;
-        }
-
-
-        return true;
-    }
-
+    
 
     protected function generate_form_getField($child_field)
     {

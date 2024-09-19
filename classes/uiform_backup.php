@@ -11,6 +11,7 @@ class Uiform_Backup
     private $tables = array();
     private $suffix = 'd-M-Y_H-i-s';
     private $wpdb;
+    private $backup_dir;
     /**
      * Constructor
      *
@@ -20,13 +21,14 @@ class Uiform_Backup
     {
         global $wpdb;
         $this->wpdb = $wpdb;
+        $this->backup_dir = WP_CONTENT_DIR.'/uploads/softdiscover/' . UIFORM_SLUG.'/backups/';
         define('NL', "\r\n");
     }
 
     public function uploadBackupFile()
     {
-        $target_dir    = UIFORM_FORMS_DIR . '/backups/';
-        $target_file   = $target_dir . basename($_FILES['uifm_bkp_fileupload']['name']);
+        $target_dir    = $this->backup_dir;
+        $target_file   = $target_dir .basename($_FILES['uifm_bkp_fileupload']['name']);
         $uploadOk      = 1;
         $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
 
@@ -52,106 +54,74 @@ class Uiform_Backup
         }
     }
 
-    public function restoreBackup($file)
-    {
+    public function restoreBackup($file) {
+        global $wpdb;
+    
         try {
-            /*Begin restore*/
-
-                $dir       = UIFORM_FORMS_DIR . '/backups/';
+            // Validate user capability
+            if (!current_user_can('manage_options')) {
+                wp_die('You do not have permission to perform this action.');
+            }
+    
+            // Define backup directory
+            $dir = $this->backup_dir;
             $database_file = $dir . $file;
-
-                $database_name     = DB_NAME;
-                $database_user     = DB_USER;
-                $datadase_password = DB_PASSWORD;
-                $database_host     = DB_HOST;
-
-                ini_set('max_execution_time', '5000');
-                ini_set('max_input_time', '5000');
-                ini_set('memory_limit', '1000M');
-                set_time_limit(0);
-
-            if ( ( trim((string) $database_name) != '' ) &&
-            ( trim((string) $database_user) != '' ) &&
-            ( trim((string) $database_host) != '' )
-             ) {
-                if ( function_exists('mysqli_connect')) {
-                    $conn = mysqli_connect((string) $database_host, (string) $database_user, (string) $datadase_password, (string) $database_name);
-                    if ( mysqli_connect_errno()) {
-                        throw new Exception('ERROR connecting database: ' . mysqli_connect_error());
-                        die();
-                    }
-
-                    /**
-                     * Disable foreign key checks
-                     */
-
-                        mysqli_query($conn, 'SET foreign_key_checks = 0');
-
-                    $sql = 'CREATE DATABASE IF NOT EXISTS \`' . (string) $database_name . '\`';
-
-                    mysqli_query($conn, $sql);
-
-                        /*END: Select the Database*/
-
-                    /*BEGIN: Remove All Tables from the Database*/
-                    /*END: Remove All Tables from the Database*/
-
-                    /*BEGIN: Restore Database Content*/
-                    if ( isset($database_file)) {
-                        $sql_file = file_get_contents($database_file, true);
-
-                        $sql_file    = strtr(
-                            $sql_file,
-                            array(
-                                "\r\n" => "\n",
-                                "\r"   => "\n",
-                            )
-                        );
-                        $sql_queries = explode(";\n", $sql_file);
-
-                        for ( $i = 0; $i < count($sql_queries); $i++) {
-                            mysqli_query($conn, $sql_queries[ $i ]);
-                        }
-                    }
-                } elseif ( $conn = @mysql_connect((string) $database_host, (string) $database_user, (string) $datadase_password)) {
-                        /*BEGIN: Select the Database*/
-                    if ( ! mysql_select_db((string) $database_name, $conn)) {
-                        $sql = 'CREATE DATABASE IF NOT EXISTS \`' . (string) $database_name . '\`';
-                        mysql_query($sql, $conn);
-                        mysql_select_db((string) $database_name, $conn);
-                    }
-                    /*END: Select the Database*/
-
-                    /*BEGIN: Remove All Tables from the Database*/
-                    /*END: Remove All Tables from the Database*/
-
-                    /*BEGIN: Restore Database Content*/
-                    if ( isset($database_file)) {
-                        $sql_file = file_get_contents($database_file, true);
-
-                        $sql_file    = strtr(
-                            $sql_file,
-                            array(
-                                "\r\n" => "\n",
-                                "\r"   => "\n",
-                            )
-                        );
-                        $sql_queries = explode(";\n", $sql_file);
-
-                        for ( $i = 0; $i < count($sql_queries); $i++) {
-                            @mysql_query($sql_queries[ $i ], $conn);
-                        }
+    
+            // Validate file type
+            $allowed_file_types = ['sql'];
+            $file_info = pathinfo($file);
+            if (!in_array($file_info['extension'], $allowed_file_types)) {
+                wp_die('Invalid file type. Only SQL files are allowed.');
+            }
+    
+            // Set execution limits
+            ini_set('max_execution_time', '5000');
+            set_time_limit(0);
+    
+            // Check if the backup file exists
+            if (!file_exists($database_file)) {
+                throw new Exception('Backup file does not exist.');
+            }
+    
+            // Read the SQL file content
+            $sql_file = file_get_contents($database_file);
+    
+            // Normalize line breaks for consistency
+            $sql_file = strtr($sql_file, array("\r\n" => "\n", "\r" => "\n"));
+    
+            // Split the SQL file into separate queries
+            $sql_queries = explode(";\n", $sql_file);
+    
+            // Start transaction
+            $wpdb->query('START TRANSACTION');
+            $wpdb->query('SET foreign_key_checks = 0');
+             
+            // Execute each query
+            foreach ($sql_queries as $query) {
+                $query = $this->_real_unescape(trim($query));
+               
+                if (!empty($query)) {
+                    $result = $wpdb->query($query);
+                    if ($result === false) {
+                        throw new Exception('Error executing query: ' . $query);
                     }
                 }
             }
-
-            /*END: Restore Database Content*/
-
-            /*End Begin restore*/
-        } catch ( Exception $exception) {
-            die($exception->getMessage());
+    
+            // Re-enable foreign key checks
+            $wpdb->query('SET foreign_key_checks = 1');
+    
+            // Commit transaction
+            $wpdb->query('COMMIT');
+    
+        } catch (Exception $exception) {
+            // Rollback transaction on error
+            $wpdb->query('ROLLBACK');
+            error_log($exception->getMessage());
+            wp_die('Database restore failed. Please check the error log for details.');
         }
     }
+    
     public function makeDbBackup($name = '')
     {
         require_once UIFORM_FORMS_DIR . '/classes/uiform-installdb.php';
@@ -213,7 +183,7 @@ class Uiform_Backup
             }
         }
 
-          $fname      = UIFORM_FORMS_DIR . '/backups/';
+        $fname      = $this->backup_dir;
               $fname .= ( ! empty($name) ) ? $name : date($this->suffix);
               $fname .= '.sql';
         if ( ! ( $f = fopen($fname, 'w') )) {
@@ -270,7 +240,7 @@ class Uiform_Backup
             $row     = $result[ $i ];
             $output .= 'INSERT INTO ' . $table . ' VALUES(';
             for ( $j = 0; $j < count($result[0]); $j++) {
-                $row[ $j ] = $this->wpdb->_real_escape($row[ $j ]);
+                $row[ $j ] = $this->_real_escape($row[ $j ]);
                 $output   .= ( isset($row[ $j ]) ) ? '"' . $row[ $j ] . '"' : '""';
                 if ( $j < ( count($result[0]) - 1 )) {
                     $output .= ',';
@@ -307,4 +277,67 @@ class Uiform_Backup
         }
             return $output;
     }
+    
+     /**
+	 * Real escape using mysqli_real_escape_string().
+	 *
+	 * @since 2.8.0
+	 *
+	 * @see mysqli_real_escape_string()
+	 *
+	 * @param string $data String to escape.
+	 * @return string Escaped string.
+	 */
+	public function _real_escape( $data ) {
+        global $wpdb;
+		if ( ! is_scalar( $data ) ) {
+			return '';
+		}
+        
+			 
+		$escaped = mysqli_real_escape_string( $wpdb->dbh, $data );
+		return $this->add_placeholder_escape( $escaped );
+	}
+	public function _real_unescape( $data ) {
+         
+		if ( ! is_scalar( $data ) ) {
+			return '';
+		}
+
+		return $this->remove_placeholder_escape( $data );
+	}
+	
+	public function add_placeholder_escape( $query ) {
+		 
+		/*
+		 * To prevent returning anything that even vaguely resembles a placeholder,
+		 * we clobber every % we can find.
+		 */
+		return str_replace( '%', $this->placeholder_escape(), $query );
+	}
+	
+	
+	public function remove_placeholder_escape( $query ) {
+		 
+		return str_replace( $this->placeholder_escape(), '%', $query );
+	}
+	
+	
+	public function placeholder_escape() {
+		static $placeholder;
+
+		if ( ! $placeholder ) {
+			// If ext/hash is not present, compat.php's hash_hmac() does not support sha256.
+			$algo = function_exists( 'hash' ) ? 'sha256' : 'sha1';
+			// Old WP installs may not have AUTH_SALT defined.
+			$salt = defined( 'AUTH_SALT' ) && AUTH_SALT ? AUTH_SALT : 'zigaform';
+
+			$placeholder = '{' . hash_hmac( $algo,'', $salt ) . '}';
+		}
+
+		 
+
+		return $placeholder;
+	}
+    
 }

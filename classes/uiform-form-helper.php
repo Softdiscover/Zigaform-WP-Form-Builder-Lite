@@ -21,6 +21,60 @@ if ( class_exists('Uiform_Form_Helper')) {
 
 class Uiform_Form_Helper
 {
+
+    public static function createCustomFolder()
+    {
+
+        // Define the path where you want to create the folder
+        $folder_path = WP_CONTENT_DIR.'/uploads/softdiscover';
+        
+        // Check if the folder already exists
+        if (file_exists($folder_path.'/'.UIFORM_SLUG.'/css')) {
+            return true;
+        }
+
+        // Load WordPress filesystem API
+        if (!function_exists('WP_Filesystem')) {
+            require_once ABSPATH . '/wp-admin/includes/file.php';
+        }
+
+        // Initialize the WordPress filesystem
+        if (!function_exists('WP_Filesystem')) {
+            require_once ABSPATH . '/wp-admin/includes/file.php';
+        }
+        if (!function_exists('WP_Filesystem')) {
+            require_once ABSPATH . '/wp-admin/includes/file.php';
+        }
+        // Initialize the WordPress filesystem
+        if (!WP_Filesystem()) {
+            // Failed to initialize WordPress filesystem, shouldn't happen
+            return false;
+        }
+
+
+        // Create the folder
+        WP_Filesystem();
+        global $wp_filesystem;
+        
+        if (!file_exists($folder_path)) {
+            $wp_filesystem->mkdir($folder_path);
+        }
+        $wp_filesystem->mkdir($folder_path.'/'.UIFORM_SLUG);
+        $wp_filesystem->mkdir($folder_path.'/'.UIFORM_SLUG.'/css');
+        $wp_filesystem->mkdir($folder_path.'/'.UIFORM_SLUG.'/backups');
+        // Check if folder creation was successful
+        if (!$wp_filesystem->is_dir($folder_path)) {
+            // Failed to create folder, handle the error
+            return false;
+        } else {
+            // Folder created successfully
+            return true;
+        }
+
+
+        return true;
+    }
+
     public static function compareByOrder($a, $b) {
         return $a['order'] - $b['order'];
     }

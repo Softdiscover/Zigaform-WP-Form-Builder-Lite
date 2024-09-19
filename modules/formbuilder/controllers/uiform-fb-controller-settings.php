@@ -418,7 +418,9 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module
     public function backup_settings()
     {
         $data       = array();
-        $dir        = UIFORM_FORMS_DIR . '/backups/';
+        $dir        = WP_CONTENT_DIR.'/uploads/softdiscover/' . UIFORM_SLUG.'/backups/';
+        $upload_dir = wp_upload_dir();
+        $uploads_url = $upload_dir['url'];
         $data_files = array();
         if (is_dir($dir)) {
             $getDir = dir($dir);
@@ -426,7 +428,7 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module
                 if ($file != '.' && $file != '..' && $file != 'index.php') {
                     $temp_file              = array();
                     $temp_file['file_name'] = $file;
-                    $temp_file['file_url']  = UIFORM_FORMS_URL . '/backups/' . $file;
+                    $temp_file['file_url']  = $uploads_url . '/softdiscover/' . UIFORM_SLUG.'/backups/'. $file;
                     $temp_file['file_date'] = date('F d Y H:i:s.', filemtime($dir . $file));
                     $temp_file['file_size'] = Uiform_Form_Helper::human_filesize(filesize($dir . $file));
 
