@@ -1388,7 +1388,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
             }
 
             if (Uiform_Form_Helper::createCustomFolder()) {
-                $newPublicDir = WP_CONTENT_DIR . '/uploads/softdiscover/' . UIFORM_SLUG;
+                $newPublicDir = WP_CONTENT_DIR . '/uploads/softdiscover/' . UIFORM_SLUG.'/css';
             } else {
                 $newPublicDir = UIFORM_FORMS_DIR . '/assets/frontend/css/';
             }
@@ -1904,7 +1904,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
             $this->wpdb->update($this->formsmodel->table, $data4, $where);
 
             if (Uiform_Form_Helper::createCustomFolder()) {
-                $newPublicDir = WP_CONTENT_DIR . '/uploads/softdiscover/' . UIFORM_SLUG;
+                $newPublicDir = WP_CONTENT_DIR . '/uploads/softdiscover/' . UIFORM_SLUG.'/css';
             } else {
                 $newPublicDir = UIFORM_FORMS_DIR . '/assets/frontend/css/';
             }

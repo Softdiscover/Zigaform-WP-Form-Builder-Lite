@@ -47,7 +47,7 @@ ob_start();
     <?php
     if (file_exists(WP_CONTENT_DIR . '/uploads/softdiscover/' . UIFORM_SLUG . '/css/rockfm_form' . $form_id . '.css')) {
     ?>
-        <link rel='stylesheet' id='ebor-fonts-css' href='<?php echo site_url(); ?>/wp-content/uploads/softdiscover/css/<?php echo UIFORM_SLUG; ?>/rockfm_form<?php echo $form_id; ?>.css?<?php echo date('Ymdgis'); ?>' type='text/css' media='all' />
+        <link rel='stylesheet' id='ebor-fonts-css' href='<?php echo site_url(); ?>/wp-content/uploads/softdiscover/<?php echo UIFORM_SLUG; ?>/css/rockfm_form<?php echo $form_id; ?>.css?<?php echo date('Ymdgis'); ?>' type='text/css' media='all' />
     <?php
  } elseif (file_exists(WP_CONTENT_DIR . '/uploads/softdiscover/' . UIFORM_SLUG . '/rockfm_form' . $form_id . '.css')) {
     ?>
