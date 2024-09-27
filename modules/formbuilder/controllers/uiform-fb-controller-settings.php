@@ -180,7 +180,9 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module
 
         $json             = array();
         $uifm_frm_delfile = (isset($_POST['uifm_frm_delfile']) && $_POST['uifm_frm_delfile']) ? Uiform_Form_Helper::sanitizeInput($_POST['uifm_frm_delfile']) : '';
-        $dir              = UIFORM_FORMS_DIR . '/backups/';
+        $upload_dir = wp_get_upload_dir();
+        $uploads_url = $upload_dir['basedir'];
+        $dir              = $uploads_url . '/softdiscover/' . UIFORM_SLUG.'/backups/';
         @unlink($dir . $uifm_frm_delfile);
         header('Content-Type: application/json');
         echo json_encode($json);
@@ -419,8 +421,8 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module
     {
         $data       = array();
         $dir        = WP_CONTENT_DIR.'/uploads/softdiscover/' . UIFORM_SLUG.'/backups/';
-        $upload_dir = wp_upload_dir();
-        $uploads_url = $upload_dir['url'];
+        $upload_dir = wp_get_upload_dir();
+        $uploads_url = $upload_dir['baseurl'];
         $data_files = array();
         if (is_dir($dir)) {
             $getDir = dir($dir);

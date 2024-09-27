@@ -132,6 +132,9 @@ class Uiform_Backup
         $dbTables[] = $installdb->form_fields_type;
         $dbTables[] = $installdb->form_fields;
         $dbTables[] = $installdb->settings;
+        $dbTables[] = $installdb->core_addon;
+        $dbTables[] = $installdb->core_addon_detail;
+        $dbTables[] = $installdb->core_addon_log;
         
         // $dbTables[]=$installdb->visitor;
         // $dbTables[]=$installdb->visitor_error;
@@ -160,7 +163,10 @@ class Uiform_Backup
           $dump .= 'DROP TABLE IF EXISTS `' . $installdb->form_fields_type . '`;' . NL;
           $dump .= 'DROP TABLE IF EXISTS `' . $installdb->form . '`;' . NL;
           $dump .= 'DROP TABLE IF EXISTS `' . $installdb->settings . '`;' . NL;
-
+          $dump .= 'DROP TABLE IF EXISTS `' . $installdb->core_addon_detail . '`;' . NL;
+          $dump .= 'DROP TABLE IF EXISTS `' . $installdb->core_addon_log . '`;' . NL;
+          $dump .= 'DROP TABLE IF EXISTS `' . $installdb->core_addon . '`;' . NL;
+          
           $database = DB_NAME;
         if ( ! empty($database)) {
             $dump .= '#' . NL;
@@ -328,9 +334,9 @@ class Uiform_Backup
 
 		if ( ! $placeholder ) {
 			// If ext/hash is not present, compat.php's hash_hmac() does not support sha256.
-			$algo = function_exists( 'hash' ) ? 'sha256' : 'sha1';
-			// Old WP installs may not have AUTH_SALT defined.
-			$salt = defined( 'AUTH_SALT' ) && AUTH_SALT ? AUTH_SALT : 'zigaform';
+			$algo = 'sha1';
+			 
+			$salt = 'zigaform';
 
 			$placeholder = '{' . hash_hmac( $algo,'', $salt ) . '}';
 		}
