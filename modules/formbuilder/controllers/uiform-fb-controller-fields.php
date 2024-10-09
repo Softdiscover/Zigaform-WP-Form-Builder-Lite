@@ -155,7 +155,7 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module
              * @author    Softdiscover &lt;info@softdiscover.com&gt;
              * @copyright 2015 Softdiscover
              * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
-             * @link      http://wordpress-form-builder.uiform.com/
+             * @link      https://wordpress-form-builder.zigaform.com/
              */
             if (!defined('ABSPATH')) {exit('No direct script access allowed');}
             ?&gt;

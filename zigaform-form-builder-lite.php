@@ -3,7 +3,7 @@
  * Plugin Name: Zigaform - Wordpress Form Builder Lite
  * Plugin URI: https://wordpress-form-builder.zigaform.com/
  * Description: The ZigaForm WordPress form builder is the ultimate form creation solution for WordPress.
- * Version: 7.2.0
+ * Version: 7.2.2
  * Author: ZigaForm.Com
  * Author URI: https://wordpress-form-builder.zigaform.com/
  */
@@ -29,7 +29,7 @@ if ( ! class_exists('UiformFormbuilderLite')) {
          * @var string
          * @since 1.0
          */
-        public $version = '7.2.0';
+        public $version = '7.2.2';
 
         /**
          * The minimal required version of WordPress for this plug-in to function correctly.
@@ -262,7 +262,7 @@ if ( ! class_exists('UiformFormbuilderLite')) {
             $this->define('UIFORM_FORMS_URL', plugins_url() . '/' . UIFORM_FOLDER);
             $this->define('UIFORM_FORMS_LIBS', UIFORM_FORMS_DIR . '/libraries');
             $this->define('UIFORM_DEMO', 0);
-
+            $this->define('UIFORM_LICSRC', 0);
             $this->define('ZIGAFORM_F_LITE', 1);
             $this->define('UIFORM_DEBUG', 0);
             
@@ -298,6 +298,7 @@ if ( ! class_exists('UiformFormbuilderLite')) {
                 require_once UIFORM_FORMS_DIR . '/classes/uiform-form-helper.php';
                 require_once UIFORM_FORMS_DIR . '/classes/uiform-bootstrap.php';
                 require_once UIFORM_FORMS_DIR . '/classes/zigaform-notice.php';
+                
                 
             }
 
@@ -339,8 +340,12 @@ function uiform_uninstallLite()
 
 function wpRFRMLite()
 {
-     register_uninstall_hook(__FILE__, 'uiform_uninstallLite');
+    register_uninstall_hook(__FILE__, 'uiform_uninstallLite');
+    
     return UiformFormbuilderLite::instance();
 }
+
+ 
+
 
 wpRFRMLite();

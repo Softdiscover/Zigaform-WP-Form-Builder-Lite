@@ -26,7 +26,6 @@ class Uiform_Bootstrap extends Uiform_Base_Module
     protected $modules;
     protected $addons;
     protected $models;
-
     const VERSION = '1.2';
     const PREFIX  = 'wprofmr_';
 
@@ -717,7 +716,18 @@ JS;
                 .ml-stars svg{fill:#ffb900}
                 .ml-stars svg:hover{fill:#ffb900}
                 .ml-stars svg:hover ~ svg{fill:none}
+                
+                .sfdc-admin-columns {
+					display: flex;
+					justify-content: space-between;
+				}
+				.sfdc-admin-column {
+					width: 48%; /* Adjust width as needed */
+				}
+                
             </style>
+            
+            
         <?php }
     }
 
@@ -736,7 +746,74 @@ JS;
             $this->modules['formbuilder']['forms']->list_uiforms();
         }
     }
+    
+    
+    public function load_for_plugin_page(){
+        global $pagenow;
 
+			// Bail if we are not on the plugins page
+			if ( $pagenow != "plugins.php" ) {
+				return;
+			}
+
+			// Enqueue scripts
+			add_thickbox();
+			//wp_enqueue_script('sfdc-deactivation-survey', plugin_dir_url(__FILE__) . 'sfdc-ds.js');
+			
+			wp_enqueue_script('sfdc-deactivation-survey', UIFORM_FORMS_URL . '/assets/backend/js/deactivation/ds.js');
+        
+			/*
+			 * Localized strings. Strings can be localised by plugins using this class.
+			 * We deliberately don't add textdomains here so that double textdomain warning is not given in theme review.
+			 */
+			wp_localize_script('sfdc-deactivation-survey', 'sfdcsrc_deactivate_feedback_form_strings', array(
+				'quick_feedback'			=> __( 'Quick Feedback', 'FRocket_admin' ),
+				'foreword'					=> __( 'If you would be kind enough, please tell us why you\'re deactivating?', 'FRocket_admin' ),
+				'better_plugins_name'		=> __( 'Please tell us which plugin?', 'FRocket_admin' ),
+				'please_tell_us'			=> __( 'Please tell us the reason so we can improve the plugin', 'FRocket_admin' ),
+				'do_not_attach_email'		=> __( 'Do not send my e-mail address with this feedback', 'FRocket_admin' ),
+				'brief_description'			=> __( 'Please give us any feedback that could help us improve', 'FRocket_admin' ),
+				'leave_email'			=> __( 'Email address (optional)', 'FRocket_admin' ),
+				'cancel'					=> __( 'Cancel', 'FRocket_admin' ),
+				'skip_and_deactivate'		=> __( 'Skip &amp; Deactivate', 'FRocket_admin' ),
+				'submit_and_deactivate'		=> __( 'Submit &amp; Deactivate', 'FRocket_admin' ),
+				'please_wait'				=> __( 'Please wait', 'FRocket_admin' ),
+				'get_support'				=> __( 'Get Support', 'FRocket_admin' ),
+				'documentation'				=> __( 'Documentation', 'FRocket_admin' ),
+				'thank_you'					=> __( 'Thank you!', 'FRocket_admin' ),
+				'comment_required'					=> __( 'Comment Required', 'FRocket_admin' )
+			));
+
+			// Plugins
+			$plugins = [];
+			 
+            $plugins[]= (object) [
+                'slug'		=> trim(preg_replace('/[^a-z0-9]+/', '-', strtolower(UIFORM_APP_NAME)), '-'),
+            ];
+            
+			// Reasons
+			$defaultReasons = array(
+				'suddenly-stopped-working'	=> __( 'The plugin suddenly stopped working', 'FRocket_admin' ),
+				'plugin-broke-site'			=> __( 'The plugin broke my site', 'FRocket_admin' ),
+				'plugin-setup-difficult'	=> __( 'Too difficult to setup', 'FRocket_admin' ),
+				'plugin-design-difficult'	=> __( 'Too difficult to get the design i want', 'FRocket_admin' ),
+				'no-longer-needed'			=> __( 'I don\'t need this plugin any more', 'FRocket_admin' ),
+				'found-better-plugin'		=> __( 'I found a better plugin', 'FRocket_admin' ),
+				'temporary-deactivation'	=> __( 'It\'s a temporary deactivation, I\'m troubleshooting', 'FRocket_admin' ),
+				'other'						=> __( 'Other', 'FRocket_admin' ),
+			);
+
+			foreach( $plugins as $plugin ) {
+				$plugin->reasons = $defaultReasons;
+				$plugin->slugshort = UIFORM_SLUG;
+				$plugin->version= UIFORM_VERSION;
+				$plugin->is_lite=ZIGAFORM_F_LITE;
+			}
+
+			// Send plugin data
+			wp_localize_script('sfdc-deactivation-survey', 'sfdcsrc_deactivate_feedback_form_plugins',$plugins);
+    }
+    
 
     /**
      * load styles and script across the site
@@ -1070,7 +1147,7 @@ JS;
         wp_enqueue_script('rockefform-menu-fonts', UIFORM_FORMS_URL . '/assets/backend/js/fonts.js');
         wp_enqueue_script('rockefform-menu-main', UIFORM_FORMS_URL . '/libraries/styles-font-menu/js/styles-font-menu.js');
         wp_enqueue_style('rockefform-menu-style', UIFORM_FORMS_URL . '/libraries/styles-font-menu/css/styles-font-menu.css');
-
+        
         if ( UIFORM_DEBUG === 1) {
             wp_enqueue_script('rockefform-bootstrap-select2', UIFORM_FORMS_URL . '/assets/common/js/select2/4.0.13/js/select2.full.js', array( 'jquery', 'rockefform-bootstrap-sfdc' ), '4.0.13', true);
             wp_register_script(
@@ -1210,6 +1287,7 @@ JS;
                 } else {
                     // admin resources
                     add_action('admin_enqueue_scripts', array( &$this, 'load_adminGeneral_resources' ), 20, 1);
+                    add_action('admin_enqueue_scripts', array( &$this, 'load_for_plugin_page' ), 20, 1);
                 }
 
                 // disable update notifications
