@@ -1230,8 +1230,10 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         $data     = array();
         $fmb_data = (!empty($_POST['form_data'])) ? Uiform_Form_Helper::sanitizeInput_html($_POST['form_data']) : '';
-        $fmb_data = urldecode($fmb_data);
-        // $fmb_data = str_replace("\'", "'", $fmb_data);
+        if(!Uiform_Form_Helper::isJson($fmb_data)){
+            $fmb_data = urldecode($fmb_data);    
+        }
+        
         $fmb_data = (!empty($fmb_data)) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive_html'), json_decode($fmb_data, true)) : array();
 
         $data['fmb_data'] = $fmb_data;

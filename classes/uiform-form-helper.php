@@ -21,7 +21,15 @@ if ( class_exists('Uiform_Form_Helper')) {
 
 class Uiform_Form_Helper
 {
-
+    public static function isJson($string)
+	{
+		try {
+			json_decode($string);
+			return (json_last_error() === JSON_ERROR_NONE);
+		} catch (Exception $e) {
+			 return false;
+		}
+	}
     public static function createCustomFolder()
     {
 
