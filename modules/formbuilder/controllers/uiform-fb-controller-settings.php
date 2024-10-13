@@ -325,10 +325,66 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module
         }
 
         $data['database_int'] = $uiform_tbs_tmp;
+        $manifestData = $this->manifestIsOk();
+        $data['manifestStatus'] = $manifestData['status'];
+        $data['manifestFailed']= $manifestData['failed'];
 
         echo self::loadPartial('layout.php', 'formbuilder/views/settings/system_check.php', $data);
     }
-
+    
+    private function calculateChecksum($filePath) {
+        return hash_file('md5', $filePath);
+    }
+    private function manifestIsOk(){
+        $status = true; 
+            // Load the manifest file
+            $cur = UIFORM_FORMS_DIR.'/';
+            $manifestPath = $cur.'assets/backend/json/manifest.json';
+            
+            if(!file_exists($manifestPath)){
+                return [
+                    'status'=> $status,
+                    'failed'=>[]
+                    ];
+            }
+            
+            $manifest = json_decode(file_get_contents($manifestPath), true);
+            
+            // Function to calculate checksum of a file
+            
+            $failed=[];
+            // Check the integrity of the uploaded files
+            foreach ($manifest as $file => $expectedChecksum) {
+                if(in_array($file, ['assets/backend/json/manifest.json',
+                'modules/formbuilder/views/forms/verify_pcode.php'
+                ])){
+                    continue;
+                }
+                
+                if (strpos($file, "i18n/languages/") === 0) {
+                    continue;
+                }
+                
+                if (file_exists($cur.$file)) {
+                    $actualChecksum = $this->calculateChecksum($cur.$file);
+                    if ($actualChecksum !== $expectedChecksum) {
+                        
+                        $failed[]= $cur.$file;
+                        $status = false;
+                    }  
+                } else{
+                    $failed[]= $cur.$file;
+                    $status = false;
+                } 
+            }
+            
+            return [
+            'status'=> $status,
+            'failed'=>$failed
+            ];
+        }
+    
+    
     public function system_gendb_column()
     {
         global $wpdb;

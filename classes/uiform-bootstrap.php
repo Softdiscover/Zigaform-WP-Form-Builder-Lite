@@ -788,7 +788,7 @@ JS;
 			$plugins = [];
 			 
             $plugins[]= (object) [
-                'slug'		=> trim(preg_replace('/[^a-z0-9]+/', '-', strtolower(UIFORM_APP_NAME)), '-'),
+                'slug'		=> UIFORM_BASENAME,
             ];
             
 			// Reasons

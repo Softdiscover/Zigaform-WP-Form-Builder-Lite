@@ -114,7 +114,7 @@
 		}
 
 		// Listen for deactivate
-		$("#the-list [data-slug='" + plugin.slug + "'] .deactivate>a").on('click', function(event) {
+		$("#the-list [data-plugin='" + plugin.slug + "'] .deactivate>a").on('click', function(event) {
 			self.onDeactivateClicked(event);
 		});
 	};
@@ -182,7 +182,7 @@
 				type: 'POST',
 				url: 'https://support.softdiscover.com/tracking/',
 				data: data,
-				complete: function() {
+				complete: function () {
 					window.location.href = self.deactivateURL;
 				},
 			});
