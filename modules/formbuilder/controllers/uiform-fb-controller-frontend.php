@@ -640,7 +640,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
 
         $rkver = (isset($_POST['rkver'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['rkver'])) : 0;
         if ($rkver) {
-            $rkver     = Uiform_Form_Helper::base64url_decode(json_decode($rkver));
+            $rkver     = Uiform_Form_Helper::base64url_decode($rkver);
             $rkver_arr = json_decode($rkver, true);
 
             $length  = 5;

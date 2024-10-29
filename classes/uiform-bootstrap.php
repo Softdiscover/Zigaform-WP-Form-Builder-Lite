@@ -1125,7 +1125,7 @@ JS;
         wp_enqueue_script('rockefform-iframe', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/4.1.1/iframeResizer.js', array(), UIFORM_VERSION, true);
 
         // codemirror
-        wp_enqueue_script('rockefform-codemirror', UIFORM_FORMS_URL . '/assets/common/js/codemirror/codemirror.js', array(), '1.0', true);
+        wp_enqueue_script('rockefform-codemirror', UIFORM_FORMS_URL . '/assets/common/js/codemirror/codemirror.js', array(), '5.23.0', true);
         wp_enqueue_script('rockefform-codemirror-foldcode', UIFORM_FORMS_URL . '/assets/common/js/codemirror/addon/fold/foldcode.js', array(), '1.0', true);
         wp_enqueue_script('rockefform-codemirror-foldgutter', UIFORM_FORMS_URL . '/assets/common/js/codemirror/addon/fold/foldgutter.js', array(), '1.0', true);
 
@@ -1271,7 +1271,9 @@ JS;
 
                     // admin resources
                     add_action('admin_enqueue_scripts', array( &$this, 'load_admin_resources' ), 20, 1);
-
+                    
+                    add_action('admin_enqueue_scripts', array('Uiform_Form_Helper', 'adminDequeueSelectedJsFiles'), 100);
+                    
                     // disabling WordPress update message
                     add_action('admin_menu', array( &$this, 'wphidenag' ));
                     // format WordPress editor

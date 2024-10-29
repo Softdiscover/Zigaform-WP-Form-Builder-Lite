@@ -341,7 +341,7 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module
             $cur = UIFORM_FORMS_DIR.'/';
             $manifestPath = $cur.'assets/backend/json/manifest.json';
             
-            if(!file_exists($manifestPath)){
+            if(!file_exists($manifestPath) || empty(file_get_contents($manifestPath)) ) {
                 return [
                     'status'=> $status,
                     'failed'=>[]

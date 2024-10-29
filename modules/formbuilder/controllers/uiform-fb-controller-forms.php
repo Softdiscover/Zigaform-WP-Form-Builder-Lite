@@ -3851,7 +3851,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
             $data['pdf_paper_size'] = $pdf_paper_size;
 
             $data['fields_fastload'] = get_option('zgfm_fields_fastload', 0);
-
+            $data['obj_sfm']            = Uiform_Form_Helper::get_font_library();
             //$data['modules_tab_extension'] = self::$_modules['addon']['backend']->addons_doActions( 'back_exttab_block', true );
             $data['modules_tab_extension'] = apply_filters('zgfm_back_exttab_block', array());
             echo self::loadPartial('layout_editform.php', 'formbuilder/views/forms/create_form.php', $data);

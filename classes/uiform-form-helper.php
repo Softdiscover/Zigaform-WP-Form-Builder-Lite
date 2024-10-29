@@ -21,6 +21,38 @@ if ( class_exists('Uiform_Form_Helper')) {
 
 class Uiform_Form_Helper
 {
+    public static function adminDequeueSelectedJsFiles() {
+        // Array of JavaScript file names to dequeue (add more filenames as needed)
+        $js_files_to_dequeue = array(
+            'codemirror.js'
+        );
+        
+        // Exclude specific handles from being dequeued
+        $exclude_handles = array('rockefform-codemirror');
+    
+        // Access the global wp_scripts object
+        global $wp_scripts;
+    
+        // Loop through all registered scripts (this includes enqueued ones)
+        foreach ($wp_scripts->registered as $handle => $script) {
+            // Skip excluded handles
+            if (in_array($handle, $exclude_handles)) {
+                continue;
+            }
+    
+            // Loop through the list of filenames to match against
+            foreach ($js_files_to_dequeue as $js_file) {
+                // Check if the script's source contains the specific JS file name
+                if (strpos($script->src, $js_file) !== false) {
+                    // Dequeue and deregister the script if it matches
+                    wp_dequeue_script($handle);
+                    wp_deregister_script($handle);
+                    break; // Exit the inner loop once a match is found
+                }
+            }
+        }
+    }
+
     public static function isJson($string)
 	{
 		try {
