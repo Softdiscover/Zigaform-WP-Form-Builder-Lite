@@ -622,7 +622,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
 
         $data_form = $this->formsmodel->getFormById($form_child_id);
 
-        $resp['html'] = $data_form->fmb_html;
+        $resp['html'] = do_shortcode($data_form->fmb_html);
 
         // return data to ajax callback
         header('Content-Type: text/html; charset=UTF-8');

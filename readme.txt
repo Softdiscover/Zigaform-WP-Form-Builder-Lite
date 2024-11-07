@@ -1,13 +1,13 @@
 === Zigaform - Form Builder Lite ===
 Contributors: softdiscover  
-Donate link: https://1.envato.market/0KDVM  
+Donate link: https://shop.softdiscover.com/downloads/zigaform-wordpress-form-builder/  
 License: GPLv3  
 License URI: http://www.gnu.org/licenses/gpl.html  
 Tags: form, forms, contact form, custom form, form builder, form creator, form manager, form creation, contact forms, forms builder  
 Requires at least: 5.0  
 Tested up to: 6.6.2 
 Requires PHP: 5.4  
-Stable tag: 7.2.9  
+Stable tag: 7.3.1  
 
 Create forms with total control using this powerful drag-and-drop form builder, allowing you to build contact forms or any custom forms in minutes.
 

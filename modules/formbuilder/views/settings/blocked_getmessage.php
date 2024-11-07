@@ -26,7 +26,7 @@ if (! defined('ABSPATH')) {
     </div>
     <div class="zgfm-blocked-message-box-btn">
         <a 
-            href="https://1.envato.market/0KDVM"
+            href="https://shop.softdiscover.com/downloads/zigaform-wordpress-form-builder/"
              target="_blank"
             class="sfdc-btn sfdc-btn-success sfdc-btn-lg"> <span><?php echo __('UPGRADE TO PRO VERSION', 'FRocket_admin'); ?></span></a>
     </div>
