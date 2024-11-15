@@ -1,12 +1,12 @@
-# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 7.3.1
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.3.1 package.
+# Copyright (C) 2024 Zigaform WP Cost Estimation Form Builder 7.3.9
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.3.9 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 7.3.1\n"
+"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 7.3.9\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-07 19:19+0000\n"
+"POT-Creation-Date: 2024-11-15 02:00+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -826,11 +826,11 @@ msgstr ""
 msgid "Forms in trash"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1312
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1314
 msgid "Order summary"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1693
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1695
 msgid "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 msgstr ""
 
@@ -842,19 +842,19 @@ msgstr ""
 msgid "Submitted form data"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:387, modules/formbuilder/views/records/info_record.php:78
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:387, modules/formbuilder/views/records/info_record.php:113
 msgid "Additional info"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:388, modules/formbuilder/views/records/info_record.php:81, modules/formbuilder/views/records/list_records_getdatatable.php:25, modules/formbuilder/views/settings/backup_settings.php:69
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:388, modules/formbuilder/views/records/info_record.php:116, modules/formbuilder/views/records/list_records_getdatatable.php:25, modules/formbuilder/views/settings/backup_settings.php:69
 msgid "Date"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:389, modules/formbuilder/views/records/info_record.php:85
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:389, modules/formbuilder/views/records/info_record.php:120
 msgid "IP"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:390, modules/formbuilder/views/records/info_record.php:89
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:390, modules/formbuilder/views/records/info_record.php:124
 msgid "Client PC info"
 msgstr ""
 
@@ -862,7 +862,7 @@ msgstr ""
 msgid "Form URL"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:392, modules/formbuilder/views/forms/ajax_variables_openmodal.php:66, modules/formbuilder/views/forms/create_form_main.php:105, modules/formbuilder/views/forms/create_form_modals.php:97, modules/formbuilder/views/forms/create_form_modals.php:131, modules/formbuilder/views/forms/settings_form_email.php:560, modules/formbuilder/views/records/info_record.php:97
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:392, modules/formbuilder/views/forms/ajax_variables_openmodal.php:66, modules/formbuilder/views/forms/create_form_main.php:105, modules/formbuilder/views/forms/create_form_modals.php:97, modules/formbuilder/views/forms/create_form_modals.php:131, modules/formbuilder/views/forms/settings_form_email.php:560, modules/formbuilder/views/records/info_record.php:132
 msgid "Form name"
 msgstr ""
 
@@ -1842,7 +1842,7 @@ msgstr ""
 msgid "Copy and paste the shortcode to your desired page"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms_table.php:41, modules/formbuilder/views/records/list_records.php:38, modules/formbuilder/views/settings/system_check.php:58, modules/formbuilder/views/settings/system_check.php:226
+#: modules/formbuilder/views/forms/list_forms_table.php:41, modules/formbuilder/views/records/list_records.php:38, modules/formbuilder/views/settings/system_check.php:58, modules/formbuilder/views/settings/system_check.php:280
 msgid "Status"
 msgstr ""
 
@@ -2275,7 +2275,7 @@ msgid "Summary"
 msgstr ""
 
 #: modules/formbuilder/views/forms/settings_form_main_record.php:28
-msgid "you information is shown on next:"
+msgid "you information is shown on next"
 msgstr ""
 
 #: modules/formbuilder/views/forms/settings_form_main_record.php:52
@@ -2654,7 +2654,7 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-#: modules/formbuilder/views/frontend/form_summary.php:40, modules/formbuilder/views/records/info_record.php:45, modules/formbuilder/views/records/info_record_topdf.php:59
+#: modules/formbuilder/views/frontend/form_summary.php:58, modules/formbuilder/views/frontend/form_summary.php:38, modules/formbuilder/views/records/info_record.php:65, modules/formbuilder/views/records/info_record.php:45, modules/formbuilder/views/records/info_record_topdf.php:59
 msgid "Units"
 msgstr ""
 
@@ -2674,11 +2674,11 @@ msgstr ""
 msgid "Order"
 msgstr ""
 
-#: modules/formbuilder/views/records/info_record.php:93
+#: modules/formbuilder/views/records/info_record.php:128
 msgid "URL page"
 msgstr ""
 
-#: modules/formbuilder/views/records/info_record.php:120, modules/formbuilder/views/records/info_record.php:114
+#: modules/formbuilder/views/records/info_record.php:155, modules/formbuilder/views/records/info_record.php:149
 msgid "Export to PDF"
 msgstr ""
 
@@ -2799,38 +2799,58 @@ msgid "allow_url_fopen php directive is disabled and Recaptcha will not work"
 msgstr ""
 
 #: modules/formbuilder/views/settings/system_check.php:148
+msgid "Information"
+msgstr ""
+
+#: modules/formbuilder/views/settings/system_check.php:152
+msgid "PHP Version"
+msgstr ""
+
+#: modules/formbuilder/views/settings/system_check.php:165
+msgid "Your PHP version is outdated. Consider updating."
+msgstr ""
+
+#: modules/formbuilder/views/settings/system_check.php:176
+msgid "MySQL Version"
+msgstr ""
+
+#: modules/formbuilder/views/settings/system_check.php:191
+msgid "Your MySQL version is outdated. Consider updating."
+msgstr ""
+
+#: modules/formbuilder/views/settings/system_check.php:202
 msgid "PHP Extensions"
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:151
+#: modules/formbuilder/views/settings/system_check.php:205
 msgid "Simple XML"
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:162
+#: modules/formbuilder/views/settings/system_check.php:216
 msgid "simplexml extension is important for the software. ask your webhost if this extension is not installed"
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:172
+#: modules/formbuilder/views/settings/system_check.php:226
 msgid "GD"
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:184
+#: modules/formbuilder/views/settings/system_check.php:238
 msgid "GD extension is important for generating images in Captcha field. Ask your webhost if this extension is not installed. "
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:198
+#: modules/formbuilder/views/settings/system_check.php:252
 msgid "FreeType"
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:210
+#: modules/formbuilder/views/settings/system_check.php:264
 msgid "FreeType support is not enabled. Ask your webhost if this extension is not installed."
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:223
+#: modules/formbuilder/views/settings/system_check.php:277
 msgid "Files integrity"
 msgstr ""
 
-#: modules/formbuilder/views/settings/system_check.php:237
+#: modules/formbuilder/views/settings/system_check.php:291
 msgid "Files are missing or modified. it is just informative."
 msgstr ""
 

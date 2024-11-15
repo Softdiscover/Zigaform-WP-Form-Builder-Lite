@@ -44,7 +44,9 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
     private $current_form_id   = '';
     private $form_rec_msg_summ = '';
     protected $modules;
-
+    private $form_cur;
+    private $form_cur_data2    = array();
+    
     const PREFIX = 'wprofmr_';
 
     /**
@@ -1312,7 +1314,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
             <h4><?php echo __('Order summary', 'FRocket_admin'); ?></h4>
 
             <?php
-            echo self::$_modules['formbuilder']['frontend']->get_summaryRecord($rec_id);
+            echo $this->get_summaryRecord($rec_id);
             ?>
 
             <?php

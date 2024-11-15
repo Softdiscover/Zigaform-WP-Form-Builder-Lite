@@ -35,30 +35,65 @@ if (! defined('ABSPATH')) {
                  <li><b><?php echo $value['field']; ?></b> 
                      <ul>
                          <?php
-                            foreach ($value['value'] as $key2 => $value2) {
+                         
+                            if(isset($value['value']['qty']) || isset($value['value']['label'])){
                                 ?>
-                         <li>
-                                <?php
-
-                                echo $value2['label'];
-                                if (isset($value2['qty']) && floatval($value2['qty']) > 0) {
-                                    echo ' - ' . $value2['qty'] . ' ' . __('Units', 'FRocket_admin') . ' - ';
-                                }
-
-                                if (isset($value2['qty']) && floatval($value2['qty']) > 0 && ! empty($value2['label'])) {
-                                } elseif (! empty($value2['label'])) {
-                                    echo ' : ';
-                                } else {
-                                }
-                                ?>
+                                <li>
+                                       <?php
+        
+                                       if (isset($value['value']['qty']) && floatval($value['value']['qty']) > 0) {
+                                           echo  $value['value']['qty'] . ' ' . __('Units', 'FRocket_admin');
+                                       }elseif (isset($value['value']['label']) ) {
+                                            echo  $value['value']['label'];
+                                       }
+       
+                                       
+                                       ?>
+                                   
+                                </li>
+                               
+                               
+                               <?php
+                            }else{
+                                foreach ($value['value'] as $key2 => $value2) {
+                                    ?>
+                             <li>
+                                    <?php
+    
+                                    echo $value2['label']??'';
+                                    if (isset($value2['qty']) && floatval($value2['qty']) > 0) {
+                                        echo ' - ' . $value2['qty'] . ' ' . __('Units', 'FRocket_admin') ;
+                                    }
+     
+                                    ?>
+                                
+                             </li>
                             
-                         </li>
-                          
-                            <?php } ?>
+                            
+                            <?php
+                            }
+                            
+                            } ?>
                      </ul>
                  </li>
                     <?php } else { ?>
-                 <li><b><?php echo $value['field']; ?></b> : <?php echo $value['value']; ?></li>
+                        <li>
+                            <b><?php echo $value['field']; ?></b> :
+                            <?php 
+                                if (strpos($value['value'], "^,^") !== false) {
+                                    // Explode the string by "^,^" delimiter
+                                    $options = explode("^,^", $value['value']);
+                                    echo "<ul class='records-option-list'>";
+                                    foreach ($options as $option) {
+                                        echo "<li><i class='fa fa-check-circle'></i> " . htmlspecialchars($option) . "</li>";
+                                    }
+                                    echo "</ul>";
+                                } else {
+                                    // If no "^,^", output the value directly
+                                    echo htmlspecialchars($value['value']);
+                                }
+                            ?>
+                        </li>
                     <?php } ?>
                       <?php
                 }
