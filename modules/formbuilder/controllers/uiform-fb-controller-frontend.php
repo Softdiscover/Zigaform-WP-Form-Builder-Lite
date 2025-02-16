@@ -432,7 +432,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                     ob_start();
                     if (isset($vars['atr1']) && intval($vars['atr1']) >= 0) {
                 ?>
-                        <div class="zgfm-f-calc-var-lbl zgfm-f-calc-var<?php echo $vars['atr1']; ?>-lbl"></div>
+                        <div class="zgfm-f-calc-var-lbl zgfm-f-calc-var<?php echo esc_attr($vars['atr1']); ?>-lbl"></div>
                     <?php
                     }
                     $output = ob_get_contents();
