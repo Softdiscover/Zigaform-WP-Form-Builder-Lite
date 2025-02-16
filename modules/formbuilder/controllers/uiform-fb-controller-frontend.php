@@ -212,6 +212,10 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
             ),
             $atts
         );
+        // Automatically sanitize & validate each attribute.
+        $vars = array_map(function($v) {
+            return sanitize_text_field($v);
+        }, $vars);
 
         $result = '';
         $output = '';
@@ -268,7 +272,12 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
             ),
             $atts
         );
-
+        
+        // Automatically sanitize & validate each attribute.
+        $vars = array_map(function($v) {
+            return sanitize_text_field($v);
+        }, $vars);
+        
         if (strpos($vars['id'], '_') !== false) {
             $tmpResult = explode('_', $vars['id']);
             $f_data = $this->model_formrecords->getFieldDataByIdOnMultistep($this->flag_submitted, $tmpResult[0], $tmpResult[1]);
@@ -350,12 +359,17 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
             ),
             $atts
         );
+        
+        // Automatically sanitize & validate each attribute.
+        $vars = array_map(function($v) {
+            return sanitize_text_field($v);
+        }, $vars);
 
         switch (strval($vars['atr1'])) {
             case 'label':
                 ob_start();
 ?>
-                <span data-zgfm-id="<?php echo $vars['id']; ?>" data-zgfm-type="0" data-zgfm-atr="0" class="zgfm-recfvar-obj"></span>
+                <span data-zgfm-id="<?php echo esc_attr($vars['id']); ?>" data-zgfm-type="0" data-zgfm-atr="0" class="zgfm-recfvar-obj"></span>
             <?php
                 $output = ob_get_contents();
                 ob_end_clean();
@@ -363,7 +377,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
             case 'input':
                 ob_start();
             ?>
-                <span data-zgfm-id="<?php echo $vars['id']; ?>" data-zgfm-atr="1" class="zgfm-recfvar-obj"></span>
+                <span data-zgfm-id="<?php echo esc_attr($vars['id']); ?>" data-zgfm-atr="1" class="zgfm-recfvar-obj"></span>
             <?php
                 $output = ob_get_contents();
                 ob_end_clean();
@@ -371,7 +385,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
             case 'amount':
                 ob_start();
             ?>
-                <span data-zgfm-id="<?php echo $vars['id']; ?>" data-zgfm-atr="2" class="zgfm-recfvar-obj"></span>
+                <span data-zgfm-id="<?php echo esc_attr($vars['id']); ?>" data-zgfm-atr="2" class="zgfm-recfvar-obj"></span>
             <?php
                 $output = ob_get_contents();
                 ob_end_clean();
@@ -379,7 +393,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
             case 'qty':
                 ob_start();
             ?>
-                <span data-zgfm-id="<?php echo $vars['id']; ?>" data-zgfm-atr="3" class="zgfm-recfvar-obj"></span>
+                <span data-zgfm-id="<?php echo esc_attr($vars['id']); ?>" data-zgfm-atr="3" class="zgfm-recfvar-obj"></span>
                 <?php
                 $output = ob_get_contents();
                 ob_end_clean();
@@ -404,6 +418,12 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
             ),
             $atts
         );
+        
+        // Automatically sanitize & validate each attribute.
+        $vars = array_map(function($v) {
+            return sanitize_text_field($v);
+        }, $vars);
+        
         $output = '';
 
         if (!empty($vars['opt'])) {
@@ -480,6 +500,12 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
             ),
             $atts
         );
+        
+        // Automatically sanitize & validate each attribute.
+        $vars = array_map(function($v) {
+            return sanitize_text_field($v);
+        }, $vars);
+        
         $output = '';
 
         $rec_id = $this->flag_submitted;
@@ -1637,20 +1663,21 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
             return;
         }
 
-        extract(
-            shortcode_atts(
-                array(
-                    'id'         => 1,
-                    'ajax'       => false,
-                    'lmode'      => 0,
-                    'is_demo'    => '0',
-                    'min_width'  => '',
-                    'min_height' => '',
-                ),
-                $attributes
-            )
-        );
-
+        $atts = array_map('sanitize_text_field', shortcode_atts(
+            [
+                'id'         => 1,
+                'ajax'       => false,
+                'lmode'      => 0,
+                'is_demo'    => '0',
+                'min_width'  => '',
+                'min_height' => '',
+            ],
+            $attributes
+        ));
+        
+        extract($atts);
+        
+        
         switch (intval($lmode)) {
             case 1:
                 /*
