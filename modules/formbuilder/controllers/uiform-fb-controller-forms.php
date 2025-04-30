@@ -195,8 +195,29 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
         add_filter('zgfm_front_ms_aditional_css', [&$this, 'ms_filter_form_css'], 1, 1);
         add_filter('zgfm_front_ms_aditional_js', [&$this, 'ms_filter_form_js'], 1, 1);
-        
+
+        //blocks
+        add_filter('zigaform_leg_blocks_get_forms', [&$this, 'blocks_get_forms']);
     }
+
+public function blocks_get_forms($default)
+{
+    $result =[
+        'forms' => []
+    ];
+
+    $rdata = $this->formsmodel->getAvailableForms();
+    if (empty($rdata)) {
+        return $result;
+    }
+
+    foreach ($rdata as $form) {
+        $result['forms'][]=[ 'id' => $form->fmb_id, 'name' => $form->fmb_name ];
+    }
+
+    return $result;
+}
+
     public function ms_filter_form_js($default)
     {
         $steps = $this->current_data_progressbar['steps'];
@@ -727,7 +748,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
                 @$dump_form['form']['fmb_data'] = $tmpData1;
                 $data_form['fmb_data']         = json_encode($dump_form['form']['fmb_data']);
 
-                //multistep 
+                //multistep
                 $tmpData2 = json_decode($dump_form['form']['fmb_data2'], true);
                 $tmpData2['initial'] = $storeChildIds[intval($tmpData2['initial'])];
 
@@ -788,23 +809,23 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
                             foreach ($value['forms'] as $key2 => $value2 ) {
                                 $newArr[]= strval($storeChildIds[$value2]);
                             }
-                           
+
                             $tmpData2['progressBar']['steps'][$key]['forms'] = $newArr;
                         }
-                        
-                    }   
-                    
-                    
+
+                    }
+
+
                     if (!empty($tmpData2['progressBar']['progressBarAssigned'])) {
                         $newArr =[];
                         foreach ($tmpData2['progressBar']['progressBarAssigned'] as  $value) {
-                             
+
                             $newArr[] = strval($storeChildIds[$value]);
-                        
-                            
+
+
                         }
                         $tmpData2['progressBar']['progressBarAssigned'] = $newArr;
-                    }  
+                    }
                 }
                 $dump_form['form']['fmb_data2'] =  $tmpData2;
                 $data_form['fmb_data2']   = json_encode($dump_form['form']['fmb_data2']);
@@ -1016,7 +1037,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         if ($list_ids) {
             foreach ($list_ids as $value) {
                 $data_form                = $this->formsmodel->getFormById($value);
-                
+
                 $exportCode = $this->load_export_form_get_code($data_form);
                 $this->processImportExportCode($exportCode, true);
             }
@@ -1231,9 +1252,9 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         $data     = array();
         $fmb_data = (!empty($_POST['form_data'])) ? Uiform_Form_Helper::sanitizeInput_html($_POST['form_data']) : '';
         if(!Uiform_Form_Helper::isJson($fmb_data)){
-            $fmb_data = urldecode($fmb_data);    
+            $fmb_data = urldecode($fmb_data);
         }
-        
+
         $fmb_data = (!empty($fmb_data)) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive_html'), json_decode($fmb_data, true)) : array();
 
         $data['fmb_data'] = $fmb_data;
@@ -1305,7 +1326,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
                 $data['fmb_data2'] = json_encode($fmb_data);
 
                 $data['fmb_type'] = 1;
-            }  
+            }
 
             $this->wpdb->insert($this->formsmodel->table, $data);
             $idActivate = $this->wpdb->insert_id;
@@ -1342,7 +1363,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
 
 
             $formInitId = $fmb_data2['initial'];
-            
+
             if(intval($formInitId) ===  0){
                 $json = [];
                 $json['success'] = true;
@@ -1351,8 +1372,8 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
                 echo json_encode($json);
                 die();
             }
-            
-            
+
+
             $this->current_mm_form_init = $this->formsmodel->getFormById($formInitId);
             //$formInitObj_fmb_data2  = json_decode($formInitObj->fmb_data2, true);
             $this->current_mm_children =  $this->formsmodel->getChildFormByParentId($formId);
@@ -1755,7 +1776,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
             $data4['fmb_html_css']     = $gen_return['output_css'];
             $this->wpdb->update($this->formsmodel->table, $data4, $where);
 
-           
+
 
             $data5                         = array();
             $data5['log_frm_data']         = $data['fmb_data'];
@@ -1984,7 +2005,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         wp_die();
     }
 
-    
+
 
     protected function generate_form_getField($child_field)
     {
@@ -3375,10 +3396,10 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
         echo $code_export;
         wp_die();
     }
-    
+
     private function load_export_form_get_code($data_form){
 
-             
+
 
             $type = $data_form->fmb_type;
 
@@ -3500,8 +3521,8 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
                     return;
                 }
             }
-            
-            
+
+
             $filter_data = get_option('zgfm_listform_searchfilter', true);
             $data2       = array();
             if (empty($filter_data)) {
@@ -3868,7 +3889,7 @@ class Uiform_Fb_Controller_Forms extends Uiform_Base_Module
             $data = array();
             echo self::render_template('formbuilder/views/forms/preview_fields.php', $data);
         }
-         
+
         /**
          * Register callbacks for actions and filters
          *

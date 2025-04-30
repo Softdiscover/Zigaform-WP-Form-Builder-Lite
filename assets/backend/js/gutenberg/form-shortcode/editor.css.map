@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://Drawflow/./assets_src/gutenberg/form-shortcode/editor.scss"],"names":[],"mappings":"AAAA;EACC,mBAAmB","file":"gutenberg/form-shortcode/editor.css","sourcesContent":[".wp-block-zigaform-form-shortcode {\n\tbackground: #f0f6fc;\n  }\n   "],"sourceRoot":""}

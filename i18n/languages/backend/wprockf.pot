@@ -1,12 +1,12 @@
-# Copyright (C) 2025 Zigaform WP Cost Estimation Form Builder 7.4.9
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.4.9 package.
+# Copyright (C) 2025 Zigaform WP Cost Estimation Form Builder 7.5.0
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.5.0 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 7.4.9\n"
+"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 7.5.0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-12 04:44+0000\n"
+"POT-Creation-Date: 2025-04-30 16:44+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -62,7 +62,7 @@ msgstr ""
 msgid "Form was created"
 msgstr ""
 
-#: views/footer.php:34, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1186
+#: views/footer.php:34, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1207
 msgid "Success! The form was created. Now just copy and paste the shortcode to your content"
 msgstr ""
 
@@ -782,47 +782,47 @@ msgstr ""
 msgid "Column"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:530
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:551
 msgid "Rollback Form"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:551
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:572
 msgid "Error message"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:574, modules/formbuilder/views/forms/create_form_main.php:407
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:595, modules/formbuilder/views/forms/create_form_main.php:407
 msgid "Form variables"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1199
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1220
 msgid "Success"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1201
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1222
 msgid "Go to List"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1201
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1222
 msgid "Back to Form"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1217
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1238
 msgid "Shortcodes"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1288, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1328, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1477, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1648, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1805, modules/multistep/controllers/dashboard.php:121
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1309, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1349, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1498, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1669, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1826, modules/multistep/controllers/dashboard.php:121
 msgid "Error! User has no permission to edit this form"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1334
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1355
 msgid "form id not found"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1420, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1630, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1787, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1976
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:1441, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1651, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1808, modules/formbuilder/controllers/uiform-fb-controller-forms.php:1997
 msgid "Error on saving form"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:3553
+#: modules/formbuilder/controllers/uiform-fb-controller-forms.php:3574
 msgid "Forms in trash"
 msgstr ""
 

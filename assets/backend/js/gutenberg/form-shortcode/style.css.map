@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://Drawflow/./assets_src/gutenberg/form-shortcode/style.scss"],"names":[],"mappings":"AAAA;EACC,0BAA0B;EAC1B,aAAa","file":"gutenberg/form-shortcode/style.css","sourcesContent":[".wp-block-zigaform-form-shortcode {\n\tborder: 1px dashed #007cba;\n\tpadding: 1rem;\n  }\n  "],"sourceRoot":""}

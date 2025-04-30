@@ -73,6 +73,7 @@ class Uiform_Bootstrap extends Uiform_Base_Module
         add_action('uifm_fbuilder_api_pdf_show_record', array( &$this, 'action_pdf_show_record' ));
         add_action('uifm_fbuilder_api_csv_show_allrecords', array( &$this, 'action_csv_show_allrecords' ));
 
+
         // add_action( 'init',                  array( $this, 'upgrade' ), 11 );
     }
 
@@ -353,7 +354,7 @@ class Uiform_Bootstrap extends Uiform_Base_Module
     public function rockfm_lang_locale_filter($locale)
     {
         $tmp_lang = $this->models['formbuilder']['settings']->getLangOptions();
-         
+
         if ( ! empty($tmp_lang->language)) {
             $locale = $tmp_lang->language;
         }
@@ -716,7 +717,7 @@ JS;
                 .ml-stars svg{fill:#ffb900}
                 .ml-stars svg:hover{fill:#ffb900}
                 .ml-stars svg:hover ~ svg{fill:none}
-                
+
                 .sfdc-admin-columns {
 					display: flex;
 					justify-content: space-between;
@@ -724,10 +725,10 @@ JS;
 				.sfdc-admin-column {
 					width: 48%; /* Adjust width as needed */
 				}
-                
+
             </style>
-            
-            
+
+
         <?php }
     }
 
@@ -746,8 +747,8 @@ JS;
             $this->modules['formbuilder']['forms']->list_uiforms();
         }
     }
-    
-    
+
+
     public function load_for_plugin_page(){
         global $pagenow;
 
@@ -759,9 +760,9 @@ JS;
 			// Enqueue scripts
 			add_thickbox();
 			//wp_enqueue_script('sfdc-deactivation-survey', plugin_dir_url(__FILE__) . 'sfdc-ds.js');
-			
+
 			wp_enqueue_script('sfdc-deactivation-survey', UIFORM_FORMS_URL . '/assets/backend/js/deactivation/ds.js');
-        
+
 			/*
 			 * Localized strings. Strings can be localised by plugins using this class.
 			 * We deliberately don't add textdomains here so that double textdomain warning is not given in theme review.
@@ -786,11 +787,11 @@ JS;
 
 			// Plugins
 			$plugins = [];
-			 
+
             $plugins[]= (object) [
                 'slug'		=> UIFORM_BASENAME,
             ];
-            
+
 			// Reasons
 			$defaultReasons = array(
 				'suddenly-stopped-working'	=> __( 'The plugin suddenly stopped working', 'FRocket_admin' ),
@@ -813,7 +814,7 @@ JS;
 			// Send plugin data
 			wp_localize_script('sfdc-deactivation-survey', 'sfdcsrc_deactivate_feedback_form_plugins',$plugins);
     }
-    
+
 
     /**
      * load styles and script across the site
@@ -842,7 +843,7 @@ JS;
         // load rocketform
         wp_enqueue_style(self::PREFIX . 'admin');
 
-        
+
         //font awesome
         wp_enqueue_style('rockefform-fontawesome', UIFORM_FORMS_URL . '/assets/common/css/fontawesome/4.7.0/css/font-awesome.min.css');
 
@@ -971,7 +972,7 @@ JS;
         // bootstrap
         wp_enqueue_style('rockefform-bootstrap', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/css/bootstrap-wrapper.css');
         wp_enqueue_style('rockefform-bootstrap-theme', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/css/bootstrap-theme-wrapper.css');
- 
+
         wp_enqueue_style('rockefform-fontawesome', UIFORM_FORMS_URL . '/assets/common/css/fontawesome/4.7.0/css/font-awesome.min.css');
 
         // custom fonts
@@ -990,10 +991,10 @@ JS;
         wp_enqueue_style('rockefform-bootstrap-colorpicker', UIFORM_FORMS_URL . '/assets/backend/js/colorpicker/2.5/css/bootstrap-colorpicker.css');
         // bootstrap select
         wp_enqueue_style('rockefform-bootstrap-select', UIFORM_FORMS_URL . '/assets/common/js/bselect/1.12.4/css/bootstrap-select-mod.css');
-        
+
         // select 2
         wp_enqueue_style('rockefform-bootstrap-select2', UIFORM_FORMS_URL . '/assets/common/js/select2/4.0.13/css/select2.min.css');
-            
+
         // bootstrap switch
         wp_enqueue_style('rockefform-bootstrap-switch', UIFORM_FORMS_URL . '/assets/backend/js/bswitch/bootstrap-switch.css');
         // bootstrap slider
@@ -1057,7 +1058,7 @@ JS;
 
         // prev jquery
         wp_enqueue_script('rockfm-prev-jquery', UIFORM_FORMS_URL . '/assets/common/js/init.js', array( 'jquery' ));
- 
+
         // bootstrap sfdc
         wp_enqueue_script('rockefform-bootstrap-sfdc', UIFORM_FORMS_URL . '/assets/common/bootstrap/3.3.7/js/bootstrap-sfdc.js', array( 'jquery', 'rockfm-prev-jquery' ));
 
@@ -1066,7 +1067,7 @@ JS;
 
         // md5
         wp_enqueue_script('rockefform-md5', UIFORM_FORMS_URL . '/assets/backend/js/md5.js');
-        
+
         // graph morris
         wp_enqueue_script('rockefform-graph-morris', UIFORM_FORMS_URL . '/assets/backend/js/graph/morris.min.js');
         wp_enqueue_script('rockefform-graph-raphael', UIFORM_FORMS_URL . '/assets/backend/js/graph/raphael-min.js');
@@ -1081,9 +1082,9 @@ JS;
         wp_enqueue_script('rockefform-bootstrap-colorpicker', UIFORM_FORMS_URL . '/assets/backend/js/colorpicker/2.5/js/bootstrap-colorpicker_mod.js', array( 'jquery','rockfm-prev-jquery' , 'rockefform-bootstrap-sfdc' ), '1.0', true);
         // bootstrap select
         wp_enqueue_script('rockefform-bootstrap-select', UIFORM_FORMS_URL . '/assets/common/js/bselect/1.12.4/js/bootstrap-select-mod.js', array( 'jquery', 'rockefform-bootstrap-sfdc' ), '1.12.4', true);
-        
-        
-            
+
+
+
         // bootstrap switch
         wp_enqueue_script('rockefform-bootstrap-switch', UIFORM_FORMS_URL . '/assets/backend/js/bswitch/bootstrap-switch.js', array( 'jquery', 'rockefform-bootstrap-sfdc' ), '1.0', true);
         // bootstrap slider
@@ -1139,15 +1140,15 @@ JS;
         wp_enqueue_script('rockefform-codemirror-autorefresh', UIFORM_FORMS_URL . '/assets/common/js/codemirror/addon/display/autorefresh.js', array(), '1.0', true);
 
         wp_enqueue_script('rockefform-autooff', UIFORM_FORMS_URL . '/assets/backend/js/disableautofill/jquery.disableAutoFill.js');
-        
+
         wp_enqueue_script('rockefform-iframe', UIFORM_FORMS_URL . '/assets/frontend/js/iframe/4.1.1/iframeResizer.contentWindow.js');
-         
+
         wp_enqueue_script('rockefform-gsap', UIFORM_FORMS_URL . '/assets/backend/js/gsap/3.12.5/gsap.min.js');
-        
+
         wp_enqueue_script('rockefform-menu-fonts', UIFORM_FORMS_URL . '/assets/backend/js/fonts.js');
         wp_enqueue_script('rockefform-menu-main', UIFORM_FORMS_URL . '/libraries/styles-font-menu/js/styles-font-menu.js');
         wp_enqueue_style('rockefform-menu-style', UIFORM_FORMS_URL . '/libraries/styles-font-menu/css/styles-font-menu.css');
-        
+
         if ( UIFORM_DEBUG === 1) {
             wp_enqueue_script('rockefform-bootstrap-select2', UIFORM_FORMS_URL . '/assets/common/js/select2/4.0.13/js/select2.full.js', array( 'jquery', 'rockefform-bootstrap-sfdc' ), '4.0.13', true);
             wp_register_script(
@@ -1271,9 +1272,9 @@ JS;
 
                     // admin resources
                     add_action('admin_enqueue_scripts', array( &$this, 'load_admin_resources' ), 20, 1);
-                    
+
                     add_action('admin_enqueue_scripts', array('Uiform_Form_Helper', 'adminDequeueSelectedJsFiles'), 100);
-                    
+
                     // disabling WordPress update message
                     add_action('admin_menu', array( &$this, 'wphidenag' ));
                     // format WordPress editor
@@ -1290,6 +1291,7 @@ JS;
                     // admin resources
                     add_action('admin_enqueue_scripts', array( &$this, 'load_adminGeneral_resources' ), 20, 1);
                     add_action('admin_enqueue_scripts', array( &$this, 'load_for_plugin_page' ), 20, 1);
+
                 }
 
                 // disable update notifications
@@ -1302,10 +1304,19 @@ JS;
                     // ZigaForm Upgrade
                     add_action('admin_notices', array( $this, 'zigaform_upgrade' ));
                     // }
+
+
+
                 }
+
+                //add zigaform to gutenberg - admin
+                $this->zigaform_register_form_shortcode_block_admin();
             } else {
                 // load frontend
                 $this->loadFrontendControllers();
+
+                //add zigaform to gutenberg - frontend
+                $this->zigaform_register_form_shortcode_block_frontend();
             }
 
             // add lang dir
@@ -1315,6 +1326,74 @@ JS;
         } catch ( Exception $exception) {
             //add_notice(__METHOD__ . ' error: ' . $exception->getMessage(), 'error');
         }
+    }
+    public function zigaform_register_form_shortcode_block_admin() {
+        $src_dir   = UIFORM_FORMS_DIR . '/assets/gutenberg/form-shortcode';
+        $build_dir = UIFORM_FORMS_DIR . '/assets/backend/js/gutenberg/form-shortcode';
+
+        // Scripts
+        wp_register_script(
+            'zigaform-form-shortcode-editor-script',
+            UIFORM_FORMS_URL . '/assets/backend/js/gutenberg/form-shortcode/index.js',
+            [
+                'wp-blocks',
+                'wp-element',
+                'wp-block-editor',
+                'wp-components',
+            ],
+            filemtime("$build_dir/index.js")
+        );
+
+        // Localized data
+        $data = apply_filters('zigaform_leg_blocks_get_forms', []);
+        wp_localize_script(
+            'zigaform-form-shortcode-editor-script',
+            'zigaformData',
+            $data
+        );
+
+        // Editor-only CSS
+        wp_register_style(
+            'zigaform-form-shortcode-editor',
+            UIFORM_FORMS_URL . '/assets/backend/js/gutenberg/form-shortcode/editor.css',
+            [],
+            filemtime("$build_dir/editor.css")
+        );
+
+        // Editor style  
+        wp_register_style(
+            'zigaform-form-shortcode-style',
+            UIFORM_FORMS_URL . '/assets/backend/js/gutenberg/form-shortcode/style.css',
+            [],
+            filemtime("$build_dir/style.css")
+        );
+
+        register_block_type(
+            $src_dir,
+            [
+                'editor_script'   => 'zigaform-form-shortcode-editor-script',
+                'style'           => 'zigaform-form-shortcode-style',
+                'editor_style'    => 'zigaform-form-shortcode-editor',
+                'render_callback' => [ $this, 'zigaform_render_form_block' ],
+            ]
+        );
+    }
+
+
+    public function zigaform_register_form_shortcode_block_frontend() {
+        $src_dir   = UIFORM_FORMS_DIR . '/assets/gutenberg/form-shortcode';
+
+        register_block_type(
+            $src_dir,
+            [
+                'style'           => 'zigaform-form-shortcode-style',
+                'render_callback' => [ $this, 'zigaform_render_form_block' ],
+            ]
+        );
+    }
+    public function zigaform_render_form_block( $attrs ) {
+        $form_id = isset( $attrs['formId'] ) ? (int) $attrs['formId'] : 0;
+        return $form_id ? do_shortcode( "[zigaform id=\"{$form_id}\"]" ) : '';
     }
 
     /**

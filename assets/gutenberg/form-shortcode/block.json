@@ -1,0 +1,20 @@
+{
+	"apiVersion": 2,
+	"name": "zigaform/form-shortcode",
+	"title": "Zigaform – Forms",
+	"category": "widgets",
+	"icon": "feedback",
+	"description": "Insert a Zigaform form by selecting it from a list.",
+	"supports": {
+	  "html": false
+	},
+	"attributes": {
+	  "formId": {
+		"type": "number",
+		"default": 0
+	  }
+	},
+	"editorScript": "zigaform-form-shortcode-editor-script",
+	"style": "zigaform-form-shortcode-style",
+	"editorStyle": "zigaform-form-shortcode-editor"
+  }

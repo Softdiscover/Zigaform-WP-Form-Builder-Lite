@@ -203,7 +203,23 @@ class Uiform_Model_Form
 
         return $this->wpdb->get_row($query);
     }
-    
+
+    public function getAvailableForms()
+    {
+        $query = sprintf(
+            '
+            select uf.fmb_id,uf.fmb_data,uf.fmb_name,uf.fmb_html,uf.fmb_html_backend,uf.flag_status,uf.created_date,uf.updated_date,
+                uf.fmb_html_css,uf.fmb_default,uf.fmb_skin_status,uf.fmb_skin_data,uf.fmb_skin_type,uf.fmb_data2
+            from %s uf
+            where 
+            uf.flag_status=1
+            ',
+            $this->table
+        );
+
+        return $this->wpdb->get_results($query);
+    }
+
     public function getChildFormByParentId($id)
     {
         $query = sprintf(
@@ -248,7 +264,7 @@ class Uiform_Model_Form
 
         return $this->wpdb->get_results($query);
     }
-    
+
     public function getFieldNamesById($id_form)
     {
         $query  = sprintf(
@@ -264,7 +280,7 @@ class Uiform_Model_Form
         );
         return $this->wpdb->get_row($query);
     }
-    
+
     public function getFormById_2($id)
     {
         $query = sprintf(
@@ -276,7 +292,7 @@ class Uiform_Model_Form
             $this->table,
             $id
         );
- 
+
         return $this->wpdb->get_row($query);
     }
 
