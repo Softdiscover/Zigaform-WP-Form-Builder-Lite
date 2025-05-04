@@ -11689,12 +11689,6 @@ th.tabco3 {
 }
 
 @charset "UTF-8";
-.sfdc-wrap * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .sfdc-wrap a {
   text-decoration: none !important;
 }
