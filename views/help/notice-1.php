@@ -19,7 +19,7 @@ if (! defined('ABSPATH')) {
                     <?php
                 } else {
                     ?>
-                      <a href="https://codecanyon.net/item/zigaform-wordpress-form-builder/reviews/11057544"
+                      <a href="https://shop.softdiscover.com/downloads/zigaform-wordpress-form-builder/?utm_source=installed&utm_medium=referral"
                        class="zgfm-notice-1-dismiss-opt zgfm-notice-1-rate-trigger"
                        target="_blank"
                        rel="noopener"

@@ -21,19 +21,19 @@ if (! defined('ABSPATH')) {
                           enctype="multipart/form-data"
                           method="post"
                           >
-                        
-                    
+
+
                     <table class="sfdc-table sfdc-table-striped sfdc-table-bordered dataTable" id="form_list">
                     <thead>
                         <tr>
                             <th>
                                 <input type="checkbox"
-                                       
+
                                        onchange="rocketform.listform_selectallforms(this);"
                                        >
                             </th>
                             <th><?php echo __('Name Form', 'FRocket_admin'); ?></th>
-                            <th 
+                            <th
                                 id="guidetour-flist-shortcode"
                                 data-intro="<?php echo __('Copy and paste the shortcode to your desired page', 'FRocket_admin'); ?>"
                                 ><?php echo __('Shortcode', 'FRocket_admin'); ?></th>
@@ -57,7 +57,7 @@ if (! defined('ABSPATH')) {
                             <td>
                                 <a href="javascript:void(0);" onclick="javascript:rocketform.form_getcode(<?php echo $row->fmb_id; ?>);" class="sfdc-btn sfdc-btn-sm sfdc-btn-warning">
                                 <?php echo __('Get shortcode', 'FRocket_admin'); ?></a>
-                              
+
                             </td>
                             <td><?php echo $row->created_date; ?></td>
                             <td>
@@ -65,7 +65,7 @@ if (! defined('ABSPATH')) {
                                 if (intval($row->flag_status) === 1) {
                                     ?>
                                     <span class="label label-success">
-                                       <?php echo __('Active', 'FRocket_admin'); ?> 
+                                       <?php echo __('Active', 'FRocket_admin'); ?>
                                     </span>
                                     <?php
                                 } elseif (intval($row->flag_status) === 2) {
@@ -83,21 +83,25 @@ if (! defined('ABSPATH')) {
                                     <ul class="unstyled">
                                     <li>
                                     <?php if( intval($row->fmb_type) === 0 ){ ?>
-                                    <a 
+                                    <a
                                             class="guidetour-flist-edit sfdc-btn sfdc-btn-sm sfdc-btn-info"
                                             data-intro="<?php echo __('Edit and load your custom form', 'FRocket_admin'); ?>"
                                             href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=create_uiform&form_id=' . $row->fmb_id; ?>">
                                             <i class="fa fa-pencil-square-o"></i> <?php echo __('Edit', 'FRocket_admin'); ?></a>
-                                    <?php } elseif(intval($row->fmb_type) === 1) {?>        
-                                    
-                                    <a 
+                                    <?php } elseif(intval($row->fmb_type) === 1) {?>
+
+                                    <a
                                             class="guidetour-flist-edit sfdc-btn sfdc-btn-sm sfdc-btn-info"
                                             data-intro="<?php echo __('Edit and load your custom form', 'FRocket_admin'); ?>"
                                             href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=forms&zgfm_action=create_uiform&is_multistep=yes&form_id=' . $row->fmb_id; ?>">
                                             <i class="fa fa-pencil-square-o"></i> <?php echo __('Edit', 'FRocket_admin'); ?></a>
                                     <?php } ?>
                                             </li>
-                                    <li><a 
+                                        <li><a
+                                                    class="zgfm-btn zgfm-btn-indigo"
+                                                    href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=info_records_byforms&form_id=' . $row->fmb_id; ?>">
+                                                <i class="fa fa-archive"></i> <?php echo __('Records', 'FRocket_admin'); ?></a></li>
+                                    <li><a
                                            class="guidetour-flist-del sfdc-btn sfdc-btn-sm sfdc-btn-danger uiform-confirmation-func-action"
                                             data-intro="<?php echo __('Move to trash', 'FRocket_admin'); ?>"
                                             data-dialog-title="<?php echo __('Move to trash', 'FRocket_admin'); ?>"
@@ -118,9 +122,9 @@ if (! defined('ABSPATH')) {
                         </tr>
                         <?php } ?>
                 </tbody>
-                </table> 
+                </table>
                     </form>
                 </div>
-                
+
                 <center>
                     <div  class="pagination-wrap"><?php echo $pagination; ?></div></center>

@@ -306,6 +306,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
     {
         $data               = array();
         $data['list_forms'] = $this->formsmodel->getListForms();
+        $data['chosen_form'] = isset($_GET['form_id'])?(int)$_GET['form_id']:0;
         echo self::loadPartial('layout.php', 'formbuilder/views/records/list_records_byforms.php', $data);
     }
 
@@ -322,7 +323,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
         }else{
             $name_fields   = $this->model_record->getNameField($id_rec);
         }
-        
+
         $name_fields_check = array();
         foreach ($name_fields as $value) {
             if(intval($form_rec_data->fmb_type) === 1){

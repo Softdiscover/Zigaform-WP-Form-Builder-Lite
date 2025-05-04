@@ -41,7 +41,7 @@ if (! defined('ABSPATH')) {
                 <ul class="unstyled">
                 <li>
                     <a 
-                        class="sfdc-btn sfdc-btn-sm sfdc-btn-info"
+                        class="zgfm-btn zgfm-btn-indigo"
                         href="<?php echo admin_url() . '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=info_record&id_rec=' . $value['fbh_id']; ?>"><i class="fa fa-pencil-square-o"></i> <?php echo __('Show detail', 'FRocket_admin'); ?></a></li>
                 </ul>
             </div>
