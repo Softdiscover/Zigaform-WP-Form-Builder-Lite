@@ -1,5 +1,5 @@
-# Copyright (C) 2025 Zigaform WP Cost Estimation Form Builder 7.5.9
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.5.9 package.
+# Copyright (C) 2025 Zigaform WP Cost Estimation Form Builder 7.6.4
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.6.4 package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Rocket form\n"
@@ -14,23 +14,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.4.1\n"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:574, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:599, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1806
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:576, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:601, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1808
 msgid "warning! Form was not submitted"
 msgstr "AVVERTENZA! Non è stata presentata la forma"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:571, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:596, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1801
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:573, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:598, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1803
 msgid "Success! your form was submitted"
 msgstr "Successo! il form è stato presentato"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:875
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:877
 msgid "Error! The file exceeds the allowed size of"
 msgstr "Error! The file exceeds the allowed size of"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:882
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:884
 msgid "Error! Type of file is not allowed to upload"
 msgstr "Error! Type of file is not allowed to upload"
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1183, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1228
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1185, modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1230
 msgid "New form request"
 msgstr "Nuova richiesta di forma"
 
@@ -42,6 +42,6 @@ msgstr " , version : "
 msgid " , platform : "
 msgstr " , platform : "
 
-#: modules/formbuilder/views/frontend/mail_generate_fields.php:109, modules/formbuilder/views/frontend/mail_generate_fields.php:143
+#: modules/formbuilder/views/frontend/mail_generate_fields.php:114, modules/formbuilder/views/frontend/mail_generate_fields.php:148
 msgid "Units"
 msgstr "Units"

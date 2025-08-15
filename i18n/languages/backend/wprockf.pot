@@ -1,12 +1,12 @@
-# Copyright (C) 2025 Zigaform WP Cost Estimation Form Builder 7.5.9
-# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.5.9 package.
+# Copyright (C) 2025 Zigaform WP Cost Estimation Form Builder 7.6.4
+# This file is distributed under the same license as the Zigaform WP Cost Estimation Form Builder 7.6.4 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 7.5.9\n"
+"Project-Id-Version: Zigaform WP Cost Estimation Form Builder 7.6.4\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-17 11:35+0000\n"
+"POT-Creation-Date: 2025-08-15 05:47+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -126,7 +126,7 @@ msgstr ""
 msgid "smartphone"
 msgstr ""
 
-#: views/header.php:53, modules/formbuilder/views/forms/create_form.php:166, modules/formbuilder/views/forms/list_forms_table.php:103
+#: views/header.php:53, modules/formbuilder/views/forms/create_form.php:166, modules/formbuilder/views/forms/list_forms_table.php:105
 msgid "Records"
 msgstr ""
 
@@ -758,11 +758,11 @@ msgstr ""
 msgid "Forms in trash"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1340
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1342
 msgid "Order summary"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1722
+#: modules/formbuilder/controllers/uiform-fb-controller-frontend.php:1724
 msgid "<b>Alert!</b> Modal mode is not enabled on settings menu option"
 msgstr ""
 
@@ -794,7 +794,7 @@ msgstr ""
 msgid "Form URL"
 msgstr ""
 
-#: modules/formbuilder/controllers/uiform-fb-controller-records.php:393, modules/formbuilder/views/forms/ajax_variables_openmodal.php:66, modules/formbuilder/views/forms/create_form_main.php:105, modules/formbuilder/views/forms/create_form_modals.php:97, modules/formbuilder/views/forms/create_form_modals.php:131, modules/formbuilder/views/forms/settings_form_email.php:560, modules/formbuilder/views/records/info_record.php:132
+#: modules/formbuilder/controllers/uiform-fb-controller-records.php:393, modules/formbuilder/views/forms/ajax_variables_openmodal.php:66, modules/formbuilder/views/forms/create_form_main.php:105, modules/formbuilder/views/forms/create_form_modals.php:97, modules/formbuilder/views/forms/create_form_modals.php:131, modules/formbuilder/views/forms/settings_form_email.php:568, modules/formbuilder/views/records/info_record.php:132
 msgid "Form name"
 msgstr ""
 
@@ -966,7 +966,7 @@ msgstr ""
 msgid "To form values"
 msgstr ""
 
-#: modules/addon_webhook/views/backend/get_content.php:101, modules/addon_webhook/views/backend/get_content.php:140, modules/formbuilder/views/forms/ajax_rollback_openmodal.php:35, modules/formbuilder/views/forms/create_form.php:287, modules/formbuilder/views/forms/list_forms_table.php:42, modules/formbuilder/views/records/list_records.php:39, modules/formbuilder/views/records/list_records_getdatatable.php:27, modules/formbuilder/views/settings/backup_settings.php:70, modules/formbuilder/views/fields/modal/field_opt_column.php:44, modules/formbuilder/views/fields/modal/field_opt_text.php:44, modules/formbuilder/views/fields/modal/settings_field_input_2.php:119
+#: modules/addon_webhook/views/backend/get_content.php:101, modules/addon_webhook/views/backend/get_content.php:140, modules/formbuilder/views/forms/ajax_rollback_openmodal.php:35, modules/formbuilder/views/forms/create_form.php:287, modules/formbuilder/views/forms/list_forms_table.php:43, modules/formbuilder/views/records/list_records.php:39, modules/formbuilder/views/records/list_records_getdatatable.php:27, modules/formbuilder/views/settings/backup_settings.php:70, modules/formbuilder/views/fields/modal/field_opt_column.php:44, modules/formbuilder/views/fields/modal/field_opt_text.php:44, modules/formbuilder/views/fields/modal/settings_field_input_2.php:119
 msgid "Options"
 msgstr ""
 
@@ -1038,7 +1038,7 @@ msgstr ""
 msgid "Name form"
 msgstr ""
 
-#: modules/formbuilder/views/forms/ajax_rollback_openmodal.php:33, modules/formbuilder/views/forms/list_forms_table.php:40, modules/formbuilder/views/records/list_records.php:37
+#: modules/formbuilder/views/forms/ajax_rollback_openmodal.php:33, modules/formbuilder/views/forms/list_forms_table.php:41, modules/formbuilder/views/records/list_records.php:37
 msgid "Created"
 msgstr ""
 
@@ -1114,11 +1114,11 @@ msgstr ""
 msgid "it shows without units and total"
 msgstr ""
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:62, modules/formbuilder/views/forms/settings_form_email.php:556
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:62, modules/formbuilder/views/forms/settings_form_email.php:564
 msgid "Form Url"
 msgstr ""
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:71, modules/formbuilder/views/forms/settings_form_email.php:565
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:71, modules/formbuilder/views/forms/settings_form_email.php:573
 msgid "Form record id"
 msgstr ""
 
@@ -1126,11 +1126,11 @@ msgstr ""
 msgid "User IP"
 msgstr ""
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:79, modules/formbuilder/views/forms/settings_form_email.php:569
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:79, modules/formbuilder/views/forms/settings_form_email.php:577
 msgid "Logged Username"
 msgstr ""
 
-#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:83, modules/formbuilder/views/forms/settings_form_email.php:573
+#: modules/formbuilder/views/forms/ajax_variables_openmodal.php:83, modules/formbuilder/views/forms/settings_form_email.php:581
 msgid "Logged email"
 msgstr ""
 
@@ -1446,7 +1446,7 @@ msgstr ""
 msgid "The export code is used for backing up your custom form. Click the COPY button to copy the export code to the clipboard. Then you can save it in a text file."
 msgstr ""
 
-#: modules/formbuilder/views/forms/export_form.php:42
+#: modules/formbuilder/views/forms/export_form.php:42, modules/formbuilder/views/fields/modal/settings_form_more.php:278
 msgid "Copy to clipboard"
 msgstr ""
 
@@ -1710,7 +1710,7 @@ msgstr ""
 msgid "Enable Form"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms.php:63, modules/formbuilder/views/forms/list_forms.php:67, modules/formbuilder/views/forms/list_forms_table.php:106, modules/formbuilder/views/forms/list_forms_table.php:107
+#: modules/formbuilder/views/forms/list_forms.php:63, modules/formbuilder/views/forms/list_forms.php:67, modules/formbuilder/views/forms/list_forms_table.php:108, modules/formbuilder/views/forms/list_forms_table.php:109
 msgid "Move to trash"
 msgstr ""
 
@@ -1774,35 +1774,39 @@ msgstr ""
 msgid "Copy and paste the shortcode to your desired page"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms_table.php:41, modules/formbuilder/views/records/list_records.php:38, modules/formbuilder/views/settings/system_check.php:58, modules/formbuilder/views/settings/system_check.php:280
+#: modules/formbuilder/views/forms/list_forms_table.php:40, modules/formbuilder/views/fields/modal/settings_form_more.php:266
+msgid "ID"
+msgstr ""
+
+#: modules/formbuilder/views/forms/list_forms_table.php:42, modules/formbuilder/views/records/list_records.php:38, modules/formbuilder/views/settings/system_check.php:58, modules/formbuilder/views/settings/system_check.php:280
 msgid "Status"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms_table.php:120, modules/formbuilder/views/records/list_records.php:89
+#: modules/formbuilder/views/forms/list_forms_table.php:122, modules/formbuilder/views/records/list_records.php:89
 msgid "there is not forms. Add new one"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms_table.php:59
+#: modules/formbuilder/views/forms/list_forms_table.php:60
 msgid "Get shortcode"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms_table.php:75, modules/formbuilder/views/records/list_records.php:60
+#: modules/formbuilder/views/forms/list_forms_table.php:77, modules/formbuilder/views/records/list_records.php:60
 msgid "Inactive"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms_table.php:68, modules/formbuilder/views/records/list_records.php:53
+#: modules/formbuilder/views/forms/list_forms_table.php:70, modules/formbuilder/views/records/list_records.php:53
 msgid "Active"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms_table.php:95, modules/formbuilder/views/forms/list_forms_table.php:88
+#: modules/formbuilder/views/forms/list_forms_table.php:97, modules/formbuilder/views/forms/list_forms_table.php:90
 msgid "Edit and load your custom form"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms_table.php:97, modules/formbuilder/views/forms/list_forms_table.php:90
+#: modules/formbuilder/views/forms/list_forms_table.php:99, modules/formbuilder/views/forms/list_forms_table.php:92
 msgid "Edit"
 msgstr ""
 
-#: modules/formbuilder/views/forms/list_forms_table.php:109
+#: modules/formbuilder/views/forms/list_forms_table.php:111
 msgid "Move to Trash "
 msgstr ""
 
@@ -2028,6 +2032,12 @@ msgstr ""
 
 #: modules/formbuilder/views/forms/settings_form_email.php:502
 msgid "General"
+msgstr ""
+
+#: modules/formbuilder/views/forms/settings_form_email.php:554
+msgid ""
+"To hide specific fields in the summary shortcode, use their field IDs. For example, <code>uiytnx07yvp</code> is a field ID. You can find the field ID by editing the field, going to the \"More\" tab, and checking the bottom section labeled \"For summary shortcode.\"  \n"
+"                                                            You can hide multiple fields by separating their IDs with commas."
 msgstr ""
 
 #: modules/formbuilder/views/forms/settings_form_global.php:22
@@ -3896,6 +3906,14 @@ msgstr ""
 
 #: modules/formbuilder/views/fields/modal/settings_form_clogic.php:106
 msgid "Remove all"
+msgstr ""
+
+#: modules/formbuilder/views/fields/modal/settings_form_more.php:259
+msgid "For summary shortcode"
+msgstr ""
+
+#: modules/formbuilder/views/fields/modal/settings_form_more.php:267
+msgid "It can be used for summary shortcode in backend"
 msgstr ""
 
 #: modules/formbuilder/views/fields/render_front/type_subbtn.php:24, modules/formbuilder/views/fields/render_front/type_wizardbtn.php:33

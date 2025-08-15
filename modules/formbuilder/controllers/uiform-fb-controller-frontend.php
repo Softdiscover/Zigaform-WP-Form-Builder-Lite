@@ -496,6 +496,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                 'atr2' => '',
                 'atr3' => '',
                 'atr4' => '',
+                'hide_fields' => '',
                 'opt'  => '', // quick option
             ),
             $atts
@@ -519,6 +520,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
                     $data2            = array();
                     $data2['data']    = $tmp_data;
                     $data2['show_only_value'] = ($vars['atr2'] === 'show_only_value') ? 'yes' : 'no';
+                    $data2['hide_fields_ids'] = !empty($vars['hide_fields'])? explode(',', $vars['hide_fields']):[];
                     $output           = self::render_template('formbuilder/views/frontend/mail_generate_fields.php', $data2, 'always');
                     break;
                 case 'rec_url_fm':
