@@ -75,7 +75,7 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module
 
     public function system_update_table()
     {
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         global $wpdb;
 
@@ -123,7 +123,7 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module
 
     public function ajax_blocked_getmessage()
     {
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
         $message = (isset($_POST['message']) && $_POST['message']) ? Uiform_Form_Helper::sanitizeInput($_POST['message']) : '';
 
         $data            = array();
@@ -131,7 +131,7 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module
         $json            = array();
         $json['msg']     = self::render_template('formbuilder/views/settings/blocked_getmessage.php', $data);
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 
@@ -146,7 +146,7 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module
     public function ajax_backup_create()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $json = array();
         require_once UIFORM_FORMS_DIR . '/classes/uiform_backup.php';
@@ -154,14 +154,14 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module
         $name_bkp = (isset($_POST['uifm_frm_namebackup']) && $_POST['uifm_frm_namebackup']) ? Uiform_Form_Helper::sanitizeInput($_POST['uifm_frm_namebackup']) : '';
         $dbBackup->makeDbBackup($name_bkp);
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 
     public function ajax_backup_restorefile()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $json             = array();
         $uifm_frm_resfile = (isset($_POST['uifm_frm_resfile']) && $_POST['uifm_frm_resfile']) ? Uiform_Form_Helper::sanitizeInput($_POST['uifm_frm_resfile']) : '';
@@ -169,14 +169,14 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module
         $dbBackup = new Uiform_Backup();
         $dbBackup->restoreBackup($uifm_frm_resfile);
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 
     public function ajax_backup_deletefile()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $json             = array();
         $uifm_frm_delfile = (isset($_POST['uifm_frm_delfile']) && $_POST['uifm_frm_delfile']) ? Uiform_Form_Helper::sanitizeInput($_POST['uifm_frm_delfile']) : '';
@@ -185,14 +185,14 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module
         $dir              = $uploads_url . '/softdiscover/' . UIFORM_SLUG.'/backups/';
         @unlink($dir . $uifm_frm_delfile);
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 
     public function ajax_save_options()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $opt_language = (isset($_POST['language']) && $_POST['language']) ? Uiform_Form_Helper::sanitizeInput($_POST['language']) : '';
 
@@ -220,7 +220,7 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module
             update_option('zgfm_fields_fastload', 0);
         }
         
-        $recordexpsetting = (isset($_POST['uifm_frm_main_recordexpsetting']) && $_POST['uifm_frm_main_recordexpsetting']) ? sanitize_text_field($_POST['uifm_frm_main_recordexpsetting']) : '';
+        $recordexpsetting = (isset($_POST['uifm_frm_main_recordexpsetting']) && $_POST['uifm_frm_main_recordexpsetting']) ? sanitize_text_field(wp_unslash($_POST['uifm_frm_main_recordexpsetting'])) : '';
         if ($recordexpsetting !== '') {
             update_option('zgfm_frm_main_recexpdelimiter', $recordexpsetting);
         } else {
@@ -241,7 +241,7 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module
         }
 
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 
@@ -387,6 +387,8 @@ class Uiform_Fb_Controller_Settings extends Uiform_Base_Module
     
     public function system_gendb_column()
     {
+        Uiform_Form_Helper::verify_admin_ajax();
+
         global $wpdb;
 
         $uiform_tbs   = array();

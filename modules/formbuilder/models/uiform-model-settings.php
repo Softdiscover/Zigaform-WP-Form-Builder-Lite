@@ -45,13 +45,15 @@ class Uiform_Model_Settings
 
     public function getOptions()
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             '
             select uf.version,uf.type_email,uf.smtp_host,uf.smtp_port,uf.smtp_user,uf.smtp_pass,uf.sendmail_path,uf.language
             from %s uf
-            where uf.id=%s
+            where uf.id=%%d
             ',
-            $this->table,
+                $this->table
+            ),
             1
         );
 
@@ -60,13 +62,15 @@ class Uiform_Model_Settings
 
     public function getLangOptions()
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             '
             select uf.language
             from %s uf
-            where uf.id=%s
+            where uf.id=%%d
             ',
-            $this->table,
+                $this->table
+            ),
             1
         );
 

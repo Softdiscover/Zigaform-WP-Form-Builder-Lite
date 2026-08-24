@@ -36,13 +36,15 @@ class Zigaform_b_notice
      */
     public function notice_rated()
     {
+        Uiform_Form_Helper::verify_admin_ajax();
+
         $data              = get_option('zigaform_f_notice_1', array());
         $data['time']      = time();
         $data['dismissed'] = true;
         $data['rated']     = true;
 
         update_option('zigaform_f_notice_1', $data);
-        die();
+        wp_send_json_success();
     }
 
     /**
@@ -160,6 +162,14 @@ class Zigaform_b_notice
                     UIFORM_VERSION
                 );
 
+                wp_localize_script(
+                    'zgfm-script-global-js',
+                    'zgfm_notice_vars',
+                    array(
+                        'ajax_nonce' => wp_create_nonce('zgfm_ajax_nonce'),
+                    )
+                );
+
                 // Notice JS
                 wp_enqueue_script('zgfm-script-global-js', '', array(), '', true);
     }
@@ -169,13 +179,15 @@ class Zigaform_b_notice
              */
     public function notice_dismiss()
     {
+        Uiform_Form_Helper::verify_admin_ajax();
+
         $data              = get_option('zigaform_f_notice_1', array());
         $data['time']      = time();
         $data['dismissed'] = true;
         $data['rated']     = false;
 
         update_option('zigaform_f_notice_1', $data);
-        die();
+        wp_send_json_success();
     }
 
             /**

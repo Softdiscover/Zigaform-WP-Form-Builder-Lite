@@ -48,17 +48,19 @@ class Uiform_Model_Addon_Details
     
     public function getAddonsDataByForm($form_id)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             '
             select ad.adet_data, ad.add_name, ad.fmb_id, ad.flag_status
             from %s c
 	    left join %s ad on ad.add_name = c.add_name
-            where c.flag_status=1 and ad.fmb_id=%s 
+            where c.flag_status=1 and ad.fmb_id=%%d
             and c.add_load_back=1
             ORDER BY c.add_order desc
             ',
             $this->tbaddon,
-            $this->table,
+                $this->table
+            ),
             (int) $form_id
         );
 
@@ -67,17 +69,19 @@ class Uiform_Model_Addon_Details
     
     public function getAddonDataByForm($addon_name, $form_id)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             '
             select ad.adet_data
             from %s c
 	    left join %s ad on ad.add_name = c.add_name
-            where c.flag_status=1 and ad.fmb_id=%s and ad.add_name ="%s"
+            where c.flag_status=1 and ad.fmb_id=%%d and ad.add_name =%%s
             and c.add_load_back=1
             ORDER BY c.add_order desc
             ',
             $this->tbaddon,
-            $this->table,
+                $this->table
+            ),
             (int) $form_id,
             $addon_name
         );
@@ -87,12 +91,14 @@ class Uiform_Model_Addon_Details
 
     public function existRecord($addon_name, $form_id)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             'select
                 COUNT(*) as count
                 from %s ad
-                where ad.add_name ="%s" and ad.fmb_id=%s',
-            $this->table,
+                where ad.add_name =%%s and ad.fmb_id=%%d',
+                $this->table
+            ),
             $addon_name,
             (int) $form_id
         );

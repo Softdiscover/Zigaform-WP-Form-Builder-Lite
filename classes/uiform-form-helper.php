@@ -212,6 +212,25 @@ class Uiform_Form_Helper
     }
 
     /**
+     * Normalize slashed request input before sanitizing.
+     *
+     * @param mixed $value Input value.
+     * @return mixed
+     */
+    public static function unslashValue($value)
+    {
+        if (function_exists('wp_unslash')) {
+            return wp_unslash($value);
+        }
+
+        if (is_array($value)) {
+            return array_map(array( 'Uiform_Form_Helper', 'unslashValue' ), $value);
+        }
+
+        return is_string($value) ? stripslashes($value) : $value;
+    }
+
+    /**
      * Sanitize input
      *
      * @param string $string input
@@ -220,8 +239,8 @@ class Uiform_Form_Helper
      */
     public static function sanitizeInput($string)
     {
+        $string = self::unslashValue($string);
         $string = filter_var($string, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $string = stripslashes($string);
         $string = str_replace(array( '‘', '’', '“', '”' ), array( "'", "'", '"', '"' ), $string);
         $string = html_entity_decode($string, ENT_QUOTES, 'UTF-8');
         $string = preg_replace('/[\n\r\t]/', ' ', $string);
@@ -244,7 +263,7 @@ class Uiform_Form_Helper
             return $string;
         }
         
-        $string = stripslashes($string);
+        $string = self::unslashValue($string);
         $string = str_replace(array( '‘', '’', '“', '”' ), array( "'", "'", '"', '"' ), $string);
         $string = html_entity_decode($string, ENT_QUOTES, 'UTF-8');
         $string = preg_replace('/[\n\r\t]/', ' ', $string);
@@ -262,7 +281,7 @@ class Uiform_Form_Helper
         $string = html_entity_decode($string, ENT_QUOTES, 'UTF-8');
 
         // Strip slashes added by magic quotes or manual escaping
-        $string = stripslashes($string);
+        $string = self::unslashValue($string);
 
         // Strip potential dangerous tags and attributes
         $string = strip_tags($string, '<a><b><i><strong><em><ul><li><ol>'); // Allow only safe tags
@@ -1038,6 +1057,44 @@ class Uiform_Form_Helper
         }
 
         return true;
+    }
+
+    public static function verify_admin_ajax($capability = 'manage_options', $nonce_action = 'zgfm_ajax_nonce', $nonce_arg = 'zgfm_security')
+    {
+        check_ajax_referer($nonce_action, $nonce_arg);
+
+        if ( ! current_user_can($capability)) {
+            wp_send_json_error(
+                array(
+                    'message' => esc_html__('You are not allowed to perform this action.', 'FRocket_admin'),
+                ),
+                403
+            );
+        }
+    }
+
+    public static function send_json_legacy($response)
+    {
+        /*
+         * Older Zigaform AJAX clients read top-level JSON keys such as
+         * success, html, and show_message. Keep that shape while using
+         * WordPress' JSON response emitter.
+         */
+        wp_send_json($response);
+    }
+
+    public static function send_json_success($response = null)
+    {
+        wp_send_json_success($response);
+    }
+
+    public static function send_json_error($response = null, $status_code = null)
+    {
+        if (null !== $status_code && function_exists('status_header')) {
+            status_header($status_code);
+        }
+
+        wp_send_json_error($response);
     }
 
     public static function raw_json_encode($input, $flags = 0)

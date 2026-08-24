@@ -137,7 +137,8 @@ class SFM_Group_Google extends SFM_Group {
 		}
 
 		$this->option_values[ 'import_template' ] = self::import_template;
-		$this->option_values[ 'admin_ajax' ] = "";
+		$this->option_values[ 'admin_ajax' ] = admin_url( 'admin-ajax.php' );
+		$this->option_values[ 'ajax_nonce' ] = wp_create_nonce( 'zgfm_ajax_nonce' );
 
 		return $this->option_values;
 	}

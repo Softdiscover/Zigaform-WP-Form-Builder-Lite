@@ -359,7 +359,7 @@ public function blocks_get_forms($default)
     public function ajax_pdf_showsample()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $full_page = (isset($_POST['full_page'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['full_page'])) : '';
         $form_id   = (isset($_POST['form_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
@@ -423,14 +423,14 @@ public function blocks_get_forms($default)
 
         // return data to ajax callback
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 
     public function ajax_email_sendsample()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $full_page = (isset($_POST['full_page'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['full_page'])) : '';
         $message   = (isset($_POST['message'])) ? Uiform_Form_Helper::sanitizeInput_html($_POST['message']) : '';
@@ -464,14 +464,14 @@ public function blocks_get_forms($default)
 
         // return data to ajax callback
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 
     public function ajax_rollback_process()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $log_id = (isset($_POST['log_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['log_id'])) : '';
         $isMultistep = (isset($_POST['is_multistep'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['is_multistep'])) : '0';
@@ -520,7 +520,7 @@ public function blocks_get_forms($default)
 
         // return data to ajax callback
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 
@@ -528,7 +528,7 @@ public function blocks_get_forms($default)
     public function ajax_rollback_openmodal()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $form_id = (isset($_POST['form_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
 
@@ -554,7 +554,7 @@ public function blocks_get_forms($default)
 
         // return data to ajax callback
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 
@@ -562,7 +562,7 @@ public function blocks_get_forms($default)
     public function ajax_integrity_openmodal()
     {
 
-        // check_ajax_referer( 'zgfm_ajax_nonce', 'zgfm_security' );
+        // Uiform_Form_Helper::verify_admin_ajax();
 
         $form_id = (isset($_POST['form_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
 
@@ -576,14 +576,14 @@ public function blocks_get_forms($default)
 
         // return data to ajax callback
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         die();
     }
 
     public function ajax_variables_openmodal()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
         $data     = array();
         $form_id  = (isset($_POST['form_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
         $fmb_data = (isset($_POST['form_data'])) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['form_data'])) : '';
@@ -598,14 +598,14 @@ public function blocks_get_forms($default)
 
         // return data to ajax callback
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 
     public function ajax_variables_emailpage()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
         $data     = array();
         $form_id  = (isset($_POST['form_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
         $fmb_data = (isset($_POST['form_data'])) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['form_data'])) : '';
@@ -620,14 +620,14 @@ public function blocks_get_forms($default)
 
         // return data to ajax callback
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 
     public function ajax_load_templateform()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $number        = ($_POST['number']) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['number'])) : '';
         $fallback_file = file_get_contents(UIFORM_FORMS_DIR . '/assets/backend/json/template_' . $number . '.json');
@@ -639,7 +639,7 @@ public function blocks_get_forms($default)
     public function ajax_load_getthumbimg()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $id_img            = ($_POST['img_id']) ? Uiform_Form_Helper::sanitizeInput($_POST['img_id']) : '';
         $img_full          = ($_POST['img_src_full']) ? Uiform_Form_Helper::sanitizeInput_html($_POST['img_src_full']) : '';
@@ -648,13 +648,13 @@ public function blocks_get_forms($default)
         $thumb             = wp_get_attachment_image_src($id_img, array(150, 150));
         $json['img_thumb'] = (!empty($thumb[0])) ? $thumb[0] : $img_full;
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 
     public function ajax_load_import_template_form()
     {
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
         $slug                      = (isset($_POST['slug']) && $_POST['slug']) ? Uiform_Form_Helper::sanitizeInput($_POST['slug']) : '';
 
         $codeStored = file_get_contents(UIFORM_FORMS_DIR . '/assets/backend/templates/' . $slug . '.txt');
@@ -887,14 +887,14 @@ public function blocks_get_forms($default)
         $json                          = array();
         $json['redirect_url'] = $redirectUrl;
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 
     public function ajax_load_import_code_form()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $imp_form                      = (isset($_POST['importcode']) && $_POST['importcode']) ? Uiform_Form_Helper::sanitizeInput($_POST['importcode']) : '';
         $dump_form                     = unserialize(Uiform_Form_Helper::base64url_decode($imp_form));
@@ -905,7 +905,7 @@ public function blocks_get_forms($default)
     public function ajax_load_import_form()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $imp_form                      = (isset($_POST['importcode']) && $_POST['importcode']) ? Uiform_Form_Helper::sanitizeInput($_POST['importcode']) : '';
         $dump_form                     = unserialize(Uiform_Form_Helper::base64url_decode($imp_form));
@@ -918,14 +918,14 @@ public function blocks_get_forms($default)
         $json                          = array();
         $json['data']                  = $data_form;
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 
     public function ajax_preview_clogic_graph()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $saveform_clogic = array();
         $fmb_data        = (isset($_POST['form_data'])) ? urldecode(Uiform_Form_Helper::sanitizeInput_html($_POST['form_data'])) : '';
@@ -1024,13 +1024,13 @@ public function blocks_get_forms($default)
         $json         = array();
         $json['html'] = $output;
         header('Content-Type: text/html; charset=UTF-8');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 
     public function ajax_listform_duplicate()
     {
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $list_ids = (isset($_POST['id']) && $_POST['id']) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive'), $_POST['id']) : array();
 
@@ -1048,7 +1048,7 @@ public function blocks_get_forms($default)
     public function ajax_listform_updatest()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $list_ids = (isset($_POST['id']) && $_POST['id']) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive'), $_POST['id']) : array();
         $form_st  = (isset($_POST['form_st']) && $_POST['form_st']) ? Uiform_Form_Helper::sanitizeInput($_POST['form_st']) : '';
@@ -1068,7 +1068,7 @@ public function blocks_get_forms($default)
     public function ajax_list_trashform_updatest()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
         $list_ids = (isset($_POST['id']) && $_POST['id']) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive'), $_POST['id']) : array();
         $form_st  = (isset($_POST['form_st']) && $_POST['form_st']) ? Uiform_Form_Helper::sanitizeInput($_POST['form_st']) : '';
         if ($list_ids) {
@@ -1145,7 +1145,7 @@ public function blocks_get_forms($default)
      */
     public function ajax_delete_trashform_byid()
     {
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
         $form_id = (isset($_POST['form_id']) && $_POST['form_id']) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : 0;
 
         $this->delete_form_process($form_id);
@@ -1154,7 +1154,7 @@ public function blocks_get_forms($default)
     public function ajax_delete_form_byid()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $form_id = (isset($_POST['form_id']) && $_POST['form_id']) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : 0;
         $where   = array(
@@ -1169,7 +1169,7 @@ public function blocks_get_forms($default)
     public function ajax_load_preview_form()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $form_id = (isset($_POST['form_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
         header('Content-type: text/html');
@@ -1200,7 +1200,7 @@ public function blocks_get_forms($default)
     public function ajax_modal_form_showmodalsuccess()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $form_id             = (isset($_POST['form_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
         $data                = array();
@@ -1222,14 +1222,14 @@ public function blocks_get_forms($default)
         $json['footer'] = sprintf('<button type="button" onclick="rocketform.goToList();" class="btn btn-warning" >%s</button> <button type="button" onclick="%s" class="btn btn-info" >%s</button>', __('Go to List', 'FRocket_admin'), $onclick, __('Back to Form', 'FRocket_admin'));
         // return data to ajax callback
         header('Content-type: text/html');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 
     public function ajax_modal_form_getshorcodes()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $form_id            = (isset($_POST['form_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
         $data               = array();
@@ -1240,14 +1240,14 @@ public function blocks_get_forms($default)
 
         // return data to ajax callback
         header('Content-type: text/html');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 
     public function ajax_refresh_previewpanel()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $data     = array();
         $fmb_data = (!empty($_POST['form_data'])) ? Uiform_Form_Helper::sanitizeInput_html($_POST['form_data']) : '';
@@ -1273,13 +1273,13 @@ public function blocks_get_forms($default)
         $json['data']             = $data;
         // return data to ajax callback
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
     public function ajax_save_form_updateopts()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $data                     = array();
         $fmb_id                   = ($_POST['uifm_frm_main_id']) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['uifm_frm_main_id'])) : 0;
@@ -1295,14 +1295,14 @@ public function blocks_get_forms($default)
         }
         // return data to ajax callback
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 
     public function ajax_save_newform()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
         $json = array();
         try {
             if (!Uiform_Form_Helper::check_User_Access()) {
@@ -1337,12 +1337,13 @@ public function blocks_get_forms($default)
         }
         // return data to ajax callback
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 
     public function ajax_build_multistep()
     {
+        Uiform_Form_Helper::verify_admin_ajax();
 
         try {
             if (!Uiform_Form_Helper::check_User_Access()) {
@@ -1369,7 +1370,7 @@ public function blocks_get_forms($default)
                 $json['success'] = true;
                 $json['id'] = $formId;
                 header('Content-Type: application/json');
-                echo json_encode($json);
+                Uiform_Form_Helper::send_json_legacy($json);
                 die();
             }
 
@@ -1445,7 +1446,7 @@ public function blocks_get_forms($default)
 
         // return data to ajax callback
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
     public function generate_form_html_multistep($form_id = null)
@@ -1478,8 +1479,18 @@ public function blocks_get_forms($default)
     {
         $data = array();
         $data['form_id']      = $id;
-        $data['formInitHtml'] =  $this->current_mm_form_init->fmb_html;
-        $data['formInit'] =  $this->current_mm_form_init->fmb_id;
+        // A multistep parent that has no initial step yet -- which is every one
+        // of them between the first save and the first step being added --
+        // stores an empty `initial`, so getFormById() hands back null here.
+        // Dereferencing it raised "Attempt to read property fmb_html on null";
+        // ajax_build_multistep captures that warning through ob_get_contents(),
+        // throws it, and answers {status:failed} with no id. The builder reads
+        // that id to fill #uifm_frm_mm_main_id, so every add-step afterwards
+        // posted an empty parent and no step was ever attached. There is simply
+        // no initial markup to render at that point; render none and let the
+        // save complete.
+        $data['formInitHtml'] = ( $this->current_mm_form_init ) ? $this->current_mm_form_init->fmb_html : '';
+        $data['formInit']     = ( $this->current_mm_form_init ) ? $this->current_mm_form_init->fmb_id : 0;
         $data['onsubm']       = $this->current_data_onsubm;
         $data['main']         = $this->current_data_main;
         $data['connections'] = $this->current_data_conn;
@@ -1491,7 +1502,7 @@ public function blocks_get_forms($default)
     public function ajax_save_parentform()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         try {
             if (!Uiform_Form_Helper::check_User_Access()) {
@@ -1655,14 +1666,14 @@ public function blocks_get_forms($default)
 
         // return data to ajax callback
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 
     public function ajax_save_childform()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         try {
             if (!Uiform_Form_Helper::check_User_Access()) {
@@ -1812,14 +1823,14 @@ public function blocks_get_forms($default)
 
         // return data to ajax callback
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 
     public function ajax_save_form()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         try {
             if (!Uiform_Form_Helper::check_User_Access()) {
@@ -2001,7 +2012,7 @@ public function blocks_get_forms($default)
 
         // return data to ajax callback
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 
@@ -3381,7 +3392,7 @@ public function blocks_get_forms($default)
         public function ajax_load_export_form()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $form_id   = (isset($_POST['form_id']) && $_POST['form_id']) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : 0;
         $data_form = $this->formsmodel->getFormById($form_id);
@@ -3481,7 +3492,7 @@ public function blocks_get_forms($default)
         public function ajax_mm_load_childform()
         {
 
-            check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+            Uiform_Form_Helper::verify_admin_ajax();
 
             $json    = array();
             $form_id = (isset($_POST['uifm_frm_main_child_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['uifm_frm_main_child_id'])) : '';
@@ -3491,14 +3502,14 @@ public function blocks_get_forms($default)
             $json['data']        = $data_form;
 
             header('Content-Type: application/json');
-            echo json_encode($json);
+            Uiform_Form_Helper::send_json_legacy($json);
             wp_die();
         }
 
         public function ajax_load_form()
         {
 
-            check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+            Uiform_Form_Helper::verify_admin_ajax();
 
             $json    = array();
             $form_id = (isset($_POST['form_id'])) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['form_id'])) : '';
@@ -3508,7 +3519,7 @@ public function blocks_get_forms($default)
             $json['data']        = $data_form;
 
             header('Content-Type: application/json');
-            echo json_encode($json);
+            Uiform_Form_Helper::send_json_legacy($json);
             wp_die();
         }
 
@@ -3591,7 +3602,7 @@ public function blocks_get_forms($default)
          */
         public function ajax_trashformlist_sendfilter()
         {
-            check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+            Uiform_Form_Helper::verify_admin_ajax();
 
             $data_filter = (isset($_POST['data_filter']) && $_POST['data_filter']) ? $_POST['data_filter'] : '';
 
@@ -3620,7 +3631,7 @@ public function blocks_get_forms($default)
             $json['content'] = $result;
 
             header('Content-Type: application/json');
-            echo json_encode($json);
+            Uiform_Form_Helper::send_json_legacy($json);
             wp_die();
         }
 
@@ -3691,7 +3702,7 @@ public function blocks_get_forms($default)
          */
         public function ajax_formlist_sendfilter()
         {
-            check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+            Uiform_Form_Helper::verify_admin_ajax();
 
             $data_filter = (isset($_POST['data_filter']) && $_POST['data_filter']) ? $_POST['data_filter'] : '';
 
@@ -3724,7 +3735,7 @@ public function blocks_get_forms($default)
             $json['content'] = $result;
 
             header('Content-Type: application/json');
-            echo json_encode($json);
+            Uiform_Form_Helper::send_json_legacy($json);
             wp_die();
         }
 

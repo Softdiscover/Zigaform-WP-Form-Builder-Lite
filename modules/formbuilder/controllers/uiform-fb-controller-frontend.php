@@ -578,7 +578,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
 
         // return data to ajax callback
         header('Content-Type: text/html; charset=UTF-8');
-        echo json_encode($resp);
+        Uiform_Form_Helper::send_json_legacy($resp);
         wp_die();
     }
 
@@ -603,7 +603,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
 
         // return data to ajax callback
         header('Content-Type: text/html; charset=UTF-8');
-        echo json_encode($resp);
+        Uiform_Form_Helper::send_json_legacy($resp);
         wp_die();
     }
 
@@ -635,7 +635,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
 
         // return data to ajax callback
         header('Content-Type: text/html; charset=UTF-8');
-        echo json_encode($resp);
+        Uiform_Form_Helper::send_json_legacy($resp);
         wp_die();
     }
 
@@ -656,7 +656,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
 
         // return data to ajax callback
         header('Content-Type: text/html; charset=UTF-8');
-        echo json_encode($resp);
+        Uiform_Form_Helper::send_json_legacy($resp);
         wp_die();
     }
 
@@ -699,7 +699,7 @@ class Uiform_Fb_Controller_Frontend extends Uiform_Base_Module
 
             // return data to ajax callback
             header('Content-Type: text/html; charset=UTF-8');
-            echo json_encode($resp);
+            Uiform_Form_Helper::send_json_legacy($resp);
             wp_die();
         }
     }

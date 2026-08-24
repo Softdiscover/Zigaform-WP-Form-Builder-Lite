@@ -14,6 +14,10 @@
 if (! defined('ABSPATH')) {
     exit('No direct script access allowed');
 }
+$form_id_attr              = esc_attr($form_id);
+$recaptchav3_active_attr   = isset($main['recaptchav3_enable']) ? esc_attr($main['recaptchav3_enable']) : '0';
+$recaptchav3_sitekey_attr  = isset($main['recaptchav3_sitekey']) ? esc_attr($main['recaptchav3_sitekey']) : '';
+$onsubmit_success_text     = isset($onsubm['sm_successtext']) ? $onsubm['sm_successtext'] : '';
 ob_start();
 ?>
 <div class="rockfm-form-container-ms uiform-wrap sfdc-wrap">
@@ -23,17 +27,17 @@ ob_start();
       name="" 
       method="post" 
       data-zgfm-type="1"
-      data-zgfm-version="<?php echo UIFORM_VERSION; ?>" 
-      data-zgfm-recaptchav3-active="<?php echo $main['recaptchav3_enable'] ?? 0; ?>"
-      data-zgfm-recaptchav3-sitekey="<?php echo $main['recaptchav3_sitekey'] ?? ''; ?>"
-      data-zgfm-recaptchav3-errmsg="<?php echo __('Recaptcha failed, refresh page and try again', 'FRocket_admin'); ?>"
+      data-zgfm-version="<?php echo esc_attr(UIFORM_VERSION); ?>" 
+      data-zgfm-recaptchav3-active="<?php echo $recaptchav3_active_attr; ?>"
+      data-zgfm-recaptchav3-sitekey="<?php echo $recaptchav3_sitekey_attr; ?>"
+      data-zgfm-recaptchav3-errmsg="<?php echo esc_attr__('Recaptcha failed, refresh page and try again', 'FRocket_admin'); ?>"
       data-zgfm-is-ms="1"
       enctype="multipart/form-data" 
-      id="rockfm_form_<?php echo $form_id; ?>">
+      id="rockfm_form_<?php echo $form_id_attr; ?>">
  
-    <input type="hidden" value="<?php echo esc_attr($form_id); ?>" class="_rockfm_form_parent_id" name="_rockfm_form_parent_id">
+    <input type="hidden" value="<?php echo $form_id_attr; ?>" class="_rockfm_form_parent_id" name="_rockfm_form_parent_id">
      
-    <input type="hidden" value="<?php echo esc_attr(Uiform_Form_Helper::base64url_encode(urldecode($onsubm['sm_successtext']))); ?>" name="_rockfm_onsubm_smsg" class="_rockfm_onsubm_smsg" >
+    <input type="hidden" value="<?php echo esc_attr(Uiform_Form_Helper::base64url_encode(urldecode($onsubmit_success_text))); ?>" name="_rockfm_onsubm_smsg" class="_rockfm_onsubm_smsg" >
     <!--- ajax  --->
      
         <input type="hidden" value="1" class="_rockfm_type_submit" name="_rockfm_type_submit">
@@ -54,7 +58,7 @@ ob_start();
     <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
         
 </form>
-<script type="text/html" id="rockfm_form_children_<?php echo $form_id; ?>"></script>
+<script type="text/html" id="rockfm_form_children_<?php echo $form_id_attr; ?>"></script>
  
 
  <?php if (isset($main['add_js']) && ! empty($main['add_js'])) { ?>
@@ -77,7 +81,7 @@ ob_start();
             <div class="sfdc-modal-footer">
                 <button type="button" 
                         class="sfdc-btn sfdc-btn-default"
-                        data-dismiss="modal"><?php echo __('Close', 'FRocket_admin'); ?></button>
+                        data-dismiss="modal"><?php echo esc_html__('Close', 'FRocket_admin'); ?></button>
             </div>
         </div>
         <!-- /.sfdc-modal-content -->

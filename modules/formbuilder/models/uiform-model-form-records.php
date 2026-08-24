@@ -341,9 +341,12 @@ class Uiform_Model_Form_Records
                 $tmp_qu .= ' f.fmf_status_qu=1 and';
             }
 
-            $tmp_qu .= ' fm.fmb_id=%s order by f.order_rec asc';
+            $tmp_qu .= ' fm.fmb_id=%%d order by f.order_rec asc';
 
-            $query = sprintf($tmp_qu, $this->tbformfields, $this->tbformtype, $this->tbform, (int) $id_form);
+            $query = $this->wpdb->prepare(
+                sprintf($tmp_qu, $this->tbformfields, $this->tbformtype, $this->tbform),
+                (int) $id_form
+            );
 
             return $this->wpdb->get_results($query);
         } else {
@@ -354,16 +357,18 @@ class Uiform_Model_Form_Records
     public function getAllNameFieldEnabledByForm($id_field)
     {
         if (intval($id_field) > 0) {
-            $query = sprintf(
+            $query = $this->wpdb->prepare(
+                sprintf(
                 'select f.fmf_uniqueid, coalesce(NULLIF(f.fmf_fieldname,""),CONCAT(t.fby_name,f.fmf_id)) as fieldname 
         from %s f 
         join %s t on f.type_fby_id=t.fby_id 
         join %s fm on fm.fmb_id=f.form_fmb_id
         where f.type_fby_id in (6,7,8,9,10,11,12,13,15,16,17,18,21,22,23,24,25,26,28,29,30,39,40,41,42,43) and
-        fm.fmb_id=%s order by f.order_rec asc',
+        fm.fmb_id=%%d order by f.order_rec asc',
                 $this->tbformfields,
                 $this->tbformtype,
-                $this->tbform,
+                    $this->tbform
+                ),
                 (int) $id_field
             );
 
@@ -374,14 +379,16 @@ class Uiform_Model_Form_Records
     }
     public function getFormDataById($id_rec)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             'select  f.fmb_type, f.created_ip, f.fmb_name,frec.form_fmb_id,f.fmb_data,f.fmb_data2,f.fmb_rec_tpl_st,f.fmb_rec_tpl_html,frec.fbh_data
         from %s frec
         join %s f on f.fmb_id=frec.form_fmb_id
         where frec.flag_status>=0
-        and frec.fbh_id=%s',
+        and frec.fbh_id=%%d',
             $this->table,
-            $this->tbform,
+                $this->tbform
+            ),
             (int) $id_rec
         );
 
@@ -389,13 +396,15 @@ class Uiform_Model_Form_Records
     }
     public function getAllFieldsForReport($id_form)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             'select f.fmf_status_qu,f.fmf_uniqueid, coalesce(NULLIF(f.fmf_fieldname,""),CONCAT(t.fby_name,f.fmf_id)) as fieldname, f.order_rec 
             from %s f 
             join %s t on f.type_fby_id=t.fby_id 
-            where f.form_fmb_id=%s and f.type_fby_id in (6,7,8,9,10,11,12,13,15,16,17,18,21,22,23,24,25,26,28,29,30,39,40,41,42,43)',
+            where f.form_fmb_id=%%d and f.type_fby_id in (6,7,8,9,10,11,12,13,15,16,17,18,21,22,23,24,25,26,28,29,30,39,40,41,42,43)',
             $this->tbformfields,
-            $this->tbformtype,
+                $this->tbformtype
+            ),
             (int) $id_form
         );
         return $this->wpdb->get_results($query);
@@ -403,17 +412,19 @@ class Uiform_Model_Form_Records
 
     public function getNameField($id_field)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             'select f.fmf_uniqueid,f.fmf_id, coalesce(NULLIF(f.fmf_fieldname,""),CONCAT(t.fby_name,f.fmf_id)) as fieldname ,f.type_fby_id,f.fmf_data
         from %s f 
         join %s t on f.type_fby_id=t.fby_id 
         join %s fm on fm.fmb_id=f.form_fmb_id
         join %s rc on rc.form_fmb_id=fm.fmb_id
-        where rc.fbh_id=%s',
+        where rc.fbh_id=%%d',
             $this->tbformfields,
             $this->tbformtype,
             $this->tbform,
-            $this->table,
+                $this->table
+            ),
             (int) $id_field
         );
         return $this->wpdb->get_results($query);
@@ -421,29 +432,34 @@ class Uiform_Model_Form_Records
 
     public function getChartDataByIdForm($id_field)
     {
-        $query = 'SELECT 
-                                DATE_FORMAT(r.created_date ,"%Y-%m-%d") as days, COUNT(r.fbh_id) as requests
+        $query = $this->wpdb->prepare(
+            'SELECT
+                                DATE_FORMAT(r.created_date ,"%%Y-%%m-%%d") as days, COUNT(r.fbh_id) as requests
                                 FROM ' . $this->table . ' r
                                 WHERE r.flag_status>0  
-                                AND DATE_FORMAT(r.created_date,"%e") BETWEEN 1 AND 31
-				AND r.form_fmb_id=' . (int) $id_field . '
+                                AND DATE_FORMAT(r.created_date,"%%e") BETWEEN 1 AND 31
+				AND r.form_fmb_id=%d
                                 GROUP BY DAY(r.created_date)
                                 ORDER BY r.created_date ASC
-                                limit 31';
+                                limit 31',
+            (int) $id_field
+        );
         return $this->wpdb->get_results($query);
     }
 
     public function getRecordById($id)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             '
             select uf.fbh_id,uf.fbh_data,uf.fbh_data_rec,uf.created_ip,
             uf.created_date,uf.flag_status,uf.fbh_data_user,uf.form_fmb_id,uf.fbh_data_rec_xml,uf.fbh_user_agent,uf.fbh_page,
             uf.fbh_referer,uf.fbh_params
             from %s uf
-            where uf.fbh_id=%s
+            where uf.fbh_id=%%d
             ',
-            $this->table,
+                $this->table
+            ),
             (int) $id
         );
 
@@ -452,14 +468,36 @@ class Uiform_Model_Form_Records
 
     public function getOptRecordById($field, $id)
     {
-        $query = sprintf(
+        $allowed_fields = array(
+            'fbh_id',
+            'fbh_data',
+            'fbh_data_rec',
+            'created_ip',
+            'created_date',
+            'flag_status',
+            'fbh_data_user',
+            'form_fmb_id',
+            'fbh_data_rec_xml',
+            'fbh_user_agent',
+            'fbh_page',
+            'fbh_referer',
+            'fbh_params',
+        );
+
+        if (!in_array($field, $allowed_fields, true)) {
+            return '';
+        }
+
+        $query = $this->wpdb->prepare(
+            sprintf(
             '
             select uf.%s
             from %s uf
-            where uf.fbh_id=%s
+            where uf.fbh_id=%%d
             ',
             $field,
-            $this->table,
+                $this->table
+            ),
             (int) $id
         );
 
@@ -492,13 +530,17 @@ class Uiform_Model_Form_Records
     
     public function getFieldDataByIdOnMultistep($id_rec, $ui_field, $idform)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             "select f.type_fby_id as type,f.fmf_data
-            from wp_uiform_fields f
-            join wp_uiform_fields_type t on f.type_fby_id=t.fby_id 
-            where f.fmf_uniqueid='%s' and f.form_fmb_id=%s ",
+            from %s f
+            join %s t on f.type_fby_id=t.fby_id
+            where f.fmf_uniqueid=%%s and f.form_fmb_id=%%d ",
+            $this->tbformfields,
+                $this->tbformtype
+            ),
             $ui_field,
-            $idform
+            (int) $idform
         );
         
         $row = $this->wpdb->get_row($query);
@@ -511,18 +553,20 @@ class Uiform_Model_Form_Records
     
     public function getFieldDataById($id_rec, $ui_field)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             "select f.type_fby_id as type,f.fmf_data
             from %s f
             join %s t on f.type_fby_id=t.fby_id 
             join %s frm on f.form_fmb_id=frm.fmb_id
 	    join %s frc on frc.form_fmb_id=frm.fmb_id
-            where frc.fbh_id = %s and f.fmf_uniqueid='%s'",
+            where frc.fbh_id = %%d and f.fmf_uniqueid=%%s",
             $this->tbformfields,
             $this->tbformtype,
             $this->tbform,
-            $this->table,
-            $id_rec,
+                $this->table
+            ),
+            (int) $id_rec,
             $ui_field
         );
 

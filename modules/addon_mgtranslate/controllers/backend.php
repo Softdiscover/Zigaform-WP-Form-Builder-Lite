@@ -87,7 +87,7 @@ class zfaddn_mgtranslate_back extends Uiform_Base_Module
      */
     public function ajax_create_lang()
     {
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $resp = array();
         $resp['html_title'] = __('Translation Manager', 'FRocket_admin');
@@ -143,7 +143,7 @@ class zfaddn_mgtranslate_back extends Uiform_Base_Module
      */
     public function ajax_new_lang()
     {
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
         $resp = array();
         $resp['html_title'] = __('Translation Manager', 'FRocket_admin');
         $resp['html'] = self::render_template('addon_mgtranslate/views/backend/ajax_new_lang.php', array());
@@ -178,7 +178,7 @@ class zfaddn_mgtranslate_back extends Uiform_Base_Module
      */
     public function ajax_save_pofile()
     {
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
         $translation           = ( isset($_POST['translation']) && $_POST['translation'] ) ? array_map(array( 'Uiform_Form_Helper', 'sanitizeRecursive_html' ), $_POST['translation']) : array();
         $lang               = ( $_POST['lang'] ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['lang'])) : '';
         $side               = ( $_POST['side'] ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['side'])) : '';
@@ -249,7 +249,7 @@ class zfaddn_mgtranslate_back extends Uiform_Base_Module
      */
     public function ajax_load_pofile()
     {
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $lang = ( isset($_POST['lang']) ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['lang'])) : '';
         $side = ( isset($_POST['side']) ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['side'])) : 'backend';

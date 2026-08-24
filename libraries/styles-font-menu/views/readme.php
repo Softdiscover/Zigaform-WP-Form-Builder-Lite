@@ -77,7 +77,8 @@
 
 				$.get( styles_google_options.admin_ajax, {
 					"action": "styles-font-preview",
-					"font-family": name
+					"font-family": name,
+					"zgfm_security": styles_google_options.ajax_nonce
 				}, function( data, textStatus, jqXHR ){
 
 					var img = $('<img>').attr( 'src', data ).addClass('sfm-preview');

@@ -125,16 +125,18 @@ class Uiform_Model_Form_Log
 
     public function getLastLogById($id)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             '
             select uf.log_id,uf.log_frm_data,uf.log_frm_name,uf.log_frm_html,uf.log_frm_html_backend,uf.log_frm_html_css,uf.log_frm_id,uf.log_frm_hash,uf.flag_status,uf.created_date,uf.updated_date
             from %s uf
-            where uf.log_frm_id=%s
+            where uf.log_frm_id=%%d
             ORDER BY uf.log_id desc
             LIMIT 1
             ',
-            $this->table,
-            $id
+                $this->table
+            ),
+            (int) $id
         );
 
         return $this->wpdb->get_row($query);
@@ -142,16 +144,18 @@ class Uiform_Model_Form_Log
 
     public function getOldLogById($id)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             '
             select uf.log_id,uf.log_frm_data,uf.log_frm_name,uf.log_frm_html,uf.log_frm_html_backend,uf.log_frm_html_css,uf.log_frm_id,uf.log_frm_hash,uf.flag_status,uf.created_date,uf.updated_date
             from %s uf
-            where uf.log_frm_id=%s
+            where uf.log_frm_id=%%d
             ORDER BY uf.log_id asc
             LIMIT 1
             ',
-            $this->table,
-            $id
+                $this->table
+            ),
+            (int) $id
         );
 
         return $this->wpdb->get_row($query);

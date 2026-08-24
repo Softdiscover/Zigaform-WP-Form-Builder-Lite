@@ -77,7 +77,7 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module
       */
     public function ajax_dev_genfieldopts()
     {
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $data_render = array();
         $this->back_cache_tab_more = apply_filters('zgfm_back_field_opt_more', array());
@@ -192,7 +192,7 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module
 
          
 
-         // echo json_encode($data_render);
+         // Uiform_Form_Helper::send_json_legacy($data_render);
          die();
     }
 
@@ -214,7 +214,7 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module
 
         // return data to ajax callback
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         die();
     }
 
@@ -226,7 +226,7 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module
     public function ajax_field_option()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $id          = ( isset($_POST['field_id']) ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['field_id'])) : '';
         $type        = ( isset($_POST['field_type']) ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['field_type'])) : '';
@@ -245,7 +245,7 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module
         // $json['addons'] = self::$_models['addon']['addon']->getActiveAddonsNamesOnBack();
 
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         die();
     }
 
@@ -324,7 +324,7 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module
     public function ajax_refresh_captcha()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $length  = 5;
         $charset = 'abcdefghijklmnpqrstuvwxyz123456789';
@@ -352,7 +352,7 @@ class Uiform_Fb_Controller_Fields extends Uiform_Base_Module
         $resp2['rkver']  = $captcha_options;
         // return data to ajax callback
         header('Content-Type: application/json');
-        echo json_encode($resp2);
+        Uiform_Form_Helper::send_json_legacy($resp2);
         wp_die();
     }
 

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitf2f378058743085522078c0827986eab
+class ComposerStaticInit560797ec1d8985ccd9d3495cc95571a7
 {
     public static $prefixLengthsPsr4 = array (
         'Z' => 
@@ -21,6 +21,7 @@ class ComposerStaticInitf2f378058743085522078c0827986eab
     );
 
     public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Zigaform\\Admin\\List_data' => __DIR__ . '/../..' . '/includes/admin/class-admin-list.php',
         'Zigaform\\Template' => __DIR__ . '/../..' . '/includes/class-template.php',
     );
@@ -28,9 +29,9 @@ class ComposerStaticInitf2f378058743085522078c0827986eab
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitf2f378058743085522078c0827986eab::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitf2f378058743085522078c0827986eab::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitf2f378058743085522078c0827986eab::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit560797ec1d8985ccd9d3495cc95571a7::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit560797ec1d8985ccd9d3495cc95571a7::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit560797ec1d8985ccd9d3495cc95571a7::$classMap;
 
         }, null, ClassLoader::class);
     }

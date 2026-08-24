@@ -31,6 +31,11 @@ jQuery(function () {
 		var param = {
 			action: action_name
 		};
+
+		if ('undefined' !== typeof zgfm_notice_vars && zgfm_notice_vars.ajax_nonce) {
+			param.zgfm_security = zgfm_notice_vars.ajax_nonce;
+		}
+
 		jQuery.post(ajaxurl, param);
 	}
 

@@ -115,7 +115,7 @@ class Uiform_Fb_Controller_Recaptcha extends Uiform_Base_Module
         $json['success'] = $success;
         // return data to ajax callback
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         die();
     }
 
@@ -155,7 +155,7 @@ class Uiform_Fb_Controller_Recaptcha extends Uiform_Base_Module
         $json['error'] =  $errors;
         // return data to ajax callback
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         die();
     }
 

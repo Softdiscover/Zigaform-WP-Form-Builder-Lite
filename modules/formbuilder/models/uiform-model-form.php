@@ -157,15 +157,17 @@ class Uiform_Model_Form
 
     public function getFormById($id)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             '
             select uf.fmb_id,uf.fmb_data,uf.fmb_name,uf.fmb_html,uf.fmb_html_backend,uf.flag_status,uf.created_date,uf.updated_date, uf.fmb_parent,
                 uf.fmb_html_css,uf.fmb_default,uf.fmb_skin_status,uf.fmb_skin_data,uf.fmb_skin_type,uf.fmb_data2,uf.fmb_rec_tpl_html,uf.fmb_rec_tpl_st, uf.fmb_type, uf.fmb_parent
             from %s uf
-            where uf.fmb_id=%s  
+            where uf.fmb_id=%%d
             ',
-            $this->table,
-            $id
+                $this->table
+            ),
+            (int) $id
         );
 
         return $this->wpdb->get_row($query);
@@ -173,13 +175,15 @@ class Uiform_Model_Form
 
     public function getTitleFormById($id)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             '
             select uf.fmb_name
             from %s uf
-            where uf.fmb_id=%s
+            where uf.fmb_id=%%d
             ',
-            $this->table,
+                $this->table
+            ),
             (int) $id
         );
 
@@ -188,17 +192,19 @@ class Uiform_Model_Form
 
     public function getAvailableFormById($id)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             '
             select uf.fmb_id,uf.fmb_data,uf.fmb_name,uf.fmb_html,uf.fmb_html_backend,uf.flag_status,uf.created_date,uf.updated_date,
                 uf.fmb_html_css,uf.fmb_default,uf.fmb_skin_status,uf.fmb_skin_data,uf.fmb_skin_type,uf.fmb_data2
             from %s uf
             where 
             uf.flag_status=1 and
-            uf.fmb_id=%s
+            uf.fmb_id=%%d
             ',
-            $this->table,
-            $id
+                $this->table
+            ),
+            (int) $id
         );
 
         return $this->wpdb->get_row($query);
@@ -222,24 +228,27 @@ class Uiform_Model_Form
 
     public function getChildFormByParentId($id)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             '
             select uf.fmb_id,uf.fmb_data,uf.fmb_name,uf.fmb_html,uf.fmb_html_backend,uf.flag_status,uf.created_date,uf.updated_date,
                 uf.fmb_html_css,uf.fmb_default,uf.fmb_skin_status,uf.fmb_skin_data,uf.fmb_skin_type,uf.fmb_data2, uf.fmb_rec_tpl_html, uf.fmb_rec_tpl_st, uf.fmb_type, uf.fmb_parent
             from %s uf
             where 
             uf.flag_status=1 and
-            uf.fmb_parent=%s
+            uf.fmb_parent=%%d
             ',
-            $this->table,
-            $id
+                $this->table
+            ),
+            (int) $id
         );
 
         return $this->wpdb->get_results($query);
     }
     public function getFieldsById($id)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             '
             select
             	f.fmf_uniqueid,
@@ -254,12 +263,13 @@ class Uiform_Model_Form
             	f.type_fby_id = t.fby_id
             join %s fm on
             	fm.fmb_id = f.form_fmb_id
-            where fm.fmb_id = %s
+            where fm.fmb_id = %%d
             ',
             $this->tbformfields,
             $this->tbformtype,
-            $this->table,
-            $id
+                $this->table
+            ),
+            (int) $id
         );
 
         return $this->wpdb->get_results($query);
@@ -267,15 +277,17 @@ class Uiform_Model_Form
 
     public function getFieldNamesById($id_form)
     {
-        $query  = sprintf(
+        $query  = $this->wpdb->prepare(
+            sprintf(
             'select f.fmf_uniqueid,f.fmf_id, fm.fmb_type, coalesce(NULLIF(f.fmf_fieldname,""),CONCAT(t.fby_name,f.fmf_id)) as fieldname 
         from %s f 
         join %s t on f.type_fby_id=t.fby_id 
         join %s fm on fm.fmb_id=f.form_fmb_id
-        where fm.fmb_id=%s and t.fby_id in (8,9,10,11,16,18,39,40,41,42)',
+        where fm.fmb_id=%%d and t.fby_id in (8,9,10,11,16,18,39,40,41,42)',
             $this->tbformfields,
             $this->tbformtype,
-            $this->table,
+                $this->table
+            ),
             (int) $id_form
         );
         return $this->wpdb->get_row($query);
@@ -283,14 +295,16 @@ class Uiform_Model_Form
 
     public function getFormById_2($id)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             '
             select uf.fmb_data2,uf.fmb_name, uf.fmb_type, uf.fmb_rec_tpl_st 
             from %s uf
-            where uf.fmb_id=%s
+            where uf.fmb_id=%%d
             ',
-            $this->table,
-            $id
+                $this->table
+            ),
+            (int) $id
         );
 
         return $this->wpdb->get_row($query);

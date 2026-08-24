@@ -633,15 +633,16 @@ JS;
      */
     public function loadMenu()
     {
+        $perms = 'manage_options';
+
         if ( ZIGAFORM_F_LITE === 1) {
-            add_menu_page('ZigaForm - WordPress Form Builder Lite', 'Zigaform Lite', 'edit_posts', 'zgfm_form_builder', array( &$this, 'get_menu' ), UIFORM_FORMS_URL . '/assets/backend/image/rockfm-logo-ico.png');
+            add_menu_page('ZigaForm - WordPress Form Builder Lite', 'Zigaform Lite', $perms, 'zgfm_form_builder', array( &$this, 'get_menu' ), UIFORM_FORMS_URL . '/assets/backend/image/rockfm-logo-ico.png');
         } else {
-            add_menu_page('ZigaForm - WordPress Form Builder', 'Zigaform', 'edit_posts', 'zgfm_form_builder', array( &$this, 'get_menu' ), UIFORM_FORMS_URL . '/assets/backend/image/rockfm-logo-ico.png');
+            add_menu_page('ZigaForm - WordPress Form Builder', 'Zigaform', $perms, 'zgfm_form_builder', array( &$this, 'get_menu' ), UIFORM_FORMS_URL . '/assets/backend/image/rockfm-logo-ico.png');
         }
 
         // add_submenu_page("zgfm_form_builder", __('Forms', 'FRocket_admin'), __('Forms', 'FRocket_admin'), $perms, '?page=zgfm_form_builder&zgfm_mod=formbuilder&zgfm_contr=records&zgfm_action=info_records_byforms');
 
-        $perms = 'manage_options';
         add_submenu_page('zgfm_form_builder', __('Forms', 'FRocket_admin'), __('Forms', 'FRocket_admin'), $perms, 'zgfm_form_builder', array( &$this, 'get_menu' ));
         $page_help  = add_submenu_page('zgfm_form_builder', __('Help', 'FRocket_admin'), __('Help', 'FRocket_admin'), $perms, 'zigaform-builder-help', array( &$this, 'get_menu' ));
         $page_about = add_submenu_page('zgfm_form_builder', __('About', 'FRocket_admin'), __('About', 'FRocket_admin'), $perms, 'zigaform-builder-about', array( &$this, 'get_menu' ));
@@ -1330,6 +1331,13 @@ JS;
     public function zigaform_register_form_shortcode_block_admin() {
         $src_dir   = UIFORM_FORMS_DIR . '/assets/gutenberg/form-shortcode';
         $build_dir = UIFORM_FORMS_DIR . '/assets/backend/js/gutenberg/form-shortcode';
+        $script    = "$build_dir/index.js";
+        $editor    = "$build_dir/editor.css";
+        $style     = "$build_dir/style.css";
+
+        if ( ! file_exists($src_dir . '/block.json') || ! file_exists($script) || ! file_exists($editor) || ! file_exists($style) ) {
+            return;
+        }
 
         // Scripts
         wp_register_script(
@@ -1341,7 +1349,7 @@ JS;
                 'wp-block-editor',
                 'wp-components',
             ],
-            filemtime("$build_dir/index.js")
+            filemtime($script)
         );
 
         // Localized data
@@ -1357,7 +1365,7 @@ JS;
             'zigaform-form-shortcode-editor',
             UIFORM_FORMS_URL . '/assets/backend/js/gutenberg/form-shortcode/editor.css',
             [],
-            filemtime("$build_dir/editor.css")
+            filemtime($editor)
         );
 
         // Editor style  
@@ -1365,7 +1373,7 @@ JS;
             'zigaform-form-shortcode-style',
             UIFORM_FORMS_URL . '/assets/backend/js/gutenberg/form-shortcode/style.css',
             [],
-            filemtime("$build_dir/style.css")
+            filemtime($style)
         );
 
         register_block_type(

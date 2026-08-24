@@ -85,7 +85,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
     public function ajax_list_record_updatest()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
         $list_ids = (isset($_POST['id']) && $_POST['id']) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive'), $_POST['id']) : array();
         $form_st  = (isset($_POST['form_st']) && $_POST['form_st']) ? Uiform_Form_Helper::sanitizeInput($_POST['form_st']) : '';
         $is_trash  = (isset($_POST['is_trash']) && $_POST['is_trash']) ? Uiform_Form_Helper::sanitizeInput($_POST['is_trash']) : '';
@@ -149,7 +149,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
     public function ajax_load_viewchart()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $form_id = (isset($_POST['form_id']) && $_POST['form_id']) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : 0;
 
@@ -158,14 +158,14 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
         $data         = array();
         $data['data'] = $data_chart;
         header('Content-Type: application/json');
-        echo json_encode($data);
+        Uiform_Form_Helper::send_json_legacy($data);
         wp_die();
     }
 
     public function ajax_load_savereport()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $form_id      = (isset($_POST['form_id']) && $_POST['form_id']) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : 0;
         $data_fields  = (isset($_POST['data']) && !empty($_POST['data'])) ? array_map(array('Uiform_Form_Helper', 'sanitizeRecursive'), $_POST['data']) : array();
@@ -204,7 +204,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
     public function ajax_load_customreport()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $form_id = (isset($_POST['form_id']) && $_POST['form_id']) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : 0;
 
@@ -235,7 +235,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
     public function ajax_load_record_byform()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $form_id = (isset($_POST['form_id']) && $_POST['form_id']) ? Uiform_Form_Helper::sanitizeInput($_POST['form_id']) : 0;
 
@@ -284,7 +284,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
     public function ajax_delete_record()
     {
 
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $rec_id = (isset($_POST['rec_id']) && $_POST['rec_id']) ? Uiform_Form_Helper::sanitizeInput($_POST['rec_id']) : 0;
         $is_trash = (isset($_POST['is_trash']) && $_POST['is_trash']) ? Uiform_Form_Helper::sanitizeInput($_POST['is_trash']) : 0;
@@ -479,7 +479,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
      */
     public function ajax_recordlist_sendfilter()
     {
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $data_filter = (isset($_POST['data_filter']) && $_POST['data_filter']) ? $_POST['data_filter'] : '';
 
@@ -508,7 +508,7 @@ class Uiform_Fb_Controller_Records extends Uiform_Base_Module
         $json['content'] = $result;
 
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 

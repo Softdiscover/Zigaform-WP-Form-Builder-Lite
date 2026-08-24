@@ -49,11 +49,13 @@ class Uiform_Model_Fields
 
     public function queryGetListFieldsEnabled($form_id)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             'select f.fmf_uniqueid,f.order_rec
             from %s f 
-            where f.fmf_status_qu=1 and f.form_fmb_id=%s',
-            $this->table,
+            where f.fmf_status_qu=1 and f.form_fmb_id=%%d',
+                $this->table
+            ),
             (int) $form_id
         );
         return $this->wpdb->get_results($query);
@@ -61,11 +63,13 @@ class Uiform_Model_Fields
 
     public function queryGetListFieldsById($form_id)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             'select f.fmf_uniqueid,f.order_rec
             from %s f 
-            where f.form_fmb_id=%s',
-            $this->table,
+            where f.form_fmb_id=%%d',
+                $this->table
+            ),
             (int) $form_id
         );
 
@@ -74,11 +78,13 @@ class Uiform_Model_Fields
 
     public function queryGetQtyFieldsEnabled($form_id)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             'select COUNT(*) as count
             from %s f 
-            where f.fmf_status_qu=1 and f.form_fmb_id=%s',
-            $this->table,
+            where f.fmf_status_qu=1 and f.form_fmb_id=%%d',
+                $this->table
+            ),
             (int) $form_id
         );
         $row   = $this->wpdb->get_row($query);
@@ -91,18 +97,20 @@ class Uiform_Model_Fields
 
     public function getFieldNameByUniqueId($uid, $form_id)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             "
             select f.type_fby_id as type,f.fmf_data as data,coalesce(NULLIF(f.fmf_fieldname,''),CONCAT(t.fby_name,f.fmf_id)) as fieldname
             from %s f
             join %s t on f.type_fby_id=t.fby_id 
             join %s frm on f.form_fmb_id=frm.fmb_id
             where
-            frm.fmb_id=%s
-            and f.fmf_uniqueid='%s'",
+            frm.fmb_id=%%d
+            and f.fmf_uniqueid=%%s",
             $this->table,
             $this->tbformtype,
-            $this->tbform,
+                $this->tbform
+            ),
             (int) $form_id,
             $uid
         );
@@ -111,16 +119,18 @@ class Uiform_Model_Fields
 
     public function getDataByUniqueId($uid, $form_id)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             '
             select fmf_data
             from %s f
             join %s frm
-            where frm.fmb_id=%s
-            and f.fmf_uniqueid="%s"
+            where frm.fmb_id=%%d
+            and f.fmf_uniqueid=%%s
             ',
             $this->table,
-            $this->tbform,
+                $this->tbform
+            ),
             (int) $form_id,
             $uid
         );

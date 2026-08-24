@@ -38,17 +38,8 @@ class zgfm_core_addon extends Uiform_Base_Module
 
     public function __construct()
     {
-        // load library
-        /*
-         require_once( UIFORM_FORMS_DIR . '/modules/addon/controllers/common.php');
-        $this->modules = array(
-        'formbuilder' => array('frontend' => Uiform_Fb_Controller_Frontend::get_instance(),
-        'records' => Uiform_Fb_Controller_Records::get_instance())
-        );
-        self::$_modules = $this->modules;*/
-
-        var_dump($this->modules);
-        die();
+        $this->modules = array();
+        $this->models  = array();
     }
 
     public function get_addons()

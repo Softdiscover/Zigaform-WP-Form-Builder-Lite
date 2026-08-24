@@ -31,14 +31,20 @@ class SFM_Image_Preview {
 	 * @return null Output URL to image as string
 	 */
 	public function wp_ajax_styles_font_preview() {
+		check_ajax_referer( 'zgfm_ajax_nonce', 'zgfm_security' );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( esc_html__( 'Forbidden', 'FRocket_admin' ), '', array( 'response' => 403 ) );
+		}
+
 		$plugin = SFM_Plugin::get_instance();
-		$font_family = ( isset( $_GET[ 'font-family' ] ) ) ? $_GET[ 'font-family' ] : false;
+		$font_family = ( isset( $_GET[ 'font-family' ] ) ) ? sanitize_text_field( wp_unslash( $_GET[ 'font-family' ] ) ) : false;
 
 		// Load font family from Google Fonts
 		$this->font = $plugin->google_fonts->get_font_by_name( $font_family );
 
 		if ( !$this->font ) {
-			wp_die( 'Font not found: ' . $this->font_family );
+			wp_die( esc_html__( 'Font not found: ', 'FRocket_admin' ) . esc_html( $font_family ) );
 		}
 
 		// Output PNG URL
@@ -46,7 +52,7 @@ class SFM_Image_Preview {
 			$this->generate_image();
 		}
 
-		echo $this->font->get_png_url();
+		echo esc_url_raw( $this->font->get_png_url() );
 		exit;
 	}
 

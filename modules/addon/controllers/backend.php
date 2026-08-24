@@ -64,7 +64,7 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module
      */
     public function listaddon_updateStatus()
     {
-        check_ajax_referer('zgfm_ajax_nonce', 'zgfm_security');
+        Uiform_Form_Helper::verify_admin_ajax();
 
         $data       = array();
         $add_name   = ( $_POST['add_name'] ) ? Uiform_Form_Helper::sanitizeInput(trim($_POST['add_name'])) : '';
@@ -83,7 +83,7 @@ class zgfm_mod_addon_controller_back extends Uiform_Base_Module
 
         // return data to ajax callback
         header('Content-Type: application/json');
-        echo json_encode($json);
+        Uiform_Form_Helper::send_json_legacy($json);
         wp_die();
     }
 

@@ -147,18 +147,20 @@ class Uiform_Model_Addon
 
     public function getAddonsNamesOnBackByForm($idform)
     {
-        $query = sprintf(
+        $query = $this->wpdb->prepare(
+            sprintf(
             '
             select c.add_name
             from %s c
 	    left join %s ad on ad.add_name = c.add_name
-            where c.flag_status=1 and ad.fmb_id=%s
+            where c.flag_status=1 and ad.fmb_id=%%d
             and c.add_load_back=1
             ORDER BY c.add_order desc
             ',
             $this->table,
-            $this->tbaddon_details,
-            $idform
+                $this->tbaddon_details
+            ),
+            (int) $idform
         );
 
         $tmp_result = $this->wpdb->get_results($query);
