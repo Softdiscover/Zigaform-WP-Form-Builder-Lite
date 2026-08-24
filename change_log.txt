@@ -1,4 +1,4 @@
-version 7.7.17
+version 7.7.18
 [fix] - saving a brand new multi-step form no longer reports "Error on saving form"; steps added right after the first save are now attached to it
 [fix] - a step added right after saving a new multi-step form is now attached to that form instead of being silently dropped
 -----------------------------------------------------------------------------------------------------------------
